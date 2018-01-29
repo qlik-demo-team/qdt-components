@@ -18,7 +18,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['latest', 'react'],
-          plugins: ['transform-decorators-legacy', 'transform-object-rest-spread', 'transform-class-properties'],
+          plugins: ['transform-decorators-legacy', 'transform-object-rest-spread', 'transform-class-properties', 'transform-runtime'],
         },
       },
       {
