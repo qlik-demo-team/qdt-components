@@ -2,13 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index'],
+  entry: './src/index',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'qdt-components.js',
+    library: 'qdtComponents',
+    libraryTarget: 'umd'
   },
-  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -52,5 +53,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  }
+  },
 };
