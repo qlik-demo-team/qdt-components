@@ -6,16 +6,16 @@
   "author": "The Demo Team",
   "license": "MIT",
   "repository": {
-      "type": "git",
-      "url": "git@github.com:qlik-demo-team/qdt-components.git"
+    "type": "git",
+    "url": "git@github.com:qlik-demo-team/qdt-components.git"
   },
   "keywords": [
-      "qlik",
-      "sense",
-      "capability api",
-      "react-component",
-      "angular-components",
-      "react"
+    "qlik",
+    "sense",
+    "capability api",
+    "react-component",
+    "angular-components",
+    "react"
   ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
