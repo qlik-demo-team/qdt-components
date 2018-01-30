@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
+  "author": "The Demo Team",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "git@github.com:qlik-demo-team/qdt-components.git"
+  },
+  "keywords": [
+      "qlik",
+      "sense",
+      "capability api",
+      "react-component",
+      "angular-components",
+      "react"
+  ],
+  "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "autobind-decorator": "^2.1.0",
     "bootstrap": "^4.0.0-beta",
