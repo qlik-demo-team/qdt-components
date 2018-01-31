@@ -1,4 +1,4 @@
-[![version](http://img.shields.io/badge/version-1.0.0-brightgreen.svg?style=plastic)]()
+[![version](http://img.shields.io/badge/version-1.0.1-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
 

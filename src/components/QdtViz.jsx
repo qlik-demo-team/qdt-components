@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import qAppPromise from '../qApp';
 
+const errorMsg = 'Please specify a qConfig global variable';
+
 export default class QdtViz extends React.Component {
   static propTypes = {
     id: PropTypes.string,
@@ -59,8 +61,12 @@ export default class QdtViz extends React.Component {
   async show() {
     try {
       const qViz = await this.qVizPromise;
-      await this.setState({ loading: false });
-      qViz.show(this.node);
+      if (qViz) {
+        await this.setState({ loading: false });
+        qViz.show(this.node);
+      } else {
+        throw new Error(errorMsg);
+      }
     } catch (error) {
       this.setState({ error });
     }
