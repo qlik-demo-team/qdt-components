@@ -1,3 +1,9 @@
+![Angular](assets/angular.png "Angular")
+![Arrows](assets/if_arrow_7_393270.png "Arrows")
+![Qlik Sense](assets/QS_Engine.jpg "Qlik Sense")
+![Arrows](assets/if_arrow_7_393270.png "Arrows")
+![React](assets/react.png "React")
+
 [![version](http://img.shields.io/badge/version-1.0.1-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
