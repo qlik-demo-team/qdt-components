@@ -18,7 +18,7 @@ export default class QdtViz extends React.Component {
     cols: [],
     options: {},
     width: '100%',
-    height: '400px',
+    height: '100%',
   }
 
   constructor(props) {
