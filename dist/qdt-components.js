@@ -36482,7 +36482,7 @@ var QdtViz = (_temp = _class = function (_React$Component) {
   cols: [],
   options: {},
   width: '100%',
-  height: '400px'
+  height: '100%'
 }, _temp);
 exports.default = QdtViz;
 
