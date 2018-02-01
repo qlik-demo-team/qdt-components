@@ -54,7 +54,7 @@
     "webpack": "^3.8.1"
   },
   "scripts": {
-    "build": "webpack",
+    "start": "webpack",
     "lint": "eslint . --ignore-path .gitignore --cache"
   }
 }
