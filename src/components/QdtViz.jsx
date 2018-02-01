@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import qAppPromise from '../qApp';
-
-const errorMsg = 'Please specify a qConfig global variable';
 
 export default class QdtViz extends React.Component {
   static propTypes = {
+    qAppPromise: PropTypes.object.isRequired,
     id: PropTypes.string,
     type: PropTypes.oneOf([null, 'barchart', 'boxplot', 'combochart', 'distributionplot', 'gauge', 'histogram', 'kpi', 'linechart', 'piechart', 'pivot-table', 'scatterplot', 'table', 'treemap', 'extension']),
     cols: PropTypes.array,
@@ -47,7 +45,7 @@ export default class QdtViz extends React.Component {
   async create() {
     try {
       const {
-        id, type, cols, options,
+        qAppPromise, id, type, cols, options,
       } = this.props;
       const qApp = await qAppPromise;
       const qVizPromise = id ? qApp.visualization.get(id) : qApp.visualization.create(type, cols, options); // eslint-disable-line max-len
@@ -65,7 +63,7 @@ export default class QdtViz extends React.Component {
         await this.setState({ loading: false });
         qViz.show(this.node);
       } else {
-        throw new Error(errorMsg);
+        throw new Error('Please specify a qConfig global variable');
       }
     } catch (error) {
       this.setState({ error });

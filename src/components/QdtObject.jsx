@@ -1,7 +1,6 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
-import qDocPromise from '../qDoc';
 
 const settings = {
   qHyperCube: {
@@ -26,6 +25,7 @@ const settings = {
 
 export default class QdtObject extends React.Component {
   static propTypes = {
+    qDocPromise: PropTypes.object.isRequired,
     qProp: PropTypes.object.isRequired,
     type: PropTypes.oneOf(['qHyperCube', 'qListObject', 'expression']).isRequired,
     Component: PropTypes.func.isRequired,
@@ -77,8 +77,9 @@ export default class QdtObject extends React.Component {
 
   async create() {
     try {
+      const {qDocPromise, qProp } = this.props;
       const qDoc = await qDocPromise;
-      const qObjectPromise = qDoc.createSessionObject(this.props.qProp);
+      const qObjectPromise = qDoc.createSessionObject(qProp);
       return qObjectPromise;
     } catch (error) {
       this.setState({ error });
