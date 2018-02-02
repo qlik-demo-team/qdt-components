@@ -38,8 +38,23 @@ export default class QdtViz extends React.Component {
     this.show();
   }
 
+  componentWillReceiveProps(newProps) {
+    if (JSON.stringify(newProps.options) !== JSON.stringify(this.props.options)) {
+      this.setOptions(newProps.options);
+    }
+  }
+
   componentWillUnmount() {
     this.close();
+  }
+
+  async setOptions(options) {
+    try {
+      const qViz = await this.qVizPromise;
+      qViz.setOptions(options);
+    } catch (error) {
+      this.setState({ error });
+    }
   }
 
   async create() {
@@ -77,6 +92,11 @@ export default class QdtViz extends React.Component {
     } catch (error) {
       this.setState({ error });
     }
+  }
+
+  async resize() {
+    const qViz = await this.qVizPromise;
+    qViz.resize();
   }
 
   render() {
