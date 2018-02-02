@@ -1,4 +1,4 @@
-![Banner](banner_3technologies.jpg "Banner") 
+![Banner](assets/banner_3technologies.jpg "Banner") 
 
 [![version](http://img.shields.io/badge/version-1.0.2-brightgreen.svg?style=plastic)]()
 
