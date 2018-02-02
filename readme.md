@@ -4,7 +4,7 @@
 ![Arrows](assets/if_arrow_7_393270.png "Arrows")
 ![React](assets/react_thumb.png "React")
 
-[![version](http://img.shields.io/badge/version-1.0.1-brightgreen.svg?style=plastic)]()
+[![version](http://img.shields.io/badge/version-1.0.2-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
 
@@ -15,30 +15,42 @@
 
 ### Usage
 
-##### Example
-
-```javascript
-import { QdtComponents } from 'qdt-components';
-
-let qConfig = {
-    "config": {
-        "host": "sense-demo.qlik.com",
-        "secure": true,
-        "port": 443,
-        "prefix": "/",
-        "appId": "372cbc85-f7fb-4db6-a620-9a5367845dce"
-    },
-    "connections": { 
-        "vizApi": true, 
-        "engineApi": false 
-    }
-}
-
-static QdtComponent = new QdtComponents(qConfig);
+##### Simple Html Example
+- Download the [latest bundle](../blob/master/dist/qdt-components.js)
+- Add the Html
+```html
+    <head>
+        <script type="text/javascript" src="qdt-components.js"></script>
+    </head>
+    <body>
+        <qdt-component id="qdt1"></qdt-component>
+    </body>
 ```
+- Add the Javascript
+```javascript
+    <script type="text/javascript">
+        var qConfig = {
+            "config": {
+                "host": "sense-demo.qlik.com",
+                "secure": true,
+                "port": 443,
+                "prefix": "/",
+                "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
+            },
+            "connections": { 
+                "vizApi": true, 
+                "engineApi": false 
+            }
+        }
+        var QdtComponent = new window.qdtComponents.default(qConfig.config, qConfig.connections);
+        var element = document.getElementById('qdt1');
+        QdtComponent.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
+    </script>
+```
+- [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
 
-##### Angular 5 Component
-
+##### Angular 5 Component (cli)
+-
 ```javascript
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import * as qConfig from '../../../qConfig.json';
