@@ -1,14 +1,10 @@
-![Angular](assets/angular.png "Angular")
-![Arrows](assets/if_arrow_7_393270.png "Arrows")
-![Qlik Sense](assets/icon_SenseLibrary.jpg "Qlik Sense")
-![Arrows](assets/if_arrow_7_393270.png "Arrows")
-![React](assets/react_thumb.png "React")
+![Banner](banner_3technologies.jpg "Banner")
 
 [![version](http://img.shields.io/badge/version-1.0.2-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
 
-- Qlik-powered components built by the Qlik Demo Team. For use with Angular2+ and React
+- Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular2+ and React
 
 ### Installation
 - `npm install --save qdt-components`
@@ -16,7 +12,7 @@
 ### Usage
 
 #### Simple Html Example
-- Download the [latest bundle](../blob/master/dist/qdt-components.js)
+- Download the [latest build](../blob/master/dist/qdt-components.js)
 - Add the Html
 ```html
     <head>
