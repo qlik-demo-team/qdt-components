@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["qdtComponents"] = factory();
+		exports["QdtComponents"] = factory();
 	else
-		root["qdtComponents"] = factory();
+		root["QdtComponents"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -37309,5 +37309,5 @@ var QdtViz = (_temp = _class = function (_React$Component) {
 exports.default = QdtViz;
 
 /***/ })
-/******/ ]);
+/******/ ])["default"];
 });
