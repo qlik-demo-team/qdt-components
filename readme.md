@@ -1,6 +1,6 @@
 ![Angular](assets/angular.png "Angular")
 ![Arrows](assets/if_arrow_7_393270.png "Arrows")
-![Qlik Sense](assets/QS_Engine_thumb.jpg "Qlik Sense")
+![Qlik Sense](assets/icon_SenseLibrary.jpg "Qlik Sense")
 ![Arrows](assets/if_arrow_7_393270.png "Arrows")
 ![React](assets/react_thumb.png "React")
 
@@ -15,7 +15,7 @@
 
 ### Usage
 
-##### Simple Html Example
+#### Simple Html Example
 - Download the [latest bundle](../blob/master/dist/qdt-components.js)
 - Add the Html
 ```html
@@ -49,7 +49,7 @@
 ```
 - [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
 
-##### Angular 5 Component (cli)
+#### Angular 5 Component (cli)
 -
 ```javascript
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
@@ -78,7 +78,7 @@ export class QdtComponentComponent implements OnInit {
 }
 ```
 
-##### React 16
+#### React 16
 -
 
 
