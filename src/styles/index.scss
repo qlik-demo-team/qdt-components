@@ -42,3 +42,13 @@ th.active:after {
   border-right: 0.5rem solid transparent;
   border-top: 0.5rem solid #666;
 }
+
+/****************
+ * QdtButton 
+*****************/
+.qtd-button {
+    padding: 15px 30px;
+    border: 1px solid $gray-600;
+    display: inline-block;
+    cursor: pointer;
+}

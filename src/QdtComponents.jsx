@@ -7,9 +7,10 @@ import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
 import QdtSelectionToolbar from './components/QdtSelectionToolbar';
 import QdtKpi from './components/QdtKpi';
+import QdtButton from './components/QdtButton';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi,
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton,
 };
 
 const QdtComponents = class {
