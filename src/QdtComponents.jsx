@@ -5,8 +5,12 @@ import qDoc from './qDoc';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
+import QdtSelectionToolbar from './components/QdtSelectionToolbar';
+import QdtKpi from './components/QdtKpi';
 
-const components = { QdtFilter, QdtTable, QdtViz };
+const components = {
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi,
+};
 
 const QdtComponents = class {
   constructor(config = {}, connections = { vizApi: true, engineApi: true }) {
