@@ -1,4 +1,4 @@
-const Hypercube = async (qDocPromise, dimensions = [], measures = [], limit = 50, offset = 0) => {
+const Hypercube = async (qDoc, dimensions = [], measures = [], limit = 50, offset = 0) => {
   try {
     let qDimensions = [];
     let qMeasures = [];
@@ -51,7 +51,6 @@ const Hypercube = async (qDocPromise, dimensions = [], measures = [], limit = 50
         ],
       },
     };
-    const qDoc = await qDocPromise;
     const list = await qDoc.createSessionObject(obj);
     const layout = await list.getLayout();
     return layout.qHyperCube.qDataPages[0].qMatrix;

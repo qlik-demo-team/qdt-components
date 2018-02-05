@@ -8,8 +8,12 @@ export default class QdtKpi extends React.Component {
     static propTypes = {
       qDocPromise: PropTypes.object.isRequired,
       qMeasure: PropTypes.string.isRequired,
+      listenToSelections: PropTypes.bool,
     }
 
+    static defaultProps = {
+      listenToSelections: false,
+    }
     constructor(props) {
       super(props);
 
@@ -19,8 +23,15 @@ export default class QdtKpi extends React.Component {
     }
 
     async componentWillMount() {
-      const kpi = await Hypercube(this.props.qDocPromise, [], [this.props.qMeasure], 1);
+      const qDoc = await this.props.qDocPromise;
+      let kpi = await Hypercube(qDoc, [], [this.props.qMeasure], 1, 0);
       this.setState({ kpi: kpi[0][0].qText });
+      if (this.props.listenToSelections) {
+        qDoc.on('changed', async () => {
+          kpi = await Hypercube(qDoc, [], [this.props.qMeasure], 1, 0, this.props.listenToSelections);
+          this.setState({ kpi: kpi[0][0].qText });
+        });
+      }
     }
 
     render() {
