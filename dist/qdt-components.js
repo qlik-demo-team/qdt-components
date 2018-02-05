@@ -36860,16 +36860,15 @@ var QdtKpi = (_temp = _class = function (_React$Component) {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            console.log('Document: changed');
-                            _context.next = 3;
+                            _context.next = 2;
                             return (0, _Hypercube2.default)(qDoc, [], [_this2.props.qMeasure], 1, 0, _this2.props.listenToSelections);
 
-                          case 3:
+                          case 2:
                             kpi = _context.sent;
 
                             _this2.setState({ kpi: kpi[0][0].qText });
 
-                          case 5:
+                          case 4:
                           case 'end':
                             return _context.stop();
                         }
