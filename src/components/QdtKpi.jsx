@@ -14,6 +14,7 @@ export default class QdtKpi extends React.Component {
     static defaultProps = {
       listenToSelections: false,
     }
+
     constructor(props) {
       super(props);
 
