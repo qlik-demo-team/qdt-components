@@ -47,7 +47,7 @@ export default class QdtSelectionToolbar extends React.Component {
       const qDoc = await this.props.qDocPromise;
       this.setState({ qDoc });
       this.update();
-      qDoc.on('changed', async () => { console.log('changed'); this.update(); });
+      qDoc.on('changed', async () => { this.update(); });
     }
 
     @autobind
@@ -61,15 +61,10 @@ export default class QdtSelectionToolbar extends React.Component {
       };
       const list = await this.state.qDoc.createSessionObject(obj);
       const layout = await list.getLayout();
-      console.log(1);
-      console.log(layout);
       const selectedFields = layout.qSelectionObject.qSelections;
       let selections = [];
       if (selectedFields.length) {
-        console.log(2);
         selections = selectedFields.map((value) => {
-          console.log(3);
-          console.log(value);
           if (value.qSelectedCount === 1) {
             return {
               field: value.qField,
@@ -90,26 +85,21 @@ export default class QdtSelectionToolbar extends React.Component {
           return null;
         });
         this.setState({ selections });
-        console.log(4);
-        console.log(selections);
       }
       return layout.qSelectionObject.qSelections;
     }
 
     render() {
       const { selections } = this.state;
-      console.log(9);
-      if (selections.length) console.log(selections[0].field);
       return (
         <div className="qdt-selection-toolbar">
-            Selection Toolbar
           <ul>
-            <li><strong>SELECTIONS: </strong></li>
+            <li><strong>SELECTIONS:</strong></li>
             {selections.length === 0 &&
             <li className="no-selections">None</li>
             }
             {selections.length === 1 &&
-                selections.map(value => <li key={value.field}>{value.field}</li>)
+                selections.map(value => <li key={value.field}>{value.field}<span className="lui-icon lui-icon--remove" /></li>)
             }
           </ul>
         </div>

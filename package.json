@@ -23,6 +23,7 @@
     "bootstrap": "^4.0.0-beta",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
+    "leonardo-ui": "^1.5.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

@@ -1,5 +1,6 @@
 @import "_variables";
 @import "~bootstrap/scss/bootstrap";
+@import "~leonardo-ui/dist/leonardo-ui";
 
 .dropdown-item.O { // Optional
   color: $gray-900;
@@ -54,10 +55,18 @@ th.active:after {
 }
 
 /****************
- * QdtButton 
+ * QdtSelectionToolbar
 *****************/
 .qdt-selection-toolbar {
     li {
         display: inline-block;
+        padding-right: 5px;
+    }
+    .lui-icon {
+        font-size: 13px;
+        padding-left: 2px;
+    }
+    .lui-icon--remove {
+        color: $red;
     }
 }
