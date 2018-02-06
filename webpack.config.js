@@ -7,8 +7,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'qdt-components.js',
-    library: 'qdtComponents',
-    libraryTarget: 'umd'
+    library: 'QdtComponents',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
   },
   module: {
     loaders: [
