@@ -77,7 +77,7 @@ class QdtTable extends React.Component {
     offset: PropTypes.func.isRequired,
     select: PropTypes.func.isRequired,
     applyPatches: PropTypes.func.isRequired,
-    columnWidths: PropTypes.array.isRequired,
+    options: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -127,8 +127,9 @@ class QdtTable extends React.Component {
   render() {
     const { select, setSortColumn } = this;
     const {
-      qData, qLayout, offset, columnWidths,
+      qData, qLayout, offset, options,
     } = this.props;
+    const { columnWidths } = options;
     const { sortColumn } = this.state;
     const labels = [
       ...qLayout.qHyperCube.qDimensionInfo.map(dim => dim.qFallbackTitle),
@@ -159,11 +160,13 @@ class QdtTable extends React.Component {
 const QdtTableObject = QdtObject(QdtTable, 'qHyperCube');
 QdtTableObject.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
-  qProp: PropTypes.object.isRequired,
+  cols: PropTypes.array,
+  options: PropTypes.object,
   qPage: PropTypes.object,
 };
 QdtTableObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,

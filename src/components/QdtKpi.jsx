@@ -14,11 +14,13 @@ QdtKpi.propTypes = {
 const QdtKpiObject = QdtObject(QdtKpi, 'qHyperCube');
 QdtKpiObject.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
-  qProp: PropTypes.object.isRequired,
+  cols: PropTypes.array,
+  options: PropTypes.object,
   qPage: PropTypes.object,
 };
 QdtKpiObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,

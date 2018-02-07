@@ -1816,10 +1816,6 @@ var settings = {
     dataFunc: 'getListObjectData',
     selectFunc: 'selectListObjectValues',
     selectArgs: { path: '/qListObjectDef', values: [], toggle: true }
-  },
-  expression: {
-    path: null,
-    dataFunc: null
   }
 };
 
@@ -1930,35 +1926,35 @@ function QdtObject(Component, type) {
       key: 'create',
       value: function () {
         var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-          var _props, qDocPromise, qProp, qDoc, qObjectPromise;
-
+          var qDocPromise, qProp, qDoc, qObjectPromise;
           return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
                   _context3.prev = 0;
-                  _props = this.props, qDocPromise = _props.qDocPromise, qProp = _props.qProp;
-                  _context3.next = 4;
+                  qDocPromise = this.props.qDocPromise;
+                  qProp = this.qProp();
+                  _context3.next = 5;
                   return qDocPromise;
 
-                case 4:
+                case 5:
                   qDoc = _context3.sent;
                   qObjectPromise = qDoc.createSessionObject(qProp);
                   return _context3.abrupt('return', qObjectPromise);
 
-                case 9:
-                  _context3.prev = 9;
+                case 10:
+                  _context3.prev = 10;
                   _context3.t0 = _context3['catch'](0);
 
                   this.setState({ error: _context3.t0 });
                   return _context3.abrupt('return', undefined);
 
-                case 13:
+                case 14:
                 case 'end':
                   return _context3.stop();
               }
             }
-          }, _callee3, this, [[0, 9]]);
+          }, _callee3, this, [[0, 10]]);
         }));
 
         function create() {
@@ -1967,6 +1963,49 @@ function QdtObject(Component, type) {
 
         return create;
       }()
+    }, {
+      key: 'qProp',
+      value: function qProp() {
+        var _props = this.props,
+            cols = _props.cols,
+            options = _props.options;
+
+        var qProp = { qInfo: { qType: 'visualization' } };
+        if (options.qHyperCubeDef) {
+          qProp.qHyperCubeDef = options.qHyperCubeDef;
+        } else if (options.qListObjectDef) {
+          qProp.qListObjectDef = options.qListObjectDef;
+        } else {
+          var qDimensions = cols.filter(function (col) {
+            return !col.startsWith('=');
+          }).map(function (col) {
+            if (typeof col === 'string') {
+              return { qDef: { qFieldDefs: [col] } };
+            } else return col;
+          });
+          var qMeasures = cols.filter(function (col) {
+            return col.startsWith('=');
+          }).map(function (col) {
+            if (typeof col === 'string') {
+              return { qDef: { qDef: col } };
+            } else return col;
+          });
+          if (qDimensions.length > 1 || qMeasures) {
+            qProp.qHyperCubeDef = {
+              qDimensions: qDimensions,
+              qMeasures: qMeasures
+            };
+          } else if (!qDimensions.length === 1 && !qMeasures) {
+            var field = qDimensions[0];
+            qProp.qListObjectDef = {
+              field: field,
+              qShowAlternatives: true,
+              qAutoSortByState: { qDisplayNumberOfRows: 1 }
+            };
+          }
+        }
+        return qProp;
+      }
     }, {
       key: 'show',
       value: function () {
@@ -2277,8 +2316,18 @@ function QdtObject(Component, type) {
     return _class;
   }(_react2.default.Component), _class2.propTypes = {
     qDocPromise: _propTypes2.default.object.isRequired,
-    qProp: _propTypes2.default.object.isRequired,
-    qPage: _propTypes2.default.object.isRequired
+    cols: _propTypes2.default.array,
+    options: _propTypes2.default.object,
+    qPage: _propTypes2.default.object
+  }, _class2.defaultProps = {
+    cols: [],
+    options: {},
+    qPage: {
+      qTop: 0,
+      qLeft: 0,
+      qWidth: 10,
+      qHeight: 100
+    }
   }, _temp), (_applyDecoratedDescriptor(_class.prototype, 'offset', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'offset'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'beginSelections', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'beginSelections'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'endSelections', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'endSelections'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'select', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'select'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'searchListObjectFor', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'searchListObjectFor'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'acceptListObjectSearch', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'acceptListObjectSearch'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'applyPatches', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'applyPatches'), _class.prototype)), _class;
 }
 
@@ -31279,11 +31328,13 @@ var QdtFilter = (_class = (_temp = _class2 = function (_React$Component) {
 var QdtFilterObject = (0, _QdtObject2.default)(QdtFilter, 'qListObject');
 QdtFilterObject.propTypes = {
   qDocPromise: _propTypes2.default.object.isRequired,
-  qProp: _propTypes2.default.object.isRequired,
+  cols: _propTypes2.default.array,
+  options: _propTypes2.default.object,
   qPage: _propTypes2.default.object
 };
 QdtFilterObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,
@@ -36905,7 +36956,8 @@ var QdtTable = (_class = (_temp = _class2 = function (_React$Component) {
           qData = _props.qData,
           qLayout = _props.qLayout,
           offset = _props.offset,
-          columnWidths = _props.columnWidths;
+          options = _props.options;
+      var columnWidths = options.columnWidths;
       var sortColumn = this.state.sortColumn;
 
       var labels = [].concat((0, _toConsumableArray3.default)(qLayout.qHyperCube.qDimensionInfo.map(function (dim) {
@@ -36943,18 +36995,20 @@ var QdtTable = (_class = (_temp = _class2 = function (_React$Component) {
   offset: _propTypes2.default.func.isRequired,
   select: _propTypes2.default.func.isRequired,
   applyPatches: _propTypes2.default.func.isRequired,
-  columnWidths: _propTypes2.default.array.isRequired
+  options: _propTypes2.default.object.isRequired
 }, _temp), (_applyDecoratedDescriptor(_class.prototype, 'setSortColumn', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'setSortColumn'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'select', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'select'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'resize', [_autobindDecorator2.default], (0, _getOwnPropertyDescriptor2.default)(_class.prototype, 'resize'), _class.prototype)), _class);
 
 
 var QdtTableObject = (0, _QdtObject2.default)(QdtTable, 'qHyperCube');
 QdtTableObject.propTypes = {
   qDocPromise: _propTypes2.default.object.isRequired,
-  qProp: _propTypes2.default.object.isRequired,
+  cols: _propTypes2.default.array,
+  options: _propTypes2.default.object,
   qPage: _propTypes2.default.object
 };
 QdtTableObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,
@@ -37652,8 +37706,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var QdtKpi = function QdtKpi(_ref) {
   var qData = _ref.qData;
 
-  console.log(qData);
-  var value = qData[0][0].qText;
+  var value = qData.qMatrix[0][0].qText;
   return _react2.default.createElement(
     'div',
     { className: 'qtd-kpi' },
@@ -37667,11 +37720,13 @@ QdtKpi.propTypes = {
 var QdtKpiObject = (0, _QdtObject2.default)(QdtKpi, 'qHyperCube');
 QdtKpiObject.propTypes = {
   qDocPromise: _propTypes2.default.object.isRequired,
-  qProp: _propTypes2.default.object.isRequired,
+  cols: _propTypes2.default.array,
+  options: _propTypes2.default.object,
   qPage: _propTypes2.default.object
 };
 QdtKpiObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,
