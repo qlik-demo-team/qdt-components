@@ -45,7 +45,7 @@ export default class QdtButton extends React.Component {
           onClick={action}
           role="button"
           tabIndex={0}
-        >{title}
+        ><lui-button>{title}</lui-button>
         </div>
       );
     }

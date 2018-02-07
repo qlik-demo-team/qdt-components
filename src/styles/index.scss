@@ -48,8 +48,6 @@ th.active:after {
  * QdtButton 
 *****************/
 .qtd-button {
-    padding: 15px 30px;
-    border: 1px solid $gray-600;
     display: inline-block;
     cursor: pointer;
 }
@@ -61,6 +59,23 @@ th.active:after {
     li {
         display: inline-block;
         padding-right: 5px;
+        lui-button {
+            border: 1px solid $gray-400;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }        
+        .btn-secondary {
+            color: $gray-900 !important;
+            background-color: #FFFFFF !important;
+            font-size: 13px;
+            border: 0;
+            padding: 5px 10px;
+            &:focus {
+                box-shadow: 0;
+            }
+        }
     }
     .lui-icon {
         font-size: 13px;
@@ -68,5 +83,20 @@ th.active:after {
     }
     .lui-icon--remove {
         color: $red;
+        cursor: pointer;
+        &:hover {
+            color: $orange;
+        }
+        &.pull-right {
+            position: absolute;
+            right: 0;
+            padding-right: 5px;
+        }
+    }
+    .dropdown-item {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 25px;
     }
 }
