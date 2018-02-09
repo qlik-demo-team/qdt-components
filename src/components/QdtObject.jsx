@@ -17,19 +17,27 @@ const settings = {
     selectFunc: 'selectListObjectValues',
     selectArgs: { path: '/qListObjectDef', values: [], toggle: true },
   },
-  expression: {
-    path: null,
-    dataFunc: null,
-  },
 };
 
 export default function QdtObject(Component, type) {
   return class extends React.Component {
     static propTypes = {
       qDocPromise: PropTypes.object.isRequired,
-      qProp: PropTypes.object.isRequired,
-      qPage: PropTypes.object.isRequired,
+      cols: PropTypes.array,
+      options: PropTypes.object,
+      qPage: PropTypes.object,
     };
+
+    static defaultProps = {
+      cols: [],
+      options: {},
+      qPage: {
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 10,
+        qHeight: 100,
+      },
+    }
 
     constructor(props) {
       super(props);
@@ -66,7 +74,8 @@ export default function QdtObject(Component, type) {
 
     async create() {
       try {
-        const { qDocPromise, qProp } = this.props;
+        const { qDocPromise } = this.props;
+        const qProp = this.qProp();
         const qDoc = await qDocPromise;
         const qObjectPromise = qDoc.createSessionObject(qProp);
         return qObjectPromise;
@@ -74,6 +83,41 @@ export default function QdtObject(Component, type) {
         this.setState({ error });
         return undefined;
       }
+    }
+
+    qProp() {
+      const { cols, options } = this.props;
+      const qProp = { qInfo: { qType: 'visualization' } };
+      if (options.qHyperCubeDef) {
+        qProp.qHyperCubeDef = options.qHyperCubeDef;
+      } else if (options.qListObjectDef) {
+        qProp.qListObjectDef = options.qListObjectDef;
+      } else {
+        const qDimensions = cols.filter(col => !col.startsWith('=')).map((col) => {
+          if (typeof col === 'string') {
+            return { qDef: { qFieldDefs: [col] } };
+          } return col;
+        });
+        const qMeasures = cols.filter(col => col.startsWith('=')).map((col) => {
+          if (typeof col === 'string') {
+            return { qDef: { qDef: col } };
+          } return col;
+        });
+        if (qDimensions.length > 1 || qMeasures) {
+          qProp.qHyperCubeDef = {
+            qDimensions,
+            qMeasures,
+          };
+        } else if (!qDimensions.length === 1 && !qMeasures) {
+          const field = qDimensions[0];
+          qProp.qListObjectDef = {
+            field,
+            qShowAlternatives: true,
+            qAutoSortByState: { qDisplayNumberOfRows: 1 },
+          };
+        }
+      }
+      return qProp;
     }
 
     async show() {

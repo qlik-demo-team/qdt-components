@@ -136,11 +136,13 @@ class QdtFilter extends React.Component {
 const QdtFilterObject = QdtObject(QdtFilter, 'qListObject');
 QdtFilterObject.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
-  qProp: PropTypes.object.isRequired,
+  cols: PropTypes.array,
+  options: PropTypes.object,
   qPage: PropTypes.object,
 };
 QdtFilterObject.defaultProps = {
-  componentProps: {},
+  cols: [],
+  options: {},
   qPage: {
     qTop: 0,
     qLeft: 0,
