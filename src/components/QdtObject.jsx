@@ -75,9 +75,9 @@ export default function QdtObject(Component, type) {
     async create() {
       try {
         const { qDocPromise } = this.props;
-        const qProp = this.qProp();
+        const qProp = await this.qProp();
         const qDoc = await qDocPromise;
-        const qObjectPromise = qDoc.createSessionObject(qProp);
+        const qObjectPromise = await qDoc.createSessionObject(qProp);
         return qObjectPromise;
       } catch (error) {
         this.setState({ error });
@@ -93,12 +93,12 @@ export default function QdtObject(Component, type) {
       } else if (options.qListObjectDef) {
         qProp.qListObjectDef = options.qListObjectDef;
       } else {
-        const qDimensions = cols.filter(col => !col.startsWith('=')).map((col) => {
+        const qDimensions = cols.filter(col => col && !col.startsWith('=')).map((col) => {
           if (typeof col === 'string') {
             return { qDef: { qFieldDefs: [col] } };
           } return col;
         });
-        const qMeasures = cols.filter(col => col.startsWith('=')).map((col) => {
+        const qMeasures = cols.filter(col => col && col.startsWith('=')).map((col) => {
           if (typeof col === 'string') {
             return { qDef: { qDef: col } };
           } return col;

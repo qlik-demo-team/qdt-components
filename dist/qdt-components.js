@@ -7404,28 +7404,36 @@ function QdtObject(Component, type) {
                 case 0:
                   _context3.prev = 0;
                   qDocPromise = this.props.qDocPromise;
-                  qProp = this.qProp();
-                  _context3.next = 5;
+                  _context3.next = 4;
+                  return this.qProp();
+
+                case 4:
+                  qProp = _context3.sent;
+                  _context3.next = 7;
                   return qDocPromise;
 
-                case 5:
+                case 7:
                   qDoc = _context3.sent;
-                  qObjectPromise = qDoc.createSessionObject(qProp);
-                  return _context3.abrupt('return', qObjectPromise);
+                  _context3.next = 10;
+                  return qDoc.createSessionObject(qProp);
 
                 case 10:
-                  _context3.prev = 10;
+                  qObjectPromise = _context3.sent;
+                  return _context3.abrupt('return', qObjectPromise);
+
+                case 14:
+                  _context3.prev = 14;
                   _context3.t0 = _context3['catch'](0);
 
                   this.setState({ error: _context3.t0 });
                   return _context3.abrupt('return', undefined);
 
-                case 14:
+                case 18:
                 case 'end':
                   return _context3.stop();
               }
             }
-          }, _callee3, this, [[0, 10]]);
+          }, _callee3, this, [[0, 14]]);
         }));
 
         function create() {
@@ -7448,14 +7456,14 @@ function QdtObject(Component, type) {
           qProp.qListObjectDef = options.qListObjectDef;
         } else {
           var qDimensions = cols.filter(function (col) {
-            return !col.startsWith('=');
+            return col && !col.startsWith('=');
           }).map(function (col) {
             if (typeof col === 'string') {
               return { qDef: { qFieldDefs: [col] } };
             }return col;
           });
           var qMeasures = cols.filter(function (col) {
-            return col.startsWith('=');
+            return col && col.startsWith('=');
           }).map(function (col) {
             if (typeof col === 'string') {
               return { qDef: { qDef: col } };
