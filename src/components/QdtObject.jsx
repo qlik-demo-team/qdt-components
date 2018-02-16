@@ -103,19 +103,20 @@ export default function QdtObject(Component, type) {
             return { qDef: { qDef: col } };
           } return col;
         });
-        if (qDimensions.length > 1 || qMeasures) {
+        if (qDimensions.length > 1 || qMeasures.length) {
           qProp.qHyperCubeDef = {
             qDimensions,
             qMeasures,
           };
-        } else if (!qDimensions.length === 1 && !qMeasures) {
-          const field = qDimensions[0];
+        } else if (qDimensions.length === 1 && !qMeasures.length) {
+          const qDef = qDimensions[0];
           qProp.qListObjectDef = {
-            field,
+            ...qDef,
             qShowAlternatives: true,
             qAutoSortByState: { qDisplayNumberOfRows: 1 },
           };
         }
+        console.log(qDimensions, qMeasures, qProp);
       }
       return qProp;
     }
