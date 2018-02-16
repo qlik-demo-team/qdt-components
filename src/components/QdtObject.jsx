@@ -116,7 +116,6 @@ export default function QdtObject(Component, type) {
             qAutoSortByState: { qDisplayNumberOfRows: 1 },
           };
         }
-        console.log(qDimensions, qMeasures, qProp);
       }
       return qProp;
     }
