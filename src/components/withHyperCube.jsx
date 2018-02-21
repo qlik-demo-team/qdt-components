@@ -84,7 +84,7 @@ export default function withHyperCube(Component) {
           (typeof col === 'object' && col.qDef && col.qDef.qDef) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure')).map((col) => {
           if (typeof col === 'string') {
-            return { qDef: { qDef: [col] } };
+            return { qDef: { qDef: col } };
           }
           return col;
         });
