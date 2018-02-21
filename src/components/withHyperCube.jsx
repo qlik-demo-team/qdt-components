@@ -25,9 +25,9 @@ export default function withHyperCube(Component) {
     constructor(props) {
       super(props);
       this.state = {
-        qObject: {},
-        qLayout: {},
-        qData: {},
+        qObject: null,
+        qLayout: null,
+        qData: null,
         updating: false,
         error: null,
       };
@@ -41,7 +41,7 @@ export default function withHyperCube(Component) {
         const qObject = await qDoc.createSessionObject(qProp);
         qObject.on('changed', () => { this.update(); });
         this.setState({ qObject }, () => {
-          const { qPage } = this.props.qPage;
+          const { qPage } = this.props;
           this.update(qPage.qTop);
         });
       } catch (error) {
