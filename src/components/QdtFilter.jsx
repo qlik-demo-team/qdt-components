@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
-import QdtObject from './QdtObject';
+import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
 
@@ -46,7 +46,7 @@ StateCountsBar.propTypes = {
   qStateCounts: PropTypes.object.isRequired,
 };
 
-class QdtFilter extends React.Component {
+class QdtFilterComponent extends React.Component {
   static propTypes = {
     qData: PropTypes.object.isRequired,
     qLayout: PropTypes.object.isRequired,
@@ -133,16 +133,16 @@ class QdtFilter extends React.Component {
   }
 }
 
-const QdtFilterObject = QdtObject(QdtFilter, 'qListObject');
-QdtFilterObject.propTypes = {
+const QdtFilter = withListObject(QdtFilterComponent);
+QdtFilter.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
   cols: PropTypes.array,
-  options: PropTypes.object,
+  qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
 };
-QdtFilterObject.defaultProps = {
-  cols: [],
-  options: {},
+QdtFilter.defaultProps = {
+  cols: null,
+  qListObjectDef: null,
   qPage: {
     qTop: 0,
     qLeft: 0,
@@ -151,4 +151,4 @@ QdtFilterObject.defaultProps = {
   },
 };
 
-export default QdtFilterObject;
+export default QdtFilter;
