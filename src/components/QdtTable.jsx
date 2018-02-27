@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 import { Table } from 'reactstrap';
-import QdtObject from './QdtObject';
+import withHyperCube from './withHyperCube';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
 
@@ -70,7 +70,7 @@ TableBody.propTypes = {
   select: PropTypes.func.isRequired,
 };
 
-class QdtTable extends React.Component {
+class QdtTableComponent extends React.Component {
   static propTypes = {
     qData: PropTypes.object.isRequired,
     qLayout: PropTypes.object.isRequired,
@@ -157,16 +157,16 @@ class QdtTable extends React.Component {
   }
 }
 
-const QdtTableObject = QdtObject(QdtTable, 'qHyperCube');
-QdtTableObject.propTypes = {
+const QdtTable = withHyperCube(QdtTableComponent);
+QdtTable.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
   cols: PropTypes.array,
-  options: PropTypes.object,
+  qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
 };
-QdtTableObject.defaultProps = {
-  cols: [],
-  options: {},
+QdtTable.defaultProps = {
+  cols: null,
+  qHyperCubeDef: null,
   qPage: {
     qTop: 0,
     qLeft: 0,
@@ -175,3 +175,4 @@ QdtTableObject.defaultProps = {
   },
 };
 
+export default QdtTable;
