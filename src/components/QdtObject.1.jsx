@@ -70,13 +70,25 @@ export default function QdtObject(Component, type) {
     async getLayout() {
       const qObject = await this.qObjectPromise;
       const qLayout = await qObject.getLayout();
+      if (this.props.options.qType) {
+        console.log(31);
+        console.log(qLayout);
+      }
       return qLayout;
     }
 
     async getData(qTop) {
+      if (this.props.options.qType) {
+        console.log(21);
+        console.log(this.settings);
+      }
       const qObject = await this.qObjectPromise;
+      //   const qDataPages = (this.settings.path) ? await qObject[this.settings.dataFunc](this.settings.path, [{ ...this.props.qPage, qTop }]) : await qObject; // eslint-disable-line max-len
       const qDataPages = await qObject[this.settings.dataFunc](this.settings.path, [{ ...this.props.qPage, qTop }]); // eslint-disable-line max-len
-      //   const qDataPages = (this.settings.path) ? await qObject[this.settings.dataFunc](this.settings.path, [{ ...this.props.qPage, qTop }]) : await qObject;
+      if (this.props.options.qType) {
+        console.log(22);
+        console.log(qDataPages);
+      }
       return qDataPages[0];
     }
 
@@ -84,8 +96,12 @@ export default function QdtObject(Component, type) {
       try {
         const { qDocPromise } = this.props;
         const qProp = await this.qProp();
-        this.qDoc = await qDocPromise;
-        const qObjectPromise = await this.qDoc.createSessionObject(qProp);
+        const qDoc = await qDocPromise;
+        const qObjectPromise = await qDoc.createSessionObject(qProp);
+        if (this.props.options.qType) {
+          console.log(1);
+          console.log(qObjectPromise);
+        }
         return qObjectPromise;
       } catch (error) {
         this.setState({ error });
@@ -95,14 +111,13 @@ export default function QdtObject(Component, type) {
 
     qProp() {
       const { cols, options } = this.props;
-      //   const qProp = { qInfo: { qType: 'visualization' } };
       const qProp = (options.qType) ? { qInfo: { qType: options.qType } } : { qInfo: { qType: 'visualization' } };
-      if (options.qType === 'SelectionObject') {
+      if (options.qType) {
         qProp.qSelectionObjectDef = {};
       } else if (options.qHyperCubeDef) {
         qProp.qHyperCubeDef = options.qHyperCubeDef;
-      } else if (options.qListObjectDef) {
-        qProp.qListObjectDef = options.qListObjectDef;
+      } else if (options.qSelectionObjectDef) {
+        qProp.qSelectionObjectDef = options.qSelectionObjectDef;
       } else {
         const qDimensions = cols.filter(col => col && !col.startsWith('=')).map((col) => {
           if (typeof col === 'string') {
@@ -135,9 +150,6 @@ export default function QdtObject(Component, type) {
       try {
         const qObject = await this.qObjectPromise;
         qObject.on('changed', () => { this.update(); });
-        if (this.props.options.qType === 'SelectionObject') {
-          this.qDoc.on('changed', async () => { this.update(); });
-        }
         await this.update(this.props.qPage.qTop);
         this.setState({ loading: false });
       } catch (error) {
@@ -150,11 +162,17 @@ export default function QdtObject(Component, type) {
       this.update(qTop);
     }
 
-    async update(qTop = (this.state.qData) ? this.state.qData.qArea.qTop : 0) {
+    async update(qTop = (this.state.qData && this.state.qData.qArea && this.state.qData.qArea.qTop) ? this.state.qData.qArea.qTop : 0) {
       this.setState({ updating: true });
-      //   const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
+      //   let [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
       const qLayout = await this.getLayout();
-      const qData = (this.props.options.qType !== 'SelectionObject') ? await this.getData(qTop) : null;
+      const qData = this.getData(qTop);
+      if (this.props.options.qType === 'selectionObject') {
+        console.log(41);
+        // qData = qLayout.qSelectionObject.qSelections;
+        console.log(qLayout);
+        console.log(qData);
+      }
       this.setState({ updating: false, qLayout, qData });
     }
 

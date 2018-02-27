@@ -100,3 +100,26 @@ th.active:after {
         padding-right: 25px;
     }
 }
+
+.qtd-picasso-horizontal-bar {
+    #barchart {
+        height:400px;
+        position:relative;
+    }
+}
+
+
+.tooltip {
+	min-height: 28px;
+	box-sizing: border-box;
+	display: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	font-size: 13px;
+	position: relative;
+	transition: opacity 50ms ease-out;
+	opacity: 1.0;
+	z-index: 1021;
+	color: #FFFFFF;
+	background-color: rgba(0, 0, 0, 0.9);
+}

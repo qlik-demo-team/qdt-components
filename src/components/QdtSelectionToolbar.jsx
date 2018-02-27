@@ -1,152 +1,119 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import autobind from 'autobind-decorator';
+// import autobind from 'autobind-decorator';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import QdtObject from './QdtObject';
 import '../styles/index.scss';
 
-export default class QdtSelectionToolbar extends React.Component {
-    static propTypes = {
-      qDocPromise: PropTypes.object.isRequired,
-    //   qAppPromise: PropTypes.object.isRequired,
-    }
-
-    constructor(props) {
-      super(props);
-
-      this.toggle = this.toggle.bind(this);
-      this.state = {
-        qDoc: null,
-        selections: [],
-        dropdownOpen: [false, false, false, false, false, false],
-      };
-    }
-
-    componentDidMount() {
-      try {
-        this.create();
-      } catch (error) {
-        console.log(error);
+let dropdownOpen = [false, false, false, false, false, false];
+const QdtSelectionToolbar = ({ qLayout }) => {
+  const selectedFields = qLayout.qSelectionObject.qSelections;
+  let selections = [];
+  if (selectedFields.length) {
+    selections = selectedFields.map((value) => {
+      if (value.qSelectedCount >= 1 && value.qSelectedCount <= 6) {
+        return {
+          field: value.qField,
+          selected: value.qSelectedFieldSelectionInfo.map(valueInner => valueInner.qName),
+          total: value.qTotal,
+        };
+      } else if (value.qSelectedCount > 6) {
+        return {
+          field: value.qField,
+          selected: [`${value.qSelectedCount} of ${value.qTotal}`],
+        };
       }
-    }
+      return null;
+    });
+  }
 
-    @autobind
-    toggle(index) {
-      const { dropdownOpen } = this.state;
-      dropdownOpen[index] = !(dropdownOpen[index]);
-      this.setState({
-        dropdownOpen,
-      });
-    }
+  const toggle = (event) => {
+    const index = event.target.getAttribute('data-index');
+    console.log(1);
+    console.log('toggle');
+    console.log(index);
+    dropdownOpen[index] = !(dropdownOpen[index]);
+  };
 
-    @autobind
-    reset() {
-      const dropdownOpen = [false, false, false, false, false, false];
-      this.setState({
-        dropdownOpen,
-      });
-    }
+  const reset = () => {
+    console.log(2);
+    console.log('reset');
+    dropdownOpen = [false, false, false, false, false, false];
+  };
 
-    @autobind
-    async create() {
-      const qDoc = await this.props.qDocPromise;
-      this.setState({ qDoc });
-      this.update();
-      qDoc.on('changed', async () => { this.update(); });
-    }
+  const clear = async (field) => {
+    console.log(5);
+    console.log('clear');
+    console.log(field);
+  };
+  const clearOne = async (field) => {
+    console.log(6);
+    console.log(field);
+  };
 
-    @autobind
-    async clear(field) {
-      if (field) {
-        const model = await this.state.qDoc.getField(field);
-        model.clear();
-      } else {
-        this.state.qDoc.clearAll();
-      }
-    }
+  //   const value = qData.qMatrix[0][0].qText;
+  return (
+    <div className="qdt-selection-toolbar">
+      <ul>
+        <li><strong>SELECTIONS:</strong></li>
+        {selections.length === 0 &&
+        <li className="no-selections">None</li>
+        }
+        {selections.length === 1 &&
+            selections.map(value => (<li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>))
+        }
+        {selections.length > 1 && selections.length <= 6 &&
+            selections.map((value, index) => {
+                if (value.selected.length === 1) {
+                    return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>;
+                }
+                    return (
+                      <li key={value.field}>
+                        <ButtonDropdown
+                          isOpen={dropdownOpen[index]}
+                          toggle={reset}
+                          data-index={index}
+                          onClick={toggle}
+                        >
+                          <DropdownToggle>
+                            {value.field}: {value.selected.length} of {value.total}
+                            <span className="lui-icon lui-icon--triangle-bottom" />
 
-    @autobind
-    async clearOne(field, value) {
-      if (field && value) {
-        const model = await this.state.qDoc.getField(field);
-        model.toggleSelect(value, false, false);
-      }
-    }
+                          </DropdownToggle>
+                          <DropdownMenu>
+                            {value.selected.map(value2 => <DropdownItem key={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearOne(value.field, value2)} role="button" tabIndex={0} /></DropdownItem>)}
+                          </DropdownMenu>
+                        </ButtonDropdown>
+                      </li>
+                    );
+            })
+        }
+      </ul>
+    </div>);
+};
+QdtSelectionToolbar.propTypes = {
+  qLayout: PropTypes.object.isRequired,
+};
 
-    @autobind
-    popup() { }
+const QdtSelectionToolbarObject = QdtObject(QdtSelectionToolbar, 'selectionObject');
+QdtSelectionToolbarObject.propTypes = {
+  qDocPromise: PropTypes.object.isRequired,
+  cols: PropTypes.array,
+  options: PropTypes.object,
+  qPage: PropTypes.object,
+};
+QdtSelectionToolbarObject.defaultProps = {
+  cols: [],
+  options: { qType: 'SelectionObject' },
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 1,
+    qHeight: 1,
+  },
+};
+QdtSelectionToolbarObject.state = {
+  dropdownOpen: [false, false, false, false, false, false],
+};
 
-    @autobind
-    async update() {
-      const obj = {
-        qInfo: {
-          qId: '',
-          qType: 'SelectionObject',
-        },
-        qSelectionObjectDef: {},
-      };
-      const list = await this.state.qDoc.createSessionObject(obj);
-      const layout = await list.getLayout();
-      const selectedFields = layout.qSelectionObject.qSelections;
-      let selections = [];
-      if (selectedFields.length) {
-        selections = selectedFields.map((value) => {
-          if (value.qSelectedCount >= 1 && value.qSelectedCount <= 6) {
-            return {
-              field: value.qField,
-              selected: value.qSelectedFieldSelectionInfo.map(valueInner => valueInner.qName),
-              total: value.qTotal,
-            };
-          } else if (value.qSelectedCount > 6) {
-            return {
-              field: value.qField,
-              selected: [`${value.qSelectedCount} of ${value.qTotal}`],
-            };
-          }
-          return null;
-        });
-      }
-      this.setState({ selections });
-      return layout.qSelectionObject.qSelections;
-    }
-
-    render() {
-      const { selections } = this.state;
-      const {
-        clear, clearOne, reset, toggle,
-      } = this;
-      return (
-        <div className="qdt-selection-toolbar">
-          <ul>
-            <li><strong>SELECTIONS:</strong></li>
-            {selections.length === 0 &&
-            <li className="no-selections">None</li>
-            }
-            {selections.length === 1 &&
-                selections.map(value => (<li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>))
-            }
-            {selections.length > 1 && selections.length <= 6 &&
-                selections.map((value, index) => {
-                    if (value.selected.length === 1) {
-                        return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>;
-                    }
-                        return (
-                          <li>
-                            <ButtonDropdown isOpen={this.state.dropdownOpen[index]} toggle={reset} onClick={() => toggle(index)} key={value.field}>
-                              <DropdownToggle>
-                                {value.field}: {value.selected.length} of {value.total}
-                                <span className="lui-icon lui-icon--triangle-bottom" />
-
-                              </DropdownToggle>
-                              <DropdownMenu>
-                                {value.selected.map(value2 => <DropdownItem key={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearOne(value.field, value2)} role="button" tabIndex={0} /></DropdownItem>)}
-                              </DropdownMenu>
-                            </ButtonDropdown>
-                          </li>
-                        );
-                })
-            }
-          </ul>
-        </div>
-      );
-    }
-}
+export default QdtSelectionToolbarObject;
