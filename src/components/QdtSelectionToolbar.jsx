@@ -31,11 +31,6 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections, update }) => {
     update();
   };
 
-  const clearOne = async (field) => {
-    console.log(26);
-    console.log(field);
-  };
-
   return (
     <div className="qdt-selection-toolbar">
       <ul>
@@ -59,7 +54,7 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections, update }) => {
                             <span className="lui-icon lui-icon--triangle-bottom" />
                           </DropdownToggle>
                           <DropdownMenu>
-                            {value.selected.map(value2 => <DropdownItem key={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearOne(value.field, value2)} role="button" tabIndex={0} /></DropdownItem>)}
+                            {value.selected.map(value2 => <DropdownItem key={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearSelections(value.field, value2)} role="button" tabIndex={0} /></DropdownItem>)}
                           </DropdownMenu>
                         </ButtonDropdown>
                       </li>
@@ -95,6 +90,5 @@ QdtSelectionToolbarObject.defaultProps = {
 QdtSelectionToolbarObject.state = {
   dropdownOpen: [false, false, false, false, false, false],
 };
-
 
 export default QdtSelectionToolbarObject;

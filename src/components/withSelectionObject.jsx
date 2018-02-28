@@ -50,12 +50,16 @@ export default function withListObject(Component) {
     }
 
     @autobind
-    async clearSelections(field) {
+    async clearSelections(field, value) {
       this.setState({ updating: true });
       const { qDocPromise } = this.props;
       const qDoc = await qDocPromise;
       const qField = await qDoc.getField(field);
-      await qField.clear();
+      if (value) {
+        await qField.toggleSelect(value);
+      } else {
+        await qField.clear();
+      }
       this.setState({ updating: false });
     }
 
