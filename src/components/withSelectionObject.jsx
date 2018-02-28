@@ -41,18 +41,22 @@ export default function withListObject(Component) {
       return qLayout;
     }
 
+    @autobind
     async update() {
       this.setState({ updating: true });
       const qLayout = await this.getLayout();
       this.setState({ updating: false, qLayout });
+    //   this.setState({ updating: false });
     }
 
     @autobind
     async clearSelections(field) {
+      this.setState({ updating: true });
       const { qDocPromise } = this.props;
       const qDoc = await qDocPromise;
       const qField = await qDoc.getField(field);
-      qField.clear();
+      await qField.clear();
+      this.setState({ updating: false });
     }
 
     render() {
@@ -68,6 +72,7 @@ export default function withListObject(Component) {
         {...this.props}
         {...this.state}
         clearSelections={this.clearSelections}
+        update={this.update}
       />);
     }
   };
