@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import autobind from 'autobind-decorator';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import QdtObject from './QdtObject';
+// import QdtObject from './QdtObject';
+import withSelectionObject from './withSelectionObject';
 import '../styles/index.scss';
 
 let dropdownOpen = [false, false, false, false, false, false];
-const QdtSelectionToolbar = ({ qLayout }) => {
+const QdtSelectionToolbar = ({ qLayout, clearSelections }) => {
   const selectedFields = qLayout.qSelectionObject.qSelections;
   let selections = [];
   if (selectedFields.length) {
@@ -29,29 +30,31 @@ const QdtSelectionToolbar = ({ qLayout }) => {
 
   const toggle = (event) => {
     const index = event.target.getAttribute('data-index');
-    console.log(1);
+    console.log(21);
     console.log('toggle');
     console.log(index);
     dropdownOpen[index] = !(dropdownOpen[index]);
   };
 
   const reset = () => {
-    console.log(2);
+    console.log(22);
     console.log('reset');
     dropdownOpen = [false, false, false, false, false, false];
   };
 
-  const clear = async (field) => {
-    console.log(5);
-    console.log('clear');
-    console.log(field);
-  };
+  //   const clear = async (field) => {
+  //     console.log(25);
+  //     console.log('clear');
+  //     console.log(field);
+  //   };
   const clearOne = async (field) => {
-    console.log(6);
+    console.log(26);
     console.log(field);
   };
 
   //   const value = qData.qMatrix[0][0].qText;
+  console.log(20);
+  console.log(clearSelections);
   return (
     <div className="qdt-selection-toolbar">
       <ul>
@@ -60,12 +63,12 @@ const QdtSelectionToolbar = ({ qLayout }) => {
         <li className="no-selections">None</li>
         }
         {selections.length === 1 &&
-            selections.map(value => (<li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>))
+            selections.map(value => (<li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} /></li>))
         }
         {selections.length > 1 && selections.length <= 6 &&
             selections.map((value, index) => {
                 if (value.selected.length === 1) {
-                    return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clear(value.field)} role="button" tabIndex={0} /></li>;
+                    return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} /></li>;
                 }
                     return (
                       <li key={value.field}>
@@ -93,9 +96,10 @@ const QdtSelectionToolbar = ({ qLayout }) => {
 };
 QdtSelectionToolbar.propTypes = {
   qLayout: PropTypes.object.isRequired,
+  clearSelections: PropTypes.func.isRequired,
 };
 
-const QdtSelectionToolbarObject = QdtObject(QdtSelectionToolbar, 'selectionObject');
+const QdtSelectionToolbarObject = withSelectionObject(QdtSelectionToolbar);
 QdtSelectionToolbarObject.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
   cols: PropTypes.array,
@@ -115,5 +119,6 @@ QdtSelectionToolbarObject.defaultProps = {
 QdtSelectionToolbarObject.state = {
   dropdownOpen: [false, false, false, false, false, false],
 };
+
 
 export default QdtSelectionToolbarObject;

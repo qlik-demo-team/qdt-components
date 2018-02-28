@@ -21,10 +21,10 @@ export default function withListObject(Component) {
     async componentWillMount() {
       try {
         const { qDocPromise } = this.props;
-        const qProp = { qInfo: { qType: 'visualization' }, qSelectionObject: {} };
+        const qProp = { qInfo: { qType: 'SelectionObject' }, qSelectionObjectDef: {} };
         const qDoc = await qDocPromise;
         const qObject = await qDoc.createSessionObject(qProp);
-        qObject.on('changed', () => { this.update(); });
+        qDoc.on('changed', () => { this.update(); });
         this.setState({ qObject }, () => {
           this.update();
         });
@@ -39,12 +39,20 @@ export default function withListObject(Component) {
       const { qObject } = this.state;
       const qLayout = await qObject.getLayout();
       return qLayout;
-    } 
+    }
 
     async update() {
       this.setState({ updating: true });
       const qLayout = await this.getLayout();
       this.setState({ updating: false, qLayout });
+    }
+
+    @autobind
+    async clearSelections(field) {
+      const { qDocPromise } = this.props;
+      const qDoc = await qDocPromise;
+      const qField = await qDoc.getField(field);
+      qField.clear();
     }
 
     render() {
@@ -59,6 +67,7 @@ export default function withListObject(Component) {
       return (<Component
         {...this.props}
         {...this.state}
+        clearSelections={this.clearSelections}
       />);
     }
   };
