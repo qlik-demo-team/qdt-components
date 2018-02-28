@@ -43,10 +43,7 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections, update }) => {
         {selections.length === 0 &&
         <li className="no-selections">None</li>
         }
-        {selections.length === 1 &&
-            selections.map(value => (<li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} /></li>))
-        }
-        {selections.length > 1 && selections.length <= 6 &&
+        {selections.length >= 1 && selections.length <= 6 &&
             selections.map((value, index) => {
                 if (value.selected.length === 1) {
                     return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} /></li>;
