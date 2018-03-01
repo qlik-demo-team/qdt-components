@@ -61,6 +61,9 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections, update }) => {
                     );
             })
         }
+        {selections.length >= 1 && selections.length <= 6 &&
+        <li><button className="lui-button lui-button--warning clear-all" onClick={() => clearSelections()} tabIndex={0}>Clear All</button></li>
+        }
       </ul>
     </div>);
 };

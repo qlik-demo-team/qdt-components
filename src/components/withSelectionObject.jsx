@@ -11,6 +11,7 @@ export default function withListObject(Component) {
     constructor(props) {
       super(props);
       this.state = {
+        qDoc: null,
         qObject: null,
         qLayout: null,
         updating: false,
@@ -23,6 +24,7 @@ export default function withListObject(Component) {
         const { qDocPromise } = this.props;
         const qProp = { qInfo: { qType: 'SelectionObject' }, qSelectionObjectDef: {} };
         const qDoc = await qDocPromise;
+        this.setState({ qDoc });
         const qObject = await qDoc.createSessionObject(qProp);
         qDoc.on('changed', () => { this.update(); });
         this.setState({ qObject }, () => {
@@ -51,13 +53,15 @@ export default function withListObject(Component) {
     @autobind
     async clearSelections(field, value) {
       this.setState({ updating: true });
-      const { qDocPromise } = this.props;
-      const qDoc = await qDocPromise;
-      const qField = await qDoc.getField(field);
-      if (value) {
-        await qField.toggleSelect(value);
+      if (field) {
+        const qField = await this.state.qDoc.getField(field);
+        if (value) {
+          await qField.toggleSelect(value);
+        } else {
+          await qField.clear();
+        }
       } else {
-        await qField.clear();
+        this.state.qDoc.clearAll();
       }
       this.setState({ updating: false });
     }

@@ -88,6 +88,14 @@ export class QdtComponentComponent implements OnInit {
 #### React 16
 -
 
+### Changelog ###
+
+##### 1.1.5 #####
+* Add Picasso Horizontal Barchart
+
+##### 1.1.4 #####
+* Fix the Selection Toolbar
+
 
 ### Copyright
 

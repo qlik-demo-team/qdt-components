@@ -54,6 +54,7 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
       this.qDoc = null;
       this.qObject = null;
       this.selectionsOn = false;
+      this.selections = [];
       this.pic = null;
       this.mouseX = 0;
       this.mouseY = 0;
@@ -238,8 +239,14 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
       };
       this.qObject = await this.qDoc.createSessionObject(obj);
       this.qObject.on('changed', async () => { this.update(); });
-      this.beginSelections();
       const qLayout = await this.qObject.getLayout();
+      //   const qPage = {
+      //     qTop: 0,
+      //     qLeft: 0,
+      //     qWidth: 10,
+      //     qHeight: 100,
+      //   };
+      //   const qLayout = await this.qObject.getHyperCubeData('/qHyperCubeDef', [qPage]); // eslint-disable-line max-lenyout);
       const { settings } = this;
       this.pic = picasso.chart({
         element: document.querySelector('#qdt-barchart'),
@@ -262,46 +269,56 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
       this.pic.brush('select').on('update', (data) => {
         if (!this.state.selectionsOn) {
           this.beginSelections();
-        } else {
-          console.log(12);
         }
-        console.log(13);
-        console.log(data);
-        // console.log(this.props);
         this.select(Number(data[0].values[0].qElemNumber));
       });
     }
 
     @autobind
     beginSelections() {
-      console.log(11);
-      const { qObject } = this;
+      //   const { qObject } = this;
       this.setState({ selectionsOn: true });
-      qObject.beginSelections(['/qHyperCubeDef']);
+    //   qObject.beginSelections(['/qHyperCubeDef']);
     }
 
     @autobind
-    endSelections(qAccept) {
-      console.log(13);
-      const { qObject } = this;
-      qObject.endSelections(qAccept);
+    endSelections() {
+      //   const { qObject } = this;
+      //   qObject.endSelections(qAccept);
+      this.setState({ selectionsOn: false });
     }
 
     @autobind
-    async select(qElemNumber, dimIndex = 0) {
+    async select(qElemNumber) {
+    //   const { qObject } = this;
+      this.selections = [...this.selections, qElemNumber];
+    //   qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, [qElemNumber], true);
+    }
+
+    @autobind
+    async confirmSelections() {
       const { qObject } = this;
-      qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, [qElemNumber], true);
+      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, this.selections, true);
+      this.endSelections();
+    }
+
+    @autobind
+    async cancelSelections() {
+      this.selections = [];
+      this.pic.brush('highlight').end();
+      this.endSelections();
     }
 
     render() {
+      const { confirmSelections, cancelSelections } = this;
       const { selectionsOn } = this.state;
       console.log(selectionsOn);
       return (
         <div className="qtd-picasso-horizontal-bar">
           {selectionsOn &&
             <div className="qdt-barchart-selection">
-              <span className="lui-icon lui-icon--tick" role="button" tabIndex={0} />
-              <span className="lui-icon lui-icon--remove" role="button" tabIndex={0} />
+              <button className="lui-button" tabIndex={0} key="confirmSelections" onClick={() => confirmSelections()}><span className="lui-icon lui-icon--tick" /></button>
+              <button className="lui-button" tabIndex={0} key="cancelSelections" onClick={() => cancelSelections()}><span className="lui-icon lui-icon--remove" /></button>
             </div>
             }
           <div id="qdt-barchart" />

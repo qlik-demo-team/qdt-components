@@ -2,6 +2,12 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~leonardo-ui/dist/leonardo-ui";
 
+@font-face {
+    font-family: "LUI icons";
+    src: url(../../node_modules/leonardo-ui/dist/lui-icons.woff) format('woff'),
+        url(../../node_modules/leonardo-ui/dist/lui-icons.ttf) format('truetype');
+  }
+
 .dropdown-item.O { // Optional
   color: $gray-900;
 }
@@ -76,6 +82,9 @@ th.active:after {
                 box-shadow: 0;
             }
         }
+        .clear-all {
+            padding-left: 15px;
+        }
     }
     .lui-icon {
         font-size: 13px;
@@ -105,8 +114,12 @@ th.active:after {
     .qdt-barchart-selection {
         // display: none;
         text-align: right;
-        .lui-icon--tick { color: #77b62a }
-        .lui-icon--remove { color: red }
+        .lui-button {
+            border: 0;
+            padding: 0;
+            .lui-icon--tick { color: #77b62a }
+            .lui-icon--remove { color: red }
+        }
     }
     #qdt-barchart {
         height:400px;
