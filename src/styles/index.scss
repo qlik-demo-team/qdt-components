@@ -102,24 +102,53 @@ th.active:after {
 }
 
 .qtd-picasso-horizontal-bar {
-    #barchart {
+    .qdt-barchart-selection {
+        // display: none;
+        text-align: right;
+        .lui-icon--tick { color: #77b62a }
+        .lui-icon--remove { color: red }
+    }
+    #qdt-barchart {
         height:400px;
         position:relative;
+        rect { 
+            fill: #49637A;
+            cursor: pointer;
+            &:hover {
+                fill: #77b62a!important;
+            }
+         }
     }
 }
 
-
-.tooltip {
-	min-height: 28px;
-	box-sizing: border-box;
-	display: none;
-	padding: 5px 10px;
-	border-radius: 3px;
-	font-size: 13px;
+.qdt-tooltip {
 	position: relative;
-	transition: opacity 50ms ease-out;
-	opacity: 1.0;
-	z-index: 1021;
-	color: #FFFFFF;
-	background-color: rgba(0, 0, 0, 0.9);
+	background: #000000;
+	border: 1px solid #d1d1d1;
+    color: white;
+    padding: 15px;
+	display: none;
+    &:after, 
+    &:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }    
+    &:after {
+        border-color: rgba(0, 0, 0, 0);
+        border-top-color: #000000;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    &:before {
+        border-color: rgba(209, 209, 209, 0);
+        border-top-color: #d1d1d1;
+        border-width: 11px;
+        margin-left: -11px;
+    }
 }

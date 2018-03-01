@@ -46,7 +46,6 @@ export default function withListObject(Component) {
       this.setState({ updating: true });
       const qLayout = await this.getLayout();
       this.setState({ updating: false, qLayout });
-    //   this.setState({ updating: false });
     }
 
     @autobind

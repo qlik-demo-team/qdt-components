@@ -5,45 +5,58 @@ import picasso from 'picasso.js';
 import picassoQ from 'picasso-plugin-q';
 import '../styles/index.scss';
 
+const tooltipDiv = {
+  x: 0, y: 0, w: 0, h: 0,
+};
 export default class QdtPicassoHorizontalBarchart extends React.Component {
     static propTypes = {
       qDocPromise: PropTypes.object.isRequired,
       cols: PropTypes.array.isRequired,
+    //   select: PropTypes.func.isRequired,
+    //   beginSelections: PropTypes.func.isRequired,
+    //   endSelections: PropTypes.func.isRequired,
     }
 
     @autobind
     static hideTooltip() {
-      const elements = document.getElementsByClassName('tooltip');
+      const elements = document.getElementsByClassName('qdt-tooltip');
       if (elements[0]) {
-        // document.body.removeChild(elements[0]);
         elements[0].style.display = 'none';
       }
     }
 
     @autobind
-    static showTooltip(data, point) {
-      console.log(8);
-      console.log(data);
+    static showTooltip(data) {
       QdtPicassoHorizontalBarchart.hideTooltip();
-      //   const currentTooltip = document.createElement('div');
-      const currentTooltip = document.getElementsByClassName('tooltip');
+      const currentTooltip = document.getElementsByClassName('qdt-tooltip')[0];
       currentTooltip.style.display = 'inline-block';
-      const text = `${data[0].values[0].qText}: ${data[0].values[0]}`;
-      currentTooltip.appendChild(document.createTextNode(text));
+      if (data) {
+        const text = `${data[0].values[0].qText}: ${data[1].values[0]}`;
+        currentTooltip.innerHTML = text;
+        const rect = currentTooltip.getBoundingClientRect();
+        tooltipDiv.w = rect.width;
+        tooltipDiv.h = rect.height;
+      }
       currentTooltip.style.position = 'absolute';
-      currentTooltip.style.top = '-99999px';
-      currentTooltip.style.left = '-99999px';
-      currentTooltip.classList.add('tooltip');
-      document.body.appendChild(currentTooltip);
-      currentTooltip.style.top = `${point.y}px`;
-      currentTooltip.style.left = `${(point.x + 5)}px`;
+      currentTooltip.style.top = `${tooltipDiv.y - tooltipDiv.h - 10}px`;
+      currentTooltip.style.left = `${(tooltipDiv.x - (tooltipDiv.w / 2))}px`;
     }
 
     constructor(props) {
       super(props);
 
+      this.state = {
+        // qDoc: null,
+        // qObject: null,
+        selectionsOn: false,
+      };
+
       this.qDoc = null;
+      this.qObject = null;
+      this.selectionsOn = false;
       this.pic = null;
+      this.mouseX = 0;
+      this.mouseY = 0;
       this.settings = {
         scales: {
           xScale: {
@@ -82,9 +95,9 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
             major: { scale: 'yScale' },
             minor: { scale: 'xScale' },
             box: {
-              fill: '#a0a0a0',
+              fill: '#49637A',
               strokeWidth: 1,
-              stroke: 'rgba(0, 0, 0, 0.2)',
+              stroke: '#3d5266',
               height: 10,
             },
           },
@@ -92,16 +105,17 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
             trigger: [{
               on: 'tap',
               action: 'toggle',
-              contexts: ['highlight'],
+              contexts: ['highlight', 'select'],
+              data: ['qDimension'],
               propagation: 'stop', // 'stop' => prevent trigger from propagating further than the first shape
               globalPropagation: 'stop', // 'stop' => prevent trigger of same type to be triggered on other components
               touchRadius: 24,
             }, {
               on: 'over',
               action: 'set',
+              contexts: ['tooltip'],
               data: ['qDimension', 'qMeasure'],
               propagation: 'stop',
-              contexts: ['tooltip'],
             }],
             consume: [{
               context: 'highlight',
@@ -112,7 +126,7 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
                   strokeWidth: 1,
                 },
                 inactive: {
-                  opacity: 0.8,
+                  opacity: 0.5,
                 },
               },
             }],
@@ -149,52 +163,24 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
             }],
           },
         }],
-        // interactions: [
-        //   {
-        //     type: 'native',
-        //     key: 'here',
-        //     enable() { // bool or function
-        //       this.chart;
-        //       return true;
-        //     },
-        //     events: {
-        //       mouseover(e) {
-        //         const label = e.target.attributes.getNamedItem('data-label');
-        //         const value = e.target.attributes.getNamedItem('data-value');
-        //         if (label && value) {
-        //           generateTooltip({
-        //             x: e.pageX,
-        //             y: e.pageY,
-        //             label: label.value,
-        //             value: value.value,
-        //           });
-        //         }
-        //       },
-        //       mousemove(e) { // key should point to a native event
-        //         const label = e.target.attributes.getNamedItem('data-label');
-        //         const value = e.target.attributes.getNamedItem('data-value');
-        //         if (label && value) {
-        //           generateTooltip({
-        //             x: e.pageX,
-        //             y: e.pageY,
-        //             label: label.value,
-        //             value: value.value,
-        //           });
-        //         }
-        //       },
-        //       mouseout(e) {
-        //         const d = document.getElementById('tooltip');
-        //         d.style.visibility = 'hidden';
-        //       },
-        //       mousedown(e) {
-        //         if (e.target.attributes.getNamedItem('data-label') && e.target.attributes.getNamedItem('data-value')) {
-        //           console.log(e.target.attributes.getNamedItem('data-label').value);
-        //           console.log(e.target.attributes.getNamedItem('data-value').value);
-        //         }
-        //       },
-        //     },
-        //   },
-        // ],
+        interactions: [
+          {
+            type: 'native',
+            key: 'here',
+            events: {
+              mousemove(e) { // key should point to a native event
+                tooltipDiv.x = e.pageX;
+                tooltipDiv.y = e.pageY;
+                if (e.target.id !== 'qdt-barchart') {
+                  QdtPicassoHorizontalBarchart.showTooltip();
+                }
+              },
+              mouseout() {
+                QdtPicassoHorizontalBarchart.hideTooltip();
+              },
+            },
+          },
+        ],
       };
     }
 
@@ -213,12 +199,10 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
     async create() {
       this.qDoc = await this.props.qDocPromise;
       this.update();
-      this.qDoc.on('changed', async () => { this.update(); });
     }
 
     @autobind
     async update() {
-      console.log(this.props.cols);
       const obj = {
         qInfo: {
           qType: 'visualization',
@@ -252,12 +236,13 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
           }],
         },
       };
-      const model = await this.qDoc.createSessionObject(obj);
-      const qLayout = await model.getLayout();
-      console.log(qLayout);
+      this.qObject = await this.qDoc.createSessionObject(obj);
+      this.qObject.on('changed', async () => { this.update(); });
+      this.beginSelections();
+      const qLayout = await this.qObject.getLayout();
       const { settings } = this;
       this.pic = picasso.chart({
-        element: document.querySelector('#barchart'),
+        element: document.querySelector('#qdt-barchart'),
         data: [{
           type: 'q',
           key: 'qHyperCube',
@@ -267,32 +252,60 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
       });
 
       this.pic.brush('tooltip').on('update', (data) => {
-        console.log(7);
-        console.log(data);
-        console.log(this.pic);
         if (data.length) {
-        //   const s = this.pic.getAffectedShapes('tooltip');
-          const s = this.pic.getAffectedShapes('tooltip');
-          //   const s = document.getElementsByClassName('tooltip')[0];
-          console.log(s);
-          const rect = s.element.getBoundingClientRect();
-          //   const rect = s.getBoundingClientRect();
-          const p = {
-            x: s.bounds.x + s.bounds.width + rect.x + 5,
-            y: s.bounds.y + (s.bounds.height / 2) + (rect.y - 28),
-          };
-          QdtPicassoHorizontalBarchart.showTooltip(data, p);
+          QdtPicassoHorizontalBarchart.showTooltip(data);
         } else {
           QdtPicassoHorizontalBarchart.hideTooltip();
         }
       });
+
+      this.pic.brush('select').on('update', (data) => {
+        if (!this.state.selectionsOn) {
+          this.beginSelections();
+        } else {
+          console.log(12);
+        }
+        console.log(13);
+        console.log(data);
+        // console.log(this.props);
+        this.select(Number(data[0].values[0].qElemNumber));
+      });
+    }
+
+    @autobind
+    beginSelections() {
+      console.log(11);
+      const { qObject } = this;
+      this.setState({ selectionsOn: true });
+      qObject.beginSelections(['/qHyperCubeDef']);
+    }
+
+    @autobind
+    endSelections(qAccept) {
+      console.log(13);
+      const { qObject } = this;
+      qObject.endSelections(qAccept);
+    }
+
+    @autobind
+    async select(qElemNumber, dimIndex = 0) {
+      const { qObject } = this;
+      qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, [qElemNumber], true);
     }
 
     render() {
+      const { selectionsOn } = this.state;
+      console.log(selectionsOn);
       return (
         <div className="qtd-picasso-horizontal-bar">
-          <div id="barchart" />
-          <div className="tooltip" />
+          {selectionsOn &&
+            <div className="qdt-barchart-selection">
+              <span className="lui-icon lui-icon--tick" role="button" tabIndex={0} />
+              <span className="lui-icon lui-icon--remove" role="button" tabIndex={0} />
+            </div>
+            }
+          <div id="qdt-barchart" />
+          <div className="qdt-tooltip" />
         </div>
       );
     }
