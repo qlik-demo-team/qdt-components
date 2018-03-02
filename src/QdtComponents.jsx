@@ -8,10 +8,10 @@ import QdtViz from './components/QdtViz';
 import QdtSelectionToolbar from './components/QdtSelectionToolbar';
 import QdtKpi from './components/QdtKpi';
 import QdtButton from './components/QdtButton';
-import QdtPicassoHorizontalBarchart from './components/QdtPicassoHorizontalBarchart';
+import QdtBarchart from './components/QdtBarchart';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicassoHorizontalBarchart,
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtBarchart,
 };
 
 const QdtComponents = class {
