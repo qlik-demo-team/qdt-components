@@ -15,93 +15,98 @@
 - Download the [latest build](../blob/master/dist/qdt-components.js)
 - Add the Html
 ```html
-    <head>
-        <script type="text/javascript" src="qdt-components.js"></script>
-    </head>
-    <body>
-        <qdt-component id="qdt1"></qdt-component>
-    </body>
+<head>
+  <script type="text/javascript" src="qdt-components.js"></script>
+</head>
+<body>
+  <qdt-component id="qdt1"></qdt-component>
+</body>
 ```
 - Add the Javascript
 ```javascript
-    <script type="text/javascript">
-        var qConfig = {
-            "config": {
-                "host": "sense-demo.qlik.com",
-                "secure": true,
-                "port": 443,
-                "prefix": "/",
-                "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-            },
-            "connections": { 
-                "vizApi": true, 
-                "engineApi": false 
-            }
-        }
-        var qdtComponents = new QdtComponents(qConfig.config, qConfig.connections);
-        var element = document.getElementById('qdt1');
-        qdtComponents.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
-    </script>
+<script type="text/javascript">
+  var options = {
+    config: {
+      host: "sense-demo.qlik.com",
+      secure: true,
+      port: 443,
+      prefix: "/",
+      appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
+    },
+    connections: { 
+      vizApi: true, 
+      engineApi: true 
+    }
+  }
+  var qdtComponents = new QdtComponents(options.config, options.connections);
+  var element = document.getElementById('qdt1');
+  qdtComponents.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
+</script>
 ```
 - [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
 
 #### Angular 5 Component (cli)
+- `npm install --save qdt-components`
+- create an Angular 5 component that implements qdt-components
 ```javascript
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import QdtComponents from 'qdt-components';
-let qConfig = {
-    "config": {
-        "host": "sense-demo.qlik.com",
-        "secure": true,
-        "port": 443,
-        "prefix": "/",
-        "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-    },
-    "connections": { 
-        "vizApi": true, 
-        "engineApi": true 
-    }
+
+const options = {
+  config: {
+    host: "sense-demo.qlik.com",
+    secure: true,
+    port: 443,
+    prefix: "/",
+    appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
+  },
+  connections: { 
+    vizApi: true, 
+    engineApi: true 
+  }
 }
 
 @Component({
-	selector: 'qdt-component',
+  selector: 'qdt-component',
 	templateUrl: './qdt-component.component.html',
 	styleUrls: ['./qdt-component.component.less']
 })
 export class QdtComponent implements OnInit {
 
-	@Input() Component: Function;
-    @Input() props: object;
+	@Input() type: string;
+  @Input() props: object;
 
-    static qdtComponents = new QdtComponents(qConfig.config, qConfig.connections);
+  static qdtComponents = new QdtComponents(options.config, options.connections);
 
 	constructor(private elementRef: ElementRef) { }
 
 	ngOnInit() {
-        QdtComponent.qdtComponents.render(this.Component, this.props, this.elementRef.nativeElement);
-	}
-
+    QdtComponent.qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
+  }
+  
 }
 ```
 
 #### React
+- `npm install --save qdt-components`
+- create a React component that implements qdt-components
 ```javascript
 import React from 'react';
 import PropTypes from 'prop-types';
 import QdtComponents from 'qdt-components';
 
 const options = {
-    "config": {
-        "host": "sense-demo.qlik.com",
-        "secure": true,
-        "port": 443,
-        "prefix": "/",
-        "appId": "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-    },
-    "connections": { 
-        "vizApi": true, 
-        "engineApi": true 
-    }
+  config: {
+    host: "sense-demo.qlik.com",
+    secure: true,
+    port: 443,
+    prefix: "/",
+    appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
+  },
+  connections: { 
+    vizApi: true, 
+    engineApi: true 
+  }
 }
 
 const qdtComponents = new QdtComponents(options.config, options.connections);
