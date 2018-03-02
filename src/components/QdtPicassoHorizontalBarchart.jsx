@@ -12,9 +12,18 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
     static propTypes = {
       qDocPromise: PropTypes.object.isRequired,
       cols: PropTypes.array.isRequired,
+      options: PropTypes.object,
+      width: PropTypes.string,
+      height: PropTypes.string,
     //   select: PropTypes.func.isRequired,
     //   beginSelections: PropTypes.func.isRequired,
     //   endSelections: PropTypes.func.isRequired,
+    }
+
+    static defaultProps = {
+      options: {},
+      width: '100%',
+      height: '100%',
     }
 
     @autobind
@@ -62,16 +71,42 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
         scales: {
           xScale: {
             data: { field: 'qMeasureInfo/0' },
+            expand: 0.1,
+            min: 0,
           },
           yScale: {
             data: { extract: { field: 'qDimensionInfo/0' } },
-            padding: 0.1,
+            padding: 0.2,
           },
         },
         components: [{
+          type: 'grid-line',
+          x: 'xScale',
+        }, {
           type: 'axis',
           dock: 'left',
           scale: 'yScale',
+          settings: {
+            labels: {
+              show: true,
+              margin: 3,
+              maxLengthPx: 150,
+              minLengthPx: 100,
+              mode: 'auto', // Control how labels arrange themself. Availabe modes are `auto`, `horizontal`, `layered` and `tilted`. When set to `auto` the axis determines the best possible layout in the current context. // Optional
+              align: 0.5, // Align act as a slider for the text bounding rect over the item bandwidth, given that the item have a bandwidth. Except when labels are tilted, then the align is a pure align that shifts the position of the label anchoring point. // Optional
+              offset: 0, // Offset in pixels along the axis direction. // Optional
+            },
+            ticks: {
+              show: true, // Toggle ticks on/off // Optional
+              margin: 0, // Space in pixels between the ticks and the line. // Optional
+              tickSize: 4, // Size of the ticks in pixels. // Optional
+            },
+            line: {
+              show: true, // Toggle line on/off // Optional
+              align: 'right',
+            },
+            align: 'right',
+          },
         }, {
           type: 'axis',
           dock: 'bottom',
@@ -99,7 +134,8 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
               fill: '#49637A',
               strokeWidth: 1,
               stroke: '#3d5266',
-              height: 10,
+            //   width: 0.5,
+            //   minHeightPx: 50,
             },
           },
           brush: {
@@ -108,8 +144,8 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
               action: 'toggle',
               contexts: ['highlight', 'select'],
               data: ['qDimension'],
-              propagation: 'stop', // 'stop' => prevent trigger from propagating further than the first shape
-              globalPropagation: 'stop', // 'stop' => prevent trigger of same type to be triggered on other components
+              //   propagation: 'stop', // 'stop' => prevent trigger from propagating further than the first shape
+              //   globalPropagation: 'stop', // 'stop' => prevent trigger of same type to be triggered on other components
               touchRadius: 24,
             }, {
               on: 'over',
@@ -143,12 +179,10 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
               strategy: {
                 type: 'bar', // the strategy type
                 settings: {
-                  direction({ data }) { // data argument is the data bound to the shape in the referenced component
-                    return data && data.end.value > data.start.value ? 'right' : 'left';
-                  },
-                  fontFamily: 'Helvetica',
-                  fontSize: 14,
-                  align: 0.5,
+                  direction: 'right',
+                  //   fontFamily: 'Helvetica',
+                  //   fontSize: 14,
+                  //   align: 0.5,
                   justify: 1,
                   labels: [{
                     label({ data }) {
@@ -183,11 +217,15 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
           },
         ],
       };
+      if (this.props.options) {
+        // Alter settings based on options
+      }
     }
 
     componentWillMount() {
       picasso.use(picassoQ);
     }
+
     componentDidMount() {
       try {
         this.create();
@@ -248,6 +286,7 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
       //   };
       //   const qLayout = await this.qObject.getHyperCubeData('/qHyperCubeDef', [qPage]); // eslint-disable-line max-lenyout);
       const { settings } = this;
+      //   if (!this.pic) {
       this.pic = picasso.chart({
         element: document.querySelector('#qdt-barchart'),
         data: [{
@@ -257,6 +296,16 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
         }],
         settings,
       });
+      //   } else { // UPDATE Breaks the labels
+      //     this.pic.update({
+      //       data: [{
+      //         type: 'q',
+      //         key: 'qHyperCube',
+      //         data: qLayout.qHyperCube,
+      //       }],
+      //       settings,
+      //     });
+      //   }
 
       this.pic.brush('tooltip').on('update', (data) => {
         if (data.length) {
@@ -266,11 +315,10 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
         }
       });
 
+      // No data is return if clicked on an inactive rect. How do we deselect?
       this.pic.brush('select').on('update', (data) => {
-        if (!this.state.selectionsOn) {
-          this.beginSelections();
-        }
-        this.select(Number(data[0].values[0].qElemNumber));
+        if (!this.state.selectionsOn) this.beginSelections();
+        if (data && data[0] && data[0].values && data[0].values[0] && data[0].values[0].qElemNumber) this.select(Number(data[0].values[0].qElemNumber));
       });
     }
 
@@ -282,47 +330,54 @@ export default class QdtPicassoHorizontalBarchart extends React.Component {
     }
 
     @autobind
-    endSelections() {
+    async endSelections() {
       //   const { qObject } = this;
       //   qObject.endSelections(qAccept);
+      await this.pic.brush('highlight').end();
+      await this.pic.brush('select').end();
       this.setState({ selectionsOn: false });
+      this.selections = [];
     }
 
     @autobind
     async select(qElemNumber) {
-    //   const { qObject } = this;
-      this.selections = [...this.selections, qElemNumber];
-    //   qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, [qElemNumber], true);
+      //   const { qObject } = this;
+      if (this.selections.includes(qElemNumber)) {
+        // remove if selected
+        this.selections = this.selections.filter(x => x !== qElemNumber);
+      } else {
+        this.selections = [...this.selections, qElemNumber];
+      }
     }
 
     @autobind
     async confirmSelections() {
       const { qObject } = this;
-      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, this.selections, true);
+      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, this.selections, true); // Occasionally breaks. "Uncaught (in promise) Error: Invalid parameters"
       this.endSelections();
     }
 
     @autobind
     async cancelSelections() {
-      this.selections = [];
-      this.pic.brush('highlight').end();
       this.endSelections();
     }
 
     render() {
       const { confirmSelections, cancelSelections } = this;
+      const { width, height } = this.props;
       const { selectionsOn } = this.state;
-      console.log(selectionsOn);
       return (
         <div className="qtd-picasso-horizontal-bar">
-          {selectionsOn &&
-            <div className="qdt-barchart-selection">
-              <button className="lui-button" tabIndex={0} key="confirmSelections" onClick={() => confirmSelections()}><span className="lui-icon lui-icon--tick" /></button>
-              <button className="lui-button" tabIndex={0} key="cancelSelections" onClick={() => cancelSelections()}><span className="lui-icon lui-icon--remove" /></button>
-            </div>
+          <div className="qdt-barchart-header">
+            {selectionsOn &&
+              <div className="qdt-barchart-selection">
+                <button className="lui-button lui-button--danger" tabIndex={0} key="cancelSelections" onClick={() => cancelSelections()}><span className="lui-icon lui-icon--close" /></button>
+                <button className="lui-button lui-button--success" tabIndex={0} key="confirmSelections" onClick={() => confirmSelections()}><span className="lui-icon lui-icon--tick" /></button>
+              </div>
             }
-          <div id="qdt-barchart" />
+          </div>
           <div className="qdt-tooltip" />
+          <div id="qdt-barchart" style={{ width, height }} />
         </div>
       );
     }

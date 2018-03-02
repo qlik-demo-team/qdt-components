@@ -91,11 +91,13 @@ export class QdtComponentComponent implements OnInit {
 ### Changelog ###
 
 ##### 1.1.5 #####
-* Add Picasso Horizontal Barchart
+* Add Picasso.js Horizontal Barchart
 
 ##### 1.1.4 #####
 * Fix the Selection Toolbar
 
+##### 1.1.2 #####
+* Add Leonardo UI
 
 ### Copyright
 
