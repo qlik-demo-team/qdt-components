@@ -68,6 +68,13 @@ th.active:after {
         li {
             display: inline-block;
             padding-right: 5px;
+            .dropdown-item {
+                font-size: 13px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 25px;
+            }
             lui-button {
                 border: 1px solid $gray-400;
                 padding: 5px 10px;
@@ -105,12 +112,6 @@ th.active:after {
             right: 0;
             padding-right: 5px;
         }
-    }
-    .dropdown-item {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-left: 10px;
-        padding-right: 25px;
     }
 }
 
