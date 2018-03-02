@@ -68,19 +68,19 @@ const options = {
 
 @Component({
   selector: 'qdt-component',
-	templateUrl: './qdt-component.component.html',
-	styleUrls: ['./qdt-component.component.less']
+  templateUrl: './qdt-component.component.html',
+  styleUrls: ['./qdt-component.component.less']
 })
 export class QdtComponent implements OnInit {
 
-	@Input() type: string;
+  @Input() type: string;
   @Input() props: object;
 
   static qdtComponents = new QdtComponents(options.config, options.connections);
 
-	constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) { }
 
-	ngOnInit() {
+  ngOnInit() {
     QdtComponent.qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
   }
   
