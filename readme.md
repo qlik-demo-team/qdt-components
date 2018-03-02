@@ -128,6 +128,7 @@ export default class QdtComponent extends React.Component {
 
 #### QdtViz
 This component can be used to create or get a native Qlik Sense viz. If you define the `id` prop, then it will get that Qlik Sense viz. If you define the `type`, `cols`, and `options` props it will create a new viz. The `width` and `height` props are both optional, and default to '100%'.
+
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
 | id               | String        | Id for an existng visualization |
@@ -139,6 +140,7 @@ This component can be used to create or get a native Qlik Sense viz. If you defi
 
 #### QdtFilter
 This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
+
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
 | cols             | Array         | [see here][cols] |
