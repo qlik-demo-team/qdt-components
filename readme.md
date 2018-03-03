@@ -57,7 +57,7 @@ const options = {
     host: "sense-demo.qlik.com",
     secure: true,
     port: 443,
-    prefix: "/",
+    prefix: "",
     appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
   },
   connections: { 
@@ -100,7 +100,7 @@ const options = {
     host: "sense-demo.qlik.com",
     secure: true,
     port: 443,
-    prefix: "/",
+    prefix: "",
     appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
   },
   connections: { 
