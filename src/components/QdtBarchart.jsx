@@ -60,6 +60,7 @@ export default class QdtBarchart extends React.Component {
         // qDoc: null,
         // qObject: null,
         selectionsOn: false,
+        updating: true,
       };
 
       this.qDoc = null;
@@ -292,6 +293,7 @@ export default class QdtBarchart extends React.Component {
       //   const qLayout = await this.qObject.getHyperCubeData('/qHyperCubeDef', [qPage]); // eslint-disable-line max-lenyout);
       const { settings } = this;
       //   if (!this.pic) {
+      await this.setState({ updating: false });
       this.pic = picasso.chart({
         element: document.querySelector('#qdt-barchart'),
         data: [{
@@ -301,6 +303,7 @@ export default class QdtBarchart extends React.Component {
         }],
         settings,
       });
+
       //   } else { // UPDATE Breaks the labels
       //     this.pic.update({
       //       data: [{
@@ -368,9 +371,14 @@ export default class QdtBarchart extends React.Component {
     }
 
     render() {
-      const { confirmSelections, cancelSelections } = this;
+      const {
+        confirmSelections, cancelSelections,
+      } = this;
       const { width, height } = this.props;
-      const { selectionsOn } = this.state;
+      const { selectionsOn, updating } = this.state;
+      if (updating) {
+        return <div>Loading...</div>;
+      }
       return (
         <div className="qtd-picasso-horizontal-bar">
           <div className="qdt-barchart-header">
