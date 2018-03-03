@@ -157,6 +157,7 @@ This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` wi
 
 #### QdtSelectionToolbar
 This populated a toolbar with the current app selections.
+
 [Live Example](https://webapps.qlik.com/qdt-components/plain-html/picasso-horizontalbarchart.html).
 
 | prop             | type          | description   |
@@ -165,6 +166,7 @@ This populated a toolbar with the current app selections.
 
 #### QdtBarchart
 This creates a barchart based on [Picasso.js](https://picassojs.com/).
+
 [Live Example](https://webapps.qlik.com/qdt-components/plain-html/picasso-horizontalbarchart.html).
 
 | prop             | type          | description   |
