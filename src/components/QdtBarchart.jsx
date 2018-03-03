@@ -351,9 +351,8 @@ export default class QdtBarchart extends React.Component {
     async select(qElemNumber) {
       //   const { qObject } = this;
       if (this.selections.includes(qElemNumber)) {
-        // remove if selected
         this.selections = this.selections.filter(x => x !== qElemNumber);
-      } else {
+      } else if (qElemNumber >= 0) {
         this.selections = [...this.selections, qElemNumber];
       }
     }
@@ -361,7 +360,7 @@ export default class QdtBarchart extends React.Component {
     @autobind
     async confirmSelections() {
       const { qObject } = this;
-      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, this.selections, true); // Occasionally breaks. "Uncaught (in promise) Error: Invalid parameters"
+      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, this.selections, true);
       this.endSelections();
     }
 
