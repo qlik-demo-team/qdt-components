@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
+// import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
+import { Dropdown, MenuItem } from 'react-bootstrap';
 import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
@@ -10,16 +11,15 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
     {qMatrix.map(row =>
       (
-        <DropdownItem
+        <MenuItem
           className={`border border-light border-left-0 border-right-0 ${row[0].qState}`}
-          key={row[0].qElemNumber}
+          eventKey={row[0].qElemNumber}
           data-q-elem-number={row[0].qElemNumber}
-          toggle={false}
           onClick={select}
           style={{ height: `${rowHeight}px` }}
         >
           {row[0].qText}
-        </DropdownItem>
+        </MenuItem>
       ))}
   </span>
 );
@@ -106,13 +106,13 @@ class QdtFilterComponent extends React.Component {
     } = this;
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
-    return (
-      <Dropdown className="d-inline-block" isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle color="secondary" caret>
+    return ( //
+      <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
+        <Dropdown.Toggle color="secondary" noCaret={false}>
           Dropdown
-        </DropdownToggle>
-        <DropdownMenu style={{ width: '15rem' }}>
-          <Input
+        </Dropdown.Toggle>
+        <MenuItem style={{ width: '15rem' }}>
+          <input
             value={searchListInputValue}
             onChange={searchListObjectFor}
             onKeyPress={acceptListObjectSearch}
@@ -126,7 +126,7 @@ class QdtFilterComponent extends React.Component {
             rowHeight={34}
             viewportHeight={170}
           />
-        </DropdownMenu>
+        </MenuItem>
         <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
       </Dropdown>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+// import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, MenuItem } from 'react-bootstrap';
 import withSelectionObject from './withSelectionObject';
 import '../styles/index.scss';
 
@@ -45,18 +46,18 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections, update }) => {
                 }
                     return (
                       <li key={value.field}>
-                        <ButtonDropdown
-                          isOpen={dropdownOpen[index]}
-                          toggle={() => toggle(index)}
+                        <Dropdown
+                          open={dropdownOpen[index]}
+                          onToggle={() => toggle(index)}
                         >
-                          <DropdownToggle>
+                          <Dropdown.Toggle>
                             {value.field}: {value.selected.length} of {value.total}
                             <span className="lui-icon lui-icon--triangle-bottom" />
-                          </DropdownToggle>
-                          <DropdownMenu>
-                            {value.selected.map(value2 => <DropdownItem key={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearSelections(value.field, value2)} role="button" tabIndex={0} /></DropdownItem>)}
-                          </DropdownMenu>
-                        </ButtonDropdown>
+                          </Dropdown.Toggle>
+                          <MenuItem>
+                            {value.selected.map(value2 => <MenuItem eventKey={value2}>{value2}<span className="lui-icon lui-icon--remove pull-right" onClick={() => clearSelections(value.field, value2)} role="button" tabIndex={0} /></MenuItem>)}
+                          </MenuItem>
+                        </Dropdown>
                       </li>
                     );
             })

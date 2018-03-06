@@ -2,16 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
-import QdtFilter from './components/QdtFilter';
-import QdtTable from './components/QdtTable';
+// import QdtFilter from './components/QdtFilter';
+// import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
-import QdtSelectionToolbar from './components/QdtSelectionToolbar';
+// import QdtSelectionToolbar from './components/QdtSelectionToolbar';
 import QdtKpi from './components/QdtKpi';
 import QdtButton from './components/QdtButton';
 import QdtBarchart from './components/QdtBarchart';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtBarchart,
+  // QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtBarchart,
+  QdtViz, QdtKpi, QdtButton, QdtBarchart,
 };
 
 const QdtComponents = class {

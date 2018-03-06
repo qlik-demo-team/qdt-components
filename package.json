@@ -20,7 +20,7 @@
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "autobind-decorator": "^2.1.0",
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap-sass": "^3.3.7",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
     "leonardo-ui": "^1.5.1",
@@ -28,8 +28,9 @@
     "picasso.js": "^0.5.3",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "reactstrap": "^5.0.0-alpha.3"
+    "react-bootstrap": "^0.32.1",
+    "react-bootstrap-table": "^4.3.1",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",

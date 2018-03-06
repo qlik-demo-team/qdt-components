@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { Table } from 'reactstrap';
+// import { Table } from 'reactstrap';
+import { Table } from 'react-bootstrap';
 import withHyperCube from './withHyperCube';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
