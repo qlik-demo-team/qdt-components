@@ -133,6 +133,7 @@ th.active:after {
             }
         }
     }
+    #qdt-barchart2,
     #qdt-barchart {
         // height: 400px;
         position: relative;
@@ -144,36 +145,37 @@ th.active:after {
             }
          }
     }
-    .qdt-tooltip {
-        position: relative;
-        background: #000000;
-        border: 1px solid #d1d1d1;
-        color: white;
-        padding: 15px;
-        display: none;
-        z-index: 9999999;
-        &:after, 
-        &:before {
-            top: 100%;
-            left: 50%;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-        }    
-        &:after {
-            border-color: rgba(0, 0, 0, 0);
-            border-top-color: #000000;
-            border-width: 10px;
-            margin-left: -10px;
-        }
-        &:before {
-            border-color: rgba(209, 209, 209, 0);
-            border-top-color: #d1d1d1;
-            border-width: 11px;
-            margin-left: -11px;
-        }
+}
+
+.qdt-tooltip {
+    position: relative;
+    background: #000000;
+    border: 1px solid #d1d1d1;
+    color: white;
+    padding: 15px;
+    display: none;
+    z-index: 9999999;
+    &:after, 
+    &:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }    
+    &:after {
+        border-color: rgba(0, 0, 0, 0);
+        border-top-color: #000000;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    &:before {
+        border-color: rgba(209, 209, 209, 0);
+        border-top-color: #d1d1d1;
+        border-width: 11px;
+        margin-left: -11px;
     }
 }

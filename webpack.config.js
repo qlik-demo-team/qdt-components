@@ -73,6 +73,16 @@ module.exports = {
     ],
   },
   plugins: [
+    function() {
+        this.plugin('watch-run', function(watching, callback) {
+            let date = new Date();
+            let displayDate = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+            console.log('\x1b[36m%s\x1b[0m', `----------------------------`);
+            console.log('\x1b[36m%s\x1b[0m', `Start compiling at ${displayDate}`);  //cyan
+            console.log('\x1b[36m%s\x1b[0m', `----------------------------`);
+            callback();
+        })
+    },
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')

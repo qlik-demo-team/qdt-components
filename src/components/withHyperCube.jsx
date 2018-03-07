@@ -28,6 +28,8 @@ export default function withHyperCube(Component) {
         qObject: null,
         qLayout: null,
         qData: null,
+        selections: [],
+        selectionOn: false,
         updating: false,
         error: null,
       };
@@ -68,6 +70,8 @@ export default function withHyperCube(Component) {
       const { cols, qHyperCubeDef } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
+        if (cols[0]) qHyperCubeDef.qDimensions[0].qDef = { qFieldDefs: [cols[0]] };
+        if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
         qProp.qHyperCubeDef = qHyperCubeDef;
       } else {
         const qDimensions = cols.filter(col =>
@@ -117,9 +121,23 @@ export default function withHyperCube(Component) {
     }
 
     @autobind
+    async selectMulti(qElemNumber) {
+      const { selections } = this.state;
+      let s = null;
+      if (selections.includes(qElemNumber)) {
+        s = selections.filter(x => x !== qElemNumber);
+      } else if (qElemNumber >= 0) {
+        s = [...selections, qElemNumber];
+      }
+      this.setState({ selections: s });
+    }
+
+    @autobind
     async select(qElemNumber, dimIndex = 0) {
+      let selections = [qElemNumber];
+      if (Array.isArray(qElemNumber)) selections = qElemNumber;
       const { qObject } = this.state;
-      qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, [qElemNumber], true);
+      await qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, selections, true);
     }
 
     @autobind
