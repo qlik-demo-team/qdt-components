@@ -11,9 +11,11 @@ const Tooltip = class {
   }
   create() {
     try {
-      const div = document.createElement('div');
-      div.setAttribute('class', 'qdt-tooltip');
-      document.body.appendChild(div);
+      if (!this.div.element[0]) {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'qdt-tooltip');
+        document.body.appendChild(div);
+      }
     } catch (error) {
       console.log(error);
     }
