@@ -6,8 +6,8 @@ import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
 import properties from '../properties/barchart';
 import hyperCube from '../properties/hypercube';
-// import Tooltip from '../utilities/QtdTooltip';
 import Tooltip from '../utilities/Tooltip';
+import utility from '../utilities/';
 import '../styles/index.scss';
 
 class QdtBarchartComponent extends React.Component {
@@ -16,6 +16,7 @@ class QdtBarchartComponent extends React.Component {
     }
     pic = null;
     selections = [];
+    uid = utility.uid(8)
 
     constructor(props) {
       super(props);
@@ -40,7 +41,7 @@ class QdtBarchartComponent extends React.Component {
 
     @autobind
     async create() {
-      const { tooltip } = this;
+      const { tooltip, uid } = this;
       const { qObject } = await this.props;
       const qLayout = await qObject.getLayout();
       const settings = properties.horizontal;
@@ -48,7 +49,7 @@ class QdtBarchartComponent extends React.Component {
         mousemove(e) {
           tooltip.div.x = e.pageX;
           tooltip.div.y = e.pageY;
-          if (e.target.id !== 'qdt-barchart2') {
+          if (e.target.id !== 'qdt-barchart') {
             tooltip.show();
           }
         },
@@ -57,7 +58,7 @@ class QdtBarchartComponent extends React.Component {
         },
       };
       this.pic = picasso.chart({
-        element: document.querySelector('#qdt-barchart2'),
+        element: document.querySelector(`#${uid} #qdt-barchart`),
         data: [{
           type: 'q',
           key: 'qHyperCube',
@@ -68,7 +69,6 @@ class QdtBarchartComponent extends React.Component {
       this.pic.brush('tooltip').on('update', (data) => {
         if (data.length) {
           this.tooltip.show(data);
-        //   me.setState({ tooltipShow: true, tooltipData: data });
         } else {
           this.tooltip.hide();
         }
@@ -119,11 +119,11 @@ class QdtBarchartComponent extends React.Component {
 
     render() {
       const { selectionsOn } = this.state;
-      const { cancelSelections, confirmSelections } = this;
+      const { cancelSelections, confirmSelections, uid } = this;
       const width = '100%';
       const height = '300px';
       return (
-        <div className="qtd-picasso-horizontal-bar" style={{ width, height }}>
+        <div id={uid} className="qtd-picasso-horizontal-bar" style={{ width, height }}>
           <div className="qdt-barchart-header">
             {selectionsOn &&
               <div className="qdt-barchart-selection">
@@ -131,7 +131,7 @@ class QdtBarchartComponent extends React.Component {
                 <button className="lui-button lui-button--success" tabIndex={0} key="confirmSelections" onClick={() => confirmSelections()}><span className="lui-icon lui-icon--tick" /></button>
               </div>
             }
-            <div id="qdt-barchart2" style={{ width, height }} />
+            <div id="qdt-barchart" style={{ width, height }} />
           </div>
         </div>
       );
