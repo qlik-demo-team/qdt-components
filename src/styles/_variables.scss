@@ -71,7 +71,7 @@ $theme-colors: (
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+//$icon-font-path: "./fonts/";
 $enable-rounded: false;
 
 $dropdown-link-color:            $gray-900 !default;

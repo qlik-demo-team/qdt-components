@@ -20,7 +20,6 @@
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "autobind-decorator": "^2.1.0",
-    "bootstrap-sass": "^3.3.7",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
     "leonardo-ui": "^1.5.1",
