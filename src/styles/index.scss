@@ -133,16 +133,18 @@ th.active:after {
             }
         }
     }
-    #qdt-barchart2,
-    #qdt-barchart {
+    .qdt-barchart-chart {
         // height: 400px;
         position: relative;
         rect { 
-            fill: #49637A;
-            cursor: pointer;
+            // fill: #49637A;
             &:hover {
                 fill: #77b62a!important;
             }
+         }
+         rect,
+         path {
+            cursor: pointer;
          }
     }
 }

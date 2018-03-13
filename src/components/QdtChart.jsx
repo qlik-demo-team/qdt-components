@@ -4,24 +4,25 @@ import autobind from 'autobind-decorator';
 import picasso from 'picasso.js';
 import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
-import properties from '../properties/barchart';
-import hyperCube from '../properties/hypercube';
+// import properties from '../properties/barchart';
+import properties from '../properties/';
+// import hyperCube from '../properties/hypercube';
 import Tooltip from '../utilities/Tooltip';
 import utility from '../utilities/';
 import '../styles/index.scss';
 
-class QdtBarchartComponent extends React.Component {
+class QdtChartComponent extends React.Component {
     static propTypes = {
     //   qObject: PropTypes.object.isRequired,
     }
-    pic = null;
-    selections = [];
-    uid = utility.uid(8)
 
     constructor(props) {
       super(props);
 
       this.tooltip = new Tooltip();
+      this.pic = null;
+      this.selections = [];
+      this.uid = utility.uid(8);
       this.state = {
         selectionsOn: false,
       };
@@ -31,25 +32,35 @@ class QdtBarchartComponent extends React.Component {
       picasso.use(picassoQ);
       this.tooltip.create();
     }
-    async componentDidMount() {
-      const { qObject } = await this.props;
+    componentDidMount() {
+    //   const { qObject } = this.props;
       this.create();
-      qObject.on('changed', () => { this.create(); });
+    //   qObject.on('changed', () => { this.create(); });
     }
     componentDidUpdate() {
     }
 
+
     @autobind
     async create() {
       const { tooltip, uid } = this;
-      const { qObject } = await this.props;
+      const {
+        qDocPromise, cols, type, qHyperCubeDef,
+      } = this.props;
+      const qDoc = await qDocPromise;
+      const qProp = { qInfo: { qType: 'visualization' } };
+      if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
+      if (cols[0]) qHyperCubeDef.qDimensions[0].qDef.qFieldDefs = [cols[0]];
+      qProp.qHyperCubeDef = qHyperCubeDef;
+      const qObject = await qDoc.createSessionObject(qProp);
       const qLayout = await qObject.getLayout();
-      const settings = properties.horizontal;
+      //   const { qLayout } = await this.props;
+      const settings = properties[type];
       settings.interactions[0].events = {
         mousemove(e) {
           tooltip.div.x = e.pageX;
           tooltip.div.y = e.pageY;
-          if (e.target.id !== 'qdt-barchart') {
+          if (e.target.className !== 'qdt-barchart-chart') {
             tooltip.show();
           }
         },
@@ -58,7 +69,7 @@ class QdtBarchartComponent extends React.Component {
         },
       };
       this.pic = picasso.chart({
-        element: document.querySelector(`#${uid} #qdt-barchart`),
+        element: document.querySelector(`#${uid} .qdt-barchart-chart`),
         data: [{
           type: 'q',
           key: 'qHyperCube',
@@ -131,35 +142,35 @@ class QdtBarchartComponent extends React.Component {
                 <button className="lui-button lui-button--success" tabIndex={0} key="confirmSelections" onClick={() => confirmSelections()}><span className="lui-icon lui-icon--tick" /></button>
               </div>
             }
-            <div id="qdt-barchart" style={{ width, height }} />
+            <div className="qdt-barchart-chart" style={{ width, height }} />
           </div>
         </div>
       );
     }
 }
-QdtBarchartComponent.propTypes = {
+QdtChartComponent.propTypes = {
 //   qLayout: PropTypes.object.isRequired,
   //   qData: PropTypes.object.isRequired,
 //   qObject: PropTypes.object.isRequired,
   select: PropTypes.object.isRequired,
 };
 
-const QdtBarchart2 = withHyperCube(QdtBarchartComponent);
-QdtBarchart2.propTypes = {
+const QdtChart = withHyperCube(QdtChartComponent);
+QdtChart.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
   qLayout: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['horizontal', 'vertical', 'pie']).isRequired,
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   width: PropTypes.string,
   height: PropTypes.string,
 };
-
-hyperCube.qHyperCubeDef.qInterColumnSortOrder = [1, 0];
-hyperCube.qHyperCubeDef.qInitialDataFetch.qWidth = 2;
-hyperCube.qHyperCubeDef.qInitialDataFetch.qHeight = 50;
-QdtBarchart2.defaultProps = {
+properties.hyperCube.qHyperCubeDef.qInterColumnSortOrder = [1, 0];
+properties.hyperCube.qHyperCubeDef.qInitialDataFetch.qWidth = 2;
+properties.hyperCube.qHyperCubeDef.qInitialDataFetch.qHeight = 50;
+QdtChart.defaultProps = {
   cols: null,
-  qHyperCubeDef: hyperCube.qHyperCubeDef,
+  qHyperCubeDef: properties.hyperCube.qHyperCubeDef,
   qPage: {
     qTop: 0,
     qLeft: 0,
@@ -170,4 +181,4 @@ QdtBarchart2.defaultProps = {
   height: '100%',
 };
 
-export default QdtBarchart2;
+export default QdtChart;
