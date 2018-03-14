@@ -37,6 +37,7 @@ export default class QdtViz extends React.Component {
 
   componentDidMount() {
     this.show();
+    console.log("Viz will mount");
   }
 
   componentWillReceiveProps(newProps) {
@@ -108,6 +109,6 @@ export default class QdtViz extends React.Component {
       return <div>Loading...</div>;
     }
     const { width, height } = this.props;
-    return <div ref={(node) => { this.node = node; }} style={{ width, height }} />;
+    return <div ref={(node) => { this.node = node; }} style={{ width, height }}  onClick={() => {console.log("qdt clicked!");}} />;
   }
 }
