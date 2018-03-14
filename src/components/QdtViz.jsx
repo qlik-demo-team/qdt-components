@@ -32,12 +32,12 @@ export default class QdtViz extends React.Component {
 
   componentWillMount() {
     this.qVizPromise = this.create();
-    console.log("Viz will mount");
+    alert("Viz will mount");
   }
 
   componentDidMount() {
     this.show();
-    console.log("Viz will mount");
+    alert("mounted");
   }
 
   componentWillReceiveProps(newProps) {
