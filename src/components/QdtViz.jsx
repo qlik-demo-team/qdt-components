@@ -32,6 +32,7 @@ export default class QdtViz extends React.Component {
 
   componentWillMount() {
     this.qVizPromise = this.create();
+    console.log("Viz will mount");
   }
 
   componentDidMount() {
@@ -77,6 +78,7 @@ export default class QdtViz extends React.Component {
       if (qViz) {
         await this.setState({ loading: false });
         qViz.show(this.node);
+        console.log("Showing viz");
       } else {
         throw new Error('Please specify a qConfig global variable');
       }
