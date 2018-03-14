@@ -44,6 +44,7 @@ export default class QdtViz extends React.Component {
     if (JSON.stringify(newProps.options) !== JSON.stringify(this.props.options)) {
       this.setOptions(newProps.options);
     }
+    this.close();
   }
 
   componentWillUnmount() {
