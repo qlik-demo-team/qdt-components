@@ -2,32 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 // import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
-// import { Dropdown, MenuItem } from 'react-bootstrap';
+import { Dropdown, MenuItem } from 'react-bootstrap';
 import withListObject from './withListObject';
-// import QdtVirtualScroll from './QdtVirtualScroll';
+import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
 
-// const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
-//   <span>
-//     {qMatrix.map(row =>
-//       (
-//         <MenuItem
-//           className={`border border-light border-left-0 border-right-0 ${row[0].qState}`}
-//           eventKey={row[0].qElemNumber}
-//           data-q-elem-number={row[0].qElemNumber}
-//           onClick={select}
-//           style={{ height: `${rowHeight}px` }}
-//         >
-//           {row[0].qText}
-//         </MenuItem>
-//       ))}
-//   </span>
-// );
-// DropdownItemList.propTypes = {
-//   qMatrix: PropTypes.array.isRequired,
-//   rowHeight: PropTypes.number.isRequired,
-//   select: PropTypes.func.isRequired,
-// };
+const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
+  <span>
+    {qMatrix.map(row =>
+      (
+        <MenuItem
+          className={`border border-light border-left-0 border-right-0 ${row[0].qState}`}
+          eventKey={row[0].qElemNumber}
+          data-q-elem-number={row[0].qElemNumber}
+          onClick={select}
+          style={{ height: `${rowHeight}px` }}
+        >
+          {row[0].qText}
+        </MenuItem>
+      ))}
+  </span>
+);
+DropdownItemList.propTypes = {
+  qMatrix: PropTypes.array.isRequired,
+  rowHeight: PropTypes.number.isRequired,
+  select: PropTypes.func.isRequired,
+};
 
 const StateCountsBar = ({ qStateCounts }) => {
   const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
@@ -101,21 +101,13 @@ class QdtFilterComponent extends React.Component {
   }
 
   render() {
-    // const {
-    // select, toggle, searchListObjectFor, acceptListObjectSearch,
-    // } = this;
-    const { qData, qLayout } = this.props;
+    const {
+      select, toggle, searchListObjectFor, acceptListObjectSearch,
+    } = this;
+    const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     return ( //
-
-      <div>
-        <div>{qData}</div>
-        <div>{searchListInputValue}</div>
-        <div>{dropdownOpen}</div>
-        <div>{qLayout}</div>
-      </div>
-
-      /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
+      <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
         <Dropdown.Toggle color="secondary" noCaret={false}>
           Dropdown
         </Dropdown.Toggle>
@@ -125,7 +117,7 @@ class QdtFilterComponent extends React.Component {
             onChange={searchListObjectFor}
             onKeyPress={acceptListObjectSearch}
           />
-          /*<QdtVirtualScroll
+          <QdtVirtualScroll
             qData={qData}
             qcy={qLayout.qListObject.qSize.qcy}
             Component={DropdownItemList}
@@ -136,7 +128,7 @@ class QdtFilterComponent extends React.Component {
           />
         </MenuItem>
         <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
-      </Dropdown> */
+      </Dropdown>
     );
   }
 }

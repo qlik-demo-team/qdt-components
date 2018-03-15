@@ -22,6 +22,7 @@
     "autobind-decorator": "^2.1.0",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
+    "leonardo-ui": "^1.5.1",
     "picasso-plugin-q": "^0.5.3",
     "picasso.js": "^0.5.3",
     "prop-types": "^15.6.0",
