@@ -32,12 +32,10 @@ export default class QdtViz extends React.Component {
 
   componentWillMount() {
     this.qVizPromise = this.create();
-    console.warn("Viz will mount");
   }
 
   componentDidMount() {
     this.show();
-    console.warn("mounted");
   }
 
   componentWillReceiveProps(newProps) {
@@ -80,7 +78,6 @@ export default class QdtViz extends React.Component {
       if (qViz) {
         await this.setState({ loading: false });
         qViz.show(this.node);
-        console.log("Showing viz");
       } else {
         throw new Error('Please specify a qConfig global variable');
       }
@@ -110,6 +107,6 @@ export default class QdtViz extends React.Component {
       return <div>Loading...</div>;
     }
     const { width, height } = this.props;
-    return <div ref={(node) => { this.node = node; }} style={{ width, height }}  onClick={() => {console.log("qdt clicked!");}} />;
+    return <div ref={(node) => { this.node = node; }} style={{ width, height }} onClick={() => { console.log('qdt clicked!'); }} />;
   }
 }
