@@ -101,13 +101,14 @@ class QdtFilterComponent extends React.Component {
   }
 
   render() {
-    const {
+    /* const {
       select, toggle, searchListObjectFor, acceptListObjectSearch,
-    } = this;
+    } = this; */
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
+    console.log(qData);
     return ( //
-      <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
+      /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
         <Dropdown.Toggle color="secondary" noCaret={false}>
           Dropdown
         </Dropdown.Toggle>
@@ -128,7 +129,8 @@ class QdtFilterComponent extends React.Component {
           />
         </MenuItem>
         <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
-      </Dropdown>
+      </Dropdown> */
+      <div />
     );
   }
 }
