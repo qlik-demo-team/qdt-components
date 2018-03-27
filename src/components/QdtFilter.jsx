@@ -113,7 +113,7 @@ class QdtFilterComponent extends React.Component {
 
       <div>
         <ListGroup>
-          <ListGroupItem href="#link1">{qData[0].qText}</ListGroupItem>}
+          <ListGroupItem href="#link1">{qData.qMatrix[0].qText}</ListGroupItem>}
         </ListGroup>
       </div>
 
