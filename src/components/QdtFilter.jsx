@@ -104,7 +104,7 @@ class QdtFilterComponent extends React.Component {
   render() {
     /* const {
       select, toggle, searchListObjectFor, acceptListObjectSearch,
-    } = this; */
+    } = this; {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))} */
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     console.log(qData);
@@ -113,7 +113,7 @@ class QdtFilterComponent extends React.Component {
 
       <div>
         <ListGroup>
-          {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))}
+          <ListGroupItem>sup</ListGroupItem>
         </ListGroup>
       </div>
 
