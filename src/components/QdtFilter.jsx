@@ -1,4 +1,5 @@
 import React from 'react';
+import{ListGroupItem, ListGroup} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 // import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
@@ -107,7 +108,21 @@ class QdtFilterComponent extends React.Component {
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     console.log(qData);
-    return ( //
+
+    const returnList= () => {
+
+      
+
+
+
+    }
+    return ( 
+
+
+      <ListGroup>
+    {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))}
+  </ListGroup>
+      //
       /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
         <Dropdown.Toggle color="secondary" noCaret={false}>
           Dropdown
@@ -133,6 +148,11 @@ class QdtFilterComponent extends React.Component {
       <div />
     );
   }
+
+
+  const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterConsole);
 }
 
 const QdtFilter = withListObject(QdtFilterComponent);
