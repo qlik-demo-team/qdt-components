@@ -109,21 +109,15 @@ class QdtFilterComponent extends React.Component {
     const { dropdownOpen, searchListInputValue } = this.state;
     console.log(qData);
 
-    const returnList= () => {
-
-      
-
-
-
-    }
     return ( 
 
-
+      <div>
       <ListGroup>
     {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))}
-  </ListGroup>
-      //
-      /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
+     </ListGroup>
+       </div>
+
+       /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
         <Dropdown.Toggle color="secondary" noCaret={false}>
           Dropdown
         </Dropdown.Toggle>
@@ -145,14 +139,13 @@ class QdtFilterComponent extends React.Component {
         </MenuItem>
         <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
       </Dropdown> */
-      <div />
+      
+      
     );
   }
 
 
-  const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(FilterConsole);
+ 
 }
 
 const QdtFilter = withListObject(QdtFilterComponent);
