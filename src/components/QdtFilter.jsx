@@ -1,5 +1,5 @@
 import React from 'react';
-import{ListGroupItem, ListGroup} from 'react-bootstrap';
+import { ListGroupItem, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 // import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
@@ -109,43 +109,16 @@ class QdtFilterComponent extends React.Component {
     const { dropdownOpen, searchListInputValue } = this.state;
     console.log(qData);
 
-    return ( 
+    return (
 
       <div>
-      <ListGroup>
-    {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))}
-     </ListGroup>
-       </div>
+        <ListGroup>
+          {qData.map(row => (<ListGroupItem href="#link1">{row[0].qText}</ListGroupItem>))}
+        </ListGroup>
+      </div>
 
-       /* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
-        <Dropdown.Toggle color="secondary" noCaret={false}>
-          Dropdown
-        </Dropdown.Toggle>
-        <MenuItem style={{ width: '15rem' }}>
-          <input
-            value={searchListInputValue}
-            onChange={searchListObjectFor}
-            onKeyPress={acceptListObjectSearch}
-          />
-          <QdtVirtualScroll
-            qData={qData}
-            qcy={qLayout.qListObject.qSize.qcy}
-            Component={DropdownItemList}
-            componentProps={{ select }}
-            offset={offset}
-            rowHeight={34}
-            viewportHeight={170}
-          />
-        </MenuItem>
-        <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
-      </Dropdown> */
-      
-      
     );
   }
-
-
- 
 }
 
 const QdtFilter = withListObject(QdtFilterComponent);
@@ -167,3 +140,26 @@ QdtFilter.defaultProps = {
 };
 
 export default QdtFilter;
+
+/* <Dropdown className="d-inline-block" open={dropdownOpen} onToggle={toggle}>
+        <Dropdown.Toggle color="secondary" noCaret={false}>
+          Dropdown
+        </Dropdown.Toggle>
+        <MenuItem style={{ width: '15rem' }}>
+          <input
+            value={searchListInputValue}
+            onChange={searchListObjectFor}
+            onKeyPress={acceptListObjectSearch}
+          />
+          <QdtVirtualScroll
+            qData={qData}
+            qcy={qLayout.qListObject.qSize.qcy}
+            Component={DropdownItemList}
+            componentProps={{ select }}
+            offset={offset}
+            rowHeight={34}
+            viewportHeight={170}
+          />
+        </MenuItem>
+        <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
+      </Dropdown> */
