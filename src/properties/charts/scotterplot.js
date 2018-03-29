@@ -1,49 +1,64 @@
-const verticalBar = {
+// dimension1=Year,  dimension2=Month, measure1=Sales, measure2=margin
+const scotterplot = {
   scales: {
-    y: {
-      data: { field: 'qMeasureInfo/0' },
+    s: {
+      data: {
+        field: 'qMeasureInfo/0',
+      },
+      expand: 0.2,
       invert: true,
-      include: [0],
     },
-    x: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.3 },
-    c: {
-      data: { field: 'qMeasureInfo/0' },
+    m: {
+      data: {
+        field: 'qMeasureInfo/1',
+      },
+      expand: 0.1,
+    },
+    col: {
+      data: { extract: { field: 'qDimensionInfo/0' } },
       type: 'color',
     },
   },
   components: [{
-    type: 'grid-line',
-    y: 'y',
-  }, {
+    key: 'y-axis',
     type: 'axis',
+    scale: 's',
     dock: 'left',
-    scale: 'y',
   }, {
+    type: 'legend-cat',
+    dock: 'right',
+    scale: 'col',
+  }, {
+    key: 'x-axis',
     type: 'axis',
+    scale: 'm',
     dock: 'bottom',
-    scale: 'x',
   }, {
-    key: 'verticalBars',
-    type: 'box',
+    key: 'p',
+    type: 'point',
     displayOrder: 1,
     data: {
       extract: {
         field: 'qDimensionInfo/0',
         props: {
-          start: 0,
-          end: { field: 'qMeasureInfo/0' },
+          y: { field: 'qMeasureInfo/0' },
+          x: { field: 'qMeasureInfo/1' },
+          num: { field: 'qMeasureInfo/0' },
           qMeasure: { field: 'qMeasureInfo/0' },
+          qMeasure2: { field: 'qMeasureInfo/1' },
           qDimension: data => data,
         },
       },
     },
     settings: {
-      major: { scale: 'x' },
-      minor: { scale: 'y' },
-      box: {
-        fill: '#49637A',
-        //   fill: { scale: 'c', ref: 'end' },
-      },
+      x: { scale: 'm' },
+      y: { scale: 's' },
+      shape: 'circle',
+      size: () => Math.random(),
+      strokeWidth: 2,
+      stroke: '#fff',
+      opacity: 0.8,
+      fill: { scale: 'col' },
     },
     brush: {
       trigger: [{
@@ -78,22 +93,21 @@ const verticalBar = {
   },
   {
     type: 'labels',
-    displayOrder: 2, // must be larger than the displayOrder for the 'bars' component
+    displayOrder: 2,
     settings: {
       sources: [{
-        component: 'verticalBars',
+        component: 'circle',
         selector: 'rect',
         strategy: {
           type: 'bar',
           settings: {
             direction: 'top',
-            //   justify: 1,
             labels: [{
               label({ data }) {
                 return data ? data.end.label : '';
               },
-              placements: [ // label placements in prio order. Label will be placed in the first place it fits into
-                { position: 'inside', fill: '#fff' },
+              placements: [
+                // { position: 'inside', fill: '#fff' },
                 { position: 'outside', fill: '#666' },
               ],
             }],
@@ -105,11 +119,11 @@ const verticalBar = {
   interactions: [
     {
       type: 'native',
-      key: 'verticalBars',
+      key: 'pie',
       events: {},
     },
   ],
 };
 
-export default verticalBar;
+export default scotterplot;
 

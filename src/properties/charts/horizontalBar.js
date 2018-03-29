@@ -107,25 +107,25 @@ const horizontalBar = {
   },
   {
     type: 'labels',
-    displayOrder: 2, // must be larger than the displayOrder for the 'bars' component
+    displayOrder: 2,
     settings: {
       sources: [{
         component: 'horizontalBars',
-        selector: 'rect', // select all 'rect' shapes from the 'bars' component
+        selector: 'rect',
         strategy: {
-          type: 'bar', // the strategy type
+          type: 'bar',
           settings: {
             direction: 'right',
-            //   fontFamily: 'Helvetica',
-            //   fontSize: 14,
-            //   align: 0.5,
-            justify: 1,
+            // fontFamily: 'Helvetica',
+            // fontSize: 14,
+            // align: 0.5,
+            // justify: 1,
             labels: [{
               label({ data }) {
                 return data ? data.end.label : '';
               },
-              placements: [ // label placements in prio order. Label will be placed in the first place it fits into
-                { position: 'inside', fill: '#fff' },
+              placements: [
+                // { position: 'inside', fill: '#fff' },
                 { position: 'outside', fill: '#666' },
               ],
             }],

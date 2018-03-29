@@ -58,9 +58,9 @@ th.active:after {
     cursor: pointer;
 }
 
-/****************
+/**********************
  * QdtSelectionToolbar
-*****************/
+**********************/
 .qdt-selection-toolbar {
     ul {
         padding: 0;
@@ -115,10 +115,13 @@ th.active:after {
     }
 }
 
-.qtd-picasso-horizontal-bar {
-    .qdt-barchart-header {
+/**********************
+ * QdtChart
+**********************/
+.qtd-chart {
+    .qdt-chart-header {
         height: 30px;
-        .qdt-barchart-selection {
+        .qdt-chart-selection {
             // display: none;
             text-align: right;
             // position: absolute;
@@ -133,8 +136,7 @@ th.active:after {
             }
         }
     }
-    .qdt-barchart-chart {
-        // height: 400px;
+    .qdt-chart-svg {
         position: relative;
         rect { 
             // fill: #49637A;
@@ -142,10 +144,24 @@ th.active:after {
                 fill: #77b62a!important;
             }
          }
+         circle,
          rect,
          path {
             cursor: pointer;
          }
+    }
+    &::-webkit-scrollbar { 
+        width: 10px; 
+        height: 10px; 
+    }     
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 5px;
+    }     
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+      border-radius: 5px;
     }
 }
 
