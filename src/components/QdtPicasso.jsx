@@ -88,7 +88,7 @@ class QdtPicassoComponent extends React.Component {
         }
 
         // Remove the legend from the components array
-        // if (options.noLegend) settings.components.splice(1, 1);
+        if (options.noLegend) settings.components.splice(1, 1);
       }
       settings.interactions[0].events = {
         mousemove(e) {
