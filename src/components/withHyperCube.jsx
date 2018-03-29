@@ -38,7 +38,7 @@ export default function withHyperCube(Component) {
     async componentWillMount() {
       try {
         const { qDocPromise } = this.props;
-        const qProp = this.generateQProp();
+        const qProp = await this.generateQProp();
         const qDoc = await qDocPromise;
         const qObject = await qDoc.createSessionObject(qProp);
         qObject.on('changed', () => { this.update(); });
@@ -70,30 +70,30 @@ export default function withHyperCube(Component) {
       const { cols, qHyperCubeDef } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
-        if (cols[0]) qHyperCubeDef.qDimensions[0].qDef = { qFieldDefs: [cols[0]] };
         if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
+        if (cols[0]) qHyperCubeDef.qDimensions[0].qDef.qFieldDefs = [cols[0]];
         qProp.qHyperCubeDef = qHyperCubeDef;
-      } else {
-        const qDimensions = cols.filter(col =>
-          (typeof col === 'string' && !col.startsWith('=')) ||
+        return qProp;
+      }
+      const qDimensions = cols.filter(col =>
+        (typeof col === 'string' && !col.startsWith('=')) ||
           (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension')).map((col) => {
-          if (typeof col === 'string') {
-            return { qDef: { qFieldDefs: [col] } };
-          }
-          return col;
-        });
-        const qMeasures = cols.filter(col =>
-          (typeof col === 'string' && col.startsWith('=')) ||
+        if (typeof col === 'string') {
+          return { qDef: { qFieldDefs: [col] } };
+        }
+        return col;
+      });
+      const qMeasures = cols.filter(col =>
+        (typeof col === 'string' && col.startsWith('=')) ||
           (typeof col === 'object' && col.qDef && col.qDef.qDef) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure')).map((col) => {
-          if (typeof col === 'string') {
-            return { qDef: { qDef: col } };
-          }
-          return col;
-        });
-        qProp.qHyperCubeDef = { qDimensions, qMeasures };
-      }
+        if (typeof col === 'string') {
+          return { qDef: { qDef: col } };
+        }
+        return col;
+      });
+      qProp.qHyperCubeDef = { qDimensions, qMeasures };
       return qProp;
     }
 

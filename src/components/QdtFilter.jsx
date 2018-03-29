@@ -23,6 +23,7 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
       ))}
   </span>
 );
+
 DropdownItemList.propTypes = {
   qMatrix: PropTypes.array.isRequired,
   rowHeight: PropTypes.number.isRequired,

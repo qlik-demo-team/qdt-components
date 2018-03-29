@@ -16,6 +16,14 @@ const hypercube = {
       qSortBy: {
         qSortByNumeric: -1,
       },
+    }, {
+      qDef: {
+        qDef: '',
+        qLabel: '',
+      },
+      qSortBy: {
+        qSortByNumeric: -1,
+      },
     }],
     qSuppressZero: false,
     qSuppressMissing: true,

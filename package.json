@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "author": "The Demo Team",
@@ -29,7 +29,8 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "reactstrap": "^5.0.0-alpha.3"
+    "reactstrap": "^5.0.0-alpha.3",
+    "ws": "^5.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
