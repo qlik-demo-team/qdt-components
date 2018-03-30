@@ -13,7 +13,11 @@ class QdtPicassoComponent extends React.Component {
     static propTypes = {
     //   qObject: PropTypes.object.isRequired,
       type: PropTypes.string.isRequired,
+      options: PropTypes.object,
     }
+    static defaultProps = {
+      options: {},
+    };
 
     constructor(props) {
       super(props);
@@ -34,21 +38,24 @@ class QdtPicassoComponent extends React.Component {
     }
 
     componentWillMount() {
+      const { options } = this.props;
       picasso.use(picassoQ);
-      this.tooltip.create();
+      if (!options.noTooltip) this.tooltip.create();
     }
-    componentDidMount() {
+    async componentDidMount() {
     //   const { qObject } = this.props;
-      this.create();
+      await this.createObject();
+      await this.createSettings();
+      await this.createChart();
+      this.qObject.on('changed', () => { this.createChart(); });
     }
     componentDidUpdate() {
     }
 
     @autobind
-    async create() {
-      const { tooltip, uid, divElement } = this;
+    async createObject() {
       const {
-        qDocPromise, cols, type, qHyperCubeDef, height, options,
+        qDocPromise, cols, qHyperCubeDef,
       } = this.props;
       const qDoc = await qDocPromise;
       const qProp = { qInfo: { qType: 'visualization' } };
@@ -57,8 +64,13 @@ class QdtPicassoComponent extends React.Component {
       if (cols[2]) qHyperCubeDef.qMeasures[1].qDef = { qDef: cols[2] };
       qProp.qHyperCubeDef = qHyperCubeDef;
       this.qObject = await qDoc.createSessionObject(qProp);
-      this.qObject.on('changed', () => { this.update(); });
-      const qLayout = await this.qObject.getLayout();
+    }
+
+    @autobind
+    async createSettings() {
+      const { tooltip, divElement, qObject } = this;
+      const { type, height, options } = this.props;
+      const qLayout = await qObject.getLayout();
       // Set scrolling for Horizontal Bar
       if (type === 'horizontalBar' && height) {
         const proposedHeight = qLayout.qHyperCube.qDataPages[0].qMatrix.length * (30 + 5);
@@ -90,51 +102,63 @@ class QdtPicassoComponent extends React.Component {
         // Remove the legend from the components array
         if (options.noLegend) settings.components.splice(1, 1);
       }
-      settings.interactions[0].events = {
-        mousemove(e) {
-          tooltip.div.x = e.pageX;
-          tooltip.div.y = e.pageY;
-          if (e.target.className !== 'qdt-chart-svg') {
-            tooltip.show();
-          }
-        },
-        mouseout() {
-          tooltip.hide();
-        },
-      };
-      if (!this.pic) {
-        this.pic = picasso.chart({
-          element: document.querySelector(`#${uid} .qdt-chart-svg`),
-          data: [{
-            type: 'q',
-            key: 'qHyperCube',
-            data: qLayout.qHyperCube,
-          }],
-          settings,
-        });
-        this.pic.brush('tooltip').on('update', (data) => {
-          if (data.length) {
-            this.tooltip.show(data);
-          } else {
-            this.tooltip.hide();
-          }
-        });
-        // No data is return if clicked on an inactive rect. How do we deselect?
-        this.pic.brush('select').on('update', (data) => {
-          const { select, selectionsOn, beginSelections } = this;
-          if (!selectionsOn) beginSelections();
-          if (data && data[0] && data[0].values && data[0].values[0] && data[0].values[0].qElemNumber) select(Number(data[0].values[0].qElemNumber));
-        });
-        this.settings = settings;
-      } else {
-        this.update();
+      if (!options.noTooltip) {
+        settings.interactions[0].events = {
+          mousemove(e) {
+            tooltip.div.x = e.pageX;
+            tooltip.div.y = e.pageY;
+            if (e.target.className !== 'qdt-chart-svg') {
+              tooltip.show();
+            }
+          },
+          mouseout() {
+            tooltip.hide();
+          },
+        };
       }
+      this.settings = settings;
     }
 
     @autobind
+    async createChart() {
+      const { options } = this.props;
+      const {
+        qObject, settings, tooltip, uid,
+      } = this;
+      const qLayout = await qObject.getLayout();
+      //   if (!this.pic) {
+      this.pic = picasso.chart({
+        element: document.querySelector(`#${uid} .qdt-chart-svg`),
+        data: [{
+          type: 'q',
+          key: 'qHyperCube',
+          data: qLayout.qHyperCube,
+        }],
+        settings,
+      });
+      if (!options.noTooltip) {
+        this.pic.brush('tooltip').on('update', (data) => {
+          if (data.length) {
+            tooltip.show(data);
+          } else {
+            tooltip.hide();
+          }
+        });
+      }
+      // No data is return if clicked on an inactive rect. How do we deselect?
+      this.pic.brush('select').on('update', (data) => {
+        const { select, selectionsOn, beginSelections } = this;
+        if (!selectionsOn) beginSelections();
+        if (data && data[0] && data[0].values && data[0].values[0] && data[0].values[0].qElemNumber) select(Number(data[0].values[0].qElemNumber));
+      });
+    //   }
+    }
+
+    // Update has weird results. Will recreate for now until fixed
+    @autobind
     async update() {
-      const { settings, pic } = this;
-      const qLayout = await this.qObject.getLayout();
+      const { settings, pic, qObject } = this;
+      const qLayout = await qObject.getLayout();
       pic.update({
         data: [{
           type: 'q',
@@ -147,12 +171,14 @@ class QdtPicassoComponent extends React.Component {
 
     @autobind
     beginSelections() {
+      //   qObject.beginSelections(['/qHyperCubeDef']); @TODO this redraws the selected colors
       this.setState({ selectionsOn: true });
     }
 
     @autobind
-    endSelections() {
-      const { pic } = this;
+    async endSelections() {
+      const { pic, selections, qObject } = this;
+      await qObject.selectHyperCubeValues('/qHyperCubeDef', 0, selections, true);
       pic.brush('highlight').end();
       pic.brush('select').end();
       this.setState({ selectionsOn: false });
@@ -169,15 +195,15 @@ class QdtPicassoComponent extends React.Component {
 
     @autobind
     async confirmSelections() {
-      const { selections, endSelections, create } = this;
-      const { select } = this.props;
-      await select(selections);
-      endSelections();
-      create();
+      const { endSelections, createChart } = this;
+      await endSelections();
+      //   qObject.endSelections(true);
+      createChart();
     }
 
     @autobind
     async cancelSelections() {
+      //   qObject.endSelections(false);
       this.endSelections();
     }
 
@@ -228,7 +254,7 @@ QdtPicassoComponent.propTypes = {
 //   qLayout: PropTypes.object.isRequired,
   //   qData: PropTypes.object.isRequired,
 //   qObject: PropTypes.object.isRequired,
-  select: PropTypes.object.isRequired,
+//   select: PropTypes.object.isRequired,
 };
 
 const QdtPicasso = withHyperCube(QdtPicassoComponent);
