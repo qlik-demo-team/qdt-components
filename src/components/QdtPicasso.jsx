@@ -59,8 +59,8 @@ class QdtPicassoComponent extends React.Component {
       } = this.props;
       const qDoc = await qDocPromise;
       const qProp = { qInfo: { qType: 'visualization' } };
-      if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
       if (cols[0]) qHyperCubeDef.qDimensions[0].qDef.qFieldDefs = [cols[0]];
+      if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
       if (cols[2]) qHyperCubeDef.qMeasures[1].qDef = { qDef: cols[2] };
       qProp.qHyperCubeDef = qHyperCubeDef;
       this.qObject = await qDoc.createSessionObject(qProp);
@@ -117,6 +117,7 @@ class QdtPicassoComponent extends React.Component {
         };
       }
       this.settings = settings;
+      console.log(qLayout, settings);
     }
 
     @autobind

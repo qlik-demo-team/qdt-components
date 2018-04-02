@@ -1,6 +1,7 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
+import Preloader from '../utilities/Preloader';
 
 export default function withHyperCube(Component) {
   return class extends React.Component {
@@ -9,6 +10,8 @@ export default function withHyperCube(Component) {
       cols: PropTypes.array,
       qHyperCubeDef: PropTypes.object,
       qPage: PropTypes.object,
+      width: PropTypes.string,
+      height: PropTypes.string,
     };
 
     static defaultProps = {
@@ -20,6 +23,8 @@ export default function withHyperCube(Component) {
         qWidth: 10,
         qHeight: 100,
       },
+      width: '100%',
+      height: '100%',
     }
 
     constructor(props) {
@@ -147,13 +152,15 @@ export default function withHyperCube(Component) {
     }
 
     render() {
+      const { width, height } = this.props;
       const {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
         return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
-        return <div>Loading...</div>;
+        const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
+        return <Preloader width={width} height={height} paddingTop={paddingTop} />;
       }
       return (<Component
         {...this.props}

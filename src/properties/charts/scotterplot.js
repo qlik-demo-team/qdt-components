@@ -2,16 +2,12 @@
 const scotterplot = {
   scales: {
     s: {
-      data: {
-        field: 'qMeasureInfo/0',
-      },
+      data: { field: 'qMeasureInfo/0' },
       expand: 0.2,
       invert: true,
     },
     m: {
-      data: {
-        field: 'qMeasureInfo/1',
-      },
+      data: { field: 'qMeasureInfo/1' },
       expand: 0.1,
     },
     col: {
