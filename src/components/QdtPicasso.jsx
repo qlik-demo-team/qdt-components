@@ -117,7 +117,6 @@ class QdtPicassoComponent extends React.Component {
         };
       }
       this.settings = settings;
-      console.log(qLayout, settings);
     }
 
     @autobind
