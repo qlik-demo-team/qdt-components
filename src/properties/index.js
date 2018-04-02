@@ -4,6 +4,7 @@ import verticalBar from './charts/verticalBar';
 import pie from './charts/pie';
 import scotterplot from './charts/scotterplot';
 import line from './charts/line';
+import comboLineBarchart from './charts/comboLineBarchart';
 
 const properties = {
   hyperCube,
@@ -12,6 +13,7 @@ const properties = {
   pie,
   scotterplot,
   line,
+  comboLineBarchart,
 };
 
 export default properties;

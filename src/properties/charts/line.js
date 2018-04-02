@@ -40,7 +40,16 @@ const line = {
         minor: { scale: 'y', ref: 'v' },
       },
       layers: {
-        line: {},
+        curve: 'monotone',
+        show: true,
+        line: {
+          strokeWidth: 2,
+          stroke: {
+            scale: 'color',
+            ref: 'id',
+          },
+          opacity: 1,
+        },
       },
     },
     brush: {

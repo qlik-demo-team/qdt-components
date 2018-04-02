@@ -177,6 +177,12 @@ This creates a barchart based on [Picasso.js](https://picassojs.com/).
 
 ### Changelog ###
 
+##### 1.1.9 #####
+* Added Spinning loader
+
+##### 1.1.8 #####
+* Add more Picasso charts (Scotterplot, Linechart, Combo chart)
+
 ##### 1.1.6 #####
 * Minor fixes for the Horizontal Barchart and the Selection Toolbar
 
