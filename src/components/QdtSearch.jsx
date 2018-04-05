@@ -34,9 +34,7 @@ class QdtSearchComponent extends React.Component {
       };
     }
 
-    async componentWillMount() {
-      const { beginSelections } = this.props;
-      beginSelections();
+    componentWillMount() {
     }
 
     componentDidMount() {
@@ -80,6 +78,14 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
+    onFocus() {
+      const { beginSelections, endSelections } = this.props;
+      endSelections(false);
+      beginSelections();
+    }
+
+
+    @autobind
     hideDropDown(event) {
       const { endSelections } = this.props;
       const { isVisible } = this.state;
@@ -91,14 +97,14 @@ class QdtSearchComponent extends React.Component {
 
     render() {
       const {
-        onClear, onChange, onKeyDown, onSelect,
+        onClear, onChange, onKeyDown, onSelect, onFocus,
       } = this;
       const { qData, options } = this.props;
       const { isVisible } = this.state;
       const inverse = !!(options.inverse);
       return (
         <div className="qtd-search">
-          <LuiSearch inverse={inverse} onClear={onClear} onChange={onChange} onKeyDown={onKeyDown} placeholder={options.placeholder} />
+          <LuiSearch inverse={inverse} onClear={onClear} onChange={onChange} onKeyDown={onKeyDown} placeholder={options.placeholder} onFocus={onFocus} />
           {isVisible && qData.qMatrix.length > 0 &&
             <div className="qtd-search-results">
               { qData.qMatrix.map(item => (
