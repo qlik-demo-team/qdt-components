@@ -4,7 +4,7 @@ import withHyperCube from './withHyperCube';
 import '../styles/index.scss';
 
 const QdtKpiComponent = ({ qData, options }) => {
-  const value = (options.precision) ? Number.parseFloat(qData.qMatrix[0][0].qNum).toFixed(options.precision) : qData.qMatrix[0][0].qText;
+  const value = (options && options.precision) ? Number.parseFloat(qData.qMatrix[0][0].qNum).toFixed(options.precision) : qData.qMatrix[0][0].qText;
   return <div className="qtd-kpi">{value}</div>;
 };
 QdtKpiComponent.propTypes = {
