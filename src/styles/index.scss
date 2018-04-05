@@ -1,11 +1,12 @@
 @import "_variables";
 @import "~bootstrap/scss/bootstrap";
-@import "~leonardo-ui/dist/leonardo-ui";
+// @import "~leonardo-ui/dist/leonardo-ui";
+// @import "~qdt-lui/dist/qdt-lui";
 
 @font-face {
     font-family: "LUI icons";
-    src: url(../../node_modules/leonardo-ui/dist/lui-icons.woff) format('woff'),
-        url(../../node_modules/leonardo-ui/dist/lui-icons.ttf) format('truetype');
+    src: url(../../node_modules/qdt-lui/dist/lui-icons.woff) format('woff'),
+        url(../../node_modules/qdt-lui/dist/lui-icons.ttf) format('truetype');
   }
 
 .dropdown-item.O { // Optional
@@ -271,3 +272,27 @@ th.active:after {
 }
 
 
+/**********************
+ * QdtSearch
+**********************/
+.qtd-search {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .qtd-search-results {
+        display: block;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 6px 0;
+        z-index: 1;
+        .qtd-search-item {
+            padding: 3px 30px;
+            cursor: pointer;
+            &.selected {
+                background-color: $green;
+            }
+        }
+    }
+}

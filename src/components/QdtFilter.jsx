@@ -106,6 +106,7 @@ class QdtFilterComponent extends React.Component {
       select, toggle, searchListObjectFor, acceptListObjectSearch,
     } = this;
     const { qData, qLayout, offset } = this.props;
+    console.log(qData);
     const { dropdownOpen, searchListInputValue } = this.state;
     return (
       <Dropdown className="d-inline-block" isOpen={dropdownOpen} toggle={toggle}>
