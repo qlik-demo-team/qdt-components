@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import autobind from 'autobind-decorator';
 import { LuiSearch } from 'qdt-lui';
 import withListObject from './withListObject';
 import '../styles/index.scss';
@@ -11,86 +12,120 @@ import '../styles/index.scss';
  * @property {object} options - inverse - For dark Theme
  */
 
-let searchString = '';
+class QdtSearchComponent extends React.Component {
+    static propTypes = {
+      qData: PropTypes.func.isRequired,
+      beginSelections: PropTypes.func.isRequired,
+      endSelections: PropTypes.func.isRequired,
+      select: PropTypes.func.isRequired,
+      searchListObjectFor: PropTypes.func.isRequired,
+      acceptListObjectSearch: PropTypes.func.isRequired,
+      options: PropTypes.object,
+    }
+    static defaultProps = {
+      options: null,
+    };
 
-const QdtSearchComponent = ({
-  qData, options, searchListObjectFor, acceptListObjectSearch, beginSelections, endSelections, select, showDropDown,
-}) => {
-  let isVisible = false;
-  //   document.body.addEventListener('click', this.hideDropDown);
-  console.log(qData);
-  isVisible = !!(qData.qMatrix.length && searchString !== '' && showDropDown);
-  if (isVisible) {
-    beginSelections();
-  }
-  const inverse = !!(options.inverse);
-  const onClear = () => {
-    searchString = '';
-    isVisible = false;
-    endSelections(false);
-  };
-  const onChange = (s) => {
-    searchString = s;
-    searchListObjectFor(searchString);
-  };
-  const onKeyDown = (key) => {
-    if (key === 'enter' || key === 'Enter') {
-      isVisible = false;
-      searchString = '';
-      acceptListObjectSearch();
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        isVisible: false,
+      };
     }
-  };
-  const onSelect = (qElemNumber) => {
-    // isVisible = false;
-    // searchString = '';
-    select(qElemNumber);
-  };
-  return (
-    <div className="qtd-search">
-      <LuiSearch inverse={inverse} onClear={onClear} onChange={onChange} onKeyDown={onKeyDown} placeholder={options.placeholder} />
-      {isVisible &&
-      <div className="qtd-search-results">
-        {qData.qMatrix.length && qData.qMatrix.map(item => (
-          <div className={(item[0].qState === 'S') ? 'qtd-search-item selected' : 'qtd-search-item'} role="button" tabIndex={0} key={item[0].qElemNumber} qElemNumber={item[0].qElemNumber} onClick={() => onSelect(item[0].qElemNumber)}>{item[0].qText}</div>
-        ))}
-      </div>
+
+    async componentWillMount() {
+      const { beginSelections } = this.props;
+      beginSelections();
     }
-    </div>
-  );
-};
-QdtSearchComponent.propTypes = {
-  qData: PropTypes.object.isRequired,
-  searchListObjectFor: PropTypes.object.isRequired,
-  acceptListObjectSearch: PropTypes.object.isRequired,
-  beginSelections: PropTypes.object.isRequired,
-  endSelections: PropTypes.object.isRequired,
-  select: PropTypes.object.isRequired,
-  options: PropTypes.object,
-  showDropDown: PropTypes.bool.isRequired,
-};
-QdtSearchComponent.defaultProps = {
-  options: null,
-};
+
+    componentDidMount() {
+      document.body.addEventListener('click', this.hideDropDown);
+    }
+
+    componentDidUpdate() {
+    }
+
+    componentWillUnmount() {
+      document.body.removeEventListener('click', this.hideDropDown);
+    }
+
+    @autobind
+    onClear() {
+      const { endSelections } = this.props;
+      endSelections(false);
+      this.setState({ isVisible: false });
+    }
+
+    @autobind
+    async onChange(str) {
+      const { searchListObjectFor } = this.props;
+      await searchListObjectFor(str);
+      this.setState({ isVisible: true });
+    }
+
+    @autobind
+    onKeyDown(key) {
+      if (key === 'enter' || key === 'Enter') {
+        const { acceptListObjectSearch } = this.props;
+        acceptListObjectSearch();
+        this.setState({ isVisible: false });
+      }
+    }
+
+    @autobind
+    onSelect(qElemNumber) {
+      const { select } = this.props;
+      select(qElemNumber);
+    }
+
+    @autobind
+    hideDropDown(event) {
+      const { endSelections } = this.props;
+      const { isVisible } = this.state;
+      if (isVisible && !event.target.attributes.qelemnumber) {
+        endSelections(true);
+        this.setState({ isVisible: false });
+      }
+    }
+
+    render() {
+      const {
+        onClear, onChange, onKeyDown, onSelect,
+      } = this;
+      const { qData, options } = this.props;
+      const { isVisible } = this.state;
+      const inverse = !!(options.inverse);
+      return (
+        <div className="qtd-search">
+          <LuiSearch inverse={inverse} onClear={onClear} onChange={onChange} onKeyDown={onKeyDown} placeholder={options.placeholder} />
+          {isVisible && qData.qMatrix.length > 0 &&
+            <div className="qtd-search-results">
+              { qData.qMatrix.map(item => (
+                <div className={(item[0].qState === 'S') ? 'qtd-search-item selected' : 'qtd-search-item'} role="button" tabIndex={0} key={item[0].qElemNumber} qElemNumber={item[0].qElemNumber} onClick={() => onSelect(item[0].qElemNumber)}>{item[0].qText}</div>
+              ))}
+            </div>
+            }
+        </div>
+      );
+    }
+}
 
 const QdtSearch = withListObject(QdtSearchComponent);
 QdtSearch.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  searchListObjectFor: PropTypes.func.isRequired,
-  acceptListObjectSearch: PropTypes.func.isRequired,
+  qData: PropTypes.object.isRequired,
   beginSelections: PropTypes.func.isRequired,
   endSelections: PropTypes.func.isRequired,
   select: PropTypes.func.isRequired,
+  searchListObjectFor: PropTypes.func.isRequired,
+  acceptListObjectSearch: PropTypes.func.isRequired,
   cols: PropTypes.array,
-  qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
   options: PropTypes.object,
-  dropDown: PropTypes.bool,
 };
 QdtSearch.defaultProps = {
   cols: null,
-  qHyperCubeDef: null,
   options: null,
-  dropDown: true,
   qPage: {
     qTop: 0,
     qLeft: 0,

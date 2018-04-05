@@ -9,13 +9,11 @@ export default function withListObject(Component) {
       cols: PropTypes.array,
       qListObjectDef: PropTypes.object,
       qPage: PropTypes.object,
-      dropDown: PropTypes.bool,
     };
 
     static defaultProps = {
       cols: null,
       qListObjectDef: null,
-      dropDown: false,
       qPage: {
         qTop: 0,
         qLeft: 0,
@@ -32,7 +30,6 @@ export default function withListObject(Component) {
         qData: null,
         updating: false,
         error: null,
-        showDropDown: false,
       };
     }
 
@@ -50,17 +47,6 @@ export default function withListObject(Component) {
       } catch (error) {
         this.setState({ error });
       }
-    }
-
-    componentDidMount() {
-      const { dropDown } = this.props;
-      if (dropDown) {
-        document.body.addEventListener('click', this.hideDropDown);
-      }
-    }
-
-    componentWillUnmount() {
-      document.body.removeEventListener('click', this.hideDropDown);
     }
 
     async getLayout() {
@@ -112,15 +98,6 @@ export default function withListObject(Component) {
     }
 
     @autobind
-    hideDropDown(event) {
-      const { dropDown } = this.props;
-      if (dropDown && !event.target.attributes.qelemnumber) {
-        this.endSelections(true);
-        // this.setState({ showDropDown: false });
-      }
-    }
-
-    @autobind
     offset(qTop) {
       this.update(qTop);
     }
@@ -128,9 +105,7 @@ export default function withListObject(Component) {
     async update(qTop = this.state.qData.qArea.qTop) {
       this.setState({ updating: true });
       const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
-      this.setState({
-        updating: false, qLayout, qData, showDropDown: true,
-      });
+      this.setState({ updating: false, qLayout, qData });
     }
 
     @autobind
@@ -141,10 +116,8 @@ export default function withListObject(Component) {
 
     @autobind
     endSelections(qAccept) {
-      this.setState({ updating: true });
       const { qObject } = this.state;
       qObject.endSelections(qAccept);
-      this.setState({ updating: false });
     }
 
     @autobind
@@ -161,10 +134,8 @@ export default function withListObject(Component) {
 
     @autobind
     async acceptListObjectSearch() {
-      this.setState({ updating: true });
       const { qObject } = this.state;
-      qObject.acceptListObjectSearch('/qListObjectDef', true, true);
-      this.setState({ updating: false });
+      qObject.acceptListObjectSearch('/qListObjectDef', true);
     }
 
     @autobind
@@ -175,7 +146,7 @@ export default function withListObject(Component) {
 
     render() {
       const {
-        qObject, qLayout, qData, error, showDropDown,
+        qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
         return <div>{error.message}</div>;
@@ -192,7 +163,6 @@ export default function withListObject(Component) {
         searchListObjectFor={this.searchListObjectFor}
         acceptListObjectSearch={this.acceptListObjectSearch}
         applyPatches={this.applyPatches}
-        showDropDown={showDropDown}
       />);
     }
   };
