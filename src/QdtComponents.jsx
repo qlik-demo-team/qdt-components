@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
+import utility from './utilities/';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
@@ -10,15 +11,18 @@ import QdtKpi from './components/QdtKpi';
 import QdtButton from './components/QdtButton';
 import QdtPicasso from './components/QdtPicasso';
 import QdtSearch from './components/QdtSearch';
+import QdtCurrentSelections from './components/QdtCurrentSelections';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch,
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections,
 };
 
 const QdtComponents = class {
   constructor(config = {}, connections = { vizApi: true, engineApi: true }) {
-    this.qAppPromise = (connections.vizApi) ? qApp(config) : null;
-    this.qDocPromise = (connections.engineApi) ? qDoc(config) : null;
+    const myConfig = config;
+    myConfig.identity = utility.uid(16);
+    this.qAppPromise = (connections.vizApi) ? qApp(myConfig) : null;
+    this.qDocPromise = (connections.engineApi) ? qDoc(myConfig) : null;
   }
 
   render = async (type, props, element) => new Promise((resolve, reject) => {
