@@ -9,24 +9,27 @@
         url(../../node_modules/qdt-lui/dist/lui-icons.ttf) format('truetype');
   }
 
-.dropdown-item.O { // Optional
-  color: $gray-900;
+.O { // Optional
+  color: $gray-900 !important;
 }
-.dropdown-item.S { // Selected
-  color: $gray-100;
-  background-color: theme-color("qselected")
+.S { // Selected
+  color: $gray-100 !important;
+  background-color: theme-color("qselected") !important;
 }
-.dropdown-item.A { // Alternative
-  color: $gray-900;
-  background-color: theme-color("qalternative");
+.A { // Alternative
+  color: $gray-900 !important;
+  background-color: theme-color("qalternative") !important;
 }
-.dropdown-item.X { // Excluded 
-  color: $gray-100;
-  background-color: theme-color("qexcluded");
+.X { // Excluded 
+  color: $gray-100 !important;
+  background-color: theme-color("qexcluded") !important;
 }
-.dropdown-item.XS { // Excluded Selected
-  color: $gray-100;
-  background-color: theme-color("qexcluded");
+.XS { // Excluded Selected
+  color: $gray-100 !important;
+  background-color: theme-color("qexcluded") !important;
+}
+.lui-list__item.S, .lui-list__item.A, .lui-list__item.X, .lui-list__item.XS {
+  border-bottom: 1px solid #fff;
 }
 
 .fixed-table {

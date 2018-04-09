@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
+import utility from './utilities/';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
@@ -18,8 +19,10 @@ const components = {
 
 const QdtComponents = class {
   constructor(config = {}, connections = { vizApi: true, engineApi: true }) {
-    this.qAppPromise = (connections.vizApi) ? qApp(config) : null;
-    this.qDocPromise = (connections.engineApi) ? qDoc(config) : null;
+    const myConfig = config;
+    myConfig.identity = utility.uid(16);
+    this.qAppPromise = (connections.vizApi) ? qApp(myConfig) : null;
+    this.qDocPromise = (connections.engineApi) ? qDoc(myConfig) : null;
   }
 
   render = async (type, props, element) => new Promise((resolve, reject) => {
