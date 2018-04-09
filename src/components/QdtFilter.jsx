@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
+import { LuiDropdown, LuiList, LuiListItem, LuiSearch } from 'qdt-lui';
 import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
@@ -10,16 +10,15 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
     {qMatrix.map(row =>
       (
-        <DropdownItem
-          className={`border border-light border-left-0 border-right-0 ${row[0].qState}`}
+        <LuiListItem
+          className={`${row[0].qState}`}
           key={row[0].qElemNumber}
           data-q-elem-number={row[0].qElemNumber}
-          toggle={false}
           onClick={select}
           style={{ height: `${rowHeight}px` }}
         >
           {row[0].qText}
-        </DropdownItem>
+        </LuiListItem>
       ))}
   </span>
 );
@@ -83,8 +82,8 @@ class QdtFilterComponent extends React.Component {
   }
 
   @autobind
-  select(e) {
-    this.props.select(Number(e.target.dataset.qElemNumber));
+  select(event) {
+    this.props.select(Number(event.currentTarget.dataset.qElemNumber));
   }
 
   @autobind
@@ -106,15 +105,12 @@ class QdtFilterComponent extends React.Component {
       select, toggle, searchListObjectFor, acceptListObjectSearch,
     } = this;
     const { qData, qLayout, offset } = this.props;
-    console.log(qData);
     const { dropdownOpen, searchListInputValue } = this.state;
     return (
-      <Dropdown className="d-inline-block" isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle color="secondary" caret>
-          Dropdown
-        </DropdownToggle>
-        <DropdownMenu style={{ width: '15rem' }}>
-          <Input
+      <LuiDropdown className="d-inline-block" isOpen={dropdownOpen} toggle={toggle}>
+        Dropdown
+        <LuiList style={{ width: '15rem' }}>
+          <LuiSearch
             value={searchListInputValue}
             onChange={searchListObjectFor}
             onKeyPress={acceptListObjectSearch}
@@ -125,12 +121,12 @@ class QdtFilterComponent extends React.Component {
             Component={DropdownItemList}
             componentProps={{ select }}
             offset={offset}
-            rowHeight={34}
-            viewportHeight={170}
+            rowHeight={37}
+            viewportHeight={190}
           />
-        </DropdownMenu>
+        </LuiList>
         <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} />
-      </Dropdown>
+      </LuiDropdown>
     );
   }
 }
