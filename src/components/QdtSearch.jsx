@@ -66,6 +66,11 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
+    clear() {
+      this.setState({ value: '' });
+    }
+
+    @autobind
     handleChange(event) {
       console.log('event', event);
       this.setState({ value: event.target.value });
@@ -88,6 +93,7 @@ class QdtSearchComponent extends React.Component {
         <LuiDropdown className="d-inline-block" isOpen={dropdownOpen} toggle={this.toggle} select={false}>
           <LuiSearch
             value={value}
+            clear={this.clear}
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />

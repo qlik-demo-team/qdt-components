@@ -87,6 +87,11 @@ class QdtFilterComponent extends React.Component {
   }
 
   @autobind
+  clear() {
+    this.setState({ searchListInputValue: '' });
+  }
+
+  @autobind
   searchListObjectFor(event) {
     this.setState({ searchListInputValue: event.target.value });
     this.props.searchListObjectFor(event.target.value);
@@ -112,6 +117,7 @@ class QdtFilterComponent extends React.Component {
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
             value={searchListInputValue}
+            clear={this.clear}
             onChange={searchListObjectFor}
             onKeyPress={acceptListObjectSearch}
           />
