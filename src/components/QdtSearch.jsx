@@ -72,14 +72,12 @@ class QdtSearchComponent extends React.Component {
 
     @autobind
     handleChange(event) {
-      console.log('event', event);
       this.setState({ value: event.target.value });
       this.props.searchListObjectFor(event.target.value);
     }
 
     @autobind
     handleKeyPress(event) {
-      console.log('event', event);
       if (event.charCode === 13) {
         this.setState({ value: '' });
         this.props.acceptListObjectSearch();
@@ -90,7 +88,7 @@ class QdtSearchComponent extends React.Component {
       const { qData, qLayout, offset } = this.props;
       const { dropdownOpen, value } = this.state;
       return (
-        <LuiDropdown className="d-inline-block" isOpen={dropdownOpen} toggle={this.toggle} select={false}>
+        <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
           <LuiSearch
             value={value}
             clear={this.clear}
