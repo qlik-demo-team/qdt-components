@@ -35,13 +35,12 @@ export default function withListObject(Component) {
 
     async componentWillMount() {
       try {
-        const { qDocPromise } = this.props;
+        const { qDocPromise, qPage } = this.props;
         const qProp = this.generateQProp();
         const qDoc = await qDocPromise;
         const qObject = await qDoc.createSessionObject(qProp);
-        qObject.on('changed', () => { this.update(); });
+        qObject.on('changed', () => { this.update(qPage.qTop); });
         this.setState({ qObject }, () => {
-          const { qPage } = this.props;
           this.update(qPage.qTop);
         });
       } catch (error) {
@@ -73,75 +72,121 @@ export default function withListObject(Component) {
     }
 
     generateQProp() {
-      const { cols, qListObjectDef } = this.props;
-      const qProp = { qInfo: { qType: 'visualization' } };
-      if (qListObjectDef) {
-        qProp.qListObjectDef = qListObjectDef;
-      } else {
-        const qDimensions = cols.filter(col =>
-          (typeof col === 'string' && !col.startsWith('=')) ||
+      try {
+        const { cols, qListObjectDef } = this.props;
+        const qProp = { qInfo: { qType: 'visualization' } };
+        if (qListObjectDef) {
+          qProp.qListObjectDef = qListObjectDef;
+        } else {
+          const qDimensions = cols.filter(col =>
+            (typeof col === 'string' && !col.startsWith('=')) ||
           (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension')).map((col) => {
-          if (typeof col === 'string') {
-            return { qDef: { qFieldDefs: [col] } };
-          }
-          return col;
-        });
-        const qDef = qDimensions[0];
-        qProp.qListObjectDef = {
-          ...qDef,
-          qShowAlternatives: true,
-          qAutoSortByState: { qDisplayNumberOfRows: 1 },
-        };
+            if (typeof col === 'string') {
+              return { qDef: { qFieldDefs: [col] } };
+            }
+            return col;
+          });
+          const qDef = qDimensions[0];
+          qProp.qListObjectDef = {
+            ...qDef,
+            qShowAlternatives: true,
+            qAutoSortByState: { qDisplayNumberOfRows: 1 },
+          };
+        }
+        return qProp;
+      } catch (error) {
+        this.setState({ error });
+        return null;
       }
-      return qProp;
     }
 
     @autobind
     offset(qTop) {
-      this.update(qTop);
+      try {
+        this.update(qTop);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
+    // async update(qTop = (this.state.qData) ? this.state.qData.qArea.qTop : 0) {
     async update(qTop = this.state.qData.qArea.qTop) {
-      this.setState({ updating: true });
-      const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
-      this.setState({ updating: false, qLayout, qData });
+      try {
+        this.setState({ updating: true });
+        const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
+        this.setState({ updating: false, qLayout, qData });
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     beginSelections() {
-      const { qObject } = this.state;
-      qObject.beginSelections(['/qListObjectDef']);
+      try {
+        const { qObject } = this.state;
+        qObject.beginSelections(['/qListObjectDef']);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     endSelections(qAccept) {
-      const { qObject } = this.state;
-      qObject.endSelections(qAccept);
+      try {
+        const { qObject } = this.state;
+        qObject.endSelections(qAccept);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     async select(qElemNumber) {
-      const { qObject } = this.state;
-      qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
+      try {
+        const { qObject } = this.state;
+        qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     async searchListObjectFor(string) {
-      const { qObject } = this.state;
-      qObject.searchListObjectFor('/qListObjectDef', string);
+      try {
+        const { qObject } = this.state;
+        qObject.searchListObjectFor('/qListObjectDef', string);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     async acceptListObjectSearch() {
-      const { qObject } = this.state;
-      qObject.acceptListObjectSearch('/qListObjectDef', true);
+      try {
+        const { qObject } = this.state;
+        qObject.acceptListObjectSearch('/qListObjectDef', true);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     async applyPatches(patches) {
-      const { qObject } = this.state;
-      qObject.applyPatches(patches);
+      try {
+        const { qObject } = this.state;
+        qObject.applyPatches(patches);
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     render() {
@@ -149,7 +194,8 @@ export default function withListObject(Component) {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
-        return <div>{error.message}</div>;
+        console.log(error.message);
+        // return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
         return <div>Loading...</div>;
       }

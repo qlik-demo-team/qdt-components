@@ -65,6 +65,12 @@ const scotterplot = {
         propagation: 'stop', // 'stop' => prevent trigger from propagating further than the first shape
         globalPropagation: 'stop', // 'stop' => prevent trigger of same type to be triggered on other components
         touchRadius: 24,
+      }, {
+        on: 'over',
+        action: 'set',
+        contexts: ['tooltip'],
+        data: ['qDimension', 'qMeasure'],
+        propagation: 'stop',
       }],
       consume: [{
         context: 'highlight',

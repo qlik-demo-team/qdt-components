@@ -44,49 +44,83 @@ class QdtSearchComponent extends React.Component {
     state = {
       dropdownOpen: false,
       value: '',
+      error: null,
     }
 
     @autobind
     toggle() {
-      this.props.offset(0);
+      try {
+        this.props.offset(0);
 
-      if (!this.state.dropdownOpen) {
-        this.props.beginSelections();
-      }
-      if (this.state.dropdownOpen) {
-        this.props.endSelections(true);
-      }
+        if (!this.state.dropdownOpen) {
+          this.props.beginSelections();
+        }
+        if (this.state.dropdownOpen) {
+          this.props.endSelections(true);
+        }
 
-      this.setState({ dropdownOpen: !this.state.dropdownOpen });
+        this.setState({ dropdownOpen: !this.state.dropdownOpen });
+        return null;
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     select(event) {
-      this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+      try {
+        this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+        return null;
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     clear() {
-      this.setState({ value: '' });
+      try {
+        this.setState({ value: '' });
+        return null;
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     handleChange(event) {
-      this.setState({ value: event.target.value });
-      this.props.searchListObjectFor(event.target.value);
+      try {
+        this.setState({ value: event.target.value });
+        if (event.target.value && event.target.value !== '') {
+          this.props.searchListObjectFor(event.target.value);
+        }
+        return null;
+      } catch (error) {
+        this.setState({ error });
+        return null;
+      }
     }
 
     @autobind
     handleKeyPress(event) {
-      if (event.charCode === 13) {
-        this.setState({ value: '' });
-        this.props.acceptListObjectSearch();
+      try {
+        if (event.charCode === 13) {
+          this.setState({ value: '' });
+          this.props.acceptListObjectSearch();
+        }
+        return null;
+      } catch (error) {
+        this.setState({ error });
+        return null;
       }
     }
 
     render() {
       const { qData, qLayout, offset } = this.props;
-      const { dropdownOpen, value } = this.state;
+      const { dropdownOpen, value, error } = this.state;
+      if (error) console.log(error.message);
       return (
         <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
           <LuiSearch
