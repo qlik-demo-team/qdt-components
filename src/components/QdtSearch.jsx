@@ -39,7 +39,12 @@ class QdtSearchComponent extends React.Component {
       endSelections: PropTypes.func.isRequired,
       searchListObjectFor: PropTypes.func.isRequired,
       acceptListObjectSearch: PropTypes.func.isRequired,
+      options: PropTypes.object,
     }
+
+    static defaultProps = {
+      options: {},
+    };
 
     state = {
       dropdownOpen: false,
@@ -118,7 +123,9 @@ class QdtSearchComponent extends React.Component {
     }
 
     render() {
-      const { qData, qLayout, offset } = this.props;
+      const {
+        qData, qLayout, offset, options,
+      } = this.props;
       const { dropdownOpen, value, error } = this.state;
       if (error) console.log(error.message);
       return (
@@ -126,6 +133,7 @@ class QdtSearchComponent extends React.Component {
           <LuiSearch
             value={value}
             clear={this.clear}
+            inverse={!!(options && options.inverse)}
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
