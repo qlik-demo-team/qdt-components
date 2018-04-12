@@ -134,6 +134,7 @@ class QdtSearchComponent extends React.Component {
             value={value}
             clear={this.clear}
             inverse={!!(options && options.inverse)}
+            placeholder={(options && options.placeholder) ? options.placeholder : null}
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
