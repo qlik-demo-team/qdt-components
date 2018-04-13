@@ -23,6 +23,7 @@ export default {
     },
     {
       type: 'box',
+      key: 'horizontalBarchart',
       data: {
         extract: {
           field: 'qDimensionInfo/0',
@@ -68,6 +69,30 @@ export default {
         bubbles: {
           align: 'start',
         },
+      },
+    },
+    {
+      type: 'labels',
+      displayOrder: 2,
+      settings: {
+        sources: [{
+          component: 'horizontalBarchart',
+          selector: 'rect',
+          strategy: {
+            type: 'bar',
+            settings: {
+              direction: 'right',
+              labels: [{
+                label({ data }) {
+                  return data ? data.end.label : '';
+                },
+                placements: [
+                  { position: 'outside', fill: '#666' },
+                ],
+              }],
+            },
+          },
+        }],
       },
     },
   ],
