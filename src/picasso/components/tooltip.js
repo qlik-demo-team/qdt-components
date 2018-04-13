@@ -20,7 +20,7 @@ export default {
       shapes = shapes.filter(shape => shape.type !== 'text');
       if (!shapes.length) return this.renderer.render([]);
       const target = shapes[shapes.length - 1];
-      this.renderer.render(this.buildTooltip(target, pageX, pageY));
+      this.renderer.render(this.buildTooltip(target, pageX - window.scrollX, pageY - window.scrollY));
     },
   },
   buildTooltip(target, x, y) {
