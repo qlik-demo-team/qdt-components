@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { Table } from 'reactstrap';
 import withHyperCube from './withHyperCube';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
@@ -9,12 +8,12 @@ import '../styles/index.scss';
 const TableHead = ({
   columnWidths, labels, sortColumn, setSortColumn,
 }) => (
-  <Table className="fixed-table w-100 mb-0">
-    <thead className="d-block">
-      <tr className="d-block">
+  <table>
+    <thead>
+      <tr>
         {labels.map((label, index) => (
           <th
-            className={`d-inline-block ${index === sortColumn ? 'active' : null}`}
+            className={index === sortColumn ? 'active' : null}
             style={{ width: `${columnWidths[index]}%` }}
             key={label}
             data-index={index}
@@ -25,7 +24,7 @@ const TableHead = ({
         ))}
       </tr>
     </thead>
-  </Table>
+  </table>
 );
 TableHead.propTypes = {
   columnWidths: PropTypes.array.isRequired,
@@ -37,18 +36,16 @@ TableHead.propTypes = {
 const TableBody = ({
   qMatrix, rowHeight, columnWidths, select,
 }) => (
-  <Table className="fixed-table w-100">
-    <tbody className="d-block">
+  <table>
+    <tbody>
       {qMatrix.map(row => (
         <tr
           key={row.reduce((a, b) => (
             a.qElemNumber.toString().concat(b.qElemNumber.toString())))}
-          className="d-block"
         >
           {row.map((col, i) => (
             <td
               key={col.qText}
-              className="d-inline-block"
               style={{ height: `${rowHeight}px`, width: `${columnWidths[i]}%` }}
               data-q-elem-number={col.qElemNumber}
               data-index={i}
@@ -61,7 +58,7 @@ const TableBody = ({
         </tr>
       ))}
     </tbody>
-  </Table>
+  </table>
 );
 TableBody.propTypes = {
   qMatrix: PropTypes.array.isRequired,

@@ -112,7 +112,7 @@ class QdtFilterComponent extends React.Component {
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     return (
-      <LuiDropdown className="d-inline-block" isOpen={dropdownOpen} toggle={toggle}>
+      <LuiDropdown isOpen={dropdownOpen} toggle={toggle}>
         Dropdown
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch

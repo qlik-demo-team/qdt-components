@@ -79,7 +79,6 @@ export default function withListObject(Component) {
         {...this.props}
         {...this.state}
         clearSelections={this.clearSelections}
-        update={this.update}
       />);
     }
   };
