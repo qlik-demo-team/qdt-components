@@ -99,7 +99,10 @@ module.exports = {
       compressor: {
         warnings: false
       }
-    })
+    }),
+    new webpack.ProvidePlugin({
+      "Hammer": "hammerjs/hammer"
+    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx']

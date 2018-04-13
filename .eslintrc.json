@@ -4,6 +4,9 @@
 	"env": {
 		"browser": true
 	},
+	"globals": {
+    	"Hammer": true
+    },
 	"rules": {
 		"class-methods-use-this" : 0,
         "global-require": 0,
