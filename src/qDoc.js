@@ -7,12 +7,10 @@ const MAX_RETRIES = 3;
 const responseInterceptors = [{
   // We only want to handle failed responses from QIX Engine:
   onRejected: function retryAbortedError(sessionReference, request, error) {
-    console.log('Request: Rejected', error);
     // We only want to handle aborted QIX errors:
     if (error.code === schema.enums.LocalizedErrorCode.LOCERR_GENERIC_ABORTED) {
       // We keep track of how many consecutive times we have tried to do this call:
       request.tries = (request.tries || 0) + 1;
-      console.log(`Request: Retry #${request.tries}`);
       // We do not want to get stuck in an infinite loop here if something has gone
       // awry, so we only retry until we have reached MAX_RETRIES:
       if (request.tries <= MAX_RETRIES) {

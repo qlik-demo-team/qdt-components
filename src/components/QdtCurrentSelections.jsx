@@ -37,7 +37,6 @@ export default class QdtViz extends React.Component {
       await this.setState({ loading: false });
     } catch (error) {
       this.setState({ error });
-      return undefined;
     }
   }
 

@@ -49,76 +49,45 @@ class QdtSearchComponent extends React.Component {
     state = {
       dropdownOpen: false,
       value: '',
-      error: null,
     }
 
     @autobind
     toggle() {
-      try {
-        this.props.offset(0);
+      this.props.offset(0);
 
-        if (!this.state.dropdownOpen) {
-          this.props.beginSelections();
-        }
-        if (this.state.dropdownOpen) {
-          this.props.endSelections(true);
-        }
-
-        this.setState({ dropdownOpen: !this.state.dropdownOpen });
-        return null;
-      } catch (error) {
-        this.setState({ error });
-        return null;
+      if (!this.state.dropdownOpen) {
+        this.props.beginSelections();
       }
+      if (this.state.dropdownOpen) {
+        this.props.endSelections(true);
+      }
+
+      this.setState({ dropdownOpen: !this.state.dropdownOpen });
     }
 
     @autobind
     select(event) {
-      try {
-        this.props.select(Number(event.currentTarget.dataset.qElemNumber));
-        return null;
-      } catch (error) {
-        this.setState({ error });
-        return null;
-      }
+      this.props.select(Number(event.currentTarget.dataset.qElemNumber));
     }
 
     @autobind
     clear() {
-      try {
-        this.setState({ value: '' });
-        return null;
-      } catch (error) {
-        this.setState({ error });
-        return null;
-      }
+      this.setState({ value: '' });
     }
 
     @autobind
     handleChange(event) {
-      try {
-        this.setState({ value: event.target.value });
-        if (event.target.value && event.target.value !== '') {
-          this.props.searchListObjectFor(event.target.value);
-        }
-        return null;
-      } catch (error) {
-        this.setState({ error });
-        return null;
+      this.setState({ value: event.target.value });
+      if (event.target.value && event.target.value !== '') {
+        this.props.searchListObjectFor(event.target.value);
       }
     }
 
     @autobind
     handleKeyPress(event) {
-      try {
-        if (event.charCode === 13) {
-          this.setState({ value: '' });
-          this.props.acceptListObjectSearch();
-        }
-        return null;
-      } catch (error) {
-        this.setState({ error });
-        return null;
+      if (event.charCode === 13) {
+        this.setState({ value: '' });
+        this.props.acceptListObjectSearch();
       }
     }
 
@@ -126,8 +95,7 @@ class QdtSearchComponent extends React.Component {
       const {
         qData, qLayout, offset, options,
       } = this.props;
-      const { dropdownOpen, value, error } = this.state;
-      if (error) console.log(error.message);
+      const { dropdownOpen, value } = this.state;
       return (
         <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
           <LuiSearch

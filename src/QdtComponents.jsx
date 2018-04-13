@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// const package = require('../package.json');
-import { version } from '../package.json';
 import qApp from './qApp';
 import qDoc from './qDoc';
 import utility from './utilities/';
@@ -40,7 +38,6 @@ const QdtComponents = class {
         />,
         element,
       );
-      console.log('%c qdt-components: ', 'color: red', `v${version}`);
     } catch (error) {
       reject(error);
     }

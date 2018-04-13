@@ -107,7 +107,6 @@ export default function withListObject(Component) {
         this.update(qTop);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -119,7 +118,6 @@ export default function withListObject(Component) {
         this.setState({ updating: false, qLayout, qData });
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -130,7 +128,6 @@ export default function withListObject(Component) {
         qObject.beginSelections(['/qListObjectDef']);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -141,7 +138,6 @@ export default function withListObject(Component) {
         qObject.endSelections(qAccept);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -152,7 +148,6 @@ export default function withListObject(Component) {
         qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -163,7 +158,6 @@ export default function withListObject(Component) {
         qObject.searchListObjectFor('/qListObjectDef', string);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -174,7 +168,6 @@ export default function withListObject(Component) {
         qObject.acceptListObjectSearch('/qListObjectDef', true);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -185,7 +178,6 @@ export default function withListObject(Component) {
         qObject.applyPatches(patches);
       } catch (error) {
         this.setState({ error });
-        return null;
       }
     }
 
@@ -194,7 +186,6 @@ export default function withListObject(Component) {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
-        console.log(error.message);
         // return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
         return <div>Loading...</div>;
