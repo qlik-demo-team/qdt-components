@@ -6,7 +6,7 @@ import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
 import tooltip from '../picasso/components/tooltip';
-import settings from '../picasso/settings';
+import preconfiguredSettings from '../picasso/settings';
 import '../styles/index.scss';
 
 
@@ -34,7 +34,12 @@ class QdtPicassoComponent extends React.Component {
     beginSelections: PropTypes.func.isRequired,
     endSelections: PropTypes.func.isRequired,
     selections: PropTypes.bool.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    settings: PropTypes.object,
+  }
+  static defaultProps = {
+    type: null,
+    settings: {},
   }
 
   componentDidMount() {
@@ -79,7 +84,9 @@ class QdtPicassoComponent extends React.Component {
 
   @autobind
   createPic() {
-    const { qLayout, qData, type } = this.props;
+    const {
+      qLayout, qData, settings, type,
+    } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
       element: this.element,
@@ -88,7 +95,7 @@ class QdtPicassoComponent extends React.Component {
         key: 'qHyperCube',
         data: data.qHyperCube,
       }],
-      settings: settings[type],
+      settings: type ? preconfiguredSettings[type] : settings,
     });
 
     this.pic.brush('select').on('start', () => { this.props.beginSelections(); });
@@ -139,7 +146,8 @@ QdtPicasso.propTypes = {
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
-  type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart']).isRequired,
+  type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart']),
+  settings: PropTypes.object,
 };
 QdtPicasso.defaultProps = {
   cols: null,
@@ -150,6 +158,8 @@ QdtPicasso.defaultProps = {
     qWidth: 10,
     qHeight: 100,
   },
+  type: null,
+  settings: {},
 };
 
 export default QdtPicasso;

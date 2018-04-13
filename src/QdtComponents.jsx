@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
 import utility from './utilities/';
+import settings from './picasso/settings';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
@@ -18,6 +19,10 @@ const components = {
 };
 
 const QdtComponents = class {
+  static picasso = {
+    settings,
+  };
+
   constructor(config = {}, connections = { vizApi: true, engineApi: true }) {
     const myConfig = config;
     myConfig.identity = utility.uid(16);
