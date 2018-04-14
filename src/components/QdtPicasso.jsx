@@ -6,6 +6,7 @@ import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
 import tooltip from '../picasso/components/tooltip';
+import domLabel from '../picasso/components/domLabel';
 import preconfiguredSettings from '../picasso/settings';
 import '../styles/index.scss';
 
@@ -23,6 +24,7 @@ import '../styles/index.scss';
 // then worry about improved scrolling after commit.
 
 picasso.component('tooltip', tooltip);
+picasso.component('domLabel', domLabel);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
