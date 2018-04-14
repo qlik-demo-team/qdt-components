@@ -69,7 +69,7 @@ export default {
       x: { scale: 'm' },
       y: { scale: 's' },
       shape: 'circle',
-      size: () => Math.random(),
+      size: { scale: 's' },
       strokeWidth: 2,
       stroke: '#fff',
       opacity: 0.8,
