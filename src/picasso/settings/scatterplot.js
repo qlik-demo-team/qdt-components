@@ -51,7 +51,7 @@ export default {
     background: 'white',
   }, {
     key: 'p',
-    type: 'domLabel',
+    type: 'domPointLabel',
     displayOrder: 1,
     data: {
       extract: {
