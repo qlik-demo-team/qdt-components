@@ -1,7 +1,7 @@
 export default {
   scales: {
-    y: { data: { extract: { field: 'qDimensionInfo/0' } } },
-    x: { data: { field: 'qMeasureInfo/0' } },
+    y: { data: { extract: { field: 'qDimensionInfo/0' } }, invert: true },
+    x: { data: { field: 'qMeasureInfo/0' }, include: [0] },
   },
   components: [
     {
@@ -30,6 +30,8 @@ export default {
           props: {
             start: 0,
             end: { field: 'qMeasureInfo/0' },
+            qDimension: { field: 'qDimensionInfo/0' },
+            qMeasure: { field: 'qMeasureInfo/0' },
           },
         },
       },
