@@ -11,19 +11,19 @@
 }
 .S { // Selected
   color: $gray-100 !important;
-  background-color: theme-color("qselected") !important;
+  background-color: #52CC52 !important;
 }
 .A { // Alternative
   color: $gray-900 !important;
-  background-color: theme-color("qalternative") !important;
+  background-color: #dddddd !important;
 }
 .X { // Excluded 
   color: $gray-100 !important;
-  background-color: theme-color("qexcluded") !important;
+  background-color: #A9A9A9 !important;
 }
 .XS { // Excluded Selected
   color: $gray-100 !important;
-  background-color: theme-color("qexcluded") !important;
+  background-color: #A9A9A9 !important;
 }
 .lui-list__item.S, .lui-list__item.A, .lui-list__item.X, .lui-list__item.XS {
   border-bottom: 1px solid #fff;
