@@ -51,7 +51,7 @@ export default {
     background: 'white',
   }, {
     key: 'p',
-    type: 'domPointLabel',
+    type: 'domPointImage',
     displayOrder: 1,
     data: {
       extract: {
@@ -65,14 +65,11 @@ export default {
     settings: {
       x: { scale: 'm' },
       y: { scale: 's' },
-      fontSize: '10px',
-      offset: 10,
-      width: 100,
-      height: 20,
+      color: '#000',
     },
   }, {
     key: 'p',
-    type: 'point',
+    type: 'point', // Need this for tooltip to work
     data: {
       extract: {
         field: 'qDimensionInfo/0',
@@ -89,13 +86,9 @@ export default {
     settings: {
       x: { scale: 'm' },
       y: { scale: 's' },
-      shape: 'circle',
-      //   size: () => Math.random(),
+      shape: 'rect',
       size: 0.2,
-      //   size: { scale: 's' },
-      strokeWidth: 2,
-      stroke: '#fff',
-      opacity: 0.8,
+      opacity: 0,
       fill: { scale: 'col' },
     },
     brush: {

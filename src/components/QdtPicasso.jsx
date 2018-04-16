@@ -6,7 +6,8 @@ import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
 import tooltip from '../picasso/components/tooltip';
-import domLabel from '../picasso/components/domLabel';
+import domPointLabel from '../picasso/components/domPointLabel';
+import domPointImage from '../picasso/components/domPointImage';
 import preconfiguredSettings from '../picasso/settings';
 import '../styles/index.scss';
 
@@ -24,7 +25,8 @@ import '../styles/index.scss';
 // then worry about improved scrolling after commit.
 
 picasso.component('tooltip', tooltip);
-picasso.component('domLabel', domLabel);
+picasso.component('domPointLabel', domPointLabel);
+picasso.component('domPointImage', domPointImage);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
@@ -37,10 +39,12 @@ class QdtPicassoComponent extends React.Component {
     endSelections: PropTypes.func.isRequired,
     selections: PropTypes.bool.isRequired,
     type: PropTypes.string,
+    options: PropTypes.object,
     settings: PropTypes.object,
   }
   static defaultProps = {
     type: null,
+    options: {},
     settings: {},
   }
 
@@ -87,8 +91,16 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   createPic() {
     const {
-      qLayout, qData, settings, type,
+      qLayout, qData, settings, type, options,
     } = this.props;
+    const mySettings = type ? preconfiguredSettings[type] : settings;
+    if (type === 'scatterplotImage' && options.href) {
+      mySettings.components[4].settings.image = options.href;
+      mySettings.components[4].settings.width = (options.imageWidth) ? options.imageWidth : 10;
+      mySettings.components[4].settings.height = (options.imageHeight) ? options.imageHeight : 10;
+      if (options.color) mySettings.components[4].settings.color = options.color;
+      mySettings.components[5].settings.size = (options.imageWidth) ? options.imageWidth / 50 : 0.2; // Need this for tooltip to work
+    }
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
       element: this.element,
@@ -97,7 +109,7 @@ class QdtPicassoComponent extends React.Component {
         key: 'qHyperCube',
         data: data.qHyperCube,
       }],
-      settings: type ? preconfiguredSettings[type] : settings,
+      settings: mySettings,
     });
 
     this.pic.brush('select').on('start', () => { this.props.beginSelections(); });
