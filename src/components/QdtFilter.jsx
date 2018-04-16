@@ -32,13 +32,13 @@ DropdownItemList.propTypes = {
 const StateCountsBar = ({ qStateCounts }) => {
   const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
   const fillWidth = `${((qStateCounts.qOption + qStateCounts.qSelected) * 100) / totalStateCounts}%`;
-  const barStyle = { position: 'relative', height: '0.25rem' };
+  const barStyle = { position: 'relative', height: '0.25rem', backgroundColor: '#ddd' };
   const fillStyle = {
-    position: 'absolute', width: fillWidth, height: '100%', transition: 'width .6s ease',
+    position: 'absolute', width: fillWidth, height: '100%', backgroundColor: '#52CC52', transition: 'width .6s ease',
   };
   return (
-    <div className="bg-qalternative" style={barStyle}>
-      <div className="bg-qselected" style={fillStyle} />
+    <div style={barStyle}>
+      <div style={fillStyle} />
     </div>
   );
 };
