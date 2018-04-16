@@ -42,7 +42,7 @@ export default {
             'font-family': 'Arial',
           },
         },
-        `${target.data.label}: ${target.data.value}`,
+        `${target.data.qDimension.label}: ${target.data.qMeasure.value}`,
       )
     );
   },
