@@ -69,16 +69,15 @@ class QdtFilterComponent extends React.Component {
 
   @autobind
   toggle() {
-    this.props.offset(0);
-
-    if (!this.state.dropdownOpen) {
-      this.props.beginSelections();
-    }
-    if (this.state.dropdownOpen) {
-      this.props.endSelections(true);
-    }
-
-    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
+      if (this.state.dropdownOpen) {
+        this.props.beginSelections();
+      }
+      if (!this.state.dropdownOpen) {
+        this.props.endSelections(true);
+        this.clear();
+      }
+    });
   }
 
   @autobind
@@ -89,6 +88,7 @@ class QdtFilterComponent extends React.Component {
   @autobind
   clear() {
     this.setState({ searchListInputValue: '' });
+    this.props.searchListObjectFor('');
   }
 
   @autobind
@@ -106,26 +106,23 @@ class QdtFilterComponent extends React.Component {
   }
 
   render() {
-    const {
-      select, toggle, searchListObjectFor, acceptListObjectSearch,
-    } = this;
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     return (
-      <LuiDropdown isOpen={dropdownOpen} toggle={toggle}>
+      <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
         Dropdown
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
             value={searchListInputValue}
             clear={this.clear}
-            onChange={searchListObjectFor}
-            onKeyPress={acceptListObjectSearch}
+            onChange={this.searchListObjectFor}
+            onKeyPress={this.acceptListObjectSearch}
           />
           <QdtVirtualScroll
             qData={qData}
             qcy={qLayout.qListObject.qSize.qcy}
             Component={DropdownItemList}
-            componentProps={{ select }}
+            componentProps={{ select: this.select }}
             offset={offset}
             rowHeight={37}
             viewportHeight={190}
@@ -151,7 +148,7 @@ QdtFilter.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 1,
-    qHeight: 100,
+    qHeight: 10,
   },
 };
 

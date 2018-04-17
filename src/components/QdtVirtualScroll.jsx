@@ -52,7 +52,6 @@ export default class QdtVirtualScroll extends React.Component {
   }
 
   render() {
-    const { handleScroll } = this;
     const {
       qData, qcy, viewportHeight, rowHeight, Component, componentProps,
     } = this.props;
@@ -65,7 +64,7 @@ export default class QdtVirtualScroll extends React.Component {
           height: `${viewportHeight}px`,
           overflowY: 'auto',
         }}
-        onScroll={handleScroll}
+        onScroll={this.handleScroll}
       >
         <div
           style={{

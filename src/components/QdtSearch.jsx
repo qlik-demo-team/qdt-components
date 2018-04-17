@@ -52,17 +52,19 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    toggle() {
-      this.props.offset(0);
-
-      if (!this.state.dropdownOpen) {
-        this.props.beginSelections();
+    toggle(event) {
+      const outsideClick = !this.node.contains(event.target);
+      if (outsideClick || !this.state.dropdownOpen) {
+        this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
+          if (this.state.dropdownOpen) {
+            this.props.beginSelections();
+          }
+          if (!this.state.dropdownOpen) {
+            this.props.endSelections(true);
+            this.clear();
+          }
+        });
       }
-      if (this.state.dropdownOpen) {
-        this.props.endSelections(true);
-      }
-
-      this.setState({ dropdownOpen: !this.state.dropdownOpen });
     }
 
     @autobind
@@ -73,18 +75,17 @@ class QdtSearchComponent extends React.Component {
     @autobind
     clear() {
       this.setState({ value: '' });
+      this.props.searchListObjectFor('');
     }
 
     @autobind
-    handleChange(event) {
+    searchListObjectFor(event) {
       this.setState({ value: event.target.value });
-      if (event.target.value && event.target.value !== '') {
-        this.props.searchListObjectFor(event.target.value);
-      }
+      this.props.searchListObjectFor(event.target.value);
     }
 
     @autobind
-    handleKeyPress(event) {
+    acceptListObjectSearch(event) {
       if (event.charCode === 13) {
         this.setState({ value: '' });
         this.props.acceptListObjectSearch();
@@ -97,45 +98,44 @@ class QdtSearchComponent extends React.Component {
       } = this.props;
       const { dropdownOpen, value } = this.state;
       return (
-        <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
-          <LuiSearch
-            value={value}
-            clear={this.clear}
-            inverse={!!(options && options.inverse)}
-            placeholder={(options && options.placeholder) ? options.placeholder : null}
-            onChange={this.handleChange}
-            onKeyPress={this.handleKeyPress}
-          />
-          <LuiList style={{ width: '15rem' }}>
-            <QdtVirtualScroll
-              qData={qData}
-              qcy={qLayout.qListObject.qSize.qcy}
-              Component={DropdownItemList}
-              componentProps={{ select: this.select }}
-              offset={offset}
-              rowHeight={37}
-              viewportHeight={190}
+        <div ref={node => this.node = node}>
+          <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
+            <LuiSearch
+              value={value}
+              clear={this.clear}
+              inverse={!!(options && options.inverse)}
+              placeholder={(options && options.placeholder) ? options.placeholder : null}
+              onChange={this.searchListObjectFor}
+              onKeyPress={this.acceptListObjectSearch}
             />
-          </LuiList>
-        </LuiDropdown>
+            <LuiList style={{ width: '15rem' }}>
+              <QdtVirtualScroll
+                qData={qData}
+                qcy={qLayout.qListObject.qSize.qcy}
+                Component={DropdownItemList}
+                componentProps={{ select: this.select }}
+                offset={offset}
+                rowHeight={37}
+                viewportHeight={190}
+              />
+            </LuiList>
+          </LuiDropdown>
+        </div>
       );
     }
 }
 
 const QdtSearch = withListObject(QdtSearchComponent);
 QdtSearch.propTypes = {
-  qData: PropTypes.object.isRequired,
-  beginSelections: PropTypes.func.isRequired,
-  endSelections: PropTypes.func.isRequired,
-  select: PropTypes.func.isRequired,
-  searchListObjectFor: PropTypes.func.isRequired,
-  acceptListObjectSearch: PropTypes.func.isRequired,
+  qDocPromise: PropTypes.object.isRequired,
   cols: PropTypes.array,
+  qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
   options: PropTypes.object,
 };
 QdtSearch.defaultProps = {
   cols: null,
+  qListObjectDef: null,
   options: null,
   qPage: {
     qTop: 0,
