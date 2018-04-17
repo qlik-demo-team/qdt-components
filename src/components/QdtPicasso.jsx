@@ -11,19 +11,6 @@ import domPointImage from '../picasso/components/domPointImage';
 import preconfiguredSettings from '../picasso/settings';
 import '../styles/index.scss';
 
-
-// check into fixing size of bars in barchart
-
-// tooltip
-
-// parameterize settings and sizing.
-
-// fix styles.
-
-// add brush selections? kinda neat.
-
-// then worry about improved scrolling after commit.
-
 picasso.component('tooltip', tooltip);
 picasso.component('domPointLabel', domPointLabel);
 picasso.component('domPointImage', domPointImage);
@@ -38,13 +25,15 @@ class QdtPicassoComponent extends React.Component {
     beginSelections: PropTypes.func.isRequired,
     endSelections: PropTypes.func.isRequired,
     selections: PropTypes.bool.isRequired,
+    outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     type: PropTypes.string,
-    options: PropTypes.object,
     settings: PropTypes.object,
   }
   static defaultProps = {
     type: null,
-    options: {},
     settings: {},
   }
 
@@ -92,16 +81,9 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   createPic() {
     const {
-      qLayout, qData, settings, type, options,
+      qLayout, qData, settings, type,
     } = this.props;
     const mySettings = type ? preconfiguredSettings[type] : settings;
-    if (type === 'scatterplotImage' && options.href) {
-      mySettings.components[4].settings.image = options.href;
-      mySettings.components[4].settings.width = (options.imageWidth) ? options.imageWidth : 10;
-      mySettings.components[4].settings.height = (options.imageHeight) ? options.imageHeight : 10;
-      if (options.color) mySettings.components[4].settings.color = options.color;
-      mySettings.components[5].settings.size = (options.imageWidth) ? options.imageWidth / 50 : 0.2; // Need this for tooltip to work
-    }
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
       element: this.element,
@@ -113,7 +95,7 @@ class QdtPicassoComponent extends React.Component {
       settings: mySettings,
     });
 
-    this.pic.brush('select').on('start', () => { this.props.beginSelections(); });
+    this.pic.brush('select').on('start', () => { this.props.beginSelections(); this.props.select(0, [], false); });
     this.pic.brush('select').on('update', (added, removed) => {
       if (!this.props.selections) return;
       const selections = [...added, ...removed].map(v => v.values[0]);
@@ -152,7 +134,17 @@ class QdtPicassoComponent extends React.Component {
   }
 
   render() {
-    const { selections } = this.props;
+    const {
+      selections, type, qData, outerWidth, outerHeight, innerWidth, innerHeight,
+    } = this.props;
+    let maxWidth = '100%';
+    let maxHeight = '100%';
+    if (type === 'horizontalBarchart') {
+      maxHeight = qData.qMatrix.length * 50;
+    }
+    if (type === 'verticalBarchart') {
+      maxWidth = qData.qMatrix.length * 50;
+    }
     return (
       <div ref={node => this.root = node} style={{ position: 'relative' }}>
         {selections &&
@@ -165,7 +157,20 @@ class QdtPicassoComponent extends React.Component {
             </button>
           </div>
         }
-        <div ref={node => this.element = node} style={{ position: 'relative', width: '100%', height: '500px' }} />
+        <div style={{
+          position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto',
+        }}
+        >
+          <div
+            ref={node => this.element = node}
+            style={{
+              width: innerWidth,
+              height: innerHeight,
+              maxWidth,
+              maxHeight,
+            }}
+          />
+        </div>
       </div>
     );
   }
@@ -179,6 +184,10 @@ QdtPicasso.propTypes = {
   qPage: PropTypes.object,
   type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart']),
   settings: PropTypes.object,
+  outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 QdtPicasso.defaultProps = {
   cols: null,
@@ -187,10 +196,14 @@ QdtPicasso.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 10,
-    qHeight: 100,
+    qHeight: 1000,
   },
   type: null,
   settings: {},
+  outerWidth: '100%',
+  outerHeight: '100%',
+  innerWidth: '100%',
+  innerHeight: '100%',
 };
 
 export default QdtPicasso;

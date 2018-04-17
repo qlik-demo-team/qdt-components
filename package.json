@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "1.1.25",
+  "version": "1.1.28",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "author": "The Demo Team",
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "autobind-decorator": "^2.1.0",
-    "bootstrap": "^4.0.0-beta",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
     "hammerjs": "^2.0.8",
@@ -29,10 +28,9 @@
     "picasso-plugin-q": "^0.7.0",
     "picasso.js": "^0.7.0",
     "prop-types": "^15.6.0",
-    "qdt-lui": "0.0.16",
+    "qdt-lui": "0.0.18",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "reactstrap": "^5.0.0-alpha.3",
     "ws": "^5.1.0"
   },
   "devDependencies": {

@@ -32,13 +32,13 @@ DropdownItemList.propTypes = {
 const StateCountsBar = ({ qStateCounts }) => {
   const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
   const fillWidth = `${((qStateCounts.qOption + qStateCounts.qSelected) * 100) / totalStateCounts}%`;
-  const barStyle = { position: 'relative', height: '0.25rem' };
+  const barStyle = { position: 'relative', height: '0.25rem', backgroundColor: '#ddd' };
   const fillStyle = {
-    position: 'absolute', width: fillWidth, height: '100%', transition: 'width .6s ease',
+    position: 'absolute', width: fillWidth, height: '100%', backgroundColor: '#52CC52', transition: 'width .6s ease',
   };
   return (
-    <div className="bg-qalternative" style={barStyle}>
-      <div className="bg-qselected" style={fillStyle} />
+    <div style={barStyle}>
+      <div style={fillStyle} />
     </div>
   );
 };
@@ -69,16 +69,15 @@ class QdtFilterComponent extends React.Component {
 
   @autobind
   toggle() {
-    this.props.offset(0);
-
-    if (!this.state.dropdownOpen) {
-      this.props.beginSelections();
-    }
-    if (this.state.dropdownOpen) {
-      this.props.endSelections(true);
-    }
-
-    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
+      if (this.state.dropdownOpen) {
+        this.props.beginSelections();
+      }
+      if (!this.state.dropdownOpen) {
+        this.props.endSelections(true);
+        this.clear();
+      }
+    });
   }
 
   @autobind
@@ -89,11 +88,13 @@ class QdtFilterComponent extends React.Component {
   @autobind
   clear() {
     this.setState({ searchListInputValue: '' });
+    this.props.searchListObjectFor('');
   }
 
   @autobind
   searchListObjectFor(event) {
     this.setState({ searchListInputValue: event.target.value });
+    this.props.offset(0);
     this.props.searchListObjectFor(event.target.value);
   }
 
@@ -106,26 +107,23 @@ class QdtFilterComponent extends React.Component {
   }
 
   render() {
-    const {
-      select, toggle, searchListObjectFor, acceptListObjectSearch,
-    } = this;
     const { qData, qLayout, offset } = this.props;
     const { dropdownOpen, searchListInputValue } = this.state;
     return (
-      <LuiDropdown isOpen={dropdownOpen} toggle={toggle}>
+      <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
         Dropdown
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
             value={searchListInputValue}
             clear={this.clear}
-            onChange={searchListObjectFor}
-            onKeyPress={acceptListObjectSearch}
+            onChange={this.searchListObjectFor}
+            onKeyPress={this.acceptListObjectSearch}
           />
           <QdtVirtualScroll
             qData={qData}
             qcy={qLayout.qListObject.qSize.qcy}
             Component={DropdownItemList}
-            componentProps={{ select }}
+            componentProps={{ select: this.select }}
             offset={offset}
             rowHeight={37}
             viewportHeight={190}
