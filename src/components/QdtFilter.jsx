@@ -94,6 +94,7 @@ class QdtFilterComponent extends React.Component {
   @autobind
   searchListObjectFor(event) {
     this.setState({ searchListInputValue: event.target.value });
+    this.props.offset(0);
     this.props.searchListObjectFor(event.target.value);
   }
 
@@ -148,7 +149,7 @@ QdtFilter.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 1,
-    qHeight: 10,
+    qHeight: 100,
   },
 };
 

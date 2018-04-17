@@ -29,6 +29,12 @@ export default class QdtVirtualScroll extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.qcy !== nextProps.qcy) {
+      this.node.scrollTop = 0;
+    }
+  }
+
   @autobind
   handleScroll(event) {
     const { scrollTop } = event.target;
@@ -59,6 +65,7 @@ export default class QdtVirtualScroll extends React.Component {
     const qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
     return (
       <div
+        ref={node => this.node = node}
         style={{
           position: 'relative',
           height: `${viewportHeight}px`,
