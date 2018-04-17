@@ -71,6 +71,7 @@ class QdtPicassoComponent extends React.Component {
     this.pic.brush('select').end();
     this.props.endSelections(false);
   }
+
   @autobind
   confirmSelections() {
     this.pic.brush('select').end();

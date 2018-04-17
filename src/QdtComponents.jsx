@@ -28,6 +28,7 @@ const QdtComponents = class {
     myConfig.identity = utility.uid(16);
     this.qAppPromise = (connections.vizApi) ? qApp(myConfig) : null;
     this.qDocPromise = (connections.engineApi) ? qDoc(myConfig) : null;
+    this.settings = settings;
   }
 
   render = async (type, props, element) => new Promise((resolve, reject) => {
