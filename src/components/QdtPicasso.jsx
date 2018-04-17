@@ -179,7 +179,7 @@ QdtPicasso.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 10,
-    qHeight: 100,
+    qHeight: 1000,
   },
   type: null,
   settings: {},

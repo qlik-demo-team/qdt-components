@@ -79,25 +79,34 @@ export default function withHyperCube(Component) {
         qProp.qHyperCubeDef = qHyperCubeDef;
         return qProp;
       }
-      const qDimensions = cols.filter(col =>
-        (typeof col === 'string' && !col.startsWith('=')) ||
+      const qInterColumnSortOrder = [];
+      let sortIndex = 0;
+      const qDimensions = cols.filter((col, i) => {
+        const isDimension = (typeof col === 'string' && !col.startsWith('=')) ||
           (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
-          (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension')).map((col) => {
+          (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension');
+        if (isDimension) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        return isDimension;
+      }).map((col) => {
         if (typeof col === 'string') {
           return { qDef: { qFieldDefs: [col] } };
         }
         return col;
       });
-      const qMeasures = cols.filter(col =>
-        (typeof col === 'string' && col.startsWith('=')) ||
-          (typeof col === 'object' && col.qDef && col.qDef.qDef) ||
-          (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure')).map((col) => {
+      const qMeasures = cols.filter((col, i) => {
+        const isMeasure = (typeof col === 'string' && col.startsWith('=')) ||
+            (typeof col === 'object' && col.qDef && col.qDef.qDef) ||
+            (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure');
+        if (isMeasure) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        return isMeasure;
+      }).map((col) => {
         if (typeof col === 'string') {
           return { qDef: { qDef: col } };
         }
         return col;
       });
-      qProp.qHyperCubeDef = { qDimensions, qMeasures };
+
+      qProp.qHyperCubeDef = { qDimensions, qMeasures, qInterColumnSortOrder };
       return qProp;
     }
 
