@@ -21,6 +21,7 @@ export default {
     dock: 'left',
   }, {
     type: 'legend-cat',
+    key: 'legend',
     dock: 'right',
     scale: 'col',
     brush: {
@@ -90,7 +91,6 @@ export default {
       x: { scale: 'm' },
       y: { scale: 's' },
       shape: 'circle',
-      //   size: () => Math.random(),
       size: 0.2,
       //   size: { scale: 's' },
       strokeWidth: 2,
@@ -122,6 +122,15 @@ export default {
       events: {
         mousemove(e) {
           this.chart.component('tooltip').emit('hover', e);
+        },
+        wheel: function w(e) {
+          if (e) {
+            const components = this.chart.componentsFromPoint(e);
+            components.forEach((comp) => {
+              comp.emit('scroll', e.deltaY);
+            });
+            e.preventDefault();
+          }
         },
       },
     },

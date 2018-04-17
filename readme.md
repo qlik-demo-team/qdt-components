@@ -175,6 +175,17 @@ This creates a barchart based on [Picasso.js](https://picassojs.com/).
 | width            | String        | Sets width of viz, default 100% |
 | height           | String        | Sets height of viz, default 100% |
 
+#### QdtPicasso - lineChart
+This creates a Line Chart based on [Picasso.js](https://picassojs.com/).
+* [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/picasso-line-chart).
+
+| prop             | type          | description   |
+| ---------------- | ------------- | ------------- |
+| type             | String        | `lineChart` |
+| cols             | Array         | `[dimension, measure]` |
+| options          | Object        | `color` |
+
+
 ### Changelog ###
 
 ##### 1.1.9 #####

@@ -82,6 +82,7 @@ class QdtPicassoComponent extends React.Component {
     this.pic.brush('select').end();
     this.props.endSelections(false);
   }
+
   @autobind
   confirmSelections() {
     this.pic.brush('select').end();
@@ -118,6 +119,22 @@ class QdtPicassoComponent extends React.Component {
       const selections = [...added, ...removed].map(v => v.values[0]);
       this.props.select(0, selections);
     });
+    // this.pic.brush('next').on('start', (e) => { console.log(1); });
+    // this.pic.brush('next').on('update', (e) => { console.log(2); });
+    // Add events to the legend navigation arrows
+    // if (this.pic.component('legend')) {
+    //   console.log(1);
+    //   this.pic.component('legend').emit('next');
+    //   this.pic.component('legend').emit('prev');
+    //   this.pic.component('legend').emit('scroll', 20);
+    // }
+    // const items = document.querySelectorAll('button[data-component-key]');
+    // for (let index = 0; index < items.length; index += 1) {
+    //   items[index].addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     this.pic.component(e.target.getAttribute('data-component-key')).emit(e.target.getAttribute('data-action'));
+    //   });
+    // }
   }
 
   @autobind
