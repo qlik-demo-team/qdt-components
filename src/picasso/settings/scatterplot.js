@@ -51,7 +51,7 @@ export default {
     type: 'tooltip',
     background: 'white',
   }, {
-    key: 'p',
+    key: 'domPointLabel',
     type: 'domPointLabel',
     displayOrder: 1,
     data: {
@@ -72,7 +72,7 @@ export default {
       height: 20,
     },
   }, {
-    key: 'p',
+    key: 'point',
     type: 'point',
     data: {
       extract: {
