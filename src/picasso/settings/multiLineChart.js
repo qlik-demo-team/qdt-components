@@ -1,11 +1,14 @@
 export default {
   scales: {
-    y: {
+    y0: {
       data: { field: 'qMeasureInfo/0' },
       expand: 0.1,
-      min: 0,
       invert: true,
-      include: [0],
+    },
+    y1: {
+      data: { field: 'qMeasureInfo/1' },
+      expand: 0.1,
+      invert: true,
     },
     x: {
       data: { extract: { field: 'qDimensionInfo/0' } },
@@ -14,11 +17,11 @@ export default {
   },
   components: [{
     type: 'grid-line',
-    y: 'y',
+    y: 'y0',
   }, {
     type: 'axis',
     dock: 'left',
-    scale: 'y',
+    scale: 'y0',
   }, {
     type: 'axis',
     dock: 'bottom',
@@ -41,7 +44,7 @@ export default {
     settings: {
       coordinates: {
         major: { scale: 'x' },
-        minor: { scale: 'y', ref: 'v' },
+        minor: { scale: 'y0', ref: 'v' },
       },
       orientation: 'horizontal',
       layers: {
@@ -70,7 +73,7 @@ export default {
     },
     settings: {
       x: { scale: 'x' },
-      y: { scale: 'y' },
+      y: { scale: 'y0' },
       shape: 'circle',
       size: 0.2,
     },
@@ -105,7 +108,7 @@ export default {
     settings: {
       coordinates: {
         major: { scale: 'x' },
-        minor: { scale: 'y', ref: 'v' },
+        minor: { scale: 'y1', ref: 'v' },
       },
       orientation: 'horizontal',
       layers: {
@@ -134,7 +137,7 @@ export default {
     },
     settings: {
       x: { scale: 'x' },
-      y: { scale: 'y' },
+      y: { scale: 'y1' },
       shape: 'circle',
       size: 0.2,
       fill: '#CC6677',
