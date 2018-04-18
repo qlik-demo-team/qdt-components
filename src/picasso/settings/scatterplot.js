@@ -67,6 +67,7 @@ export default {
       x: { scale: 'm' },
       y: { scale: 's' },
       fontSize: '10px',
+      color: '#000000',
       offset: 10,
       width: 100,
       height: 20,
