@@ -142,10 +142,10 @@ export default function withListObject(Component) {
     }
 
     @autobind
-    async select(qElemNumber) {
+    async select(qElemNumber, toggle = true) {
       try {
         const { qObject } = this.state;
-        await qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
+        await qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle);
       } catch (error) {
         this.setState({ error });
       }
