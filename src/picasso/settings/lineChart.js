@@ -16,10 +16,12 @@ export default {
     type: 'grid-line',
     x: 'x',
   }, {
+    key: 'y-axis',
     type: 'axis',
     dock: 'left',
     scale: 'y',
   }, {
+    key: 'x-axis',
     type: 'axis',
     dock: 'bottom',
     scale: 'x',

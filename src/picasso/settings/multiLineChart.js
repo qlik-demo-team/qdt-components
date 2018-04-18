@@ -19,13 +19,30 @@ export default {
     type: 'grid-line',
     y: 'y0',
   }, {
+    key: 'y-axis',
     type: 'axis',
     dock: 'left',
     scale: 'y0',
   }, {
+    key: 'x-axis',
     type: 'axis',
     dock: 'bottom',
     scale: 'x',
+    settings: {
+      labels: {
+        show: true,
+        mode: 'auto',
+      },
+      ticks: {
+        show: true, // Toggle ticks on/off // Optional
+        margin: 0, // Space in pixels between the ticks and the line. // Optional
+        tickSize: 4, // Size of the ticks in pixels. // Optional
+      },
+      line: {
+        show: true, // Toggle line on/off // Optional
+      },
+      align: 'left',
+    },
   }, {
     key: 'tooltip',
     type: 'tooltip',
