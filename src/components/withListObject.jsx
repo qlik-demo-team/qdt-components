@@ -122,20 +122,20 @@ export default function withListObject(Component) {
     }
 
     @autobind
-    beginSelections() {
+    async beginSelections() {
       try {
         const { qObject } = this.state;
-        qObject.beginSelections(['/qListObjectDef']);
+        await qObject.beginSelections(['/qListObjectDef']);
       } catch (error) {
         this.setState({ error });
       }
     }
 
     @autobind
-    endSelections(qAccept) {
+    async endSelections(qAccept) {
       try {
         const { qObject } = this.state;
-        qObject.endSelections(qAccept);
+        await qObject.endSelections(qAccept);
       } catch (error) {
         this.setState({ error });
       }
@@ -145,7 +145,7 @@ export default function withListObject(Component) {
     async select(qElemNumber) {
       try {
         const { qObject } = this.state;
-        qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
+        await qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], true);
       } catch (error) {
         this.setState({ error });
       }
@@ -155,7 +155,7 @@ export default function withListObject(Component) {
     async searchListObjectFor(string) {
       try {
         const { qObject } = this.state;
-        qObject.searchListObjectFor('/qListObjectDef', string);
+        await qObject.searchListObjectFor('/qListObjectDef', string);
       } catch (error) {
         this.setState({ error });
       }
@@ -165,7 +165,7 @@ export default function withListObject(Component) {
     async acceptListObjectSearch() {
       try {
         const { qObject } = this.state;
-        qObject.acceptListObjectSearch('/qListObjectDef', true);
+        await qObject.acceptListObjectSearch('/qListObjectDef', true);
       } catch (error) {
         this.setState({ error });
       }
@@ -175,7 +175,7 @@ export default function withListObject(Component) {
     async applyPatches(patches) {
       try {
         const { qObject } = this.state;
-        qObject.applyPatches(patches);
+        await qObject.applyPatches(patches);
       } catch (error) {
         this.setState({ error });
       }

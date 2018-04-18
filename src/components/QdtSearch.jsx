@@ -40,10 +40,12 @@ class QdtSearchComponent extends React.Component {
       searchListObjectFor: PropTypes.func.isRequired,
       acceptListObjectSearch: PropTypes.func.isRequired,
       options: PropTypes.object,
+      afterSelect: PropTypes.func,
     }
 
     static defaultProps = {
       options: {},
+      afterSelect: null,
     };
 
     state = {
@@ -68,8 +70,9 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    select(event) {
-      this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+    async select(event) {
+      await this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+      if (this.props.afterSelect) { this.props.afterSelect(); }
     }
 
     @autobind
@@ -133,11 +136,13 @@ QdtSearch.propTypes = {
   qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
   options: PropTypes.object,
+  afterSelect: PropTypes.func,
 };
 QdtSearch.defaultProps = {
   cols: null,
   qListObjectDef: null,
   options: null,
+  afterSelect: null,
   qPage: {
     qTop: 0,
     qLeft: 0,

@@ -122,17 +122,17 @@ export default function withHyperCube(Component) {
     }
 
     @autobind
-    beginSelections() {
+    async beginSelections() {
       const { qObject } = this.state;
       qObject.beginSelections(['/qHyperCubeDef']);
-      this.setState({ selections: true });
+      await this.setState({ selections: true });
     }
 
     @autobind
-    endSelections(qAccept) {
+    async endSelections(qAccept) {
       const { qObject } = this.state;
       qObject.endSelections(qAccept);
-      this.setState({ selections: false });
+      await this.setState({ selections: false });
     }
 
     @autobind
@@ -144,7 +144,7 @@ export default function withHyperCube(Component) {
     @autobind
     async applyPatches(patches) {
       const { qObject } = this.state;
-      qObject.applyPatches(patches);
+      await qObject.applyPatches(patches);
     }
 
     render() {
