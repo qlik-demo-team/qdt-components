@@ -51,7 +51,7 @@ export default {
     type: 'tooltip',
     background: 'white',
   }, {
-    key: 'p',
+    key: 'domPointLabel',
     type: 'domPointLabel',
     displayOrder: 1,
     data: {
@@ -67,12 +67,13 @@ export default {
       x: { scale: 'm' },
       y: { scale: 's' },
       fontSize: '10px',
+      color: '#000000',
       offset: 10,
       width: 100,
       height: 20,
     },
   }, {
-    key: 'p',
+    key: 'point',
     type: 'point',
     data: {
       extract: {

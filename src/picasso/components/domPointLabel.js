@@ -13,8 +13,10 @@ export default {
         position: 'absolute',
         left: `${(this.size.width * row.x) - (data.settings.width / 2)}px`,
         top: `${(this.size.height * row.y) - (data.settings.height / 2) - data.settings.offset}px`,
-        'font-size': '10px',
-        color: 'black',
+        'font-size': (data.settings.fontSize) ? data.settings.fontSize : '10px',
+        color: (data.settings.color) ? data.settings.color : '#000000',
+        width: `${data.settings.width}px`,
+        'text-align': 'center',
       };
       const res = this.h('div', {
         attrs: {
