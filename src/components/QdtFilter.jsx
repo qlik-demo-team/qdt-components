@@ -14,8 +14,9 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
           className={`${row[0].qState}`}
           key={row[0].qElemNumber}
           data-q-elem-number={row[0].qElemNumber}
+          data-q-state={row[0].qState}
           onClick={select}
-          style={{ height: `${rowHeight}px` }}
+          style={{ height: `${rowHeight - 1}px` }}
         >
           {row[0].qText}
         </LuiListItem>
@@ -56,6 +57,10 @@ class QdtFilterComponent extends React.Component {
     endSelections: PropTypes.func.isRequired,
     searchListObjectFor: PropTypes.func.isRequired,
     acceptListObjectSearch: PropTypes.func.isRequired,
+    single: PropTypes.bool,
+  }
+  static defaultProps = {
+    single: false,
   }
 
   constructor(props) {
@@ -82,7 +87,8 @@ class QdtFilterComponent extends React.Component {
 
   @autobind
   select(event) {
-    this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+    const { qElemNumber, qState } = event.currentTarget.dataset;
+    if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
   }
 
   @autobind
@@ -125,7 +131,7 @@ class QdtFilterComponent extends React.Component {
             Component={DropdownItemList}
             componentProps={{ select: this.select }}
             offset={offset}
-            rowHeight={37}
+            rowHeight={38}
             viewportHeight={190}
           />
         </LuiList>
@@ -141,6 +147,7 @@ QdtFilter.propTypes = {
   cols: PropTypes.array,
   qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
+  single: PropTypes.bool,
 };
 QdtFilter.defaultProps = {
   cols: null,
@@ -151,6 +158,7 @@ QdtFilter.defaultProps = {
     qWidth: 1,
     qHeight: 100,
   },
+  single: false,
 };
 
 export default QdtFilter;

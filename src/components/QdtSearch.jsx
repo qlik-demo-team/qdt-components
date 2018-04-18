@@ -14,8 +14,9 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
           className={`${row[0].qState}`}
           key={row[0].qElemNumber}
           data-q-elem-number={row[0].qElemNumber}
+          data-q-state={row[0].qState}
           onClick={select}
-          style={{ height: `${rowHeight}px` }}
+          style={{ height: `${rowHeight - 1}px` }}
         >
           {row[0].qText}
         </LuiListItem>
@@ -40,10 +41,14 @@ class QdtSearchComponent extends React.Component {
       searchListObjectFor: PropTypes.func.isRequired,
       acceptListObjectSearch: PropTypes.func.isRequired,
       options: PropTypes.object,
+      single: PropTypes.bool,
+      afterSelect: PropTypes.func,
     }
 
     static defaultProps = {
       options: {},
+      single: false,
+      afterSelect: null,
     };
 
     state = {
@@ -68,8 +73,10 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    select(event) {
-      this.props.select(Number(event.currentTarget.dataset.qElemNumber));
+    async select(event) {
+      const { qElemNumber, qState } = event.currentTarget.dataset;
+      if (qState === 'S') { await this.props.select(Number(qElemNumber)); } else { await this.props.select(Number(qElemNumber), !this.props.single); }
+      if (this.props.afterSelect) { this.props.afterSelect(); }
     }
 
     @autobind
@@ -116,7 +123,7 @@ class QdtSearchComponent extends React.Component {
                 Component={DropdownItemList}
                 componentProps={{ select: this.select }}
                 offset={offset}
-                rowHeight={37}
+                rowHeight={38}
                 viewportHeight={190}
               />
             </LuiList>
@@ -133,11 +140,15 @@ QdtSearch.propTypes = {
   qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
   options: PropTypes.object,
+  single: PropTypes.bool,
+  afterSelect: PropTypes.func,
 };
 QdtSearch.defaultProps = {
   cols: null,
   qListObjectDef: null,
   options: null,
+  single: false,
+  afterSelect: null,
   qPage: {
     qTop: 0,
     qLeft: 0,

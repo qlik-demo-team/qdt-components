@@ -31,10 +31,12 @@ class QdtPicassoComponent extends React.Component {
     innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     type: PropTypes.string,
     settings: PropTypes.object,
+    afterConfirmSelections: PropTypes.func,
   }
   static defaultProps = {
     type: null,
     settings: {},
+    afterConfirmSelections: null,
   }
 
   componentDidMount() {
@@ -56,8 +58,7 @@ class QdtPicassoComponent extends React.Component {
   handleOutsideClick(event) {
     const outsideClick = !this.root.contains(event.target);
     if (outsideClick) {
-      this.pic.brush('select').end();
-      this.props.endSelections(true);
+      this.confirmSelections();
     }
   }
 
@@ -76,6 +77,7 @@ class QdtPicassoComponent extends React.Component {
   confirmSelections() {
     this.pic.brush('select').end();
     this.props.endSelections(true);
+    if (this.props.afterConfirmSelections) { this.props.afterConfirmSelections(); }
   }
 
   @autobind
@@ -172,6 +174,7 @@ QdtPicasso.propTypes = {
   outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  afterConfirmSelections: PropTypes.func,
 };
 QdtPicasso.defaultProps = {
   cols: null,
@@ -188,6 +191,7 @@ QdtPicasso.defaultProps = {
   outerHeight: '100%',
   innerWidth: '100%',
   innerHeight: '100%',
+  afterConfirmSelections: null,
 };
 
 export default QdtPicasso;
