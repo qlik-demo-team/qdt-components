@@ -183,15 +183,13 @@ export default function withListObject(Component) {
     }
 
     render() {
-      const { width, height } = this.props;
       const {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
         // return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
-        const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
-        return <Preloader width={width} height={height} paddingTop={paddingTop} />;
+        return <Preloader width="100%" height="100%" paddingTop="0" />;
       }
       return (<Component
         {...this.props}
