@@ -1,6 +1,7 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
+import Preloader from '../utilities/Preloader';
 
 export default function withListObject(Component) {
   return class extends React.Component {
@@ -182,13 +183,15 @@ export default function withListObject(Component) {
     }
 
     render() {
+      const { width, height } = this.props;
       const {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
         // return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
-        return <div>Loading...</div>;
+        const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
+        return <Preloader width={width} height={height} paddingTop={paddingTop} />;
       }
       return (<Component
         {...this.props}
