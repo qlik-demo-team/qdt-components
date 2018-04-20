@@ -58,7 +58,7 @@ class QdtSearchComponent extends React.Component {
 
     @autobind
     toggle(event) {
-      const outsideClick = !this.node.contains(event.target);
+      const outsideClick = (event) ? !this.node.contains(event.target) : true;
       if (outsideClick || !this.state.dropdownOpen) {
         this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
           if (this.state.dropdownOpen) {
@@ -75,7 +75,12 @@ class QdtSearchComponent extends React.Component {
     @autobind
     async select(event) {
       const { qElemNumber, qState } = event.currentTarget.dataset;
-      if (qState === 'S') { await this.props.select(Number(qElemNumber)); } else { await this.props.select(Number(qElemNumber), !this.props.single); }
+      if (qState === 'S') {
+        await this.props.select(Number(qElemNumber));
+      } else {
+        await this.props.select(Number(qElemNumber), !this.props.single);
+        if (this.props.single) this.toggle();
+      }
       if (this.props.afterSelect) { this.props.afterSelect(); }
     }
 
