@@ -22,7 +22,7 @@ export default {
       const target = shapes[shapes.length - 1];
       this.renderer.render(this.buildTooltip(target, pageX - window.scrollX, pageY - window.scrollY));
     },
-    leave(e) {
+    leave() {
       this.renderer.render([]);
     },
   },
