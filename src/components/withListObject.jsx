@@ -27,8 +27,11 @@ export default function withListObject(Component) {
       super(props);
       this.state = {
         qObject: null,
+        qObject2: null,
         qLayout: null,
+        qLayout2: null,
         qData: null,
+        qData2: null,
         updating: false,
         error: null,
       };
