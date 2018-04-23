@@ -28,7 +28,7 @@
     "picasso-plugin-q": "^0.7.0",
     "picasso.js": "^0.7.0",
     "prop-types": "^15.6.0",
-    "qdt-lui": "0.0.18",
+    "qdt-lui": "0.0.19",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "ws": "^5.1.0"
