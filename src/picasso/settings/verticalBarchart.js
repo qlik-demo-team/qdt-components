@@ -101,6 +101,9 @@ export default {
         mousemove(e) {
           this.chart.component('tooltip').emit('hover', e);
         },
+        mouseout(e) {
+          this.chart.component('tooltip').emit('leave', e);
+        },
       },
     },
   ],
