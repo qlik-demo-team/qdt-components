@@ -23,7 +23,8 @@ export default {
     },
     {
       type: 'box',
-      key: 'horizontalBarchart',
+      key: 'bars',
+      displayOrder: 1,
       data: {
         extract: {
           field: 'qDimensionInfo/0',
@@ -78,7 +79,7 @@ export default {
       displayOrder: 2,
       settings: {
         sources: [{
-          component: 'horizontalBarchart',
+          component: 'bars',
           selector: 'rect',
           strategy: {
             type: 'bar',
@@ -89,7 +90,8 @@ export default {
                   return data ? data.end.label : '';
                 },
                 placements: [
-                  { position: 'outside', fill: '#666' },
+                  { position: 'inside', justify: 1, fill: '#fff' },
+                  { position: 'outside', justify: 0, fill: '#666' },
                 ],
               }],
             },
@@ -125,6 +127,9 @@ export default {
       events: {
         mousemove(e) {
           this.chart.component('tooltip').emit('hover', e);
+        },
+        mouseout(e) {
+          this.chart.component('tooltip').emit('leave', e);
         },
       },
     },

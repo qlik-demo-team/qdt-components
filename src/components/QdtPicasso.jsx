@@ -47,6 +47,7 @@ class QdtPicassoComponent extends React.Component {
 
   componentDidUpdate() {
     this.updatePic();
+    this.updatePic();
   }
 
   componentWillUnmount() {
