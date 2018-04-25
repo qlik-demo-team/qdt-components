@@ -14,7 +14,7 @@ export default {
   },
   components: [{
     type: 'grid-line',
-    x: 'x',
+    y: 'y',
   }, {
     key: 'y-axis',
     type: 'axis',

@@ -40,15 +40,21 @@ class QdtSearchComponent extends React.Component {
       endSelections: PropTypes.func.isRequired,
       searchListObjectFor: PropTypes.func.isRequired,
       acceptListObjectSearch: PropTypes.func.isRequired,
-      options: PropTypes.object,
-      single: PropTypes.bool,
       afterSelect: PropTypes.func,
+      single: PropTypes.bool,
+      invert: PropTypes.bool,
+      placeholder: PropTypes.string,
+      tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+      tooltipContent: PropTypes.string,
     }
 
     static defaultProps = {
-      options: {},
-      single: false,
       afterSelect: null,
+      single: false,
+      invert: false,
+      placeholder: 'Search',
+      tooltipDock: 'top',
+      tooltipContent: null,
     };
 
     state = {
@@ -91,6 +97,11 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
+    tooltip() {
+      console.log('tooltip');
+    }
+
+    @autobind
     searchListObjectFor(event) {
       this.setState({ value: event.target.value });
       this.props.offset(0);
@@ -107,7 +118,7 @@ class QdtSearchComponent extends React.Component {
 
     render() {
       const {
-        qData, qLayout, offset, options,
+        qData, qLayout, offset, inverse, placeholder, tooltipDock, tooltipContent,
       } = this.props;
       const { dropdownOpen, value } = this.state;
       return (
@@ -116,8 +127,11 @@ class QdtSearchComponent extends React.Component {
             <LuiSearch
               value={value}
               clear={this.clear}
-              inverse={!!(options && options.inverse)}
-              placeholder={(options && options.placeholder) ? options.placeholder : null}
+              tooltip={this.tooltip}
+              inverse={!!(inverse)}
+              placeholder={placeholder}
+              tooltipDock={tooltipDock}
+              tooltipContent={tooltipContent}
               onChange={this.searchListObjectFor}
               onKeyPress={this.acceptListObjectSearch}
             />
@@ -144,16 +158,22 @@ QdtSearch.propTypes = {
   cols: PropTypes.array,
   qListObjectDef: PropTypes.object,
   qPage: PropTypes.object,
-  options: PropTypes.object,
-  single: PropTypes.bool,
   afterSelect: PropTypes.func,
+  single: PropTypes.bool,
+  invert: PropTypes.bool,
+  placeholder: PropTypes.string,
+  tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  tooltipContent: PropTypes.string,
 };
 QdtSearch.defaultProps = {
   cols: null,
   qListObjectDef: null,
-  options: null,
-  single: false,
   afterSelect: null,
+  single: false,
+  invert: false,
+  placeholder: 'Search',
+  tooltipDock: 'top',
+  tooltipContent: null,
   qPage: {
     qTop: 0,
     qLeft: 0,
