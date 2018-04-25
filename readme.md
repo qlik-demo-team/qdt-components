@@ -192,10 +192,11 @@ Tooltips are also based on [Leonardo UI - Tooltip](https://qlik-oss.github.io/le
 
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
+| cols             | Array         | `[dimension]` |
 | invert           | Boolean       | false         |
 | placeholder      | String        | `Search for`  |
 | tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
-| tooltipContent   | String        | `Search Tooltip` |
+| tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 
 
 ### Changelog ###
