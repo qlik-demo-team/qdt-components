@@ -97,11 +97,6 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    tooltip() {
-      console.log('tooltip');
-    }
-
-    @autobind
     searchListObjectFor(event) {
       this.setState({ value: event.target.value });
       this.props.offset(0);
@@ -127,7 +122,6 @@ class QdtSearchComponent extends React.Component {
             <LuiSearch
               value={value}
               clear={this.clear}
-              tooltip={this.tooltip}
               inverse={!!(inverse)}
               placeholder={placeholder}
               tooltipDock={tooltipDock}
