@@ -186,7 +186,8 @@ This creates a Line Chart based on [Picasso.js](https://picassojs.com/).
 | options          | Object        | `color` |
 
 #### QdtSearch
-This creates a search input field based on [Leonardo UI](https://qlik-oss.github.io/leonardo-ui/index.html).
+This creates a search input field based on [Leonardo UI - input](https://qlik-oss.github.io/leonardo-ui/input.html).
+Tooltips are also based on [Leonardo UI - Tooltip](https://qlik-oss.github.io/leonardo-ui/tooltip.html)
 * [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/search).
 
 | prop             | type          | description   |
