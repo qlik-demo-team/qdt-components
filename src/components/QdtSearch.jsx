@@ -82,9 +82,9 @@ class QdtSearchComponent extends React.Component {
     async select(event) {
       const { qElemNumber, qState } = event.currentTarget.dataset;
       if (qState === 'S') {
-        await this.props.select(Number(qElemNumber));
+        await this.props.select(Number(qElemNumber), true, this.props.ignoreLock);
       } else {
-        await this.props.select(Number(qElemNumber), !this.props.single);
+        await this.props.select(Number(qElemNumber), !this.props.single, this.props.ignoreLock);
         if (this.props.single) this.toggle();
       }
       if (this.props.afterSelect) { this.props.afterSelect(); }
@@ -158,6 +158,7 @@ QdtSearch.propTypes = {
   placeholder: PropTypes.string,
   tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   tooltipContent: PropTypes.string,
+  ignoreLock: PropTypes.bool,
 };
 QdtSearch.defaultProps = {
   cols: null,
@@ -168,6 +169,7 @@ QdtSearch.defaultProps = {
   placeholder: 'Search',
   tooltipDock: 'top',
   tooltipContent: null,
+  ignoreLock: false,
   qPage: {
     qTop: 0,
     qLeft: 0,
