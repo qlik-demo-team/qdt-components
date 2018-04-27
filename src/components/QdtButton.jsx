@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
+import { LuiButton } from 'qdt-lui';
 import '../styles/index.scss';
 
 export default class QdtButton extends React.Component {
@@ -9,18 +10,6 @@ export default class QdtButton extends React.Component {
       qAppPromise: PropTypes.object.isRequired,
       type: PropTypes.oneOf(['clearSelections']).isRequired,
       title: PropTypes.string.isRequired,
-    }
-
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        title: null,
-      };
-    }
-
-    async componentWillMount() {
-      this.setState({ title: this.props.title });
     }
 
     @autobind
@@ -37,16 +26,11 @@ export default class QdtButton extends React.Component {
     }
 
     render() {
-      const { action } = this;
-      const { title } = this.state;
+      const { title } = this.props;
       return (
-        <div
-          className="qtd-button"
-          onClick={action}
-          role="button"
-          tabIndex={0}
-        ><lui-button>{title}</lui-button>
-        </div>
+        <LuiButton onClick={this.action}>
+          {title}
+        </LuiButton>
       );
     }
 }
