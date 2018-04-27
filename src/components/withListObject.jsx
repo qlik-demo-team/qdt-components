@@ -166,10 +166,10 @@ export default function withListObject(Component) {
     }
 
     @autobind
-    async acceptListObjectSearch() {
+    async acceptListObjectSearch(ignoreLock = false) {
       try {
         const { qObject } = this.state;
-        await qObject.acceptListObjectSearch('/qListObjectDef', true);
+        await qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
       } catch (error) {
         this.setState({ error });
       }
