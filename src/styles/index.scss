@@ -275,26 +275,11 @@ th.active:after {
 /**********************
  * QdtSearch
 **********************/
-.qtd-search {
-    position: relative;
-    display: inline-block;
-    width: 100%;
+.lui-search {
     border: 1px solid $gray-300;
-    .qtd-search-results {
-        display: block;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 6px 0;
-        z-index: 99999;
-        .qtd-search-item {
-            padding: 3px 30px;
-            cursor: pointer;
-            &.selected {
-                color: white;
-                background-color: $green;
-            }
+    .lui-list {
+        &.lui-list__item {
+            text-align: left;
         }
     }
 }

@@ -9,18 +9,18 @@ import '../styles/index.scss';
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
     {qMatrix.map(row =>
-      (
-        <LuiListItem
-          className={`${row[0].qState}`}
-          key={row[0].qElemNumber}
-          data-q-elem-number={row[0].qElemNumber}
-          data-q-state={row[0].qState}
-          onClick={select}
-          style={{ height: `${rowHeight - 1}px` }}
-        >
-          {row[0].qText}
-        </LuiListItem>
-      ))}
+    (
+      <LuiListItem
+        className={`${row[0].qState}`}
+        key={row[0].qElemNumber}
+        data-q-elem-number={row[0].qElemNumber}
+        data-q-state={row[0].qState}
+        onClick={select}
+        style={{ height: `${rowHeight - 1}px` }}
+      >
+        {row[0].qText}
+      </LuiListItem>
+    ))}
   </span>
 );
 
@@ -42,7 +42,7 @@ class QdtSearchComponent extends React.Component {
       acceptListObjectSearch: PropTypes.func.isRequired,
       afterSelect: PropTypes.func,
       single: PropTypes.bool,
-      invert: PropTypes.bool,
+      inverse: PropTypes.bool,
       placeholder: PropTypes.string,
       tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
       tooltipContent: PropTypes.string,
@@ -51,7 +51,7 @@ class QdtSearchComponent extends React.Component {
     static defaultProps = {
       afterSelect: null,
       single: false,
-      invert: false,
+      inverse: false,
       placeholder: 'Search',
       tooltipDock: 'top',
       tooltipContent: null,
@@ -154,7 +154,7 @@ QdtSearch.propTypes = {
   qPage: PropTypes.object,
   afterSelect: PropTypes.func,
   single: PropTypes.bool,
-  invert: PropTypes.bool,
+  inverse: PropTypes.bool,
   placeholder: PropTypes.string,
   tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   tooltipContent: PropTypes.string,
@@ -164,7 +164,7 @@ QdtSearch.defaultProps = {
   qListObjectDef: null,
   afterSelect: null,
   single: false,
-  invert: false,
+  inverse: false,
   placeholder: 'Search',
   tooltipDock: 'top',
   tooltipContent: null,

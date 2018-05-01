@@ -27,11 +27,8 @@ export default function withListObject(Component) {
       super(props);
       this.state = {
         qObject: null,
-        qObject2: null,
         qLayout: null,
-        qLayout2: null,
         qData: null,
-        qData2: null,
         updating: false,
         error: null,
       };
@@ -39,14 +36,14 @@ export default function withListObject(Component) {
 
     async componentWillMount() {
       try {
-        const { qDocPromise, qPage } = this.props;
-        const qProp = this.generateQProp();
+        const { qDocPromise, qPage, cols } = this.props;
         const qDoc = await qDocPromise;
+        const qProp = this.generateQProp();
         const qObject = await qDoc.createSessionObject(qProp);
         qObject.on('changed', () => { this.update(); });
-        this.setState({ qObject }, () => {
-          this.update(qPage.qTop);
-        });
+          this.setState({ qObject }, () => {
+            this.update(qPage.qTop);
+          });
       } catch (error) {
         this.setState({ error });
       }
@@ -75,7 +72,7 @@ export default function withListObject(Component) {
       }
     }
 
-    generateQProp() {
+    generateQProp(currentColumn = 0) {
       try {
         const { cols, qListObjectDef } = this.props;
         const qProp = { qInfo: { qType: 'visualization' } };
@@ -91,7 +88,7 @@ export default function withListObject(Component) {
             }
             return col;
           });
-          const qDef = qDimensions[0];
+          const qDef = qDimensions[currentColumn];
           qProp.qListObjectDef = {
             ...qDef,
             qShowAlternatives: true,
