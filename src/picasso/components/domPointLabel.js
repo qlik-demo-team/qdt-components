@@ -16,7 +16,7 @@ export default {
       const p = { w: data.settings.width, h: data.settings.height };
       // Collision detection
       if (visible.length) {
-        for (const n of visible) {
+        for (const n of visible) { // eslint-disable-line no-restricted-syntax
           if (
             left < n.left + p.w &&
                 left + p.w > n.left &&

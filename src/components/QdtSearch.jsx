@@ -40,6 +40,8 @@ class QdtSearchComponent extends React.Component {
       endSelections: PropTypes.func.isRequired,
       searchListObjectFor: PropTypes.func.isRequired,
       acceptListObjectSearch: PropTypes.func.isRequired,
+      ignoreLock: PropTypes.bool.isRequired,
+      showGo: PropTypes.bool.isRequired,
       afterSelect: PropTypes.func,
       single: PropTypes.bool,
       inverse: PropTypes.bool,
@@ -79,15 +81,20 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    async select(event) {
-      const { qElemNumber, qState } = event.currentTarget.dataset;
+    async select(qElemNumber, qState) {
       if (qState === 'S') {
-        await this.props.select(Number(qElemNumber));
+        await this.props.select(Number(qElemNumber), true, this.props.ignoreLock);
       } else {
-        await this.props.select(Number(qElemNumber), !this.props.single);
+        await this.props.select(Number(qElemNumber), !this.props.single, this.props.ignoreLock);
         if (this.props.single) this.toggle();
       }
       if (this.props.afterSelect) { this.props.afterSelect(); }
+    }
+
+    @autobind
+    handleSelect(event) {
+      const { qElemNumber, qState } = event.currentTarget.dataset;
+      this.select(qElemNumber, qState);
     }
 
     @autobind
@@ -104,16 +111,22 @@ class QdtSearchComponent extends React.Component {
     }
 
     @autobind
-    acceptListObjectSearch(event) {
+    acceptListObjectSearch() {
+      if (!this.props.single) this.props.acceptListObjectSearch(this.props.ignoreLock);
+      if (this.props.single) this.select(this.props.qData.qMatrix[0][0].qElemNumber, this.props.qData.qMatrix[0][0].qState);
+      this.setState({ value: '' });
+    }
+
+    @autobind
+    handleKeyPress(event) {
       if (event.charCode === 13) {
-        this.setState({ value: '' });
-        this.props.acceptListObjectSearch();
+        this.acceptListObjectSearch();
       }
     }
 
     render() {
       const {
-        qData, qLayout, offset, inverse, placeholder, tooltipDock, tooltipContent,
+        qData, qLayout, offset, inverse, placeholder, tooltipDock, tooltipContent, showGo,
       } = this.props;
       const { dropdownOpen, value } = this.state;
       return (
@@ -127,14 +140,15 @@ class QdtSearchComponent extends React.Component {
               tooltipDock={tooltipDock}
               tooltipContent={tooltipContent}
               onChange={this.searchListObjectFor}
-              onKeyPress={this.acceptListObjectSearch}
+              onKeyPress={this.handleKeyPress}
+              onGo={showGo ? this.acceptListObjectSearch : null}
             />
             <LuiList style={{ width: '15rem' }}>
               <QdtVirtualScroll
                 qData={qData}
                 qcy={qLayout.qListObject.qSize.qcy}
                 Component={DropdownItemList}
-                componentProps={{ select: this.select }}
+                componentProps={{ select: this.handleSelect }}
                 offset={offset}
                 rowHeight={38}
                 viewportHeight={190}
@@ -158,6 +172,8 @@ QdtSearch.propTypes = {
   placeholder: PropTypes.string,
   tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   tooltipContent: PropTypes.string,
+  ignoreLock: PropTypes.bool,
+  showGo: PropTypes.bool,
 };
 QdtSearch.defaultProps = {
   cols: null,
@@ -168,6 +184,8 @@ QdtSearch.defaultProps = {
   placeholder: 'Search',
   tooltipDock: 'top',
   tooltipContent: null,
+  ignoreLock: false,
+  showGo: false,
   qPage: {
     qTop: 0,
     qLeft: 0,
