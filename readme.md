@@ -197,6 +197,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | placeholder      | String        | `Search for`  |
 | tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
+| showGo           | Boolean       | false         |
 
 
 ### Changelog ###

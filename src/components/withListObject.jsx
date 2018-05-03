@@ -36,14 +36,14 @@ export default function withListObject(Component) {
 
     async componentWillMount() {
       try {
-        const { qDocPromise, qPage, cols } = this.props;
+        const { qDocPromise, qPage } = this.props;
         const qDoc = await qDocPromise;
         const qProp = this.generateQProp();
         const qObject = await qDoc.createSessionObject(qProp);
         qObject.on('changed', () => { this.update(); });
-          this.setState({ qObject }, () => {
-            this.update(qPage.qTop);
-          });
+        this.setState({ qObject }, () => {
+          this.update(qPage.qTop);
+        });
       } catch (error) {
         this.setState({ error });
       }
