@@ -23,6 +23,8 @@ export default {
     },
     {
       type: 'box',
+      key: 'bars',
+      displayOrder: 1,
       data: {
         extract: {
           field: 'qDimensionInfo/0',
@@ -70,6 +72,31 @@ export default {
         bubbles: {
           align: 'start',
         },
+      },
+    },
+    {
+      type: 'labels',
+      displayOrder: 2,
+      settings: {
+        sources: [{
+          component: 'bars',
+          selector: 'rect',
+          strategy: {
+            type: 'bar',
+            settings: {
+              direction: 'down',
+              labels: [{
+                label({ data }) {
+                  return data ? data.end.label : '';
+                },
+                placements: [
+                  { position: 'inside', fill: '#fff' },
+                  { position: 'outside', fill: '#666' },
+                ],
+              }],
+            },
+          },
+        }],
       },
     },
   ],
