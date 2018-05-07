@@ -5,7 +5,8 @@ import scatterplot from './scatterplot';
 import scatterplotImage from './scatterplotImage';
 import lineChart from './lineChart';
 import multiLineChart from './multiLineChart';
+import pie from './pie';
 
 export default {
-  horizontalBarchart, verticalBarchart, piechart, scatterplot, scatterplotImage, lineChart, multiLineChart,
+  horizontalBarchart, verticalBarchart, piechart, scatterplot, scatterplotImage, lineChart, multiLineChart, pie,
 };
