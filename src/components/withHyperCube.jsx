@@ -148,15 +148,16 @@ export default function withHyperCube(Component) {
     }
 
     render() {
-      const { width, height } = this.props;
+      const { width, height, cols } = this.props;
       const {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
         return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
+        const preloaderType = (cols.length === 1) ? 'dots' : 'balls';
         const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
-        return <Preloader width={width} height={height} paddingTop={paddingTop} />;
+        return <Preloader width={width} height={height} paddingTop={paddingTop} type={preloaderType} />;
       }
       return (<Component
         {...this.props}
