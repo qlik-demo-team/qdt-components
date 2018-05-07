@@ -63,6 +63,42 @@ export default {
         },
       }],
     },
+  },
+  {
+    type: 'labels',
+    displayOrder: 2, // must be larger than the displayOrder for the 'pie' component
+    settings: {
+      sources: [{
+        component: 'pie',
+        selector: 'path', // select all 'path' shapes from the 'pie' component
+        strategy: {
+          type: 'slice', // the strategy type
+          settings: {
+            direction: 'rotated',
+            fontFamily: 'Helvetica',
+            fontSize: 14,
+            labels: [{
+              label({ data }) { // dimension label
+                return data ? data.label : '';
+              },
+              placements: [{
+                position: 'info',
+                fill: '#333', // select a color contrasting the containing slice
+              }],
+            },
+            { // data label
+              label({ data }) {
+                return data ? data.arc.label : '';
+              },
+              placements: [
+                { position: 'inside', fill: '#fff' },
+                { position: 'outside', fill: '#333' },
+              ],
+            }],
+          },
+        },
+      }],
+    },
   }],
   interactions: [
     {
