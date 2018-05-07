@@ -25,7 +25,10 @@
   color: $gray-100 !important;
   background-color: #A9A9A9 !important;
 }
-.lui-list__item.S, .lui-list__item.A, .lui-list__item.X, .lui-list__item.XS {
+.lui-list .lui-list__item.S, 
+.lui-list .lui-list__item.A, 
+.lui-list .lui-list__item.X, 
+.lui-list .lui-list__item.XS {
   border-bottom: 1px solid #fff;
 }
 
@@ -210,11 +213,8 @@ th.active:after {
         border-top: 5px solid rgba(0,0,0,0);
         border-left: 5px solid rgba(0,0,0,0);
         border-radius: 50px;
-        // box-shadow: 0 0 35px #2187e7;
         width: 50px;
         height: 50px;
-        max-width: 100%;
-        max-height: 100%;
         margin: 0 auto;
         -moz-animation: spin .5s infinite linear;
         -webkit-animation: spin .5s infinite linear;
@@ -226,14 +226,11 @@ th.active:after {
         border-top: 5px solid rgba(0,0,0,0);
         border-left: 5px solid rgba(0,0,0,0);
         border-radius: 50px;
-        // box-shadow: 0 0 15px #2187e7;
         width: 30px;
         height: 30px;
-        max-width: 80%;
-        max-height: 80%;
         margin: 0 auto;
         position: relative;
-        top: -50px;
+        top: -40px;
         -moz-animation: spinoff .5s infinite linear;
         -webkit-animation: spinoff .5s infinite linear;
     }
