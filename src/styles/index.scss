@@ -25,7 +25,10 @@
   color: $gray-100 !important;
   background-color: #A9A9A9 !important;
 }
-.lui-list__item.S, .lui-list__item.A, .lui-list__item.X, .lui-list__item.XS {
+.lui-list .lui-list__item.S, 
+.lui-list .lui-list__item.A, 
+.lui-list .lui-list__item.X, 
+.lui-list .lui-list__item.XS {
   border-bottom: 1px solid #fff;
 }
 
