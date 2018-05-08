@@ -74,7 +74,7 @@ export default {
         strategy: {
           type: 'slice', // the strategy type
           settings: {
-            direction: 'rotated',
+            direction: 'horizontal',
             fontFamily: 'Helvetica',
             fontSize: 14,
             labels: [{
@@ -83,7 +83,7 @@ export default {
               },
               placements: [{
                 position: 'info',
-                fill: '#333', // select a color contrasting the containing slice
+                fill: ({ data }) => { console.log(data); return '#000'; }, // select a color contrasting the containing slice
               }],
             },
             { // data label
