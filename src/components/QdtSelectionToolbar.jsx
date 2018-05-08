@@ -50,7 +50,7 @@ class QdtSelectionToolbarDropdown extends React.Component {
   }
 }
 
-const QdtSelectionToolbar = ({ qLayout, clearSelections }) => {
+const QdtSelectionToolbar = ({ qLayout, clearSelections, title }) => {
   const selectedFields = qLayout.qSelectionObject.qSelections;
   let selections = [];
   if (selectedFields.length) {
@@ -74,7 +74,7 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections }) => {
   return (
     <div className="qdt-selection-toolbar">
       <ul>
-        <li><strong>SELECTIONS:</strong></li>
+        <li><strong>{title}:</strong></li>
         {selections.length === 0 &&
         <li className="no-selections">None</li>
         }
@@ -99,6 +99,10 @@ const QdtSelectionToolbar = ({ qLayout, clearSelections }) => {
 QdtSelectionToolbar.propTypes = {
   qLayout: PropTypes.object.isRequired,
   clearSelections: PropTypes.func.isRequired,
+  title: PropTypes.string,
+};
+QdtSelectionToolbar.defaultProps = {
+  title: 'SELECTIONS',
 };
 
 const QdtSelectionToolbarObject = withSelectionObject(QdtSelectionToolbar);
