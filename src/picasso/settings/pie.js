@@ -83,7 +83,8 @@ export default {
               },
               placements: [{
                 position: 'info',
-                fill: ({ data }) => { console.log(data); return '#000'; }, // select a color contrasting the containing slice
+                // fill: ({ data }) => '#000', // select a color contrasting the containing slice
+                fill: '#000',
               }],
             },
             { // data label
