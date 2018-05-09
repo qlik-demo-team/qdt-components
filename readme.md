@@ -161,7 +161,8 @@ This populated a toolbar with the current app selections.
 
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
-| height           | String        | Sets object height |
+| title            | String        | `SELECTIONS`  |
+| btnText          | String        | `Clear All `  |
 
 #### QdtBarchart
 This creates a barchart based on [Picasso.js](https://picassojs.com/).
@@ -198,21 +199,3 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 | showGo           | Boolean       | false         |
-
-
-### Changelog ###
-
-##### 1.1.9 #####
-* Added Spinning loader
-
-##### 1.1.8 #####
-* Add more Picasso charts (Scotterplot, Linechart, Combo chart)
-
-##### 1.1.6 #####
-* Minor fixes for the Horizontal Barchart and the Selection Toolbar
-
-##### 1.1.5 #####
-* Add Picasso Horizontal Barchart
-
-##### 1.1.4 #####
-* Fix the Selection Toolbar
