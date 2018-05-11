@@ -1,17 +1,18 @@
-![Banner](assets/banner_3technologies.jpg "Banner") 
+![Banner](assets/banner-4.jpg "Banner") 
 
 [![version](http://img.shields.io/badge/version-1.1.7-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
 
-- Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular2+ and React
+- Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular6, React 16 and Vue 2
 
 ### Installation
 - `npm install --save qdt-components`
 
 ### Usage
 
-#### Simple Html Example
+#### Simple Html
+- [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
 - Download the [latest build](../blob/master/dist/qdt-components.js)
 - Add the Html
 ```html
@@ -43,9 +44,9 @@
   qdtComponents.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
 </script>
 ```
-- [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
 
-#### Angular 5 Component (cli)
+#### Angular 6 (cli)
+- [Live Demo](https://webapps.qlik.com/qdt-components/angular/index.html)
 - `npm install --save qdt-components`
 - create an Angular 5 component that implements qdt-components
 ```javascript
@@ -88,6 +89,7 @@ export class QdtComponent implements OnInit {
 ```
 
 #### React
+- [Live Demo](https://webapps.qlik.com/qdt-components/react/index.html)
 - `npm install --save qdt-components`
 - create a React component that implements qdt-components
 ```javascript
@@ -128,6 +130,11 @@ export default class QdtComponent extends React.Component {
   }
 }
 ```
+
+#### Vue
+- [Live Demo](https://webapps.qlik.com/qdt-components/react/index.html)
+- [Git](https://github.com/qlik-demo-team/qdt-vue-template)
+
 
 ### Component Docs ###
 

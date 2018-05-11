@@ -52,6 +52,7 @@ export default {
   }, {
     key: 'bars',
     type: 'box',
+    displayOrder: 1,
     data: {
       collection: 'stacked',
     },
@@ -108,7 +109,7 @@ export default {
             direction: 'down',
             labels: [{
               label({ data }) {
-                return data ? data.end.label : '';
+                return data ? data.end.value : '';
               },
               placements: [
                 { position: 'inside', fill: '#fff' },

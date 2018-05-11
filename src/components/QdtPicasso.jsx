@@ -90,7 +90,7 @@ class QdtPicassoComponent extends React.Component {
     } = this.props;
     const mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
+    this.pic = picasso({ renderer: { prio: ['svg'] } }).chart({
       element: this.element,
       data: [{
         type: 'q',
