@@ -1,6 +1,6 @@
 ![Banner](assets/banner-4.jpg "Banner") 
 
-[![version](http://img.shields.io/badge/version-1.1.7-brightgreen.svg?style=plastic)]()
+[![version](http://img.shields.io/badge/version-1.1.51-brightgreen.svg?style=plastic)]()
 
 # Qlik Demo Team Components
 
