@@ -49,6 +49,11 @@ export default function withListObject(Component) {
       }
     }
 
+    async componentWillUnmount() {
+      const qDoc = await qDocPromise;
+      qDoc.destroySessionObject(this.state.qObject.id);
+    }
+
     async getLayout() {
       try {
         const { qObject } = this.state;

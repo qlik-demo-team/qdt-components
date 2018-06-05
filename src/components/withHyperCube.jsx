@@ -57,6 +57,11 @@ export default function withHyperCube(Component) {
       }
     }
 
+    async componentWillUnmount() {
+      const qDoc = await qDocPromise;
+      qDoc.destroySessionObject(this.state.qObject.id);
+    }
+
     async getLayout() {
       const { qObject } = this.state;
       const qLayout = await qObject.getLayout();
