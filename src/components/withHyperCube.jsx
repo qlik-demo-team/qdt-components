@@ -58,6 +58,7 @@ export default function withHyperCube(Component) {
     }
 
     async componentWillUnmount() {
+      const { qDocPromise } = this.props;
       const qDoc = await qDocPromise;
       qDoc.destroySessionObject(this.state.qObject.id);
     }
