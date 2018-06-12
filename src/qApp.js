@@ -30,6 +30,13 @@ const qApp = async (config) => {
       paths: {
         qlik: `${(config.secure ? 'https://' : 'http://') + config.host + (config.port ? `:${config.port}` : '') + prefix}resources/js/qlik`,
       },
+      config: {
+        text: {
+          useXhr() {
+            return true;
+          },
+        },
+      },
     });
     return new Promise((resolve) => {
       window.require(['js/qlik'], (qlik) => {
