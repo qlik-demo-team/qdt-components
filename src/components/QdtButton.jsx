@@ -10,7 +10,11 @@ export default class QdtButton extends React.Component {
       qAppPromise: PropTypes.object.isRequired,
       type: PropTypes.oneOf(['clearSelections']).isRequired,
       title: PropTypes.string.isRequired,
+      block: PropTypes.string,
     }
+    static defaultProps = {
+      block: false,
+    };
 
     @autobind
     async action() {
@@ -26,9 +30,9 @@ export default class QdtButton extends React.Component {
     }
 
     render() {
-      const { title } = this.props;
+      const { title, block } = this.props;
       return (
-        <LuiButton onClick={this.action}>
+        <LuiButton onClick={this.action} block={block}>
           {title}
         </LuiButton>
       );
