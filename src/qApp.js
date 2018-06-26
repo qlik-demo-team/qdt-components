@@ -40,6 +40,7 @@ const qApp = async (config) => {
     });
     return new Promise((resolve) => {
       window.require(['js/qlik'], (qlik) => {
+        window.qlik = qlik;
         const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
         resolve(app);
       });

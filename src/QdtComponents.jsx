@@ -25,7 +25,7 @@ const QdtComponents = class {
 
   constructor(config = {}, connections = { vizApi: true, engineApi: true }) {
     const myConfig = config;
-    myConfig.identity = utility.uid(16);
+    myConfig.identity = utility.Uid(16);
     this.qAppPromise = (connections.vizApi) ? qApp(myConfig) : null;
     this.qDocPromise = (connections.engineApi) ? qDoc(myConfig) : null;
   }
