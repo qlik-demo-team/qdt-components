@@ -18,7 +18,7 @@ export default class QdtViz extends React.Component {
   constructor(props) {
     super(props);
 
-    this.uid = utility.uid(8);
+    this.uid = utility.Uid(8);
     this.state = {
       loading: true,
       error: null,
