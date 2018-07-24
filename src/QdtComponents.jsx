@@ -23,7 +23,7 @@ const QdtComponents = class {
     settings,
   };
 
-  constructor(config = {}, connections = { vizApi: true, engineApi: true, useUniqueSessionID: false }) {
+  constructor(config = {}, connections = { vizApi: true, engineApi: true, useUniqueSessionID: null }) {
     const myConfig = config;
     myConfig.identity = connections.useUniqueSessionID ? connections.useUniqueSessionID : utility.Uid(16);
     this.qAppPromise = (connections.vizApi) ? qApp(myConfig) : null;
