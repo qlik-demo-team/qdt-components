@@ -39,11 +39,16 @@ const qApp = async (config) => {
       },
     });
     return new Promise((resolve) => {
-      window.require(['js/qlik'], (qlik) => {
-        window.qlik = qlik;
-        const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+      if (window.qlik) {
+        const app = window.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
         resolve(app);
-      });
+      } else {
+        window.require(['js/qlik'], (qlik) => {
+          window.qlik = qlik;
+          const app = window.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+          resolve(app);
+        });
+      }
     });
   } catch (error) {
     throw new Error(error);
