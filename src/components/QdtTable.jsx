@@ -6,15 +6,15 @@ import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
 
 const TableHead = ({
-  columnWidths, labels, sortColumn, setSortColumn,
+  columnWidth, labels, sortColumn, setSortColumn,
 }) => (
-  <table>
+  <table className="qtd-table-header">
     <thead>
       <tr>
         {labels.map((label, index) => (
           <th
             className={index === sortColumn ? 'active' : null}
-            style={{ width: `${columnWidths[index]}%` }}
+            style={{ width: `${columnWidth}%` }}
             key={label}
             data-index={index}
             onClick={setSortColumn}
@@ -27,16 +27,16 @@ const TableHead = ({
   </table>
 );
 TableHead.propTypes = {
-  columnWidths: PropTypes.array.isRequired,
+  columnWidth: PropTypes.number.isRequired,
   labels: PropTypes.array.isRequired,
   sortColumn: PropTypes.number.isRequired,
   setSortColumn: PropTypes.func.isRequired,
 };
 
 const TableBody = ({
-  qMatrix, rowHeight, columnWidths, select,
+  qMatrix, rowHeight, columnWidth, select,
 }) => (
-  <table>
+  <table className="qtd-table-body">
     <tbody>
       {qMatrix.map(row => (
         <tr
@@ -46,7 +46,7 @@ const TableBody = ({
           {row.map((col, i) => (
             <td
               key={col.qText}
-              style={{ height: `${rowHeight}px`, width: `${columnWidths[i]}%` }}
+              style={{ height: `${rowHeight}px`, width: `${columnWidth}%` }}
               data-q-elem-number={col.qElemNumber}
               data-index={i}
               data-qstate={col.qState}
@@ -63,7 +63,7 @@ const TableBody = ({
 TableBody.propTypes = {
   qMatrix: PropTypes.array.isRequired,
   rowHeight: PropTypes.number.isRequired,
-  columnWidths: PropTypes.array.isRequired,
+  columnWidth: PropTypes.number.isRequired,
   select: PropTypes.func.isRequired,
 };
 
@@ -74,7 +74,8 @@ class QdtTableComponent extends React.Component {
     offset: PropTypes.func.isRequired,
     select: PropTypes.func.isRequired,
     applyPatches: PropTypes.func.isRequired,
-    options: PropTypes.object.isRequired,
+    height: PropTypes.number.isRequired,
+    rowHeight: PropTypes.number.isRequired,
   }
 
   constructor(props) {
@@ -124,9 +125,9 @@ class QdtTableComponent extends React.Component {
   render() {
     const { select, setSortColumn } = this;
     const {
-      qData, qLayout, offset, options,
+      qData, qLayout, offset, height, rowHeight,
     } = this.props;
-    const { columnWidths } = options;
+    const columnWidth = 100 / qLayout.qHyperCube.qSize.qcx;
     const { sortColumn } = this.state;
     const labels = [
       ...qLayout.qHyperCube.qDimensionInfo.map(dim => dim.qFallbackTitle),
@@ -135,7 +136,7 @@ class QdtTableComponent extends React.Component {
     return (
       <div ref={(node) => { this.node = node; }}>
         <TableHead
-          columnWidths={columnWidths}
+          columnWidth={columnWidth}
           labels={labels}
           sortColumn={sortColumn}
           setSortColumn={setSortColumn}
@@ -144,10 +145,10 @@ class QdtTableComponent extends React.Component {
           qData={qData}
           qcy={qLayout.qHyperCube.qSize.qcy}
           Component={TableBody}
-          componentProps={{ columnWidths, select }}
+          componentProps={{ columnWidth, select }}
           offset={offset}
-          rowHeight={50}
-          viewportHeight={400}
+          rowHeight={rowHeight}
+          viewportHeight={height}
         />
       </div>
     );
@@ -160,6 +161,9 @@ QdtTable.propTypes = {
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
+  width: PropTypes.string,
+  height: PropTypes.number,
+  rowHeight: PropTypes.number,
 };
 QdtTable.defaultProps = {
   cols: null,
@@ -170,6 +174,9 @@ QdtTable.defaultProps = {
     qWidth: 10,
     qHeight: 100,
   },
+  width: '100%',
+  height: 400,
+  rowHeight: 50,
 };
 
 export default QdtTable;

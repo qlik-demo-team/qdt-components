@@ -62,6 +62,21 @@ th.active:after {
     cursor: pointer;
 }
 
+/****************
+ * QdtTable 
+*****************/
+// We need to offset for the scoll bar width in the QdtBody
+.qtd-table-header {
+    width: 100%;
+    width: calc(100% - 18px);
+    width: -moz-calc(100% - 18px);
+    width: -webkit-calc(100% - 18px);
+}
+.qtd-table-body { 
+    width: 100%; 
+    tr:nth-child(even) { background: $gray-200 }
+}
+
 /**********************
  * QdtSelectionToolbar
 **********************/
