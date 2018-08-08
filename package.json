@@ -3,6 +3,7 @@
   "version": "1.1.65",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
+  "types": "./types/qdt-components.d.ts",
   "author": "The Demo Team",
   "license": "MIT",
   "repository": {
@@ -19,6 +20,8 @@
   ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
+    "@types/qlik-engineapi": "^12.67.2",
+    "@types/qlik-visualizationextensions": "^4.0.2",
     "autobind-decorator": "^2.1.0",
     "d3": "^4.11.0",
     "enigma.js": "^2.1.1",
