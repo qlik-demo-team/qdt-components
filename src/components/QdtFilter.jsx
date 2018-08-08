@@ -62,12 +62,14 @@ class QdtFilterComponent extends React.Component {
     hideStateCountsBar: PropTypes.bool,
     placeholder: PropTypes.string,
     showStateInDropdown: PropTypes.bool,
+    expanded: PropTypes.bool,
   }
   static defaultProps = {
     single: false,
     hideStateCountsBar: false,
     placeholder: 'Dropdown',
     showStateInDropdown: false,
+    expanded: false,
   }
 
   constructor(props) {
@@ -137,20 +139,45 @@ class QdtFilterComponent extends React.Component {
 
   render() {
     const {
-      qData, qLayout, offset, placeholder, hideStateCountsBar, showStateInDropdown,
+      qData, qLayout, offset, placeholder, hideStateCountsBar, showStateInDropdown, expanded,
     } = this.props;
     const { dropdownOpen, searchListInputValue, selections } = this.state;
     const { qStateCounts } = qLayout.qListObject.qDimensionInfo;
     const { qSelected } = qStateCounts;
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
     return (
-      <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
-        <span>
-          {!showStateInDropdown && placeholder}
-          {(showStateInDropdown && selections && selections.length === 0) && placeholder}
-          {(showStateInDropdown && selections && selections.length === 1) && selections[0][0].qText}
-          {(showStateInDropdown && selections && selections.length > 1) && `${qSelected} of ${totalStateCounts}`}
-        </span>
+      <div>
+        { !expanded &&
+          <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
+            <span>
+              {!showStateInDropdown && placeholder}
+              {(showStateInDropdown && selections && selections.length === 0) && placeholder}
+              {(showStateInDropdown && selections && selections.length === 1) && selections[0][0].qText}
+              {(showStateInDropdown && selections && selections.length > 1) && `${qSelected} of ${totalStateCounts}`}
+            </span>
+            <LuiList style={{ width: '15rem' }}>
+              <LuiSearch
+                value={searchListInputValue}
+                clear={this.clear}
+                onChange={this.searchListObjectFor}
+                onKeyPress={this.acceptListObjectSearch}
+              />
+              <QdtVirtualScroll
+                qData={qData}
+                qcy={qLayout.qListObject.qSize.qcy}
+                Component={DropdownItemList}
+                componentProps={{ select: this.select }}
+                offset={offset}
+                rowHeight={38}
+                viewportHeight={190}
+              />
+            </LuiList>
+            {!hideStateCountsBar && (
+            <StateCountsBar qStateCounts={qStateCounts} />
+            )}
+          </LuiDropdown>
+        }
+        { expanded &&
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
             value={searchListInputValue}
@@ -168,10 +195,8 @@ class QdtFilterComponent extends React.Component {
             viewportHeight={190}
           />
         </LuiList>
-        {!hideStateCountsBar && (
-          <StateCountsBar qStateCounts={qStateCounts} />
-        )}
-      </LuiDropdown>
+          }
+      </div>
     );
   }
 }
@@ -185,6 +210,7 @@ QdtFilter.propTypes = {
   single: PropTypes.bool,
   hideStateCountsBar: PropTypes.bool,
   placeholder: PropTypes.string,
+  expanded: PropTypes.bool,
   showStateInDropdown: PropTypes.bool,
 };
 QdtFilter.defaultProps = {
@@ -199,6 +225,7 @@ QdtFilter.defaultProps = {
   single: false,
   hideStateCountsBar: false,
   placeholder: 'Dropdown',
+  expanded: false,
   showStateInDropdown: false,
 };
 

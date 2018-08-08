@@ -111,7 +111,7 @@ class QdtTableComponent extends React.Component {
   @autobind
   select(e) {
     if (e.target.dataset.qstate !== 'L') {
-      this.props.select(Number(e.target.dataset.qElemNumber), Number(e.target.dataset.index));
+      this.props.select(Number(e.target.dataset.index), [Number(e.target.dataset.qElemNumber)]);
     }
   }
 
