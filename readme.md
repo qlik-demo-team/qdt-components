@@ -127,7 +127,7 @@ export default class QdtComponent extends React.Component {
     this.qdtInstance = qdtComponents.render(type, props, this.node);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.qdtInstance.then(({ unmount }) => unmount())
   }
 
