@@ -33,7 +33,6 @@ const QdtComponents = class {
   }
 
   render = async (type, props, element) => new Promise((resolve, reject) => {
-
     try {
       const { qAppPromise, qDocPromise } = this;
       const Component = components[type];
