@@ -36,17 +36,16 @@ const QdtComponents = class {
     try {
       const { qAppPromise, qDocPromise } = this;
       const Component = components[type];
-      ReactDOM.render(
+      const node = ReactDOM.render(
         <Component
           {...props}
           qAppPromise={qAppPromise}
           qDocPromise={qDocPromise}
-          ref={node => resolve(node)}
         />,
         element,
       );
       const unmount = QdtComponents.createUnmount(element);
-      resolve({ unmount });
+      resolve({ unmount, node });
     } catch (error) {
       reject(error);
     }
