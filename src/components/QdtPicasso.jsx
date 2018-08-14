@@ -31,11 +31,13 @@ class QdtPicassoComponent extends React.Component {
     innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     type: PropTypes.string,
     settings: PropTypes.object,
+    options: PropTypes.object,
     afterConfirmSelections: PropTypes.func,
   }
   static defaultProps = {
     type: null,
     settings: {},
+    options: {},
     afterConfirmSelections: null,
   }
   constructor(props) {
@@ -90,7 +92,7 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   async createPic() {
     const {
-      qLayout, qData, settings, type,
+      qLayout, qData, settings, type, options,
     } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
@@ -101,6 +103,15 @@ class QdtPicassoComponent extends React.Component {
       });
       this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
       this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
+    }
+    if (type === 'verticalGauge' && options.min) {
+      this.mySettings.scales.y.min = options.min;
+      this.mySettings.components[1].start = options.min;
+      this.mySettings.components[2].start = options.min;
+    }
+    if (type === 'verticalGauge' && options.max) {
+      this.mySettings.scales.y.max = options.max;
+      this.mySettings.components[1].end = options.max;
     }
     this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
       element: this.element,
@@ -123,7 +134,7 @@ class QdtPicassoComponent extends React.Component {
   updatePic() {
     if (this.props.selections) return;
     const {
-      qLayout, qData, type,
+      qLayout, qData, type, options,
     } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     if (type === 'verticalRangeGauge') {
@@ -133,6 +144,15 @@ class QdtPicassoComponent extends React.Component {
       });
       this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
       this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
+    }
+    if (type === 'verticalGauge' && options.min) {
+      this.mySettings.scales.y.min = options.min;
+      this.mySettings.components[1].start = options.min;
+      this.mySettings.components[2].start = options.min;
+    }
+    if (type === 'verticalGauge' && options.max) {
+      this.mySettings.scales.y.max = options.max;
+      this.mySettings.components[1].end = options.max;
     }
     this.pic.update({
       data: [{
@@ -195,6 +215,7 @@ QdtPicasso.propTypes = {
   qPage: PropTypes.object,
   type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart', 'gauge']),
   settings: PropTypes.object,
+  options: PropTypes.object,
   outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -212,6 +233,7 @@ QdtPicasso.defaultProps = {
   },
   type: null,
   settings: {},
+  options: {},
   outerWidth: '100%',
   outerHeight: '100%',
   innerWidth: '100%',
