@@ -26,7 +26,7 @@
     "leonardo-ui": "^1.5.1",
     "picasso-plugin-hammer": "^0.7.0",
     "picasso-plugin-q": "^0.7.0",
-    "picasso.js": "^0.7.0",
+    "picasso.js": "^0.11.0",
     "prop-types": "^15.6.0",
     "qdt-lui": "0.0.24",
     "react": "^16.0.0",

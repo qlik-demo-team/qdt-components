@@ -38,6 +38,10 @@ class QdtPicassoComponent extends React.Component {
     settings: {},
     afterConfirmSelections: null,
   }
+  constructor(props) {
+    super(props);
+    this.mySettings = null;
+  }
 
   componentDidMount() {
     this.createPic();
@@ -84,22 +88,29 @@ class QdtPicassoComponent extends React.Component {
   }
 
   @autobind
-  createPic() {
+  async createPic() {
     const {
       qLayout, qData, settings, type,
     } = this.props;
-    const mySettings = type ? preconfiguredSettings[type] : settings;
+    this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    this.pic = picasso({ renderer: { prio: ['svg'] } }).chart({
+    if (type === 'verticalGauge') {
+      const ds = picasso.data('q')({
+        key: 'qHyperCube',
+        data: data.qHyperCube,
+      });
+      this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
+      this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
+    }
+    this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
       element: this.element,
       data: [{
         type: 'q',
         key: 'qHyperCube',
         data: data.qHyperCube,
       }],
-      settings: mySettings,
+      settings: this.mySettings,
     });
-
     this.pic.brush('select').on('start', () => { this.props.beginSelections(); this.props.select(0, [], false); });
     this.pic.brush('select').on('update', (added, removed) => {
       if (!this.props.selections) return;
@@ -111,14 +122,25 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   updatePic() {
     if (this.props.selections) return;
-    const { qLayout, qData } = this.props;
+    const {
+      qLayout, qData, type,
+    } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
+    if (type === 'verticalGauge') {
+      const ds = picasso.data('q')({
+        key: 'qHyperCube',
+        data: data.qHyperCube,
+      });
+      this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
+      this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
+    }
     this.pic.update({
       data: [{
         type: 'q',
         key: 'qHyperCube',
         data: data.qHyperCube,
       }],
+      settings: this.mySettings,
     });
   }
 
@@ -171,7 +193,7 @@ QdtPicasso.propTypes = {
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
-  type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart']),
+  type: PropTypes.oneOf(['horizontalBarchart', 'verticalBarchart', 'piechart', 'gauge']),
   settings: PropTypes.object,
   outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
