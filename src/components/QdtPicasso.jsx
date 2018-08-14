@@ -94,7 +94,7 @@ class QdtPicassoComponent extends React.Component {
     } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'verticalGauge') {
+    if (type === 'verticalRangeGauge') {
       const ds = picasso.data('q')({
         key: 'qHyperCube',
         data: data.qHyperCube,
@@ -126,7 +126,7 @@ class QdtPicassoComponent extends React.Component {
       qLayout, qData, type,
     } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'verticalGauge') {
+    if (type === 'verticalRangeGauge') {
       const ds = picasso.data('q')({
         key: 'qHyperCube',
         data: data.qHyperCube,

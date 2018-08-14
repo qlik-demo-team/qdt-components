@@ -8,8 +8,8 @@ import multiLineChart from './multiLineChart';
 import pie from './pie';
 import comboLineBarchart from './comboLineBarchart';
 import stackedBarchart from './stackedBarchart';
-import verticalGauge from './verticalGauge';
+import verticalRangeGauge from './verticalRangeGauge';
 
 export default {
-  horizontalBarchart, verticalBarchart, piechart, scatterplot, scatterplotImage, lineChart, multiLineChart, pie, comboLineBarchart, stackedBarchart, verticalGauge,
+  horizontalBarchart, verticalBarchart, piechart, scatterplot, scatterplotImage, lineChart, multiLineChart, pie, comboLineBarchart, stackedBarchart, verticalRangeGauge,
 };
