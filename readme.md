@@ -206,3 +206,6 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 | showGo           | Boolean       | false         |
+
+### Version Log
+- 1.1.66 Add Vertical Bar Gauge
