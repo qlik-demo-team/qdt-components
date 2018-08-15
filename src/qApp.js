@@ -1,3 +1,5 @@
+let qlik;
+
 const loadCapabilityApis = async (config) => {
   try {
     const capabilityApisJS = document.createElement('script');
@@ -39,13 +41,13 @@ const qApp = async (config) => {
       },
     });
     return new Promise((resolve) => {
-      if (window.qlik) {
-        const app = window.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+      if (qlik) {
+        const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
         resolve(app);
       } else {
-        window.require(['js/qlik'], (qlik) => {
-          window.qlik = qlik;
-          const app = window.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+        window.require(['js/qlik'], (q) => {
+          qlik = q;
+          const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
           resolve(app);
         });
       }
