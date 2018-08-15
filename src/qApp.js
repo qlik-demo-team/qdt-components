@@ -1,7 +1,12 @@
 let qlik;
+let capabilityApisPromise;
 
 const loadCapabilityApis = async (config) => {
   try {
+    if (capabilityApisPromise) {
+      await capabilityApisPromise;
+      return;
+    }
     const capabilityApisJS = document.createElement('script');
     const prefix = (config.prefix !== '') ? `/${config.prefix}` : '';
     capabilityApisJS.src = `${(config.secure ? 'https://' : 'http://') + config.host + (config.port ? `:${config.port}` : '') + prefix}/resources/assets/external/requirejs/require.js`;
@@ -17,7 +22,10 @@ const loadCapabilityApis = async (config) => {
     capabilityApisCSS.loaded = new Promise((resolve) => {
       capabilityApisCSS.onload = () => { resolve(); };
     });
-    await Promise.all([capabilityApisJS.loaded, capabilityApisCSS.loaded]);
+
+    capabilityApisPromise = Promise.all([capabilityApisJS.loaded, capabilityApisCSS.loaded]);
+
+    await capabilityApisPromise;
   } catch (error) {
     throw new Error(error);
   }
