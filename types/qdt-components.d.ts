@@ -1,12 +1,31 @@
 /// <reference types="@types/qlik-engineapi" />
 /// <reference types="@types/qlik-visualizationextensions" />
 
-declare module 'qdt-components' {
+declare module "qdt-components" {
   /**
    * Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular6, React 16 and Vue 2
    */
   export default class QdtComponents {
     constructor(config: QdtConfig, connections?: QdtConnections);
+
+    /**
+     * Will trigger destructors within QdtComponent to clean up listeners and
+     * Qlik objects cleanly and safely.
+     * @param element Target element where QDT-Component instance was mounted originally
+     * @example
+     *
+     * const qdt = new QdtComponents(conifg, connections);
+     *
+     * const element = document.querySelector('#node');
+     *
+     * // Component instance and necessary qlik object initialised
+     * qdt.render('QdtViz', props, element);
+     *
+     * // This particular component instance safely destoryed and all qlik objects assoicated with it destroyed
+     * QdtComponents.unmountQdtComponent(element);
+     *
+     */
+    static unmountQdtComponent(element: HTMLElement): void;
 
     /**
      * If `QdtComponents` is configured to do so, will resolve to a
@@ -21,45 +40,10 @@ declare module 'qdt-components' {
     qDocPromise: Promise<EngineAPI.IApp> | null;
 
     render(
-      type: 'QdtViz',
-      props: QdtVizProps,
-      HTMLElement
-    ): Promise<QdtInstance>;
-    render(
-      type: 'QdtCurrentSelections',
-      props: QdtCurrentSelectionsProps,
-      HTMLElement
-    ): Promise<QdtInstance>;
-    // TODO, fill out the rest of the types
-    render(
       type: string,
       props: any,
       element: HTMLElement
-    ): Promise<QdtInstance>;
-  }
-
-  export type QdtComponentType =
-    | 'QdtViz'
-    | 'QdtFilter'
-    | 'QdtCurrentSelections'
-    | 'QdtSelectionToolbar'
-    | 'QdtTable'
-    | 'QdtKpi'
-    | 'QdtButton'
-    | 'QdtPicasso'
-    | 'QdtSearch';
-
-  interface QdtInstance {
-    /**
-     * Will clean up the QdtInstance by unsubscribing from and/or destroying
-     * any Qlik Objects created by the render. Essential when used in a view
-     * library with lifecycles, such as `Angular`, `React`, etc... See
-     * `ngOnDestroy` and `componentWillUnmount` in those two named libraries
-     * respectively, which allow you to clean up just before the component
-     * wrapping around Qdt-Components destroys the DOM node the
-     * QdtInstance is occupying.
-     */
-    unmount(): void;
+    ): Promise<HTMLElement>;
   }
 
   export interface QdtConnections {
@@ -91,14 +75,14 @@ declare module 'qdt-components' {
      */
     host: string;
     /**
-     * If true, then uses wss:// instead of ws://
+     * If true, then uses https:// & wss:// instead of http:// & ws://
      */
     secure: boolean;
     /**
-     * Port number for Qlik Server. For sense desktop its typically `4848`, and
-     * Server and Core is typically `443` or `80`
+     * Port number for Qlik Server. For sense desktop its typically `4848`,
+     * otherwise in most cases leave as an empty string
      */
-    port: number;
+    port: number | "";
     /**
      * Config for Qlik proxy. If your Qlik server is using a proxy this prefixes
      * the websocket url path with the proxy path. Use empty string in most cases.
@@ -111,24 +95,4 @@ declare module 'qdt-components' {
      */
     appId: string;
   }
-
-  export interface QdtProps {
-    /**
-     * CSS width property value. e.g. "100px". Default "100%"
-     */
-    width?: string;
-    /**
-     * CSS height property value. e.g. "100px". Default "100%"
-     */
-    height?: string;
-  }
-
-  export interface QdtVizProps extends QdtProps {
-    id?: string;
-    type?: string;
-    cols?: any[];
-    options?: any;
-  }
-
-  export interface QdtCurrentSelectionsProps extends QdtProps {}
 }
