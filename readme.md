@@ -67,6 +67,8 @@ const options = {
   }
 }
 
+const qdtComponent = new QdtComponents(options.config, options.connections);
+
 @Component({
   selector: 'qdt-component',
   templateUrl: './qdt-component.component.html',
@@ -77,18 +79,15 @@ export class QdtComponent implements OnInit {
   @Input() type: string;
   @Input() props: object;
 
-  static qdtComponents = new QdtComponents(options.config, options.connections);
-
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    this.qdtInstance = QdtComponent.qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
+    qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
   }
 
   ngOnDestroy() {
-    this.qdtInstance.then(({ umount }) => unmount())
+    QdtComponents.unmountQdtComponent(this.elementRef.nativeElement)
   }
-
 }
 ```
 
@@ -124,11 +123,11 @@ export default class QdtComponent extends React.Component {
   }
   componentDidMount() {
     const { type, props } = this.props;
-    this.qdtInstance = qdtComponents.render(type, props, this.node);
+    qdtComponents.render(type, props, this.node);
   }
 
   componentWillUnmount() {
-    this.qdtInstance.then(({ unmount }) => unmount())
+    QdtComponents.unmountQdtComponent(this.node)
   }
 
   render() {

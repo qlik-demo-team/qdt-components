@@ -23,7 +23,7 @@ const QdtComponents = class {
     settings,
   };
 
-  static createUnmount = element => () => ReactDOM.unmountComponentAtNode(element);
+  static unmountQdtComponent = element => ReactDOM.unmountComponentAtNode(element)
 
   constructor(config = {}, connections = { vizApi: true, engineApi: true, useUniqueSessionID: null }) {
     const myConfig = config;
@@ -36,16 +36,15 @@ const QdtComponents = class {
     try {
       const { qAppPromise, qDocPromise } = this;
       const Component = components[type];
-      const node = ReactDOM.render(
+      ReactDOM.render(
         <Component
           {...props}
           qAppPromise={qAppPromise}
           qDocPromise={qDocPromise}
+          ref={node => resolve(node)}
         />,
         element,
       );
-      const unmount = QdtComponents.createUnmount(element);
-      resolve({ unmount, node });
     } catch (error) {
       reject(error);
     }
