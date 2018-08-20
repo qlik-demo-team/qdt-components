@@ -190,13 +190,13 @@ This creates a barchart based on [Picasso.js](https://picassojs.com/).
 | width            | String        | Sets width of viz, default 100% |
 | height           | String        | Sets height of viz, default 100% |
 
-#### QdtPicasso - lineChart
+#### QdtPicasso
 This creates a Line Chart based on [Picasso.js](https://picassojs.com/).
 * [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/picasso-line-chart).
 
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
-| type             | String        | `lineChart` |
+| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `scatterplot`, `verticalBarchart`, `stackedBarchart`, `verticalGauge`, `verticalRangeGauge` |
 | cols             | Array         | `[dimension, measure]` |
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
