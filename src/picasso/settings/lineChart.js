@@ -3,9 +3,7 @@ export default {
     y: {
       data: { field: 'qMeasureInfo/0' },
       expand: 0.1,
-      min: 0,
       invert: true,
-      include: [0],
     },
     x: {
       data: { extract: { field: 'qDimensionInfo/0' } },
