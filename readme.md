@@ -82,9 +82,13 @@ export class QdtComponent implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    QdtComponent.qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
+    this.qdtInstance = QdtComponent.qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
   }
-  
+
+  ngOnDestroy() {
+    this.qdtInstance.then(({ umount }) => unmount())
+  }
+
 }
 ```
 
@@ -120,7 +124,11 @@ export default class QdtComponent extends React.Component {
   }
   componentDidMount() {
     const { type, props } = this.props;
-    qdtComponents.render(type, props, this.node);
+    this.qdtInstance = qdtComponents.render(type, props, this.node);
+  }
+
+  componentWillUnmount() {
+    this.qdtInstance.then(({ unmount }) => unmount())
   }
 
   render() {
