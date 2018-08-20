@@ -1,28 +1,16 @@
 export default {
   scales: {
-    y0: {
-      data: { field: 'qMeasureInfo/0' },
-      expand: 0.1,
-      invert: true,
-    },
-    y1: {
-      data: { field: 'qMeasureInfo/1' },
-      expand: 0.1,
-      invert: true,
-    },
-    x: {
-      data: { extract: { field: 'qDimensionInfo/0' } },
-      padding: 0.2,
-    },
+    y: { data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] }, invert: true, expand: 0.2 },
+    x: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.2 },
   },
   components: [{
     type: 'grid-line',
-    y: 'y0',
+    y: 'y',
   }, {
     key: 'y-axis',
     type: 'axis',
     dock: 'left',
-    scale: 'y0',
+    scale: 'y',
   }, {
     key: 'x-axis',
     type: 'axis',
@@ -54,14 +42,14 @@ export default {
       extract: {
         field: 'qDimensionInfo/0',
         props: {
-          v: { field: 'qMeasureInfo/0' },
+          y: { field: 'qMeasureInfo/0' },
         },
       },
     },
     settings: {
       coordinates: {
         major: { scale: 'x' },
-        minor: { scale: 'y0', ref: 'v' },
+        minor: { scale: 'y', ref: 'y' },
       },
       orientation: 'horizontal',
       layers: {
@@ -90,7 +78,7 @@ export default {
     },
     settings: {
       x: { scale: 'x' },
-      y: { scale: 'y0' },
+      y: { scale: 'y' },
       shape: 'circle',
       size: 0.2,
     },
@@ -118,14 +106,14 @@ export default {
       extract: {
         field: 'qDimensionInfo/0',
         props: {
-          v: { field: 'qMeasureInfo/1' },
+          y: { field: 'qMeasureInfo/1' },
         },
       },
     },
     settings: {
       coordinates: {
         major: { scale: 'x' },
-        minor: { scale: 'y1', ref: 'v' },
+        minor: { scale: 'y', ref: 'y' },
       },
       orientation: 'horizontal',
       layers: {
@@ -154,7 +142,7 @@ export default {
     },
     settings: {
       x: { scale: 'x' },
-      y: { scale: 'y1' },
+      y: { scale: 'y' },
       shape: 'circle',
       size: 0.2,
       fill: '#CC6677',
@@ -167,12 +155,8 @@ export default {
       consume: [{
         context: 'select',
         style: {
-          active: {
-            opacity: 1,
-          },
-          inactive: {
-            opacity: 0.5,
-          },
+          active: { opacity: 1 },
+          inactive: { opacity: 0.5 },
         },
       }],
     },
