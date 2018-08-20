@@ -33,12 +33,14 @@ class QdtPicassoComponent extends React.Component {
     settings: PropTypes.object,
     options: PropTypes.object,
     afterConfirmSelections: PropTypes.func,
+    prio: PropTypes.oneOf(['canvas', 'svg']),
   }
   static defaultProps = {
     type: null,
     settings: {},
     options: {},
     afterConfirmSelections: null,
+    prio: 'canvas',
   }
   constructor(props) {
     super(props);
@@ -92,7 +94,7 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   async createPic() {
     const {
-      qLayout, qData, settings, type, options,
+      qLayout, qData, settings, type, options, prio,
     } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
@@ -113,7 +115,7 @@ class QdtPicassoComponent extends React.Component {
       this.mySettings.scales.y.max = options.max;
       this.mySettings.components[1].end = options.max;
     }
-    this.pic = picasso({ renderer: { prio: ['canvas'] } }).chart({
+    this.pic = picasso({ renderer: { prio: [prio] } }).chart({
       element: this.element,
       data: [{
         type: 'q',
@@ -221,6 +223,7 @@ QdtPicasso.propTypes = {
   innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   afterConfirmSelections: PropTypes.func,
+  prio: PropTypes.oneOf(['canvas', 'svg']),
 };
 QdtPicasso.defaultProps = {
   cols: null,
@@ -239,6 +242,7 @@ QdtPicasso.defaultProps = {
   innerWidth: '100%',
   innerHeight: '100%',
   afterConfirmSelections: null,
+  prio: 'canvas',
 };
 
 export default QdtPicasso;
