@@ -1,7 +1,7 @@
 export default {
   scales: {
     x: { data: { extract: { field: 'qMeasureInfo/0' } }, include: [1] },
-    y: { min: { ref: 'min' }, max: { ref: 'max' }, invert: true },
+    y: { data: { fields: ['qMeasureInfo/3', 'qMeasureInfo/4'] }, invert: true },
   },
   components: [
     {

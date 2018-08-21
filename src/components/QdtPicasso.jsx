@@ -31,14 +31,14 @@ class QdtPicassoComponent extends React.Component {
     innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     type: PropTypes.string,
     settings: PropTypes.object,
-    options: PropTypes.object,
+    // options: PropTypes.object,
     afterConfirmSelections: PropTypes.func,
     prio: PropTypes.oneOf(['canvas', 'svg']),
   }
   static defaultProps = {
     type: null,
     settings: {},
-    options: {},
+    // options: {},
     afterConfirmSelections: null,
     prio: 'canvas',
   }
@@ -94,18 +94,10 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   async createPic() {
     const {
-      qLayout, qData, settings, type, options, prio,
-    } = this.props;
+      qLayout, qData, settings, type, prio,
+    } = this.props; // options,
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'verticalRangeGauge') {
-      const ds = picasso.data('q')({
-        key: 'qHyperCube',
-        data: data.qHyperCube,
-      });
-      this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
-      this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
-    }
     if (type === 'verticalGauge' && options.min) {
       this.mySettings.scales.y.min = options.min;
       this.mySettings.components[1].start = options.min;
@@ -136,17 +128,9 @@ class QdtPicassoComponent extends React.Component {
   updatePic() {
     if (this.props.selections) return;
     const {
-      qLayout, qData, type, options,
-    } = this.props;
+      qLayout, qData,
+    } = this.props; // type, options,
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'verticalRangeGauge') {
-      const ds = picasso.data('q')({
-        key: 'qHyperCube',
-        data: data.qHyperCube,
-      });
-      this.mySettings.scales.y.min = ds.extract({ field: 'qMeasureInfo/3' })[0].value;
-      this.mySettings.scales.y.max = ds.extract({ field: 'qMeasureInfo/4' })[0].value;
-    }
     if (type === 'verticalGauge' && options.min) {
       this.mySettings.scales.y.min = options.min;
       this.mySettings.components[1].start = options.min;
