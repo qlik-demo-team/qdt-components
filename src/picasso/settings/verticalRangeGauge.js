@@ -26,7 +26,7 @@ export default {
       settings: {
         major: { scale: 'x' },
         minor: { scale: 'y' },
-        box: { fill: '#F93F17' },
+        box: { fill: '#b4bfc2' },
         orientation: 'vertical',
       },
     },
