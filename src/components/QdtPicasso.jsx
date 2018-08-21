@@ -31,14 +31,14 @@ class QdtPicassoComponent extends React.Component {
     innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     type: PropTypes.string,
     settings: PropTypes.object,
-    // options: PropTypes.object,
+    options: PropTypes.object,
     afterConfirmSelections: PropTypes.func,
     prio: PropTypes.oneOf(['canvas', 'svg']),
   }
   static defaultProps = {
     type: null,
     settings: {},
-    // options: {},
+    options: {},
     afterConfirmSelections: null,
     prio: 'canvas',
   }
@@ -94,8 +94,8 @@ class QdtPicassoComponent extends React.Component {
   @autobind
   async createPic() {
     const {
-      qLayout, qData, settings, type, prio,
-    } = this.props; // options,
+      qLayout, qData, settings, type, prio, options,
+    } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     if (type === 'verticalGauge' && options.min) {
@@ -128,8 +128,8 @@ class QdtPicassoComponent extends React.Component {
   updatePic() {
     if (this.props.selections) return;
     const {
-      qLayout, qData,
-    } = this.props; // type, options,
+      qLayout, qData, type, options,
+    } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     if (type === 'verticalGauge' && options.min) {
       this.mySettings.scales.y.min = options.min;
