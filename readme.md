@@ -216,7 +216,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
-- 1.1.70 QdtPicasso - aa rangeArea chart
+- 1.1.70 QdtPicasso - add rangeArea chart
 - 1.1.69 QdtPicasso - add prio prop for rendering svg. It defaults to canvas
 - 1.1.68 Better unmount handling thnx to @humean (Michael Rutter)
 - 1.1.67 Add Vertical Bar Gauge
