@@ -223,6 +223,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.2.1 bumpup qdt-lui to include the tabset
 - 1.2.0 QdtFilter - add tabset for horizontal menu.
 - 1.1.70 QdtPicasso - add rangeArea chart
 - 1.1.69 QdtPicasso - add prio prop for rendering svg. It defaults to canvas
