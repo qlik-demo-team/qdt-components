@@ -6,12 +6,15 @@
         url(../../node_modules/qdt-lui/dist/lui-icons.ttf) format('truetype');
   }
 
+/****************
+ * QdtFilter
+*****************/
 .O { // Optional
   color: $gray-900 !important;
 }
 .S { // Selected
   color: $gray-100 !important;
-  background-color: #52CC52 !important;
+  background-color: $color-green-qlik !important;
 }
 .A { // Alternative
   color: $gray-900 !important;
@@ -55,6 +58,9 @@ th.active:after {
   border-right: 0.5rem solid transparent;
   border-top: 0.5rem solid #666;
 }
+.lui-select { border-radius: 0; }
+.lui-tab.lui-active, .lui-tab:focus, .lui-tab.lui-focused { border-bottom: 2px solid $color-green-qlik; }
+// .lui-tab { display: inline-block; }
 
 /****************
  * QdtButton 

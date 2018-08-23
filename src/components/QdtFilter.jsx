@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { LuiDropdown, LuiList, LuiListItem, LuiSearch } from 'qdt-lui';
+import { LuiDropdown, LuiList, LuiListItem, LuiSearch, LuiTabset, LuiTab } from 'qdt-lui';
 import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
@@ -28,6 +28,35 @@ DropdownItemList.propTypes = {
   qMatrix: PropTypes.array.isRequired,
   rowHeight: PropTypes.number.isRequired,
   select: PropTypes.func.isRequired,
+};
+
+const ExpandedHorizontalTab = ({ qData, select, expandedHorizontalSense }) => {
+  const element = qData.qMatrix.map((row) => {
+    let className = (expandedHorizontalSense) ? `${row[0].qState}` : '';
+    if (!expandedHorizontalSense && row[0].qState === 'S') className += ' lui-active';
+    return (
+      <LuiTab
+        className={className}
+        key={row[0].qElemNumber}
+        data-q-elem-number={row[0].qElemNumber}
+        data-q-state={row[0].qState}
+        onClick={select}
+      >
+        {row[0].qText}
+      </LuiTab>
+    );
+  });
+  return (
+    <div style={{ width: '100%', display: 'flex' }}>
+      {element}
+    </div>
+  );
+};
+
+ExpandedHorizontalTab.propTypes = {
+  qData: PropTypes.array.isRequired,
+  select: PropTypes.func.isRequired,
+  expandedHorizontalSense: PropTypes.bool.isRequired,
 };
 
 const StateCountsBar = ({ qStateCounts }) => {
@@ -63,6 +92,8 @@ class QdtFilterComponent extends React.Component {
     placeholder: PropTypes.string,
     showStateInDropdown: PropTypes.bool,
     expanded: PropTypes.bool,
+    expandedHorizontal: PropTypes.bool,
+    expandedHorizontalSense: PropTypes.bool,
   }
   static defaultProps = {
     single: false,
@@ -70,6 +101,8 @@ class QdtFilterComponent extends React.Component {
     placeholder: 'Dropdown',
     showStateInDropdown: false,
     expanded: false,
+    expandedHorizontal: false,
+    expandedHorizontalSense: true,
   }
 
   constructor(props) {
@@ -139,7 +172,7 @@ class QdtFilterComponent extends React.Component {
 
   render() {
     const {
-      qData, qLayout, offset, placeholder, hideStateCountsBar, showStateInDropdown, expanded,
+      qData, qLayout, offset, placeholder, hideStateCountsBar, showStateInDropdown, expanded, expandedHorizontal, expandedHorizontalSense,
     } = this.props;
     const { dropdownOpen, searchListInputValue, selections } = this.state;
     const { qStateCounts } = qLayout.qListObject.qDimensionInfo;
@@ -147,7 +180,7 @@ class QdtFilterComponent extends React.Component {
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
     return (
       <div>
-        { !expanded &&
+        { (!expanded && !expandedHorizontal) &&
           <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
             <span>
               {!showStateInDropdown && placeholder}
@@ -195,7 +228,19 @@ class QdtFilterComponent extends React.Component {
             viewportHeight={190}
           />
         </LuiList>
-          }
+        }
+        { expandedHorizontal &&
+        <LuiTabset
+          fill
+          style={{ height: '100%' }}
+        >
+          <ExpandedHorizontalTab
+            qData={qData}
+            select={this.select}
+            expandedHorizontalSense={expandedHorizontalSense}
+          />
+        </LuiTabset>
+        }
       </div>
     );
   }
@@ -211,7 +256,10 @@ QdtFilter.propTypes = {
   hideStateCountsBar: PropTypes.bool,
   placeholder: PropTypes.string,
   expanded: PropTypes.bool,
+  expandedHorizontal: PropTypes.bool,
+  expandedHorizontalSense: PropTypes.bool,
   showStateInDropdown: PropTypes.bool,
+  autoSortByState: PropTypes.bool,
 };
 QdtFilter.defaultProps = {
   cols: null,
@@ -226,7 +274,10 @@ QdtFilter.defaultProps = {
   hideStateCountsBar: false,
   placeholder: 'Dropdown',
   expanded: false,
+  expandedHorizontal: false,
+  expandedHorizontalSense: true,
   showStateInDropdown: false,
+  autoSortByState: 1,
 };
 
 export default QdtFilter;

@@ -10,7 +10,11 @@ export default function withListObject(Component) {
       cols: PropTypes.array,
       qListObjectDef: PropTypes.object,
       qPage: PropTypes.object,
+      autoSortByState: PropTypes.bool,
     };
+    static defaultProps = {
+      autoSortByState: 1,
+    }
 
     static defaultProps = {
       cols: null,
@@ -80,7 +84,7 @@ export default function withListObject(Component) {
 
     generateQProp(currentColumn = 0) {
       try {
-        const { cols, qListObjectDef } = this.props;
+        const { cols, qListObjectDef, autoSortByState } = this.props;
         const qProp = { qInfo: { qType: 'visualization' } };
         if (qListObjectDef) {
           qProp.qListObjectDef = qListObjectDef;
@@ -98,7 +102,7 @@ export default function withListObject(Component) {
           qProp.qListObjectDef = {
             ...qDef,
             qShowAlternatives: true,
-            qAutoSortByState: { qDisplayNumberOfRows: 1 },
+            qAutoSortByState: { qDisplayNumberOfRows: autoSortByState },
           };
         }
         return qProp;
