@@ -32,6 +32,10 @@ export default {
       align: 'left',
     },
   }, {
+    key: 'tooltip',
+    type: 'tooltip',
+    background: 'white',
+  }, {
     key: 'lines',
     type: 'line',
     data: {
@@ -68,23 +72,7 @@ export default {
         },
       },
     },
-    brush: {
-      trigger: [{
-        on: 'tap',
-        contexts: ['select'],
-      }],
-      consume: [{
-        context: 'select',
-        style: {
-          active: {
-            opacity: 1,
-          },
-          inactive: {
-            opacity: 0.5,
-          },
-        },
-      }],
-    },
+    brush: { },
   }, {
     key: 'point1',
     type: 'point',
@@ -158,9 +146,13 @@ export default {
   interactions: [
     {
       type: 'native',
+      key: 'point1',
       events: {
         mousemove(e) {
           this.chart.component('tooltip').emit('hover', e);
+        },
+        mouseout(e) {
+          this.chart.component('tooltip').emit('leave', e);
         },
       },
     },
