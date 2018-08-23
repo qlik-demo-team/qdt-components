@@ -150,7 +150,7 @@ This component can be used to create or get a native Qlik Sense viz. If you defi
 
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
-| id               | String        | Id for an existng visualization |
+| id               | String        | Id for an existing visualization |
 | type             | String        | [see here][vizApiCreate] |
 | cols             | Array         | [see here][vizApiCreate] |
 | options          | Object        | [see here][vizApiCreate] |
@@ -164,6 +164,13 @@ This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` wi
 | ---------------- | ------------- | ------------- |
 | cols             | Array         | [see here][cols] |
 | qListObjectDef   | Object        | [see here][qListObjectDef] |
+| single           | Boolean       | Default `false`. For single selections |
+| placeholder      | String        | Default `DropDown` |
+| expanded         | Boolean       | Default `false`. For a list like menu instead of a dropdown |
+| expandedHorizontal| Boolean      | Default `false`. For a horizontal menu |
+| expandedHorizontalSense| Boolean | Default `true`. For a Qlik sense style selections look and feel. If `false` then they are regular tabs |
+| autoSortByState  | Number        | Default `1`. [see here][https://help.qlik.com/en-US/sense-developer/June2018/APIs/EngineAPI/genericobject-property-ListObjectDef.html] |
+
 
 [vizApiCreate]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/create-method.htm
 [cols]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/columns.htm
@@ -216,6 +223,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.2.0 QdtFilter - add tabset for horizontal menu.
 - 1.1.70 QdtPicasso - add rangeArea chart
 - 1.1.69 QdtPicasso - add prio prop for rendering svg. It defaults to canvas
 - 1.1.68 Better unmount handling thnx to @humean (Michael Rutter)
