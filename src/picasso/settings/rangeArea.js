@@ -35,6 +35,9 @@ export default {
     key: 'tooltip',
     type: 'tooltip',
     background: 'white',
+    settings: {
+      content: ({ h, data }) => data.map(datum => h('div', {}, datum)),
+    },
   }, {
     key: 'lines',
     type: 'line',

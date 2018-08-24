@@ -1,7 +1,7 @@
 export default {
   scales: {
     y: { data: { extract: { field: 'qDimensionInfo/0' } } },
-    x: { data: { field: 'qMeasureInfo/0' }, include: [0] },
+    x: { data: { field: 'qMeasureInfo/0' } },
   },
   components: [
     {
@@ -9,19 +9,16 @@ export default {
       type: 'axis',
       scale: 'x',
       dock: 'bottom',
-    },
-    {
+    }, {
       key: 'y-axis',
       type: 'axis',
       scale: 'y',
       dock: 'left',
-    },
-    {
+    }, {
       key: 'tooltip',
       type: 'tooltip',
       background: 'white',
-    },
-    {
+    }, {
       type: 'box',
       key: 'bars',
       displayOrder: 1,
@@ -102,6 +99,16 @@ export default {
   ],
   interactions: [
     {
+      type: 'native',
+      events: {
+        mousemove(e) {
+          this.chart.component('tooltip').emit('hover', e);
+        },
+        mouseout(e) {
+          this.chart.component('tooltip').emit('leave', e);
+        },
+      },
+    }, {
       type: 'hammer',
       gestures: [{
         type: 'Pan',
