@@ -1,24 +1,15 @@
+import { xAxis, yAxis, tooltip } from './components';
+import { itooltip, pan } from './interactions';
+
 export default {
   scales: {
+    x: { data: { field: 'qMeasureInfo/0' }, include: [0] },
     y: { data: { extract: { field: 'qDimensionInfo/0' } } },
-    x: { data: { field: 'qMeasureInfo/0' } },
   },
   components: [
+    xAxis,
+    yAxis,
     {
-      key: 'x-axis',
-      type: 'axis',
-      scale: 'x',
-      dock: 'bottom',
-    }, {
-      key: 'y-axis',
-      type: 'axis',
-      scale: 'y',
-      dock: 'left',
-    }, {
-      key: 'tooltip',
-      type: 'tooltip',
-      background: 'white',
-    }, {
       type: 'box',
       key: 'bars',
       displayOrder: 1,
@@ -96,49 +87,7 @@ export default {
         }],
       },
     },
+    tooltip,
   ],
-  interactions: [
-    {
-      type: 'native',
-      events: {
-        mousemove(e) {
-          this.chart.component('tooltip').emit('hover', e);
-        },
-        mouseout(e) {
-          this.chart.component('tooltip').emit('leave', e);
-        },
-      },
-    }, {
-      type: 'hammer',
-      gestures: [{
-        type: 'Pan',
-        options: {
-          event: 'range',
-          direction: Hammer.DIRECTION_VERTICAL,
-        },
-        events: {
-          rangestart(e) {
-            this.chart.component('rangeY').emit('rangeStart', e);
-          },
-          rangemove(e) {
-            this.chart.component('rangeY').emit('rangeMove', e);
-          },
-          rangeend(e) {
-            this.chart.component('rangeY').emit('rangeEnd', e);
-          },
-        },
-      }],
-    },
-    {
-      type: 'native',
-      events: {
-        mousemove(e) {
-          this.chart.component('tooltip').emit('hover', e);
-        },
-        mouseout(e) {
-          this.chart.component('tooltip').emit('leave', e);
-        },
-      },
-    },
-  ],
+  interactions: [itooltip, pan],
 };

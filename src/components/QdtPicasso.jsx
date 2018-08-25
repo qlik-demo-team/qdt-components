@@ -5,13 +5,10 @@ import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
-import tooltip from '../picasso/components/tooltip';
-import domPointLabel from '../picasso/components/domPointLabel';
-import domPointImage from '../picasso/components/domPointImage';
+import { domPointLabel, domPointImage } from '../picasso/components';
 import preconfiguredSettings from '../picasso/settings';
 import '../styles/index.scss';
 
-picasso.component('tooltip', tooltip);
 picasso.component('domPointLabel', domPointLabel);
 picasso.component('domPointImage', domPointImage);
 picasso.use(picassoHammer);
