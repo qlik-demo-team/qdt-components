@@ -1,23 +1,29 @@
-const interaction = {
-  type: 'hammer',
-  gestures: [{
-    type: 'Pan',
-    options: {
-      event: 'range',
-      direction: Hammer.DIRECTION_ALL, // Hammer.DIRECTION_HORIZONTAL,
-    },
-    events: {
-      rangestart(e) {
-        this.chart.component('rangeX').emit('rangeStart', e);
+const interaction = function interaction({
+  scale = 'x',
+} = {}) {
+  const inter = {
+    type: 'hammer',
+    gestures: [{
+      type: 'Pan',
+      options: {
+        event: 'range',
+        direction: (scale === 'x') ? Hammer.DIRECTION_HORIZONTAL : Hammer.DIRECTION_VERTICAL, // Hammer.DIRECTION_ALL
       },
-      rangemove(e) {
-        this.chart.component('rangeX').emit('rangeMove', e);
+      events: {
+        rangestart(e) {
+          this.chart.component(`${scale}Range`).emit('rangeStart', e);
+        },
+        rangemove(e) {
+          this.chart.component(`${scale}Range`).emit('rangeMove', e);
+        },
+        rangeend(e) {
+          this.chart.component(`${scale}Range`).emit('rangeEnd', e);
+        },
       },
-      rangeend(e) {
-        this.chart.component('rangeX').emit('rangeEnd', e);
-      },
-    },
-  }],
+    }],
+  };
+
+  return inter;
 };
 
 export default interaction;

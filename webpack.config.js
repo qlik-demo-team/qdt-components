@@ -4,6 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: './src/index',
+//   entry: ['babel-polyfill', './src/index'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -19,8 +20,10 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['latest', 'react'],
-          plugins: ['transform-decorators-legacy', 'transform-object-rest-spread', 'transform-class-properties', 'transform-runtime'],
+          presets: [['env',{"debug": false}], 'react'],
+          plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-runtime', "transform-object-rest-spread"],
+        //   presets: [['env', {es2015: {modules: process.env.ENV === 'production' ? 'commonjs' : false}}], 'react'],
+        //   plugins: ['transform-decorators-legacy', 'transform-object-rest-spread', 'transform-class-properties',],
         },
       },
       {

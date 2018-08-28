@@ -2,17 +2,24 @@ import domPointLabel from './domPointLabel';
 import axis from './axis';
 import legend from './legend';
 import point from './point';
+import box from './box';
+import labels from './labels';
 import tooltip from './tooltip';
-// import interactions from './interactions';
+import range from './range';
+import pie from './pie';
+import line from './line';
 
 const components = {
   domPointLabel,
-  xAxis: axis.x,
-  yAxis: axis.y,
+  axis,
   legend,
   point,
+  box,
+  labels,
   tooltip,
-//   interactions,
+  range,
+  pie,
+  line,
 };
 
 module.exports = components;
