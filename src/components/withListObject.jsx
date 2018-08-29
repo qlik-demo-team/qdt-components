@@ -94,7 +94,7 @@ export default function withListObject(Component) {
           (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension')).map((col) => {
             if (typeof col === 'string') {
-              return { qDef: { qFieldDefs: [col] } };
+              return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByLoadOrder: 1 }] } };
             }
             return col;
           });
