@@ -23,7 +23,7 @@ const setting = {
       key: 'line2', displayOrder: 3, y: { field: 'qMeasureInfo/0' }, stroke: theme.secondary,
     }),
     point({
-      key: 'point2', displayOrder: 4, y: { field: 'qMeasureInfo/0' }, fill: theme.secondary, stroke: theme.primaryLight,
+      key: 'point2', displayOrder: 4, y: { field: 'qMeasureInfo/0' }, fill: theme.secondary, stroke: theme.secondaryLight,
     }),
   ],
   interactions: [itooltip, pan()],

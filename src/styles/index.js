@@ -3,10 +3,10 @@ const palette = [
   '#CC6666', // Light Red
   '#99CC66', // Light Green
   '#275378', // Blue
-  '#B35A01', // Red
+  '#B35A01', // Orange
   '#B974FD', // Purple
   '#993300', // Dark Red
-  '#99CCCC', //
+  '#99CCCC', // Very light blue
   '#669933', // Green
   '#898989', // Gray
   '#EDA1A1',
