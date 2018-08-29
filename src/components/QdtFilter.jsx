@@ -146,7 +146,13 @@ class QdtFilterComponent extends React.Component {
   @autobind
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset;
+    const { single, endSelections } = this.props;
+    console.log(1, this.props);
     if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
+    if (single) {
+      endSelections(true);
+      this.toggle();
+    }
   }
 
   @autobind
