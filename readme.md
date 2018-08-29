@@ -223,7 +223,9 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
--       Add qSortByLoadOrder in the withListObject
+-       Add qSortByLoadOrder in the withListObject. 
+        Fix QdtFilter on single selection to close the dropDown and add the selection in the placeholder. 
+        Various css ui changes
 - 1.3.3 Fix Gauge labels and range area point stroke
 - 1.3.2 Expose Interactions to the Dom.
 - 1.3.1 Add Theme coloring for picasso charts.

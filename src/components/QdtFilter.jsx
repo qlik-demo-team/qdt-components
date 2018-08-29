@@ -15,6 +15,7 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
           key={row[0].qElemNumber}
           data-q-elem-number={row[0].qElemNumber}
           data-q-state={row[0].qState}
+          data-q-text={row[0].qText}
           onClick={select}
           style={{ height: `${rowHeight - 1}px` }}
         >
@@ -112,6 +113,7 @@ class QdtFilterComponent extends React.Component {
       dropdownOpen: false,
       searchListInputValue: '',
       selections: null,
+      placeholder: props.placeholder,
     };
   }
 
@@ -145,11 +147,11 @@ class QdtFilterComponent extends React.Component {
 
   @autobind
   select(event) {
-    const { qElemNumber, qState } = event.currentTarget.dataset;
-    const { single, endSelections } = this.props;
-    console.log(1, this.props);
+    const { qElemNumber, qState, qText } = event.currentTarget.dataset;
+    const { single, endSelections, placeholder } = this.props;
     if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
     if (single) {
+      this.setState({ placeholder: `${placeholder}: ${qText}` });
       endSelections(true);
       this.toggle();
     }
@@ -178,9 +180,11 @@ class QdtFilterComponent extends React.Component {
 
   render() {
     const {
-      qData, qLayout, offset, placeholder, hideStateCountsBar, showStateInDropdown, expanded, expandedHorizontal, expandedHorizontalSense,
+      qData, qLayout, offset, hideStateCountsBar, showStateInDropdown, expanded, expandedHorizontal, expandedHorizontalSense,
     } = this.props;
-    const { dropdownOpen, searchListInputValue, selections } = this.state;
+    const {
+      dropdownOpen, searchListInputValue, selections, placeholder,
+    } = this.state;
     const { qStateCounts } = qLayout.qListObject.qDimensionInfo;
     const { qSelected } = qStateCounts;
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
