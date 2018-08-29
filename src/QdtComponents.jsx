@@ -5,6 +5,7 @@ import qDoc from './qDoc';
 import utility from './utilities/';
 import settings from './picasso/settings';
 import picassoComponents from './picasso/settings/components';
+import picassoInteractions from './picasso/settings/interactions';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
@@ -23,6 +24,7 @@ const QdtComponents = class {
   static picasso = {
     settings,
     components: picassoComponents,
+    interactions: picassoInteractions,
   };
 
   static unmountQdtComponent = element => ReactDOM.unmountComponentAtNode(element)

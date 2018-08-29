@@ -223,6 +223,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.3.2 Expose Interactions to the Dom.
 - 1.3.1 Add Theme coloring for picasso charts.
 - 1.3.0 Bump up Picasso.js.
         Change the tooltip to the new one from Picasso. 
