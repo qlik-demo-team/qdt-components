@@ -49,6 +49,7 @@ const QdtComponents = class {
         />,
         element,
       );
+    //   console.info(version);
     } catch (error) {
       reject(error);
     }

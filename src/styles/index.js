@@ -12,13 +12,15 @@ const palette = [
   '#EDA1A1',
   '#C6E2A9',
   '#D4B881',
-  '#137D77',
-  '#D7C2EC',
-  '#FF5500',
-  '#15DFDF',
-  '#93A77E',
-  '#CB5090',
+  '#137D77', // Dark Green
+  '#D7C2EC', // Light purple
+  '#FF5500', // Bright Orange
+  '#15DFDF', // Terquase
+  '#93A77E', // Olive Green
+  '#CB5090', // Dark Pink
   '#BFBFBF', // Light Gray
+  '#d6d6d6', // Lighter Gray
+  '#eaeaea', // Even Lighter Gray
 ];
 
 const theme = {

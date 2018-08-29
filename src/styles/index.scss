@@ -58,7 +58,7 @@ th.active:after {
   border-right: 0.5rem solid transparent;
   border-top: 0.5rem solid #666;
 }
-.lui-select { border-radius: 0; }
+.lui-select { border-radius: 0 !important; }
 .lui-tab.lui-active, .lui-tab:focus, .lui-tab.lui-focused { border-bottom: 2px solid $color-green-qlik; }
 // .lui-tab { display: inline-block; }
 

@@ -14,7 +14,7 @@ const setting = {
     tooltip,
     range(),
     line({
-      y0: { field: 'qMeasureInfo/0' }, y: { field: 'qMeasureInfo/1' }, area: true, stroke: theme.primary,
+      y0: { field: 'qMeasureInfo/0' }, y: { field: 'qMeasureInfo/1' }, fill: theme.palette[20], area: true, stroke: theme.primary,
     }),
     point({
       displayOrder: 2, y: { field: 'qMeasureInfo/1' }, fill: theme.primary, stroke: theme.primaryLight,
