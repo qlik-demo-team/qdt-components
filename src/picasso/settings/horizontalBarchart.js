@@ -1,5 +1,6 @@
 import { axis, box, tooltip, range, labels } from './components';
 import { itooltip, pan } from './interactions';
+import theme from '../../styles';
 
 const setting = {
   scales: {
@@ -9,7 +10,7 @@ const setting = {
   components: [
     axis(),
     axis({ scale: 'y' }),
-    box({ orientation: 'horizontal' }),
+    box({ orientation: 'horizontal', fill: theme.primary, stroke: theme.primaryLight }),
     range({ scale: 'y' }),
     labels({ direction: 'right' }),
     tooltip,

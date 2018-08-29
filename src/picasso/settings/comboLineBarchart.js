@@ -1,11 +1,11 @@
 import { axis, box, tooltip, labels, line, point, range } from './components';
 import { itooltip, pan } from './interactions';
+import theme from '../../styles';
 
 const setting = {
   scales: {
     x: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.3 },
-    y: { data: { field: 'qMeasureInfo/0' }, include: [0], invert: true },
-    y1: { data: { field: 'qMeasureInfo/1' }, invert: true, expand: 0.02 },
+    y: { data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] }, invert: true, expand: 0.2 },
     c: { data: { field: 'qMeasureInfo/0' }, type: 'color' },
   },
   components: [
@@ -13,12 +13,14 @@ const setting = {
     axis(),
     axis({ scale: 'y' }),
     tooltip,
-    box(),
+    box({ fill: theme.primary, stroke: theme.primaryLight }),
     labels(),
     line({
-      displayOrder: 3, y: { field: 'qMeasureInfo/1' }, minor: { scale: 'y1', ref: 'y' }, stroke: '#960000',
+      key: 'line2', displayOrder: 3, y: { field: 'qMeasureInfo/1' }, stroke: theme.secondary,
     }),
-    point({ displayOrder: 4, y: { scale: 'y1' }, fill: '#960000' }),
+    point({
+      key: 'point2', displayOrder: 4, y: { field: 'qMeasureInfo/1' }, fill: theme.secondary, stroke: theme.secondaryLight,
+    }),
     range(),
   ],
   interactions: [

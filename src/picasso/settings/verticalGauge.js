@@ -1,5 +1,6 @@
 import { axis, tooltip, box, labels } from './components';
 import { itooltip } from './interactions';
+import theme from '../../styles';
 
 const setting = {
   scales: {
@@ -10,16 +11,16 @@ const setting = {
     axis({ scale: 'y' }),
     tooltip,
     box({
-      field: 'qMeasureInfo/0', end: 100, fill: '#EEEEEE', stroke: '#b7b7b7',
+      field: 'qMeasureInfo/0', end: 100, fill: theme.palette[19], stroke: theme.palette[9],
     }),
     box({
-      key: 'range', displayOrder: 2, field: 'qMeasureInfo/0', fill: '#4477AA', stroke: '#b7b7b7',
+      key: 'range', displayOrder: 2, field: 'qMeasureInfo/0', fill: theme.primary, stroke: theme.primaryLight,
     }),
     box({
       key: 'line', displayOrder: 3, field: 'qMeasureInfo/0', start: { field: 'qMeasureInfo/0' }, fill: '#FFFFFF', stroke: '#FFFFFF',
     }),
     labels({
-      displayOrder: 4, component: 'line', direction: 'up', fill: '#4f4f4f', fontSize: 18,
+      displayOrder: 4, component: 'line', direction: 'up', fill: '#FFFFFF', fontSize: 18,
     }),
   ],
   interactions: [itooltip],

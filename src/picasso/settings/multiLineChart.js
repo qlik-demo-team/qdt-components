@@ -1,5 +1,6 @@
 import { axis, tooltip, line, point, range } from './components';
 import { itooltip, pan } from './interactions';
+import theme from '../../styles';
 
 const setting = {
   scales: {
@@ -11,13 +12,13 @@ const setting = {
     axis(),
     axis({ scale: 'y' }),
     tooltip,
-    line(),
-    point({ displayOrder: 2, fill: '#4477AA' }),
+    line({ stroke: theme.primary }),
+    point({ displayOrder: 2, fill: theme.primary, stroke: theme.primaryLight }),
     line({
-      key: 'line2', displayOrder: 3, y: { field: 'qMeasureInfo/1' }, stroke: '#CC6677',
+      key: 'line2', displayOrder: 3, y: { field: 'qMeasureInfo/1' }, stroke: theme.secondary,
     }),
     point({
-      key: 'point2', displayOrder: 4, fill: '#CC6677', y: { field: 'qMeasureInfo/1' },
+      key: 'point2', displayOrder: 4, y: { field: 'qMeasureInfo/1' }, fill: theme.secondary, stroke: theme.secondaryLight,
     }),
     range(),
   ],

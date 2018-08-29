@@ -2,7 +2,7 @@ const component = {
   type: 'legend-cat',
   key: 'legend',
   dock: 'right',
-  scale: 'color',
+  scale: 'c',
   brush: {
     trigger: [{
       on: 'tap',

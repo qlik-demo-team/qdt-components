@@ -1,5 +1,6 @@
 import { axis, legend, tooltip, range, labels, box } from './components';
 import { itooltip, pan } from './interactions';
+import theme from '../../styles';
 
 const setting = {
   collections: [{
@@ -23,7 +24,11 @@ const setting = {
       data: { collection: { key: 'stacked' } }, invert: true, expand: 0.2, min: 0,
     },
     x: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.3 },
-    color: { data: { extract: { field: 'qDimensionInfo/1' } }, type: 'color' },
+    c: {
+      data: { extract: { field: 'qDimensionInfo/1' } },
+      range: theme.palette,
+      type: 'color',
+    },
   },
   components: [
     axis(),
@@ -31,7 +36,7 @@ const setting = {
     legend,
     tooltip,
     range(),
-    box({ collection: 'stacked', fill: { scale: 'color', ref: 'series' } }),
+    box({ collection: 'stacked', fill: { scale: 'c', ref: 'series' } }),
     labels(),
   ],
   interactions: [itooltip, pan()],
