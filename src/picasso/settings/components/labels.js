@@ -6,6 +6,8 @@ const labels = function labels({
   direction = 'down',
   fontSize = 12,
   type = 'bar',
+  insideFill = '#FFFFFF',
+  outsideFill = '#666666',
 } = {}) {
   const comp = {
     type: 'labels',
@@ -29,8 +31,8 @@ const labels = function labels({
                 return myLabel;
               },
               placements: [
-                { position: 'inside', fill: '#fff', justify: (direction === 'down') ? 0 : 1 },
-                { position: 'outside', fill: '#666' },
+                { position: 'inside', fill: insideFill, justify: (direction === 'down') ? 0 : 1 },
+                { position: 'outside', fill: outsideFill },
               ],
             }],
           },

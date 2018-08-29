@@ -20,7 +20,7 @@ const setting = {
       key: 'line', displayOrder: 4, field: 'qMeasureInfo/0', start: { field: 'qMeasureInfo/0' }, end: { field: 'qMeasureInfo/0' }, fill: '#FFFFFF', stroke: '#FFFFFF',
     }),
     labels({
-      displayOrder: 4, component: 'line', direction: 'up', fill: '#FFFFFF', fontSize: 18,
+      displayOrder: 4, component: 'line', direction: 'up', outsideFill: '#FFFFFF', fontSize: 18,
     }),
   ],
   interactions: [itooltip],
