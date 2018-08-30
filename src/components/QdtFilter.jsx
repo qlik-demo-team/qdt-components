@@ -63,12 +63,11 @@ ExpandedHorizontalTab.propTypes = {
 const StateCountsBar = ({ qStateCounts }) => {
   const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
   const fillWidth = `${((qStateCounts.qOption + qStateCounts.qSelected) * 100) / totalStateCounts}%`;
-  const barStyle = { position: 'relative', height: '0.25rem', backgroundColor: '#ddd' };
   const fillStyle = {
     position: 'absolute', width: fillWidth, height: '100%', backgroundColor: '#52CC52', transition: 'width .6s ease',
   };
   return (
-    <div style={barStyle}>
+    <div className="qdt-filter-state-counts-bar">
       <div style={fillStyle} />
     </div>
   );
@@ -147,11 +146,11 @@ class QdtFilterComponent extends React.Component {
 
   @autobind
   select(event) {
-    const { qElemNumber, qState, qText } = event.currentTarget.dataset;
-    const { single, endSelections, placeholder } = this.props;
+    const { qElemNumber, qState } = event.currentTarget.dataset; // qText
+    const { single, endSelections } = this.props; // placeholder
     if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
     if (single) {
-      this.setState({ placeholder: `${placeholder}: ${qText}` });
+    //   this.setState({ placeholder: `${placeholder}: ${qText}` }); // @TODO It has to update based on current selections
       endSelections(true);
       this.toggle();
     }
