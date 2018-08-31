@@ -223,6 +223,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.3.6 QdtFilter - Add sorting by Ascii and LoadOrder
 - 1.3.5 QdtFilter UI changes. Placeholder with selectionson the dropdown
 - 1.3.4 Add qSortByLoadOrder in the withListObject. 
         Fix QdtFilter on single selection to close the dropDown and add the selection in the placeholder. 
