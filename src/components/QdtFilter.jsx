@@ -1,3 +1,17 @@
+/**
+ * @name QdtFilter
+ * @param {bool} single [false] - If we want single selections only. For regular menu like components
+ * @param {bool} hideStateCountsBar [false] - 
+ * @param {string} placeholder [Dropdown] - Custom text on the DropDown
+ * @param {bool} showStateInDropdown [false] - Selection state in the placeholder
+ * @param {bool} expanded [false] - Display as a list object
+ * @param {bool} expandedHorizontal [false] - Display as tabs
+ * @param {bool} expandedHorizontalSense [false] -  
+ * @description
+ * Filter component for custom filters.
+ * DropDown, List or Tabs
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
