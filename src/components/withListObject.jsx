@@ -1,3 +1,14 @@
+/**
+ * @name withListObject
+ * @param {array} cols - The dimension for the ListObject
+ * @param {object} qListObjectDef - Pass the entire Definition to bypass our creation object
+ * @param {bool} autoSortByState - IF we want the selected to be always on top like Qlik Sense. Default true
+ * @description
+ * Creates a Session List Object
+ * https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
+ *
+*/
+
 import React from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
@@ -124,7 +135,6 @@ export default function withListObject(Component) {
       }
     }
 
-    // async update(qTop = (this.state.qData) ? this.state.qData.qArea.qTop : 0) {
     async update(qTop = this.state.qData.qArea.qTop) {
       try {
         this.setState({ updating: true });
@@ -200,7 +210,7 @@ export default function withListObject(Component) {
         qObject, qLayout, qData, error,
       } = this.state;
       if (error) {
-        // return <div>{error.message}</div>;
+        return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
         return <Preloader width="100%" height="100%" paddingTop="0" type="bgColor" />;
       }
