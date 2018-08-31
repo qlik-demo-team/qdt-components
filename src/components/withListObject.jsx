@@ -158,6 +158,10 @@ export default function withListObject(Component) {
     async beginSelections() {
       try {
         const { qObject } = this.state;
+        const { qDocPromise } = this.props;
+        // Make sure we close all other open selections. We usually get that when we have morethan one dropDown in the same page and while one is open, we click on the second one
+        const qDoc = await qDocPromise;
+        await qDoc.abortModal(false);
         await qObject.beginSelections(['/qListObjectDef']);
       } catch (error) {
         this.setState({ error });

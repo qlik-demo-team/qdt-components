@@ -143,6 +143,13 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
+  //   componentDidMount() {
+  //     window.addEventListener('click', this.handleOutsideClick);
+  //   }
+  //   componentWillUnmount() {
+  //     window.removeEventListener('click', this.handleOutsideClick);
+  //   }
+
   /** Get the selected items of the current object */
   getSelections = async () => {
     const { qObject } = this.props;
@@ -150,6 +157,17 @@ class QdtFilterComponent extends React.Component {
     const selections = qDataPages[0].qMatrix.filter(row => row[0].qState === 'S');
     this.setState({ selections });
   }
+
+  //   handleOutsideClick = (event) => {
+  //     const outsideClick = !this.node.contains(event.target);
+  //     const { dropdownOpen } = this.state;
+  //     console.log(1, event);
+  //     if (dropdownOpen && outsideClick) {
+  //       console.log(2);
+  //       this.props.endSelections(false);
+  //       this.clear();
+  //     }
+  //   }
 
   /** Toggle dropdown visibility */
   @autobind
