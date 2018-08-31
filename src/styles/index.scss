@@ -236,7 +236,9 @@ th.active:after {
 /**********************
  * Preloader
 **********************/
-.qtd-preloader-bg { background-color: $gray-300; }
+.qtd-preloader-bg { 
+    background-color: black; 
+}
 .qtd-preloader {    
     .qtd-preloader-ball1 {
         background-color: rgba(0,0,0,0);

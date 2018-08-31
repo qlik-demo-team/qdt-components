@@ -9,7 +9,9 @@ const Preloader = (props) => {
   if (type === 'dots') {
     return '...';
   } else if (type === 'bgColor') {
-    return (<div className="qtd-preloader-bg" style={{ width, height, 'padding-top': paddingTop }} />);
+    return (
+      <div className="qtd-preloader-bg" style={{ width, height, 'padding-top': paddingTop }} />
+    );
   }
   return (
     <div className="qtd-preloader" style={{ width, height, 'padding-top': paddingTop }}>
