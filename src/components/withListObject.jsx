@@ -202,7 +202,7 @@ export default function withListObject(Component) {
       if (error) {
         // return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
-        return <Preloader width="100%" height="100%" paddingTop="0" />;
+        return <Preloader width="100%" height="100%" paddingTop="0" type="bgColor" />;
       }
       return (<Component
         {...this.props}

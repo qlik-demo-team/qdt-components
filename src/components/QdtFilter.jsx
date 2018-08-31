@@ -124,6 +124,9 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
+  //   componentDidUpdate() {
+  //   }
+
   getSelections = async () => {
     const { qObject } = this.props;
     const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ qWidth: 1, qHeight: 10000 }]);
@@ -148,10 +151,8 @@ class QdtFilterComponent extends React.Component {
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset; // qText
     const { single, endSelections } = this.props; // placeholder
-    // const { selections } = this.state;
     if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
     if (single) {
-    //   this.setState({ placeholder: `${placeholder}: ${qText}` }); // @TODO It has to update based on current selections
       endSelections(true);
       this.toggle();
     }
@@ -185,7 +186,6 @@ class QdtFilterComponent extends React.Component {
     const {
       dropdownOpen, searchListInputValue, selections, placeholder,
     } = this.state;
-    // if (!qLayout) return <div />;
     const { qStateCounts } = qLayout.qListObject.qDimensionInfo;
     const { qSelected } = qStateCounts;
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
@@ -196,8 +196,8 @@ class QdtFilterComponent extends React.Component {
             <span>
               {!showStateInDropdown && placeholder}
               {(showStateInDropdown && selections && selections.length === 0) && placeholder}
-              {(showStateInDropdown && selections && selections.length === 1) && selections[0][0].qText}
-              {(showStateInDropdown && selections && selections.length > 1) && `${qSelected} of ${totalStateCounts}`}
+              {(showStateInDropdown && selections && selections.length === 1) && `${placeholder}: ${selections[0][0].qText}`}
+              {(showStateInDropdown && selections && selections.length > 1) && `${placeholder}: ${qSelected} of ${totalStateCounts}`}
             </span>
             <LuiList style={{ width: '15rem' }}>
               <LuiSearch
