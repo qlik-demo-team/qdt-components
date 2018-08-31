@@ -74,7 +74,7 @@ export default function withListObject(Component) {
       try {
         const { qPage } = this.props;
         const { qObject } = this.state;
-        const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ ...qPage, qTop }]); // eslint-disable-line max-len
+        const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ ...qPage, qTop }]);
         return qDataPages[0];
       } catch (error) {
         this.setState({ error });
@@ -91,15 +91,18 @@ export default function withListObject(Component) {
         } else {
           const qDimensions = cols.filter(col =>
             (typeof col === 'string' && !col.startsWith('=')) ||
-          (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
-          (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension')).map((col) => {
-            if (typeof col === 'string') {
-              return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByLoadOrder: 1 }] } };
-            }
-            return col;
-          });
+            (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
+            (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
+            .map((col) => {
+              if (typeof col === 'string') {
+                return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByLoadOrder: 1 }] } };
+              }
+              return col;
+            });
+          const qLibraryId = { qLibraryId: (typeof cols[0] === 'object' && cols[0].qLibraryId) ? cols[0].qLibraryId : '' };
           const qDef = qDimensions[currentColumn];
           qProp.qListObjectDef = {
+            ...qLibraryId,
             ...qDef,
             qShowAlternatives: true,
             qAutoSortByState: { qDisplayNumberOfRows: autoSortByState },

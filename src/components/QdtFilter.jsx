@@ -148,6 +148,7 @@ class QdtFilterComponent extends React.Component {
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset; // qText
     const { single, endSelections } = this.props; // placeholder
+    // const { selections } = this.state;
     if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
     if (single) {
     //   this.setState({ placeholder: `${placeholder}: ${qText}` }); // @TODO It has to update based on current selections
@@ -184,11 +185,12 @@ class QdtFilterComponent extends React.Component {
     const {
       dropdownOpen, searchListInputValue, selections, placeholder,
     } = this.state;
+    // if (!qLayout) return <div />;
     const { qStateCounts } = qLayout.qListObject.qDimensionInfo;
     const { qSelected } = qStateCounts;
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
     return (
-      <div>
+      <div ref={(node) => { this.node = node; }} >
         { (!expanded && !expandedHorizontal) &&
           <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
             <span>
