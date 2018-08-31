@@ -223,7 +223,8 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
--       Bumpup qdt-lui
+- 1.3.7 Abort all selections before beginSelections is called to avoid errors on more than one components on the same page.
+        Bumpup qdt-lui.
 - 1.3.6 QdtFilter - Add sorting by Ascii and LoadOrder
 - 1.3.5 QdtFilter UI changes. Placeholder with selectionson the dropdown
 - 1.3.4 Add qSortByLoadOrder in the withListObject. 
