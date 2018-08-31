@@ -3,6 +3,8 @@
  * @param {array} cols - The dimension for the ListObject
  * @param {object} qListObjectDef - Pass the entire Definition to bypass our creation object
  * @param {bool} autoSortByState - IF we want the selected to be always on top like Qlik Sense. Default true
+ * @param {number} qSortByAscii [1] - For sorting the list by text. 1 = ASC, 0 = none, -1 = DESC
+ * @param {number} qSortByLoadOrder [1] - For sorting the list by Sense load. 1 = ASC, 0 = none, -1 = DESC
  * @description
  * Creates a Session List Object
  * https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
@@ -22,9 +24,13 @@ export default function withListObject(Component) {
       qListObjectDef: PropTypes.object,
       qPage: PropTypes.object,
       autoSortByState: PropTypes.bool,
+      qSortByAscii: PropTypes.oneOf([1, 0, -1]),
+      qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
     };
     static defaultProps = {
       autoSortByState: 1,
+      qSortByAscii: 1,
+      qSortByLoadOrder: 1,
     }
 
     static defaultProps = {
@@ -93,9 +99,12 @@ export default function withListObject(Component) {
       }
     }
 
+    /** Generate the Definition file */
     generateQProp(currentColumn = 0) {
       try {
-        const { cols, qListObjectDef, autoSortByState } = this.props;
+        const {
+          cols, qListObjectDef, autoSortByState, qSortByAscii, qSortByLoadOrder,
+        } = this.props;
         const qProp = { qInfo: { qType: 'visualization' } };
         if (qListObjectDef) {
           qProp.qListObjectDef = qListObjectDef;
@@ -106,7 +115,7 @@ export default function withListObject(Component) {
             (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
             .map((col) => {
               if (typeof col === 'string') {
-                return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByLoadOrder: 1 }] } };
+                return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } };
               }
               return col;
             });
@@ -205,6 +214,7 @@ export default function withListObject(Component) {
       }
     }
 
+    /** Finally return the Component with the ListObject items */
     render() {
       const {
         qObject, qLayout, qData, error,

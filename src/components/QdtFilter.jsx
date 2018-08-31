@@ -1,12 +1,13 @@
 /**
  * @name QdtFilter
  * @param {bool} single [false] - If we want single selections only. For regular menu like components
- * @param {bool} hideStateCountsBar [false] - 
+ * @param {bool} hideStateCountsBar [false] -
  * @param {string} placeholder [Dropdown] - Custom text on the DropDown
  * @param {bool} showStateInDropdown [false] - Selection state in the placeholder
  * @param {bool} expanded [false] - Display as a list object
  * @param {bool} expandedHorizontal [false] - Display as tabs
- * @param {bool} expandedHorizontalSense [false] -  
+ * @param {bool} expandedHorizontalSense [false] -
+ * @param {bool} qSortByAscii [1] - For sorting the list. 1 = ASC, 0 = none, -1 = DESC
  * @description
  * Filter component for custom filters.
  * DropDown, List or Tabs
@@ -20,6 +21,7 @@ import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
 
+/** Create the DropDown list */
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
     {qMatrix.map(row =>
@@ -38,13 +40,13 @@ const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
       ))}
   </span>
 );
-
 DropdownItemList.propTypes = {
   qMatrix: PropTypes.array.isRequired,
   rowHeight: PropTypes.number.isRequired,
   select: PropTypes.func.isRequired,
 };
 
+/** Create the Tabs */
 const ExpandedHorizontalTab = ({ qData, select, expandedHorizontalSense }) => {
   const element = qData.qMatrix.map((row) => {
     let className = (expandedHorizontalSense) ? `${row[0].qState}` : '';
@@ -67,13 +69,13 @@ const ExpandedHorizontalTab = ({ qData, select, expandedHorizontalSense }) => {
     </div>
   );
 };
-
 ExpandedHorizontalTab.propTypes = {
   qData: PropTypes.array.isRequired,
   select: PropTypes.func.isRequired,
   expandedHorizontalSense: PropTypes.bool.isRequired,
 };
 
+/** Create StateCountsBar (the green line below the dropdown) */
 const StateCountsBar = ({ qStateCounts }) => {
   const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
   const fillWidth = `${((qStateCounts.qOption + qStateCounts.qSelected) * 100) / totalStateCounts}%`;
@@ -90,6 +92,7 @@ StateCountsBar.propTypes = {
   qStateCounts: PropTypes.object.isRequired,
 };
 
+/** The Actual Component */
 class QdtFilterComponent extends React.Component {
   static propTypes = {
     qObject: PropTypes.object.isRequired,
@@ -108,6 +111,7 @@ class QdtFilterComponent extends React.Component {
     expanded: PropTypes.bool,
     expandedHorizontal: PropTypes.bool,
     expandedHorizontalSense: PropTypes.bool,
+    // qSortByAscii: PropTypes.oneOf([1, 0, -1]),
   }
   static defaultProps = {
     single: false,
@@ -117,6 +121,7 @@ class QdtFilterComponent extends React.Component {
     expanded: false,
     expandedHorizontal: false,
     expandedHorizontalSense: true,
+    // qSortByAscii: 1,
   }
 
   constructor(props) {
@@ -138,9 +143,7 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
-  //   componentDidUpdate() {
-  //   }
-
+  /** Get the selected items of the current object */
   getSelections = async () => {
     const { qObject } = this.props;
     const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ qWidth: 1, qHeight: 10000 }]);
@@ -148,6 +151,7 @@ class QdtFilterComponent extends React.Component {
     this.setState({ selections });
   }
 
+  /** Toggle dropdown visibility */
   @autobind
   toggle() {
     this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
@@ -161,6 +165,7 @@ class QdtFilterComponent extends React.Component {
     });
   }
 
+  /** Make Selections */
   @autobind
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset; // qText
@@ -172,6 +177,7 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
+  /** Clear all of the selections */
   @autobind
   clear() {
     this.setState({ searchListInputValue: '' });
@@ -193,6 +199,7 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
+  /** Finally start rendering into the Dom */
   render() {
     const {
       qData, qLayout, offset, hideStateCountsBar, showStateInDropdown, expanded, expandedHorizontal, expandedHorizontalSense,
@@ -271,6 +278,7 @@ class QdtFilterComponent extends React.Component {
   }
 }
 
+/** Create the Component but based on the ListObject */
 const QdtFilter = withListObject(QdtFilterComponent);
 QdtFilter.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
