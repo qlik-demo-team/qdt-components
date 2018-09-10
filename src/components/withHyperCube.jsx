@@ -1,3 +1,16 @@
+/**
+ * @name withHyperCube
+ * @param {array} cols - The dimension for the ListObject
+ * @param {object} qListObjectDef - Pass the entire Definition to bypass our creation object
+ * @param {bool} autoSortByState - IF we want the selected to be always on top like Qlik Sense. Default true
+ * @param {number} qSortByAscii [1] - For sorting the list by text. 1 = ASC, 0 = none, -1 = DESC
+ * @param {number} qSortByLoadOrder [1] - For sorting the list by Sense load. 1 = ASC, 0 = none, -1 = DESC
+ * @description
+ * Creates a Session List Object
+ * https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/HyperCubeDef.htm
+ *
+*/
+
 import React from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
@@ -12,11 +25,15 @@ export default function withHyperCube(Component) {
       qPage: PropTypes.object,
       width: PropTypes.string,
       height: PropTypes.string,
+      qSortByAscii: PropTypes.oneOf([1, 0, -1]),
+      qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
     };
 
     static defaultProps = {
       cols: null,
       qHyperCubeDef: null,
+      qSortByAscii: 1,
+      qSortByLoadOrder: 1,
       qPage: {
         qTop: 0,
         qLeft: 0,
@@ -77,7 +94,9 @@ export default function withHyperCube(Component) {
     }
 
     generateQProp() {
-      const { cols, qHyperCubeDef } = this.props;
+      const {
+        cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder,
+      } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
         if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
@@ -95,7 +114,7 @@ export default function withHyperCube(Component) {
         return isDimension;
       }).map((col) => {
         if (typeof col === 'string') {
-          return { qDef: { qFieldDefs: [col] } };
+          return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } }; //
         }
         return col;
       });
@@ -112,7 +131,13 @@ export default function withHyperCube(Component) {
         return col;
       });
 
-      qProp.qHyperCubeDef = { qDimensions, qMeasures, qInterColumnSortOrder };
+      qProp.qHyperCubeDef = {
+        qDimensions,
+        qMeasures,
+        qInterColumnSortOrder,
+        // qSuppressZero: true, @TODO
+        // qSuppressMissing: true,
+      };
       return qProp;
     }
 

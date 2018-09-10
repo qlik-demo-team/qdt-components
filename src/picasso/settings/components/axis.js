@@ -1,12 +1,14 @@
 // https://picassojs.com/docs/component-axis.html
 const component = function component({
   scale = 'x',
+//   formatter = {}, @TODO
 } = {}) {
   const comp = {
     type: 'axis',
     key: `${scale}-axis`,
     scale,
     dock: (scale === 'x') ? 'bottom' : 'left',
+    // formatter,
     settings: {
       labels: {
         show: true,
@@ -20,7 +22,12 @@ const component = function component({
       line: {
         show: true, // Toggle line on/off // Optional
       },
-      align: 'left', // auto
+      paddingStart: 0, // Optional
+      /* Padding in direction perpendicular to the axis */
+      paddingEnd: 10, // Optional
+      /* Set the anchoring point of the axis. Avaialable options are `auto/left/right/bottom/top`. In `auto` the axis determines the best option. The options are restricted based on the axis orientation, a vertical axis may only anchor on `left` or `right` */
+      align: 'auto', // Optional
+    //   align: 'left', // auto
     },
   };
 
