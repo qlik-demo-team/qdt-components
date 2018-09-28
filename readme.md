@@ -156,6 +156,15 @@ This component can be used to create or get a native Qlik Sense viz. If you defi
 | options          | Object        | [see here][vizApiCreate] |
 | width            | String        | Sets width of viz |
 | height           | String        | Sets height of viz |
+| exportData       | Boolean       | Show button for export in CSV |
+| exportDataTitle  | String        | Optional. Set the button title. Defaults to `Export Data`  |
+| eportDataOptions | Object        | [see here][exportData]. Defaults to `{ format: 'CSV_T', state: 'P' }` |
+| exportImg        | Boolean       | Show button for export in JPG |
+| exportImgTitle   | String        | Optional. Set the button title. Defaults to `Export Image`  |
+| eportImgOptions  | Object        | [see here][exportImg]. Defaults to `{ width: 300, height: 400, format: 'JPG' }` |
+| exportPdf        | Boolean       | Show button for export in PDF |
+| exportPdfTitle   | String        | Optional. Set the button title. Defaults to `Export Pdf`  |
+| eportPdfOptions  | Object        | [see here][exportPdf]. Default to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` |
 
 #### QdtFilter
 This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
@@ -175,6 +184,9 @@ This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` wi
 [vizApiCreate]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/create-method.htm
 [cols]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/columns.htm
 [qListObjectDef]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
+[exportData]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportData-method.htm
+[exportImg]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportImg-method.htm
+[exportPdf]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportPdf-method.htm
 
 #### QdtSelectionToolbar
 This populated a toolbar with the current app selections.
@@ -223,6 +235,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.3.8 Add export button(s) the visualization from the Capability API to Csv, Image and Pdf
 - 1.3.7 Abort all selections before beginSelections is called to avoid errors on more than one components on the same page.
         Bumpup qdt-lui.
 - 1.3.6 QdtFilter - Add sorting by Ascii and LoadOrder
