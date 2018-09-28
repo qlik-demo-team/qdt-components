@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Preloader from '../utilities/Preloader';
+import QdtButton from './QdtButton';
 
 export default class QdtViz extends React.Component {
   static propTypes = {
@@ -14,6 +15,15 @@ export default class QdtViz extends React.Component {
     height: PropTypes.string,
     minWidth: PropTypes.string,
     minHeight: PropTypes.string,
+    exportData: PropTypes.bool,
+    exportDataTitle: PropTypes.string,
+    exportDataOptions: PropTypes.obj,
+    exportImg: PropTypes.bool,
+    exportImgTitle: PropTypes.string,
+    exportImgOptions: PropTypes.obj,
+    exportPdf: PropTypes.bool,
+    exportPdfTitle: PropTypes.string,
+    exportPdfOptions: PropTypes.obj,
   }
 
   static defaultProps = {
@@ -26,6 +36,15 @@ export default class QdtViz extends React.Component {
     height: '100%',
     minWidth: 'auto',
     minHeight: 'auto',
+    exportData: false,
+    exportDataTitle: 'Export Data',
+    exportDataOptions: { format: 'CSV_T', state: 'P' },
+    exportImg: false,
+    exportImgTitle: 'Export Image',
+    exportImgOptions: { width: 300, height: 400, format: 'JPG' },
+    exportPdf: false,
+    exportPdfTitle: 'Export Pdf',
+    exportPdfOptions: { documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 },
   }
 
   constructor(props) {
@@ -108,7 +127,7 @@ export default class QdtViz extends React.Component {
 
   render() {
     const {
-      width, height, minWidth, minHeight,
+      width, height, minWidth, minHeight, exportData, exportDataTitle, exportDataOptions, exportImg, exportImgTitle, exportImgOptions, exportPdf, exportPdfTitle, exportPdfOptions,
     } = this.props;
     if (this.state.error) {
       return <div>{this.state.error.message}</div>;
@@ -117,11 +136,28 @@ export default class QdtViz extends React.Component {
       const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
       return <Preloader width={width} height={height} paddingTop={paddingTop} />;
     }
-    return (<div
-      ref={(node) => { this.node = node; }}
-      style={{
+    const btnStyle = { display: 'inline-block', paddingRight: 20, paddingTop: 15 };
+    return (
+      <div>
+        <div
+          ref={(node) => { this.node = node; }}
+          style={{
  width, height, minWidth, minHeight,
 }}
-    />);
+        />
+        {exportData &&
+          <div style={btnStyle}>
+            <QdtButton type="exportData" qVizPromise={this.qVizPromise} title={exportDataTitle} options={exportDataOptions} />
+          </div>}
+        {exportImg &&
+          <div style={btnStyle}>
+            <QdtButton type="exportImg" qVizPromise={this.qVizPromise} title={exportImgTitle} options={exportImgOptions} />
+          </div>}
+        {exportPdf &&
+          <div style={btnStyle}>
+            <QdtButton type="exportPdf" qVizPromise={this.qVizPromise} title={exportPdfTitle} options={exportPdfOptions} />
+          </div>}
+      </div>
+    );
   }
 }
