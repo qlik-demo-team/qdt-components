@@ -149,12 +149,14 @@ class QdtPicassoComponent extends React.Component {
 
   render() {
     const {
-      selections, type, qData, outerWidth, outerHeight, innerWidth, innerHeight,
+      selections, type, qData, outerWidth, outerHeight, innerWidth, innerHeight, options,
     } = this.props;
+    let myInnerHeight = innerHeight;
     let maxWidth = '100%';
     let maxHeight = '100%';
-    if (type === 'horizontalBarchart') {
-      maxHeight = qData.qMatrix.length * 50;
+    if (type === 'horizontalBarchart' && options.barHeight && innerHeight === '100%') {
+      maxHeight = qData.qMatrix.length * options.barHeight;
+      myInnerHeight = maxHeight;
     }
     if (type === 'verticalBarchart') {
       maxWidth = qData.qMatrix.length * 50;
@@ -179,7 +181,7 @@ class QdtPicassoComponent extends React.Component {
             ref={node => this.element = node}
             style={{
               width: innerWidth,
-              height: innerHeight,
+              height: myInnerHeight,
               maxWidth,
               maxHeight,
             }}
