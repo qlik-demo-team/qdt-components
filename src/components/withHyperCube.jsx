@@ -27,6 +27,7 @@ export default function withHyperCube(Component) {
       height: PropTypes.string,
       qSortByAscii: PropTypes.oneOf([1, 0, -1]),
       qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
+      qInterColumnSortOrder: PropTypes.array,
     };
 
     static defaultProps = {
@@ -34,6 +35,7 @@ export default function withHyperCube(Component) {
       qHyperCubeDef: null,
       qSortByAscii: 1,
       qSortByLoadOrder: 1,
+      qInterColumnSortOrder: [],
       qPage: {
         qTop: 0,
         qLeft: 0,
@@ -105,13 +107,14 @@ export default function withHyperCube(Component) {
         qProp.qHyperCubeDef = qHyperCubeDef;
         return qProp;
       }
-      const qInterColumnSortOrder = [];
+      const qInterColumnSortOrder = (this.props.qInterColumnSortOrder) ? this.props.qInterColumnSortOrder : [];
+      const qInterColumnSortOrderSet = !!(this.props.qInterColumnSortOrder);
       let sortIndex = 0;
       const qDimensions = cols.filter((col, i) => {
         const isDimension = (typeof col === 'string' && !col.startsWith('=')) ||
           (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
           (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension');
-        if (isDimension) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        if (isDimension && !qInterColumnSortOrderSet) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
         return isDimension;
       }).map((col) => {
         if (typeof col === 'string') {
@@ -123,7 +126,7 @@ export default function withHyperCube(Component) {
         const isMeasure = (typeof col === 'string' && col.startsWith('=')) ||
             (typeof col === 'object' && col.qDef && col.qDef.qDef) ||
             (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure');
-        if (isMeasure) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        if (isMeasure && !qInterColumnSortOrderSet) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
