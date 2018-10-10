@@ -236,8 +236,8 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 
 ### Version Log
 - 1.3.9 Fixes for the picasso horizontal bar chart
-        Add qInterColumnSortOrder in the withHyperCube
-        Add qSuppressZero in the withHyperCube
+        Add qInterColumnSortOrder, qSuppressZero, qSortByNumeric in the withHyperCube
+        Update picasso to 0.15.0
 - 1.3.8 Add export button(s) the visualization from the Capability API to Csv, Image and Pdf
 - 1.3.7 Abort all selections before beginSelections is called to avoid errors on more than one components on the same page.
         Bumpup qdt-lui.
