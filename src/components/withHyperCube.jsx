@@ -132,7 +132,7 @@ export default function withHyperCube(Component) {
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
-          return { qDef: { qDef: col, qSortBy: { qSortByNumeric: -1 } } };
+          return { qDef: { qDef: col }, qSortBy: { qSortByNumeric: -1 } };
         }
         return col;
       });
@@ -142,7 +142,6 @@ export default function withHyperCube(Component) {
         qMeasures,
         qInterColumnSortOrder,
         qSuppressZero,
-        // qSuppressZero: true, @TODO
         // qSuppressMissing: true,
       };
       return qProp;
