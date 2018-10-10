@@ -99,8 +99,9 @@ export default function withHyperCube(Component) {
       } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
-        if (cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
-        if (cols[0]) qHyperCubeDef.qDimensions[0].qDef.qFieldDefs = [cols[0]];
+        if (cols && cols[1]) qHyperCubeDef.qMeasures[0].qDef = { qDef: cols[1] };
+        if (cols && cols[0]) qHyperCubeDef.qDimensions[0].qDef.qFieldDefs = [cols[0]];
+        qProp.qInfo.qType = 'HyperCube';
         qProp.qHyperCubeDef = qHyperCubeDef;
         return qProp;
       }
@@ -126,7 +127,7 @@ export default function withHyperCube(Component) {
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
-          return { qDef: { qDef: col } };
+          return { qDef: { qDef: col, qSortBy: { qSortByNumeric: -1 } } };
         }
         return col;
       });
@@ -186,7 +187,7 @@ export default function withHyperCube(Component) {
       if (error) {
         return <div>{error.message}</div>;
       } else if (!qObject || !qLayout || !qData) {
-        const preloaderType = (cols.length === 1) ? 'dots' : 'balls';
+        const preloaderType = (cols && cols.length === 1) ? 'dots' : 'balls';
         const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
         return <Preloader width={width} height={height} paddingTop={paddingTop} type={preloaderType} />;
       }

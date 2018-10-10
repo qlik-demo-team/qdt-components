@@ -5,7 +5,7 @@ import theme from '../../styles';
 const setting = {
   scales: {
     x: { data: { field: 'qMeasureInfo/0' }, include: [0] },
-    y: { data: { extract: { field: 'qDimensionInfo/0' }, padding: 0.2 } },
+    y: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.2 },
   },
   components: [
     axis(),

@@ -174,7 +174,7 @@ class QdtPicassoComponent extends React.Component {
           </div>
         }
         <div style={{
-          position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto',
+          position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto', paddingRight: 10,
         }}
         >
           <div
