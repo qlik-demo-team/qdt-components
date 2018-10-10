@@ -7,15 +7,15 @@ const interaction = {
     mouseleave() {
       this.chart.component('tooltip').emit('hide');
     },
-    wheel: function w(e) {
-      if (e) {
-        const components = this.chart.componentsFromPoint(e);
-        components.forEach((comp) => {
-          comp.emit('scroll', e.deltaY);
-        });
-        e.preventDefault();
-      }
-    },
+    // wheel: function w(e) {
+    //   if (e) {
+    //     const components = this.chart.componentsFromPoint(e);
+    //     components.forEach((comp) => {
+    //       comp.emit('scroll', e.deltaY);
+    //     });
+    //     e.preventDefault();
+    //   }
+    // },
   },
 };
 

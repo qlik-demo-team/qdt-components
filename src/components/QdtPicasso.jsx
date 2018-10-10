@@ -95,6 +95,9 @@ class QdtPicassoComponent extends React.Component {
     } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
+    if (type === 'horizontalBarchart' && options.bar.fill) {
+      this.mySettings.components[2].settings.box.fill = options.bar.fill;
+    }
     if (type === 'verticalGauge' && options.min) {
       this.mySettings.scales.y.min = options.min;
       this.mySettings.components[1].start = options.min;
@@ -128,6 +131,9 @@ class QdtPicassoComponent extends React.Component {
       qLayout, qData, type, options,
     } = this.props;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
+    if (type === 'horizontalBarchart' && options.bar.fill) {
+      this.mySettings.components[2].settings.box.fill = options.bar.fill;
+    }
     if (type === 'verticalGauge' && options.min) {
       this.mySettings.scales.y.min = options.min;
       this.mySettings.components[1].start = options.min;
@@ -154,8 +160,8 @@ class QdtPicassoComponent extends React.Component {
     let myInnerHeight = innerHeight;
     let maxWidth = '100%';
     let maxHeight = '100%';
-    if (type === 'horizontalBarchart' && options.barHeight && innerHeight === '100%') {
-      maxHeight = qData.qMatrix.length * options.barHeight;
+    if (type === 'horizontalBarchart' && options.bar.height && innerHeight === '100%') {
+      maxHeight = qData.qMatrix.length * options.bar.height;
       myInnerHeight = maxHeight;
     }
     if (type === 'verticalBarchart') {
