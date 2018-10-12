@@ -235,6 +235,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.3.11 Add Qlik color palette
 - 1.3.10 Fix the download url for the exportData img and pdf
 - 1.3.9 Fixes for the picasso horizontal bar chart
         Add qInterColumnSortOrder, qSuppressZero, qSortByNumeric in the withHyperCube
