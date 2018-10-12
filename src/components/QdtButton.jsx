@@ -57,7 +57,6 @@ export default class QdtButton extends React.Component {
             const myOptions = (options) || { format: 'CSV_T', state: 'P' };
             const url = await qViz.exportData(myOptions);
             const myUrl = this.urlFix(url);
-            console.log(myUrl);
             window.open(myUrl, '_blank');
           }
           break;
@@ -66,7 +65,6 @@ export default class QdtButton extends React.Component {
             const myOptions = (options) || { width: 300, height: 400, format: 'JPG' };
             const url = await qViz.exportImg(myOptions);
             const myUrl = this.urlFix(url);
-            console.log(myUrl);
             window.open(myUrl, '_blank');
           }
           break;
@@ -75,7 +73,6 @@ export default class QdtButton extends React.Component {
             const myOptions = (options) || { documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 };
             const url = await qViz.exportPdf(myOptions);
             const myUrl = this.urlFix(url);
-            console.log(myUrl);
             window.open(myUrl, '_blank');
           }
           break;
