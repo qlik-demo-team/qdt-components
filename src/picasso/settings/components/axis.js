@@ -13,6 +13,9 @@ const component = function component({
       labels: {
         show: true,
         mode: 'auto',
+        align: 0.5,
+        // invert: true,
+        justify: 0,
       },
       ticks: {
         show: true, // Toggle ticks on/off // Optional

@@ -29,6 +29,15 @@ export default class QdtButton extends React.Component {
       options: {},
     };
 
+    // Sept 2018 BUG. Adds the current www folder in the path
+    @autobind
+    urlFix(url) {
+      const tempUrl = url.split('/');
+      const sbstrIndex = url.indexOf('tempcontent');
+      const myUrl = `${tempUrl[0]}//${tempUrl[2]}/${url.substring(sbstrIndex, url.length)}`;
+      return myUrl;
+    }
+
     @autobind
     async action() {
       const {
@@ -47,21 +56,27 @@ export default class QdtButton extends React.Component {
           if (qViz) {
             const myOptions = (options) || { format: 'CSV_T', state: 'P' };
             const url = await qViz.exportData(myOptions);
-            window.open(url, '_blank');
+            const myUrl = this.urlFix(url);
+            console.log(myUrl);
+            window.open(myUrl, '_blank');
           }
           break;
         case 'exportImg':
           if (qViz) {
             const myOptions = (options) || { width: 300, height: 400, format: 'JPG' };
             const url = await qViz.exportImg(myOptions);
-            window.open(url, '_blank');
+            const myUrl = this.urlFix(url);
+            console.log(myUrl);
+            window.open(myUrl, '_blank');
           }
           break;
         case 'exportPdf':
           if (qViz) {
             const myOptions = (options) || { documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 };
             const url = await qViz.exportPdf(myOptions);
-            window.open(url, '_blank');
+            const myUrl = this.urlFix(url);
+            console.log(myUrl);
+            window.open(myUrl, '_blank');
           }
           break;
       }
