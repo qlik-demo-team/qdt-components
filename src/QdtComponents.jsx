@@ -29,6 +29,8 @@ const QdtComponents = class {
 
   static unmountQdtComponent = element => ReactDOM.unmountComponentAtNode(element)
 
+  static globals = utility.globals;
+
   constructor(config = {}, connections = { vizApi: true, engineApi: true, useUniqueSessionID: null }) {
     const myConfig = config;
     myConfig.identity = connections.useUniqueSessionID ? connections.useUniqueSessionID : utility.Uid(16);

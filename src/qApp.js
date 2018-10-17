@@ -1,4 +1,7 @@
-let qlik;
+import utility from './utilities/';
+
+// let qlik;
+// let { qlik } = utility.qlobals;
 let capabilityApisPromise;
 
 const loadCapabilityApis = async (config) => {
@@ -49,13 +52,16 @@ const qApp = async (config) => {
       },
     });
     return new Promise((resolve) => {
-      if (qlik) {
-        const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+      if (utility.globals.qlik) {
+        const app = utility.globals.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
         resolve(app);
       } else {
         window.require(['js/qlik'], (q) => {
-          qlik = q;
-          const app = qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+          utility.globals.qlik = q;
+          utility.globals.resize = () => {
+            q.resize();
+          };
+          const app = q.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
           resolve(app);
         });
       }

@@ -1,4 +1,9 @@
 import Uid from './Uid';
 import RoundNum from './RoundNum';
 
-export default { Uid, RoundNum };
+const globals = {
+  qlik: null,
+  resize: null,
+};
+
+export default { Uid, RoundNum, globals };
