@@ -235,6 +235,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | showGo           | Boolean       | false         |
 
 ### Version Log
+- 1.3.13  Adapt for Qlik Core scaling https://github.com/qlik-oss/core-scaling
 - 1.3.12  Expose globals like qlik and qlik.resize() so they can be used in mashups like 
           `const globals = QdtComponents.globals`
 - 1.3.11  Add Qlik color palette
