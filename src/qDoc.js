@@ -25,10 +25,21 @@ const responseInterceptors = [{
 }];
 
 const qDoc = async (config) => {
-  const url = SenseUtilities.buildUrl(config);
+  const myConfig = config;
+  // Make it work for Qlik Core scaling https://github.com/qlik-oss/core-scaling
+  // qlikcore/engine:12.248.0
+  if (myConfig.core) {
+    myConfig.subpath = (myConfig.prefix) ? `${myConfig.prefix}/app` : 'app';
+    myConfig.route = `doc/${myConfig.appId}`;
+  }
+  const url = SenseUtilities.buildUrl(myConfig);
   const session = enigma.create({ schema, url, responseInterceptors });
   const global = await session.open();
-  return global.openDoc(config.appId);
+  if (myConfig.core) {
+    return global.getActiveDoc();
+  }
+
+  return global.openDoc(myConfig.appId);
 };
 
 export default qDoc;
