@@ -67,7 +67,7 @@ const options = {
   }
 }
 
-const qdtComponent = new QdtComponents(options.config, options.connections);
+const qdtComponents = new QdtComponents(options.config, options.connections);
 
 @Component({
   selector: 'qdt-component',
@@ -82,7 +82,7 @@ export class QdtComponent implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    qdtComponent.render(this.type, this.props, this.elementRef.nativeElement);
+    qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
   }
 
   ngOnDestroy() {
