@@ -82,7 +82,7 @@ export class QdtComponent implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
+    qdtComponent.render(this.type, this.props, this.elementRef.nativeElement);
   }
 
   ngOnDestroy() {
