@@ -48,7 +48,7 @@
 #### Angular 6 (cli)
 - [Live Demo](https://webapps.qlik.com/qdt-components/angular/index.html)
 - `npm install --save qdt-components`
-- create an Angular 5 component that implements qdt-components
+- create an Angular 6 component that implements qdt-components
 ```javascript
 import { Component, OnInit, OnDestroy, ElementRef, Input } from '@angular/core';
 import QdtComponents from 'qdt-components';
