@@ -9,7 +9,7 @@ import range from './range';
 import pie from './pie';
 import line from './line';
 
-const components = {
+export {
   domPointLabel,
   axis,
   legend,
@@ -21,5 +21,3 @@ const components = {
   pie,
   line,
 };
-
-module.exports = components;

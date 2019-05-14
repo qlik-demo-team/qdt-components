@@ -32,6 +32,7 @@ class QdtPicassoComponent extends React.Component {
     afterConfirmSelections: PropTypes.func,
     prio: PropTypes.oneOf(['canvas', 'svg']),
   }
+
   static defaultProps = {
     type: null,
     settings: {},
@@ -39,6 +40,7 @@ class QdtPicassoComponent extends React.Component {
     afterConfirmSelections: null,
     prio: 'canvas',
   }
+
   constructor(props) {
     super(props);
     this.mySettings = null;
@@ -75,23 +77,27 @@ class QdtPicassoComponent extends React.Component {
 
   @autobind
   cancelSelections() {
-    this.pic.brush('select').end();
-    this.props.endSelections(false);
+    const { brush } = this.pic;
+    const { endSelections } = this.props;
+    brush('select').end();
+    endSelections(false);
   }
 
   @autobind
   confirmSelections() {
-    if (this.props.selections) {
-      this.pic.brush('select').end();
-      this.props.endSelections(true);
-      if (this.props.afterConfirmSelections) { this.props.afterConfirmSelections(); }
+    const { brush } = this.pic;
+    const { selections, endSelections, afterConfirmSelections } = this.props;
+    if (selections) {
+      brush('select').end();
+      endSelections(true);
+      if (afterConfirmSelections) { afterConfirmSelections(); }
     }
   }
 
   @autobind
   async createPic() {
     const {
-      qLayout, qData, settings, type, prio, options,
+      qLayout, qData, settings, type, prio, options, select, selections, beginSelections,
     } = this.props;
     this.mySettings = type ? preconfiguredSettings[type] : settings;
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
@@ -116,17 +122,18 @@ class QdtPicassoComponent extends React.Component {
       }],
       settings: this.mySettings,
     });
-    this.pic.brush('select').on('start', () => { this.props.beginSelections(); this.props.select(0, [], false); });
+    this.pic.brush('select').on('start', () => { beginSelections(); select(0, [], false); });
     this.pic.brush('select').on('update', (added, removed) => {
-      if (!this.props.selections) return;
-      const selections = [...added, ...removed].map(v => v.values[0]);
-      this.props.select(0, selections);
+      if (!selections && !added) return;
+      const mySelections = [...added, ...removed].map(v => v.values[0]);
+      select(0, mySelections);
     });
   }
 
   @autobind
   updatePic() {
-    if (this.props.selections) return;
+    const { selections } = this.props;
+    if (selections) return;
     const {
       qLayout, qData, type, options,
     } = this.props;
@@ -169,15 +176,17 @@ class QdtPicassoComponent extends React.Component {
     }
     return (
       <div ref={node => this.root = node} style={{ position: 'relative' }}>
-        {selections &&
+        {selections
+          && (
           <div style={{ position: 'absolute', top: '-2rem', right: 0 }}>
-            <button className="lui-button lui-button--danger" style={{ marginRight: '1rem' }} onClick={this.cancelSelections}>
+            <button type="button" className="lui-button lui-button--danger" style={{ marginRight: '1rem' }} onClick={this.cancelSelections}>
               <span className="lui-icon lui-icon--close" />
             </button>
-            <button className="lui-button lui-button--success" style={{ marginRight: '1rem' }} onClick={this.confirmSelections}>
+            <button type="button" className="lui-button lui-button--success" style={{ marginRight: '1rem' }} onClick={this.confirmSelections}>
               <span className="lui-icon lui-icon--tick" />
             </button>
           </div>
+          )
         }
         <div style={{
           position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto', paddingRight: 10,

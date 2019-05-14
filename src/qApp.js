@@ -1,4 +1,4 @@
-import utility from './utilities/';
+import utility from './utilities';
 
 // let qlik;
 // let { qlik } = utility.qlobals;

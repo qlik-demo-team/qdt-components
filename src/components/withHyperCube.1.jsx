@@ -80,8 +80,8 @@ export default function withHyperCube(Component) {
 
     async componentWillUnmount() {
       const { qDocPromise } = this.props;
-      const { qObject: { id } } = this.state;
       const qDoc = await qDocPromise;
+      const { qObject: { id } } = this.state;
       qDoc.destroySessionObject(id);
     }
 
@@ -110,14 +110,13 @@ export default function withHyperCube(Component) {
         qProp.qHyperCubeDef = qHyperCubeDef;
         return qProp;
       }
-      const myqInterColumnSortOrder = (qInterColumnSortOrder) || [];
       const qInterColumnSortOrderSet = !!(qInterColumnSortOrder);
       let sortIndex = 0;
       const qDimensions = cols.filter((col, i) => {
         const isDimension = (typeof col === 'string' && !col.startsWith('='))
           || (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs)
           || (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension');
-        if (isDimension && !qInterColumnSortOrderSet) { myqInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        if (isDimension && !qInterColumnSortOrderSet) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
         return isDimension;
       }).map((col) => {
         if (typeof col === 'string') {
@@ -129,7 +128,7 @@ export default function withHyperCube(Component) {
         const isMeasure = (typeof col === 'string' && col.startsWith('='))
             || (typeof col === 'object' && col.qDef && col.qDef.qDef)
             || (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'measure');
-        if (isMeasure && !qInterColumnSortOrderSet) { myqInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
+        if (isMeasure && !qInterColumnSortOrderSet) { qInterColumnSortOrder[i] = sortIndex; sortIndex += 1; }
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
@@ -153,14 +152,11 @@ export default function withHyperCube(Component) {
       this.update(qTop);
     }
 
-    async update(qTopPassed = 0) {
-      // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
-      const { qData: qDataGenerated } = this.state || {};
-      const { qArea } = qDataGenerated || {};
-      const { qTop: qTopGenerated } = qArea || {};
-      const qTop = (qTopPassed) || qTopGenerated;
+    async update(pqTop) {
+      const { qData: { qArea: { qTop } } } = this.state;
+      const myqTop = (pqTop) || qTop;
       this.setState({ updating: true });
-      const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
+      const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(myqTop)]);
       this.setState({ updating: false, qLayout, qData });
     }
 

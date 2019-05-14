@@ -18,6 +18,7 @@
 		"jsx-a11y/no-noninteractive-element-interactions": [0],
         "jsx-a11y/no-static-elements-interactions": [0],
         "no-return-assign": 0,
-        "no-console": ["warn", { "allow": ["info"] }]
+		"no-console": ["warn", { "allow": ["info"] }],
+		"react/destructuring-assignment": [2]
 	}
 }

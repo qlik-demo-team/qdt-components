@@ -17,13 +17,13 @@ export default class QdtViz extends React.Component {
     minHeight: PropTypes.string,
     exportData: PropTypes.bool,
     exportDataTitle: PropTypes.string,
-    exportDataOptions: PropTypes.obj,
+    exportDataOptions: PropTypes.object,
     exportImg: PropTypes.bool,
     exportImgTitle: PropTypes.string,
-    exportImgOptions: PropTypes.obj,
+    exportImgOptions: PropTypes.object,
     exportPdf: PropTypes.bool,
     exportPdfTitle: PropTypes.string,
-    exportPdfOptions: PropTypes.obj,
+    exportPdfOptions: PropTypes.object,
   }
 
   static defaultProps = {
@@ -65,7 +65,8 @@ export default class QdtViz extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (JSON.stringify(newProps.options) !== JSON.stringify(this.props.options)) {
+    const options = this.props;
+    if (JSON.stringify(newProps.options) !== JSON.stringify(options)) {
       this.setOptions(newProps.options);
     }
   }
@@ -99,10 +100,11 @@ export default class QdtViz extends React.Component {
 
   async show() {
     try {
+      const { noSelections } = this.props;
       const qViz = await this.qVizPromise;
       if (qViz) {
         await this.setState({ loading: false });
-        qViz.show(this.node, { noSelections: this.props.noSelections });
+        qViz.show(this.node, { noSelections });
       } else {
         throw new Error('Please specify a qConfig global variable');
       }
@@ -129,9 +131,10 @@ export default class QdtViz extends React.Component {
     const {
       width, height, minWidth, minHeight, exportData, exportDataTitle, exportDataOptions, exportImg, exportImgTitle, exportImgOptions, exportPdf, exportPdfTitle, exportPdfOptions,
     } = this.props;
-    if (this.state.error) {
-      return <div>{this.state.error.message}</div>;
-    } else if (this.state.loading) {
+    const { error, loading } = this.state;
+    if (error) {
+      return <div>{error.message}</div>;
+    } if (loading) {
     //   return <div>Loading...</div>;
       const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
       return <Preloader width={width} height={height} paddingTop={paddingTop} />;
@@ -142,21 +145,27 @@ export default class QdtViz extends React.Component {
         <div
           ref={(node) => { this.node = node; }}
           style={{
- width, height, minWidth, minHeight,
-}}
+            width, height, minWidth, minHeight,
+          }}
         />
-        {exportData &&
+        {exportData
+          && (
           <div style={btnStyle}>
             <QdtButton type="exportData" qVizPromise={this.qVizPromise} title={exportDataTitle} options={exportDataOptions} />
-          </div>}
-        {exportImg &&
+          </div>
+          )}
+        {exportImg
+          && (
           <div style={btnStyle}>
             <QdtButton type="exportImg" qVizPromise={this.qVizPromise} title={exportImgTitle} options={exportImgOptions} />
-          </div>}
-        {exportPdf &&
+          </div>
+          )}
+        {exportPdf
+          && (
           <div style={btnStyle}>
             <QdtButton type="exportPdf" qVizPromise={this.qVizPromise} title={exportPdfTitle} options={exportPdfOptions} />
-          </div>}
+          </div>
+          )}
       </div>
     );
   }

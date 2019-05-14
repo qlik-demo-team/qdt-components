@@ -1,11 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
   entry: './src/index',
-  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -15,18 +13,14 @@ module.exports = {
     libraryExport: 'default',
   },
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.(js|jsx)$/,
+        include: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: [
-            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-            ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-            '@babel/plugin-transform-runtime', 
-            '@babel/plugin-proposal-object-rest-spread']
+          presets: [['env',{"debug": false}], 'react'],
+          plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-runtime', "transform-object-rest-spread"],
         },
       },
       {
@@ -39,11 +33,23 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ],
+        use: [{
+          loader: 'style-loader', // inject CSS to page
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS modules
+        }, {
+          loader: 'postcss-loader', // Run post css actions
+          options: {
+            plugins() { // post css plugins, can be exported to postcss.config.js
+              return [
+                require('precss'),
+                require('autoprefixer'),
+              ];
+            },
+          },
+        }, {
+          loader: 'sass-loader', // compiles SASS to CSS
+        }],
       },    
       {
         test: /\.(ttf|eot|woff|woff2)$/,
@@ -51,7 +57,11 @@ module.exports = {
         options: {
           name: "[name].[ext]",
         },  
-      }, 
+      },      
+      {
+          test: /\.json$/,
+          loader: 'json-loader'
+      },
     ],
   },
   plugins: [
@@ -65,28 +75,21 @@ module.exports = {
             callback();
         })
     },
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    }),
     new webpack.ProvidePlugin({
       "Hammer": "hammerjs/hammer"
     }),
   ],
   resolve: {
     extensions: ['.js', '.jsx']
-  },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          warnings: true,
-          parse: {},
-          compress: false,
-          mangle: true, // Note `mangle.properties` is `false` by default.
-          output: null,
-          toplevel: false,
-          nameCache: null,
-          ie8: false,
-          keep_fnames: false,
-        },
-      }),
-    ],
   },
 };

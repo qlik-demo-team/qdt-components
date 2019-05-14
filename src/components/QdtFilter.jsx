@@ -16,7 +16,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { LuiDropdown, LuiList, LuiListItem, LuiSearch, LuiTabset, LuiTab } from 'qdt-lui';
+import {
+  LuiDropdown, LuiList, LuiListItem, LuiSearch, LuiTabset, LuiTab,
+} from 'qdt-lui';
 import withListObject from './withListObject';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import '../styles/index.scss';
@@ -24,20 +26,19 @@ import '../styles/index.scss';
 /** Create the DropDown list */
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
-    {qMatrix.map(row =>
-      (
-        <LuiListItem
-          className={`${row[0].qState}`}
-          key={row[0].qElemNumber}
-          data-q-elem-number={row[0].qElemNumber}
-          data-q-state={row[0].qState}
-          data-q-text={row[0].qText}
-          onClick={select}
-          style={{ height: `${rowHeight - 1}px` }}
-        >
-          {row[0].qText}
-        </LuiListItem>
-      ))}
+    {qMatrix.map(row => (
+      <LuiListItem
+        className={`${row[0].qState}`}
+        key={row[0].qElemNumber}
+        data-q-elem-number={row[0].qElemNumber}
+        data-q-state={row[0].qState}
+        data-q-text={row[0].qText}
+        onClick={select}
+        style={{ height: `${rowHeight - 1}px` }}
+      >
+        {row[0].qText}
+      </LuiListItem>
+    ))}
   </span>
 );
 DropdownItemList.propTypes = {
@@ -113,6 +114,7 @@ class QdtFilterComponent extends React.Component {
     expandedHorizontalSense: PropTypes.bool,
     // qSortByAscii: PropTypes.oneOf([1, 0, -1]),
   }
+
   static defaultProps = {
     single: false,
     hideStateCountsBar: false,
@@ -161,9 +163,7 @@ class QdtFilterComponent extends React.Component {
   //   handleOutsideClick = (event) => {
   //     const outsideClick = !this.node.contains(event.target);
   //     const { dropdownOpen } = this.state;
-  //     console.log(1, event);
   //     if (dropdownOpen && outsideClick) {
-  //       console.log(2);
   //       this.props.endSelections(false);
   //       this.clear();
   //     }
@@ -172,12 +172,14 @@ class QdtFilterComponent extends React.Component {
   /** Toggle dropdown visibility */
   @autobind
   toggle() {
-    this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
-      if (this.state.dropdownOpen) {
-        this.props.beginSelections();
+    const { dropdownOpen } = this.state;
+    const { beginSelections, endSelections } = this.props;
+    this.setState({ dropdownOpen: !dropdownOpen }, () => {
+      if (dropdownOpen) {
+        beginSelections();
       }
-      if (!this.state.dropdownOpen) {
-        this.props.endSelections(true);
+      if (!dropdownOpen) {
+        endSelections(true);
         this.clear();
       }
     });
@@ -187,8 +189,8 @@ class QdtFilterComponent extends React.Component {
   @autobind
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset; // qText
-    const { single, endSelections } = this.props; // placeholder
-    if (qState === 'S') { this.props.select(Number(qElemNumber)); } else { this.props.select(Number(qElemNumber), !this.props.single); }
+    const { single, endSelections, select } = this.props; // placeholder
+    if (qState === 'S') { select(Number(qElemNumber)); } else { select(Number(qElemNumber), !single); }
     if (single) {
       endSelections(true);
       this.toggle();
@@ -198,22 +200,25 @@ class QdtFilterComponent extends React.Component {
   /** Clear all of the selections */
   @autobind
   clear() {
+    const { searchListObjectFor } = this.props;
     this.setState({ searchListInputValue: '' });
-    this.props.searchListObjectFor('');
+    searchListObjectFor('');
   }
 
   @autobind
   searchListObjectFor(event) {
+    const { offset, searchListObjectFor } = this.props;
     this.setState({ searchListInputValue: event.target.value });
-    this.props.offset(0);
-    this.props.searchListObjectFor(event.target.value);
+    offset(0);
+    searchListObjectFor(event.target.value);
   }
 
   @autobind
   acceptListObjectSearch(event) {
     if (event.charCode === 13) {
+      const { acceptListObjectSearch } = this.props;
       this.setState({ searchListInputValue: '' });
-      this.props.acceptListObjectSearch();
+      acceptListObjectSearch();
     }
   }
 
@@ -229,8 +234,9 @@ class QdtFilterComponent extends React.Component {
     const { qSelected } = qStateCounts;
     const totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
     return (
-      <div ref={(node) => { this.node = node; }} >
-        { (!expanded && !expandedHorizontal) &&
+      <div ref={(node) => { this.node = node; }}>
+        { (!expanded && !expandedHorizontal)
+          && (
           <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle}>
             <span>
               {!showStateInDropdown && placeholder}
@@ -259,8 +265,10 @@ class QdtFilterComponent extends React.Component {
             <StateCountsBar qStateCounts={qStateCounts} />
             )}
           </LuiDropdown>
+          )
         }
-        { expanded &&
+        { expanded
+        && (
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
             value={searchListInputValue}
@@ -278,8 +286,10 @@ class QdtFilterComponent extends React.Component {
             viewportHeight={190}
           />
         </LuiList>
+        )
         }
-        { expandedHorizontal &&
+        { expandedHorizontal
+        && (
         <LuiTabset
           fill
           style={{ height: '100%' }}
@@ -290,6 +300,7 @@ class QdtFilterComponent extends React.Component {
             expandedHorizontalSense={expandedHorizontalSense}
           />
         </LuiTabset>
+        )
         }
       </div>
     );

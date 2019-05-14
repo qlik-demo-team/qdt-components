@@ -56,4 +56,3 @@ const component = function component({
 };
 
 export default component;
-

@@ -1,9 +1,7 @@
 import pan from './pan';
-import tooltip from './tooltip';
+import itooltip from './tooltip';
 
-const interactions = {
-  itooltip: tooltip,
+export {
+  itooltip,
   pan,
 };
-
-module.exports = interactions;

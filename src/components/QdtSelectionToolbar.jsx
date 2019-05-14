@@ -10,13 +10,15 @@ class QdtSelectionToolbarDropdown extends React.Component {
     clearSelections: PropTypes.func.isRequired,
     value: PropTypes.object.isRequired,
   }
+
   state = {
     dropdownOpen: false,
   }
 
   @autobind
   toggle() {
-    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    const { dropdownOpen } = this.state;
+    this.setState({ dropdownOpen: !dropdownOpen });
   }
 
   render() {
@@ -29,7 +31,12 @@ class QdtSelectionToolbarDropdown extends React.Component {
         select={false}
       >
         <div>
-          {value.field}: {value.selected.length} of {value.total}
+          {value.field}
+:
+          {value.selected.length}
+          {' '}
+of
+          {value.total}
           <span className="lui-icon lui-icon--triangle-bottom" />
         </div>
         <ul>
@@ -63,7 +70,7 @@ const QdtSelectionToolbar = ({
           selected: value.qSelectedFieldSelectionInfo.map(valueInner => valueInner.qName),
           total: value.qTotal,
         };
-      } else if (value.qSelectedCount > 6) {
+      } if (value.qSelectedCount > 6) {
         return {
           field: value.qField,
           selected: [`${value.qSelectedCount} of ${value.qTotal}`],
@@ -76,27 +83,41 @@ const QdtSelectionToolbar = ({
   return (
     <div className="qdt-selection-toolbar">
       <ul>
-        <li><strong>{title}:</strong></li>
-        {selections.length === 0 &&
-        <li className="no-selections">None</li>
+        <li>
+          <strong>
+            {title}
+:
+          </strong>
+        </li>
+        {selections.length === 0
+        && <li className="no-selections">None</li>
         }
-        {selections.length >= 1 && selections.length <= 6 &&
-            selections.map((value) => {
-                if (value.selected.length === 1) {
-                    return <li key={value.field}>{value.field}: {value.selected[0]}<span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} /></li>;
-                }
-                    return (
-                      <li key={value.field}>
-                        <QdtSelectionToolbarDropdown value={value} clearSelections={clearSelections} />
-                      </li>
-                    );
+        {selections.length >= 1 && selections.length <= 6
+            && selections.map((value) => {
+              if (value.selected.length === 1) {
+                return (
+                  <li key={value.field}>
+                    {value.field}
+:
+                    {' '}
+                    {value.selected[0]}
+                    <span className="lui-icon lui-icon--remove" onClick={() => clearSelections(value.field)} role="button" tabIndex={0} />
+                  </li>
+                );
+              }
+              return (
+                <li key={value.field}>
+                  <QdtSelectionToolbarDropdown value={value} clearSelections={clearSelections} />
+                </li>
+              );
             })
         }
-        {selections.length >= 1 && selections.length <= 6 &&
-        <li><button className="lui-button lui-button--warning clear-all" onClick={() => clearSelections()} tabIndex={0}>{btnText}</button></li>
+        {selections.length >= 1 && selections.length <= 6
+        && <li><button type="button" className="lui-button lui-button--warning clear-all" onClick={() => clearSelections()} tabIndex={0}>{btnText}</button></li>
         }
       </ul>
-    </div>);
+    </div>
+  );
 };
 QdtSelectionToolbar.propTypes = {
   qLayout: PropTypes.object.isRequired,

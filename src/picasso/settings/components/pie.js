@@ -1,5 +1,4 @@
-const component =
-{
+const component = {
   key: 'pie',
   type: 'pie',
   displayOrder: 1,
@@ -45,4 +44,3 @@ const component =
 };
 
 export default component;
-

@@ -1,4 +1,6 @@
-import { axis, tooltip, box, labels } from './components';
+import {
+  axis, tooltip, box, labels,
+} from './components';
 import { itooltip } from './interactions';
 import theme from '../../styles';
 
