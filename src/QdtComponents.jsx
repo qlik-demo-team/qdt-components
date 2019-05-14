@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
 import utility from './utilities';
-import settings from './picasso/settings';
-import picassoComponents from './picasso/settings/components';
-import picassoInteractions from './picasso/settings/interactions';
+import picassoSettings from './picasso/settings';
+import * as picassoComponents from './picasso/settings/components';
+import * as picassoInteractions from './picasso/settings/interactions';
 import QdtFilter from './components/QdtFilter';
 import QdtTable from './components/QdtTable';
 import QdtViz from './components/QdtViz';
@@ -22,7 +22,7 @@ const components = {
 
 const QdtComponents = class {
   static picasso = {
-    settings,
+    settings: picassoSettings,
     components: picassoComponents,
     interactions: picassoInteractions,
   };
