@@ -124,7 +124,7 @@ class QdtPicassoComponent extends React.Component {
     });
     this.pic.brush('select').on('start', () => { beginSelections(); select(0, [], false); });
     this.pic.brush('select').on('update', (added, removed) => {
-      if (!selections) return;
+      if (!selections && !added) return;
       const mySelections = [...added, ...removed].map(v => v.values[0]);
       select(0, mySelections);
     });
