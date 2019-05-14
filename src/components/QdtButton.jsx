@@ -21,8 +21,9 @@ export default class QdtButton extends React.Component {
       type: PropTypes.oneOf(['clearSelections', 'exportData', 'exportImg', 'exportPdf']).isRequired,
       title: PropTypes.string.isRequired,
       block: PropTypes.string,
-      options: PropTypes.obj,
+      options: PropTypes.object,
     }
+
     static defaultProps = {
       block: false,
       qVizPromise: null,

@@ -1,4 +1,6 @@
-import { legend, tooltip, pie, labels } from './components';
+import {
+  legend, tooltip, pie, labels,
+} from './components';
 import { itooltip } from './interactions';
 
 const setting = {

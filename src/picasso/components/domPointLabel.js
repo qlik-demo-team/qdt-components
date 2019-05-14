@@ -18,10 +18,10 @@ export default {
       if (visible.length) {
         for (const n of visible) { // eslint-disable-line no-restricted-syntax
           if (
-            left < n.left + p.w &&
-                left + p.w > n.left &&
-                top < n.top + p.h &&
-                p.h + top > n.top
+            left < n.left + p.w
+                && left + p.w > n.left
+                && top < n.top + p.h
+                && p.h + top > n.top
           ) {
             display = 'none';
             break;

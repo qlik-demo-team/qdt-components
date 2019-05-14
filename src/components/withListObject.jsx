@@ -27,6 +27,7 @@ export default function withListObject(Component) {
       qSortByAscii: PropTypes.oneOf([1, 0, -1]),
       qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
     };
+
     static defaultProps = {
       autoSortByState: 1,
       qSortByAscii: 1,
@@ -72,8 +73,9 @@ export default function withListObject(Component) {
 
     async componentWillUnmount() {
       const { qDocPromise } = this.props;
+      const { qObject: { id } } = this.state;
       const qDoc = await qDocPromise;
-      qDoc.destroySessionObject(this.state.qObject.id);
+      qDoc.destroySessionObject(id);
     }
 
     async getLayout() {
@@ -109,10 +111,9 @@ export default function withListObject(Component) {
         if (qListObjectDef) {
           qProp.qListObjectDef = qListObjectDef;
         } else {
-          const qDimensions = cols.filter(col =>
-            (typeof col === 'string' && !col.startsWith('=')) ||
-            (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs) ||
-            (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
+          const qDimensions = cols.filter(col => (typeof col === 'string' && !col.startsWith('='))
+            || (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs)
+            || (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
             .map((col) => {
               if (typeof col === 'string') {
                 return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } };
@@ -144,7 +145,12 @@ export default function withListObject(Component) {
       }
     }
 
-    async update(qTop = this.state.qData.qArea.qTop) {
+    async update(qTopPassed = 0) {
+      // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
+      const { qData: qDataGenerated } = this.state || {};
+      const { qArea } = qDataGenerated || {};
+      const { qTop: qTopGenerated } = qArea || {};
+      const qTop = (qTopPassed) || qTopGenerated;
       try {
         this.setState({ updating: true });
         const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
@@ -225,20 +231,22 @@ export default function withListObject(Component) {
       } = this.state;
       if (error) {
         return <div>{error.message}</div>;
-      } else if (!qObject || !qLayout || !qData) {
+      } if (!qObject || !qLayout || !qData) {
         return <Preloader width="100%" height="100%" paddingTop="0" type="bgColor" />;
       }
-      return (<Component
-        {...this.props}
-        {...this.state}
-        offset={this.offset}
-        select={this.select}
-        beginSelections={this.beginSelections}
-        endSelections={this.endSelections}
-        searchListObjectFor={this.searchListObjectFor}
-        acceptListObjectSearch={this.acceptListObjectSearch}
-        applyPatches={this.applyPatches}
-      />);
+      return (
+        <Component
+          {...this.props}
+          {...this.state}
+          offset={this.offset}
+          select={this.select}
+          beginSelections={this.beginSelections}
+          endSelections={this.endSelections}
+          searchListObjectFor={this.searchListObjectFor}
+          acceptListObjectSearch={this.acceptListObjectSearch}
+          applyPatches={this.applyPatches}
+        />
+      );
     }
   };
 }

@@ -40,7 +40,8 @@ export default function withListObject(Component) {
     async componentWillUnmount() {
       const { qDocPromise } = this.props;
       const qDoc = await qDocPromise;
-      qDoc.destroySessionObject(this.state.qObject.id);
+      const { qObject: { id } } = this.state;
+      qDoc.destroySessionObject(id);
     }
 
     async getLayout() {
@@ -59,15 +60,16 @@ export default function withListObject(Component) {
     @autobind
     async clearSelections(field, value) {
       this.setState({ updating: true });
+      const { qDoc } = this.state;
       if (field) {
-        const qField = await this.state.qDoc.getField(field);
+        const qField = await qDoc.getField(field);
         if (value) {
           await qField.toggleSelect(value);
         } else {
           await qField.clear();
         }
       } else {
-        this.state.qDoc.clearAll();
+        qDoc.clearAll();
       }
       this.setState({ updating: false });
     }
@@ -78,14 +80,16 @@ export default function withListObject(Component) {
       } = this.state;
       if (error) {
         return <div>{error.message}</div>;
-      } else if (!qObject || !qLayout) {
+      } if (!qObject || !qLayout) {
         return <div>Loading...</div>;
       }
-      return (<Component
-        {...this.props}
-        {...this.state}
-        clearSelections={this.clearSelections}
-      />);
+      return (
+        <Component
+          {...this.props}
+          {...this.state}
+          clearSelections={this.clearSelections}
+        />
+      );
     }
   };
 }

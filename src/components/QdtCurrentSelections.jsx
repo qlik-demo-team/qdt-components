@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import utility from '../utilities/';
+import utility from '../utilities';
 import Preloader from '../utilities/Preloader';
 
 export default class QdtViz extends React.Component {
@@ -42,9 +42,10 @@ export default class QdtViz extends React.Component {
 
   render() {
     const { width, height } = this.props;
-    if (this.state.error) {
-      return <div>{this.state.error.message}</div>;
-    } else if (this.state.loading) {
+    const { error, loading } = this.state;
+    if (error) {
+      return <div>{error.message}</div>;
+    } if (loading) {
       const paddingTop = (parseInt(height, 0)) ? (height / 2) - 10 : 0;
       return <Preloader width={width} height={height} paddingTop={paddingTop} />;
     }

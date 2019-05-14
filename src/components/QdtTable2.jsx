@@ -102,8 +102,7 @@ class QdtTableComponent extends React.Component {
   @autobind
   async setSortColumn(event) {
     const index = Number(event.target.dataset.index);
-    const { applyPatches } = this.props;
-    await applyPatches([{
+    await this.props.applyPatches([{
       qOp: 'replace',
       qPath: '/qHyperCubeDef/qInterColumnSortOrder',
       qValue: JSON.stringify([index]),
@@ -113,10 +112,8 @@ class QdtTableComponent extends React.Component {
 
   @autobind
   select(e) {
-    const { qstate, qElemNumber, index } = e.target.dataset;
-    const { select } = this.props;
-    if (qstate !== 'L') {
-      select(Number(index), [Number(qElemNumber)]);
+    if (e.target.dataset.qstate !== 'L') {
+      this.props.select(Number(e.target.dataset.index), [Number(e.target.dataset.qElemNumber)]);
     }
   }
 

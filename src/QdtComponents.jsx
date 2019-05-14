@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
-import utility from './utilities/';
+import utility from './utilities';
 import settings from './picasso/settings';
 import picassoComponents from './picasso/settings/components';
 import picassoInteractions from './picasso/settings/interactions';

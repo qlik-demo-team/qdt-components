@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
-import { LuiDropdown, LuiList, LuiListItem, LuiSearch } from 'qdt-lui';
+import {
+  LuiDropdown, LuiList, LuiListItem, LuiSearch,
+} from 'qdt-lui';
 import QdtVirtualScroll from './QdtVirtualScroll';
 import withListObject from './withListObject';
 import '../styles/index.scss';
 
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
-    {qMatrix.map(row =>
-    (
+    {qMatrix.map(row => (
       <LuiListItem
         className={`${row[0].qState}`}
         key={row[0].qElemNumber}
@@ -66,14 +67,16 @@ class QdtSearchComponent extends React.Component {
 
     @autobind
     toggle(event) {
+      const { beginSelections, endSelections } = this.props;
+      const { dropdownOpen } = this.state;
       const outsideClick = (event) ? !this.node.contains(event.target) : true;
-      if (outsideClick || !this.state.dropdownOpen) {
-        this.setState({ dropdownOpen: !this.state.dropdownOpen }, () => {
-          if (this.state.dropdownOpen) {
-            this.props.beginSelections();
+      if (outsideClick || !dropdownOpen) {
+        this.setState({ dropdownOpen }, () => {
+          if (dropdownOpen) {
+            beginSelections();
           }
-          if (!this.state.dropdownOpen) {
-            this.props.endSelections(true);
+          if (!dropdownOpen) {
+            endSelections(true);
             this.clear();
           }
         });
@@ -82,13 +85,16 @@ class QdtSearchComponent extends React.Component {
 
     @autobind
     async select(qElemNumber, qState) {
+      const {
+        select, ignoreLock, single, afterSelect,
+      } = this.props;
       if (qState === 'S') {
-        await this.props.select(Number(qElemNumber), true, this.props.ignoreLock);
+        await select(Number(qElemNumber), true, ignoreLock);
       } else {
-        await this.props.select(Number(qElemNumber), !this.props.single, this.props.ignoreLock);
-        if (this.props.single) this.toggle();
+        await select(Number(qElemNumber), !single, ignoreLock);
+        if (single) this.toggle();
       }
-      if (this.props.afterSelect) { this.props.afterSelect(); }
+      if (afterSelect) { afterSelect(); }
     }
 
     @autobind
@@ -99,21 +105,26 @@ class QdtSearchComponent extends React.Component {
 
     @autobind
     clear() {
+      const { searchListObjectFor } = this.props;
       this.setState({ value: '' });
-      this.props.searchListObjectFor('');
+      searchListObjectFor('');
     }
 
     @autobind
     searchListObjectFor(event) {
+      const { offset, searchListObjectFor } = this.props;
       this.setState({ value: event.target.value });
-      this.props.offset(0);
-      this.props.searchListObjectFor(event.target.value);
+      offset(0);
+      searchListObjectFor(event.target.value);
     }
 
     @autobind
     acceptListObjectSearch() {
-      if (!this.props.single) this.props.acceptListObjectSearch(this.props.ignoreLock);
-      if (this.props.single) this.select(this.props.qData.qMatrix[0][0].qElemNumber, this.props.qData.qMatrix[0][0].qState);
+      const {
+        single, acceptListObjectSearch, ignoreLock, qData,
+      } = this.props;
+      if (!single) acceptListObjectSearch(ignoreLock);
+      if (single) this.select(qData.qMatrix[0][0].qElemNumber, qData.qMatrix[0][0].qState);
       this.setState({ value: '' });
     }
 

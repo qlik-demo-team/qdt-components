@@ -21,17 +21,16 @@ export default class QdtVirtualScroll extends React.Component {
 
   constructor(props) {
     super(props);
-    const { viewportHeight, rowHeight } = this.props;
+
     this.state = {
       start: 0,
-      end: viewportHeight / rowHeight,
+      end: this.props.viewportHeight / this.props.rowHeight,
       translateY: 0,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { qcy } = this.props;
-    if (qcy !== nextProps.qcy) {
+    if (this.props.qcy !== nextProps.qcy) {
       this.node.scrollTop = 0;
     }
   }
@@ -40,7 +39,7 @@ export default class QdtVirtualScroll extends React.Component {
   handleScroll(event) {
     const { scrollTop } = event.target;
     const {
-      qData, viewportHeight, rowHeight, offset,
+      qData, viewportHeight, rowHeight,
     } = this.props;
 
     const numOfViewportItems = viewportHeight / rowHeight;
@@ -50,10 +49,10 @@ export default class QdtVirtualScroll extends React.Component {
 
     if (qData.qArea.qTop > start) {
       const qTop = Math.max(0, (start - qData.qArea.qHeight) + numOfViewportItems);
-      offset(qTop);
+      this.props.offset(qTop);
     } else if (qData.qArea.qTop + qData.qArea.qHeight < end) {
       const qTop = start;
-      offset(qTop);
+      this.props.offset(qTop);
     }
     this.setState({ start, end, translateY });
   }

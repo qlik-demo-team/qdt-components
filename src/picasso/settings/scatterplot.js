@@ -1,4 +1,6 @@
-import { axis, tooltip, legend, point, domPointLabel, range } from './components';
+import {
+  axis, tooltip, legend, point, domPointLabel, range,
+} from './components';
 import { itooltip, pan } from './interactions';
 import theme from '../../styles';
 

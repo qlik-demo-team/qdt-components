@@ -1,6 +1,5 @@
-import {
-  axis, box, tooltip, labels, range,
-} from './components';
+// https://observablehq.com/@miralemd/picasso-js-grouped-bar-chart
+import { axis, box, tooltip, labels, range } from './components';
 import { itooltip, pan } from './interactions';
 import theme from '../../styles';
 
@@ -13,6 +12,7 @@ const setting = {
     axis(),
     axis({ scale: 'y' }),
     box({ fill: theme.primary, stroke: theme.primaryLight }),
+    box({ fill: theme.secondary, stroke: theme.secondaryLight }),
     range(),
     labels(),
     tooltip,

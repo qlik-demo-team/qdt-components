@@ -45,4 +45,3 @@ const labels = function labels({
 };
 
 export default labels;
-
