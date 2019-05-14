@@ -163,9 +163,7 @@ class QdtFilterComponent extends React.Component {
   //   handleOutsideClick = (event) => {
   //     const outsideClick = !this.node.contains(event.target);
   //     const { dropdownOpen } = this.state;
-  //     console.log(1, event);
   //     if (dropdownOpen && outsideClick) {
-  //       console.log(2);
   //       this.props.endSelections(false);
   //       this.clear();
   //     }
