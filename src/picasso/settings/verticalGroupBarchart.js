@@ -19,7 +19,7 @@ const setting = {
       displayOrder: 1, measures: 2, end: { field: 2 }, fill: theme.secondary, stroke: theme.secondaryLight,
     }),
     range(),
-    labels(),
+    labels({ displayOrder: 3, direction: 'up' }),
     tooltip,
   ],
   interactions: [itooltip, pan()],

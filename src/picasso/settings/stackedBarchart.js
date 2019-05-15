@@ -39,7 +39,7 @@ const setting = {
     tooltip,
     range(),
     box({ collection: 'stacked', fill: { scale: 'c', ref: 'series' } }),
-    labels(),
+    labels({ displayOrder: 3, direction: 'up' }),
   ],
   interactions: [itooltip, pan()],
 };

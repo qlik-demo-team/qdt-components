@@ -16,13 +16,13 @@ const setting = {
     axis({ scale: 'y' }),
     tooltip,
     box({ fill: theme.primary, stroke: theme.primaryLight }),
-    labels(),
     line({
       key: 'line2', displayOrder: 3, y: { field: 'qMeasureInfo/1' }, stroke: theme.secondary,
     }),
     point({
       key: 'point2', displayOrder: 4, y: { field: 'qMeasureInfo/1' }, fill: theme.secondary, stroke: theme.secondaryLight,
     }),
+    labels({ displayOrder: 3, direction: 'up' }),
     range(),
   ],
   interactions: [
