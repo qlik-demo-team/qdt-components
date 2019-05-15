@@ -9,6 +9,7 @@ const component = function component({
   stroke = '#D2D2D2',
   start = 0,
   end = { field: 'qMeasureInfo/0' },
+  measures = 1, // Group Bar Chart
 } = {}) {
   const comp = {
     type: 'box',
@@ -24,13 +25,19 @@ const component = function component({
       },
     },
     settings: {
-      major: { scale: (orientation === 'vertical') ? 'x' : 'y' },
+      major: {
+        scale: (orientation === 'vertical') ? 'x' : 'y',
+        fn(d) {
+          return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1)) + displayOrder * d.scale.bandwidth() * (1 / measures);
+        },
+      },
       minor: { scale: (orientation === 'vertical') ? 'y' : 'x' },
       orientation,
       box: {
         fill,
         strokeWidth,
         stroke,
+        width: 1 / measures,
       },
     },
     brush: {
@@ -57,6 +64,7 @@ const component = function component({
     comp.data = { collection };
     comp.minor = { scale: 'y', ref: 'end' };
   }
+
   return comp;
 };
 

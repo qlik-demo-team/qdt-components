@@ -21,6 +21,8 @@ const labels = function labels({
           type,
           settings: {
             direction,
+            align: 0.5,
+            justify: 0,
             fontSize,
             labels: [{
               label({ data }) {

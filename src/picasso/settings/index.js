@@ -9,8 +9,21 @@ import comboLineBarchart from './comboLineBarchart';
 import stackedBarchart from './stackedBarchart';
 import verticalRangeGauge from './verticalRangeGauge';
 import verticalGauge from './verticalGauge';
+import verticalGroupBarchart from './verticalGroupBarchart';
 import rangeArea from './rangeArea';
 
 export default {
-  horizontalBarchart, verticalBarchart, scatterplot, scatterplotImage, lineChart, multiLineChart, pie, comboLineBarchart, stackedBarchart, verticalRangeGauge, verticalGauge, rangeArea,
+  horizontalBarchart,
+  verticalBarchart,
+  scatterplot,
+  scatterplotImage,
+  lineChart,
+  multiLineChart,
+  pie,
+  comboLineBarchart,
+  stackedBarchart,
+  verticalRangeGauge,
+  verticalGauge,
+  verticalGroupBarchart,
+  rangeArea,
 };

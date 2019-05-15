@@ -213,7 +213,7 @@ QdtPicasso.propTypes = {
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
-  type: PropTypes.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea']),
+  type: PropTypes.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea']),
   settings: PropTypes.object,
   options: PropTypes.object,
   outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
