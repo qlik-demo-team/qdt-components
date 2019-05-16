@@ -40,7 +40,7 @@ const TableBody = ({
     <tbody>
       {qMatrix.map(row => (
         <tr
-          key={row.reduce((a, b) => (
+          key={row.slice(0, 2).reduce((a, b) => (
             a.qElemNumber.toString().concat(b.qElemNumber.toString())))}
         >
           {row.map((col, i) => (
