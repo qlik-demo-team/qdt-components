@@ -38,14 +38,14 @@
     "ws": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
+    "@babel/core": "7.4.5",
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "7.4.4",
     "@babel/plugin-transform-runtime": "7.4.4",
-    "@babel/preset-env": "7.4.4",
+    "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
-    "@babel/runtime": "7.4.4",
+    "@babel/runtime": "7.4.5",
     "autoprefixer": "9.5.1",
     "babel-core": "6.26.3",
     "babel-eslint": "10.0.1",
