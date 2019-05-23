@@ -4,12 +4,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/index',
+  entry: {
+    "qdt-components": "./src/index",
+    "qdt-components.min": "./src/index",
+  },
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'qdt-components.js',
+    filename: "[name].js",
     library: 'QdtComponents',
     libraryTarget: 'umd',
     libraryExport: 'default',
@@ -75,6 +78,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
+        include: /\.min\.js$/,
         uglifyOptions: {
           warnings: true,
           parse: {},
