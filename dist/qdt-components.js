@@ -15107,25 +15107,29 @@ function (_React$Component) {
         this.getSelections();
         qObject.on('changed', this.getSelections);
       }
-    } //   componentDidMount() {
-    //     window.addEventListener('click', this.handleOutsideClick);
-    //   }
-    //   componentWillUnmount() {
-    //     window.removeEventListener('click', this.handleOutsideClick);
-    //   }
+    } // componentDidMount() {
+    //   window.addEventListener('click', this.handleOutsideClick);
+    // }
+    // componentWillUnmount() {
+    //   window.removeEventListener('click', this.handleOutsideClick);
+    // }
 
     /** Get the selected items of the current object */
 
   }, {
     key: "toggle",
-    //   handleOutsideClick = (event) => {
-    //     const outsideClick = !this.node.contains(event.target);
-    //     const { dropdownOpen } = this.state;
-    //     if (dropdownOpen && outsideClick) {
-    //       this.props.endSelections(false);
-    //       this.clear();
-    //     }
+    // handleOutsideClick = (event) => {
+    //   console.log(1);
+    //   console.log(event.target);
+    //   const outsideClick = !this.node.contains(event.target);
+    //   const { dropdownOpen } = this.state;
+    //   const { endSelections } = this.props;
+    //   if (dropdownOpen && outsideClick) {
+    //     console.log(2);
+    //     endSelections(false);
+    //     this.clear();
     //   }
+    // }
 
     /** Toggle dropdown visibility */
     value: function toggle() {
@@ -15138,11 +15142,11 @@ function (_React$Component) {
       this.setState({
         dropdownOpen: !dropdownOpen
       }, function () {
-        if (dropdownOpen) {
+        if (!dropdownOpen) {
           beginSelections();
         }
 
-        if (!dropdownOpen) {
+        if (dropdownOpen) {
           endSelections(true);
 
           _this2.clear();
@@ -15160,7 +15164,6 @@ function (_React$Component) {
 
       var _this$props3 = this.props,
           single = _this$props3.single,
-          endSelections = _this$props3.endSelections,
           select = _this$props3.select; // placeholder
 
       if (qState === 'S') {
@@ -15169,10 +15172,7 @@ function (_React$Component) {
         select(Number(qElemNumber), !single);
       }
 
-      if (single) {
-        endSelections(true);
-        this.toggle();
-      }
+      if (single) this.toggle();
     }
     /** Clear all of the selections */
 
