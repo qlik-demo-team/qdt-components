@@ -145,12 +145,13 @@ class QdtFilterComponent extends React.Component {
     }
   }
 
-  //   componentDidMount() {
-  //     window.addEventListener('click', this.handleOutsideClick);
-  //   }
-  //   componentWillUnmount() {
-  //     window.removeEventListener('click', this.handleOutsideClick);
-  //   }
+  // componentDidMount() {
+  //   window.addEventListener('click', this.handleOutsideClick);
+  // }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener('click', this.handleOutsideClick);
+  // }
 
   /** Get the selected items of the current object */
   getSelections = async () => {
@@ -160,14 +161,15 @@ class QdtFilterComponent extends React.Component {
     this.setState({ selections });
   }
 
-  //   handleOutsideClick = (event) => {
-  //     const outsideClick = !this.node.contains(event.target);
-  //     const { dropdownOpen } = this.state;
-  //     if (dropdownOpen && outsideClick) {
-  //       this.props.endSelections(false);
-  //       this.clear();
-  //     }
+  // handleOutsideClick = (event) => {
+  //   const outsideClick = !this.node.contains(event.target);
+  //   const { dropdownOpen } = this.state;
+  //   const { endSelections } = this.props;
+  //   if (dropdownOpen && outsideClick) {
+  //     endSelections(false);
+  //     this.clear();
   //   }
+  // }
 
   /** Toggle dropdown visibility */
   @autobind
@@ -175,10 +177,10 @@ class QdtFilterComponent extends React.Component {
     const { dropdownOpen } = this.state;
     const { beginSelections, endSelections } = this.props;
     this.setState({ dropdownOpen: !dropdownOpen }, () => {
-      if (dropdownOpen) {
+      if (!dropdownOpen) {
         beginSelections();
       }
-      if (!dropdownOpen) {
+      if (dropdownOpen) {
         endSelections(true);
         this.clear();
       }
@@ -189,12 +191,9 @@ class QdtFilterComponent extends React.Component {
   @autobind
   select(event) {
     const { qElemNumber, qState } = event.currentTarget.dataset; // qText
-    const { single, endSelections, select } = this.props; // placeholder
+    const { single, select } = this.props; // placeholder
     if (qState === 'S') { select(Number(qElemNumber)); } else { select(Number(qElemNumber), !single); }
-    if (single) {
-      endSelections(true);
-      this.toggle();
-    }
+    if (single) this.toggle();
   }
 
   /** Clear all of the selections */
