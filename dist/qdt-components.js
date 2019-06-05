@@ -52863,13 +52863,13 @@ function (_React$Component) {
 
       if (outsideClick || !dropdownOpen) {
         _this.setState({
-          dropdownOpen: dropdownOpen
+          dropdownOpen: !dropdownOpen
         }, function () {
-          if (dropdownOpen) {
+          if (!dropdownOpen) {
             beginSelections();
           }
 
-          if (!dropdownOpen) {
+          if (dropdownOpen) {
             endSelections(true);
 
             _this.clear();

@@ -69,11 +69,11 @@ class QdtSearchComponent extends React.Component {
       const { dropdownOpen } = this.state;
       const outsideClick = (event) ? !this.node.contains(event.target) : true;
       if (outsideClick || !dropdownOpen) {
-        this.setState({ dropdownOpen }, () => {
-          if (dropdownOpen) {
+        this.setState({ dropdownOpen: !dropdownOpen }, () => {
+          if (!dropdownOpen) {
             beginSelections();
           }
-          if (!dropdownOpen) {
+          if (dropdownOpen) {
             endSelections(true);
             this.clear();
           }
