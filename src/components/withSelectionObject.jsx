@@ -26,7 +26,7 @@ export default function withListObject(Component) {
         const qDoc = await qDocPromise;
         this.setState({ qDoc });
         const qObject = await qDoc.createSessionObject(qProp);
-        qDoc.on('changed', () => { this.update(); });
+        qObject.on('changed', () => { this.update(); });
         this.setState({ qObject }, () => {
           this.update();
         });
