@@ -15119,13 +15119,10 @@ function (_React$Component) {
   }, {
     key: "toggle",
     // handleOutsideClick = (event) => {
-    //   console.log(1);
-    //   console.log(event.target);
     //   const outsideClick = !this.node.contains(event.target);
     //   const { dropdownOpen } = this.state;
     //   const { endSelections } = this.props;
     //   if (dropdownOpen && outsideClick) {
-    //     console.log(2);
     //     endSelections(false);
     //     this.clear();
     //   }
@@ -17328,7 +17325,7 @@ var QdtKpi_QdtKpiComponent = function QdtKpiComponent(_ref) {
   var qData = _ref.qData,
       roundNum = _ref.roundNum;
   return react_default.a.createElement("div", {
-    className: "qtd-kpi"
+    className: "qdt-kpi"
   }, roundNum && utilities.RoundNum(qData.qMatrix[0][0].qNum, true), !roundNum && qData.qMatrix[0][0].qText);
 };
 
@@ -52806,11 +52803,6 @@ QdtPicasso.defaultProps = {
 
 
 
-var QdtSearch_class, QdtSearch_class2, QdtSearch_temp;
-
-
-
-
 
 
 
@@ -52839,7 +52831,8 @@ QdtSearch_DropdownItemList.propTypes = {
   rowHeight: prop_types_default.a.number.isRequired,
   select: prop_types_default.a.func.isRequired
 };
-var QdtSearch_QdtSearchComponent = (QdtSearch_class = (QdtSearch_temp = QdtSearch_class2 =
+
+var QdtSearch_QdtSearchComponent =
 /*#__PURE__*/
 function (_React$Component) {
   inherits_default()(QdtSearchComponent, _React$Component);
@@ -52860,22 +52853,16 @@ function (_React$Component) {
       dropdownOpen: false,
       value: ''
     };
-    return _this;
-  }
 
-  createClass_default()(QdtSearchComponent, [{
-    key: "toggle",
-    value: function toggle(event) {
-      var _this2 = this;
-
-      var _this$props = this.props,
+    _this.toggle = function (event) {
+      var _this$props = _this.props,
           beginSelections = _this$props.beginSelections,
           endSelections = _this$props.endSelections;
-      var dropdownOpen = this.state.dropdownOpen;
-      var outsideClick = event ? !this.node.contains(event.target) : true;
+      var dropdownOpen = _this.state.dropdownOpen;
+      var outsideClick = event ? !_this.node.contains(event.target) : true;
 
       if (outsideClick || !dropdownOpen) {
-        this.setState({
+        _this.setState({
           dropdownOpen: dropdownOpen
         }, function () {
           if (dropdownOpen) {
@@ -52885,15 +52872,16 @@ function (_React$Component) {
           if (!dropdownOpen) {
             endSelections(true);
 
-            _this2.clear();
+            _this.clear();
           }
         });
       }
-    }
-  }, {
-    key: "select",
-    value: function () {
-      var _select = asyncToGenerator_default()(
+    };
+
+    _this.select =
+    /*#__PURE__*/
+    function () {
+      var _ref2 = asyncToGenerator_default()(
       /*#__PURE__*/
       regenerator_default.a.mark(function _callee(qElemNumber, qState) {
         var _this$props2, select, ignoreLock, single, afterSelect;
@@ -52902,7 +52890,7 @@ function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this$props2 = this.props, select = _this$props2.select, ignoreLock = _this$props2.ignoreLock, single = _this$props2.single, afterSelect = _this$props2.afterSelect;
+                _this$props2 = _this.props, select = _this$props2.select, ignoreLock = _this$props2.ignoreLock, single = _this$props2.single, afterSelect = _this$props2.afterSelect;
 
                 if (!(qState === 'S')) {
                   _context.next = 6;
@@ -52921,7 +52909,7 @@ function (_React$Component) {
                 return select(Number(qElemNumber), !single, ignoreLock);
 
               case 8:
-                if (single) this.toggle();
+                if (single) _this.toggle();
 
               case 9:
                 if (afterSelect) {
@@ -52933,69 +52921,72 @@ function (_React$Component) {
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee);
       }));
 
-      function select(_x, _x2) {
-        return _select.apply(this, arguments);
-      }
+      return function (_x, _x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
 
-      return select;
-    }()
-  }, {
-    key: "handleSelect",
-    value: function handleSelect(event) {
+    _this.handleSelect = function (event) {
       var _event$currentTarget$ = event.currentTarget.dataset,
           qElemNumber = _event$currentTarget$.qElemNumber,
           qState = _event$currentTarget$.qState;
-      this.select(qElemNumber, qState);
-    }
-  }, {
-    key: "clear",
-    value: function clear() {
-      var searchListObjectFor = this.props.searchListObjectFor;
-      this.setState({
+
+      _this.select(qElemNumber, qState);
+    };
+
+    _this.clear = function () {
+      var searchListObjectFor = _this.props.searchListObjectFor;
+
+      _this.setState({
         value: ''
       });
+
       searchListObjectFor('');
-    }
-  }, {
-    key: "searchListObjectFor",
-    value: function searchListObjectFor(event) {
-      var _this$props3 = this.props,
+    };
+
+    _this.searchListObjectFor = function (event) {
+      var _this$props3 = _this.props,
           offset = _this$props3.offset,
           searchListObjectFor = _this$props3.searchListObjectFor;
-      this.setState({
+
+      _this.setState({
         value: event.target.value
       });
+
       offset(0);
       searchListObjectFor(event.target.value);
-    }
-  }, {
-    key: "acceptListObjectSearch",
-    value: function acceptListObjectSearch() {
-      var _this$props4 = this.props,
+    };
+
+    _this.acceptListObjectSearch = function () {
+      var _this$props4 = _this.props,
           single = _this$props4.single,
           acceptListObjectSearch = _this$props4.acceptListObjectSearch,
           ignoreLock = _this$props4.ignoreLock,
           qData = _this$props4.qData;
       if (!single) acceptListObjectSearch(ignoreLock);
-      if (single) this.select(qData.qMatrix[0][0].qElemNumber, qData.qMatrix[0][0].qState);
-      this.setState({
+      if (single) _this.select(qData.qMatrix[0][0].qElemNumber, qData.qMatrix[0][0].qState);
+
+      _this.setState({
         value: ''
       });
-    }
-  }, {
-    key: "handleKeyPress",
-    value: function handleKeyPress(event) {
+    };
+
+    _this.handleKeyPress = function (event) {
       if (event.charCode === 13) {
-        this.acceptListObjectSearch();
+        _this.acceptListObjectSearch();
       }
-    }
-  }, {
+    };
+
+    return _this;
+  }
+
+  createClass_default()(QdtSearchComponent, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _this$props5 = this.props,
           qData = _this$props5.qData,
@@ -53011,7 +53002,7 @@ function (_React$Component) {
           value = _this$state.value;
       return react_default.a.createElement("div", {
         ref: function ref(node) {
-          return _this3.node = node;
+          return _this2.node = node;
         }
       }, react_default.a.createElement(qdt_lui["LuiDropdown"], {
         isOpen: dropdownOpen,
@@ -53046,7 +53037,9 @@ function (_React$Component) {
   }]);
 
   return QdtSearchComponent;
-}(react_default.a.Component), QdtSearch_class2.propTypes = {
+}(react_default.a.Component);
+
+QdtSearch_QdtSearchComponent.propTypes = {
   qData: prop_types_default.a.object.isRequired,
   qLayout: prop_types_default.a.object.isRequired,
   offset: prop_types_default.a.func.isRequired,
@@ -53063,14 +53056,15 @@ function (_React$Component) {
   placeholder: prop_types_default.a.string,
   tooltipDock: prop_types_default.a.oneOf(['top', 'right', 'bottom', 'left']),
   tooltipContent: prop_types_default.a.string
-}, QdtSearch_class2.defaultProps = {
+};
+QdtSearch_QdtSearchComponent.defaultProps = {
   afterSelect: null,
   single: false,
   inverse: false,
   placeholder: 'Search',
   tooltipDock: 'top',
   tooltipContent: null
-}, QdtSearch_temp), (applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "toggle", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "toggle"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "select", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "select"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "handleSelect", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "handleSelect"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "clear", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "clear"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "searchListObjectFor", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "searchListObjectFor"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "acceptListObjectSearch", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "acceptListObjectSearch"), QdtSearch_class.prototype), applyDecoratedDescriptor_default()(QdtSearch_class.prototype, "handleKeyPress", [autobind], Object.getOwnPropertyDescriptor(QdtSearch_class.prototype, "handleKeyPress"), QdtSearch_class.prototype)), QdtSearch_class);
+};
 var QdtSearch = withListObject(QdtSearch_QdtSearchComponent);
 QdtSearch.propTypes = {
   qDocPromise: prop_types_default.a.object.isRequired,
