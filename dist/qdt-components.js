@@ -16898,7 +16898,7 @@ function withSelectionObject_withListObject(Component) {
 
                 case 9:
                   qObject = _context.sent;
-                  qDoc.on('changed', function () {
+                  qObject.on('changed', function () {
                     _this2.update();
                   });
                   this.setState({
