@@ -5,7 +5,7 @@ import utility from '../utilities';
 import '../styles/index.scss';
 
 const QdtKpiComponent = ({ qData, roundNum }) => (
-  <div className="qtd-kpi">
+  <div className="qdt-kpi">
     { roundNum
         && utility.RoundNum(qData.qMatrix[0][0].qNum, true)
     }
