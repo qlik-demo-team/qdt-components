@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import autobind from 'autobind-decorator';
 import {
   LuiDropdown, LuiList, LuiListItem, LuiSearch,
 } from 'qdt-lui';
@@ -65,17 +64,16 @@ class QdtSearchComponent extends React.Component {
       value: '',
     }
 
-    @autobind
-    toggle(event) {
+    toggle = (event) => {
       const { beginSelections, endSelections } = this.props;
       const { dropdownOpen } = this.state;
       const outsideClick = (event) ? !this.node.contains(event.target) : true;
       if (outsideClick || !dropdownOpen) {
-        this.setState({ dropdownOpen }, () => {
-          if (dropdownOpen) {
+        this.setState({ dropdownOpen: !dropdownOpen }, () => {
+          if (!dropdownOpen) {
             beginSelections();
           }
-          if (!dropdownOpen) {
+          if (dropdownOpen) {
             endSelections(true);
             this.clear();
           }
@@ -83,8 +81,7 @@ class QdtSearchComponent extends React.Component {
       }
     }
 
-    @autobind
-    async select(qElemNumber, qState) {
+    select = async (qElemNumber, qState) => {
       const {
         select, ignoreLock, single, afterSelect,
       } = this.props;
@@ -97,29 +94,25 @@ class QdtSearchComponent extends React.Component {
       if (afterSelect) { afterSelect(); }
     }
 
-    @autobind
-    handleSelect(event) {
+    handleSelect = (event) => {
       const { qElemNumber, qState } = event.currentTarget.dataset;
       this.select(qElemNumber, qState);
     }
 
-    @autobind
-    clear() {
+    clear = () => {
       const { searchListObjectFor } = this.props;
       this.setState({ value: '' });
       searchListObjectFor('');
     }
 
-    @autobind
-    searchListObjectFor(event) {
+    searchListObjectFor = (event) => {
       const { offset, searchListObjectFor } = this.props;
       this.setState({ value: event.target.value });
       offset(0);
       searchListObjectFor(event.target.value);
     }
 
-    @autobind
-    acceptListObjectSearch() {
+    acceptListObjectSearch = () => {
       const {
         single, acceptListObjectSearch, ignoreLock, qData,
       } = this.props;
@@ -128,8 +121,7 @@ class QdtSearchComponent extends React.Component {
       this.setState({ value: '' });
     }
 
-    @autobind
-    handleKeyPress(event) {
+    handleKeyPress = (event) => {
       if (event.charCode === 13) {
         this.acceptListObjectSearch();
       }
