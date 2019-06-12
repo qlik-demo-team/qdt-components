@@ -3279,7 +3279,7 @@ if (true) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Hammer) {/*
-* picasso-plugin-hammer v0.25.2
+* picasso-plugin-hammer v0.25.3
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -3493,7 +3493,7 @@ function initialize(picasso) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*
-* picasso-plugin-q v0.25.2
+* picasso-plugin-q v0.25.3
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -6124,7 +6124,7 @@ function formatter$1(pattern) {
   var qformat = dateFormatFactory(localeInfo, pattern, qtype);
   var memoized = memoize(qformat.format.bind(qformat), {
     toKey: function toKey(date) {
-      return _typeof(date) === 'object' ? date.getTime() : date;
+      return _typeof(date) === 'object' && typeof date.getTime === 'function' ? date.getTime() : date;
     }
   });
   /**
@@ -11438,13 +11438,11 @@ module.exports = _nonIterableRest;
 
 exports = module.exports = __webpack_require__(41)(false);
 // Imports
-var urlEscape = __webpack_require__(42);
-var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(43));
-var ___CSS_LOADER_URL___1___ = urlEscape(__webpack_require__(44));
-
+var getUrl = __webpack_require__(42);
+var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(43));
+var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(44));
 // Module
 exports.push([module.i, "@font-face {\n  font-family: \"LUI icons\";\n  src: url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\"); }\n\n/****************\n * QdtFilter\n*****************/\n.lui-select {\n  border-color: #ced4da !important; }\n\n.qdt-filter-state-counts-bar {\n  position: relative;\n  height: 0.25rem;\n  background-color: #dee2e6;\n  border-left: 1px solid #dee2e6;\n  border-right: 1px solid #dee2e6; }\n\n.O {\n  color: #212529 !important; }\n\n.S {\n  color: #f8f9fa !important;\n  background-color: #009845 !important; }\n\n.A {\n  color: #212529 !important;\n  background-color: #dddddd !important; }\n\n.X {\n  color: #f8f9fa !important;\n  background-color: #A9A9A9 !important; }\n\n.XS {\n  color: #f8f9fa !important;\n  background-color: #A9A9A9 !important; }\n\n.lui-list .lui-list__item {\n  cursor: pointer; }\n\n.lui-list .lui-list__item.S,\n.lui-list .lui-list__item.A,\n.lui-list .lui-list__item.X,\n.lui-list .lui-list__item.XS {\n  border-bottom: 1px solid #fff; }\n\n.fixed-table {\n  table-layout: fixed; }\n\nth {\n  position: relative;\n  cursor: pointer; }\n\nth, td {\n  overflow: hidden; }\n\nth.active:after {\n  position: absolute;\n  top: calc(50% - 0.125rem);\n  margin-left: 0.5rem;\n  content: \"\";\n  width: 0;\n  height: 0;\n  border-left: 0.5rem solid transparent;\n  border-right: 0.5rem solid transparent;\n  border-top: 0.5rem solid #666; }\n\n.lui-select {\n  border-radius: 0 !important; }\n\n.lui-tab.lui-active, .lui-tab:focus, .lui-tab.lui-focused {\n  border-bottom: 2px solid #52CC52; }\n\n/****************\n * QdtButton \n*****************/\n.qtd-button {\n  display: inline-block;\n  cursor: pointer; }\n\n/****************\n * QdtTable \n*****************/\n.qtd-table-header {\n  width: 100%;\n  width: calc(100% - 18px);\n  width: -moz-calc(100% - 18px);\n  width: -webkit-calc(100% - 18px); }\n\n.qtd-table-body {\n  width: 100%; }\n  .qtd-table-body tr:nth-child(even) {\n    background: #e9ecef; }\n\n/**********************\n * QdtSelectionToolbar\n**********************/\n.qdt-selection-toolbar ul {\n  padding: 0;\n  font-size: 13px; }\n  .qdt-selection-toolbar ul li {\n    display: inline-block;\n    padding-right: 5px; }\n    .qdt-selection-toolbar ul li .dropdown-item {\n      font-size: 13px;\n      padding-top: 5px;\n      padding-bottom: 5px;\n      padding-left: 10px;\n      padding-right: 25px; }\n    .qdt-selection-toolbar ul li lui-button {\n      border: 1px solid #ced4da;\n      padding: 5px 10px;\n      cursor: pointer;\n      position: relative;\n      display: inline-block; }\n    .qdt-selection-toolbar ul li .btn-secondary {\n      color: #212529 !important;\n      background-color: #FFFFFF !important;\n      font-size: 13px;\n      border: 0;\n      padding: 5px 10px; }\n      .qdt-selection-toolbar ul li .btn-secondary:focus {\n        box-shadow: 0; }\n    .qdt-selection-toolbar ul li .clear-all {\n      padding-left: 15px; }\n\n.qdt-selection-toolbar .lui-icon {\n  font-size: 13px;\n  padding-left: 2px; }\n\n.qdt-selection-toolbar .lui-icon--remove {\n  color: #dc3545;\n  cursor: pointer; }\n  .qdt-selection-toolbar .lui-icon--remove:hover {\n    color: #fd7e14; }\n  .qdt-selection-toolbar .lui-icon--remove.pull-right {\n    position: absolute;\n    right: 0;\n    padding-right: 5px; }\n\n/**********************\n * QdtChart\n**********************/\n.qtd-chart .qdt-chart-header {\n  height: 30px; }\n  .qtd-chart .qdt-chart-header .qdt-chart-selection {\n    text-align: right; }\n    .qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button {\n      border: 0;\n      padding: 0;\n      margin-left: 5px; }\n      .qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove {\n        color: #F37777; }\n\n.qtd-chart .qdt-chart-svg {\n  position: relative; }\n  .qtd-chart .qdt-chart-svg rect:hover {\n    fill: #77b62a !important; }\n  .qtd-chart .qdt-chart-svg circle,\n  .qtd-chart .qdt-chart-svg rect,\n  .qtd-chart .qdt-chart-svg path {\n    cursor: pointer; }\n\n.qtd-chart::-webkit-scrollbar {\n  width: 10px;\n  height: 10px; }\n\n.qtd-chart::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  border-radius: 5px; }\n\n.qtd-chart::-webkit-scrollbar-thumb {\n  background-color: darkgrey;\n  outline: 1px solid slategrey;\n  border-radius: 5px; }\n\n.qdt-tooltip {\n  position: relative;\n  background: #000000;\n  border: 1px solid #d1d1d1;\n  color: white;\n  padding: 15px;\n  display: none;\n  z-index: 9999999; }\n  .qdt-tooltip:after, .qdt-tooltip:before {\n    top: 100%;\n    left: 50%;\n    border: solid transparent;\n    content: \" \";\n    height: 0;\n    width: 0;\n    position: absolute;\n    pointer-events: none; }\n  .qdt-tooltip:after {\n    border-color: rgba(0, 0, 0, 0);\n    border-top-color: #000000;\n    border-width: 10px;\n    margin-left: -10px; }\n  .qdt-tooltip:before {\n    border-color: rgba(209, 209, 209, 0);\n    border-top-color: #d1d1d1;\n    border-width: 11px;\n    margin-left: -11px; }\n\n/**********************\n * Preloader\n**********************/\n.qtd-preloader-bg {\n  background-color: black; }\n\n.qtd-preloader .qtd-preloader-ball1 {\n  background-color: rgba(0, 0, 0, 0);\n  border: 5px solid rgba(0, 183, 229, 0.9);\n  opacity: .9;\n  border-top: 5px solid rgba(0, 0, 0, 0);\n  border-left: 5px solid rgba(0, 0, 0, 0);\n  border-radius: 50px;\n  width: 50px;\n  height: 50px;\n  margin: 0 auto;\n  -moz-animation: spin .5s infinite linear;\n  -webkit-animation: spin .5s infinite linear; }\n\n.qtd-preloader .qtd-preloader-ball2 {\n  background-color: rgba(0, 0, 0, 0);\n  border: 5px solid rgba(0, 183, 229, 0.9);\n  opacity: .9;\n  border-top: 5px solid rgba(0, 0, 0, 0);\n  border-left: 5px solid rgba(0, 0, 0, 0);\n  border-radius: 50px;\n  width: 30px;\n  height: 30px;\n  margin: 0 auto;\n  position: relative;\n  top: -50px;\n  -moz-animation: spinoff .5s infinite linear;\n  -webkit-animation: spinoff .5s infinite linear; }\n\n.qtd-preloader .qtd-preloader-dots:after {\n  content: ' .';\n  animation: dots 500ms steps(5, end) infinite; }\n\n@-moz-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg); }\n  100% {\n    -moz-transform: rotate(360deg); } }\n\n@-moz-keyframes spinoff {\n  0% {\n    -moz-transform: rotate(0deg); }\n  100% {\n    -moz-transform: rotate(-360deg); } }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@-webkit-keyframes spinoff {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(-360deg); } }\n\n@keyframes dots {\n  0%, 20% {\n    color: rgba(0, 0, 0, 0);\n    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }\n  40% {\n    color: white;\n    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }\n  60% {\n    text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0); }\n  80%, 100% {\n    text-shadow: .25em 0 0 white, .5em 0 0 white; } }\n\n/**********************\n * QdtSearch\n**********************/\n.lui-search {\n  border: 1px solid #dee2e6; }\n  .lui-search .lui-list.lui-list__item {\n    text-align: left; }\n\n/**********************\n * PICASSO\n**********************/\n.pic-tooltip-content {\n  padding: 8px 15px !important; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box {\n    position: relative;\n    display: inline-block;\n    width: 10px;\n    height: 12px;\n    left: -14px;\n    bottom: -2px; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title {\n    display: inline-block;\n    position: relative;\n    left: -10px; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure {\n    display: inline-block;\n    text-align: right; }\n  .pic-tooltip-content .text-right {\n    text-align: right; }\n  .pic-tooltip-content .qdt-tooltip-row {\n    display: block; }\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value {\n      display: inline-block;\n      width: 50%;\n      padding-left: 5px; }\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value {\n      text-align: right; }\n", ""]);
-
 
 
 /***/ }),
@@ -11459,6 +11457,7 @@ exports.push([module.i, "@font-face {\n  font-family: \"LUI icons\";\n  src: url
   Author Tobias Koppers @sokra
 */
 // css base code, injected by the css-loader
+// eslint-disable-next-line func-names
 module.exports = function (useSourceMap) {
   var list = []; // return the list of modules as css string
 
@@ -11467,22 +11466,25 @@ module.exports = function (useSourceMap) {
       var content = cssWithMappingToString(item, useSourceMap);
 
       if (item[2]) {
-        return '@media ' + item[2] + '{' + content + '}';
-      } else {
-        return content;
+        return "@media ".concat(item[2], "{").concat(content, "}");
       }
+
+      return content;
     }).join('');
   }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
 
 
   list.i = function (modules, mediaQuery) {
     if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
       modules = [[null, modules, '']];
     }
 
     var alreadyImportedModules = {};
 
     for (var i = 0; i < this.length; i++) {
+      // eslint-disable-next-line prefer-destructuring
       var id = this[i][0];
 
       if (id != null) {
@@ -11490,8 +11492,8 @@ module.exports = function (useSourceMap) {
       }
     }
 
-    for (i = 0; i < modules.length; i++) {
-      var item = modules[i]; // skip already imported module
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = modules[_i]; // skip already imported module
       // this implementation is not 100% perfect for weird media query combinations
       // when a module is imported multiple times with different media queries.
       // I hope this will never occur (Hey this way we have smaller bundles)
@@ -11500,7 +11502,7 @@ module.exports = function (useSourceMap) {
         if (mediaQuery && !item[2]) {
           item[2] = mediaQuery;
         } else if (mediaQuery) {
-          item[2] = '(' + item[2] + ') and (' + mediaQuery + ')';
+          item[2] = "(".concat(item[2], ") and (").concat(mediaQuery, ")");
         }
 
         list.push(item);
@@ -11512,7 +11514,8 @@ module.exports = function (useSourceMap) {
 };
 
 function cssWithMappingToString(item, useSourceMap) {
-  var content = item[1] || '';
+  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
+
   var cssMapping = item[3];
 
   if (!cssMapping) {
@@ -11522,7 +11525,7 @@ function cssWithMappingToString(item, useSourceMap) {
   if (useSourceMap && typeof btoa === 'function') {
     var sourceMapping = toComment(cssMapping);
     var sourceURLs = cssMapping.sources.map(function (source) {
-      return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot).concat(source, " */");
     });
     return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
   }
@@ -11534,8 +11537,8 @@ function cssWithMappingToString(item, useSourceMap) {
 function toComment(sourceMap) {
   // eslint-disable-next-line no-undef
   var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-  var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-  return '/*# ' + data + ' */';
+  var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+  return "/*# ".concat(data, " */");
 }
 
 /***/ }),
@@ -11545,20 +11548,21 @@ function toComment(sourceMap) {
 "use strict";
 
 
-module.exports = function escape(url, needQuotes) {
+module.exports = function (url, needQuotes) {
   if (typeof url !== 'string') {
     return url;
   } // If url is already wrapped in quotes, remove them
 
 
   if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
     url = url.slice(1, -1);
   } // Should url be wrapped?
   // See https://drafts.csswg.org/css-values-3/#urls
 
 
   if (/["'() \t\n]/.test(url) || needQuotes) {
-    return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"';
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
   }
 
   return url;
@@ -17358,7 +17362,7 @@ QdtKpi.defaultProps = {
 /* harmony default export */ var components_QdtKpi = (QdtKpi);
 // CONCATENATED MODULE: ./node_modules/picasso.js/dist/picasso.esm.js
 /*
-* picasso.js v0.25.2
+* picasso.js v0.25.3
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -18092,7 +18096,7 @@ var extend = function extend() {
 };
 
 var about = {
-  version: '0.25.2'
+  version: '0.25.3'
 };
 
 function picasso_esm_typeof(obj) {
@@ -20452,7 +20456,7 @@ function stepAfter(context) {
   return new Step(context, 1);
 }
 
-function none(series, order) {
+function stackOffsetNone(series, order) {
   if (!((n = series.length) > 1)) return;
   for (var i = 1, j, s0, s1 = series[order[0]], n, m = s1.length; i < n; ++i) {
     s0 = s1, s1 = series[order[i]];
@@ -20462,7 +20466,7 @@ function none(series, order) {
   }
 }
 
-function none$1(series) {
+function stackOrderNone(series) {
   var n = series.length, o = new Array(n);
   while (--n >= 0) o[n] = n;
   return o;
@@ -20474,8 +20478,8 @@ function stackValue(d, key) {
 
 function stack() {
   var keys = constant([]),
-      order = none$1,
-      offset = none,
+      order = stackOrderNone,
+      offset = stackOffsetNone,
       value = stackValue;
 
   function stack(data) {
@@ -20511,11 +20515,11 @@ function stack() {
   };
 
   stack.order = function(_) {
-    return arguments.length ? (order = _ == null ? none$1 : typeof _ === "function" ? _ : constant(slice.call(_)), stack) : order;
+    return arguments.length ? (order = _ == null ? stackOrderNone : typeof _ === "function" ? _ : constant(slice.call(_)), stack) : order;
   };
 
   stack.offset = function(_) {
-    return arguments.length ? (offset = _ == null ? none : _, stack) : offset;
+    return arguments.length ? (offset = _ == null ? stackOffsetNone : _, stack) : offset;
   };
 
   return stack;
@@ -20527,7 +20531,7 @@ function stackOffsetExpand(series, order) {
     for (y = i = 0; i < n; ++i) y += series[i][j][1] || 0;
     if (y) for (i = 0; i < n; ++i) series[i][j][1] /= y;
   }
-  none(series, order);
+  stackOffsetNone(series, order);
 }
 
 function stackOffsetDiverging(series, order) {
@@ -20551,7 +20555,7 @@ function stackOffsetSilhouette(series, order) {
     for (var i = 0, y = 0; i < n; ++i) y += series[i][j][1] || 0;
     s0[j][1] += s0[j][0] = -y / 2;
   }
-  none(series, order);
+  stackOffsetNone(series, order);
 }
 
 function stackOffsetWiggle(series, order) {
@@ -20574,12 +20578,12 @@ function stackOffsetWiggle(series, order) {
     if (s1) y -= s2 / s1;
   }
   s0[j - 1][1] += s0[j - 1][0] = y;
-  none(series, order);
+  stackOffsetNone(series, order);
 }
 
 function appearance(series) {
   var peaks = series.map(peak);
-  return none$1(series).sort(function(a, b) { return peaks[a] - peaks[b]; });
+  return stackOrderNone(series).sort(function(a, b) { return peaks[a] - peaks[b]; });
 }
 
 function peak(series) {
@@ -20588,9 +20592,9 @@ function peak(series) {
   return j;
 }
 
-function ascending(series) {
+function stackOrderAscending(series) {
   var sums = series.map(sum);
-  return none$1(series).sort(function(a, b) { return sums[a] - sums[b]; });
+  return stackOrderNone(series).sort(function(a, b) { return sums[a] - sums[b]; });
 }
 
 function sum(series) {
@@ -20625,7 +20629,7 @@ function stackOrderInsideOut(series) {
 }
 
 function stackOrderReverse(series) {
-  return none$1(series).reverse();
+  return stackOrderNone(series).reverse();
 }
 
 function registryFactory(parentRegistry) {
@@ -21214,7 +21218,6 @@ millisecond.every = function(k) {
     return (end - start) / k;
   });
 };
-var milliseconds = millisecond.range;
 
 var durationSecond = 1e3;
 var durationMinute = 6e4;
@@ -21223,7 +21226,7 @@ var durationDay = 864e5;
 var durationWeek = 6048e5;
 
 var second = newInterval(function(date) {
-  date.setTime(Math.floor(date / durationSecond) * durationSecond);
+  date.setTime(date - date.getMilliseconds());
 }, function(date, step) {
   date.setTime(+date + step * durationSecond);
 }, function(start, end) {
@@ -21231,10 +21234,9 @@ var second = newInterval(function(date) {
 }, function(date) {
   return date.getUTCSeconds();
 });
-var seconds = second.range;
 
 var minute = newInterval(function(date) {
-  date.setTime(Math.floor(date / durationMinute) * durationMinute);
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond);
 }, function(date, step) {
   date.setTime(+date + step * durationMinute);
 }, function(start, end) {
@@ -21242,12 +21244,9 @@ var minute = newInterval(function(date) {
 }, function(date) {
   return date.getMinutes();
 });
-var minutes = minute.range;
 
 var hour = newInterval(function(date) {
-  var offset = date.getTimezoneOffset() * durationMinute % durationHour;
-  if (offset < 0) offset += durationHour;
-  date.setTime(Math.floor((+date - offset) / durationHour) * durationHour + offset);
+  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond - date.getMinutes() * durationMinute);
 }, function(date, step) {
   date.setTime(+date + step * durationHour);
 }, function(start, end) {
@@ -21255,7 +21254,6 @@ var hour = newInterval(function(date) {
 }, function(date) {
   return date.getHours();
 });
-var hours = hour.range;
 
 var day = newInterval(function(date) {
   date.setHours(0, 0, 0, 0);
@@ -21266,7 +21264,6 @@ var day = newInterval(function(date) {
 }, function(date) {
   return date.getDate() - 1;
 });
-var days = day.range;
 
 function weekday(i) {
   return newInterval(function(date) {
@@ -21287,10 +21284,6 @@ var thursday = weekday(4);
 var friday = weekday(5);
 var saturday = weekday(6);
 
-var sundays = sunday.range;
-var mondays = monday.range;
-var thursdays = thursday.range;
-
 var month = newInterval(function(date) {
   date.setDate(1);
   date.setHours(0, 0, 0, 0);
@@ -21301,7 +21294,6 @@ var month = newInterval(function(date) {
 }, function(date) {
   return date.getMonth();
 });
-var months = month.range;
 
 var year = newInterval(function(date) {
   date.setMonth(0, 1);
@@ -21324,7 +21316,6 @@ year.every = function(k) {
     date.setFullYear(date.getFullYear() + step * k);
   });
 };
-var years = year.range;
 
 var utcMinute = newInterval(function(date) {
   date.setUTCSeconds(0, 0);
@@ -21335,7 +21326,6 @@ var utcMinute = newInterval(function(date) {
 }, function(date) {
   return date.getUTCMinutes();
 });
-var utcMinutes = utcMinute.range;
 
 var utcHour = newInterval(function(date) {
   date.setUTCMinutes(0, 0, 0);
@@ -21346,7 +21336,6 @@ var utcHour = newInterval(function(date) {
 }, function(date) {
   return date.getUTCHours();
 });
-var utcHours = utcHour.range;
 
 var utcDay = newInterval(function(date) {
   date.setUTCHours(0, 0, 0, 0);
@@ -21357,7 +21346,6 @@ var utcDay = newInterval(function(date) {
 }, function(date) {
   return date.getUTCDate() - 1;
 });
-var utcDays = utcDay.range;
 
 function utcWeekday(i) {
   return newInterval(function(date) {
@@ -21378,10 +21366,6 @@ var utcThursday = utcWeekday(4);
 var utcFriday = utcWeekday(5);
 var utcSaturday = utcWeekday(6);
 
-var utcSundays = utcSunday.range;
-var utcMondays = utcMonday.range;
-var utcThursdays = utcThursday.range;
-
 var utcMonth = newInterval(function(date) {
   date.setUTCDate(1);
   date.setUTCHours(0, 0, 0, 0);
@@ -21392,7 +21376,6 @@ var utcMonth = newInterval(function(date) {
 }, function(date) {
   return date.getUTCMonth();
 });
-var utcMonths = utcMonth.range;
 
 var utcYear = newInterval(function(date) {
   date.setUTCMonth(0, 1);
@@ -21415,7 +21398,6 @@ utcYear.every = function(k) {
     date.setUTCFullYear(date.getUTCFullYear() + step * k);
   });
 };
-var utcYears = utcYear.range;
 
 function localDate(d) {
   if (0 <= d.y && d.y < 100) {
@@ -22338,15 +22320,15 @@ function picasso_esm_field(data) {
 
 var OFFSETS = {
   diverging: stackOffsetDiverging,
-  none: none,
+  none: stackOffsetNone,
   silhouette: stackOffsetSilhouette,
   expand: stackOffsetExpand,
   wiggle: stackOffsetWiggle
 };
 var ORDERS = {
-  ascending: ascending,
+  ascending: stackOrderAscending,
   insideout: stackOrderInsideOut,
-  none: none$1,
+  none: stackOrderNone,
   reverse: stackOrderReverse
 };
 
@@ -22704,7 +22686,7 @@ function collection(formattersConfig, data, deps) {
   };
 }
 
-function ascending$1(a, b) {
+function ascending(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
 }
 
@@ -22736,14 +22718,14 @@ function bisector(compare) {
 
 function ascendingComparator(f) {
   return function(d, x) {
-    return ascending$1(f(d), x);
+    return ascending(f(d), x);
   };
 }
 
-var ascendingBisect = bisector(ascending$1);
+var ascendingBisect = bisector(ascending);
 var bisectRight = ascendingBisect.right;
 
-function picasso_esm_range(start, stop, step) {
+function sequence(start, stop, step) {
   start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
 
   var i = -1,
@@ -22979,7 +22961,7 @@ function band() {
   var scale = ordinal().unknown(undefined),
       domain = scale.domain,
       ordinalRange = scale.range,
-      range$1 = [0, 1],
+      range = [0, 1],
       step,
       bandwidth,
       round = false,
@@ -22991,15 +22973,15 @@ function band() {
 
   function rescale() {
     var n = domain().length,
-        reverse = range$1[1] < range$1[0],
-        start = range$1[reverse - 0],
-        stop = range$1[1 - reverse];
+        reverse = range[1] < range[0],
+        start = range[reverse - 0],
+        stop = range[1 - reverse];
     step = (stop - start) / Math.max(1, n - paddingInner + paddingOuter * 2);
     if (round) step = Math.floor(step);
     start += (stop - start - step * (n - paddingInner)) * align;
     bandwidth = step * (1 - paddingInner);
     if (round) start = Math.round(start), bandwidth = Math.round(bandwidth);
-    var values = picasso_esm_range(n).map(function(i) { return start + step * i; });
+    var values = sequence(n).map(function(i) { return start + step * i; });
     return ordinalRange(reverse ? values.reverse() : values);
   }
 
@@ -23008,11 +22990,11 @@ function band() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range$1 = [+_[0], +_[1]], rescale()) : range$1.slice();
+    return arguments.length ? (range = [+_[0], +_[1]], rescale()) : range.slice();
   };
 
   scale.rangeRound = function(_) {
-    return range$1 = [+_[0], +_[1]], round = true, rescale();
+    return range = [+_[0], +_[1]], round = true, rescale();
   };
 
   scale.bandwidth = function() {
@@ -23044,7 +23026,7 @@ function band() {
   };
 
   scale.copy = function() {
-    return band(domain(), range$1)
+    return band(domain(), range)
         .round(round)
         .paddingInner(paddingInner)
         .paddingOuter(paddingOuter)
@@ -23605,7 +23587,7 @@ function nogamma(a, b) {
   return d ? linear(a, d) : constant$1(isNaN(a) ? b : a);
 }
 
-var rgb$1 = (function rgbGamma(y) {
+var interpolateRgb = (function rgbGamma(y) {
   var color = gamma(y);
 
   function rgb$1(start, end) {
@@ -23634,7 +23616,7 @@ function array$1(a, b) {
       c = new Array(nb),
       i;
 
-  for (i = 0; i < na; ++i) x[i] = picasso_esm_value(a[i], b[i]);
+  for (i = 0; i < na; ++i) x[i] = interpolateValue(a[i], b[i]);
   for (; i < nb; ++i) c[i] = b[i];
 
   return function(t) {
@@ -23650,13 +23632,13 @@ function date(a, b) {
   };
 }
 
-function number(a, b) {
+function interpolateNumber(a, b) {
   return a = +a, b -= a, function(t) {
     return a + b * t;
   };
 }
 
-function object(a, b) {
+function interpolateObject(a, b) {
   var i = {},
       c = {},
       k;
@@ -23666,7 +23648,7 @@ function object(a, b) {
 
   for (k in b) {
     if (k in a) {
-      i[k] = picasso_esm_value(a[k], b[k]);
+      i[k] = interpolateValue(a[k], b[k]);
     } else {
       c[k] = b[k];
     }
@@ -23718,7 +23700,7 @@ function picasso_esm_string(a, b) {
       else s[++i] = bm;
     } else { // interpolate non-matching numbers
       s[++i] = null;
-      q.push({i: i, x: number(am, bm)});
+      q.push({i: i, x: interpolateNumber(am, bm)});
     }
     bi = reB.lastIndex;
   }
@@ -23741,16 +23723,16 @@ function picasso_esm_string(a, b) {
         });
 }
 
-function picasso_esm_value(a, b) {
+function interpolateValue(a, b) {
   var t = typeof b, c;
   return b == null || t === "boolean" ? constant$1(b)
-      : (t === "number" ? number
-      : t === "string" ? ((c = color(b)) ? (b = c, rgb$1) : picasso_esm_string)
-      : b instanceof color ? rgb$1
+      : (t === "number" ? interpolateNumber
+      : t === "string" ? ((c = color(b)) ? (b = c, interpolateRgb) : picasso_esm_string)
+      : b instanceof color ? interpolateRgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array$1
-      : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
-      : number)(a, b);
+      : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? interpolateObject
+      : interpolateNumber)(a, b);
 }
 
 function interpolateRound(a, b) {
@@ -23769,7 +23751,7 @@ function constant$2(x) {
   };
 }
 
-function number$1(x) {
+function number(x) {
   return +x;
 }
 
@@ -23835,7 +23817,7 @@ function copy(source, target) {
 function transformer() {
   var domain = unit,
       range = unit,
-      interpolate = picasso_esm_value,
+      interpolate = interpolateValue,
       transform,
       untransform,
       unknown,
@@ -23855,11 +23837,11 @@ function transformer() {
   }
 
   scale.invert = function(y) {
-    return clamp(untransform((input || (input = piecewise(range, domain.map(transform), number)))(y)));
+    return clamp(untransform((input || (input = piecewise(range, domain.map(transform), interpolateNumber)))(y)));
   };
 
   scale.domain = function(_) {
-    return arguments.length ? (domain = map$1.call(_, number$1), clamp === identity$2 || (clamp = clamper(domain)), rescale()) : domain.slice();
+    return arguments.length ? (domain = map$1.call(_, number), clamp === identity$2 || (clamp = clamper(domain)), rescale()) : domain.slice();
   };
 
   scale.range = function(_) {
@@ -25254,7 +25236,7 @@ function scaleSequentialColor() {
   var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var resources = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var s = scaleLinear(settings, data, resources).clamp(true).interpolate(rgb$1);
+  var s = scaleLinear(settings, data, resources).clamp(true).interpolate(interpolateRgb);
   var stgns = resolveSettings$1(settings, DEFAULT_SETTINGS$2, {
     data: data,
     resources: resources
@@ -27735,13 +27717,13 @@ function tween(_ref, _ref2, config) {
         var id = trackBy(node, i);
 
         if (ids[id]) {
-          updated.ips.push(object(ids[id], node));
+          updated.ips.push(interpolateObject(ids[id], node));
           updated.nodes.push(node);
           toBeUpdated.push(ids[id]);
           ids[id] = false;
         } else {
           entered.nodes.push(node);
-          entered.ips.push(object({
+          entered.ips.push(interpolateObject({
             r: 0.001,
             opacity: 0
           }, node));
@@ -27750,7 +27732,7 @@ function tween(_ref, _ref2, config) {
       Object.keys(ids).forEach(function (key) {
         if (ids[key]) {
           exited.nodes.push(ids[key]);
-          exited.ips.push(object(ids[key], extend({}, ids[key], {
+          exited.ips.push(interpolateObject(ids[key], extend({}, ids[key], {
             r: 0.0001,
             opacity: 0
           })));
@@ -27762,7 +27744,7 @@ function tween(_ref, _ref2, config) {
           easing: cubicInOut,
           duration: 200,
           tweens: exited.ips,
-          nodes: toBeUpdated.concat()
+          nodes: [].concat(toBeUpdated)
         });
       }
 
@@ -34748,7 +34730,7 @@ var refLineComponent = {
     });
     var items = []; // Loop through all X and Y lines
 
-    _toConsumableArray$1(this.lines.x).concat(_toConsumableArray$1(this.lines.y)).forEach(function (p) {
+    [].concat(_toConsumableArray$1(this.lines.x), _toConsumableArray$1(this.lines.y)).forEach(function (p) {
       var show = p.show === true || typeof p.show === 'undefined';
 
       if (show) {
@@ -34763,7 +34745,6 @@ var refLineComponent = {
         });
       }
     }); // Handle out of bounds
-
 
     if (settings.style.oob.show) {
       oobManager({
@@ -38809,7 +38790,6 @@ function filterOverlappingLabels$1(_ref) {
   };
 }
 
-var LINE_HEIGHT = 1.5;
 var PADDING$1 = 4; // const DOUBLE_PADDING = PADDING * 2;
 
 function cbContext(node, chart) {
@@ -38976,10 +38956,10 @@ function findBestPlacement(_ref2) {
     boundaries.push(testBounds);
     largest = !p || testBounds.height > largest.height ? testBounds : largest;
 
-    if (orientation === 'v' && (fitsHorizontally && testBounds.height > measured.height * LINE_HEIGHT || !fitsHorizontally && testBounds.height > measured.width)) {
+    if (orientation === 'v' && (fitsHorizontally && testBounds.height >= measured.height || !fitsHorizontally && testBounds.height >= measured.width && testBounds.width >= measured.height)) {
       bounds = testBounds;
       break;
-    } else if (orientation === 'h' && testBounds.height > measured.height && testBounds.width > measured.width) {
+    } else if (orientation === 'h' && testBounds.height >= measured.height && testBounds.width >= measured.width) {
       bounds = testBounds;
       break;
     }
@@ -39146,7 +39126,7 @@ function placeInBars(_ref3) {
   var backgrounds = filteredLabels.filter(function (lb) {
     return typeof lb.backgroundBounds !== 'undefined';
   }).map(toBackground);
-  return _toConsumableArray$1(backgrounds).concat(_toConsumableArray$1(filteredLabels));
+  return [].concat(_toConsumableArray$1(backgrounds), _toConsumableArray$1(filteredLabels));
 }
 function precalculate(_ref4) {
   var nodes = _ref4.nodes,
@@ -40177,7 +40157,7 @@ function slices(_ref9) {
   return labels;
 }
 
-var LINE_HEIGHT$1 = 1.2;
+var LINE_HEIGHT = 1.2;
 var CIRCLE_FACTOR = 0.9;
 
 function cbContext$2(node, chart) {
@@ -40213,7 +40193,7 @@ function placeTextInRect$1(rect, text, opts) {
 
   var wiggleWidth = Math.max(0, rect.width - textMetrics.width);
   label.x = rect.x + opts.align * wiggleWidth;
-  label.y = rect.y + textMetrics.height / LINE_HEIGHT$1;
+  label.y = rect.y + textMetrics.height / LINE_HEIGHT;
   return label;
 }
 
@@ -41869,7 +41849,7 @@ function createTickNodes(ctx, legendNode) {
   return {
     type: 'container',
     id: 'legend-seq-ticks',
-    children: _toConsumableArray$1(nodes).concat([rangeSelectorRect])
+    children: [].concat(_toConsumableArray$1(nodes), [rangeSelectorRect])
   };
 }
 
@@ -48498,7 +48478,7 @@ function polylineToPolygonCollider(points, radius) {
 
   return {
     type: 'polygon',
-    vertices: open.concat(close)
+    vertices: [].concat(open, close)
   };
 }
 
@@ -50943,7 +50923,7 @@ function renderer$1() {
     defs.children.length = 0;
     var sceneContainer = {
       type: 'container',
-      children: Array.isArray(nodes) ? _toConsumableArray$1(nodes).concat([defs]) : nodes,
+      children: Array.isArray(nodes) ? [].concat(_toConsumableArray$1(nodes), [defs]) : nodes,
       transform: rect.edgeBleed.bool ? "translate(".concat(rect.edgeBleed.left * scaleX, ", ").concat(rect.edgeBleed.top * scaleY, ")") : ''
     };
 
