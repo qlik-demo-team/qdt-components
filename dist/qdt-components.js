@@ -52428,11 +52428,6 @@ var picasso_q_esm = __webpack_require__(23);
 
 
 
-var QdtPicasso_class, QdtPicasso_class2, QdtPicasso_temp;
-
-
-
-
 
 
 
@@ -52444,7 +52439,8 @@ picasso_esm.component('domPointLabel', components_domPointLabel);
 picasso_esm.component('domPointImage', domPointImage);
 picasso_esm.use(picasso_hammer_esm["a" /* default */]);
 picasso_esm.use(picasso_q_esm["a" /* default */]);
-var QdtPicasso_QdtPicassoComponent = (QdtPicasso_class = (QdtPicasso_temp = QdtPicasso_class2 =
+
+var QdtPicasso_QdtPicassoComponent =
 /*#__PURE__*/
 function (_React$Component) {
   inherits_default()(QdtPicassoComponent, _React$Component);
@@ -52455,6 +52451,152 @@ function (_React$Component) {
     classCallCheck_default()(this, QdtPicassoComponent);
 
     _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(QdtPicassoComponent).call(this, props));
+
+    _this.handleOutsideClick = function (event) {
+      var outsideClick = !_this.root.contains(event.target);
+
+      if (outsideClick) {
+        _this.confirmSelections();
+      }
+    };
+
+    _this.handleResize = function () {
+      _this.pic.update();
+    };
+
+    _this.cancelSelections = function () {
+      var brush = _this.pic.brush;
+      var endSelections = _this.props.endSelections;
+      brush('select').end();
+      endSelections(false);
+    };
+
+    _this.confirmSelections = function () {
+      var brush = _this.pic.brush;
+      var _this$props = _this.props,
+          selections = _this$props.selections,
+          endSelections = _this$props.endSelections,
+          afterConfirmSelections = _this$props.afterConfirmSelections;
+
+      if (selections) {
+        brush('select').end();
+        endSelections(true);
+
+        if (afterConfirmSelections) {
+          afterConfirmSelections();
+        }
+      }
+    };
+
+    _this.createPic =
+    /*#__PURE__*/
+    asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee() {
+      var _this$props2, qLayout, qData, settings, type, prio, options, select, selections, beginSelections, data;
+
+      return regenerator_default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this$props2 = _this.props, qLayout = _this$props2.qLayout, qData = _this$props2.qData, settings = _this$props2.settings, type = _this$props2.type, prio = _this$props2.prio, options = _this$props2.options, select = _this$props2.select, selections = _this$props2.selections, beginSelections = _this$props2.beginSelections;
+              _this.mySettings = type ? picasso_settings[type] : settings;
+              data = objectSpread_default()({}, qLayout, {
+                qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+                  qDataPages: [qData]
+                })
+              });
+
+              if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
+                _this.mySettings.components[2].settings.box.fill = options.bar.fill;
+              }
+
+              if (type === 'verticalGauge' && options.min) {
+                _this.mySettings.scales.y.min = options.min;
+                _this.mySettings.components[1].start = options.min;
+                _this.mySettings.components[2].start = options.min;
+              }
+
+              if (type === 'verticalGauge' && options.max) {
+                _this.mySettings.scales.y.max = options.max;
+                _this.mySettings.components[1].end = options.max;
+              }
+
+              _this.pic = picasso_esm({
+                renderer: {
+                  prio: [prio]
+                }
+              }).chart({
+                element: _this.element,
+                data: [{
+                  type: 'q',
+                  key: 'qHyperCube',
+                  data: data.qHyperCube
+                }],
+                settings: _this.mySettings
+              });
+
+              _this.pic.brush('select').on('start', function () {
+                beginSelections();
+                select(0, [], false);
+              });
+
+              _this.pic.brush('select').on('update', function (added, removed) {
+                if (!selections && !added) return;
+                var mySelections = [].concat(toConsumableArray_default()(added), toConsumableArray_default()(removed)).map(function (v) {
+                  return v.values[0];
+                });
+                select(0, mySelections);
+              });
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    _this.updatePic = function () {
+      var selections = _this.props.selections;
+      if (selections) return;
+      var _this$props3 = _this.props,
+          qLayout = _this$props3.qLayout,
+          qData = _this$props3.qData,
+          type = _this$props3.type,
+          options = _this$props3.options;
+
+      var data = objectSpread_default()({}, qLayout, {
+        qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+          qDataPages: [qData]
+        })
+      });
+
+      if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
+        _this.mySettings.components[2].settings.box.fill = options.bar.fill;
+      }
+
+      if (type === 'verticalGauge' && options.min) {
+        _this.mySettings.scales.y.min = options.min;
+        _this.mySettings.components[1].start = options.min;
+        _this.mySettings.components[2].start = options.min;
+      }
+
+      if (type === 'verticalGauge' && options.max) {
+        _this.mySettings.scales.y.max = options.max;
+        _this.mySettings.components[1].end = options.max;
+      }
+
+      _this.pic.update({
+        data: [{
+          type: 'q',
+          key: 'qHyperCube',
+          data: data.qHyperCube
+        }],
+        settings: _this.mySettings
+      });
+    };
+
     _this.mySettings = null;
     return _this;
   }
@@ -52477,161 +52619,6 @@ function (_React$Component) {
     value: function componentWillUnmount() {
       window.removeEventListener('click', this.handleOutsideClick);
       window.removeEventListener('resize', this.handleResize);
-    }
-  }, {
-    key: "handleOutsideClick",
-    value: function handleOutsideClick(event) {
-      var outsideClick = !this.root.contains(event.target);
-
-      if (outsideClick) {
-        this.confirmSelections();
-      }
-    }
-  }, {
-    key: "handleResize",
-    value: function handleResize() {
-      this.pic.update();
-    }
-  }, {
-    key: "cancelSelections",
-    value: function cancelSelections() {
-      var brush = this.pic.brush;
-      var endSelections = this.props.endSelections;
-      brush('select').end();
-      endSelections(false);
-    }
-  }, {
-    key: "confirmSelections",
-    value: function confirmSelections() {
-      var brush = this.pic.brush;
-      var _this$props = this.props,
-          selections = _this$props.selections,
-          endSelections = _this$props.endSelections,
-          afterConfirmSelections = _this$props.afterConfirmSelections;
-
-      if (selections) {
-        brush('select').end();
-        endSelections(true);
-
-        if (afterConfirmSelections) {
-          afterConfirmSelections();
-        }
-      }
-    }
-  }, {
-    key: "createPic",
-    value: function () {
-      var _createPic = asyncToGenerator_default()(
-      /*#__PURE__*/
-      regenerator_default.a.mark(function _callee() {
-        var _this$props2, qLayout, qData, settings, type, prio, options, select, selections, beginSelections, data;
-
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this$props2 = this.props, qLayout = _this$props2.qLayout, qData = _this$props2.qData, settings = _this$props2.settings, type = _this$props2.type, prio = _this$props2.prio, options = _this$props2.options, select = _this$props2.select, selections = _this$props2.selections, beginSelections = _this$props2.beginSelections;
-                this.mySettings = type ? picasso_settings[type] : settings;
-                data = objectSpread_default()({}, qLayout, {
-                  qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
-                    qDataPages: [qData]
-                  })
-                });
-
-                if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-                  this.mySettings.components[2].settings.box.fill = options.bar.fill;
-                }
-
-                if (type === 'verticalGauge' && options.min) {
-                  this.mySettings.scales.y.min = options.min;
-                  this.mySettings.components[1].start = options.min;
-                  this.mySettings.components[2].start = options.min;
-                }
-
-                if (type === 'verticalGauge' && options.max) {
-                  this.mySettings.scales.y.max = options.max;
-                  this.mySettings.components[1].end = options.max;
-                }
-
-                this.pic = picasso_esm({
-                  renderer: {
-                    prio: [prio]
-                  }
-                }).chart({
-                  element: this.element,
-                  data: [{
-                    type: 'q',
-                    key: 'qHyperCube',
-                    data: data.qHyperCube
-                  }],
-                  settings: this.mySettings
-                });
-                this.pic.brush('select').on('start', function () {
-                  beginSelections();
-                  select(0, [], false);
-                });
-                this.pic.brush('select').on('update', function (added, removed) {
-                  if (!selections && !added) return;
-                  var mySelections = [].concat(toConsumableArray_default()(added), toConsumableArray_default()(removed)).map(function (v) {
-                    return v.values[0];
-                  });
-                  select(0, mySelections);
-                });
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function createPic() {
-        return _createPic.apply(this, arguments);
-      }
-
-      return createPic;
-    }()
-  }, {
-    key: "updatePic",
-    value: function updatePic() {
-      var selections = this.props.selections;
-      if (selections) return;
-      var _this$props3 = this.props,
-          qLayout = _this$props3.qLayout,
-          qData = _this$props3.qData,
-          type = _this$props3.type,
-          options = _this$props3.options;
-
-      var data = objectSpread_default()({}, qLayout, {
-        qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
-          qDataPages: [qData]
-        })
-      });
-
-      if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-        this.mySettings.components[2].settings.box.fill = options.bar.fill;
-      }
-
-      if (type === 'verticalGauge' && options.min) {
-        this.mySettings.scales.y.min = options.min;
-        this.mySettings.components[1].start = options.min;
-        this.mySettings.components[2].start = options.min;
-      }
-
-      if (type === 'verticalGauge' && options.max) {
-        this.mySettings.scales.y.max = options.max;
-        this.mySettings.components[1].end = options.max;
-      }
-
-      this.pic.update({
-        data: [{
-          type: 'q',
-          key: 'qHyperCube',
-          data: data.qHyperCube
-        }],
-        settings: this.mySettings
-      });
     }
   }, {
     key: "render",
@@ -52714,7 +52701,9 @@ function (_React$Component) {
   }]);
 
   return QdtPicassoComponent;
-}(react_default.a.Component), QdtPicasso_class2.propTypes = {
+}(react_default.a.Component);
+
+QdtPicasso_QdtPicassoComponent.propTypes = {
   qData: prop_types_default.a.object.isRequired,
   qLayout: prop_types_default.a.object.isRequired,
   select: prop_types_default.a.func.isRequired,
@@ -52730,13 +52719,14 @@ function (_React$Component) {
   options: prop_types_default.a.object,
   afterConfirmSelections: prop_types_default.a.func,
   prio: prop_types_default.a.oneOf(['canvas', 'svg'])
-}, QdtPicasso_class2.defaultProps = {
+};
+QdtPicasso_QdtPicassoComponent.defaultProps = {
   type: null,
   settings: {},
   options: {},
   afterConfirmSelections: null,
   prio: 'canvas'
-}, QdtPicasso_temp), (applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "handleOutsideClick", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "handleOutsideClick"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "handleResize", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "handleResize"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "cancelSelections", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "cancelSelections"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "confirmSelections", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "confirmSelections"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "createPic", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "createPic"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "updatePic", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "updatePic"), QdtPicasso_class.prototype)), QdtPicasso_class);
+};
 var QdtPicasso = withHyperCube(QdtPicasso_QdtPicassoComponent);
 QdtPicasso.propTypes = {
   qDocPromise: prop_types_default.a.object.isRequired,
