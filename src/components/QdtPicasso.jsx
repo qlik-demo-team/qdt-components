@@ -220,6 +220,7 @@ QdtPicasso.propTypes = {
     'verticalGauge',
     'verticalRangeGauge',
     'rangeArea',
+    'gannt',
   ]),
   settings: PropTypes.object,
   options: PropTypes.object,

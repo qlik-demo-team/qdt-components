@@ -13886,7 +13886,64 @@ var rangeArea_setting = {
   interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
 };
 /* harmony default export */ var rangeArea = (rangeArea_setting);
+// CONCATENATED MODULE: ./src/picasso/settings/gannt.js
+
+
+
+var gannt_setting = {
+  scales: {
+    // x: {
+    //   data: { extract: { fields: ['qDimensionInfo/1', 'qDimensionInfo/2'] } }, expand: 0.1, include: [0],
+    // },
+    x: {
+      data: {
+        fields: ['qMeasureInfo/0', 'qMeasureInfo/1']
+      },
+      expand: 0.1
+    },
+    // x: { data: { field: 'qDimensionInfo/1' }, include: [0] },
+    // x: { data: { extract: { field: 'qMeasureInfo/0' } }, padding: 0.2 },
+    y: {
+      data: {
+        extract: {
+          field: 'qDimensionInfo/0'
+        }
+      },
+      padding: 0.2
+    }
+  },
+  components: [axis({
+    scale: 'x',
+    formatter: {
+      type: 'd3-time',
+      format: '%m/%d/%Y'
+    }
+  }), // axis({ scale: 'x', formatter: { type: 'appendToken' } }),
+  axis(), axis({
+    scale: 'y'
+  }), box({
+    orientation: 'horizontal',
+    start: {
+      field: 'qMeasureInfo/0'
+    },
+    end: {
+      field: 'qMeasureInfo/1'
+    },
+    fill: styles.primary,
+    stroke: styles.primaryLight // barWidth: 0.8,
+
+  }), range({
+    scale: 'y'
+  }), components_labels({
+    direction: 'right'
+  }), tooltip],
+  interactions: [interactions_tooltip, Object(pan["a" /* default */])({
+    scale: 'y'
+  })]
+};
+/* harmony default export */ var gannt = (gannt_setting);
 // CONCATENATED MODULE: ./src/picasso/settings/index.js
+
 
 
 
@@ -13913,7 +13970,8 @@ var rangeArea_setting = {
   verticalRangeGauge: verticalRangeGauge,
   verticalGauge: verticalGauge,
   verticalGroupBarchart: verticalGroupBarchart,
-  rangeArea: rangeArea
+  rangeArea: rangeArea,
+  gannt: gannt
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
 var createClass = __webpack_require__(6);
@@ -52715,7 +52773,7 @@ QdtPicasso.propTypes = {
   cols: prop_types_default.a.array,
   qHyperCubeDef: prop_types_default.a.object,
   qPage: prop_types_default.a.object,
-  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea']),
+  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gannt']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
   outerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),

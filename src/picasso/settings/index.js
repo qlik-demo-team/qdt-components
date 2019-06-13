@@ -11,6 +11,7 @@ import verticalRangeGauge from './verticalRangeGauge';
 import verticalGauge from './verticalGauge';
 import verticalGroupBarchart from './verticalGroupBarchart';
 import rangeArea from './rangeArea';
+import gannt from './gannt';
 
 export default {
   horizontalBarchart,
@@ -26,4 +27,5 @@ export default {
   verticalGauge,
   verticalGroupBarchart,
   rangeArea,
+  gannt,
 };
