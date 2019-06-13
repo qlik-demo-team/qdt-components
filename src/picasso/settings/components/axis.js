@@ -1,7 +1,7 @@
 // https://picassojs.com/docs/component-axis.html
 const component = function component({
   scale = 'x',
-//   formatter = {}, @TODO
+  // formatter = null,
 } = {}) {
   const comp = {
     type: 'axis',
@@ -33,6 +33,8 @@ const component = function component({
     //   align: 'left', // auto
     },
   };
+
+  // if (formatter) comp.formatter = formatter;
 
   return comp;
 };

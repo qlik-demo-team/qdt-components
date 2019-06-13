@@ -153,7 +153,7 @@ export default function withHyperCube(Component) {
         qMeasures,
         qInterColumnSortOrder,
         qSuppressZero,
-        // qSuppressMissing: true,
+        qSuppressMissing,
       };
       return qProp;
     }
