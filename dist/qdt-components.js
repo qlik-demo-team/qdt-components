@@ -12558,7 +12558,8 @@ var axis_component = function component() {
       //   align: 'left', // auto
 
     }
-  };
+  }; // if (formatter) comp.formatter = formatter;
+
   return comp;
 };
 
@@ -13886,23 +13887,18 @@ var rangeArea_setting = {
   interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
 };
 /* harmony default export */ var rangeArea = (rangeArea_setting);
-// CONCATENATED MODULE: ./src/picasso/settings/gannt.js
+// CONCATENATED MODULE: ./src/picasso/settings/gantt.js
 
 
 
-var gannt_setting = {
+var gantt_setting = {
   scales: {
-    // x: {
-    //   data: { extract: { fields: ['qDimensionInfo/1', 'qDimensionInfo/2'] } }, expand: 0.1, include: [0],
-    // },
     x: {
       data: {
         fields: ['qMeasureInfo/0', 'qMeasureInfo/1']
       },
       expand: 0.1
     },
-    // x: { data: { field: 'qDimensionInfo/1' }, include: [0] },
-    // x: { data: { extract: { field: 'qMeasureInfo/0' } }, padding: 0.2 },
     y: {
       data: {
         extract: {
@@ -13912,14 +13908,7 @@ var gannt_setting = {
       padding: 0.2
     }
   },
-  components: [axis({
-    scale: 'x',
-    formatter: {
-      type: 'd3-time',
-      format: '%m/%d/%Y'
-    }
-  }), // axis({ scale: 'x', formatter: { type: 'appendToken' } }),
-  axis(), axis({
+  components: [axis(), axis({
     scale: 'y'
   }), box({
     orientation: 'horizontal',
@@ -13930,8 +13919,7 @@ var gannt_setting = {
       field: 'qMeasureInfo/1'
     },
     fill: styles.primary,
-    stroke: styles.primaryLight // barWidth: 0.8,
-
+    stroke: styles.primaryLight
   }), range({
     scale: 'y'
   }), components_labels({
@@ -13941,7 +13929,7 @@ var gannt_setting = {
     scale: 'y'
   })]
 };
-/* harmony default export */ var gannt = (gannt_setting);
+/* harmony default export */ var gantt = (gantt_setting);
 // CONCATENATED MODULE: ./src/picasso/settings/index.js
 
 
@@ -13971,7 +13959,7 @@ var gannt_setting = {
   verticalGauge: verticalGauge,
   verticalGroupBarchart: verticalGroupBarchart,
   rangeArea: rangeArea,
-  gannt: gannt
+  gantt: gantt
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
 var createClass = __webpack_require__(6);
@@ -52773,7 +52761,7 @@ QdtPicasso.propTypes = {
   cols: prop_types_default.a.array,
   qHyperCubeDef: prop_types_default.a.object,
   qPage: prop_types_default.a.object,
-  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gannt']),
+  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
   outerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
