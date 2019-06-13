@@ -15548,8 +15548,8 @@ function withHyperCube(Component) {
           qDimensions: qDimensions,
           qMeasures: qMeasures,
           qInterColumnSortOrder: qInterColumnSortOrder,
-          qSuppressZero: qSuppressZero // qSuppressMissing: true,
-
+          qSuppressZero: qSuppressZero,
+          qSuppressMissing: qSuppressMissing
         };
         return qProp;
       };
