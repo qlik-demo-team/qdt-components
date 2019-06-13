@@ -12,7 +12,6 @@
 */
 
 import React from 'react';
-import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
 import Preloader from '../utilities/Preloader';
 
@@ -85,20 +84,20 @@ export default function withHyperCube(Component) {
       qDoc.destroySessionObject(id);
     }
 
-    async getLayout() {
+    getLayout = async () => {
       const { qObject } = this.state;
       const qLayout = await qObject.getLayout();
       return qLayout;
     }
 
-    async getData(qTop) {
+    getData = async (qTop) => {
       const { qPage } = this.props;
       const { qObject } = this.state;
       const qDataPages = await qObject.getHyperCubeData('/qHyperCubeDef', [{ ...qPage, qTop }]); // eslint-disable-line max-len
       return qDataPages[0];
     }
 
-    generateQProp() {
+    generateQProp = () => {
       const {
         cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qSuppressZero, qInterColumnSortOrder,
       } = this.props;
@@ -148,12 +147,11 @@ export default function withHyperCube(Component) {
       return qProp;
     }
 
-    @autobind
-    offset(qTop) {
+    offset = (qTop) => {
       this.update(qTop);
     }
 
-    async update(qTopPassed = 0) {
+    update = async (qTopPassed = 0) => {
       // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
       const { qData: qDataGenerated } = this.state || {};
       const { qArea } = qDataGenerated || {};
@@ -164,28 +162,24 @@ export default function withHyperCube(Component) {
       this.setState({ updating: false, qLayout, qData });
     }
 
-    @autobind
-    async beginSelections() {
+    beginSelections = async () => {
       const { qObject } = this.state;
       qObject.beginSelections(['/qHyperCubeDef']);
       await this.setState({ selections: true });
     }
 
-    @autobind
-    async endSelections(qAccept) {
+    endSelections = async (qAccept) => {
       const { qObject } = this.state;
       qObject.endSelections(qAccept);
       await this.setState({ selections: false });
     }
 
-    @autobind
-    async select(dimIndex, selections, toggle = true) {
+    select = async (dimIndex, selections, toggle = true) => {
       const { qObject } = this.state;
       await qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, selections, toggle);
     }
 
-    @autobind
-    async applyPatches(patches) {
+    applyPatches = async (patches) => {
       const { qObject } = this.state;
       await qObject.applyPatches(patches);
     }
