@@ -12,7 +12,6 @@
 */
 
 import React from 'react';
-import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
 import Preloader from '../utilities/Preloader';
 
@@ -29,6 +28,9 @@ export default function withHyperCube(Component) {
       qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
       qInterColumnSortOrder: PropTypes.array,
       qSuppressZero: PropTypes.bool,
+      qSortByExpression: PropTypes.oneOf([1, 0, -1]),
+      qSuppressMissing: PropTypes.bool,
+      qExpression: PropTypes.object,
     };
 
     static defaultProps = {
@@ -38,6 +40,9 @@ export default function withHyperCube(Component) {
       qSortByLoadOrder: 1,
       qInterColumnSortOrder: [],
       qSuppressZero: false,
+      qSortByExpression: 0,
+      qSuppressMissing: false,
+      qExpression: null,
       qPage: {
         qTop: 0,
         qLeft: 0,
@@ -85,22 +90,22 @@ export default function withHyperCube(Component) {
       qDoc.destroySessionObject(id);
     }
 
-    async getLayout() {
+    getLayout = async () => {
       const { qObject } = this.state;
       const qLayout = await qObject.getLayout();
       return qLayout;
     }
 
-    async getData(qTop) {
+    getData = async (qTop) => {
       const { qPage } = this.props;
       const { qObject } = this.state;
       const qDataPages = await qObject.getHyperCubeData('/qHyperCubeDef', [{ ...qPage, qTop }]); // eslint-disable-line max-len
       return qDataPages[0];
     }
 
-    generateQProp() {
+    generateQProp = () => {
       const {
-        cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qSuppressZero, qInterColumnSortOrder,
+        cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qSuppressZero, qInterColumnSortOrder, qSortByExpression, qExpression, qSuppressMissing,
       } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
@@ -133,7 +138,12 @@ export default function withHyperCube(Component) {
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
-          return { qDef: { qDef: col }, qSortBy: { qSortByNumeric: -1 } };
+          return {
+            qDef: { qDef: col },
+            qSortBy: {
+              qSortByNumeric: -1, qSortByExpression, qExpression, qSuppressMissing,
+            },
+          };
         }
         return col;
       });
@@ -148,12 +158,11 @@ export default function withHyperCube(Component) {
       return qProp;
     }
 
-    @autobind
-    offset(qTop) {
+    offset = (qTop) => {
       this.update(qTop);
     }
 
-    async update(qTopPassed = 0) {
+    update = async (qTopPassed = 0) => {
       // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
       const { qData: qDataGenerated } = this.state || {};
       const { qArea } = qDataGenerated || {};
@@ -164,28 +173,24 @@ export default function withHyperCube(Component) {
       this.setState({ updating: false, qLayout, qData });
     }
 
-    @autobind
-    async beginSelections() {
+    beginSelections = async () => {
       const { qObject } = this.state;
       qObject.beginSelections(['/qHyperCubeDef']);
       await this.setState({ selections: true });
     }
 
-    @autobind
-    async endSelections(qAccept) {
+    endSelections = async (qAccept) => {
       const { qObject } = this.state;
       qObject.endSelections(qAccept);
       await this.setState({ selections: false });
     }
 
-    @autobind
-    async select(dimIndex, selections, toggle = true) {
+    select = async (dimIndex, selections, toggle = true) => {
       const { qObject } = this.state;
       await qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, selections, toggle);
     }
 
-    @autobind
-    async applyPatches(patches) {
+    applyPatches = async (patches) => {
       const { qObject } = this.state;
       await qObject.applyPatches(patches);
     }

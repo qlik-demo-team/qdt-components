@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import autobind from 'autobind-decorator';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
@@ -62,29 +61,25 @@ class QdtPicassoComponent extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  @autobind
-  handleOutsideClick(event) {
+  handleOutsideClick = (event) => {
     const outsideClick = !this.root.contains(event.target);
     if (outsideClick) {
       this.confirmSelections();
     }
   }
 
-  @autobind
-  handleResize() {
+  handleResize = () => {
     this.pic.update();
   }
 
-  @autobind
-  cancelSelections() {
+  cancelSelections = () => {
     const { brush } = this.pic;
     const { endSelections } = this.props;
     brush('select').end();
     endSelections(false);
   }
 
-  @autobind
-  confirmSelections() {
+  confirmSelections = () => {
     const { brush } = this.pic;
     const { selections, endSelections, afterConfirmSelections } = this.props;
     if (selections) {
@@ -94,8 +89,7 @@ class QdtPicassoComponent extends React.Component {
     }
   }
 
-  @autobind
-  async createPic() {
+  createPic = async () => {
     const {
       qLayout, qData, settings, type, prio, options, select, selections, beginSelections,
     } = this.props;
@@ -130,8 +124,7 @@ class QdtPicassoComponent extends React.Component {
     });
   }
 
-  @autobind
-  updatePic() {
+  updatePic = () => {
     const { selections } = this.props;
     if (selections) return;
     const {
@@ -213,7 +206,21 @@ QdtPicasso.propTypes = {
   cols: PropTypes.array,
   qHyperCubeDef: PropTypes.object,
   qPage: PropTypes.object,
-  type: PropTypes.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea']),
+  type: PropTypes.oneOf([
+    'comboLineBarchart',
+    'horizontalBarchart',
+    'lineChart',
+    'multiLineChart',
+    'pie',
+    'piechart',
+    'scatterplot',
+    'verticalBarchart',
+    'verticalGroupBarchart',
+    'stackedBarchart',
+    'verticalGauge',
+    'verticalRangeGauge',
+    'rangeArea',
+  ]),
   settings: PropTypes.object,
   options: PropTypes.object,
   outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

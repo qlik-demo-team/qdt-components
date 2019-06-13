@@ -12711,10 +12711,7 @@ var box_component = function component() {
     },
     settings: {
       major: {
-        scale: orientation === 'vertical' ? 'x' : 'y',
-        fn: function fn(d) {
-          return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1) + displayOrder * d.scale.bandwidth() * (1 / measures) - 0.008; // 0.008 seems to be a padding issue somewhere and box is not centered
-        }
+        scale: orientation === 'vertical' ? 'x' : 'y'
       },
       minor: {
         scale: orientation === 'vertical' ? 'y' : 'x'
@@ -15377,7 +15374,6 @@ var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableA
 
 
 
-
 /**
  * @name withHyperCube
  * @param {array} cols - The dimension for the ListObject
@@ -15393,11 +15389,10 @@ var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableA
 
 
 
-
 function withHyperCube(Component) {
-  var _class, _class2, _temp;
+  var _class, _temp;
 
-  return _class = (_temp = _class2 =
+  return _temp = _class =
   /*#__PURE__*/
   function (_React$Component) {
     inherits_default()(_class, _React$Component);
@@ -15408,201 +15403,78 @@ function withHyperCube(Component) {
       classCallCheck_default()(this, _class);
 
       _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(_class).call(this, props));
-      _this.state = {
-        qObject: null,
-        qLayout: null,
-        qData: null,
-        selections: false,
-        updating: false,
-        error: null
-      };
-      return _this;
-    }
+      _this.getLayout =
+      /*#__PURE__*/
+      asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee() {
+        var qObject, qLayout;
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                qObject = _this.state.qObject;
+                _context.next = 3;
+                return qObject.getLayout();
 
-    createClass_default()(_class, [{
-      key: "componentWillMount",
-      value: function () {
-        var _componentWillMount = asyncToGenerator_default()(
-        /*#__PURE__*/
-        regenerator_default.a.mark(function _callee() {
-          var _this2 = this;
+              case 3:
+                qLayout = _context.sent;
+                return _context.abrupt("return", qLayout);
 
-          var qDocPromise, qProp, qDoc, qObject;
-          return regenerator_default.a.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.prev = 0;
-                  qDocPromise = this.props.qDocPromise;
-                  _context.next = 4;
-                  return this.generateQProp();
-
-                case 4:
-                  qProp = _context.sent;
-                  _context.next = 7;
-                  return qDocPromise;
-
-                case 7:
-                  qDoc = _context.sent;
-                  _context.next = 10;
-                  return qDoc.createSessionObject(qProp);
-
-                case 10:
-                  qObject = _context.sent;
-                  qObject.on('changed', function () {
-                    _this2.update();
-                  });
-                  this.setState({
-                    qObject: qObject
-                  }, function () {
-                    var qPage = _this2.props.qPage;
-
-                    _this2.update(qPage.qTop);
-                  });
-                  _context.next = 18;
-                  break;
-
-                case 15:
-                  _context.prev = 15;
-                  _context.t0 = _context["catch"](0);
-                  this.setState({
-                    error: _context.t0
-                  });
-
-                case 18:
-                  _context.prev = 18;
-                  this.setState({
-                    loading: false
-                  });
-                  return _context.finish(18);
-
-                case 21:
-                case "end":
-                  return _context.stop();
-              }
+              case 5:
+              case "end":
+                return _context.stop();
             }
-          }, _callee, this, [[0, 15, 18, 21]]);
-        }));
+          }
+        }, _callee);
+      }));
 
-        function componentWillMount() {
-          return _componentWillMount.apply(this, arguments);
-        }
-
-        return componentWillMount;
-      }()
-    }, {
-      key: "componentWillUnmount",
-      value: function () {
-        var _componentWillUnmount = asyncToGenerator_default()(
+      _this.getData =
+      /*#__PURE__*/
+      function () {
+        var _ref2 = asyncToGenerator_default()(
         /*#__PURE__*/
-        regenerator_default.a.mark(function _callee2() {
-          var qDocPromise, id, qDoc;
+        regenerator_default.a.mark(function _callee2(qTop) {
+          var qPage, qObject, qDataPages;
           return regenerator_default.a.wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  qDocPromise = this.props.qDocPromise;
-                  id = this.state.qObject.id;
+                  qPage = _this.props.qPage;
+                  qObject = _this.state.qObject;
                   _context2.next = 4;
-                  return qDocPromise;
+                  return qObject.getHyperCubeData('/qHyperCubeDef', [objectSpread_default()({}, qPage, {
+                    qTop: qTop
+                  })]);
 
                 case 4:
-                  qDoc = _context2.sent;
-                  qDoc.destroySessionObject(id);
+                  qDataPages = _context2.sent;
+                  return _context2.abrupt("return", qDataPages[0]);
 
                 case 6:
                 case "end":
                   return _context2.stop();
               }
             }
-          }, _callee2, this);
+          }, _callee2);
         }));
 
-        function componentWillUnmount() {
-          return _componentWillUnmount.apply(this, arguments);
-        }
+        return function (_x) {
+          return _ref2.apply(this, arguments);
+        };
+      }();
 
-        return componentWillUnmount;
-      }()
-    }, {
-      key: "getLayout",
-      value: function () {
-        var _getLayout = asyncToGenerator_default()(
-        /*#__PURE__*/
-        regenerator_default.a.mark(function _callee3() {
-          var qObject, qLayout;
-          return regenerator_default.a.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  qObject = this.state.qObject;
-                  _context3.next = 3;
-                  return qObject.getLayout();
-
-                case 3:
-                  qLayout = _context3.sent;
-                  return _context3.abrupt("return", qLayout);
-
-                case 5:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, this);
-        }));
-
-        function getLayout() {
-          return _getLayout.apply(this, arguments);
-        }
-
-        return getLayout;
-      }()
-    }, {
-      key: "getData",
-      value: function () {
-        var _getData = asyncToGenerator_default()(
-        /*#__PURE__*/
-        regenerator_default.a.mark(function _callee4(qTop) {
-          var qPage, qObject, qDataPages;
-          return regenerator_default.a.wrap(function _callee4$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  qPage = this.props.qPage;
-                  qObject = this.state.qObject;
-                  _context4.next = 4;
-                  return qObject.getHyperCubeData('/qHyperCubeDef', [objectSpread_default()({}, qPage, {
-                    qTop: qTop
-                  })]);
-
-                case 4:
-                  qDataPages = _context4.sent;
-                  return _context4.abrupt("return", qDataPages[0]);
-
-                case 6:
-                case "end":
-                  return _context4.stop();
-              }
-            }
-          }, _callee4, this);
-        }));
-
-        function getData(_x) {
-          return _getData.apply(this, arguments);
-        }
-
-        return getData;
-      }()
-    }, {
-      key: "generateQProp",
-      value: function generateQProp() {
-        var _this$props = this.props,
+      _this.generateQProp = function () {
+        var _this$props = _this.props,
             cols = _this$props.cols,
             qHyperCubeDef = _this$props.qHyperCubeDef,
             qSortByAscii = _this$props.qSortByAscii,
             qSortByLoadOrder = _this$props.qSortByLoadOrder,
             qSuppressZero = _this$props.qSuppressZero,
-            qInterColumnSortOrder = _this$props.qInterColumnSortOrder;
+            qInterColumnSortOrder = _this$props.qInterColumnSortOrder,
+            qSortByExpression = _this$props.qSortByExpression,
+            qExpression = _this$props.qExpression,
+            qSuppressMissing = _this$props.qSuppressMissing;
         var qProp = {
           qInfo: {
             qType: 'visualization'
@@ -15662,7 +15534,10 @@ function withHyperCube(Component) {
                 qDef: col
               },
               qSortBy: {
-                qSortByNumeric: -1
+                qSortByNumeric: -1,
+                qSortByExpression: qSortByExpression,
+                qExpression: qExpression,
+                qSuppressMissing: qSuppressMissing
               }
             };
           }
@@ -15677,185 +15552,286 @@ function withHyperCube(Component) {
 
         };
         return qProp;
-      }
-    }, {
-      key: "offset",
-      value: function offset(qTop) {
-        this.update(qTop);
-      }
-    }, {
-      key: "update",
-      value: function () {
-        var _update = asyncToGenerator_default()(
-        /*#__PURE__*/
-        regenerator_default.a.mark(function _callee5() {
-          var qTopPassed,
-              _ref,
-              qDataGenerated,
-              _ref2,
-              qArea,
-              _ref3,
-              qTopGenerated,
-              qTop,
-              _ref4,
-              _ref5,
-              qLayout,
-              qData,
-              _args5 = arguments;
+      };
 
+      _this.offset = function (qTop) {
+        _this.update(qTop);
+      };
+
+      _this.update =
+      /*#__PURE__*/
+      asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee3() {
+        var qTopPassed,
+            _ref4,
+            qDataGenerated,
+            _ref5,
+            qArea,
+            _ref6,
+            qTopGenerated,
+            qTop,
+            _ref7,
+            _ref8,
+            qLayout,
+            qData,
+            _args3 = arguments;
+
+        return regenerator_default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                qTopPassed = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 0;
+                // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
+                _ref4 = _this.state || {}, qDataGenerated = _ref4.qData;
+                _ref5 = qDataGenerated || {}, qArea = _ref5.qArea;
+                _ref6 = qArea || {}, qTopGenerated = _ref6.qTop;
+                qTop = qTopPassed || qTopGenerated;
+
+                _this.setState({
+                  updating: true
+                });
+
+                _context3.next = 8;
+                return Promise.all([_this.getLayout(), _this.getData(qTop)]);
+
+              case 8:
+                _ref7 = _context3.sent;
+                _ref8 = slicedToArray_default()(_ref7, 2);
+                qLayout = _ref8[0];
+                qData = _ref8[1];
+
+                _this.setState({
+                  updating: false,
+                  qLayout: qLayout,
+                  qData: qData
+                });
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+      _this.beginSelections =
+      /*#__PURE__*/
+      asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee4() {
+        var qObject;
+        return regenerator_default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                qObject = _this.state.qObject;
+                qObject.beginSelections(['/qHyperCubeDef']);
+                _context4.next = 4;
+                return _this.setState({
+                  selections: true
+                });
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      _this.endSelections =
+      /*#__PURE__*/
+      function () {
+        var _ref10 = asyncToGenerator_default()(
+        /*#__PURE__*/
+        regenerator_default.a.mark(function _callee5(qAccept) {
+          var qObject;
           return regenerator_default.a.wrap(function _callee5$(_context5) {
             while (1) {
               switch (_context5.prev = _context5.next) {
                 case 0:
-                  qTopPassed = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : 0;
-                  // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
-                  _ref = this.state || {}, qDataGenerated = _ref.qData;
-                  _ref2 = qDataGenerated || {}, qArea = _ref2.qArea;
-                  _ref3 = qArea || {}, qTopGenerated = _ref3.qTop;
-                  qTop = qTopPassed || qTopGenerated;
-                  this.setState({
-                    updating: true
-                  });
-                  _context5.next = 8;
-                  return Promise.all([this.getLayout(), this.getData(qTop)]);
-
-                case 8:
-                  _ref4 = _context5.sent;
-                  _ref5 = slicedToArray_default()(_ref4, 2);
-                  qLayout = _ref5[0];
-                  qData = _ref5[1];
-                  this.setState({
-                    updating: false,
-                    qLayout: qLayout,
-                    qData: qData
+                  qObject = _this.state.qObject;
+                  qObject.endSelections(qAccept);
+                  _context5.next = 4;
+                  return _this.setState({
+                    selections: false
                   });
 
-                case 13:
+                case 4:
                 case "end":
                   return _context5.stop();
               }
             }
-          }, _callee5, this);
+          }, _callee5);
         }));
 
-        function update() {
-          return _update.apply(this, arguments);
-        }
+        return function (_x2) {
+          return _ref10.apply(this, arguments);
+        };
+      }();
 
-        return update;
-      }()
-    }, {
-      key: "beginSelections",
-      value: function () {
-        var _beginSelections = asyncToGenerator_default()(
+      _this.select =
+      /*#__PURE__*/
+      function () {
+        var _ref11 = asyncToGenerator_default()(
         /*#__PURE__*/
-        regenerator_default.a.mark(function _callee6() {
-          var qObject;
+        regenerator_default.a.mark(function _callee6(dimIndex, selections) {
+          var toggle,
+              qObject,
+              _args6 = arguments;
           return regenerator_default.a.wrap(function _callee6$(_context6) {
             while (1) {
               switch (_context6.prev = _context6.next) {
                 case 0:
-                  qObject = this.state.qObject;
-                  qObject.beginSelections(['/qHyperCubeDef']);
+                  toggle = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : true;
+                  qObject = _this.state.qObject;
                   _context6.next = 4;
-                  return this.setState({
-                    selections: true
-                  });
+                  return qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, selections, toggle);
 
                 case 4:
                 case "end":
                   return _context6.stop();
               }
             }
-          }, _callee6, this);
+          }, _callee6);
         }));
 
-        function beginSelections() {
-          return _beginSelections.apply(this, arguments);
-        }
+        return function (_x3, _x4) {
+          return _ref11.apply(this, arguments);
+        };
+      }();
 
-        return beginSelections;
-      }()
-    }, {
-      key: "endSelections",
-      value: function () {
-        var _endSelections = asyncToGenerator_default()(
+      _this.applyPatches =
+      /*#__PURE__*/
+      function () {
+        var _ref12 = asyncToGenerator_default()(
         /*#__PURE__*/
-        regenerator_default.a.mark(function _callee7(qAccept) {
+        regenerator_default.a.mark(function _callee7(patches) {
           var qObject;
           return regenerator_default.a.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
-                  qObject = this.state.qObject;
-                  qObject.endSelections(qAccept);
-                  _context7.next = 4;
-                  return this.setState({
-                    selections: false
-                  });
+                  qObject = _this.state.qObject;
+                  _context7.next = 3;
+                  return qObject.applyPatches(patches);
 
-                case 4:
+                case 3:
                 case "end":
                   return _context7.stop();
               }
             }
-          }, _callee7, this);
+          }, _callee7);
         }));
 
-        function endSelections(_x2) {
-          return _endSelections.apply(this, arguments);
-        }
+        return function (_x5) {
+          return _ref12.apply(this, arguments);
+        };
+      }();
 
-        return endSelections;
-      }()
-    }, {
-      key: "select",
+      _this.state = {
+        qObject: null,
+        qLayout: null,
+        qData: null,
+        selections: false,
+        updating: false,
+        error: null
+      };
+      return _this;
+    }
+
+    createClass_default()(_class, [{
+      key: "componentWillMount",
       value: function () {
-        var _select = asyncToGenerator_default()(
+        var _componentWillMount = asyncToGenerator_default()(
         /*#__PURE__*/
-        regenerator_default.a.mark(function _callee8(dimIndex, selections) {
-          var toggle,
-              qObject,
-              _args8 = arguments;
+        regenerator_default.a.mark(function _callee8() {
+          var _this2 = this;
+
+          var qDocPromise, qProp, qDoc, qObject;
           return regenerator_default.a.wrap(function _callee8$(_context8) {
             while (1) {
               switch (_context8.prev = _context8.next) {
                 case 0:
-                  toggle = _args8.length > 2 && _args8[2] !== undefined ? _args8[2] : true;
-                  qObject = this.state.qObject;
+                  _context8.prev = 0;
+                  qDocPromise = this.props.qDocPromise;
                   _context8.next = 4;
-                  return qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, selections, toggle);
+                  return this.generateQProp();
 
                 case 4:
+                  qProp = _context8.sent;
+                  _context8.next = 7;
+                  return qDocPromise;
+
+                case 7:
+                  qDoc = _context8.sent;
+                  _context8.next = 10;
+                  return qDoc.createSessionObject(qProp);
+
+                case 10:
+                  qObject = _context8.sent;
+                  qObject.on('changed', function () {
+                    _this2.update();
+                  });
+                  this.setState({
+                    qObject: qObject
+                  }, function () {
+                    var qPage = _this2.props.qPage;
+
+                    _this2.update(qPage.qTop);
+                  });
+                  _context8.next = 18;
+                  break;
+
+                case 15:
+                  _context8.prev = 15;
+                  _context8.t0 = _context8["catch"](0);
+                  this.setState({
+                    error: _context8.t0
+                  });
+
+                case 18:
+                  _context8.prev = 18;
+                  this.setState({
+                    loading: false
+                  });
+                  return _context8.finish(18);
+
+                case 21:
                 case "end":
                   return _context8.stop();
               }
             }
-          }, _callee8, this);
+          }, _callee8, this, [[0, 15, 18, 21]]);
         }));
 
-        function select(_x3, _x4) {
-          return _select.apply(this, arguments);
+        function componentWillMount() {
+          return _componentWillMount.apply(this, arguments);
         }
 
-        return select;
+        return componentWillMount;
       }()
     }, {
-      key: "applyPatches",
+      key: "componentWillUnmount",
       value: function () {
-        var _applyPatches = asyncToGenerator_default()(
+        var _componentWillUnmount = asyncToGenerator_default()(
         /*#__PURE__*/
-        regenerator_default.a.mark(function _callee9(patches) {
-          var qObject;
+        regenerator_default.a.mark(function _callee9() {
+          var qDocPromise, id, qDoc;
           return regenerator_default.a.wrap(function _callee9$(_context9) {
             while (1) {
               switch (_context9.prev = _context9.next) {
                 case 0:
-                  qObject = this.state.qObject;
-                  _context9.next = 3;
-                  return qObject.applyPatches(patches);
+                  qDocPromise = this.props.qDocPromise;
+                  id = this.state.qObject.id;
+                  _context9.next = 4;
+                  return qDocPromise;
 
-                case 3:
+                case 4:
+                  qDoc = _context9.sent;
+                  qDoc.destroySessionObject(id);
+
+                case 6:
                 case "end":
                   return _context9.stop();
               }
@@ -15863,11 +15839,11 @@ function withHyperCube(Component) {
           }, _callee9, this);
         }));
 
-        function applyPatches(_x5) {
-          return _applyPatches.apply(this, arguments);
+        function componentWillUnmount() {
+          return _componentWillUnmount.apply(this, arguments);
         }
 
-        return applyPatches;
+        return componentWillUnmount;
       }()
     }, {
       key: "render",
@@ -15908,7 +15884,7 @@ function withHyperCube(Component) {
     }]);
 
     return _class;
-  }(react_default.a.Component), _class2.propTypes = {
+  }(react_default.a.Component), _class.propTypes = {
     qDocPromise: prop_types_default.a.object.isRequired,
     cols: prop_types_default.a.array,
     qHyperCubeDef: prop_types_default.a.object,
@@ -15918,14 +15894,20 @@ function withHyperCube(Component) {
     qSortByAscii: prop_types_default.a.oneOf([1, 0, -1]),
     qSortByLoadOrder: prop_types_default.a.oneOf([1, 0, -1]),
     qInterColumnSortOrder: prop_types_default.a.array,
-    qSuppressZero: prop_types_default.a.bool
-  }, _class2.defaultProps = {
+    qSuppressZero: prop_types_default.a.bool,
+    qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
+    qSuppressMissing: prop_types_default.a.bool,
+    qExpression: prop_types_default.a.object
+  }, _class.defaultProps = {
     cols: null,
     qHyperCubeDef: null,
     qSortByAscii: 1,
     qSortByLoadOrder: 1,
     qInterColumnSortOrder: [],
     qSuppressZero: false,
+    qSortByExpression: 0,
+    qSuppressMissing: false,
+    qExpression: null,
     qPage: {
       qTop: 0,
       qLeft: 0,
@@ -15934,7 +15916,7 @@ function withHyperCube(Component) {
     },
     width: '100%',
     height: '100%'
-  }, _temp), (applyDecoratedDescriptor_default()(_class.prototype, "offset", [autobind], Object.getOwnPropertyDescriptor(_class.prototype, "offset"), _class.prototype), applyDecoratedDescriptor_default()(_class.prototype, "beginSelections", [autobind], Object.getOwnPropertyDescriptor(_class.prototype, "beginSelections"), _class.prototype), applyDecoratedDescriptor_default()(_class.prototype, "endSelections", [autobind], Object.getOwnPropertyDescriptor(_class.prototype, "endSelections"), _class.prototype), applyDecoratedDescriptor_default()(_class.prototype, "select", [autobind], Object.getOwnPropertyDescriptor(_class.prototype, "select"), _class.prototype), applyDecoratedDescriptor_default()(_class.prototype, "applyPatches", [autobind], Object.getOwnPropertyDescriptor(_class.prototype, "applyPatches"), _class.prototype)), _class;
+  }, _temp;
 }
 // CONCATENATED MODULE: ./src/components/QdtTable.jsx
 
@@ -52428,11 +52410,6 @@ var picasso_q_esm = __webpack_require__(23);
 
 
 
-var QdtPicasso_class, QdtPicasso_class2, QdtPicasso_temp;
-
-
-
-
 
 
 
@@ -52444,7 +52421,8 @@ picasso_esm.component('domPointLabel', components_domPointLabel);
 picasso_esm.component('domPointImage', domPointImage);
 picasso_esm.use(picasso_hammer_esm["a" /* default */]);
 picasso_esm.use(picasso_q_esm["a" /* default */]);
-var QdtPicasso_QdtPicassoComponent = (QdtPicasso_class = (QdtPicasso_temp = QdtPicasso_class2 =
+
+var QdtPicasso_QdtPicassoComponent =
 /*#__PURE__*/
 function (_React$Component) {
   inherits_default()(QdtPicassoComponent, _React$Component);
@@ -52455,6 +52433,152 @@ function (_React$Component) {
     classCallCheck_default()(this, QdtPicassoComponent);
 
     _this = possibleConstructorReturn_default()(this, getPrototypeOf_default()(QdtPicassoComponent).call(this, props));
+
+    _this.handleOutsideClick = function (event) {
+      var outsideClick = !_this.root.contains(event.target);
+
+      if (outsideClick) {
+        _this.confirmSelections();
+      }
+    };
+
+    _this.handleResize = function () {
+      _this.pic.update();
+    };
+
+    _this.cancelSelections = function () {
+      var brush = _this.pic.brush;
+      var endSelections = _this.props.endSelections;
+      brush('select').end();
+      endSelections(false);
+    };
+
+    _this.confirmSelections = function () {
+      var brush = _this.pic.brush;
+      var _this$props = _this.props,
+          selections = _this$props.selections,
+          endSelections = _this$props.endSelections,
+          afterConfirmSelections = _this$props.afterConfirmSelections;
+
+      if (selections) {
+        brush('select').end();
+        endSelections(true);
+
+        if (afterConfirmSelections) {
+          afterConfirmSelections();
+        }
+      }
+    };
+
+    _this.createPic =
+    /*#__PURE__*/
+    asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee() {
+      var _this$props2, qLayout, qData, settings, type, prio, options, select, selections, beginSelections, data;
+
+      return regenerator_default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this$props2 = _this.props, qLayout = _this$props2.qLayout, qData = _this$props2.qData, settings = _this$props2.settings, type = _this$props2.type, prio = _this$props2.prio, options = _this$props2.options, select = _this$props2.select, selections = _this$props2.selections, beginSelections = _this$props2.beginSelections;
+              _this.mySettings = type ? picasso_settings[type] : settings;
+              data = objectSpread_default()({}, qLayout, {
+                qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+                  qDataPages: [qData]
+                })
+              });
+
+              if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
+                _this.mySettings.components[2].settings.box.fill = options.bar.fill;
+              }
+
+              if (type === 'verticalGauge' && options.min) {
+                _this.mySettings.scales.y.min = options.min;
+                _this.mySettings.components[1].start = options.min;
+                _this.mySettings.components[2].start = options.min;
+              }
+
+              if (type === 'verticalGauge' && options.max) {
+                _this.mySettings.scales.y.max = options.max;
+                _this.mySettings.components[1].end = options.max;
+              }
+
+              _this.pic = picasso_esm({
+                renderer: {
+                  prio: [prio]
+                }
+              }).chart({
+                element: _this.element,
+                data: [{
+                  type: 'q',
+                  key: 'qHyperCube',
+                  data: data.qHyperCube
+                }],
+                settings: _this.mySettings
+              });
+
+              _this.pic.brush('select').on('start', function () {
+                beginSelections();
+                select(0, [], false);
+              });
+
+              _this.pic.brush('select').on('update', function (added, removed) {
+                if (!selections && !added) return;
+                var mySelections = [].concat(toConsumableArray_default()(added), toConsumableArray_default()(removed)).map(function (v) {
+                  return v.values[0];
+                });
+                select(0, mySelections);
+              });
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    _this.updatePic = function () {
+      var selections = _this.props.selections;
+      if (selections) return;
+      var _this$props3 = _this.props,
+          qLayout = _this$props3.qLayout,
+          qData = _this$props3.qData,
+          type = _this$props3.type,
+          options = _this$props3.options;
+
+      var data = objectSpread_default()({}, qLayout, {
+        qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+          qDataPages: [qData]
+        })
+      });
+
+      if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
+        _this.mySettings.components[2].settings.box.fill = options.bar.fill;
+      }
+
+      if (type === 'verticalGauge' && options.min) {
+        _this.mySettings.scales.y.min = options.min;
+        _this.mySettings.components[1].start = options.min;
+        _this.mySettings.components[2].start = options.min;
+      }
+
+      if (type === 'verticalGauge' && options.max) {
+        _this.mySettings.scales.y.max = options.max;
+        _this.mySettings.components[1].end = options.max;
+      }
+
+      _this.pic.update({
+        data: [{
+          type: 'q',
+          key: 'qHyperCube',
+          data: data.qHyperCube
+        }],
+        settings: _this.mySettings
+      });
+    };
+
     _this.mySettings = null;
     return _this;
   }
@@ -52477,161 +52601,6 @@ function (_React$Component) {
     value: function componentWillUnmount() {
       window.removeEventListener('click', this.handleOutsideClick);
       window.removeEventListener('resize', this.handleResize);
-    }
-  }, {
-    key: "handleOutsideClick",
-    value: function handleOutsideClick(event) {
-      var outsideClick = !this.root.contains(event.target);
-
-      if (outsideClick) {
-        this.confirmSelections();
-      }
-    }
-  }, {
-    key: "handleResize",
-    value: function handleResize() {
-      this.pic.update();
-    }
-  }, {
-    key: "cancelSelections",
-    value: function cancelSelections() {
-      var brush = this.pic.brush;
-      var endSelections = this.props.endSelections;
-      brush('select').end();
-      endSelections(false);
-    }
-  }, {
-    key: "confirmSelections",
-    value: function confirmSelections() {
-      var brush = this.pic.brush;
-      var _this$props = this.props,
-          selections = _this$props.selections,
-          endSelections = _this$props.endSelections,
-          afterConfirmSelections = _this$props.afterConfirmSelections;
-
-      if (selections) {
-        brush('select').end();
-        endSelections(true);
-
-        if (afterConfirmSelections) {
-          afterConfirmSelections();
-        }
-      }
-    }
-  }, {
-    key: "createPic",
-    value: function () {
-      var _createPic = asyncToGenerator_default()(
-      /*#__PURE__*/
-      regenerator_default.a.mark(function _callee() {
-        var _this$props2, qLayout, qData, settings, type, prio, options, select, selections, beginSelections, data;
-
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this$props2 = this.props, qLayout = _this$props2.qLayout, qData = _this$props2.qData, settings = _this$props2.settings, type = _this$props2.type, prio = _this$props2.prio, options = _this$props2.options, select = _this$props2.select, selections = _this$props2.selections, beginSelections = _this$props2.beginSelections;
-                this.mySettings = type ? picasso_settings[type] : settings;
-                data = objectSpread_default()({}, qLayout, {
-                  qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
-                    qDataPages: [qData]
-                  })
-                });
-
-                if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-                  this.mySettings.components[2].settings.box.fill = options.bar.fill;
-                }
-
-                if (type === 'verticalGauge' && options.min) {
-                  this.mySettings.scales.y.min = options.min;
-                  this.mySettings.components[1].start = options.min;
-                  this.mySettings.components[2].start = options.min;
-                }
-
-                if (type === 'verticalGauge' && options.max) {
-                  this.mySettings.scales.y.max = options.max;
-                  this.mySettings.components[1].end = options.max;
-                }
-
-                this.pic = picasso_esm({
-                  renderer: {
-                    prio: [prio]
-                  }
-                }).chart({
-                  element: this.element,
-                  data: [{
-                    type: 'q',
-                    key: 'qHyperCube',
-                    data: data.qHyperCube
-                  }],
-                  settings: this.mySettings
-                });
-                this.pic.brush('select').on('start', function () {
-                  beginSelections();
-                  select(0, [], false);
-                });
-                this.pic.brush('select').on('update', function (added, removed) {
-                  if (!selections && !added) return;
-                  var mySelections = [].concat(toConsumableArray_default()(added), toConsumableArray_default()(removed)).map(function (v) {
-                    return v.values[0];
-                  });
-                  select(0, mySelections);
-                });
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function createPic() {
-        return _createPic.apply(this, arguments);
-      }
-
-      return createPic;
-    }()
-  }, {
-    key: "updatePic",
-    value: function updatePic() {
-      var selections = this.props.selections;
-      if (selections) return;
-      var _this$props3 = this.props,
-          qLayout = _this$props3.qLayout,
-          qData = _this$props3.qData,
-          type = _this$props3.type,
-          options = _this$props3.options;
-
-      var data = objectSpread_default()({}, qLayout, {
-        qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
-          qDataPages: [qData]
-        })
-      });
-
-      if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-        this.mySettings.components[2].settings.box.fill = options.bar.fill;
-      }
-
-      if (type === 'verticalGauge' && options.min) {
-        this.mySettings.scales.y.min = options.min;
-        this.mySettings.components[1].start = options.min;
-        this.mySettings.components[2].start = options.min;
-      }
-
-      if (type === 'verticalGauge' && options.max) {
-        this.mySettings.scales.y.max = options.max;
-        this.mySettings.components[1].end = options.max;
-      }
-
-      this.pic.update({
-        data: [{
-          type: 'q',
-          key: 'qHyperCube',
-          data: data.qHyperCube
-        }],
-        settings: this.mySettings
-      });
     }
   }, {
     key: "render",
@@ -52714,7 +52683,9 @@ function (_React$Component) {
   }]);
 
   return QdtPicassoComponent;
-}(react_default.a.Component), QdtPicasso_class2.propTypes = {
+}(react_default.a.Component);
+
+QdtPicasso_QdtPicassoComponent.propTypes = {
   qData: prop_types_default.a.object.isRequired,
   qLayout: prop_types_default.a.object.isRequired,
   select: prop_types_default.a.func.isRequired,
@@ -52730,13 +52701,14 @@ function (_React$Component) {
   options: prop_types_default.a.object,
   afterConfirmSelections: prop_types_default.a.func,
   prio: prop_types_default.a.oneOf(['canvas', 'svg'])
-}, QdtPicasso_class2.defaultProps = {
+};
+QdtPicasso_QdtPicassoComponent.defaultProps = {
   type: null,
   settings: {},
   options: {},
   afterConfirmSelections: null,
   prio: 'canvas'
-}, QdtPicasso_temp), (applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "handleOutsideClick", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "handleOutsideClick"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "handleResize", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "handleResize"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "cancelSelections", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "cancelSelections"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "confirmSelections", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "confirmSelections"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "createPic", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "createPic"), QdtPicasso_class.prototype), applyDecoratedDescriptor_default()(QdtPicasso_class.prototype, "updatePic", [autobind], Object.getOwnPropertyDescriptor(QdtPicasso_class.prototype, "updatePic"), QdtPicasso_class.prototype)), QdtPicasso_class);
+};
 var QdtPicasso = withHyperCube(QdtPicasso_QdtPicassoComponent);
 QdtPicasso.propTypes = {
   qDocPromise: prop_types_default.a.object.isRequired,
