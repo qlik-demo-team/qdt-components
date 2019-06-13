@@ -28,6 +28,9 @@ export default function withHyperCube(Component) {
       qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
       qInterColumnSortOrder: PropTypes.array,
       qSuppressZero: PropTypes.bool,
+      qSortByExpression: PropTypes.oneOf([1, 0, -1]),
+      qSuppressMissing: PropTypes.bool,
+      qExpression: PropTypes.object,
     };
 
     static defaultProps = {
@@ -37,6 +40,9 @@ export default function withHyperCube(Component) {
       qSortByLoadOrder: 1,
       qInterColumnSortOrder: [],
       qSuppressZero: false,
+      qSortByExpression: 0,
+      qSuppressMissing: false,
+      qExpression: null,
       qPage: {
         qTop: 0,
         qLeft: 0,
@@ -99,7 +105,7 @@ export default function withHyperCube(Component) {
 
     generateQProp = () => {
       const {
-        cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qSuppressZero, qInterColumnSortOrder,
+        cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qSuppressZero, qInterColumnSortOrder, qSortByExpression, qExpression, qSuppressMissing,
       } = this.props;
       const qProp = { qInfo: { qType: 'visualization' } };
       if (qHyperCubeDef) {
@@ -132,7 +138,12 @@ export default function withHyperCube(Component) {
         return isMeasure;
       }).map((col) => {
         if (typeof col === 'string') {
-          return { qDef: { qDef: col }, qSortBy: { qSortByNumeric: -1 } };
+          return {
+            qDef: { qDef: col },
+            qSortBy: {
+              qSortByNumeric: -1, qSortByExpression, qExpression, qSuppressMissing,
+            },
+          };
         }
         return col;
       });

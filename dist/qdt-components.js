@@ -15471,7 +15471,10 @@ function withHyperCube(Component) {
             qSortByAscii = _this$props.qSortByAscii,
             qSortByLoadOrder = _this$props.qSortByLoadOrder,
             qSuppressZero = _this$props.qSuppressZero,
-            qInterColumnSortOrder = _this$props.qInterColumnSortOrder;
+            qInterColumnSortOrder = _this$props.qInterColumnSortOrder,
+            qSortByExpression = _this$props.qSortByExpression,
+            qExpression = _this$props.qExpression,
+            qSuppressMissing = _this$props.qSuppressMissing;
         var qProp = {
           qInfo: {
             qType: 'visualization'
@@ -15531,7 +15534,10 @@ function withHyperCube(Component) {
                 qDef: col
               },
               qSortBy: {
-                qSortByNumeric: -1
+                qSortByNumeric: -1,
+                qSortByExpression: qSortByExpression,
+                qExpression: qExpression,
+                qSuppressMissing: qSuppressMissing
               }
             };
           }
@@ -15888,7 +15894,10 @@ function withHyperCube(Component) {
     qSortByAscii: prop_types_default.a.oneOf([1, 0, -1]),
     qSortByLoadOrder: prop_types_default.a.oneOf([1, 0, -1]),
     qInterColumnSortOrder: prop_types_default.a.array,
-    qSuppressZero: prop_types_default.a.bool
+    qSuppressZero: prop_types_default.a.bool,
+    qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
+    qSuppressMissing: prop_types_default.a.bool,
+    qExpression: prop_types_default.a.object
   }, _class.defaultProps = {
     cols: null,
     qHyperCubeDef: null,
@@ -15896,6 +15905,9 @@ function withHyperCube(Component) {
     qSortByLoadOrder: 1,
     qInterColumnSortOrder: [],
     qSuppressZero: false,
+    qSortByExpression: 0,
+    qSuppressMissing: false,
+    qExpression: null,
     qPage: {
       qTop: 0,
       qLeft: 0,
