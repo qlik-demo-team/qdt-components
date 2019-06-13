@@ -27,9 +27,6 @@ const component = function component({
     settings: {
       major: {
         scale: (orientation === 'vertical') ? 'x' : 'y',
-        fn(d) {
-          return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1)) + displayOrder * d.scale.bandwidth() * (1 / measures) - 0.008; // 0.008 seems to be a padding issue somewhere and box is not centered
-        },
       },
       minor: { scale: (orientation === 'vertical') ? 'y' : 'x' },
       orientation,

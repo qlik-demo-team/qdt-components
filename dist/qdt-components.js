@@ -12711,10 +12711,7 @@ var box_component = function component() {
     },
     settings: {
       major: {
-        scale: orientation === 'vertical' ? 'x' : 'y',
-        fn: function fn(d) {
-          return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1) + displayOrder * d.scale.bandwidth() * (1 / measures) - 0.008; // 0.008 seems to be a padding issue somewhere and box is not centered
-        }
+        scale: orientation === 'vertical' ? 'x' : 'y'
       },
       minor: {
         scale: orientation === 'vertical' ? 'y' : 'x'
