@@ -68,7 +68,7 @@
     "style-loader": "0.23.1",
     "url-loader": "2.0.0",
     "webpack": "4.35.3",
-    "webpack-cli": "3.3.4"
+    "webpack-cli": "3.3.5"
   },
   "scripts": {
     "start": "webpack --watch",
