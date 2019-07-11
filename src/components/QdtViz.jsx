@@ -11,6 +11,7 @@ export default class QdtViz extends React.Component {
     cols: PropTypes.array,
     options: PropTypes.object,
     noSelections: PropTypes.bool,
+    noInteraction: PropTypes.bool,
     width: PropTypes.string,
     height: PropTypes.string,
     minWidth: PropTypes.string,
@@ -32,6 +33,7 @@ export default class QdtViz extends React.Component {
     cols: [],
     options: {},
     noSelections: false,
+    noInteraction: false,
     width: '100%',
     height: '100%',
     minWidth: 'auto',
@@ -100,11 +102,11 @@ export default class QdtViz extends React.Component {
 
   async show() {
     try {
-      const { noSelections } = this.props;
+      const { noSelections, noInteraction } = this.props;
       const qViz = await this.qVizPromise;
       if (qViz) {
         await this.setState({ loading: false });
-        qViz.show(this.node, { noSelections });
+        qViz.show(this.node, { noSelections, noInteraction });
       } else {
         throw new Error('Please specify a qConfig global variable');
       }
