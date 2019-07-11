@@ -12712,7 +12712,15 @@ var box_component = function component() {
     },
     settings: {
       major: {
-        scale: orientation === 'vertical' ? 'x' : 'y'
+        scale: orientation === 'vertical' ? 'x' : 'y',
+        fn: function fn(d) {
+          if (orientation === 'vertical') {
+            // return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1)) + displayOrder * d.scale.bandwidth() * (1 / measures) + d.scale.bandwidth(); // 0.008 seems to be a padding issue somewhere and box is not centered
+            return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1);
+          }
+
+          return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1);
+        }
       },
       minor: {
         scale: orientation === 'vertical' ? 'y' : 'x'
