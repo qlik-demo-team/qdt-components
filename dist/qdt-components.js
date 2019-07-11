@@ -16588,13 +16588,14 @@ function (_React$Component) {
       var _show = asyncToGenerator_default()(
       /*#__PURE__*/
       regenerator_default.a.mark(function _callee3() {
-        var noSelections, qViz;
+        var _this$props2, noSelections, noInteraction, qViz;
+
         return regenerator_default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                noSelections = this.props.noSelections;
+                _this$props2 = this.props, noSelections = _this$props2.noSelections, noInteraction = _this$props2.noInteraction;
                 _context3.next = 4;
                 return this.qVizPromise;
 
@@ -16613,7 +16614,8 @@ function (_React$Component) {
 
               case 8:
                 qViz.show(this.node, {
-                  noSelections: noSelections
+                  noSelections: noSelections,
+                  noInteraction: noInteraction
                 });
                 _context3.next = 12;
                 break;
@@ -16725,20 +16727,20 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props2 = this.props,
-          width = _this$props2.width,
-          height = _this$props2.height,
-          minWidth = _this$props2.minWidth,
-          minHeight = _this$props2.minHeight,
-          exportData = _this$props2.exportData,
-          exportDataTitle = _this$props2.exportDataTitle,
-          exportDataOptions = _this$props2.exportDataOptions,
-          exportImg = _this$props2.exportImg,
-          exportImgTitle = _this$props2.exportImgTitle,
-          exportImgOptions = _this$props2.exportImgOptions,
-          exportPdf = _this$props2.exportPdf,
-          exportPdfTitle = _this$props2.exportPdfTitle,
-          exportPdfOptions = _this$props2.exportPdfOptions;
+      var _this$props3 = this.props,
+          width = _this$props3.width,
+          height = _this$props3.height,
+          minWidth = _this$props3.minWidth,
+          minHeight = _this$props3.minHeight,
+          exportData = _this$props3.exportData,
+          exportDataTitle = _this$props3.exportDataTitle,
+          exportDataOptions = _this$props3.exportDataOptions,
+          exportImg = _this$props3.exportImg,
+          exportImgTitle = _this$props3.exportImgTitle,
+          exportImgOptions = _this$props3.exportImgOptions,
+          exportPdf = _this$props3.exportPdf,
+          exportPdfTitle = _this$props3.exportPdfTitle,
+          exportPdfOptions = _this$props3.exportPdfOptions;
       var _this$state = this.state,
           error = _this$state.error,
           loading = _this$state.loading;
@@ -16807,6 +16809,7 @@ QdtViz_QdtViz.propTypes = {
   cols: prop_types_default.a.array,
   options: prop_types_default.a.object,
   noSelections: prop_types_default.a.bool,
+  noInteraction: prop_types_default.a.bool,
   width: prop_types_default.a.string,
   height: prop_types_default.a.string,
   minWidth: prop_types_default.a.string,
@@ -16827,6 +16830,7 @@ QdtViz_QdtViz.defaultProps = {
   cols: [],
   options: {},
   noSelections: false,
+  noInteraction: false,
   width: '100%',
   height: '100%',
   minWidth: 'auto',
