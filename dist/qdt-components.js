@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 50);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -108,7 +108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(35)();
+  module.exports = __webpack_require__(34)();
 }
 
 
@@ -246,9 +246,9 @@ module.exports = _createClass;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(13);
+var _typeof = __webpack_require__(12);
 
-var assertThisInitialized = __webpack_require__(33);
+var assertThisInitialized = __webpack_require__(32);
 
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
@@ -277,7 +277,7 @@ module.exports = _getPrototypeOf;
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var setPrototypeOf = __webpack_require__(34);
+var setPrototypeOf = __webpack_require__(33);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -304,33 +304,6 @@ module.exports = _inherits;
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__(29);
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-module.exports = _objectSpread;
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports) {
 
 function _extends() {
@@ -354,7 +327,7 @@ function _extends() {
 module.exports = _extends;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
@@ -376,11 +349,11 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(40);
+var content = __webpack_require__(39);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -394,21 +367,42 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(45)(content, options);
+var update = __webpack_require__(44)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(47);
+var arrayWithoutHoles = __webpack_require__(46);
 
-var iterableToArray = __webpack_require__(48);
+var iterableToArray = __webpack_require__(47);
 
-var nonIterableSpread = __webpack_require__(49);
+var nonIterableSpread = __webpack_require__(48);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
@@ -420,11 +414,11 @@ module.exports = _toConsumableArray;
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithHoles = __webpack_require__(37);
+var arrayWithHoles = __webpack_require__(36);
 
-var iterableToArrayLimit = __webpack_require__(38);
+var iterableToArrayLimit = __webpack_require__(37);
 
-var nonIterableRest = __webpack_require__(39);
+var nonIterableRest = __webpack_require__(38);
 
 function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
@@ -3279,7 +3273,7 @@ if (true) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Hammer) {/*
-* picasso-plugin-hammer v0.25.3
+* picasso-plugin-hammer v0.26.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -3493,7 +3487,7 @@ function initialize(picasso) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*
-* picasso-plugin-q v0.25.3
+* picasso-plugin-q v0.26.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -3894,7 +3888,7 @@ function cellToValue(_ref2) {
 
   target[targetProp] = datumExtract(p, propCell, {
     key: sourceKey
-  }, prop);
+  });
 }
 
 function extract(config, dataset, cache, util) {
@@ -7927,27 +7921,6 @@ exports.unstable_shouldYield=function(){return!e&&(null!==d&&d.expirationTime<l|
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -10951,13 +10924,13 @@ module.exports = _defineProperty;
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module) {
 
-module.exports = {"structs":{"Field":{"GetCardinal":{"In":[],"Out":[]},"GetAndMode":{"In":[],"Out":[]},"SelectValues":{"In":[{"Name":"qFieldValues","DefaultValue":[{"qText":"","qIsNumeric":false,"qNumber":0}]},{"Name":"qToggleMode","DefaultValue":false,"Optional":true},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"Select":{"In":[{"Name":"qMatch","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true},{"Name":"qExcludedValuesMode","DefaultValue":0,"Optional":true}],"Out":[]},"ToggleSelect":{"In":[{"Name":"qMatch","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true},{"Name":"qExcludedValuesMode","DefaultValue":0,"Optional":true}],"Out":[]},"ClearAllButThis":{"In":[{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"SelectPossible":{"In":[{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"SelectExcluded":{"In":[{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"SelectAll":{"In":[{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"Lock":{"In":[],"Out":[]},"Unlock":{"In":[],"Out":[]},"GetNxProperties":{"In":[],"Out":[{"Name":"qProperties"}]},"SetNxProperties":{"In":[{"Name":"qProperties","DefaultValue":{"qOneAndOnlyOne":false}}],"Out":[]},"SetAndMode":{"In":[{"Name":"qAndMode","DefaultValue":false}],"Out":[]},"SelectAlternative":{"In":[{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"LowLevelSelect":{"In":[{"Name":"qValues","DefaultValue":[0]},{"Name":"qToggleMode","DefaultValue":false},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"Clear":{"In":[],"Out":[]}},"Variable":{"GetContent":{"In":[],"Out":[{"Name":"qContent"}]},"GetRawContent":{"In":[],"Out":[]},"SetContent":{"In":[{"Name":"qContent","DefaultValue":""},{"Name":"qUpdateMRU","DefaultValue":false}],"Out":[]},"ForceContent":{"In":[{"Name":"qs","DefaultValue":""},{"Name":"qd","DefaultValue":0}],"Out":[]},"GetNxProperties":{"In":[],"Out":[{"Name":"qProperties"}]},"SetNxProperties":{"In":[{"Name":"qProperties","DefaultValue":{"qName":"","qNumberPresentation":{"qType":0,"qnDec":0,"qUseThou":0,"qFmt":"","qDec":"","qThou":""},"qIncludeInBookmark":false,"qUsePredefListedValues":false,"qPreDefinedList":[""]}}],"Out":[]}},"GenericObject":{"GetLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"GetListObjectData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]}],"Out":[{"Name":"qDataPages"}]},"GetHyperCubeData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]}],"Out":[{"Name":"qDataPages"}]},"GetHyperCubeReducedData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]},{"Name":"qZoomFactor","DefaultValue":0},{"Name":"qReductionMode","DefaultValue":0}],"Out":[{"Name":"qDataPages"}]},"GetHyperCubePivotData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]}],"Out":[{"Name":"qDataPages"}]},"GetHyperCubeStackData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]},{"Name":"qMaxNbrCells","DefaultValue":0,"Optional":true}],"Out":[{"Name":"qDataPages"}]},"GetHyperCubeContinuousData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qOptions","DefaultValue":{"qStart":0,"qEnd":0,"qNbrPoints":0,"qMaxNbrTicks":0,"qMaxNumberLines":0}},{"Name":"qReverseSort","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qDataPages"},{"Name":"qAxisData"}]},"GetHyperCubeBinnedData":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qPages","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]},{"Name":"qViewport","DefaultValue":{"qWidth":0,"qHeight":0,"qZoomLevel":0}},{"Name":"qDataRanges","DefaultValue":[{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0}]},{"Name":"qMaxNbrCells","DefaultValue":0},{"Name":"qQueryLevel","DefaultValue":0},{"Name":"qBinningMethod","DefaultValue":0}],"Out":[{"Name":"qDataPages"}]},"ApplyPatches":{"In":[{"Name":"qPatches","DefaultValue":[{"qOp":0,"qPath":"","qValue":""}]},{"Name":"qSoftPatch","DefaultValue":false,"Optional":true}],"Out":[]},"ClearSoftPatches":{"In":[],"Out":[]},"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qExtendsId":"","qMetaDef":{}}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetEffectiveProperties":{"In":[],"Out":[{"Name":"qProp"}]},"SetFullPropertyTree":{"In":[{"Name":"qPropEntry","DefaultValue":{"qProperty":{"qInfo":{"qId":"","qType":""},"qExtendsId":"","qMetaDef":{}},"qChildren":[],"qEmbeddedSnapshotRef":null}}],"Out":[]},"GetFullPropertyTree":{"In":[],"Out":[{"Name":"qPropEntry"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"ClearSelections":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qColIndices","DefaultValue":[0],"Optional":true}],"Out":[]},"ExportData":{"In":[{"Name":"qFileType","DefaultValue":0},{"Name":"qPath","DefaultValue":"","Optional":true},{"Name":"qFileName","DefaultValue":"","Optional":true},{"Name":"qExportState","DefaultValue":0,"Optional":true}],"Out":[{"Name":"qUrl"},{"Name":"qWarnings"}]},"SelectListObjectValues":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qValues","DefaultValue":[0]},{"Name":"qToggleMode","DefaultValue":false},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectListObjectPossible":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectListObjectExcluded":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectListObjectAlternative":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectListObjectAll":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectListObjectContinuousRange":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRanges","DefaultValue":[{"qMin":0,"qMax":0,"qMinInclEq":false,"qMaxInclEq":false}]},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SearchListObjectFor":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qMatch","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"AbortListObjectSearch":{"In":[{"Name":"qPath","DefaultValue":""}],"Out":[]},"AcceptListObjectSearch":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qToggleMode","DefaultValue":false},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[]},"ExpandLeft":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRow","DefaultValue":0},{"Name":"qCol","DefaultValue":0},{"Name":"qAll","DefaultValue":false}],"Out":[]},"ExpandTop":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRow","DefaultValue":0},{"Name":"qCol","DefaultValue":0},{"Name":"qAll","DefaultValue":false}],"Out":[]},"CollapseLeft":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRow","DefaultValue":0},{"Name":"qCol","DefaultValue":0},{"Name":"qAll","DefaultValue":false}],"Out":[]},"CollapseTop":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRow","DefaultValue":0},{"Name":"qCol","DefaultValue":0},{"Name":"qAll","DefaultValue":false}],"Out":[]},"DrillUp":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qDimNo","DefaultValue":0},{"Name":"qNbrSteps","DefaultValue":0}],"Out":[]},"Lock":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qColIndices","DefaultValue":[0],"Optional":true}],"Out":[]},"Unlock":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qColIndices","DefaultValue":[0],"Optional":true}],"Out":[]},"SelectHyperCubeValues":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qDimNo","DefaultValue":0},{"Name":"qValues","DefaultValue":[0]},{"Name":"qToggleMode","DefaultValue":false}],"Out":[{"Name":"qSuccess"}]},"SelectHyperCubeCells":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRowIndices","DefaultValue":[0]},{"Name":"qColIndices","DefaultValue":[0]},{"Name":"qSoftLock","DefaultValue":false,"Optional":true},{"Name":"qDeselectOnlyOneSelected","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectPivotCells":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qSelections","DefaultValue":[{"qType":0,"qCol":0,"qRow":0}]},{"Name":"qSoftLock","DefaultValue":false,"Optional":true},{"Name":"qDeselectOnlyOneSelected","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"RangeSelectHyperCubeValues":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRanges","DefaultValue":[{"qRange":{"qMin":0,"qMax":0,"qMinInclEq":false,"qMaxInclEq":false},"qMeasureIx":0}]},{"Name":"qColumnsToSelect","DefaultValue":[0],"Optional":true},{"Name":"qOrMode","DefaultValue":false,"Optional":true},{"Name":"qDeselectOnlyOneSelected","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"MultiRangeSelectHyperCubeValues":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRanges","DefaultValue":[{"qRanges":[{"qRange":{"qMin":0,"qMax":0,"qMinInclEq":false,"qMaxInclEq":false},"qMeasureIx":0}],"qColumnsToSelect":[0]}]},{"Name":"qOrMode","DefaultValue":false,"Optional":true},{"Name":"qDeselectOnlyOneSelected","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"SelectHyperCubeContinuousRange":{"In":[{"Name":"qPath","DefaultValue":""},{"Name":"qRanges","DefaultValue":[{"qRange":{"qMin":0,"qMax":0,"qMinInclEq":false,"qMaxInclEq":false},"qDimIx":0}]},{"Name":"qSoftLock","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"GetChild":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"GetChildInfos":{"In":[],"Out":[{"Name":"qInfos"}]},"CreateChild":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qExtendsId":"","qMetaDef":{}}},{"Name":"qPropForThis","DefaultValue":null,"Optional":true}],"Out":[{"Name":"qInfo"}]},"DestroyChild":{"In":[{"Name":"qId","DefaultValue":""},{"Name":"qPropForThis","DefaultValue":null,"Optional":true}],"Out":[{"Name":"qSuccess"}]},"DestroyAllChildren":{"In":[{"Name":"qPropForThis","DefaultValue":null,"Optional":true}],"Out":[]},"SetChildArrayOrder":{"In":[{"Name":"qIds","DefaultValue":[""]}],"Out":[]},"GetLinkedObjects":{"In":[],"Out":[{"Name":"qItems"}]},"CopyFrom":{"In":[{"Name":"qFromId","DefaultValue":""}],"Out":[]},"BeginSelections":{"In":[{"Name":"qPaths","DefaultValue":[""]}],"Out":[]},"EndSelections":{"In":[{"Name":"qAccept","DefaultValue":false}],"Out":[]},"ResetMadeSelections":{"In":[],"Out":[]},"EmbedSnapshotObject":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"GetSnapshotObject":{"In":[],"Out":[]},"Publish":{"In":[],"Out":[]},"UnPublish":{"In":[],"Out":[]}},"GenericDimension":{"GetLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"ApplyPatches":{"In":[{"Name":"qPatches","DefaultValue":[{"qOp":0,"qPath":"","qValue":""}]}],"Out":[]},"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qDim":{"qGrouping":0,"qFieldDefs":[""],"qFieldLabels":[""],"qLabelExpression":""},"qMetaDef":{}}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"GetDimension":{"In":[],"Out":[{"Name":"qDim"}]},"GetLinkedObjects":{"In":[],"Out":[{"Name":"qItems"}]},"Publish":{"In":[],"Out":[]},"UnPublish":{"In":[],"Out":[]}},"GenericBookmark":{"GetFieldValues":{"In":[{"Name":"qField","DefaultValue":""},{"Name":"qGetExcludedValues","DefaultValue":false},{"Name":"qDataPage","DefaultValue":{"qStartIndex":0,"qEndIndex":0}}],"Out":[{"Name":"qFieldValues"}]},"GetLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"ApplyPatches":{"In":[{"Name":"qPatches","DefaultValue":[{"qOp":0,"qPath":"","qValue":""}]}],"Out":[]},"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMetaDef":{}}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"Apply":{"In":[],"Out":[{"Name":"qSuccess"}]},"Publish":{"In":[],"Out":[]},"UnPublish":{"In":[],"Out":[]}},"GenericVariable":{"GetLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"ApplyPatches":{"In":[{"Name":"qPatches","DefaultValue":[{"qOp":0,"qPath":"","qValue":""}]}],"Out":[]},"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMetaDef":{},"qName":"","qComment":"","qNumberPresentation":{"qType":0,"qnDec":0,"qUseThou":0,"qFmt":"","qDec":"","qThou":""},"qIncludeInBookmark":false,"qDefinition":""}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"SetStringValue":{"In":[{"Name":"qVal","DefaultValue":""}],"Out":[]},"SetNumValue":{"In":[{"Name":"qVal","DefaultValue":0}],"Out":[]},"SetDualValue":{"In":[{"Name":"qText","DefaultValue":""},{"Name":"qNum","DefaultValue":0}],"Out":[]}},"GenericMeasure":{"GetLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"ApplyPatches":{"In":[{"Name":"qPatches","DefaultValue":[{"qOp":0,"qPath":"","qValue":""}]}],"Out":[]},"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMeasure":{"qLabel":"","qDef":"","qGrouping":0,"qExpressions":[""],"qActiveExpression":0,"qLabelExpression":""},"qMetaDef":{}}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"GetMeasure":{"In":[],"Out":[{"Name":"qMeasure"}]},"GetLinkedObjects":{"In":[],"Out":[{"Name":"qItems"}]},"Publish":{"In":[],"Out":[]},"UnPublish":{"In":[],"Out":[]}},"GenericDerivedFields":{"SetProperties":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qDerivedDefinitionId":"","qFieldName":[""],"qMetaDef":{}}}],"Out":[]},"GetProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetInfo":{"In":[],"Out":[{"Name":"qInfo"}]},"GetDerivedFieldData":{"In":[],"Out":[{"Name":"qData"}]},"GetDerivedField":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qFields"}]},"GetListData":{"In":[],"Out":[{"Name":"qListData"}]},"GetDerivedFields":{"In":[],"Out":[{"Name":"qFields"}]},"GetDerivedGroups":{"In":[],"Out":[{"Name":"qGroups"}]}},"Doc":{"GetField":{"In":[{"Name":"qFieldName","DefaultValue":""},{"Name":"qStateName","DefaultValue":"","Optional":true}],"Out":[]},"GetFieldDescription":{"In":[{"Name":"qFieldName","DefaultValue":""}],"Out":[]},"GetVariable":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[]},"GetLooselyCoupledVector":{"In":[],"Out":[{"Name":"qv"}]},"SetLooselyCoupledVector":{"In":[{"Name":"qv","DefaultValue":[0]}],"Out":[]},"Evaluate":{"In":[{"Name":"qExpression","DefaultValue":""}],"Out":[]},"EvaluateEx":{"In":[{"Name":"qExpression","DefaultValue":""}],"Out":[{"Name":"qValue"}]},"ClearAll":{"In":[{"Name":"qLockedAlso","DefaultValue":false,"Optional":true},{"Name":"qStateName","DefaultValue":"","Optional":true}],"Out":[]},"LockAll":{"In":[{"Name":"qStateName","DefaultValue":"","Optional":true}],"Out":[]},"UnlockAll":{"In":[{"Name":"qStateName","DefaultValue":"","Optional":true}],"Out":[]},"Back":{"In":[],"Out":[]},"Forward":{"In":[],"Out":[]},"CreateVariable":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[]},"RemoveVariable":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[]},"GetLocaleInfo":{"In":[],"Out":[]},"GetTablesAndKeys":{"In":[{"Name":"qWindowSize","DefaultValue":{"qcx":0,"qcy":0}},{"Name":"qNullSize","DefaultValue":{"qcx":0,"qcy":0}},{"Name":"qCellHeight","DefaultValue":0},{"Name":"qSyntheticMode","DefaultValue":false},{"Name":"qIncludeSysVars","DefaultValue":false}],"Out":[{"Name":"qtr"},{"Name":"qk"}]},"GetViewDlgSaveInfo":{"In":[],"Out":[]},"SetViewDlgSaveInfo":{"In":[{"Name":"qInfo","DefaultValue":{"qPos":{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0},"qCtlInfo":{"qInternalView":{"qTables":[{"qPos":{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0},"qCaption":""}],"qBroomPoints":[{"qPos":{"qx":0,"qy":0},"qTable":"","qFields":[""]}],"qConnectionPoints":[{"qPos":{"qx":0,"qy":0},"qFields":[""]}],"qZoomFactor":0},"qSourceView":{"qTables":[{"qPos":{"qLeft":0,"qTop":0,"qWidth":0,"qHeight":0},"qCaption":""}],"qBroomPoints":[{"qPos":{"qx":0,"qy":0},"qTable":"","qFields":[""]}],"qConnectionPoints":[{"qPos":{"qx":0,"qy":0},"qFields":[""]}],"qZoomFactor":0}},"qMode":0}}],"Out":[]},"GetEmptyScript":{"In":[{"Name":"qLocalizedMainSection","DefaultValue":"","Optional":true}],"Out":[]},"DoReload":{"In":[{"Name":"qMode","DefaultValue":0,"Optional":true},{"Name":"qPartial","DefaultValue":false,"Optional":true},{"Name":"qDebug","DefaultValue":false,"Optional":true}],"Out":[]},"GetScriptBreakpoints":{"In":[],"Out":[{"Name":"qBreakpoints"}]},"SetScriptBreakpoints":{"In":[{"Name":"qBreakpoints","DefaultValue":[{"qbufferName":"","qlineIx":0,"qEnabled":false}]}],"Out":[]},"GetScript":{"In":[],"Out":[{"Name":"qScript"}]},"GetTextMacros":{"In":[],"Out":[{"Name":"qMacros"}]},"SetFetchLimit":{"In":[{"Name":"qLimit","DefaultValue":0}],"Out":[]},"DoSave":{"In":[{"Name":"qFileName","DefaultValue":"","Optional":true}],"Out":[]},"GetTableData":{"In":[{"Name":"qOffset","DefaultValue":0},{"Name":"qRows","DefaultValue":0},{"Name":"qSyntheticMode","DefaultValue":false},{"Name":"qTableName","DefaultValue":""}],"Out":[{"Name":"qData"}]},"GetAppLayout":{"In":[],"Out":[{"Name":"qLayout"}]},"SetAppProperties":{"In":[{"Name":"qProp","DefaultValue":{"qTitle":"","qLastReloadTime":"","qMigrationHash":"","qSavedInProductVersion":"","qThumbnail":{"qUrl":""}}}],"Out":[]},"GetAppProperties":{"In":[],"Out":[{"Name":"qProp"}]},"GetLineage":{"In":[],"Out":[{"Name":"qLineage"}]},"CreateSessionObject":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qExtendsId":"","qMetaDef":{}}}],"Out":[]},"DestroySessionObject":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"CreateObject":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qExtendsId":"","qMetaDef":{}}}],"Out":[{"Name":"qInfo"}]},"DestroyObject":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetObject":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"GetObjects":{"In":[{"Name":"qOptions","DefaultValue":{"qTypes":[""],"qIncludeSessionObjects":false,"qData":{}}}],"Out":[{"Name":"qList"}]},"GetBookmarks":{"In":[{"Name":"qOptions","DefaultValue":{"qTypes":[""],"qData":{}}}],"Out":[{"Name":"qList"}]},"CloneObject":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qCloneId"}]},"CreateDraft":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qDraftId"}]},"CommitDraft":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"DestroyDraft":{"In":[{"Name":"qId","DefaultValue":""},{"Name":"qSourceId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"Undo":{"In":[],"Out":[{"Name":"qSuccess"}]},"Redo":{"In":[],"Out":[{"Name":"qSuccess"}]},"ClearUndoBuffer":{"In":[],"Out":[]},"CreateDimension":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qDim":{"qGrouping":0,"qFieldDefs":[""],"qFieldLabels":[""],"qLabelExpression":""},"qMetaDef":{}}}],"Out":[{"Name":"qInfo"}]},"DestroyDimension":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetDimension":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"CloneDimension":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qCloneId"}]},"CreateMeasure":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMeasure":{"qLabel":"","qDef":"","qGrouping":0,"qExpressions":[""],"qActiveExpression":0,"qLabelExpression":""},"qMetaDef":{}}}],"Out":[{"Name":"qInfo"}]},"DestroyMeasure":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetMeasure":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"CloneMeasure":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qCloneId"}]},"CreateSessionVariable":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMetaDef":{},"qName":"","qComment":"","qNumberPresentation":{"qType":0,"qnDec":0,"qUseThou":0,"qFmt":"","qDec":"","qThou":""},"qIncludeInBookmark":false,"qDefinition":""}}],"Out":[]},"DestroySessionVariable":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"CreateVariableEx":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMetaDef":{},"qName":"","qComment":"","qNumberPresentation":{"qType":0,"qnDec":0,"qUseThou":0,"qFmt":"","qDec":"","qThou":""},"qIncludeInBookmark":false,"qDefinition":""}}],"Out":[{"Name":"qInfo"}]},"DestroyVariableById":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"DestroyVariableByName":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetVariableById":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"GetVariableByName":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[]},"MigrateVariables":{"In":[],"Out":[]},"MigrateDerivedFields":{"In":[],"Out":[]},"CheckExpression":{"In":[{"Name":"qExpr","DefaultValue":""},{"Name":"qLabels","DefaultValue":[""],"Optional":true}],"Out":[{"Name":"qErrorMsg"},{"Name":"qBadFieldNames"},{"Name":"qDangerousFieldNames"}]},"CheckNumberOrExpression":{"In":[{"Name":"qExpr","DefaultValue":""}],"Out":[{"Name":"qErrorMsg"},{"Name":"qBadFieldNames"}]},"AddAlternateState":{"In":[{"Name":"qStateName","DefaultValue":""}],"Out":[]},"RemoveAlternateState":{"In":[{"Name":"qStateName","DefaultValue":""}],"Out":[]},"CreateBookmark":{"In":[{"Name":"qProp","DefaultValue":{"qInfo":{"qId":"","qType":""},"qMetaDef":{}}}],"Out":[{"Name":"qInfo"}]},"DestroyBookmark":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetBookmark":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[]},"ApplyBookmark":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"CloneBookmark":{"In":[{"Name":"qId","DefaultValue":""}],"Out":[{"Name":"qCloneId"}]},"AddFieldFromExpression":{"In":[{"Name":"qName","DefaultValue":""},{"Name":"qExpr","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"GetAllInfos":{"In":[],"Out":[{"Name":"qInfos"}]},"Resume":{"In":[],"Out":[]},"AbortModal":{"In":[{"Name":"qAccept","DefaultValue":false}],"Out":[]},"Publish":{"In":[{"Name":"qStreamId","DefaultValue":""},{"Name":"qName","DefaultValue":"","Optional":true}],"Out":[]},"UnPublish":{"In":[],"Out":[]},"GetMatchingFields":{"In":[{"Name":"qTags","DefaultValue":[""]},{"Name":"qMatchingFieldMode","DefaultValue":0,"Optional":true}],"Out":[{"Name":"qFieldNames"}]},"FindMatchingFields":{"In":[{"Name":"qFieldName","DefaultValue":""},{"Name":"qTags","DefaultValue":[""]}],"Out":[{"Name":"qFieldNames"}]},"Scramble":{"In":[{"Name":"qFieldName","DefaultValue":""}],"Out":[]},"SaveObjects":{"In":[],"Out":[]},"GetAssociationScores":{"In":[{"Name":"qTable1","DefaultValue":""},{"Name":"qTable2","DefaultValue":""}],"Out":[{"Name":"qScore"}]},"GetMediaList":{"In":[],"Out":[{"Name":"qList"}]},"GetContentLibraries":{"In":[],"Out":[{"Name":"qList"}]},"GetLibraryContent":{"In":[{"Name":"qName","DefaultValue":""}],"Out":[{"Name":"qList"}]},"DoReloadEx":{"In":[{"Name":"qParams","DefaultValue":{"qMode":0,"qPartial":false,"qDebug":false},"Optional":true}],"Out":[{"Name":"qResult"}]},"BackCount":{"In":[],"Out":[]},"ForwardCount":{"In":[],"Out":[]},"ExportReducedData":{"In":[{"Name":"qOptions","DefaultValue":{"qBookmarkId":"","qExpires":0},"Optional":true}],"Out":[{"Name":"qDownloadInfo"}]},"SetScript":{"In":[{"Name":"qScript","DefaultValue":""}],"Out":[]},"CheckScriptSyntax":{"In":[],"Out":[{"Name":"qErrors"}]},"GetFavoriteVariables":{"In":[],"Out":[{"Name":"qNames"}]},"SetFavoriteVariables":{"In":[{"Name":"qNames","DefaultValue":[""]}],"Out":[]},"GetIncludeFileContent":{"In":[{"Name":"qPath","DefaultValue":""}],"Out":[{"Name":"qContent"}]},"CreateConnection":{"In":[{"Name":"qConnection","DefaultValue":{"qId":"","qName":"","qConnectionString":"","qType":"","qUserName":"","qPassword":"","qModifiedDate":"","qMeta":{"qName":""},"qLogOn":0}}],"Out":[{"Name":"qConnectionId"}]},"ModifyConnection":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qConnection","DefaultValue":{"qId":"","qName":"","qConnectionString":"","qType":"","qUserName":"","qPassword":"","qModifiedDate":"","qMeta":{"qName":""},"qLogOn":0}},{"Name":"qOverrideCredentials","DefaultValue":false,"Optional":true}],"Out":[]},"DeleteConnection":{"In":[{"Name":"qConnectionId","DefaultValue":""}],"Out":[]},"GetConnection":{"In":[{"Name":"qConnectionId","DefaultValue":""}],"Out":[{"Name":"qConnection"}]},"GetConnections":{"In":[],"Out":[{"Name":"qConnections"}]},"GetDatabaseInfo":{"In":[{"Name":"qConnectionId","DefaultValue":""}],"Out":[{"Name":"qInfo"}]},"GetDatabases":{"In":[{"Name":"qConnectionId","DefaultValue":""}],"Out":[{"Name":"qDatabases"}]},"GetDatabaseOwners":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qDatabase","DefaultValue":"","Optional":true}],"Out":[{"Name":"qOwners"}]},"GetDatabaseTables":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qDatabase","DefaultValue":"","Optional":true},{"Name":"qOwner","DefaultValue":"","Optional":true}],"Out":[{"Name":"qTables"}]},"GetDatabaseTableFields":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qDatabase","DefaultValue":"","Optional":true},{"Name":"qOwner","DefaultValue":"","Optional":true},{"Name":"qTable","DefaultValue":""}],"Out":[{"Name":"qFields"}]},"GetDatabaseTablePreview":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qDatabase","DefaultValue":"","Optional":true},{"Name":"qOwner","DefaultValue":"","Optional":true},{"Name":"qTable","DefaultValue":""},{"Name":"qConditions","DefaultValue":{"qType":0,"qWherePredicate":""},"Optional":true}],"Out":[{"Name":"qPreview"},{"Name":"qRowCount"}]},"GetFolderItemsForConnection":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true}],"Out":[{"Name":"qFolderItems"}]},"GuessFileType":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true}],"Out":[{"Name":"qDataFormat"}]},"GetFileTables":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true},{"Name":"qDataFormat","DefaultValue":{"qType":0,"qLabel":"","qQuote":"","qComment":"","qDelimiter":{"qName":"","qScriptCode":"","qNumber":0,"qIsMultiple":false},"qCodePage":0,"qHeaderSize":0,"qRecordSize":0,"qTabSize":0,"qIgnoreEOF":false,"qFixedWidthDelimiters":""}}],"Out":[{"Name":"qTables"}]},"GetFileTableFields":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true},{"Name":"qDataFormat","DefaultValue":{"qType":0,"qLabel":"","qQuote":"","qComment":"","qDelimiter":{"qName":"","qScriptCode":"","qNumber":0,"qIsMultiple":false},"qCodePage":0,"qHeaderSize":0,"qRecordSize":0,"qTabSize":0,"qIgnoreEOF":false,"qFixedWidthDelimiters":""}},{"Name":"qTable","DefaultValue":""}],"Out":[{"Name":"qFields"},{"Name":"qFormatSpec"}]},"GetFileTablePreview":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true},{"Name":"qDataFormat","DefaultValue":{"qType":0,"qLabel":"","qQuote":"","qComment":"","qDelimiter":{"qName":"","qScriptCode":"","qNumber":0,"qIsMultiple":false},"qCodePage":0,"qHeaderSize":0,"qRecordSize":0,"qTabSize":0,"qIgnoreEOF":false,"qFixedWidthDelimiters":""}},{"Name":"qTable","DefaultValue":""}],"Out":[{"Name":"qPreview"},{"Name":"qFormatSpec"}]},"GetFileTablesEx":{"In":[{"Name":"qConnectionId","DefaultValue":""},{"Name":"qRelativePath","DefaultValue":"","Optional":true},{"Name":"qDataFormat","DefaultValue":{"qType":0,"qLabel":"","qQuote":"","qComment":"","qDelimiter":{"qName":"","qScriptCode":"","qNumber":0,"qIsMultiple":false},"qCodePage":0,"qHeaderSize":0,"qRecordSize":0,"qTabSize":0,"qIgnoreEOF":false,"qFixedWidthDelimiters":""}}],"Out":[{"Name":"qTables"}]},"SendGenericCommandToCustomConnector":{"In":[{"Name":"qProvider","DefaultValue":""},{"Name":"qCommand","DefaultValue":""},{"Name":"qMethod","DefaultValue":""},{"Name":"qParameters","DefaultValue":[""]},{"Name":"qAppendConnection","DefaultValue":""}],"Out":[{"Name":"qResult"}]},"SearchSuggest":{"In":[{"Name":"qOptions","DefaultValue":{"qSearchFields":[""],"qContext":0,"qCharEncoding":0,"qAttributes":[""]}},{"Name":"qTerms","DefaultValue":[""]}],"Out":[{"Name":"qResult"}]},"SearchAssociations":{"In":[{"Name":"qOptions","DefaultValue":{"qSearchFields":[""],"qContext":0,"qCharEncoding":0,"qAttributes":[""]}},{"Name":"qTerms","DefaultValue":[""]},{"Name":"qPage","DefaultValue":{"qOffset":0,"qCount":0,"qMaxNbrFieldMatches":0,"qGroupOptions":[{"qGroupType":0,"qOffset":0,"qCount":0}],"qGroupItemOptions":[{"qGroupItemType":0,"qOffset":0,"qCount":0}]}}],"Out":[{"Name":"qResults"}]},"SelectAssociations":{"In":[{"Name":"qOptions","DefaultValue":{"qSearchFields":[""],"qContext":0,"qCharEncoding":0,"qAttributes":[""]}},{"Name":"qTerms","DefaultValue":[""]},{"Name":"qMatchIx","DefaultValue":0},{"Name":"qSoftLock","DefaultValue":null,"Optional":true}],"Out":[]},"SearchResults":{"In":[{"Name":"qOptions","DefaultValue":{"qSearchFields":[""],"qContext":0,"qCharEncoding":0,"qAttributes":[""]}},{"Name":"qTerms","DefaultValue":[""]},{"Name":"qPage","DefaultValue":{"qOffset":0,"qCount":0,"qMaxNbrFieldMatches":0,"qGroupOptions":[{"qGroupType":0,"qOffset":0,"qCount":0}],"qGroupItemOptions":[{"qGroupItemType":0,"qOffset":0,"qCount":0}]}}],"Out":[{"Name":"qResult"}]},"SearchObjects":{"In":[{"Name":"qOptions","DefaultValue":{"qAttributes":[""],"qCharEncoding":0}},{"Name":"qTerms","DefaultValue":[""]},{"Name":"qPage","DefaultValue":{"qOffset":0,"qCount":0,"qMaxNbrFieldMatches":0,"qGroupOptions":[{"qGroupType":0,"qOffset":0,"qCount":0}],"qGroupItemOptions":[{"qGroupItemType":0,"qOffset":0,"qCount":0}]}}],"Out":[{"Name":"qResult"}]}},"Global":{"AbortRequest":{"In":[{"Name":"qRequestId","DefaultValue":0}],"Out":[]},"AbortAll":{"In":[],"Out":[]},"GetProgress":{"In":[{"Name":"qRequestId","DefaultValue":0}],"Out":[{"Name":"qProgressData"}]},"QvVersion":{"In":[],"Out":[]},"OSVersion":{"In":[],"Out":[]},"OSName":{"In":[],"Out":[]},"QTProduct":{"In":[],"Out":[]},"GetDocList":{"In":[],"Out":[{"Name":"qDocList"}]},"GetInteract":{"In":[{"Name":"qRequestId","DefaultValue":0}],"Out":[{"Name":"qDef"}]},"InteractDone":{"In":[{"Name":"qRequestId","DefaultValue":0},{"Name":"qDef","DefaultValue":{"qType":0,"qTitle":"","qMsg":"","qButtons":0,"qLine":"","qOldLineNr":0,"qNewLineNr":0,"qPath":"","qHidden":false,"qResult":0,"qInput":""}}],"Out":[]},"GetAuthenticatedUser":{"In":[],"Out":[]},"CreateDocEx":{"In":[{"Name":"qDocName","DefaultValue":""},{"Name":"qUserName","DefaultValue":"","Optional":true},{"Name":"qPassword","DefaultValue":"","Optional":true},{"Name":"qSerial","DefaultValue":"","Optional":true},{"Name":"qLocalizedScriptMainSection","DefaultValue":"","Optional":true}],"Out":[{"Name":"qDocId"}]},"GetActiveDoc":{"In":[],"Out":[]},"AllowCreateApp":{"In":[],"Out":[]},"CreateApp":{"In":[{"Name":"qAppName","DefaultValue":""},{"Name":"qLocalizedScriptMainSection","DefaultValue":"","Optional":true}],"Out":[{"Name":"qSuccess"},{"Name":"qAppId"}]},"DeleteApp":{"In":[{"Name":"qAppId","DefaultValue":""}],"Out":[{"Name":"qSuccess"}]},"IsDesktopMode":{"In":[],"Out":[]},"GetConfiguration":{"In":[],"Out":[{"Name":"qConfig"}]},"CancelRequest":{"In":[{"Name":"qRequestId","DefaultValue":0}],"Out":[]},"ShutdownProcess":{"In":[],"Out":[]},"ReloadExtensionList":{"In":[],"Out":[]},"ReplaceAppFromID":{"In":[{"Name":"qTargetAppId","DefaultValue":""},{"Name":"qSrcAppID","DefaultValue":""},{"Name":"qIds","DefaultValue":[""]}],"Out":[{"Name":"qSuccess"}]},"CopyApp":{"In":[{"Name":"qTargetAppId","DefaultValue":""},{"Name":"qSrcAppId","DefaultValue":""},{"Name":"qIds","DefaultValue":[""]}],"Out":[{"Name":"qSuccess"}]},"ImportApp":{"In":[{"Name":"qAppId","DefaultValue":""},{"Name":"qSrcPath","DefaultValue":""},{"Name":"qIds","DefaultValue":[""]}],"Out":[{"Name":"qSuccess"}]},"ImportAppEx":{"In":[{"Name":"qAppId","DefaultValue":""},{"Name":"qSrcPath","DefaultValue":""},{"Name":"qIds","DefaultValue":[""]},{"Name":"qExcludeConnections","DefaultValue":false}],"Out":[]},"ExportApp":{"In":[{"Name":"qTargetPath","DefaultValue":""},{"Name":"qSrcAppId","DefaultValue":""},{"Name":"qIds","DefaultValue":[""]}],"Out":[{"Name":"qSuccess"}]},"PublishApp":{"In":[{"Name":"qAppId","DefaultValue":""},{"Name":"qName","DefaultValue":""},{"Name":"qStreamId","DefaultValue":""}],"Out":[]},"IsPersonalMode":{"In":[],"Out":[]},"GetUniqueID":{"In":[],"Out":[{"Name":"qUniqueID"}]},"OpenDoc":{"In":[{"Name":"qDocName","DefaultValue":""},{"Name":"qUserName","DefaultValue":"","Optional":true},{"Name":"qPassword","DefaultValue":"","Optional":true},{"Name":"qSerial","DefaultValue":"","Optional":true},{"Name":"qNoData","DefaultValue":false,"Optional":true}],"Out":[]},"CreateSessionApp":{"In":[],"Out":[{"Name":"qSessionAppId"}]},"CreateSessionAppFromApp":{"In":[{"Name":"qSrcAppId","DefaultValue":""}],"Out":[{"Name":"qSessionAppId"}]},"ProductVersion":{"In":[],"Out":[]},"GetAppEntry":{"In":[{"Name":"qAppID","DefaultValue":""}],"Out":[{"Name":"qEntry"}]},"ConfigureReload":{"In":[{"Name":"qCancelOnScriptError","DefaultValue":false},{"Name":"qUseErrorData","DefaultValue":false},{"Name":"qInteractOnError","DefaultValue":false}],"Out":[]},"CancelReload":{"In":[],"Out":[]},"GetBNF":{"In":[{"Name":"qBnfType","DefaultValue":0}],"Out":[{"Name":"qBnfDefs"}]},"GetFunctions":{"In":[{"Name":"qGroup","DefaultValue":0,"Optional":true}],"Out":[{"Name":"qFunctions"}]},"GetOdbcDsns":{"In":[],"Out":[{"Name":"qOdbcDsns"}]},"GetOleDbProviders":{"In":[],"Out":[{"Name":"qOleDbProviders"}]},"GetDatabasesFromConnectionString":{"In":[{"Name":"qConnection","DefaultValue":{"qId":"","qName":"","qConnectionString":"","qType":"","qUserName":"","qPassword":"","qModifiedDate":"","qMeta":{"qName":""},"qLogOn":0}}],"Out":[{"Name":"qDatabases"}]},"IsValidConnectionString":{"In":[{"Name":"qConnection","DefaultValue":{"qId":"","qName":"","qConnectionString":"","qType":"","qUserName":"","qPassword":"","qModifiedDate":"","qMeta":{"qName":""},"qLogOn":0}}],"Out":[]},"GetDefaultAppFolder":{"In":[],"Out":[{"Name":"qPath"}]},"GetMyDocumentsFolder":{"In":[],"Out":[{"Name":"qFolder"}]},"GetLogicalDriveStrings":{"In":[],"Out":[{"Name":"qDrives"}]},"GetFolderItemsForPath":{"In":[{"Name":"qPath","DefaultValue":""}],"Out":[{"Name":"qFolderItems"}]},"GetSupportedCodePages":{"In":[],"Out":[{"Name":"qCodePages"}]},"GetCustomConnectors":{"In":[{"Name":"qReloadList","DefaultValue":false,"Optional":true}],"Out":[{"Name":"qConnectors"}]},"GetStreamList":{"In":[],"Out":[{"Name":"qStreamList"}]},"UploadToContentService":{"In":[{"Name":"qDirectory","DefaultValue":""},{"Name":"qAppId","DefaultValue":""},{"Name":"qQrsObjects","DefaultValue":[{"qEngineObjectID":"","qItemID":""}]}],"Out":[{"Name":"qUploadedObjects"}]},"EngineVersion":{"In":[],"Out":[{"Name":"qVersion"}]},"GetBaseBNF":{"In":[{"Name":"qBnfType","DefaultValue":0}],"Out":[{"Name":"qBnfDefs"},{"Name":"qBnfHash"}]},"GetBaseBNFHash":{"In":[{"Name":"qBnfType","DefaultValue":0}],"Out":[{"Name":"qBnfHash"}]}}},"enums":{"LocalizedMessageCode":{"LOCMSG_SCRIPTEDITOR_EMPTY_MESSAGE":0,"LOCMSG_SCRIPTEDITOR_PROGRESS_SAVING_STARTED":1,"LOCMSG_SCRIPTEDITOR_PROGRESS_BYTES_LEFT":2,"LOCMSG_SCRIPTEDITOR_PROGRESS_STORING_TABLES":3,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWS_SO_FAR":4,"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTED":5,"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTING_TO":6,"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECT_FAILED":7,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWISH":8,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_COLUMNAR":9,"LOCMSG_SCRIPTEDITOR_ERROR":10,"LOCMSG_SCRIPTEDITOR_DONE":11,"LOCMSG_SCRIPTEDITOR_LOAD_EXTERNAL_DATA":12,"LOCMSG_SCRIPTEDITOR_PROGRESS_OLD_QVD_ISLOADING":13,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_LOADING":14,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_BUFFERED":15,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_PREPARING":16,"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_APPENDING":17,"LOCMSG_SCRIPTEDITOR_REMOVE_SYNTHETIC":18,"LOCMSG_SCRIPTEDITOR_PENDING_LINKEDTABLE_FETCHING":19,"LOCMSG_SCRIPTEDITOR_RELOAD":20,"LOCMSG_SCRIPTEDITOR_LINES_FETCHED":21,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_START":22,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FIELD":23,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_SUCCESS":24,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FAILURE":25,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_STARTABORT":26,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_ENDABORT":27,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_TIMEOUT":28,"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_OUTOFMEMORY":29},"LocalizedErrorCode":{"LOCERR_INTERNAL_ERROR":-128,"LOCERR_GENERIC_UNKNOWN":-1,"LOCERR_GENERIC_OK":0,"LOCERR_GENERIC_NOT_SET":1,"LOCERR_GENERIC_NOT_FOUND":2,"LOCERR_GENERIC_ALREADY_EXISTS":3,"LOCERR_GENERIC_INVALID_PATH":4,"LOCERR_GENERIC_ACCESS_DENIED":5,"LOCERR_GENERIC_OUT_OF_MEMORY":6,"LOCERR_GENERIC_NOT_INITIALIZED":7,"LOCERR_GENERIC_INVALID_PARAMETERS":8,"LOCERR_GENERIC_EMPTY_PARAMETERS":9,"LOCERR_GENERIC_INTERNAL_ERROR":10,"LOCERR_GENERIC_CORRUPT_DATA":11,"LOCERR_GENERIC_MEMORY_INCONSISTENCY":12,"LOCERR_GENERIC_INVISIBLE_OWNER_ABORT":13,"LOCERR_GENERIC_PROHIBIT_VALIDATE":14,"LOCERR_GENERIC_ABORTED":15,"LOCERR_GENERIC_CONNECTION_LOST":16,"LOCERR_GENERIC_UNSUPPORTED_IN_PRODUCT_VERSION":17,"LOCERR_GENERIC_REST_CONNECTION_FAILURE":18,"LOCERR_HTTP_400":400,"LOCERR_HTTP_401":401,"LOCERR_HTTP_402":402,"LOCERR_HTTP_403":403,"LOCERR_HTTP_404":404,"LOCERR_HTTP_405":405,"LOCERR_HTTP_406":406,"LOCERR_HTTP_407":407,"LOCERR_HTTP_408":408,"LOCERR_HTTP_409":409,"LOCERR_HTTP_410":410,"LOCERR_HTTP_411":411,"LOCERR_HTTP_412":412,"LOCERR_HTTP_413":413,"LOCERR_HTTP_414":414,"LOCERR_HTTP_415":415,"LOCERR_HTTP_416":416,"LOCERR_HTTP_417":417,"LOCERR_HTTP_500":500,"LOCERR_HTTP_501":501,"LOCERR_HTTP_502":502,"LOCERR_HTTP_503":503,"LOCERR_HTTP_504":504,"LOCERR_HTTP_505":505,"LOCERR_HTTP_509":509,"LOCERR_HTTP_COULD_NOT_RESOLVE_HOST":700,"LOCERR_APP_ALREADY_EXISTS":1000,"LOCERR_APP_INVALID_NAME":1001,"LOCERR_APP_ALREADY_OPEN":1002,"LOCERR_APP_NOT_FOUND":1003,"LOCERR_APP_IMPORT_FAILED":1004,"LOCERR_APP_SAVE_FAILED":1005,"LOCERR_APP_CREATE_FAILED":1006,"LOCERR_APP_INVALID":1007,"LOCERR_APP_CONNECT_FAILED":1008,"LOCERR_APP_ALREADY_OPEN_IN_DIFFERENT_MODE":1009,"LOCERR_APP_MIGRATION_COULD_NOT_CONTACT_MIGRATION_SERVICE":1010,"LOCERR_APP_MIGRATION_COULD_NOT_START_MIGRATION":1011,"LOCERR_APP_MIGRATION_FAILURE":1012,"LOCERR_APP_SCRIPT_MISSING":1013,"LOCERR_CONNECTION_ALREADY_EXISTS":2000,"LOCERR_CONNECTION_NOT_FOUND":2001,"LOCERR_CONNECTION_FAILED_TO_LOAD":2002,"LOCERR_CONNECTION_FAILED_TO_IMPORT":2003,"LOCERR_CONNECTION_NAME_IS_INVALID":2004,"LOCERR_CONNECTOR_NO_FILE_STREAMING_SUPPORT":2300,"LOCERR_FILE_ACCESS_DENIED":3000,"LOCERR_FILE_NAME_INVALID":3001,"LOCERR_FILE_CORRUPT":3002,"LOCERR_FILE_NOT_FOUND":3003,"LOCERR_FILE_FORMAT_UNSUPPORTED":3004,"LOCERR_FILE_OPENED_IN_UNSUPPORTED_MODE":3005,"LOCERR_FILE_TABLE_NOT_FOUND":3006,"LOCERR_USER_ACCESS_DENIED":4000,"LOCERR_USER_IMPERSONATION_FAILED":4001,"LOCERR_SERVER_OUT_OF_SESSION_AND_USER_CALS":5000,"LOCERR_SERVER_OUT_OF_SESSION_CALS":5001,"LOCERR_SERVER_OUT_OF_USAGE_CALS":5002,"LOCERR_SERVER_OUT_OF_CALS":5003,"LOCERR_SERVER_OUT_OF_NAMED_CALS":5004,"LOCERR_SERVER_OFF_DUTY":5005,"LOCERR_SERVER_BUSY":5006,"LOCERR_SERVER_LICENSE_EXPIRED":5007,"LOCERR_SERVER_AJAX_DISABLED":5008,"LOCERR_HC_INVALID_OBJECT":6000,"LOCERR_HC_RESULT_TOO_LARGE":6001,"LOCERR_HC_INVALID_OBJECT_STATE":6002,"LOCERR_HC_MODAL_OBJECT_ERROR":6003,"LOCERR_CALC_INVALID_DEF":7000,"LOCERR_CALC_NOT_IN_LIB":7001,"LOCERR_CALC_HEAP_ERROR":7002,"LOCERR_CALC_TOO_LARGE":7003,"LOCERR_CALC_TIMEOUT":7004,"LOCERR_CALC_EVAL_CONDITION_FAILED":7005,"LOCERR_CALC_MIXED_LINKED_AGGREGATION":7006,"LOCERR_CALC_MISSING_LINKED":7007,"LOCERR_CALC_INVALID_COL_SORT":7008,"LOCERR_CALC_PAGES_TOO_LARGE":7009,"LOCERR_CALC_SEMANTIC_FIELD_NOT_ALLOWED":7010,"LOCERR_CALC_VALIDATION_STATE_INVALID":7011,"LOCERR_CALC_PIVOT_DIMENSIONS_ALREADY_EXISTS":7012,"LOCERR_CALC_MISSING_LINKED_FIELD":7013,"LOCERR_CALC_NOT_CALCULATED":7014,"LOCERR_LAYOUT_EXTENDS_INVALID_ID":8000,"LOCERR_LAYOUT_LINKED_OBJECT_NOT_FOUND":8001,"LOCERR_LAYOUT_LINKED_OBJECT_INVALID":8002,"LOCERR_PERSISTENCE_WRITE_FAILED":9000,"LOCERR_PERSISTENCE_READ_FAILED":9001,"LOCERR_PERSISTENCE_DELETE_FAILED":9002,"LOCERR_PERSISTENCE_NOT_FOUND":9003,"LOCERR_PERSISTENCE_UNSUPPORTED_VERSION":9004,"LOCERR_PERSISTENCE_MIGRATION_FAILED_READ_ONLY":9005,"LOCERR_PERSISTENCE_MIGRATION_CANCELLED":9006,"LOCERR_PERSISTENCE_MIGRATION_BACKUP_FAILED":9007,"LOCERR_PERSISTENCE_DISK_FULL":9008,"LOCERR_PERSISTENCE_NOT_SUPPORTED_FOR_SESSION_APP":9009,"LOCERR_PERSISTENCE_SYNC_SET_CHUNK_INVALID_PARAMETERS":9510,"LOCERR_PERSISTENCE_SYNC_GET_CHUNK_INVALID_PARAMETERS":9511,"LOCERR_SCRIPT_DATASOURCE_ACCESS_DENIED":10000,"LOCERR_RELOAD_IN_PROGRESS":11000,"LOCERR_RELOAD_TABLE_X_NOT_FOUND":11001,"LOCERR_RELOAD_UNKNOWN_STATEMENT":11002,"LOCERR_RELOAD_EXPECTED_SOMETHING_FOUND_UNKNOWN":11003,"LOCERR_RELOAD_EXPECTED_NOTHING_FOUND_UNKNOWN":11004,"LOCERR_RELOAD_EXPECTED_ONE_OF_1_TOKENS_FOUND_UNKNOWN":11005,"LOCERR_RELOAD_EXPECTED_ONE_OF_2_TOKENS_FOUND_UNKNOWN":11006,"LOCERR_RELOAD_EXPECTED_ONE_OF_3_TOKENS_FOUND_UNKNOWN":11007,"LOCERR_RELOAD_EXPECTED_ONE_OF_4_TOKENS_FOUND_UNKNOWN":11008,"LOCERR_RELOAD_EXPECTED_ONE_OF_5_TOKENS_FOUND_UNKNOWN":11009,"LOCERR_RELOAD_EXPECTED_ONE_OF_6_TOKENS_FOUND_UNKNOWN":11010,"LOCERR_RELOAD_EXPECTED_ONE_OF_7_TOKENS_FOUND_UNKNOWN":11011,"LOCERR_RELOAD_EXPECTED_ONE_OF_8_OR_MORE_TOKENS_FOUND_UNKNOWN":11012,"LOCERR_RELOAD_FIELD_X_NOT_FOUND":11013,"LOCERR_RELOAD_MAPPING_TABLE_X_NOT_FOUND":11014,"LOCERR_RELOAD_LIB_CONNECTION_X_NOT_FOUND":11015,"LOCERR_RELOAD_NAME_ALREADY_TAKEN":11016,"LOCERR_RELOAD_WRONG_FILE_FORMAT_DIF":11017,"LOCERR_RELOAD_WRONG_FILE_FORMAT_BIFF":11018,"LOCERR_RELOAD_WRONG_FILE_FORMAT_ENCRYPTED":11019,"LOCERR_RELOAD_OPEN_FILE_ERROR":11020,"LOCERR_RELOAD_AUTO_GENERATE_COUNT":11021,"LOCERR_RELOAD_PE_ILLEGAL_PREFIX_COMB":11022,"LOCERR_RELOAD_MATCHING_CONTROL_STATEMENT_ERROR":11023,"LOCERR_RELOAD_MATCHING_LIBPATH_X_NOT_FOUND":11024,"LOCERR_RELOAD_MATCHING_LIBPATH_X_INVALID":11025,"LOCERR_RELOAD_MATCHING_LIBPATH_X_OUTSIDE":11026,"LOCERR_RELOAD_NO_QUALIFIED_PATH_FOR_FILE":11027,"LOCERR_RELOAD_MODE_STATEMENT_ONLY_FOR_LIB_PATHS":11028,"LOCERR_RELOAD_INCONSISTENT_USE_OF_SEMANTIC_FIELDS":11029,"LOCERR_RELOAD_NO_OPEN_DATABASE":11030,"LOCERR_RELOAD_AGGREGATION_REQUIRED_BY_GROUP_BY":11031,"LOCERR_RELOAD_CONNECT_MUST_USE_LIB_PREFIX_IN_THIS_MODE":11032,"LOCERR_RELOAD_ODBC_CONNECT_FAILED":11033,"LOCERR_RELOAD_OLEDB_CONNECT_FAILED":11034,"LOCERR_RELOAD_CUSTOM_CONNECT_FAILED":11035,"LOCERR_RELOAD_ODBC_READ_FAILED":11036,"LOCERR_RELOAD_OLEDB_READ_FAILED":11037,"LOCERR_RELOAD_CUSTOM_READ_FAILED":11038,"LOCERR_RELOAD_BINARY_LOAD_PROHIBITED":11039,"LOCERR_RELOAD_CONNECTOR_START_FAILED":11040,"LOCERR_RELOAD_CONNECTOR_NOT_RESPONDING":11041,"LOCERR_RELOAD_CONNECTOR_REPLY_ERROR":11042,"LOCERR_RELOAD_CONNECTOR_CONNECT_ERROR":11043,"LOCERR_RELOAD_CONNECTOR_NOT_FOUND_ERROR":11044,"LOCERR_PERSONAL_NEW_VERSION_AVAILABLE":12000,"LOCERR_PERSONAL_VERSION_EXPIRED":12001,"LOCERR_PERSONAL_SECTION_ACCESS_DETECTED":12002,"LOCERR_PERSONAL_APP_DELETION_FAILED":12003,"LOCERR_USER_AUTHENTICATION_FAILURE":12004,"LOCERR_EXPORT_OUT_OF_MEMORY":13000,"LOCERR_EXPORT_NO_DATA":13001,"LOCERR_SYNC_INVALID_OFFSET":14000,"LOCERR_SEARCH_TIMEOUT":15000,"LOCERR_DIRECT_DISCOVERY_LINKED_EXPRESSION_FAIL":16000,"LOCERR_DIRECT_DISCOVERY_ROWCOUNT_OVERFLOW":16001,"LOCERR_DIRECT_DISCOVERY_EMPTY_RESULT":16002,"LOCERR_DIRECT_DISCOVERY_DB_CONNECTION_FAILED":16003,"LOCERR_DIRECT_DISCOVERY_MEASURE_NOT_ALLOWED":16004,"LOCERR_DIRECT_DISCOVERY_DETAIL_NOT_ALLOWED":16005,"LOCERR_DIRECT_DISCOVERY_NOT_SYNTH_CIRCULAR_ALLOWED":16006,"LOCERR_DIRECT_DISCOVERY_ONLY_ONE_DD_TABLE_ALLOWED":16007,"LOCERR_DIRECT_DISCOVERY_DB_AUTHORIZATION_FAILED":16008,"LOCERR_SMART_LOAD_TABLE_NOT_FOUND":17000,"LOCERR_SMART_LOAD_TABLE_DUPLICATED":17001,"LOCERR_VARIABLE_NO_NAME":18000,"LOCERR_VARIABLE_DUPLICATE_NAME":18001,"LOCERR_VARIABLE_INCONSISTENCY":18002,"LOCERR_MEDIA_LIBRARY_LIST_FAILED":19000,"LOCERR_MEDIA_LIBRARY_CONTENT_FAILED":19001,"LOCERR_MEDIA_BUNDLING_FAILED":19002,"LOCERR_MEDIA_UNBUNDLING_FAILED":19003,"LOCERR_MEDIA_LIBRARY_NOT_FOUND":19004,"LOCERR_FEATURE_DISABLED":20000,"LOCERR_JSON_RPC_INVALID_REQUEST":-32600,"LOCERR_JSON_RPC_METHOD_NOT_FOUND":-32601,"LOCERR_JSON_RPC_INVALID_PARAMETERS":-32602,"LOCERR_JSON_RPC_INTERNAL_ERROR":-32603,"LOCERR_JSON_RPC_PARSE_ERROR":-32700,"LOCERR_MQ_SOCKET_CONNECT_FAILURE":33000,"LOCERR_MQ_SOCKET_OPEN_FAILURE":33001,"LOCERR_MQ_PROTOCOL_NO_RESPONE":33002,"LOCERR_MQ_PROTOCOL_LIBRARY_EXCEPTION":33003,"LOCERR_MQ_PROTOCOL_CONNECTION_CLOSED":33004,"LOCERR_MQ_PROTOCOL_CHANNEL_CLOSED":33005,"LOCERR_MQ_PROTOCOL_UNKNOWN_ERROR":33006,"LOCERR_MQ_PROTOCOL_INVALID_STATUS":33007,"LOCERR_EXTENGINE_GRPC_STATUS_OK":22000,"LOCERR_EXTENGINE_GRPC_STATUS_CANCELLED":22001,"LOCERR_EXTENGINE_GRPC_STATUS_UNKNOWN":22002,"LOCERR_EXTENGINE_GRPC_STATUS_INVALID_ARGUMENT":22003,"LOCERR_EXTENGINE_GRPC_STATUS_DEADLINE_EXCEEDED":22004,"LOCERR_EXTENGINE_GRPC_STATUS_NOT_FOUND":22005,"LOCERR_EXTENGINE_GRPC_STATUS_ALREADY_EXISTS":22006,"LOCERR_EXTENGINE_GRPC_STATUS_PERMISSION_DENIED":22007,"LOCERR_EXTENGINE_GRPC_STATUS_UNAUTHENTICATED":220016,"LOCERR_EXTENGINE_GRPC_STATUS_RESOURCE_EXHAUSTED":22008,"LOCERR_EXTENGINE_GRPC_STATUS_FAILED_PRECONDITION":22009,"LOCERR_EXTENGINE_GRPC_STATUS_ABORTED":22010,"LOCERR_EXTENGINE_GRPC_STATUS_OUT_OF_RANGE":22011,"LOCERR_EXTENGINE_GRPC_STATUS_UNIMPLEMENTED":22012,"LOCERR_EXTENGINE_GRPC_STATUS_INTERNAL":22013,"LOCERR_EXTENGINE_GRPC_STATUS_UNAVAILABLE":22014,"LOCERR_EXTENGINE_GRPC_STATUS_DATA_LOSS":22015},"LocalizedWarningCode":{"LOCWARN_PERSONAL_RELOAD_REQUIRED":0,"LOCWARN_PERSONAL_VERSION_EXPIRES_SOON":1,"LOCWARN_EXPORT_DATA_TRUNCATED":1000,"LOCWARN_COULD_NOT_OPEN_ALL_OBJECTS":2000},"GrpType":{"GRP_NX_NONE":0,"GRP_NX_HIEARCHY":1,"GRP_NX_COLLECTION":2},"ExportFileType":{"EXPORT_CSV_C":0,"EXPORT_CSV_T":1,"EXPORT_OOXML":2},"ExportState":{"EXPORT_POSSIBLE":0,"EXPORT_ALL":1},"DimCellType":{"NX_DIM_CELL_VALUE":0,"NX_DIM_CELL_EMPTY":1,"NX_DIM_CELL_NORMAL":2,"NX_DIM_CELL_TOTAL":3,"NX_DIM_CELL_OTHER":4,"NX_DIM_CELL_AGGR":5,"NX_DIM_CELL_PSEUDO":6,"NX_DIM_CELL_ROOT":7,"NX_DIM_CELL_NULL":8},"StackElemType":{"NX_STACK_CELL_NORMAL":0,"NX_STACK_CELL_TOTAL":1,"NX_STACK_CELL_OTHER":2,"NX_STACK_CELL_SUM":3,"NX_STACK_CELL_VALUE":4,"NX_STACK_CELL_PSEUDO":5},"SortIndicatorType":{"NX_SORT_INDICATE_NONE":0,"NX_SORT_INDICATE_ASC":1,"NX_SORT_INDICATE_DESC":2},"DimensionType":{"NX_DIMENSION_TYPE_DISCRETE":0,"NX_DIMENSION_TYPE_NUMERIC":1,"NX_DIMENSION_TYPE_TIME":2},"FieldSelectionMode":{"SELECTION_MODE_NORMAL":0,"SELECTION_MODE_AND":1,"SELECTION_MODE_NOT":2},"FrequencyMode":{"NX_FREQUENCY_NONE":0,"NX_FREQUENCY_VALUE":1,"NX_FREQUENCY_PERCENT":2,"NX_FREQUENCY_RELATIVE":3},"DataReductionMode":{"DATA_REDUCTION_NONE":0,"DATA_REDUCTION_ONEDIM":1,"DATA_REDUCTION_SCATTERED":2,"DATA_REDUCTION_CLUSTERED":3,"DATA_REDUCTION_STACKED":4},"HypercubeMode":{"DATA_MODE_STRAIGHT":0,"DATA_MODE_PIVOT":1,"DATA_MODE_PIVOT_STACK":2},"PatchOperationType":{"Add":0,"Remove":1,"Replace":2},"SelectionCellType":{"NX_CELL_DATA":0,"NX_CELL_TOP":1,"NX_CELL_LEFT":2},"MatchingFieldMode":{"MATCHINGFIELDMODE_MATCH_ALL":0,"MATCHINGFIELDMODE_MATCH_ONE":1},"SessionState":{"SESSION_CREATED":0,"SESSION_ATTACHED":1},"QrsChangeType":{"QRS_CHANGE_UNDEFINED":0,"QRS_CHANGE_ADD":1,"QRS_CHANGE_UPDATE":2,"QRS_CHANGE_DELETE":3},"ExtEngineDataType":{"NX_EXT_DATATYPE_STRING":0,"NX_EXT_DATATYPE_DOUBLE":1,"NX_EXT_DATATYPE_BOTH":2},"ExtEngineFunctionType":{"NX_EXT_FUNCTIONTYPE_SCALAR":0,"NX_EXT_FUNCTIONTYPE_AGGR":1,"NX_EXT_FUNCTIONTYPE_TENSOR":2},"ExtEngineMsgType":{"NX_EXT_MSGTYPE_FUNCTION_CALL":1,"NX_EXT_MSGTYPE_SCRIPT_CALL":2,"NX_EXT_MSGTYPE_RETURN_VALUE":3,"NX_EXT_MSGTYPE_RETURN_MULTIPLE":4,"NX_EXT_MSGTYPE_RETURN_ERROR":5}},"version":"12.20.0"};
+module.exports = JSON.parse("{\"structs\":{\"Field\":{\"GetCardinal\":{\"In\":[],\"Out\":[]},\"GetAndMode\":{\"In\":[],\"Out\":[]},\"SelectValues\":{\"In\":[{\"Name\":\"qFieldValues\",\"DefaultValue\":[{\"qText\":\"\",\"qIsNumeric\":false,\"qNumber\":0}]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Select\":{\"In\":[{\"Name\":\"qMatch\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qExcludedValuesMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[]},\"ToggleSelect\":{\"In\":[{\"Name\":\"qMatch\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qExcludedValuesMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[]},\"ClearAllButThis\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectPossible\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectExcluded\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectAll\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Lock\":{\"In\":[],\"Out\":[]},\"Unlock\":{\"In\":[],\"Out\":[]},\"GetNxProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProperties\"}]},\"SetNxProperties\":{\"In\":[{\"Name\":\"qProperties\",\"DefaultValue\":{\"qOneAndOnlyOne\":false}}],\"Out\":[]},\"SetAndMode\":{\"In\":[{\"Name\":\"qAndMode\",\"DefaultValue\":false}],\"Out\":[]},\"SelectAlternative\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"LowLevelSelect\":{\"In\":[{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Clear\":{\"In\":[],\"Out\":[]}},\"Variable\":{\"GetContent\":{\"In\":[],\"Out\":[{\"Name\":\"qContent\"}]},\"GetRawContent\":{\"In\":[],\"Out\":[]},\"SetContent\":{\"In\":[{\"Name\":\"qContent\",\"DefaultValue\":\"\"},{\"Name\":\"qUpdateMRU\",\"DefaultValue\":false}],\"Out\":[]},\"ForceContent\":{\"In\":[{\"Name\":\"qs\",\"DefaultValue\":\"\"},{\"Name\":\"qd\",\"DefaultValue\":0}],\"Out\":[]},\"GetNxProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProperties\"}]},\"SetNxProperties\":{\"In\":[{\"Name\":\"qProperties\",\"DefaultValue\":{\"qName\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qUsePredefListedValues\":false,\"qPreDefinedList\":[\"\"]}}],\"Out\":[]}},\"GenericObject\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"GetListObjectData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeReducedData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qZoomFactor\",\"DefaultValue\":0},{\"Name\":\"qReductionMode\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubePivotData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeStackData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qMaxNbrCells\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeContinuousData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qOptions\",\"DefaultValue\":{\"qStart\":0,\"qEnd\":0,\"qNbrPoints\":0,\"qMaxNbrTicks\":0,\"qMaxNumberLines\":0}},{\"Name\":\"qReverseSort\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qDataPages\"},{\"Name\":\"qAxisData\"}]},\"GetHyperCubeBinnedData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qViewport\",\"DefaultValue\":{\"qWidth\":0,\"qHeight\":0,\"qZoomLevel\":0}},{\"Name\":\"qDataRanges\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qMaxNbrCells\",\"DefaultValue\":0},{\"Name\":\"qQueryLevel\",\"DefaultValue\":0},{\"Name\":\"qBinningMethod\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]},{\"Name\":\"qSoftPatch\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"ClearSoftPatches\":{\"In\":[],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetEffectiveProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"SetFullPropertyTree\":{\"In\":[{\"Name\":\"qPropEntry\",\"DefaultValue\":{\"qProperty\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}},\"qChildren\":[],\"qEmbeddedSnapshotRef\":null}}],\"Out\":[]},\"GetFullPropertyTree\":{\"In\":[],\"Out\":[{\"Name\":\"qPropEntry\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"ClearSelections\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"ExportData\":{\"In\":[{\"Name\":\"qFileType\",\"DefaultValue\":0},{\"Name\":\"qPath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qFileName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qExportState\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qUrl\"},{\"Name\":\"qWarnings\"}]},\"SelectListObjectValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectPossible\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectExcluded\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectAlternative\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectAll\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectContinuousRange\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SearchListObjectFor\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qMatch\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"AbortListObjectSearch\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[]},\"AcceptListObjectSearch\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"ExpandLeft\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"ExpandTop\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"CollapseLeft\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"CollapseTop\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"DrillUp\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qDimNo\",\"DefaultValue\":0},{\"Name\":\"qNbrSteps\",\"DefaultValue\":0}],\"Out\":[]},\"Lock\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"Unlock\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"SelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qDimNo\",\"DefaultValue\":0},{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectHyperCubeCells\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRowIndices\",\"DefaultValue\":[0]},{\"Name\":\"qColIndices\",\"DefaultValue\":[0]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectPivotCells\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSelections\",\"DefaultValue\":[{\"qType\":0,\"qCol\":0,\"qRow\":0}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"RangeSelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qMeasureIx\":0}]},{\"Name\":\"qColumnsToSelect\",\"DefaultValue\":[0],\"Optional\":true},{\"Name\":\"qOrMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"MultiRangeSelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRanges\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qMeasureIx\":0}],\"qColumnsToSelect\":[0]}]},{\"Name\":\"qOrMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectHyperCubeContinuousRange\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qDimIx\":0}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetChild\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetChildInfos\":{\"In\":[],\"Out\":[{\"Name\":\"qInfos\"}]},\"CreateChild\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}},{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyChild\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"},{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"DestroyAllChildren\":{\"In\":[{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[]},\"SetChildArrayOrder\":{\"In\":[{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"CopyFrom\":{\"In\":[{\"Name\":\"qFromId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"BeginSelections\":{\"In\":[{\"Name\":\"qPaths\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"EndSelections\":{\"In\":[{\"Name\":\"qAccept\",\"DefaultValue\":false}],\"Out\":[]},\"ResetMadeSelections\":{\"In\":[],\"Out\":[]},\"EmbedSnapshotObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetSnapshotObject\":{\"In\":[],\"Out\":[]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]}},\"GenericDimension\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qDim\":{\"qGrouping\":0,\"qFieldDefs\":[\"\"],\"qFieldLabels\":[\"\"],\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetDimension\":{\"In\":[],\"Out\":[{\"Name\":\"qDim\"}]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]}},\"GenericBookmark\":{\"GetFieldValues\":{\"In\":[{\"Name\":\"qField\",\"DefaultValue\":\"\"},{\"Name\":\"qGetExcludedValues\",\"DefaultValue\":false},{\"Name\":\"qDataPage\",\"DefaultValue\":{\"qStartIndex\":0,\"qEndIndex\":0}}],\"Out\":[{\"Name\":\"qFieldValues\"}]},\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"Apply\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]}},\"GenericVariable\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"SetStringValue\":{\"In\":[{\"Name\":\"qVal\",\"DefaultValue\":\"\"}],\"Out\":[]},\"SetNumValue\":{\"In\":[{\"Name\":\"qVal\",\"DefaultValue\":0}],\"Out\":[]},\"SetDualValue\":{\"In\":[{\"Name\":\"qText\",\"DefaultValue\":\"\"},{\"Name\":\"qNum\",\"DefaultValue\":0}],\"Out\":[]}},\"GenericMeasure\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMeasure\":{\"qLabel\":\"\",\"qDef\":\"\",\"qGrouping\":0,\"qExpressions\":[\"\"],\"qActiveExpression\":0,\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetMeasure\":{\"In\":[],\"Out\":[{\"Name\":\"qMeasure\"}]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]}},\"GenericDerivedFields\":{\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qDerivedDefinitionId\":\"\",\"qFieldName\":[\"\"],\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetDerivedFieldData\":{\"In\":[],\"Out\":[{\"Name\":\"qData\"}]},\"GetDerivedField\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFields\"}]},\"GetListData\":{\"In\":[],\"Out\":[{\"Name\":\"qListData\"}]},\"GetDerivedFields\":{\"In\":[],\"Out\":[{\"Name\":\"qFields\"}]},\"GetDerivedGroups\":{\"In\":[],\"Out\":[{\"Name\":\"qGroups\"}]}},\"Doc\":{\"GetField\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"},{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"GetFieldDescription\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetLooselyCoupledVector\":{\"In\":[],\"Out\":[{\"Name\":\"qv\"}]},\"SetLooselyCoupledVector\":{\"In\":[{\"Name\":\"qv\",\"DefaultValue\":[0]}],\"Out\":[]},\"Evaluate\":{\"In\":[{\"Name\":\"qExpression\",\"DefaultValue\":\"\"}],\"Out\":[]},\"EvaluateEx\":{\"In\":[{\"Name\":\"qExpression\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qValue\"}]},\"ClearAll\":{\"In\":[{\"Name\":\"qLockedAlso\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"LockAll\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"UnlockAll\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"Back\":{\"In\":[],\"Out\":[]},\"Forward\":{\"In\":[],\"Out\":[]},\"CreateVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"RemoveVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetLocaleInfo\":{\"In\":[],\"Out\":[]},\"GetTablesAndKeys\":{\"In\":[{\"Name\":\"qWindowSize\",\"DefaultValue\":{\"qcx\":0,\"qcy\":0}},{\"Name\":\"qNullSize\",\"DefaultValue\":{\"qcx\":0,\"qcy\":0}},{\"Name\":\"qCellHeight\",\"DefaultValue\":0},{\"Name\":\"qSyntheticMode\",\"DefaultValue\":false},{\"Name\":\"qIncludeSysVars\",\"DefaultValue\":false}],\"Out\":[{\"Name\":\"qtr\"},{\"Name\":\"qk\"}]},\"GetViewDlgSaveInfo\":{\"In\":[],\"Out\":[]},\"SetViewDlgSaveInfo\":{\"In\":[{\"Name\":\"qInfo\",\"DefaultValue\":{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCtlInfo\":{\"qInternalView\":{\"qTables\":[{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCaption\":\"\"}],\"qBroomPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qTable\":\"\",\"qFields\":[\"\"]}],\"qConnectionPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qFields\":[\"\"]}],\"qZoomFactor\":0},\"qSourceView\":{\"qTables\":[{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCaption\":\"\"}],\"qBroomPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qTable\":\"\",\"qFields\":[\"\"]}],\"qConnectionPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qFields\":[\"\"]}],\"qZoomFactor\":0}},\"qMode\":0}}],\"Out\":[]},\"GetEmptyScript\":{\"In\":[{\"Name\":\"qLocalizedMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"DoReload\":{\"In\":[{\"Name\":\"qMode\",\"DefaultValue\":0,\"Optional\":true},{\"Name\":\"qPartial\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDebug\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"GetScriptBreakpoints\":{\"In\":[],\"Out\":[{\"Name\":\"qBreakpoints\"}]},\"SetScriptBreakpoints\":{\"In\":[{\"Name\":\"qBreakpoints\",\"DefaultValue\":[{\"qbufferName\":\"\",\"qlineIx\":0,\"qEnabled\":false}]}],\"Out\":[]},\"GetScript\":{\"In\":[],\"Out\":[{\"Name\":\"qScript\"}]},\"GetTextMacros\":{\"In\":[],\"Out\":[{\"Name\":\"qMacros\"}]},\"SetFetchLimit\":{\"In\":[{\"Name\":\"qLimit\",\"DefaultValue\":0}],\"Out\":[]},\"DoSave\":{\"In\":[{\"Name\":\"qFileName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"GetTableData\":{\"In\":[{\"Name\":\"qOffset\",\"DefaultValue\":0},{\"Name\":\"qRows\",\"DefaultValue\":0},{\"Name\":\"qSyntheticMode\",\"DefaultValue\":false},{\"Name\":\"qTableName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qData\"}]},\"GetAppLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"SetAppProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qTitle\":\"\",\"qLastReloadTime\":\"\",\"qMigrationHash\":\"\",\"qSavedInProductVersion\":\"\",\"qThumbnail\":{\"qUrl\":\"\"}}}],\"Out\":[]},\"GetAppProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetLineage\":{\"In\":[],\"Out\":[{\"Name\":\"qLineage\"}]},\"CreateSessionObject\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[]},\"DestroySessionObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CreateObject\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetObjects\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qTypes\":[\"\"],\"qIncludeSessionObjects\":false,\"qData\":{}}}],\"Out\":[{\"Name\":\"qList\"}]},\"GetBookmarks\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qTypes\":[\"\"],\"qData\":{}}}],\"Out\":[{\"Name\":\"qList\"}]},\"CloneObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qDraftId\"}]},\"CommitDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"DestroyDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"},{\"Name\":\"qSourceId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Undo\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Redo\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ClearUndoBuffer\":{\"In\":[],\"Out\":[]},\"CreateDimension\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qDim\":{\"qGrouping\":0,\"qFieldDefs\":[\"\"],\"qFieldLabels\":[\"\"],\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CloneDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateMeasure\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMeasure\":{\"qLabel\":\"\",\"qDef\":\"\",\"qGrouping\":0,\"qExpressions\":[\"\"],\"qActiveExpression\":0,\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CloneMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateSessionVariable\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[]},\"DestroySessionVariable\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CreateVariableEx\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyVariableById\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"DestroyVariableByName\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetVariableById\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetVariableByName\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"MigrateVariables\":{\"In\":[],\"Out\":[]},\"MigrateDerivedFields\":{\"In\":[],\"Out\":[]},\"CheckExpression\":{\"In\":[{\"Name\":\"qExpr\",\"DefaultValue\":\"\"},{\"Name\":\"qLabels\",\"DefaultValue\":[\"\"],\"Optional\":true}],\"Out\":[{\"Name\":\"qErrorMsg\"},{\"Name\":\"qBadFieldNames\"},{\"Name\":\"qDangerousFieldNames\"}]},\"CheckNumberOrExpression\":{\"In\":[{\"Name\":\"qExpr\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qErrorMsg\"},{\"Name\":\"qBadFieldNames\"}]},\"AddAlternateState\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"RemoveAlternateState\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CreateBookmark\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"ApplyBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CloneBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"AddFieldFromExpression\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"},{\"Name\":\"qExpr\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetAllInfos\":{\"In\":[],\"Out\":[{\"Name\":\"qInfos\"}]},\"Resume\":{\"In\":[],\"Out\":[]},\"AbortModal\":{\"In\":[{\"Name\":\"qAccept\",\"DefaultValue\":false}],\"Out\":[]},\"Publish\":{\"In\":[{\"Name\":\"qStreamId\",\"DefaultValue\":\"\"},{\"Name\":\"qName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"GetMatchingFields\":{\"In\":[{\"Name\":\"qTags\",\"DefaultValue\":[\"\"]},{\"Name\":\"qMatchingFieldMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qFieldNames\"}]},\"FindMatchingFields\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"},{\"Name\":\"qTags\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qFieldNames\"}]},\"Scramble\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"SaveObjects\":{\"In\":[],\"Out\":[]},\"GetAssociationScores\":{\"In\":[{\"Name\":\"qTable1\",\"DefaultValue\":\"\"},{\"Name\":\"qTable2\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qScore\"}]},\"GetMediaList\":{\"In\":[],\"Out\":[{\"Name\":\"qList\"}]},\"GetContentLibraries\":{\"In\":[],\"Out\":[{\"Name\":\"qList\"}]},\"GetLibraryContent\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qList\"}]},\"DoReloadEx\":{\"In\":[{\"Name\":\"qParams\",\"DefaultValue\":{\"qMode\":0,\"qPartial\":false,\"qDebug\":false},\"Optional\":true}],\"Out\":[{\"Name\":\"qResult\"}]},\"BackCount\":{\"In\":[],\"Out\":[]},\"ForwardCount\":{\"In\":[],\"Out\":[]},\"ExportReducedData\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qBookmarkId\":\"\",\"qExpires\":0},\"Optional\":true}],\"Out\":[{\"Name\":\"qDownloadInfo\"}]},\"SetScript\":{\"In\":[{\"Name\":\"qScript\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CheckScriptSyntax\":{\"In\":[],\"Out\":[{\"Name\":\"qErrors\"}]},\"GetFavoriteVariables\":{\"In\":[],\"Out\":[{\"Name\":\"qNames\"}]},\"SetFavoriteVariables\":{\"In\":[{\"Name\":\"qNames\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"GetIncludeFileContent\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qContent\"}]},\"CreateConnection\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[{\"Name\":\"qConnectionId\"}]},\"ModifyConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}},{\"Name\":\"qOverrideCredentials\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"DeleteConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qConnection\"}]},\"GetConnections\":{\"In\":[],\"Out\":[{\"Name\":\"qConnections\"}]},\"GetDatabaseInfo\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetDatabases\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qDatabases\"}]},\"GetDatabaseOwners\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qOwners\"}]},\"GetDatabaseTables\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qTables\"}]},\"GetDatabaseTableFields\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFields\"}]},\"GetDatabaseTablePreview\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qTable\",\"DefaultValue\":\"\"},{\"Name\":\"qConditions\",\"DefaultValue\":{\"qType\":0,\"qWherePredicate\":\"\"},\"Optional\":true}],\"Out\":[{\"Name\":\"qPreview\"},{\"Name\":\"qRowCount\"}]},\"GetFolderItemsForConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qFolderItems\"}]},\"GuessFileType\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qDataFormat\"}]},\"GetFileTables\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}}],\"Out\":[{\"Name\":\"qTables\"}]},\"GetFileTableFields\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFields\"},{\"Name\":\"qFormatSpec\"}]},\"GetFileTablePreview\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qPreview\"},{\"Name\":\"qFormatSpec\"}]},\"GetFileTablesEx\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}}],\"Out\":[{\"Name\":\"qTables\"}]},\"SendGenericCommandToCustomConnector\":{\"In\":[{\"Name\":\"qProvider\",\"DefaultValue\":\"\"},{\"Name\":\"qCommand\",\"DefaultValue\":\"\"},{\"Name\":\"qMethod\",\"DefaultValue\":\"\"},{\"Name\":\"qParameters\",\"DefaultValue\":[\"\"]},{\"Name\":\"qAppendConnection\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchSuggest\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchAssociations\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResults\"}]},\"SelectAssociations\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qMatchIx\",\"DefaultValue\":0},{\"Name\":\"qSoftLock\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[]},\"SearchResults\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchObjects\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qAttributes\":[\"\"],\"qCharEncoding\":0}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResult\"}]}},\"Global\":{\"AbortRequest\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[]},\"AbortAll\":{\"In\":[],\"Out\":[]},\"GetProgress\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qProgressData\"}]},\"QvVersion\":{\"In\":[],\"Out\":[]},\"OSVersion\":{\"In\":[],\"Out\":[]},\"OSName\":{\"In\":[],\"Out\":[]},\"QTProduct\":{\"In\":[],\"Out\":[]},\"GetDocList\":{\"In\":[],\"Out\":[{\"Name\":\"qDocList\"}]},\"GetInteract\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDef\"}]},\"InteractDone\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0},{\"Name\":\"qDef\",\"DefaultValue\":{\"qType\":0,\"qTitle\":\"\",\"qMsg\":\"\",\"qButtons\":0,\"qLine\":\"\",\"qOldLineNr\":0,\"qNewLineNr\":0,\"qPath\":\"\",\"qHidden\":false,\"qResult\":0,\"qInput\":\"\"}}],\"Out\":[]},\"GetAuthenticatedUser\":{\"In\":[],\"Out\":[]},\"CreateDocEx\":{\"In\":[{\"Name\":\"qDocName\",\"DefaultValue\":\"\"},{\"Name\":\"qUserName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qPassword\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qSerial\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qLocalizedScriptMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qDocId\"}]},\"GetActiveDoc\":{\"In\":[],\"Out\":[]},\"AllowCreateApp\":{\"In\":[],\"Out\":[]},\"CreateApp\":{\"In\":[{\"Name\":\"qAppName\",\"DefaultValue\":\"\"},{\"Name\":\"qLocalizedScriptMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"},{\"Name\":\"qAppId\"}]},\"DeleteApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"IsDesktopMode\":{\"In\":[],\"Out\":[]},\"GetConfiguration\":{\"In\":[],\"Out\":[{\"Name\":\"qConfig\"}]},\"CancelRequest\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[]},\"ShutdownProcess\":{\"In\":[],\"Out\":[]},\"ReloadExtensionList\":{\"In\":[],\"Out\":[]},\"ReplaceAppFromID\":{\"In\":[{\"Name\":\"qTargetAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppID\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CopyApp\":{\"In\":[{\"Name\":\"qTargetAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ImportApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcPath\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ImportAppEx\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcPath\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]},{\"Name\":\"qExcludeConnections\",\"DefaultValue\":false}],\"Out\":[]},\"ExportApp\":{\"In\":[{\"Name\":\"qTargetPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"PublishApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qName\",\"DefaultValue\":\"\"},{\"Name\":\"qStreamId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"IsPersonalMode\":{\"In\":[],\"Out\":[]},\"GetUniqueID\":{\"In\":[],\"Out\":[{\"Name\":\"qUniqueID\"}]},\"OpenDoc\":{\"In\":[{\"Name\":\"qDocName\",\"DefaultValue\":\"\"},{\"Name\":\"qUserName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qPassword\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qSerial\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qNoData\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"CreateSessionApp\":{\"In\":[],\"Out\":[{\"Name\":\"qSessionAppId\"}]},\"CreateSessionAppFromApp\":{\"In\":[{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSessionAppId\"}]},\"ProductVersion\":{\"In\":[],\"Out\":[]},\"GetAppEntry\":{\"In\":[{\"Name\":\"qAppID\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qEntry\"}]},\"ConfigureReload\":{\"In\":[{\"Name\":\"qCancelOnScriptError\",\"DefaultValue\":false},{\"Name\":\"qUseErrorData\",\"DefaultValue\":false},{\"Name\":\"qInteractOnError\",\"DefaultValue\":false}],\"Out\":[]},\"CancelReload\":{\"In\":[],\"Out\":[]},\"GetBNF\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfDefs\"}]},\"GetFunctions\":{\"In\":[{\"Name\":\"qGroup\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qFunctions\"}]},\"GetOdbcDsns\":{\"In\":[],\"Out\":[{\"Name\":\"qOdbcDsns\"}]},\"GetOleDbProviders\":{\"In\":[],\"Out\":[{\"Name\":\"qOleDbProviders\"}]},\"GetDatabasesFromConnectionString\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[{\"Name\":\"qDatabases\"}]},\"IsValidConnectionString\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[]},\"GetDefaultAppFolder\":{\"In\":[],\"Out\":[{\"Name\":\"qPath\"}]},\"GetMyDocumentsFolder\":{\"In\":[],\"Out\":[{\"Name\":\"qFolder\"}]},\"GetLogicalDriveStrings\":{\"In\":[],\"Out\":[{\"Name\":\"qDrives\"}]},\"GetFolderItemsForPath\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFolderItems\"}]},\"GetSupportedCodePages\":{\"In\":[],\"Out\":[{\"Name\":\"qCodePages\"}]},\"GetCustomConnectors\":{\"In\":[{\"Name\":\"qReloadList\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qConnectors\"}]},\"GetStreamList\":{\"In\":[],\"Out\":[{\"Name\":\"qStreamList\"}]},\"UploadToContentService\":{\"In\":[{\"Name\":\"qDirectory\",\"DefaultValue\":\"\"},{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qQrsObjects\",\"DefaultValue\":[{\"qEngineObjectID\":\"\",\"qItemID\":\"\"}]}],\"Out\":[{\"Name\":\"qUploadedObjects\"}]},\"EngineVersion\":{\"In\":[],\"Out\":[{\"Name\":\"qVersion\"}]},\"GetBaseBNF\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfDefs\"},{\"Name\":\"qBnfHash\"}]},\"GetBaseBNFHash\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfHash\"}]}}},\"enums\":{\"LocalizedMessageCode\":{\"LOCMSG_SCRIPTEDITOR_EMPTY_MESSAGE\":0,\"LOCMSG_SCRIPTEDITOR_PROGRESS_SAVING_STARTED\":1,\"LOCMSG_SCRIPTEDITOR_PROGRESS_BYTES_LEFT\":2,\"LOCMSG_SCRIPTEDITOR_PROGRESS_STORING_TABLES\":3,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWS_SO_FAR\":4,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTED\":5,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTING_TO\":6,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECT_FAILED\":7,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWISH\":8,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_COLUMNAR\":9,\"LOCMSG_SCRIPTEDITOR_ERROR\":10,\"LOCMSG_SCRIPTEDITOR_DONE\":11,\"LOCMSG_SCRIPTEDITOR_LOAD_EXTERNAL_DATA\":12,\"LOCMSG_SCRIPTEDITOR_PROGRESS_OLD_QVD_ISLOADING\":13,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_LOADING\":14,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_BUFFERED\":15,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_PREPARING\":16,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_APPENDING\":17,\"LOCMSG_SCRIPTEDITOR_REMOVE_SYNTHETIC\":18,\"LOCMSG_SCRIPTEDITOR_PENDING_LINKEDTABLE_FETCHING\":19,\"LOCMSG_SCRIPTEDITOR_RELOAD\":20,\"LOCMSG_SCRIPTEDITOR_LINES_FETCHED\":21,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_START\":22,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FIELD\":23,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_SUCCESS\":24,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FAILURE\":25,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_STARTABORT\":26,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_ENDABORT\":27,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_TIMEOUT\":28,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_OUTOFMEMORY\":29},\"LocalizedErrorCode\":{\"LOCERR_INTERNAL_ERROR\":-128,\"LOCERR_GENERIC_UNKNOWN\":-1,\"LOCERR_GENERIC_OK\":0,\"LOCERR_GENERIC_NOT_SET\":1,\"LOCERR_GENERIC_NOT_FOUND\":2,\"LOCERR_GENERIC_ALREADY_EXISTS\":3,\"LOCERR_GENERIC_INVALID_PATH\":4,\"LOCERR_GENERIC_ACCESS_DENIED\":5,\"LOCERR_GENERIC_OUT_OF_MEMORY\":6,\"LOCERR_GENERIC_NOT_INITIALIZED\":7,\"LOCERR_GENERIC_INVALID_PARAMETERS\":8,\"LOCERR_GENERIC_EMPTY_PARAMETERS\":9,\"LOCERR_GENERIC_INTERNAL_ERROR\":10,\"LOCERR_GENERIC_CORRUPT_DATA\":11,\"LOCERR_GENERIC_MEMORY_INCONSISTENCY\":12,\"LOCERR_GENERIC_INVISIBLE_OWNER_ABORT\":13,\"LOCERR_GENERIC_PROHIBIT_VALIDATE\":14,\"LOCERR_GENERIC_ABORTED\":15,\"LOCERR_GENERIC_CONNECTION_LOST\":16,\"LOCERR_GENERIC_UNSUPPORTED_IN_PRODUCT_VERSION\":17,\"LOCERR_GENERIC_REST_CONNECTION_FAILURE\":18,\"LOCERR_HTTP_400\":400,\"LOCERR_HTTP_401\":401,\"LOCERR_HTTP_402\":402,\"LOCERR_HTTP_403\":403,\"LOCERR_HTTP_404\":404,\"LOCERR_HTTP_405\":405,\"LOCERR_HTTP_406\":406,\"LOCERR_HTTP_407\":407,\"LOCERR_HTTP_408\":408,\"LOCERR_HTTP_409\":409,\"LOCERR_HTTP_410\":410,\"LOCERR_HTTP_411\":411,\"LOCERR_HTTP_412\":412,\"LOCERR_HTTP_413\":413,\"LOCERR_HTTP_414\":414,\"LOCERR_HTTP_415\":415,\"LOCERR_HTTP_416\":416,\"LOCERR_HTTP_417\":417,\"LOCERR_HTTP_500\":500,\"LOCERR_HTTP_501\":501,\"LOCERR_HTTP_502\":502,\"LOCERR_HTTP_503\":503,\"LOCERR_HTTP_504\":504,\"LOCERR_HTTP_505\":505,\"LOCERR_HTTP_509\":509,\"LOCERR_HTTP_COULD_NOT_RESOLVE_HOST\":700,\"LOCERR_APP_ALREADY_EXISTS\":1000,\"LOCERR_APP_INVALID_NAME\":1001,\"LOCERR_APP_ALREADY_OPEN\":1002,\"LOCERR_APP_NOT_FOUND\":1003,\"LOCERR_APP_IMPORT_FAILED\":1004,\"LOCERR_APP_SAVE_FAILED\":1005,\"LOCERR_APP_CREATE_FAILED\":1006,\"LOCERR_APP_INVALID\":1007,\"LOCERR_APP_CONNECT_FAILED\":1008,\"LOCERR_APP_ALREADY_OPEN_IN_DIFFERENT_MODE\":1009,\"LOCERR_APP_MIGRATION_COULD_NOT_CONTACT_MIGRATION_SERVICE\":1010,\"LOCERR_APP_MIGRATION_COULD_NOT_START_MIGRATION\":1011,\"LOCERR_APP_MIGRATION_FAILURE\":1012,\"LOCERR_APP_SCRIPT_MISSING\":1013,\"LOCERR_CONNECTION_ALREADY_EXISTS\":2000,\"LOCERR_CONNECTION_NOT_FOUND\":2001,\"LOCERR_CONNECTION_FAILED_TO_LOAD\":2002,\"LOCERR_CONNECTION_FAILED_TO_IMPORT\":2003,\"LOCERR_CONNECTION_NAME_IS_INVALID\":2004,\"LOCERR_CONNECTOR_NO_FILE_STREAMING_SUPPORT\":2300,\"LOCERR_FILE_ACCESS_DENIED\":3000,\"LOCERR_FILE_NAME_INVALID\":3001,\"LOCERR_FILE_CORRUPT\":3002,\"LOCERR_FILE_NOT_FOUND\":3003,\"LOCERR_FILE_FORMAT_UNSUPPORTED\":3004,\"LOCERR_FILE_OPENED_IN_UNSUPPORTED_MODE\":3005,\"LOCERR_FILE_TABLE_NOT_FOUND\":3006,\"LOCERR_USER_ACCESS_DENIED\":4000,\"LOCERR_USER_IMPERSONATION_FAILED\":4001,\"LOCERR_SERVER_OUT_OF_SESSION_AND_USER_CALS\":5000,\"LOCERR_SERVER_OUT_OF_SESSION_CALS\":5001,\"LOCERR_SERVER_OUT_OF_USAGE_CALS\":5002,\"LOCERR_SERVER_OUT_OF_CALS\":5003,\"LOCERR_SERVER_OUT_OF_NAMED_CALS\":5004,\"LOCERR_SERVER_OFF_DUTY\":5005,\"LOCERR_SERVER_BUSY\":5006,\"LOCERR_SERVER_LICENSE_EXPIRED\":5007,\"LOCERR_SERVER_AJAX_DISABLED\":5008,\"LOCERR_HC_INVALID_OBJECT\":6000,\"LOCERR_HC_RESULT_TOO_LARGE\":6001,\"LOCERR_HC_INVALID_OBJECT_STATE\":6002,\"LOCERR_HC_MODAL_OBJECT_ERROR\":6003,\"LOCERR_CALC_INVALID_DEF\":7000,\"LOCERR_CALC_NOT_IN_LIB\":7001,\"LOCERR_CALC_HEAP_ERROR\":7002,\"LOCERR_CALC_TOO_LARGE\":7003,\"LOCERR_CALC_TIMEOUT\":7004,\"LOCERR_CALC_EVAL_CONDITION_FAILED\":7005,\"LOCERR_CALC_MIXED_LINKED_AGGREGATION\":7006,\"LOCERR_CALC_MISSING_LINKED\":7007,\"LOCERR_CALC_INVALID_COL_SORT\":7008,\"LOCERR_CALC_PAGES_TOO_LARGE\":7009,\"LOCERR_CALC_SEMANTIC_FIELD_NOT_ALLOWED\":7010,\"LOCERR_CALC_VALIDATION_STATE_INVALID\":7011,\"LOCERR_CALC_PIVOT_DIMENSIONS_ALREADY_EXISTS\":7012,\"LOCERR_CALC_MISSING_LINKED_FIELD\":7013,\"LOCERR_CALC_NOT_CALCULATED\":7014,\"LOCERR_LAYOUT_EXTENDS_INVALID_ID\":8000,\"LOCERR_LAYOUT_LINKED_OBJECT_NOT_FOUND\":8001,\"LOCERR_LAYOUT_LINKED_OBJECT_INVALID\":8002,\"LOCERR_PERSISTENCE_WRITE_FAILED\":9000,\"LOCERR_PERSISTENCE_READ_FAILED\":9001,\"LOCERR_PERSISTENCE_DELETE_FAILED\":9002,\"LOCERR_PERSISTENCE_NOT_FOUND\":9003,\"LOCERR_PERSISTENCE_UNSUPPORTED_VERSION\":9004,\"LOCERR_PERSISTENCE_MIGRATION_FAILED_READ_ONLY\":9005,\"LOCERR_PERSISTENCE_MIGRATION_CANCELLED\":9006,\"LOCERR_PERSISTENCE_MIGRATION_BACKUP_FAILED\":9007,\"LOCERR_PERSISTENCE_DISK_FULL\":9008,\"LOCERR_PERSISTENCE_NOT_SUPPORTED_FOR_SESSION_APP\":9009,\"LOCERR_PERSISTENCE_SYNC_SET_CHUNK_INVALID_PARAMETERS\":9510,\"LOCERR_PERSISTENCE_SYNC_GET_CHUNK_INVALID_PARAMETERS\":9511,\"LOCERR_SCRIPT_DATASOURCE_ACCESS_DENIED\":10000,\"LOCERR_RELOAD_IN_PROGRESS\":11000,\"LOCERR_RELOAD_TABLE_X_NOT_FOUND\":11001,\"LOCERR_RELOAD_UNKNOWN_STATEMENT\":11002,\"LOCERR_RELOAD_EXPECTED_SOMETHING_FOUND_UNKNOWN\":11003,\"LOCERR_RELOAD_EXPECTED_NOTHING_FOUND_UNKNOWN\":11004,\"LOCERR_RELOAD_EXPECTED_ONE_OF_1_TOKENS_FOUND_UNKNOWN\":11005,\"LOCERR_RELOAD_EXPECTED_ONE_OF_2_TOKENS_FOUND_UNKNOWN\":11006,\"LOCERR_RELOAD_EXPECTED_ONE_OF_3_TOKENS_FOUND_UNKNOWN\":11007,\"LOCERR_RELOAD_EXPECTED_ONE_OF_4_TOKENS_FOUND_UNKNOWN\":11008,\"LOCERR_RELOAD_EXPECTED_ONE_OF_5_TOKENS_FOUND_UNKNOWN\":11009,\"LOCERR_RELOAD_EXPECTED_ONE_OF_6_TOKENS_FOUND_UNKNOWN\":11010,\"LOCERR_RELOAD_EXPECTED_ONE_OF_7_TOKENS_FOUND_UNKNOWN\":11011,\"LOCERR_RELOAD_EXPECTED_ONE_OF_8_OR_MORE_TOKENS_FOUND_UNKNOWN\":11012,\"LOCERR_RELOAD_FIELD_X_NOT_FOUND\":11013,\"LOCERR_RELOAD_MAPPING_TABLE_X_NOT_FOUND\":11014,\"LOCERR_RELOAD_LIB_CONNECTION_X_NOT_FOUND\":11015,\"LOCERR_RELOAD_NAME_ALREADY_TAKEN\":11016,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_DIF\":11017,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_BIFF\":11018,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_ENCRYPTED\":11019,\"LOCERR_RELOAD_OPEN_FILE_ERROR\":11020,\"LOCERR_RELOAD_AUTO_GENERATE_COUNT\":11021,\"LOCERR_RELOAD_PE_ILLEGAL_PREFIX_COMB\":11022,\"LOCERR_RELOAD_MATCHING_CONTROL_STATEMENT_ERROR\":11023,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_NOT_FOUND\":11024,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_INVALID\":11025,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_OUTSIDE\":11026,\"LOCERR_RELOAD_NO_QUALIFIED_PATH_FOR_FILE\":11027,\"LOCERR_RELOAD_MODE_STATEMENT_ONLY_FOR_LIB_PATHS\":11028,\"LOCERR_RELOAD_INCONSISTENT_USE_OF_SEMANTIC_FIELDS\":11029,\"LOCERR_RELOAD_NO_OPEN_DATABASE\":11030,\"LOCERR_RELOAD_AGGREGATION_REQUIRED_BY_GROUP_BY\":11031,\"LOCERR_RELOAD_CONNECT_MUST_USE_LIB_PREFIX_IN_THIS_MODE\":11032,\"LOCERR_RELOAD_ODBC_CONNECT_FAILED\":11033,\"LOCERR_RELOAD_OLEDB_CONNECT_FAILED\":11034,\"LOCERR_RELOAD_CUSTOM_CONNECT_FAILED\":11035,\"LOCERR_RELOAD_ODBC_READ_FAILED\":11036,\"LOCERR_RELOAD_OLEDB_READ_FAILED\":11037,\"LOCERR_RELOAD_CUSTOM_READ_FAILED\":11038,\"LOCERR_RELOAD_BINARY_LOAD_PROHIBITED\":11039,\"LOCERR_RELOAD_CONNECTOR_START_FAILED\":11040,\"LOCERR_RELOAD_CONNECTOR_NOT_RESPONDING\":11041,\"LOCERR_RELOAD_CONNECTOR_REPLY_ERROR\":11042,\"LOCERR_RELOAD_CONNECTOR_CONNECT_ERROR\":11043,\"LOCERR_RELOAD_CONNECTOR_NOT_FOUND_ERROR\":11044,\"LOCERR_PERSONAL_NEW_VERSION_AVAILABLE\":12000,\"LOCERR_PERSONAL_VERSION_EXPIRED\":12001,\"LOCERR_PERSONAL_SECTION_ACCESS_DETECTED\":12002,\"LOCERR_PERSONAL_APP_DELETION_FAILED\":12003,\"LOCERR_USER_AUTHENTICATION_FAILURE\":12004,\"LOCERR_EXPORT_OUT_OF_MEMORY\":13000,\"LOCERR_EXPORT_NO_DATA\":13001,\"LOCERR_SYNC_INVALID_OFFSET\":14000,\"LOCERR_SEARCH_TIMEOUT\":15000,\"LOCERR_DIRECT_DISCOVERY_LINKED_EXPRESSION_FAIL\":16000,\"LOCERR_DIRECT_DISCOVERY_ROWCOUNT_OVERFLOW\":16001,\"LOCERR_DIRECT_DISCOVERY_EMPTY_RESULT\":16002,\"LOCERR_DIRECT_DISCOVERY_DB_CONNECTION_FAILED\":16003,\"LOCERR_DIRECT_DISCOVERY_MEASURE_NOT_ALLOWED\":16004,\"LOCERR_DIRECT_DISCOVERY_DETAIL_NOT_ALLOWED\":16005,\"LOCERR_DIRECT_DISCOVERY_NOT_SYNTH_CIRCULAR_ALLOWED\":16006,\"LOCERR_DIRECT_DISCOVERY_ONLY_ONE_DD_TABLE_ALLOWED\":16007,\"LOCERR_DIRECT_DISCOVERY_DB_AUTHORIZATION_FAILED\":16008,\"LOCERR_SMART_LOAD_TABLE_NOT_FOUND\":17000,\"LOCERR_SMART_LOAD_TABLE_DUPLICATED\":17001,\"LOCERR_VARIABLE_NO_NAME\":18000,\"LOCERR_VARIABLE_DUPLICATE_NAME\":18001,\"LOCERR_VARIABLE_INCONSISTENCY\":18002,\"LOCERR_MEDIA_LIBRARY_LIST_FAILED\":19000,\"LOCERR_MEDIA_LIBRARY_CONTENT_FAILED\":19001,\"LOCERR_MEDIA_BUNDLING_FAILED\":19002,\"LOCERR_MEDIA_UNBUNDLING_FAILED\":19003,\"LOCERR_MEDIA_LIBRARY_NOT_FOUND\":19004,\"LOCERR_FEATURE_DISABLED\":20000,\"LOCERR_JSON_RPC_INVALID_REQUEST\":-32600,\"LOCERR_JSON_RPC_METHOD_NOT_FOUND\":-32601,\"LOCERR_JSON_RPC_INVALID_PARAMETERS\":-32602,\"LOCERR_JSON_RPC_INTERNAL_ERROR\":-32603,\"LOCERR_JSON_RPC_PARSE_ERROR\":-32700,\"LOCERR_MQ_SOCKET_CONNECT_FAILURE\":33000,\"LOCERR_MQ_SOCKET_OPEN_FAILURE\":33001,\"LOCERR_MQ_PROTOCOL_NO_RESPONE\":33002,\"LOCERR_MQ_PROTOCOL_LIBRARY_EXCEPTION\":33003,\"LOCERR_MQ_PROTOCOL_CONNECTION_CLOSED\":33004,\"LOCERR_MQ_PROTOCOL_CHANNEL_CLOSED\":33005,\"LOCERR_MQ_PROTOCOL_UNKNOWN_ERROR\":33006,\"LOCERR_MQ_PROTOCOL_INVALID_STATUS\":33007,\"LOCERR_EXTENGINE_GRPC_STATUS_OK\":22000,\"LOCERR_EXTENGINE_GRPC_STATUS_CANCELLED\":22001,\"LOCERR_EXTENGINE_GRPC_STATUS_UNKNOWN\":22002,\"LOCERR_EXTENGINE_GRPC_STATUS_INVALID_ARGUMENT\":22003,\"LOCERR_EXTENGINE_GRPC_STATUS_DEADLINE_EXCEEDED\":22004,\"LOCERR_EXTENGINE_GRPC_STATUS_NOT_FOUND\":22005,\"LOCERR_EXTENGINE_GRPC_STATUS_ALREADY_EXISTS\":22006,\"LOCERR_EXTENGINE_GRPC_STATUS_PERMISSION_DENIED\":22007,\"LOCERR_EXTENGINE_GRPC_STATUS_UNAUTHENTICATED\":220016,\"LOCERR_EXTENGINE_GRPC_STATUS_RESOURCE_EXHAUSTED\":22008,\"LOCERR_EXTENGINE_GRPC_STATUS_FAILED_PRECONDITION\":22009,\"LOCERR_EXTENGINE_GRPC_STATUS_ABORTED\":22010,\"LOCERR_EXTENGINE_GRPC_STATUS_OUT_OF_RANGE\":22011,\"LOCERR_EXTENGINE_GRPC_STATUS_UNIMPLEMENTED\":22012,\"LOCERR_EXTENGINE_GRPC_STATUS_INTERNAL\":22013,\"LOCERR_EXTENGINE_GRPC_STATUS_UNAVAILABLE\":22014,\"LOCERR_EXTENGINE_GRPC_STATUS_DATA_LOSS\":22015},\"LocalizedWarningCode\":{\"LOCWARN_PERSONAL_RELOAD_REQUIRED\":0,\"LOCWARN_PERSONAL_VERSION_EXPIRES_SOON\":1,\"LOCWARN_EXPORT_DATA_TRUNCATED\":1000,\"LOCWARN_COULD_NOT_OPEN_ALL_OBJECTS\":2000},\"GrpType\":{\"GRP_NX_NONE\":0,\"GRP_NX_HIEARCHY\":1,\"GRP_NX_COLLECTION\":2},\"ExportFileType\":{\"EXPORT_CSV_C\":0,\"EXPORT_CSV_T\":1,\"EXPORT_OOXML\":2},\"ExportState\":{\"EXPORT_POSSIBLE\":0,\"EXPORT_ALL\":1},\"DimCellType\":{\"NX_DIM_CELL_VALUE\":0,\"NX_DIM_CELL_EMPTY\":1,\"NX_DIM_CELL_NORMAL\":2,\"NX_DIM_CELL_TOTAL\":3,\"NX_DIM_CELL_OTHER\":4,\"NX_DIM_CELL_AGGR\":5,\"NX_DIM_CELL_PSEUDO\":6,\"NX_DIM_CELL_ROOT\":7,\"NX_DIM_CELL_NULL\":8},\"StackElemType\":{\"NX_STACK_CELL_NORMAL\":0,\"NX_STACK_CELL_TOTAL\":1,\"NX_STACK_CELL_OTHER\":2,\"NX_STACK_CELL_SUM\":3,\"NX_STACK_CELL_VALUE\":4,\"NX_STACK_CELL_PSEUDO\":5},\"SortIndicatorType\":{\"NX_SORT_INDICATE_NONE\":0,\"NX_SORT_INDICATE_ASC\":1,\"NX_SORT_INDICATE_DESC\":2},\"DimensionType\":{\"NX_DIMENSION_TYPE_DISCRETE\":0,\"NX_DIMENSION_TYPE_NUMERIC\":1,\"NX_DIMENSION_TYPE_TIME\":2},\"FieldSelectionMode\":{\"SELECTION_MODE_NORMAL\":0,\"SELECTION_MODE_AND\":1,\"SELECTION_MODE_NOT\":2},\"FrequencyMode\":{\"NX_FREQUENCY_NONE\":0,\"NX_FREQUENCY_VALUE\":1,\"NX_FREQUENCY_PERCENT\":2,\"NX_FREQUENCY_RELATIVE\":3},\"DataReductionMode\":{\"DATA_REDUCTION_NONE\":0,\"DATA_REDUCTION_ONEDIM\":1,\"DATA_REDUCTION_SCATTERED\":2,\"DATA_REDUCTION_CLUSTERED\":3,\"DATA_REDUCTION_STACKED\":4},\"HypercubeMode\":{\"DATA_MODE_STRAIGHT\":0,\"DATA_MODE_PIVOT\":1,\"DATA_MODE_PIVOT_STACK\":2},\"PatchOperationType\":{\"Add\":0,\"Remove\":1,\"Replace\":2},\"SelectionCellType\":{\"NX_CELL_DATA\":0,\"NX_CELL_TOP\":1,\"NX_CELL_LEFT\":2},\"MatchingFieldMode\":{\"MATCHINGFIELDMODE_MATCH_ALL\":0,\"MATCHINGFIELDMODE_MATCH_ONE\":1},\"SessionState\":{\"SESSION_CREATED\":0,\"SESSION_ATTACHED\":1},\"QrsChangeType\":{\"QRS_CHANGE_UNDEFINED\":0,\"QRS_CHANGE_ADD\":1,\"QRS_CHANGE_UPDATE\":2,\"QRS_CHANGE_DELETE\":3},\"ExtEngineDataType\":{\"NX_EXT_DATATYPE_STRING\":0,\"NX_EXT_DATATYPE_DOUBLE\":1,\"NX_EXT_DATATYPE_BOTH\":2},\"ExtEngineFunctionType\":{\"NX_EXT_FUNCTIONTYPE_SCALAR\":0,\"NX_EXT_FUNCTIONTYPE_AGGR\":1,\"NX_EXT_FUNCTIONTYPE_TENSOR\":2},\"ExtEngineMsgType\":{\"NX_EXT_MSGTYPE_FUNCTION_CALL\":1,\"NX_EXT_MSGTYPE_SCRIPT_CALL\":2,\"NX_EXT_MSGTYPE_RETURN_VALUE\":3,\"NX_EXT_MSGTYPE_RETURN_MULTIPLE\":4,\"NX_EXT_MSGTYPE_RETURN_ERROR\":5}},\"version\":\"12.20.0\"}");
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -11262,7 +11235,7 @@ module.exports = {"structs":{"Field":{"GetCardinal":{"In":[],"Out":[]},"GetAndMo
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports) {
 
 function _assertThisInitialized(self) {
@@ -11276,7 +11249,7 @@ function _assertThisInitialized(self) {
 module.exports = _assertThisInitialized;
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -11291,7 +11264,7 @@ function _setPrototypeOf(o, p) {
 module.exports = _setPrototypeOf;
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11304,7 +11277,7 @@ module.exports = _setPrototypeOf;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(36);
+var ReactPropTypesSecret = __webpack_require__(35);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -11362,7 +11335,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11381,7 +11354,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports) {
 
 function _arrayWithHoles(arr) {
@@ -11391,7 +11364,7 @@ function _arrayWithHoles(arr) {
 module.exports = _arrayWithHoles;
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
@@ -11423,7 +11396,7 @@ function _iterableToArrayLimit(arr, i) {
 module.exports = _iterableToArrayLimit;
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports) {
 
 function _nonIterableRest() {
@@ -11433,20 +11406,20 @@ function _nonIterableRest() {
 module.exports = _nonIterableRest;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(false);
+exports = module.exports = __webpack_require__(40)(false);
 // Imports
-var getUrl = __webpack_require__(42);
-var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(43));
-var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(44));
+var getUrl = __webpack_require__(41);
+var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(42));
+var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(43));
 // Module
 exports.push([module.i, "@font-face {\n  font-family: \"LUI icons\";\n  src: url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\"); }\n\n/****************\n * QdtFilter\n*****************/\n.lui-select {\n  border-color: #ced4da !important; }\n\n.qdt-filter-state-counts-bar {\n  position: relative;\n  height: 0.25rem;\n  background-color: #dee2e6;\n  border-left: 1px solid #dee2e6;\n  border-right: 1px solid #dee2e6; }\n\n.O {\n  color: #212529 !important; }\n\n.S {\n  color: #f8f9fa !important;\n  background-color: #009845 !important; }\n\n.A {\n  color: #212529 !important;\n  background-color: #dddddd !important; }\n\n.X {\n  color: #f8f9fa !important;\n  background-color: #A9A9A9 !important; }\n\n.XS {\n  color: #f8f9fa !important;\n  background-color: #A9A9A9 !important; }\n\n.lui-list .lui-list__item {\n  cursor: pointer; }\n\n.lui-list .lui-list__item.S,\n.lui-list .lui-list__item.A,\n.lui-list .lui-list__item.X,\n.lui-list .lui-list__item.XS {\n  border-bottom: 1px solid #fff; }\n\n.fixed-table {\n  table-layout: fixed; }\n\nth {\n  position: relative;\n  cursor: pointer; }\n\nth, td {\n  overflow: hidden; }\n\nth.active:after {\n  position: absolute;\n  top: calc(50% - 0.125rem);\n  margin-left: 0.5rem;\n  content: \"\";\n  width: 0;\n  height: 0;\n  border-left: 0.5rem solid transparent;\n  border-right: 0.5rem solid transparent;\n  border-top: 0.5rem solid #666; }\n\n.lui-select {\n  border-radius: 0 !important; }\n\n.lui-tab.lui-active, .lui-tab:focus, .lui-tab.lui-focused {\n  border-bottom: 2px solid #52CC52; }\n\n/****************\n * QdtButton \n*****************/\n.qtd-button {\n  display: inline-block;\n  cursor: pointer; }\n\n/****************\n * QdtTable \n*****************/\n.qtd-table-header {\n  width: 100%;\n  width: calc(100% - 18px);\n  width: -moz-calc(100% - 18px);\n  width: -webkit-calc(100% - 18px); }\n\n.qtd-table-body {\n  width: 100%; }\n  .qtd-table-body tr:nth-child(even) {\n    background: #e9ecef; }\n\n/**********************\n * QdtSelectionToolbar\n**********************/\n.qdt-selection-toolbar ul {\n  padding: 0;\n  font-size: 13px; }\n  .qdt-selection-toolbar ul li {\n    display: inline-block;\n    padding-right: 5px; }\n    .qdt-selection-toolbar ul li .dropdown-item {\n      font-size: 13px;\n      padding-top: 5px;\n      padding-bottom: 5px;\n      padding-left: 10px;\n      padding-right: 25px; }\n    .qdt-selection-toolbar ul li lui-button {\n      border: 1px solid #ced4da;\n      padding: 5px 10px;\n      cursor: pointer;\n      position: relative;\n      display: inline-block; }\n    .qdt-selection-toolbar ul li .btn-secondary {\n      color: #212529 !important;\n      background-color: #FFFFFF !important;\n      font-size: 13px;\n      border: 0;\n      padding: 5px 10px; }\n      .qdt-selection-toolbar ul li .btn-secondary:focus {\n        box-shadow: 0; }\n    .qdt-selection-toolbar ul li .clear-all {\n      padding-left: 15px; }\n\n.qdt-selection-toolbar .lui-icon {\n  font-size: 13px;\n  padding-left: 2px; }\n\n.qdt-selection-toolbar .lui-icon--remove {\n  color: #dc3545;\n  cursor: pointer; }\n  .qdt-selection-toolbar .lui-icon--remove:hover {\n    color: #fd7e14; }\n  .qdt-selection-toolbar .lui-icon--remove.pull-right {\n    position: absolute;\n    right: 0;\n    padding-right: 5px; }\n\n/**********************\n * QdtChart\n**********************/\n.qtd-chart .qdt-chart-header {\n  height: 30px; }\n  .qtd-chart .qdt-chart-header .qdt-chart-selection {\n    text-align: right; }\n    .qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button {\n      border: 0;\n      padding: 0;\n      margin-left: 5px; }\n      .qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove {\n        color: #F37777; }\n\n.qtd-chart .qdt-chart-svg {\n  position: relative; }\n  .qtd-chart .qdt-chart-svg rect:hover {\n    fill: #77b62a !important; }\n  .qtd-chart .qdt-chart-svg circle,\n  .qtd-chart .qdt-chart-svg rect,\n  .qtd-chart .qdt-chart-svg path {\n    cursor: pointer; }\n\n.qtd-chart::-webkit-scrollbar {\n  width: 10px;\n  height: 10px; }\n\n.qtd-chart::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  border-radius: 5px; }\n\n.qtd-chart::-webkit-scrollbar-thumb {\n  background-color: darkgrey;\n  outline: 1px solid slategrey;\n  border-radius: 5px; }\n\n.qdt-tooltip {\n  position: relative;\n  background: #000000;\n  border: 1px solid #d1d1d1;\n  color: white;\n  padding: 15px;\n  display: none;\n  z-index: 9999999; }\n  .qdt-tooltip:after, .qdt-tooltip:before {\n    top: 100%;\n    left: 50%;\n    border: solid transparent;\n    content: \" \";\n    height: 0;\n    width: 0;\n    position: absolute;\n    pointer-events: none; }\n  .qdt-tooltip:after {\n    border-color: rgba(0, 0, 0, 0);\n    border-top-color: #000000;\n    border-width: 10px;\n    margin-left: -10px; }\n  .qdt-tooltip:before {\n    border-color: rgba(209, 209, 209, 0);\n    border-top-color: #d1d1d1;\n    border-width: 11px;\n    margin-left: -11px; }\n\n/**********************\n * Preloader\n**********************/\n.qtd-preloader-bg {\n  background-color: black; }\n\n.qtd-preloader .qtd-preloader-ball1 {\n  background-color: rgba(0, 0, 0, 0);\n  border: 5px solid rgba(0, 183, 229, 0.9);\n  opacity: .9;\n  border-top: 5px solid rgba(0, 0, 0, 0);\n  border-left: 5px solid rgba(0, 0, 0, 0);\n  border-radius: 50px;\n  width: 50px;\n  height: 50px;\n  margin: 0 auto;\n  -moz-animation: spin .5s infinite linear;\n  -webkit-animation: spin .5s infinite linear; }\n\n.qtd-preloader .qtd-preloader-ball2 {\n  background-color: rgba(0, 0, 0, 0);\n  border: 5px solid rgba(0, 183, 229, 0.9);\n  opacity: .9;\n  border-top: 5px solid rgba(0, 0, 0, 0);\n  border-left: 5px solid rgba(0, 0, 0, 0);\n  border-radius: 50px;\n  width: 30px;\n  height: 30px;\n  margin: 0 auto;\n  position: relative;\n  top: -50px;\n  -moz-animation: spinoff .5s infinite linear;\n  -webkit-animation: spinoff .5s infinite linear; }\n\n.qtd-preloader .qtd-preloader-dots:after {\n  content: ' .';\n  animation: dots 500ms steps(5, end) infinite; }\n\n@-moz-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg); }\n  100% {\n    -moz-transform: rotate(360deg); } }\n\n@-moz-keyframes spinoff {\n  0% {\n    -moz-transform: rotate(0deg); }\n  100% {\n    -moz-transform: rotate(-360deg); } }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@-webkit-keyframes spinoff {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(-360deg); } }\n\n@keyframes dots {\n  0%, 20% {\n    color: rgba(0, 0, 0, 0);\n    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }\n  40% {\n    color: white;\n    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0); }\n  60% {\n    text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0); }\n  80%, 100% {\n    text-shadow: .25em 0 0 white, .5em 0 0 white; } }\n\n/**********************\n * QdtSearch\n**********************/\n.lui-search {\n  border: 1px solid #dee2e6; }\n  .lui-search .lui-list.lui-list__item {\n    text-align: left; }\n\n/**********************\n * PICASSO\n**********************/\n.pic-tooltip-content {\n  padding: 8px 15px !important; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box {\n    position: relative;\n    display: inline-block;\n    width: 10px;\n    height: 12px;\n    left: -14px;\n    bottom: -2px; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title {\n    display: inline-block;\n    position: relative;\n    left: -10px; }\n  .pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure {\n    display: inline-block;\n    text-align: right; }\n  .pic-tooltip-content .text-right {\n    text-align: right; }\n  .pic-tooltip-content .qdt-tooltip-row {\n    display: block; }\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value {\n      display: inline-block;\n      width: 50%;\n      padding-left: 5px; }\n    .pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value {\n      text-align: right; }\n", ""]);
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11542,7 +11515,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11569,19 +11542,19 @@ module.exports = function (url, needQuotes) {
 };
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "lui-icons.woff";
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "lui-icons.ttf";
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -11650,7 +11623,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(46);
+var	fixUrls = __webpack_require__(45);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -11985,7 +11958,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports) {
 
 
@@ -12080,7 +12053,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -12096,7 +12069,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -12106,7 +12079,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -12116,7 +12089,7 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12143,7 +12116,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(12);
+var helpers_extends = __webpack_require__(11);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
@@ -12162,9 +12135,9 @@ var react_default = /*#__PURE__*/__webpack_require__.n(react);
 var react_dom = __webpack_require__(17);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectSpread.js
-var objectSpread = __webpack_require__(11);
-var objectSpread_default = /*#__PURE__*/__webpack_require__.n(objectSpread);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
+var defineProperty = __webpack_require__(14);
+var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // CONCATENATED MODULE: ./src/utilities/Uid.js
 function uid(length) {
@@ -12242,6 +12215,11 @@ var globals = {
 // CONCATENATED MODULE: ./src/qApp.js
 
 
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
  // let qlik;
 // let { qlik } = utility.qlobals;
@@ -12352,7 +12330,7 @@ function () {
 
             return _context2.abrupt("return", new Promise(function (resolve) {
               if (utilities.globals.qlik) {
-                var app = utilities.globals.qlik.openApp(config.appId, objectSpread_default()({}, config, {
+                var app = utilities.globals.qlik.openApp(config.appId, _objectSpread({}, config, {
                   isSecure: config.secure,
                   prefix: prefix
                 }));
@@ -12365,7 +12343,7 @@ function () {
                     q.resize();
                   };
 
-                  var app = q.openApp(config.appId, objectSpread_default()({}, config, {
+                  var app = q.openApp(config.appId, _objectSpread({}, config, {
                     isSecure: config.secure,
                     prefix: prefix
                   }));
@@ -12397,11 +12375,11 @@ function () {
 
 
 
-var enigma = __webpack_require__(30);
+var enigma = __webpack_require__(29);
 
-var schema = __webpack_require__(31);
+var schema = __webpack_require__(30);
 
-var SenseUtilities = __webpack_require__(32);
+var SenseUtilities = __webpack_require__(31);
 
 var MAX_RETRIES = 3;
 var responseInterceptors = [{
@@ -14087,11 +14065,11 @@ var slicedToArray = __webpack_require__(16);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(13);
+var helpers_typeof = __webpack_require__(12);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // EXTERNAL MODULE: ./src/styles/index.scss
-var src_styles = __webpack_require__(14);
+var src_styles = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./src/utilities/Preloader.jsx
 
@@ -14159,6 +14137,10 @@ Preloader_Preloader.defaultProps = {
 
 
 
+
+function withListObject_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function withListObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { withListObject_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { withListObject_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /**
  * @name withListObject
@@ -14350,7 +14332,7 @@ function withListObject(Component) {
                   qPage = this.props.qPage;
                   qObject = this.state.qObject;
                   _context4.next = 5;
-                  return qObject.getListObjectData('/qListObjectDef', [objectSpread_default()({}, qPage, {
+                  return qObject.getListObjectData('/qListObjectDef', [withListObject_objectSpread({}, qPage, {
                     qTop: qTop
                   })]);
 
@@ -14424,7 +14406,7 @@ function withListObject(Component) {
               qLibraryId: typeof_default()(cols[0]) === 'object' && cols[0].qLibraryId ? cols[0].qLibraryId : ''
             };
             var qDef = qDimensions[currentColumn];
-            qProp.qListObjectDef = objectSpread_default()({}, qLibraryId, qDef, {
+            qProp.qListObjectDef = withListObject_objectSpread({}, qLibraryId, {}, qDef, {
               qShowAlternatives: true,
               qAutoSortByState: {
                 qDisplayNumberOfRows: autoSortByState
@@ -15428,6 +15410,10 @@ var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableA
 
 
 
+function withHyperCube_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function withHyperCube_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { withHyperCube_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { withHyperCube_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 /**
  * @name withHyperCube
  * @param {array} cols - The dimension for the ListObject
@@ -15497,7 +15483,7 @@ function withHyperCube(Component) {
                   qPage = _this.props.qPage;
                   qObject = _this.state.qObject;
                   _context2.next = 4;
-                  return qObject.getHyperCubeData('/qHyperCubeDef', [objectSpread_default()({}, qPage, {
+                  return qObject.getHyperCubeData('/qHyperCubeDef', [withHyperCube_objectSpread({}, qPage, {
                     qTop: qTop
                   })]);
 
@@ -17398,7 +17384,7 @@ QdtKpi.defaultProps = {
 /* harmony default export */ var components_QdtKpi = (QdtKpi);
 // CONCATENATED MODULE: ./node_modules/picasso.js/dist/picasso.esm.js
 /*
-* picasso.js v0.25.3
+* picasso.js v0.26.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -18017,7 +18003,7 @@ var parsePath_1 = parsePath;
 
 var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
-var defineProperty = Object.defineProperty;
+var picasso_esm_defineProperty = Object.defineProperty;
 var gOPD = Object.getOwnPropertyDescriptor;
 
 var isArray = function isArray(arr) {
@@ -18050,8 +18036,8 @@ var isPlainObject = function isPlainObject(obj) {
 
 // If name is '__proto__', and Object.defineProperty is available, define __proto__ as an own property on target
 var setProperty = function setProperty(target, options) {
-	if (defineProperty && options.name === '__proto__') {
-		defineProperty(target, options.name, {
+	if (picasso_esm_defineProperty && options.name === '__proto__') {
+		picasso_esm_defineProperty(target, options.name, {
 			enumerable: true,
 			configurable: true,
 			value: options.newValue,
@@ -18132,7 +18118,7 @@ var extend = function extend() {
 };
 
 var about = {
-  version: '0.25.3'
+  version: '0.26.1'
 };
 
 function picasso_esm_typeof(obj) {
@@ -18186,7 +18172,7 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _objectSpread(target) {
+function picasso_esm_objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
     var ownKeys = Object.keys(source);
@@ -22476,7 +22462,7 @@ function extract(dataConfig) {
     });
   } else if (dataConfig) {
     if ('collection' in dataConfig) {
-      extracted = _objectSpread({}, data.collection(dataConfig.collection));
+      extracted = picasso_esm_objectSpread({}, data.collection(dataConfig.collection));
     } else {
       var source = data.dataset ? data.dataset(dataConfig.source) : null;
 
@@ -27893,6 +27879,10 @@ function isPrimitive(x) {
  */
 
 /**
+ * @typedef {boolean|datum-config|datum-accessor} datum-boolean
+ */
+
+/**
  * Normalizes property settings
  *
  * @ignore
@@ -30902,13 +30892,13 @@ function chartFn(definition, context) {
     currentScales = collection$1(scales, {
       dataset: dataset,
       collection: dataCollection
-    }, _objectSpread({}, deps, {
+    }, picasso_esm_objectSpread({}, deps, {
       scale: registries.scale
     }));
     currentFormatters = collection(formatters, {
       dataset: dataset,
       collection: dataCollection
-    }, _objectSpread({}, deps, {
+    }, picasso_esm_objectSpread({}, deps, {
       formatter: registries.formatter
     }));
     currentScrollApis = builder(scroll, currentScrollApis);
@@ -31631,7 +31621,7 @@ function chartFn(definition, context) {
 
   if (element) {
     beforeMount();
-    mount(element);
+    mount();
     mounted(element);
     instance.element = element;
   }
@@ -32258,7 +32248,7 @@ function ds() {
      * @returns {Array<datum-extract>}
      */
     extract: function extract(cfg) {
-      return extract$1(cfg, dataset, cache);
+      return extract$1(cfg, dataset);
     },
 
     /**
@@ -32958,6 +32948,10 @@ function buildShapes(_ref) {
 
     if (!isOutOfBounds) {
       for (var k = 0; k < numNonOobKeys; k++) {
+        if (minorItem[nonOobKeys[k]] && minorItem[nonOobKeys[k]].show === false) {
+          continue;
+        }
+
         addMarkerList[nonOobKeys[k]]();
       }
     } else if (minorItem.oob) {
@@ -33389,8 +33383,8 @@ function getPxSpaceFromScale(s, space) {
 }
 
 function getPointSizeLimits(x, y, width, height, limits) {
-  var xSpacePx = getPxSpaceFromScale(x ? x.scale : undefined, width, limits);
-  var ySpacePx = getPxSpaceFromScale(y ? y.scale : undefined, height, limits);
+  var xSpacePx = getPxSpaceFromScale(x ? x.scale : undefined, width);
+  var ySpacePx = getPxSpaceFromScale(y ? y.scale : undefined, height);
   var maxSizePx = Math.min(xSpacePx.value * limits[xSpacePx.isBandwidth ? 'maxRelDiscrete' : 'maxRelExtent'], ySpacePx.value * limits[ySpacePx.isBandwidth ? 'maxRelDiscrete' : 'maxRelExtent']);
   var minSizePx = Math.min(xSpacePx.value * limits[xSpacePx.isBandwidth ? 'minRelDiscrete' : 'minRelExtent'], ySpacePx.value * limits[ySpacePx.isBandwidth ? 'minRelDiscrete' : 'minRelExtent']);
   var min = Math.max(1, Math.floor(minSizePx));
@@ -34299,7 +34293,7 @@ function oobManager(_ref) {
   };
 
   for (var i = 0, len = oobKeys.length; i < len; i++) {
-    _loop(i, len);
+    _loop(i);
   }
 }
 
@@ -36898,7 +36892,7 @@ function buildBubble(_ref2) {
   var bubble = inEdit ? h('input', {
     type: 'text',
     value: value,
-    style: _objectSpread({}, bubbleStyle, {
+    style: picasso_esm_objectSpread({}, bubbleStyle, {
       textAlign: 'start',
       textOverflow: '',
       fontSize: '13px' // TODO - make it styleable
@@ -37584,7 +37578,7 @@ function setEditedRanges(state, idx, startValue, endValue) {
     min: Math.max(limitMin, Math.min(startValue, endValue)),
     max: Math.min(limitMax, Math.max(startValue, endValue))
   };
-  state.ranges[idx] = _objectSpread({}, rs[idx]);
+  state.ranges[idx] = picasso_esm_objectSpread({}, rs[idx]);
   var scaleData = state.scale.data();
 
   if (scaleData && scaleData.fields) {
@@ -38845,7 +38839,7 @@ function isValidText(text) {
 }
 
 function toBackground(label) {
-  return _objectSpread({
+  return picasso_esm_objectSpread({
     type: 'rect',
     rx: 2,
     ry: 2,
@@ -39319,6 +39313,8 @@ function bars(_ref5) {
   });
 }
 
+var LABEL_OVERLAP_THRESHOLD_X = 4;
+
 function normalize$1(angle) {
   var PI2 = Math.PI * 2;
   return (angle % PI2 + PI2) % PI2; // normalize
@@ -39455,7 +39451,49 @@ function getRectFromCircleIntersection(_ref) {
 function getHorizontalInsideSliceRect(_ref2) {
   var slice = _ref2.slice,
       padding = _ref2.padding,
-      measured = _ref2.measured;
+      measured = _ref2.measured,
+      store = _ref2.store;
+  var start = slice.start,
+      end = slice.end,
+      outerRadius = slice.outerRadius;
+  var middle = normalize$1((start + end) / 2);
+  var size = {
+    width: measured.width + padding * 2,
+    height: measured.height + padding * 2
+  };
+  var bounds = getRectFromCircleIntersection({
+    radius: outerRadius,
+    size: size,
+    angle: middle
+  });
+
+  if (!bounds) {
+    return null;
+  }
+
+  bounds.baseline = 'top';
+  pad$2(bounds, padding);
+
+  if (store.insideLabelBounds.some(function (rect) {
+    return testRectRect(rect, bounds);
+  })) {
+    return null;
+  }
+
+  store.insideLabelBounds.push({
+    x: bounds.x - LABEL_OVERLAP_THRESHOLD_X,
+    y: bounds.y,
+    width: bounds.width + LABEL_OVERLAP_THRESHOLD_X * 2,
+    height: bounds.height
+  }); // Copy as bounds is mutated else where
+
+  return bounds;
+}
+
+function getHorizontalIntoSliceRect(_ref3) {
+  var slice = _ref3.slice,
+      padding = _ref3.padding,
+      measured = _ref3.measured;
   var start = slice.start,
       end = slice.end,
       innerRadius = slice.innerRadius,
@@ -39513,10 +39551,10 @@ function getHorizontalInsideSliceRect(_ref2) {
 } // TODO: this case can support a justify setting
 
 
-function getRotatedInsideSliceRect(_ref3) {
-  var slice = _ref3.slice,
-      measured = _ref3.measured,
-      padding = _ref3.padding;
+function getRotatedInsideSliceRect(_ref4) {
+  var slice = _ref4.slice,
+      measured = _ref4.measured,
+      padding = _ref4.padding;
   var start = slice.start,
       end = slice.end,
       innerRadius = slice.innerRadius,
@@ -39532,7 +39570,7 @@ function getRotatedInsideSliceRect(_ref3) {
     }
   }
 
-  if (maxWidth < 0) {
+  if (maxWidth < 0 || maxWidth < measured.minReqWidth) {
     return null;
   }
 
@@ -39556,11 +39594,11 @@ function getRotatedInsideSliceRect(_ref3) {
   return bounds;
 }
 
-function getRotatedOusideSliceRect(_ref4) {
-  var slice = _ref4.slice,
-      measured = _ref4.measured,
-      padding = _ref4.padding,
-      view = _ref4.view;
+function getRotatedOusideSliceRect(_ref5) {
+  var slice = _ref5.slice,
+      measured = _ref5.measured,
+      padding = _ref5.padding,
+      view = _ref5.view;
   var start = slice.start,
       end = slice.end,
       outerRadius = slice.outerRadius,
@@ -39608,8 +39646,8 @@ function getRotatedOusideSliceRect(_ref4) {
     }
   }
 
-  if (maxWidth <= 0) {
-    return 0;
+  if (maxWidth <= 0 || maxWidth < measured.minReqWidth) {
+    return null;
   }
 
   var bounds = {
@@ -39758,10 +39796,10 @@ function adjustBounds(bounds, context, slice) {
   }
 }
 
-function updateContext(_ref5) {
-  var context = _ref5.context,
-      node = _ref5.node,
-      bounds = _ref5.bounds;
+function updateContext(_ref6) {
+  var context = _ref6.context,
+      node = _ref6.node,
+      bounds = _ref6.bounds;
   var PADDING = 2;
   var _node$desc$slice = node.desc.slice,
       start = _node$desc$slice.start,
@@ -39801,12 +39839,12 @@ function updateContext(_ref5) {
   }
 }
 
-function getHorizontalOusideSliceRect(_ref6) {
-  var slice = _ref6.slice,
-      measured = _ref6.measured,
-      padding = _ref6.padding,
-      view = _ref6.view,
-      context = _ref6.context;
+function getHorizontalOusideSliceRect(_ref7) {
+  var slice = _ref7.slice,
+      measured = _ref7.measured,
+      padding = _ref7.padding,
+      view = _ref7.view,
+      context = _ref7.context;
   var start = slice.start,
       end = slice.end,
       outerRadius = slice.outerRadius,
@@ -39835,6 +39873,10 @@ function getHorizontalOusideSliceRect(_ref6) {
     if (_w2 < maxWidth) {
       maxWidth = _w2;
     }
+  }
+
+  if (maxWidth < measured.minReqWidth) {
+    return null;
   }
 
   var bounds = {
@@ -39885,14 +39927,15 @@ function placeTextOnPoint(rect, text, opts) {
   return label;
 }
 
-function getSliceRect(_ref7) {
-  var slice = _ref7.slice,
-      direction = _ref7.direction,
-      position = _ref7.position,
-      padding = _ref7.padding,
-      measured = _ref7.measured,
-      view = _ref7.view,
-      context = _ref7.context;
+function getSliceRect(_ref8) {
+  var slice = _ref8.slice,
+      direction = _ref8.direction,
+      position = _ref8.position,
+      padding = _ref8.padding,
+      measured = _ref8.measured,
+      view = _ref8.view,
+      context = _ref8.context,
+      store = _ref8.store;
   var start = slice.start,
       end = slice.end,
       innerRadius = slice.innerRadius,
@@ -39909,7 +39952,7 @@ function getSliceRect(_ref7) {
           padding: padding
         });
       } else {
-        bounds = getHorizontalInsideSliceRect({
+        bounds = getHorizontalIntoSliceRect({
           slice: slice,
           measured: measured,
           padding: padding
@@ -39936,7 +39979,8 @@ function getSliceRect(_ref7) {
         bounds = getHorizontalInsideSliceRect({
           slice: s,
           measured: measured,
-          padding: padding
+          padding: padding,
+          store: store
         });
       }
 
@@ -39978,13 +40022,14 @@ function getSliceRect(_ref7) {
   return bounds;
 }
 
-function findBestPlacement$1(_ref8) {
-  var context = _ref8.context,
-      direction = _ref8.direction,
-      measured = _ref8.measured,
-      node = _ref8.node,
-      placementSettings = _ref8.placementSettings,
-      rect = _ref8.rect;
+function findBestPlacement$1(_ref9) {
+  var context = _ref9.context,
+      direction = _ref9.direction,
+      measured = _ref9.measured,
+      node = _ref9.node,
+      placementSettings = _ref9.placementSettings,
+      rect = _ref9.rect,
+      store = _ref9.store;
   var sliceRect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getSliceRect;
 
   for (var p = 0; p < placementSettings.length; p++) {
@@ -39996,7 +40041,8 @@ function findBestPlacement$1(_ref8) {
       direction: direction,
       position: placement.position,
       measured: measured,
-      padding: placement.padding
+      padding: placement.padding,
+      store: store
     });
 
     if (!bounds) {
@@ -40073,6 +40119,22 @@ function sortNodes(nodes) {
   q4.sort(sortFn);
   return q1.concat(q2, q4, q3);
 }
+
+function measureText(text, stgns, renderer) {
+  var fontFamily = stgns.fontFamily;
+  var fontSize = "".concat(stgns.fontSize, "px");
+  var metrics = renderer.measureText({
+    text: text,
+    fontFamily: fontFamily,
+    fontSize: fontSize
+  });
+  metrics.minReqWidth = Math.min(metrics.width, renderer.measureText({
+    text: "".concat(text[0], "\u2026"),
+    fontFamily: fontFamily,
+    fontSize: fontSize
+  }).width);
+  return metrics;
+}
 /**
  * @typedef {object} component--labels~slices-label-strategy
  *
@@ -40092,13 +40154,13 @@ function sortNodes(nodes) {
  */
 
 
-function slices(_ref9) {
-  var settings = _ref9.settings,
-      chart = _ref9.chart,
-      nodes = _ref9.nodes,
-      rect = _ref9.rect,
-      renderer = _ref9.renderer,
-      style = _ref9.style;
+function slices(_ref10) {
+  var settings = _ref10.settings,
+      chart = _ref10.chart,
+      nodes = _ref10.nodes,
+      rect = _ref10.rect,
+      renderer = _ref10.renderer,
+      style = _ref10.style;
   var findPlacement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : findBestPlacement$1;
   var placer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : placeTextOnPoint;
   var defaults = extend({
@@ -40117,8 +40179,10 @@ function slices(_ref9) {
       return extend({}, defaults, settings, labelSetting, placement);
     });
   });
-  var labelStruct = {};
   var labels = [];
+  var store = {
+    insideLabelBounds: []
+  };
   nodes = sortNodes(nodes);
   var context = {};
 
@@ -40136,10 +40200,7 @@ function slices(_ref9) {
 
       var direction = typeof lblStngs.direction === 'function' ? lblStngs.direction(arg, i) : lblStngs.direction || 'horizontal';
       var linkData = typeof lblStngs.linkData === 'function' ? lblStngs.linkData(arg, i) : undefined;
-      labelStruct.fontFamily = lblStngs.fontFamily;
-      labelStruct.fontSize = "".concat(lblStngs.fontSize, "px");
-      labelStruct.text = text;
-      var measured = renderer.measureText(labelStruct);
+      var measured = measureText(text, lblStngs, renderer);
       var bestPlacement = findPlacement({
         context: context,
         direction: direction,
@@ -40147,7 +40208,8 @@ function slices(_ref9) {
         measured: measured,
         node: node,
         placementSettings: placementSettings[j],
-        rect: rect
+        rect: rect,
+        store: store
       });
       var bounds = bestPlacement.bounds;
       var placement = bestPlacement.placement;
@@ -42367,6 +42429,12 @@ var SETTINGS = {
     }
   }
 };
+/**
+ * @type {datum-boolean=}
+ * @memberof component--line-settings.coordinates
+ * @name defined
+ * @default true
+ */
 
 function createDisplayLayer(points, _ref) {
   var generator = _ref.generator,
@@ -42405,6 +42473,7 @@ function createDisplayLayers(layers, _ref2) {
         areaObj = layer.areaObj,
         points = layer.points;
     var areaGenerator = picasso_esm_area();
+    var defined = stngs.coordinates ? stngs.coordinates.defined : null;
     var lineGenerator;
     var secondaryLineGenerator;
     var minor = {
@@ -42431,9 +42500,18 @@ function createDisplayLayers(layers, _ref2) {
     ["".concat(minor.p, "0")](function (d) {
       return d.minor0 * minor.size;
     }) // eslint-disable-line no-unexpected-multiline
-    .defined(function (d) {
-      return typeof d.minor === 'number' && !isNaN(d.minor);
-    }).curve(CURVES[layerObj.curve === 'monotone' ? "monotone".concat(major.p) : layerObj.curve]);
+    .curve(CURVES[layerObj.curve === 'monotone' ? "monotone".concat(major.p) : layerObj.curve]);
+
+    if (defined) {
+      areaGenerator.defined(function (d) {
+        return typeof d.minor === 'number' && !isNaN(d.minor) && d.defined;
+      });
+    } else {
+      areaGenerator.defined(function (d) {
+        return typeof d.minor === 'number' && !isNaN(d.minor);
+      });
+    }
+
     lineGenerator = areaGenerator["line".concat(minor.p.toUpperCase(), "1")]();
     secondaryLineGenerator = areaGenerator["line".concat(minor.p.toUpperCase(), "0")](); // area layer
 
@@ -49611,7 +49689,7 @@ function measureTextHeight(fontSize) {
  */
 
 
-function measureText(_ref) {
+function measureText$1(_ref) {
   var text = _ref.text,
       fontSize = _ref.fontSize,
       fontFamily = _ref.fontFamily;
@@ -49637,7 +49715,7 @@ function measureText(_ref) {
  */
 
 function calcTextBounds(attrs) {
-  var measureFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : measureText;
+  var measureFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : measureText$1;
   var fontSize = attrs['font-size'] || attrs.fontSize;
   var fontFamily = attrs['font-family'] || attrs.fontFamily;
   var textMeasure = measureFn({
@@ -49695,7 +49773,7 @@ function calcTextBounds(attrs) {
 
 
 function textBounds(node) {
-  var measureFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : measureText;
+  var measureFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : measureText$1;
   var lineBreakFn = resolveLineBreakAlgorithm(node);
   var fontSize = node['font-size'] || node.fontSize;
   var fontFamily = node['font-family'] || node.fontFamily;
@@ -49988,7 +50066,7 @@ function create$n() {
      *  fontFamily: 'Arial'
      * }); // returns { width: 20, height: 12 }
      */
-    measureText: measureText,
+    measureText: measureText$1,
 
     /**
      * Calculates the bounding rectangle of a text node. Including any potential line breaks.
@@ -50418,7 +50496,7 @@ function flipTextAnchor(value, dir) {
 
 function render$7(t, _ref) {
   var g = _ref.g;
-  var text = ellipsText(t, measureText);
+  var text = ellipsText(t, measureText$1);
   g.font = "".concat(t['font-size'], " ").concat(t['font-family']);
   var dir = detectTextDirection(t.text);
 
@@ -50621,7 +50699,7 @@ var maintainer = function maintainer(element, item) {
       element.setAttribute('fill', item.fillReference);
     } else if (attr === 'text') {
       element.setAttribute('style', 'white-space: pre');
-      element.textContent = ellipsText(item.attrs, measureText);
+      element.textContent = ellipsText(item.attrs, measureText$1);
       var dir = detectTextDirection(item.attrs.text);
 
       if (dir === 'rtl') {
@@ -52125,7 +52203,7 @@ function pic() {
      * Renderer registry
      * @type {registry}
      */
-    renderer: rendererRegistry(registries.renderer, 'renderer', logger),
+    renderer: rendererRegistry(registries.renderer),
 
     /**
      * Scale registry
@@ -52463,6 +52541,11 @@ var picasso_q_esm = __webpack_require__(23);
 
 
 
+function QdtPicasso_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function QdtPicasso_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QdtPicasso_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QdtPicasso_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
 
 
 
@@ -52537,8 +52620,8 @@ function (_React$Component) {
             case 0:
               _this$props2 = _this.props, qLayout = _this$props2.qLayout, qData = _this$props2.qData, settings = _this$props2.settings, type = _this$props2.type, prio = _this$props2.prio, options = _this$props2.options, select = _this$props2.select, selections = _this$props2.selections, beginSelections = _this$props2.beginSelections;
               _this.mySettings = type ? picasso_settings[type] : settings;
-              data = objectSpread_default()({}, qLayout, {
-                qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+              data = QdtPicasso_objectSpread({}, qLayout, {
+                qHyperCube: QdtPicasso_objectSpread({}, qLayout.qHyperCube, {
                   qDataPages: [qData]
                 })
               });
@@ -52602,8 +52685,8 @@ function (_React$Component) {
           type = _this$props3.type,
           options = _this$props3.options;
 
-      var data = objectSpread_default()({}, qLayout, {
-        qHyperCube: objectSpread_default()({}, qLayout.qHyperCube, {
+      var data = QdtPicasso_objectSpread({}, qLayout, {
+        qHyperCube: QdtPicasso_objectSpread({}, qLayout.qHyperCube, {
           qDataPages: [qData]
         })
       });
