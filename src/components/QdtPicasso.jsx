@@ -6,6 +6,8 @@ import picassoQ from 'picasso-plugin-q';
 import withHyperCube from './withHyperCube';
 import { domPointLabel, domPointImage } from '../picasso/components';
 import preconfiguredSettings from '../picasso/settings';
+import QdtPicassoMiniMap from './QdtPicassoMiniMap';
+// import Preloader from '../utilities/Preloader';
 import '../styles/index.scss';
 
 picasso.component('domPointLabel', domPointLabel);
@@ -15,6 +17,7 @@ picasso.use(picassoQ);
 
 class QdtPicassoComponent extends React.Component {
   static propTypes = {
+    qPage: PropTypes.object.isRequired,
     qData: PropTypes.object.isRequired,
     qLayout: PropTypes.object.isRequired,
     select: PropTypes.func.isRequired,
@@ -25,6 +28,7 @@ class QdtPicassoComponent extends React.Component {
     outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    offset: PropTypes.func.isRequired,
     type: PropTypes.string,
     settings: PropTypes.object,
     options: PropTypes.object,
@@ -42,6 +46,9 @@ class QdtPicassoComponent extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      miniMapVisible: true,
+    };
     this.mySettings = null;
   }
 
@@ -59,6 +66,12 @@ class QdtPicassoComponent extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('click', this.handleOutsideClick);
     window.removeEventListener('resize', this.handleResize);
+  }
+
+  // setQTop - Sets the qTop. Used in the Minimap
+  setQTop = async (qTop) => {
+    const { offset } = this.props;
+    await offset(qTop);
   }
 
   handleOutsideClick = (event) => {
@@ -154,18 +167,20 @@ class QdtPicassoComponent extends React.Component {
   }
 
   render() {
+    let { innerHeight } = this.props;
     const {
-      selections, type, qData, outerWidth, outerHeight, innerWidth, innerHeight, options,
+      selections, type, qData, outerWidth, innerWidth, options, outerHeight,
     } = this.props;
-    let myInnerHeight = innerHeight;
+    const { miniMapVisible } = this.state;
     let maxWidth = '100%';
     let maxHeight = '100%';
     if (type === 'horizontalBarchart' && options.bar && options.bar.height && innerHeight === '100%') {
       maxHeight = qData.qMatrix.length * options.bar.height;
-      myInnerHeight = maxHeight;
+      innerHeight = maxHeight;
     }
     if (type === 'verticalBarchart') {
       maxWidth = qData.qMatrix.length * 50;
+      innerHeight = outerHeight - 50; // Add the  mini map
     }
     return (
       <div ref={node => this.root = node} style={{ position: 'relative' }}>
@@ -189,11 +204,14 @@ class QdtPicassoComponent extends React.Component {
             ref={node => this.element = node}
             style={{
               width: innerWidth,
-              height: myInnerHeight,
+              height: innerHeight,
               maxWidth,
               maxHeight,
             }}
           />
+          { type === 'verticalBarchart' && miniMapVisible
+            && <QdtPicassoMiniMap {...this.props} updatePic={this.updatePic} setQTop={this.setQTop} />
+          }
         </div>
       </div>
     );
