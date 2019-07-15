@@ -59,6 +59,7 @@ export default function withHyperCube(Component) {
         qObject: null,
         qLayout: null,
         qData: null,
+        qRData: null,
         selections: false,
         updating: false,
         error: null,
@@ -99,7 +100,20 @@ export default function withHyperCube(Component) {
     getData = async (qTop) => {
       const { qPage } = this.props;
       const { qObject } = this.state;
-      const qDataPages = await qObject.getHyperCubeData('/qHyperCubeDef', [{ ...qPage, qTop }]); // eslint-disable-line max-len
+      const qDataPages = await qObject.getHyperCubeData('/qHyperCubeDef', [{ ...qPage, qTop }]);
+      return qDataPages[0];
+    }
+
+    getReducedData = async () => {
+      const { qPage: { qWidth } } = this.props;
+      const qPage = {
+        qTop: 0,
+        qLeft: 0,
+        qWidth,
+        qHeight: Math.round(10000 / qWidth),
+      };
+      const { qObject } = this.state;
+      const qDataPages = await qObject.getHyperCubeReducedData('/qHyperCubeDef', [{ ...qPage }], -1, 'D1');
       return qDataPages[0];
     }
 
@@ -162,15 +176,18 @@ export default function withHyperCube(Component) {
       this.update(qTop);
     }
 
-    update = async (qTopPassed = 0) => {
+    update = async (qTopPassed = null) => {
       // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
       const { qData: qDataGenerated } = this.state || {};
       const { qArea } = qDataGenerated || {};
       const { qTop: qTopGenerated } = qArea || {};
-      const qTop = (qTopPassed) || qTopGenerated;
+      // We need to be able to pass qTopPassed=0 to force the update with qTop=0
+      const qTop = (qTopPassed !== null && qTopPassed >= 0) ? qTopPassed : qTopGenerated;
       this.setState({ updating: true });
-      const [qLayout, qData] = await Promise.all([this.getLayout(), this.getData(qTop)]);
-      this.setState({ updating: false, qLayout, qData });
+      const [qLayout, qData, qRData] = await Promise.all([this.getLayout(), this.getData(qTop), this.getReducedData()]);
+      this.setState({
+        updating: false, qLayout, qData, qRData,
+      });
     }
 
     beginSelections = async () => {
