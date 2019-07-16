@@ -8,6 +8,7 @@ import tooltip from './tooltip';
 import range from './range';
 import pie from './pie';
 import line from './line';
+import grid from './grid';
 
 export {
   domPointLabel,
@@ -20,4 +21,5 @@ export {
   range,
   pie,
   line,
+  grid,
 };
