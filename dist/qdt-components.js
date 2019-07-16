@@ -53085,7 +53085,6 @@ function (_React$Component) {
                 _this.mySettings.components[1].end = options.max;
               }
 
-              console.log(_this.mySettings);
               _this.pic = picasso_esm({
                 renderer: {
                   prio: [prio]
@@ -53113,7 +53112,7 @@ function (_React$Component) {
                 select(0, mySelections);
               });
 
-            case 10:
+            case 9:
             case "end":
               return _context2.stop();
           }

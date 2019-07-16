@@ -120,7 +120,6 @@ class QdtPicassoComponent extends React.Component {
       this.mySettings.scales.y.max = options.max;
       this.mySettings.components[1].end = options.max;
     }
-    console.log(this.mySettings);
     this.pic = picasso({ renderer: { prio: [prio] } }).chart({
       element: this.element,
       data: [{
