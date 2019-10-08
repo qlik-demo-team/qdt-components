@@ -75,22 +75,22 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  // optimization: {
-  //   minimizer: [
-  //     new UglifyJsPlugin({
-  //       include: /\.min\.js$/,
-  //       uglifyOptions: {
-  //         warnings: true,
-  //         parse: {},
-  //         compress: false,
-  //         mangle: true, // Note `mangle.properties` is `false` by default.
-  //         output: null,
-  //         toplevel: false,
-  //         nameCache: null,
-  //         ie8: false,
-  //         keep_fnames: false,
-  //       },
-  //     }),
-  //   ],
-  // },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /\.min\.js$/,
+        uglifyOptions: {
+          warnings: true,
+          parse: {},
+          compress: false,
+          mangle: true, // Note `mangle.properties` is `false` by default.
+          output: null,
+          toplevel: false,
+          nameCache: null,
+          ie8: false,
+          keep_fnames: false,
+        },
+      }),
+    ],
+  },
 };
