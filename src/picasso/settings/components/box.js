@@ -28,11 +28,10 @@ const component = function component({
       major: {
         scale: (orientation === 'vertical') ? 'x' : 'y',
         fn(d) {
-          if (orientation === 'vertical') {
-            // return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1)) + displayOrder * d.scale.bandwidth() * (1 / measures) + d.scale.bandwidth(); // 0.008 seems to be a padding issue somewhere and box is not centered
+          if (d.scale.bandwidth) {
             return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1));
           }
-          return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1));
+          return d.scale(d.datum.value);
         },
       },
       minor: { scale: (orientation === 'vertical') ? 'y' : 'x' },

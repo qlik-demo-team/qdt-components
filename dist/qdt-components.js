@@ -12765,12 +12765,11 @@ var box_component = function component() {
       major: {
         scale: orientation === 'vertical' ? 'x' : 'y',
         fn: function fn(d) {
-          if (orientation === 'vertical') {
-            // return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1)) + displayOrder * d.scale.bandwidth() * (1 / measures) + d.scale.bandwidth(); // 0.008 seems to be a padding issue somewhere and box is not centered
+          if (d.scale.bandwidth) {
             return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1);
           }
 
-          return d.scale(d.datum.value) + d.scale.bandwidth() / (measures + 1);
+          return d.scale(d.datum.value);
         }
       },
       minor: {
@@ -13783,7 +13782,8 @@ var verticalRangeGauge_setting = {
       field: 'qMeasureInfo/4'
     },
     fill: styles.palette[20],
-    stroke: styles.palette[9]
+    stroke: styles.palette[9],
+    measures: 4
   }), components_box({
     key: 'range',
     displayOrder: 2,
@@ -13795,7 +13795,8 @@ var verticalRangeGauge_setting = {
       field: 'qMeasureInfo/2'
     },
     fill: styles.palette[8],
-    stroke: styles.palette[9]
+    stroke: styles.palette[9],
+    measures: 4
   }), components_box({
     key: 'line',
     displayOrder: 4,
@@ -13807,7 +13808,8 @@ var verticalRangeGauge_setting = {
       field: 'qMeasureInfo/0'
     },
     fill: '#FFFFFF',
-    stroke: '#FFFFFF'
+    stroke: '#FFFFFF',
+    measures: 4
   }), components_labels({
     displayOrder: 4,
     component: 'line',
