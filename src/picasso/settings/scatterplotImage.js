@@ -79,7 +79,7 @@ export default {
           num: { field: 'qMeasureInfo/0' },
           qMeasure: { field: 'qMeasureInfo/0' },
           qMeasure2: { field: 'qMeasureInfo/1' },
-          qDimension: data => data,
+          qDimension: (data) => data,
         },
       },
     },

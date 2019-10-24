@@ -66,7 +66,7 @@ export default class QdtVirtualScroll extends React.Component {
     const qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
     return (
       <div
-        ref={node => this.node = node}
+        ref={(node) => this.node = node}
         style={{
           position: 'relative',
           height: `${viewportHeight}px`,

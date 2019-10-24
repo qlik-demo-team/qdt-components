@@ -16,8 +16,8 @@ const setting = {
         },
       },
       stack: {
-        stackKey: d => d.value,
-        value: d => d.end.value,
+        stackKey: (d) => d.value,
+        value: (d) => d.end.value,
       },
     },
   }],

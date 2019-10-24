@@ -132,7 +132,7 @@ class QdtPicassoComponent extends React.Component {
     this.pic.brush('select').on('start', () => { beginSelections(); select(0, [], false); });
     this.pic.brush('select').on('update', (added, removed) => {
       if (!selections && !added) return;
-      const mySelections = [...added, ...removed].map(v => v.values[0]);
+      const mySelections = [...added, ...removed].map((v) => v.values[0]);
       select(0, mySelections);
     });
   }
@@ -183,7 +183,7 @@ class QdtPicassoComponent extends React.Component {
       innerHeight = outerHeight - 50; // Add the  mini map
     }
     return (
-      <div ref={node => this.root = node} style={{ position: 'relative' }}>
+      <div ref={(node) => this.root = node} style={{ position: 'relative' }}>
         {selections
           && (
           <div style={{ position: 'absolute', top: '-2rem', right: 0 }}>
@@ -194,14 +194,13 @@ class QdtPicassoComponent extends React.Component {
               <span className="lui-icon lui-icon--tick" />
             </button>
           </div>
-          )
-        }
+          )}
         <div style={{
           position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto', paddingRight: 10,
         }}
         >
           <div
-            ref={node => this.element = node}
+            ref={(node) => this.element = node}
             style={{
               width: innerWidth,
               height: innerHeight,
@@ -210,8 +209,7 @@ class QdtPicassoComponent extends React.Component {
             }}
           />
           { type === 'verticalBarchart' && miniMapVisible
-            && <QdtPicassoMiniMap {...this.props} updatePic={this.updatePic} setQTop={this.setQTop} />
-          }
+            && <QdtPicassoMiniMap {...this.props} updatePic={this.updatePic} setQTop={this.setQTop} />}
         </div>
       </div>
     );

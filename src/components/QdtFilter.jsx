@@ -26,7 +26,7 @@ import '../styles/index.scss';
 /** Create the DropDown list */
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
-    {qMatrix.map(row => (
+    {qMatrix.map((row) => (
       <LuiListItem
         className={`${row[0].qState}`}
         key={row[0].qElemNumber}
@@ -157,7 +157,7 @@ class QdtFilterComponent extends React.Component {
   getSelections = async () => {
     const { qObject } = this.props;
     const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ qWidth: 1, qHeight: 10000 }]);
-    const selections = qDataPages[0].qMatrix.filter(row => row[0].qState === 'S');
+    const selections = qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S');
     this.setState({ selections });
   }
 
@@ -264,8 +264,7 @@ class QdtFilterComponent extends React.Component {
             <StateCountsBar qStateCounts={qStateCounts} />
             )}
           </LuiDropdown>
-          )
-        }
+          )}
         { expanded
         && (
         <LuiList style={{ width: '15rem' }}>
@@ -285,8 +284,7 @@ class QdtFilterComponent extends React.Component {
             viewportHeight={190}
           />
         </LuiList>
-        )
-        }
+        )}
         { expandedHorizontal
         && (
         <LuiTabset
@@ -299,8 +297,7 @@ class QdtFilterComponent extends React.Component {
             expandedHorizontalSense={expandedHorizontalSense}
           />
         </LuiTabset>
-        )
-        }
+        )}
       </div>
     );
   }

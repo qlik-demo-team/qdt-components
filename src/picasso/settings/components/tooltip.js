@@ -4,7 +4,7 @@ const component = {
   displayOrder: 10,
   settings: {
     // Since we only want to target the point marker
-    filter: nodes => nodes.filter(node => node.key === 'bar'
+    filter: (nodes) => nodes.filter((node) => node.key === 'bar'
       || node.key === 'range'
       || node.key === 'point'
       || node.key === 'point2'
@@ -14,7 +14,7 @@ const component = {
     extract: ({ node, resources }) => {
       const formatterFn = resources.formatter({ type: 'd3-number', format: '.2s' });
       const dataProps = Object.keys(node.data)
-        .filter(key => key !== 'value'
+        .filter((key) => key !== 'value'
           && key !== 'label'
           && key !== 'source'
           //   key !== 'legend' &&

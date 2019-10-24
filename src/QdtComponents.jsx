@@ -27,7 +27,7 @@ const QdtComponents = class {
     interactions: picassoInteractions,
   };
 
-  static unmountQdtComponent = element => ReactDOM.unmountComponentAtNode(element)
+  static unmountQdtComponent = (element) => ReactDOM.unmountComponentAtNode(element)
 
   static globals = utility.globals;
 
@@ -56,7 +56,7 @@ const QdtComponents = class {
           {...props}
           qAppPromise={qAppPromise}
           qDocPromise={qDocPromise}
-          ref={node => resolve(node)}
+          ref={(node) => resolve(node)}
         />,
         element,
       );

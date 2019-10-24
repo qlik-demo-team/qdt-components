@@ -40,7 +40,7 @@ of
           <span className="lui-icon lui-icon--triangle-bottom" />
         </div>
         <ul>
-          {value.selected.map(value2 => (
+          {value.selected.map((value2) => (
             <li key={value2}>
               {value2}
               <span
@@ -67,7 +67,7 @@ const QdtSelectionToolbar = ({
       if (value.qSelectedCount >= 1 && value.qSelectedCount <= 6) {
         return {
           field: value.qField,
-          selected: value.qSelectedFieldSelectionInfo.map(valueInner => valueInner.qName),
+          selected: value.qSelectedFieldSelectionInfo.map((valueInner) => valueInner.qName),
           total: value.qTotal,
         };
       } if (value.qSelectedCount > 6) {
@@ -90,8 +90,7 @@ const QdtSelectionToolbar = ({
           </strong>
         </li>
         {selections.length === 0
-        && <li className="no-selections">None</li>
-        }
+        && <li className="no-selections">None</li>}
         {selections.length >= 1 && selections.length <= 6
             && selections.map((value) => {
               if (value.selected.length === 1) {
@@ -110,11 +109,9 @@ const QdtSelectionToolbar = ({
                   <QdtSelectionToolbarDropdown value={value} clearSelections={clearSelections} />
                 </li>
               );
-            })
-        }
+            })}
         {selections.length >= 1 && selections.length <= 6
-        && <li><button type="button" className="lui-button lui-button--warning clear-all" onClick={() => clearSelections()} tabIndex={0}>{btnText}</button></li>
-        }
+        && <li><button type="button" className="lui-button lui-button--warning clear-all" onClick={() => clearSelections()} tabIndex={0}>{btnText}</button></li>}
       </ul>
     </div>
   );
