@@ -9,7 +9,7 @@ import '../styles/index.scss';
 
 const DropdownItemList = ({ qMatrix, rowHeight, select }) => (
   <span>
-    {qMatrix.map(row => (
+    {qMatrix.map((row) => (
       <LuiListItem
         className={`${row[0].qState}`}
         key={row[0].qElemNumber}
@@ -133,7 +133,7 @@ class QdtSearchComponent extends React.Component {
       } = this.props;
       const { dropdownOpen, value } = this.state;
       return (
-        <div ref={node => this.node = node}>
+        <div ref={(node) => this.node = node}>
           <LuiDropdown isOpen={dropdownOpen} toggle={this.toggle} select={false}>
             <LuiSearch
               value={value}

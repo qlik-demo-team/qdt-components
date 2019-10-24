@@ -7,11 +7,9 @@ import '../styles/index.scss';
 const QdtKpiComponent = ({ qData, roundNum }) => (
   <div className="qdt-kpi">
     { roundNum
-        && utility.RoundNum(qData.qMatrix[0][0].qNum, true)
-    }
+        && utility.RoundNum(qData.qMatrix[0][0].qNum, true)}
     { !roundNum
-        && qData.qMatrix[0][0].qText
-    }
+        && qData.qMatrix[0][0].qText}
   </div>
 );
 QdtKpiComponent.propTypes = {

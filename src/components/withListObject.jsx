@@ -111,7 +111,7 @@ export default function withListObject(Component) {
         if (qListObjectDef) {
           qProp.qListObjectDef = qListObjectDef;
         } else {
-          const qDimensions = cols.filter(col => (typeof col === 'string' && !col.startsWith('='))
+          const qDimensions = cols.filter((col) => (typeof col === 'string' && !col.startsWith('='))
             || (typeof col === 'object' && col.qDef && col.qDef.qFieldDefs)
             || (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
             .map((col) => {

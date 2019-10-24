@@ -38,7 +38,7 @@ const TableBody = ({
 }) => (
   <table className="qtd-table-body">
     <tbody>
-      {qMatrix.map(row => (
+      {qMatrix.map((row) => (
         <tr
           key={row.slice(0, 2).reduce((a, b) => (
             a.qElemNumber.toString().concat(b.qElemNumber.toString())))}
@@ -135,8 +135,8 @@ class QdtTableComponent extends React.Component {
     const columnWidth = 100 / qLayout.qHyperCube.qSize.qcx;
     const { sortColumn } = this.state;
     const labels = [
-      ...qLayout.qHyperCube.qDimensionInfo.map(dim => dim.qFallbackTitle),
-      ...qLayout.qHyperCube.qMeasureInfo.map(measure => measure.qFallbackTitle),
+      ...qLayout.qHyperCube.qDimensionInfo.map((dim) => dim.qFallbackTitle),
+      ...qLayout.qHyperCube.qMeasureInfo.map((measure) => measure.qFallbackTitle),
     ];
     return (
       <div ref={(node) => { this.node = node; }}>

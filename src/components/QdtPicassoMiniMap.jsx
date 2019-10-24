@@ -110,13 +110,13 @@ class QdtPicassoMiniMapComponent extends React.Component {
     const { left, width } = this.state;
     const { height } = this;
     return (
-      <div ref={node => this.root = node} style={{ position: 'relative' }}>
+      <div ref={(node) => this.root = node} style={{ position: 'relative' }}>
         <div style={{
           position: 'relative', width: outerWidth, height: '50px', overflow: 'auto', paddingRight: 10,
         }}
         >
           <div
-            ref={node => this.element = node}
+            ref={(node) => this.element = node}
             style={{
               backgroundColor: '#EFEFEF',
               padding: 3,
