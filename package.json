@@ -61,7 +61,7 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.16.0",
     "file-loader": "4.2.0",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.0",
     "postcss-loader": "3.0.0",
     "precss": "4.0.0",
     "sass-loader": "8.0.0",
