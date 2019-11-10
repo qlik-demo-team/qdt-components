@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import qApp from './qApp';
 import qDoc from './qDoc';
 import utility from './utilities';
-import picassoSettings from './picasso/settings';
-import * as picassoComponents from './picasso/settings/components';
-import * as picassoInteractions from './picasso/settings/interactions';
-import QdtFilter from './components/QdtFilter';
-import QdtTable from './components/QdtTable';
-import QdtViz from './components/QdtViz';
-import QdtSelectionToolbar from './components/QdtSelectionToolbar';
-import QdtKpi from './components/QdtKpi';
-import QdtButton from './components/QdtButton';
-import QdtPicasso from './components/QdtPicasso';
-import QdtSearch from './components/QdtSearch';
-import QdtCurrentSelections from './components/QdtCurrentSelections';
+import picassoSettings from './components/QdtPicasso/picasso/settings';
+import * as picassoComponents from './components/QdtPicasso/picasso/settings/components';
+import * as picassoInteractions from './components/QdtPicasso/picasso/settings/interactions';
+import QdtFilter from './components/QdtFilter/QdtFilter';
+import QdtTable from './components/QdtTable/QdtTable';
+import QdtViz from './components/QdtViz/QdtViz';
+import QdtSelectionToolbar from './components/QdtSelectionToolbar/QdtSelectionToolbar';
+import QdtKpi from './components/QdtKpi/QdtKpi';
+import QdtButton from './components/QdtButton/QdtButton';
+import QdtPicasso from './components/QdtPicasso/QdtPicasso';
+import QdtSearch from './components/QdtSearch/QdtSearch';
+import QdtCurrentSelections from './components/QdtCurrentSelections/QdtCurrentSelections';
 
 const components = {
   QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections,

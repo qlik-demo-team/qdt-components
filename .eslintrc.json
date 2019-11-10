@@ -1,24 +1,36 @@
 {
-	"extends": "airbnb",
+	"extends": ["airbnb", "plugin:react/recommended"],
 	"parser": "babel-eslint",
 	"env": {
 		"browser": true
 	},
 	"globals": {
-    	"Hammer": true
-    },
+		"Hammer": true
+	},
+	"plugins": [
+		"react-hooks"
+	],
 	"rules": {
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
 		"class-methods-use-this" : 0,
-        "global-require": 0,
-        "no-underscore-dangle": 0,
-        "max-len": [0],
-        "consistent-return": [1, { "treatUndefinedAsUnspecified": false }],
+		"global-require": 0,
+		"no-underscore-dangle": 0,
+		"max-len": [0],
+		"consistent-return": [1, { "treatUndefinedAsUnspecified": false }],
 		"react/forbid-prop-types": [0],
 		"jsx-a11y/click-events-have-key-events": [0],
 		"jsx-a11y/no-noninteractive-element-interactions": [0],
-        "jsx-a11y/no-static-elements-interactions": [0],
-        "no-return-assign": 0,
+		"jsx-a11y/no-static-elements-interactions": [0],
+		"no-return-assign": 0,
 		"no-console": ["warn", { "allow": ["info"] }],
-		"react/destructuring-assignment": [2]
-	}
+		"react/destructuring-assignment": [2],
+		"react/jsx-props-no-spreading": 1,
+		"jsx-a11y/control-has-associated-label": 0
+	},
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
