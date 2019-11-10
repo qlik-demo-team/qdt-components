@@ -21,24 +21,16 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: [
-            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-            ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-            '@babel/plugin-transform-runtime', 
-            '@babel/plugin-proposal-object-rest-spread']
-        },
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
-        loader: 'eslint-loader',
-        options: {
-          fix: true
-        },
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              fix: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(scss|css)$/,
@@ -73,7 +65,12 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    // Conflict with libraries like qdt-lui that use the same version of React
+    // alias: {
+    //   'react': path.join(__dirname, './node_modules/react'),
+    //   'react-dom': path.join(__dirname, '/node_modules/react-dom'),
+    // }
   },
   optimization: {
     minimizer: [
