@@ -1,6 +1,7 @@
 const labels = function labels({
   key = 'labels',
   component = 'cell',
+  dock = '@cell',
   selector = 'rect',
   displayOrder = 2,
   fontSize = 12,
