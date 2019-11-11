@@ -22,16 +22,14 @@ picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
 const QdtPicasso = ({
-  qDocPromise, cols, qPage, settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, ...otherProps
+  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, ...otherProps
 }) => {
   const rootNode = useRef(null);
   const elementNode = useRef(null);
   const [isSelectionBarVisible, setSelectionBarVisible] = useState(false);
   const {
     beginSelections, endSelections, qLayout, qData, qRData, offset, selections, select,
-  } = useHyperCube({
-    qDocPromise, cols, qPage, ...otherProps,
-  });
+  } = useHyperCube({ ...otherProps });
 
   let _innerHeight = innerHeight;
 
@@ -204,6 +202,7 @@ QdtPicasso.propTypes = {
   innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   afterConfirmSelections: PropTypes.func,
   prio: PropTypes.oneOf(['canvas', 'svg']),
+  getQRData: PropTypes.bool,
 };
 
 QdtPicasso.defaultProps = {
@@ -222,6 +221,7 @@ QdtPicasso.defaultProps = {
   innerHeight: '100%',
   afterConfirmSelections: null,
   prio: 'canvas',
+  getQRData: true,
 };
 
 export default QdtPicasso;

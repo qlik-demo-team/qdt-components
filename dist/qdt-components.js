@@ -214,28 +214,6 @@ module.exports = _defineProperty;
 /* 6 */
 /***/ (function(module, exports) {
 
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -257,7 +235,7 @@ function _extends() {
 module.exports = _extends;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var objectWithoutPropertiesLoose = __webpack_require__(43);
@@ -284,7 +262,7 @@ function _objectWithoutProperties(source, excluded) {
 module.exports = _objectWithoutProperties;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var content = __webpack_require__(44);
@@ -304,6 +282,28 @@ if (content.locals) {
   module.exports = content.locals;
 }
 
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
 
 /***/ }),
 /* 10 */
@@ -11952,7 +11952,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(7);
+var helpers_extends = __webpack_require__(6);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
@@ -14001,7 +14001,7 @@ LuiList_LuiList.defaultProps = {
 };
 /* harmony default export */ var QdtLui_LuiList = (LuiList_LuiList);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(8);
+var objectWithoutProperties = __webpack_require__(7);
 var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // CONCATENATED MODULE: ./src/components/QdtLui/LuiListItem.jsx
@@ -14216,7 +14216,7 @@ LuiTab_LuiTab.defaultProps = {
 
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(6);
+var helpers_typeof = __webpack_require__(9);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // CONCATENATED MODULE: ./src/hooks/useListObject.jsx
@@ -14853,7 +14853,7 @@ StateCountsBar_StateCountsBar.propTypes = {
 };
 /* harmony default export */ var QdtFilter_StateCountsBar = (StateCountsBar_StateCountsBar);
 // EXTERNAL MODULE: ./src/styles/index.scss
-var src_styles = __webpack_require__(9);
+var src_styles = __webpack_require__(8);
 
 // CONCATENATED MODULE: ./src/components/QdtFilter/QdtFilter.jsx
 
@@ -15098,7 +15098,8 @@ var useHyperCube_useHyperCube = function useHyperCube(_ref) {
       qSuppressZero = _ref.qSuppressZero,
       qSortByExpression = _ref.qSortByExpression,
       qSuppressMissing = _ref.qSuppressMissing,
-      qExpression = _ref.qExpression;
+      qExpression = _ref.qExpression,
+      getQRData = _ref.getQRData;
 
   var _useState = Object(react["useState"])(null),
       _useState2 = slicedToArray_default()(_useState, 2),
@@ -15484,14 +15485,22 @@ var useHyperCube_useHyperCube = function useHyperCube(_ref) {
               useHyperCube_qObject.on('changed', function () {
                 update();
               });
-              _context9.next = 12;
+
+              if (!getQRData) {
+                _context9.next = 14;
+                break;
+              }
+
+              _context9.next = 13;
               return getReducedData();
 
-            case 12:
+            case 13:
               useHyperCube_qRData = _context9.sent;
-              update();
 
             case 14:
+              update();
+
+            case 15:
             case "end":
               return _context9.stop();
           }
@@ -15529,7 +15538,8 @@ useHyperCube_useHyperCube.propTypes = {
   qSuppressZero: prop_types_default.a.bool,
   qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
   qSuppressMissing: prop_types_default.a.bool,
-  qExpression: prop_types_default.a.object
+  qExpression: prop_types_default.a.object,
+  getQRData: prop_types_default.a.bool
 };
 useHyperCube_useHyperCube.defaultProps = {
   cols: null,
@@ -15546,7 +15556,8 @@ useHyperCube_useHyperCube.defaultProps = {
   qSuppressZero: false,
   qSortByExpression: 0,
   qSuppressMissing: false,
-  qExpression: null
+  qExpression: null,
+  getQRData: false
 };
 /* harmony default export */ var hooks_useHyperCube = (useHyperCube_useHyperCube);
 // CONCATENATED MODULE: ./src/components/QdtTable/TableHead.jsx
@@ -52555,10 +52566,7 @@ picasso_esm.use(picasso_hammer_esm["a" /* default */]);
 picasso_esm.use(picasso_q_esm["a" /* default */]);
 
 var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
-  var qDocPromise = _ref.qDocPromise,
-      cols = _ref.cols,
-      qPage = _ref.qPage,
-      settings = _ref.settings,
+  var settings = _ref.settings,
       type = _ref.type,
       prio = _ref.prio,
       options = _ref.options,
@@ -52567,7 +52575,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       innerWidth = _ref.innerWidth,
       outerHeight = _ref.outerHeight,
       afterConfirmSelections = _ref.afterConfirmSelections,
-      otherProps = objectWithoutProperties_default()(_ref, ["qDocPromise", "cols", "qPage", "settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections"]);
+      otherProps = objectWithoutProperties_default()(_ref, ["settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections"]);
 
   var rootNode = Object(react["useRef"])(null);
   var elementNode = Object(react["useRef"])(null);
@@ -52577,11 +52585,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       isSelectionBarVisible = _useState2[0],
       setSelectionBarVisible = _useState2[1];
 
-  var _useHyperCube = hooks_useHyperCube(QdtPicasso_objectSpread({
-    qDocPromise: qDocPromise,
-    cols: cols,
-    qPage: qPage
-  }, otherProps)),
+  var _useHyperCube = hooks_useHyperCube(QdtPicasso_objectSpread({}, otherProps)),
       beginSelections = _useHyperCube.beginSelections,
       endSelections = _useHyperCube.endSelections,
       qLayout = _useHyperCube.qLayout,
@@ -52827,7 +52831,8 @@ QdtPicasso_QdtPicasso.propTypes = {
   innerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
   innerHeight: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
   afterConfirmSelections: prop_types_default.a.func,
-  prio: prop_types_default.a.oneOf(['canvas', 'svg'])
+  prio: prop_types_default.a.oneOf(['canvas', 'svg']),
+  getQRData: prop_types_default.a.bool
 };
 QdtPicasso_QdtPicasso.defaultProps = {
   qPage: {
@@ -52844,7 +52849,8 @@ QdtPicasso_QdtPicasso.defaultProps = {
   innerWidth: '100%',
   innerHeight: '100%',
   afterConfirmSelections: null,
-  prio: 'canvas'
+  prio: 'canvas',
+  getQRData: true
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);
 // CONCATENATED MODULE: ./src/components/QdtSearch/DropdownItemList.jsx
