@@ -1,4 +1,4 @@
-const mekkoLabels = function mekkoLabels({
+const columnLabels = function columnLabels({
   key = 'labels',
   component = 'bar-labels',
   dock = '@bar-labels',
@@ -39,4 +39,4 @@ const mekkoLabels = function mekkoLabels({
   return comp;
 };
 
-export default mekkoLabels;
+export default columnLabels;
