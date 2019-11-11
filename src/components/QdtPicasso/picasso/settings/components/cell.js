@@ -1,5 +1,5 @@
-const cell = () => { 
-    return {
+const cell = function cell() {
+  const comp = {
         key: 'cell',
         type: 'box',
         displayOrder: 3,
@@ -34,7 +34,7 @@ const cell = () => {
 
             },
         }
-
+    return comp
     }
 }
 
