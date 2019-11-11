@@ -12,7 +12,7 @@ const component = function component({
         component: `${scale}-axis`,
       },
       bubbles: {
-        align: 'start',
+        align: 'end',
       },
     },
   };
