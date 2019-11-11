@@ -52820,9 +52820,6 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 };
 
 QdtPicasso_QdtPicasso.propTypes = {
-  qDocPromise: prop_types_default.a.object.isRequired,
-  cols: prop_types_default.a.isRequired,
-  qPage: prop_types_default.a.object,
   type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
@@ -52832,15 +52829,20 @@ QdtPicasso_QdtPicasso.propTypes = {
   innerHeight: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
   afterConfirmSelections: prop_types_default.a.func,
   prio: prop_types_default.a.oneOf(['canvas', 'svg']),
+  // useHyperCube Props
+  qDocPromise: prop_types_default.a.object.isRequired,
+  cols: prop_types_default.a.isRequired,
+  qPage: prop_types_default.a.object,
+  qSortByAscii: prop_types_default.a.oneOf([1, 0, -1]),
+  qSortByLoadOrder: prop_types_default.a.oneOf([1, 0, -1]),
+  qInterColumnSortOrder: prop_types_default.a.array,
+  qSuppressZero: prop_types_default.a.bool,
+  qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
+  qSuppressMissing: prop_types_default.a.bool,
+  qExpression: prop_types_default.a.object,
   getQRData: prop_types_default.a.bool
 };
 QdtPicasso_QdtPicasso.defaultProps = {
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 1000
-  },
   type: null,
   settings: {},
   options: {},
@@ -52850,6 +52852,20 @@ QdtPicasso_QdtPicasso.defaultProps = {
   innerHeight: '100%',
   afterConfirmSelections: null,
   prio: 'canvas',
+  // useHyperCube Props
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 10,
+    qHeight: 1000
+  },
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
+  qInterColumnSortOrder: [],
+  qSuppressZero: false,
+  qSortByExpression: 0,
+  qSuppressMissing: false,
+  qExpression: null,
   getQRData: true
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);

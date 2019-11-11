@@ -175,9 +175,6 @@ const QdtPicasso = ({
 };
 
 QdtPicasso.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.isRequired,
-  qPage: PropTypes.object,
   type: PropTypes.oneOf([
     'comboLineBarchart',
     'horizontalBarchart',
@@ -202,16 +199,21 @@ QdtPicasso.propTypes = {
   innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   afterConfirmSelections: PropTypes.func,
   prio: PropTypes.oneOf(['canvas', 'svg']),
+  // useHyperCube Props
+  qDocPromise: PropTypes.object.isRequired,
+  cols: PropTypes.isRequired,
+  qPage: PropTypes.object,
+  qSortByAscii: PropTypes.oneOf([1, 0, -1]),
+  qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
+  qInterColumnSortOrder: PropTypes.array,
+  qSuppressZero: PropTypes.bool,
+  qSortByExpression: PropTypes.oneOf([1, 0, -1]),
+  qSuppressMissing: PropTypes.bool,
+  qExpression: PropTypes.object,
   getQRData: PropTypes.bool,
 };
 
 QdtPicasso.defaultProps = {
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 1000,
-  },
   type: null,
   settings: {},
   options: {},
@@ -221,6 +223,20 @@ QdtPicasso.defaultProps = {
   innerHeight: '100%',
   afterConfirmSelections: null,
   prio: 'canvas',
+  // useHyperCube Props
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 10,
+    qHeight: 1000,
+  },
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
+  qInterColumnSortOrder: [],
+  qSuppressZero: false,
+  qSortByExpression: 0,
+  qSuppressMissing: false,
+  qExpression: null,
   getQRData: true,
 };
 
