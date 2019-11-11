@@ -15585,8 +15585,12 @@ useHyperCube_useHyperCube.propTypes = {
   qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
   qSuppressMissing: prop_types_default.a.bool,
   qExpression: prop_types_default.a.object,
+<<<<<<< HEAD
   getQRData: prop_types_default.a.bool // Engine breaks on some HyperCubes
 
+=======
+  getQRData: prop_types_default.a.bool
+>>>>>>> e902524f844758eb2dcb21f2bca46a1986e050d9
 };
 useHyperCube_useHyperCube.defaultProps = {
   cols: null,
@@ -52616,10 +52620,7 @@ picasso_esm.use(picasso_hammer_esm["a" /* default */]);
 picasso_esm.use(picasso_q_esm["a" /* default */]);
 
 var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
-  var qDocPromise = _ref.qDocPromise,
-      cols = _ref.cols,
-      qPage = _ref.qPage,
-      settings = _ref.settings,
+  var settings = _ref.settings,
       type = _ref.type,
       prio = _ref.prio,
       options = _ref.options,
@@ -52628,7 +52629,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       innerWidth = _ref.innerWidth,
       outerHeight = _ref.outerHeight,
       afterConfirmSelections = _ref.afterConfirmSelections,
-      otherProps = objectWithoutProperties_default()(_ref, ["qDocPromise", "cols", "qPage", "settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections"]);
+      otherProps = objectWithoutProperties_default()(_ref, ["settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections"]);
 
   var rootNode = Object(react["useRef"])(null);
   var elementNode = Object(react["useRef"])(null);
@@ -52638,11 +52639,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       isSelectionBarVisible = _useState2[0],
       setSelectionBarVisible = _useState2[1];
 
-  var _useHyperCube = hooks_useHyperCube(QdtPicasso_objectSpread({
-    qDocPromise: qDocPromise,
-    cols: cols,
-    qPage: qPage
-  }, otherProps)),
+  var _useHyperCube = hooks_useHyperCube(QdtPicasso_objectSpread({}, otherProps)),
       beginSelections = _useHyperCube.beginSelections,
       endSelections = _useHyperCube.endSelections,
       qLayout = _useHyperCube.qLayout,
@@ -52877,9 +52874,6 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 };
 
 QdtPicasso_QdtPicasso.propTypes = {
-  qDocPromise: prop_types_default.a.object.isRequired,
-  cols: prop_types_default.a.isRequired,
-  qPage: prop_types_default.a.object,
   type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
@@ -52888,15 +52882,21 @@ QdtPicasso_QdtPicasso.propTypes = {
   innerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
   innerHeight: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
   afterConfirmSelections: prop_types_default.a.func,
-  prio: prop_types_default.a.oneOf(['canvas', 'svg'])
+  prio: prop_types_default.a.oneOf(['canvas', 'svg']),
+  // useHyperCube Props
+  qDocPromise: prop_types_default.a.object.isRequired,
+  cols: prop_types_default.a.isRequired,
+  qPage: prop_types_default.a.object,
+  qSortByAscii: prop_types_default.a.oneOf([1, 0, -1]),
+  qSortByLoadOrder: prop_types_default.a.oneOf([1, 0, -1]),
+  qInterColumnSortOrder: prop_types_default.a.array,
+  qSuppressZero: prop_types_default.a.bool,
+  qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
+  qSuppressMissing: prop_types_default.a.bool,
+  qExpression: prop_types_default.a.object,
+  getQRData: prop_types_default.a.bool
 };
 QdtPicasso_QdtPicasso.defaultProps = {
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 1000
-  },
   type: null,
   settings: {},
   options: {},
@@ -52905,7 +52905,22 @@ QdtPicasso_QdtPicasso.defaultProps = {
   innerWidth: '100%',
   innerHeight: '100%',
   afterConfirmSelections: null,
-  prio: 'canvas'
+  prio: 'canvas',
+  // useHyperCube Props
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 10,
+    qHeight: 1000
+  },
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
+  qInterColumnSortOrder: [],
+  qSuppressZero: false,
+  qSortByExpression: 0,
+  qSuppressMissing: false,
+  qExpression: null,
+  getQRData: true
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);
 // CONCATENATED MODULE: ./src/components/QdtSearch/DropdownItemList.jsx
