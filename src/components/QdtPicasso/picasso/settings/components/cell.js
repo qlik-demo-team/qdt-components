@@ -34,8 +34,8 @@ const cell = function cell() {
 
             },
         }
-    return comp
-    }
+  }
+  return comp
 }
 
 export default cell;
