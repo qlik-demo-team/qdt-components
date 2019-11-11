@@ -8,7 +8,7 @@ let selections = null;
 let qRData = null;
 
 const useHyperCube = ({
-  qDocPromise, qPage, cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qInterColumnSortOrder, qSuppressZero, qSortByExpression, qSuppressMissing, qExpression,
+  qDocPromise, qPage, cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qInterColumnSortOrder, qSuppressZero, qSortByExpression, qSuppressMissing, qExpression, getQRData,
 }) => {
   const [qData, setQData] = useState(null);
 
@@ -126,7 +126,7 @@ const useHyperCube = ({
       qDoc = await qDocPromise;
       qObject = await qDoc.createSessionObject(qProp);
       qObject.on('changed', () => { update(); });
-      qRData = await getReducedData();
+      if (getQRData) qRData = await getReducedData();
       update();
     })();
     return () => {
@@ -153,6 +153,7 @@ useHyperCube.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
+  getQRData: PropTypes.bool, // Engine breaks on some HyperCubes
 };
 
 useHyperCube.defaultProps = {
@@ -171,6 +172,7 @@ useHyperCube.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: false,
   qExpression: null,
+  getQRData: false,
 };
 
 export default useHyperCube;
