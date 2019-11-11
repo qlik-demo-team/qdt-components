@@ -1,5 +1,5 @@
 import {
-  axis, legend, tooltip, column, cell, mekkoLabels, columnLabels,
+  axis, legend, tooltip, column, cell, mekkoLabels,
 } from './components';
 import { itooltip, pan } from './interactions';
 import theme from '../../../../styles';
