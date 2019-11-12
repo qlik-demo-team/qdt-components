@@ -1,6 +1,7 @@
 // https://picassojs.com/docs/component-axis.html
 const component = function component({
   scale = 'x',
+  format,
   // formatter = null,
 } = {}) {
   const comp = {
@@ -8,6 +9,7 @@ const component = function component({
     key: `${scale}-axis`,
     scale,
     dock: (scale === 'x') ? 'bottom' : 'left',
+    format: format,
     // formatter,
     settings: {
       labels: {
