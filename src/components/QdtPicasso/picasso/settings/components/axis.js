@@ -9,7 +9,7 @@ const component = function component({
     key: `${scale}-axis`,
     scale,
     dock: (scale === 'x') ? 'bottom' : 'left',
-    format: format,
+    format,
     // formatter,
     settings: {
       labels: {

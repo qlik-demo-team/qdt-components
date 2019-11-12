@@ -237,7 +237,21 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 | showGo           | Boolean       | false         |
 
+#### QdtMapBox
+Create a map with layers using MapBox
+
+| prop             | type          | description   |
+| ---------------- | ------------- | ------------- |
+| cols             | Array         | `[id],[lat],[lon],[field]` |
+| accessToken      | String        | `pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q`  |
+| style            | String        | `mapbox://styles/mapbox/streets-v11`  |
+| center           | Array         | `[-74.50, 40]`  |
+| zoom             | Int           | `4`             |
+| height           | Int           | `400`             |
+
 ### Version Log
+- 2.1.0   Add mapbox
+- 2.0.0   Rewrite with hooks
 - 1.3.13  Adapt for Qlik Core scaling https://github.com/qlik-oss/core-scaling
 - 1.3.12  Expose globals like qlik and qlik.resize() so they can be used in mashups like 
           `const globals = QdtComponents.globals`
