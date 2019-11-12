@@ -7,7 +7,12 @@ const columnLabels = function columnLabels({
   fontSize = 12,
   type = 'rows',
   insideFill = '#FFFFFF',
-  outsideFill = '#666666',
+  // format = {
+  //   formatter: 'd3',
+  //   type: 'number',
+  //   format: '.0%',
+  // },
+  // outsideFill = '#666666',
 } = {}) {
   const comp = {
     type: 'labels',
@@ -24,12 +29,15 @@ const columnLabels = function columnLabels({
             fontSize,
             fill: insideFill,
             labels: [{
-               linkData({ node }) { return node.data; }, label: d => { if (!d.data) { return ''; }
-                  return `${d.data.series.label} (${d.formatter(format)(d.data.end.value - d.data.start.value)})`;},
-                },
-                {
-                linkData({ node }) { return node.data; }, label: d => (d.data ? `${d.data.metric.label}` : '') 
-                }],                    
+              linkData({ node }) { return node.data; },
+              label: (d) => {
+                if (!d.data) { return ''; }
+                return `${d.data.series.label} (${d.formatter()(d.data.end.value - d.data.start.value)})`;
+              },
+            },
+            {
+              linkData({ node }) { return node.data; }, label: (d) => (d.data ? `${d.data.metric.label}` : ''),
+            }],
           },
         },
       }],

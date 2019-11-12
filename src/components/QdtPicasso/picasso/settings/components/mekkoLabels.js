@@ -7,7 +7,12 @@ const mekkoLabels = function mekkoLabels({
   fontSize = 12,
   type = 'rows',
   insideFill = '#FFFFFF',
-  outsideFill = '#666666',
+  // format = {
+  //   formatter: 'd3',
+  //   type: 'number',
+  //   format: '.0%',
+  // },
+  // outsideFill = '#666666',
 } = {}) {
   const comp = {
     type: 'labels',
@@ -24,12 +29,12 @@ const mekkoLabels = function mekkoLabels({
             fontSize,
             fill: insideFill,
             labels: [{
-               label: d => d.data ? d.data.label : ''
+              label: (d) => (d.data ? d.data.label : ''),
             }, {
-               label: d => d.data ? d.formatter(format)(d.data.end.value - d.data.start.value): ''
+              label: (d) => (d.data ? d.formatter()(d.data.end.value - d.data.start.value) : ''),
             }, {
-               label: d => d.data ? (d.data.metric.value).toFixed(0) : ''
-             }]
+              label: (d) => (d.data ? (d.data.metric.value).toFixed(0) : ''),
+            }],
           },
         },
       }],

@@ -1,83 +1,89 @@
 import {
   axis,
-  legend,
   tooltip,
   column,
   cell,
+  columnLabels,
   mekkoLabels,
 } from './components';
 import {
   itooltip,
-  pan
+  pan,
 } from './interactions';
 import theme from '../../../../styles';
 
 const setting = {
   collections: [{
-      key: 'stacked',
-      data: {
-        extract: {
-          field: 'qDimensionInfo/1',
-          props: {
-            series: {
-              field: 'qDimensionInfo/0'
-            },
-            metric: {
-              field: 'qMeasureInfo/0',
-              reduce: 'sum'
-            },
-            end: {
-              field: 'qMeasureInfo/0',
-              reduce: 'sum'
-            },
+    key: 'stacked',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/1',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0',
+          },
+          metric: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum',
+          },
+          end: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum',
           },
         },
-        stack: {
-          value: (d) => d.end.value,
-          offset: 'expand'
+      },
+      stack: {
+        value: (d) => {
+          console.log(d);
+          return d.end.value;
         },
+        offset: 'expand',
       },
     },
-    {
-      key: 'span',
-      data: {
-        extract: {
-          field: 'qDimensionInfo/0',
-          trackBy: d => d.qElemNumber,
-          reduce: 'first',
-          props: {
-            series: {
-              field: 'qDimensionInfo/0'
-            },
-            metric: {
-              field: 'qMeasureInfo/0'
-            },
-            end: {
-              field: 'qMeasureInfo/0'
-            },
+  },
+  {
+    key: 'span',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/0',
+        trackBy: (d) => d.qElemNumber,
+        reduce: 'first',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0',
+          },
+          metric: {
+            field: 'qMeasureInfo/0',
+          },
+          end: {
+            field: 'qMeasureInfo/0',
           },
         },
-        stack: {
-          stackKey: (d) => -1,
-          value: (d) => d.end.value,
-          offset: 'expand'
-        },
       },
-    }
-  ],
-  formatters: {
-    myFormatter: {
-      formatter: 'd3',
-      type: 'number',
-      format: '.0%'
-    }
+      stack: {
+        stackKey: () => -1,
+        value: (d) => {
+          console.log(d);
+          return d.end.value;
+        },
+        offset: 'expand',
+      },
+    },
   },
+  ],
+  // formatters: {
+  //   myFormatter: {
+  //     formatter: 'd3',
+  //     type: 'number',
+  //     format: '.0%',
+  //   },
+  // },
   scales: {
     y: {
       data: {
         collection: {
-          key: 'stacked'
-        }
+          key: 'stacked',
+        },
       },
       invert: true,
       max: 1,
@@ -85,24 +91,24 @@ const setting = {
     b: {
       data: {
         collection: {
-          key: 'span'
-        }
+          key: 'span',
+        },
       },
-      type: 'band'
+      type: 'band',
     },
     m: {
       data: {
         collection: {
-          key: 'span'
-        }
+          key: 'span',
+        },
       },
-      max: 1
+      max: 1,
     },
     c: {
       data: {
         extract: {
-          field: 'qDimensionInfo/1'
-        }
+          field: 'qDimensionInfo/1',
+        },
       },
       range: theme.palette,
       type: 'color',
@@ -112,30 +118,23 @@ const setting = {
     axis({
       scale: 'y',
       format: '.0%',
-      dock: 'left'
+      dock: 'left',
     }),
     axis({
       scale: 'm',
       format: '.0%',
-      dock: 'bottom'
+      dock: 'bottom',
     }),
     tooltip,
     cell(),
     mekkoLabels({
-      format: myFormatter({
-        format: '.0%'
-      }),
       dock: '@cell',
-      comp: 'cell'
+      comp: 'cell',
     }),
     column({
-      scale: 'm'
+      scale: 'm',
     }),
-    columnLabels({
-      format: myFormatter({
-        format: '.0%'
-      })
-    }),
+    columnLabels(),
 
   ],
   interactions: [itooltip, pan()],

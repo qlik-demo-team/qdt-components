@@ -11942,6 +11942,10 @@ __webpack_require__.d(components_namespaceObject, "range", function() { return r
 __webpack_require__.d(components_namespaceObject, "pie", function() { return pie; });
 __webpack_require__.d(components_namespaceObject, "line", function() { return line; });
 __webpack_require__.d(components_namespaceObject, "grid", function() { return grid; });
+__webpack_require__.d(components_namespaceObject, "column", function() { return components_column; });
+__webpack_require__.d(components_namespaceObject, "columnLabels", function() { return components_columnLabels; });
+__webpack_require__.d(components_namespaceObject, "mekkoLabels", function() { return components_mekkoLabels; });
+__webpack_require__.d(components_namespaceObject, "cell", function() { return components_cell; });
 var interactions_namespaceObject = {};
 __webpack_require__.r(interactions_namespaceObject);
 __webpack_require__.d(interactions_namespaceObject, "itooltip", function() { return interactions_tooltip; });
@@ -12332,13 +12336,15 @@ var component = {
 var axis_component = function component() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       _ref$scale = _ref.scale,
-      scale = _ref$scale === void 0 ? 'x' : _ref$scale;
+      scale = _ref$scale === void 0 ? 'x' : _ref$scale,
+      format = _ref.format;
 
   var comp = {
     type: 'axis',
     key: "".concat(scale, "-axis"),
     scale: scale,
     dock: scale === 'x' ? 'bottom' : 'left',
+    format: format,
     // formatter,
     settings: {
       labels: {
@@ -12767,7 +12773,7 @@ var range_component = function component() {
         component: "".concat(scale, "-axis")
       },
       bubbles: {
-        align: 'start'
+        align: 'end'
       }
     }
   };
@@ -12925,7 +12931,217 @@ var grid_component = function component() {
 };
 
 /* harmony default export */ var grid = (grid_component);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/column.js
+var column = function column(opts) {
+  var comp = {
+    key: 'bar-labels',
+    // displayOrder: 4,
+    type: 'box',
+    dock: 'top',
+    preferredSize: function preferredSize() {
+      return 24;
+    },
+    data: {
+      collection: 'span'
+    },
+    settings: {
+      major: {
+        binStart: {
+          scale: opts.scale,
+          fn: function fn(b) {
+            var ss = b.resources.scale('b');
+            return b.resources.scale('m')(ss.datum(b.datum.value).start.value);
+          }
+        },
+        binEnd: {
+          fn: function fn(b) {
+            var ss = b.resources.scale('b');
+            return b.resources.scale('m')(ss.datum(b.datum.value).end.value);
+          }
+        }
+      },
+      minor: {
+        start: 0,
+        end: 1
+      },
+      box: {
+        fill: 'rgba(100, 0, 0, 0.0)'
+      }
+    }
+  };
+  return comp;
+};
+
+/* harmony default export */ var components_column = (column);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/columnLabels.js
+var columnLabels = function columnLabels() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$key = _ref.key,
+      key = _ref$key === void 0 ? 'labels' : _ref$key,
+      _ref$component = _ref.component,
+      component = _ref$component === void 0 ? 'bar-labels' : _ref$component,
+      _ref$dock = _ref.dock,
+      dock = _ref$dock === void 0 ? '@bar-labels' : _ref$dock,
+      _ref$selector = _ref.selector,
+      selector = _ref$selector === void 0 ? 'rect' : _ref$selector,
+      _ref$displayOrder = _ref.displayOrder,
+      displayOrder = _ref$displayOrder === void 0 ? 2 : _ref$displayOrder,
+      _ref$fontSize = _ref.fontSize,
+      fontSize = _ref$fontSize === void 0 ? 12 : _ref$fontSize,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'rows' : _ref$type,
+      _ref$insideFill = _ref.insideFill,
+      insideFill = _ref$insideFill === void 0 ? '#FFFFFF' : _ref$insideFill;
+
+  var comp = {
+    type: 'labels',
+    dock: dock,
+    key: key,
+    displayOrder: displayOrder,
+    settings: {
+      sources: [{
+        component: component,
+        selector: selector,
+        strategy: {
+          type: type,
+          settings: {
+            fontSize: fontSize,
+            fill: insideFill,
+            labels: [{
+              linkData: function linkData(_ref2) {
+                var node = _ref2.node;
+                return node.data;
+              },
+              label: function label(d) {
+                if (!d.data) {
+                  return '';
+                }
+
+                return "".concat(d.data.series.label, " (").concat(d.formatter()(d.data.end.value - d.data.start.value), ")");
+              }
+            }, {
+              linkData: function linkData(_ref3) {
+                var node = _ref3.node;
+                return node.data;
+              },
+              label: function label(d) {
+                return d.data ? "".concat(d.data.metric.label) : '';
+              }
+            }]
+          }
+        }
+      }]
+    }
+  };
+  return comp;
+};
+
+/* harmony default export */ var components_columnLabels = (columnLabels);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/mekkoLabels.js
+var mekkoLabels = function mekkoLabels() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$key = _ref.key,
+      key = _ref$key === void 0 ? 'labels' : _ref$key,
+      _ref$component = _ref.component,
+      component = _ref$component === void 0 ? 'cell' : _ref$component,
+      _ref$dock = _ref.dock,
+      dock = _ref$dock === void 0 ? '@cell' : _ref$dock,
+      _ref$selector = _ref.selector,
+      selector = _ref$selector === void 0 ? 'rect' : _ref$selector,
+      _ref$displayOrder = _ref.displayOrder,
+      displayOrder = _ref$displayOrder === void 0 ? 2 : _ref$displayOrder,
+      _ref$fontSize = _ref.fontSize,
+      fontSize = _ref$fontSize === void 0 ? 12 : _ref$fontSize,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'rows' : _ref$type,
+      _ref$insideFill = _ref.insideFill,
+      insideFill = _ref$insideFill === void 0 ? '#FFFFFF' : _ref$insideFill;
+
+  var comp = {
+    type: 'labels',
+    dock: dock,
+    key: key,
+    displayOrder: displayOrder,
+    settings: {
+      sources: [{
+        component: component,
+        selector: selector,
+        strategy: {
+          type: type,
+          settings: {
+            fontSize: fontSize,
+            fill: insideFill,
+            labels: [{
+              label: function label(d) {
+                return d.data ? d.data.label : '';
+              }
+            }, {
+              label: function label(d) {
+                return d.data ? d.formatter()(d.data.end.value - d.data.start.value) : '';
+              }
+            }, {
+              label: function label(d) {
+                return d.data ? d.data.metric.value.toFixed(0) : '';
+              }
+            }]
+          }
+        }
+      }]
+    }
+  };
+  return comp;
+};
+
+/* harmony default export */ var components_mekkoLabels = (mekkoLabels);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/cell.js
+var cell = function cell() {
+  var comp = {
+    key: 'cell',
+    type: 'box',
+    displayOrder: 3,
+    data: {
+      collection: 'stacked'
+    },
+    settings: {
+      major: {
+        ref: 'series',
+        binStart: {
+          scale: 'm',
+          fn: function fn(b) {
+            var ss = b.resources.scale('b');
+            return b.resources.scale('m')(ss.datum(b.datum.series.value).start.value);
+          }
+        },
+        binEnd: {
+          fn: function fn(b) {
+            var ss = b.resources.scale('b');
+            return b.resources.scale('m')(ss.datum(b.datum.series.value).end.value);
+          }
+        }
+      },
+      minor: {
+        scale: 'y',
+        ref: 'end'
+      },
+      box: {
+        fill: {
+          scale: 'c'
+        },
+        opacity: 1,
+        strokeWidth: 1,
+        stroke: '#fff'
+      }
+    }
+  };
+  return comp;
+};
+
+/* harmony default export */ var components_cell = (cell);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/index.js
+
+
+
+
 
 
 
@@ -13789,7 +14005,133 @@ var gantt_setting = {
   })]
 };
 /* harmony default export */ var gantt = (gantt_setting);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/mekkochart.js
+
+
+
+var mekkochart_setting = {
+  collections: [{
+    key: 'stacked',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/1',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0'
+          },
+          metric: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum'
+          },
+          end: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum'
+          }
+        }
+      },
+      stack: {
+        value: function value(d) {
+          console.log(d);
+          return d.end.value;
+        },
+        offset: 'expand'
+      }
+    }
+  }, {
+    key: 'span',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/0',
+        trackBy: function trackBy(d) {
+          return d.qElemNumber;
+        },
+        reduce: 'first',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0'
+          },
+          metric: {
+            field: 'qMeasureInfo/0'
+          },
+          end: {
+            field: 'qMeasureInfo/0'
+          }
+        }
+      },
+      stack: {
+        stackKey: function stackKey() {
+          return -1;
+        },
+        value: function value(d) {
+          console.log(d);
+          return d.end.value;
+        },
+        offset: 'expand'
+      }
+    }
+  }],
+  // formatters: {
+  //   myFormatter: {
+  //     formatter: 'd3',
+  //     type: 'number',
+  //     format: '.0%',
+  //   },
+  // },
+  scales: {
+    y: {
+      data: {
+        collection: {
+          key: 'stacked'
+        }
+      },
+      invert: true,
+      max: 1
+    },
+    b: {
+      data: {
+        collection: {
+          key: 'span'
+        }
+      },
+      type: 'band'
+    },
+    m: {
+      data: {
+        collection: {
+          key: 'span'
+        }
+      },
+      max: 1
+    },
+    c: {
+      data: {
+        extract: {
+          field: 'qDimensionInfo/1'
+        }
+      },
+      range: styles.palette,
+      type: 'color'
+    }
+  },
+  components: [axis({
+    scale: 'y',
+    format: '.0%',
+    dock: 'left'
+  }), axis({
+    scale: 'm',
+    format: '.0%',
+    dock: 'bottom'
+  }), tooltip, components_cell(), components_mekkoLabels({
+    dock: '@cell',
+    comp: 'cell'
+  }), components_column({
+    scale: 'm'
+  }), components_columnLabels()],
+  interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
+};
+/* harmony default export */ var mekkochart = (mekkochart_setting);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/index.js
+
 
 
 
@@ -13818,7 +14160,8 @@ var gantt_setting = {
   verticalGauge: verticalGauge,
   verticalGroupBarchart: verticalGroupBarchart,
   rangeArea: rangeArea,
-  gantt: gantt
+  gantt: gantt,
+  mekko: mekkochart
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
 var slicedToArray = __webpack_require__(4);
@@ -52820,7 +53163,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 };
 
 QdtPicasso_QdtPicasso.propTypes = {
-  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt']),
+  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt', 'mekko']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
   outerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
