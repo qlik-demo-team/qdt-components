@@ -1,23 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
 import useHyperCube from '../../hooks/useHyperCube';
+import Theme from '../../styles';
 
 let mapData = [];
 let map = null;
 let GeoJSON = null;
+let propertyChildren = null;
+let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, ...hyperCubeProps
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, ...hyperCubeProps
 }) => {
-  console.log('QdtMapBox');
   const node = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { qData } = useHyperCube({ ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
-  let propertyChildren = null;
 
   function buildFeatureSimplified(obj) {
-    console.log('QdtmapBox-buildFeatureSimplified', property);
     const featureObj = {
       type: 'Feature',
       properties: {
@@ -33,20 +34,20 @@ const QdtMapBox = ({
     return featureObj;
   }
 
-  const createPropertyChilderFromQData = () => propertyChildren = [...new Set(qData.qMatrix.map((array) => array[3].qText))];
+  const createPropertyChilderFromQData = () => {
+    propertyChildren = [...new Set(qData.qMatrix.map((array) => array[3].qText))];
+    propertyChildrenWithColors = propertyChildren.reduce((r, e, i) => r.push(e, Theme.palette[i]) && r, []);
+  };
 
   // ========================================================
   // Convert qMatrix to GeoJSON
   //
   // Given the qMatrix Data, it converts it to properly formatted GeoJSON
   function buildGeoJSON() {
-    console.log('QdtmapBox-buildGeoJSON');
     const goodGeoJSON = {
       type: 'FeatureCollection',
       features: [],
     };
-
-    createPropertyChilderFromQData();
 
     qData.qMatrix.map((array) => {
       if (typeof array[1].qNum !== 'number' || typeof array[2].qNum !== 'number') return false;
@@ -68,7 +69,7 @@ const QdtMapBox = ({
   // ========================================================
   // Build Layer
   function buildLayer() {
-    console.log('QdtmapBox-buildLayer', propertyChildren);
+    const match = ['match', ['get', property], ...propertyChildrenWithColors, '#FFF'];
     const layer = {
       id: 'dots',
       type: 'circle',
@@ -76,7 +77,8 @@ const QdtMapBox = ({
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': 5,
-        'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
+        // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
+        'circle-color': match,
         'circle-opacity': 1,
       },
     };
@@ -89,7 +91,6 @@ const QdtMapBox = ({
   // Using the GeoJSON and map object, we create a Layer for the dots and add them to the map
   // This function also sets up the periodic update to cycle through the dots
   const buildMap = () => {
-    console.log('QdtmapBox-buildMap');
     map.addSource('users', {
       type: 'geojson',
       data: GeoJSON,
@@ -101,7 +102,6 @@ const QdtMapBox = ({
   // ==========================================================================
   // Updates the map to display the appropriate layer
   const updateLayers = () => {
-    console.log('QdtmapBox-updateLayers');
     const nextChunk = qData.qMatrix.map((array) => {
       const obj = {
         id: Number(array[0].qNum),
@@ -113,19 +113,15 @@ const QdtMapBox = ({
       return buildFeatureSimplified(obj);
     });
     if (GeoJSON) {
-      console.log('QdtmapBox-updateLayers-11');
       GeoJSON = { ...GeoJSON, features: [...GeoJSON.features, ...nextChunk] };
-      console.log('QdtmapBox-updateLayers-12');
       map.getSource('users').setData(GeoJSON);
     } else {
-      console.log('QdtmapBox-updateLayers-2');
       GeoJSON = buildGeoJSON();
       buildMap();
     }
   };
 
   const mapInit = () => {
-    console.log('QdtmapBox-mapInit');
     mapboxgl.accessToken = accessToken;
     map = new mapboxgl.Map({
       container: node.current, // container id
@@ -141,19 +137,40 @@ const QdtMapBox = ({
   };
 
   useEffect(() => {
-    console.log('QdtMapBox-useEffect');
-    if (qData) mapInit();
+    if (qData) {
+      setIsLoaded(true);
+      createPropertyChilderFromQData();
+      mapInit();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
 
   return (
     <>
-      <div
-        ref={node}
-        style={{
-          width, height, minWidth, minHeight,
-        }}
-      />
+      <div style={{ display: 'block', position: 'relative' }}>
+        <div
+          ref={node}
+          style={{
+            width, height: height - 50, minWidth, minHeight,
+          }}
+        />
+      </div>
+      <div style={{
+        display: 'block', position: 'relative', height: 20, padding: 2, fontSize: 11,
+      }}
+      >
+        {legend && isLoaded && propertyChildrenWithColors.map((value, index) => ((index % 2 === 0) ? (
+          <div style={{ display: 'inline-block' }}>
+            {value}
+:
+          </div>
+        ) : (
+          <div style={{
+            width: 10, height: 10, backgroundColor: value, display: 'inline-block', marginRight: 10, marginLeft: 3,
+          }}
+          />
+        )))}
+      </div>
     </>
   );
 };
@@ -167,6 +184,7 @@ QdtMapBox.propTypes = {
   height: PropTypes.string,
   minWidth: PropTypes.string,
   minHeight: PropTypes.string,
+  legend: PropTypes.bool,
   // useHyperCube props
   cols: PropTypes.array,
   qPage: PropTypes.object,
@@ -188,6 +206,7 @@ QdtMapBox.defaultProps = {
   height: '100%',
   minWidth: 'auto',
   minHeight: 'auto',
+  legend: true, // @TODO - Dock options left, top, bottom or none
   // useHyperCube props
   cols: null,
   qPage: {

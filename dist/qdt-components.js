@@ -11978,7 +11978,7 @@ var components_namespaceObject = {};
 __webpack_require__.r(components_namespaceObject);
 __webpack_require__.d(components_namespaceObject, "domPointLabel", function() { return domPointLabel; });
 __webpack_require__.d(components_namespaceObject, "axis", function() { return axis; });
-__webpack_require__.d(components_namespaceObject, "legend", function() { return legend; });
+__webpack_require__.d(components_namespaceObject, "legend", function() { return components_legend; });
 __webpack_require__.d(components_namespaceObject, "point", function() { return point; });
 __webpack_require__.d(components_namespaceObject, "box", function() { return components_box; });
 __webpack_require__.d(components_namespaceObject, "labels", function() { return components_labels; });
@@ -12377,13 +12377,15 @@ var component = {
 var axis_component = function component() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       _ref$scale = _ref.scale,
-      scale = _ref$scale === void 0 ? 'x' : _ref$scale;
+      scale = _ref$scale === void 0 ? 'x' : _ref$scale,
+      format = _ref.format;
 
   var comp = {
     type: 'axis',
     key: "".concat(scale, "-axis"),
     scale: scale,
     dock: scale === 'x' ? 'bottom' : 'left',
+    format: format,
     // formatter,
     settings: {
       labels: {
@@ -12447,7 +12449,7 @@ var legend_component = {
     }]
   }
 };
-/* harmony default export */ var legend = (legend_component);
+/* harmony default export */ var components_legend = (legend_component);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/components/point.js
 var point_component = function component() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -12812,7 +12814,7 @@ var range_component = function component() {
         component: "".concat(scale, "-axis")
       },
       bubbles: {
-        align: 'start'
+        align: 'end'
       }
     }
   };
@@ -13147,7 +13149,7 @@ var scatterplot_component = {
   },
   components: [axis(), axis({
     scale: 'y'
-  }), legend, domPointLabel, point({
+  }), components_legend, domPointLabel, point({
     x: {
       field: 'qMeasureInfo/1'
     }
@@ -13418,7 +13420,7 @@ var pie_setting = {
       type: 'color'
     }
   },
-  components: [legend, tooltip, pie, components_labels({
+  components: [components_legend, tooltip, pie, components_labels({
     component: 'pie',
     selector: 'path',
     type: 'slice',
@@ -13545,7 +13547,7 @@ var stackedBarchart_setting = {
   },
   components: [axis(), axis({
     scale: 'y'
-  }), legend, tooltip, range(), components_box({
+  }), components_legend, tooltip, range(), components_box({
     collection: 'stacked',
     fill: {
       scale: 'c',
@@ -53237,6 +53239,7 @@ var mapbox_gl_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl);
 
 
 
+
 function QdtMapBox_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QdtMapBox_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QdtMapBox_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -53245,9 +53248,12 @@ function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; 
 
 
 
+
 var mapData = [];
 var QdtMapBox_map = null;
 var GeoJSON = null;
+var propertyChildren = null;
+var propertyChildrenWithColors = null;
 
 var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   var width = _ref.width,
@@ -53258,19 +53264,22 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       style = _ref.style,
       center = _ref.center,
       zoom = _ref.zoom,
-      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom"]);
+      legend = _ref.legend,
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend"]);
 
-  console.log('QdtMapBox');
   var node = Object(react["useRef"])(null);
+
+  var _useState = Object(react["useState"])(false),
+      _useState2 = slicedToArray_default()(_useState, 2),
+      isLoaded = _useState2[0],
+      setIsLoaded = _useState2[1];
 
   var _useHyperCube = hooks_useHyperCube(QdtMapBox_objectSpread({}, hyperCubeProps)),
       qData = _useHyperCube.qData;
 
   var property = hyperCubeProps.cols[3];
-  var propertyChildren = null;
 
   function buildFeatureSimplified(obj) {
-    console.log('QdtmapBox-buildFeatureSimplified', property);
     var featureObj = {
       type: 'Feature',
       properties: defineProperty_default()({
@@ -53286,9 +53295,12 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   }
 
   var createPropertyChilderFromQData = function createPropertyChilderFromQData() {
-    return propertyChildren = toConsumableArray_default()(new Set(qData.qMatrix.map(function (array) {
+    propertyChildren = toConsumableArray_default()(new Set(qData.qMatrix.map(function (array) {
       return array[3].qText;
     })));
+    propertyChildrenWithColors = propertyChildren.reduce(function (r, e, i) {
+      return r.push(e, styles.palette[i]) && r;
+    }, []);
   }; // ========================================================
   // Convert qMatrix to GeoJSON
   //
@@ -53296,12 +53308,10 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
 
   function buildGeoJSON() {
-    console.log('QdtmapBox-buildGeoJSON');
     var goodGeoJSON = {
       type: 'FeatureCollection',
       features: []
     };
-    createPropertyChilderFromQData();
     qData.qMatrix.map(function (array) {
       if (typeof array[1].qNum !== 'number' || typeof array[2].qNum !== 'number') return false;
       var obj = {
@@ -53320,7 +53330,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
 
   function buildLayer() {
-    console.log('QdtmapBox-buildLayer', propertyChildren);
+    var match = ['match', ['get', property]].concat(toConsumableArray_default()(propertyChildrenWithColors), ['#FFF']);
     var layer = {
       id: 'dots',
       type: 'circle',
@@ -53328,7 +53338,8 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': 5,
-        'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
+        // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
+        'circle-color': match,
         'circle-opacity': 1
       }
     };
@@ -53341,7 +53352,6 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
 
   var buildMap = function buildMap() {
-    console.log('QdtmapBox-buildMap');
     QdtMapBox_map.addSource('users', {
       type: 'geojson',
       data: GeoJSON
@@ -53353,7 +53363,6 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
 
   var updateLayers = function updateLayers() {
-    console.log('QdtmapBox-updateLayers');
     var nextChunk = qData.qMatrix.map(function (array) {
       var obj = defineProperty_default()({
         id: Number(array[0].qNum),
@@ -53365,21 +53374,17 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     });
 
     if (GeoJSON) {
-      console.log('QdtmapBox-updateLayers-11');
       GeoJSON = QdtMapBox_objectSpread({}, GeoJSON, {
         features: [].concat(toConsumableArray_default()(GeoJSON.features), toConsumableArray_default()(nextChunk))
       });
-      console.log('QdtmapBox-updateLayers-12');
       QdtMapBox_map.getSource('users').setData(GeoJSON);
     } else {
-      console.log('QdtmapBox-updateLayers-2');
       GeoJSON = buildGeoJSON();
       buildMap();
     }
   };
 
   var mapInit = function mapInit() {
-    console.log('QdtmapBox-mapInit');
     mapbox_gl_default.a.accessToken = accessToken;
     QdtMapBox_map = new mapbox_gl_default.a.Map({
       container: node.current,
@@ -53399,18 +53404,50 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   };
 
   Object(react["useEffect"])(function () {
-    console.log('QdtMapBox-useEffect');
-    if (qData) mapInit(); // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (qData) {
+      setIsLoaded(true);
+      createPropertyChilderFromQData();
+      mapInit();
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [qData]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
+    style: {
+      display: 'block',
+      position: 'relative'
+    }
+  }, react_default.a.createElement("div", {
     ref: node,
     style: {
       width: width,
-      height: height,
+      height: height - 50,
       minWidth: minWidth,
       minHeight: minHeight
     }
-  }));
+  })), react_default.a.createElement("div", {
+    style: {
+      display: 'block',
+      position: 'relative',
+      height: 20,
+      padding: 2,
+      fontSize: 11
+    }
+  }, legend && isLoaded && propertyChildrenWithColors.map(function (value, index) {
+    return index % 2 === 0 ? react_default.a.createElement("div", {
+      style: {
+        display: 'inline-block'
+      }
+    }, value, ":") : react_default.a.createElement("div", {
+      style: {
+        width: 10,
+        height: 10,
+        backgroundColor: value,
+        display: 'inline-block',
+        marginRight: 10,
+        marginLeft: 3
+      }
+    });
+  })));
 };
 
 QdtMapBox_QdtMapBox.propTypes = {
@@ -53422,6 +53459,7 @@ QdtMapBox_QdtMapBox.propTypes = {
   height: prop_types_default.a.string,
   minWidth: prop_types_default.a.string,
   minHeight: prop_types_default.a.string,
+  legend: prop_types_default.a.bool,
   // useHyperCube props
   cols: prop_types_default.a.array,
   qPage: prop_types_default.a.object,
@@ -53442,6 +53480,8 @@ QdtMapBox_QdtMapBox.defaultProps = {
   height: '100%',
   minWidth: 'auto',
   minHeight: 'auto',
+  legend: true,
+  // @TODO - Dock options left, top, bottom or none
   // useHyperCube props
   cols: null,
   qPage: {
