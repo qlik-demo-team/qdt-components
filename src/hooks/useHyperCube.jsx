@@ -33,7 +33,7 @@ const useHyperCube = ({
       return isDimension;
     }).map((col) => {
       if (typeof col === 'string') {
-        return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } }; //
+        return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] }, qNullSuppression: true }; //
       }
       return col;
     });

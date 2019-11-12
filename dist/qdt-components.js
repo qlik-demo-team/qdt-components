@@ -212,27 +212,19 @@ module.exports = _defineProperty;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+var arrayWithoutHoles = __webpack_require__(48);
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
+var iterableToArray = __webpack_require__(23);
 
-    return target;
-  };
+var nonIterableSpread = __webpack_require__(49);
 
-  return _extends.apply(this, arguments);
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
 }
 
-module.exports = _extends;
+module.exports = _toConsumableArray;
 
 /***/ }),
 /* 7 */
@@ -263,6 +255,30 @@ module.exports = _objectWithoutProperties;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var content = __webpack_require__(45);
@@ -284,7 +300,7 @@ if (content.locals) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
@@ -304,22 +320,6 @@ function _typeof(obj) {
 }
 
 module.exports = _typeof;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(48);
-
-var iterableToArray = __webpack_require__(23);
-
-var nonIterableSpread = __webpack_require__(49);
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
 
 /***/ }),
 /* 11 */
@@ -11997,7 +11997,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(6);
+var helpers_extends = __webpack_require__(8);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
@@ -14261,7 +14261,7 @@ LuiTab_LuiTab.defaultProps = {
 
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(9);
+var helpers_typeof = __webpack_require__(10);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // CONCATENATED MODULE: ./src/hooks/useListObject.jsx
@@ -14898,7 +14898,7 @@ StateCountsBar_StateCountsBar.propTypes = {
 };
 /* harmony default export */ var QdtFilter_StateCountsBar = (StateCountsBar_StateCountsBar);
 // EXTERNAL MODULE: ./src/styles/index.scss
-var src_styles = __webpack_require__(8);
+var src_styles = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./src/components/QdtFilter/QdtFilter.jsx
 
@@ -15110,7 +15110,7 @@ QdtFilter_QdtFilter.defaultProps = {
 };
 /* harmony default export */ var components_QdtFilter_QdtFilter = (QdtFilter_QdtFilter);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/toConsumableArray.js
-var toConsumableArray = __webpack_require__(10);
+var toConsumableArray = __webpack_require__(6);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // CONCATENATED MODULE: ./src/hooks/useHyperCube.jsx
@@ -15190,7 +15190,8 @@ var useHyperCube_useHyperCube = function useHyperCube(_ref) {
               qSortByAscii: qSortByAscii,
               qSortByLoadOrder: qSortByLoadOrder
             }]
-          }
+          },
+          qNullSuppression: true
         }; //
       }
 
@@ -15229,7 +15230,6 @@ var useHyperCube_useHyperCube = function useHyperCube(_ref) {
       qSuppressZero: qSuppressZero,
       qSuppressMissing: qSuppressMissing
     };
-    console.log('useHyperCube', getQRData, qProp.qHyperCubeDef);
     return qProp;
   };
 
@@ -15585,12 +15585,8 @@ useHyperCube_useHyperCube.propTypes = {
   qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
   qSuppressMissing: prop_types_default.a.bool,
   qExpression: prop_types_default.a.object,
-<<<<<<< HEAD
   getQRData: prop_types_default.a.bool // Engine breaks on some HyperCubes
 
-=======
-  getQRData: prop_types_default.a.bool
->>>>>>> e902524f844758eb2dcb21f2bca46a1986e050d9
 };
 useHyperCube_useHyperCube.defaultProps = {
   cols: null,
@@ -22266,12 +22262,12 @@ function map$1(object, f) {
   return map;
 }
 
-function Set() {}
+function picasso_esm_Set() {}
 
 var proto = map$1.prototype;
 
-Set.prototype = set.prototype = {
-  constructor: Set,
+picasso_esm_Set.prototype = set.prototype = {
+  constructor: picasso_esm_Set,
   has: proto.has,
   add: function(value) {
     value += "";
@@ -22287,10 +22283,10 @@ Set.prototype = set.prototype = {
 };
 
 function set(object, f) {
-  var set = new Set;
+  var set = new picasso_esm_Set;
 
   // Copy constructor.
-  if (object instanceof Set) object.each(function(value) { set.add(value); });
+  if (object instanceof picasso_esm_Set) object.each(function(value) { set.add(value); });
 
   // Otherwise, assume it’s an array.
   else if (object) {
@@ -22302,10 +22298,10 @@ function set(object, f) {
   return set;
 }
 
-var array = Array.prototype;
+var picasso_esm_array = Array.prototype;
 
-var map$2 = array.map;
-var slice$1 = array.slice;
+var map$2 = picasso_esm_array.map;
+var slice$1 = picasso_esm_array.slice;
 
 var implicit = {name: "implicit"};
 
@@ -53240,6 +53236,7 @@ var mapbox_gl_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl);
 
 
 
+
 function QdtMapBox_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QdtMapBox_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QdtMapBox_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -53247,9 +53244,10 @@ function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; 
 
 
 
- // import useListObject from '../../hooks/useListObject';
 
+var mapData = [];
 var QdtMapBox_map = null;
+var GeoJSON = null;
 
 var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   var width = _ref.width,
@@ -53260,16 +53258,128 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       style = _ref.style,
       center = _ref.center,
       zoom = _ref.zoom,
-      otherProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom"]);
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom"]);
 
   console.log('QdtMapBox');
   var node = Object(react["useRef"])(null);
 
-  var _useHyperCube = hooks_useHyperCube(QdtMapBox_objectSpread({}, otherProps)),
-      qData = _useHyperCube.qData; // const { qData } = useListObject({ ...otherProps });
+  var _useHyperCube = hooks_useHyperCube(QdtMapBox_objectSpread({}, hyperCubeProps)),
+      qData = _useHyperCube.qData;
 
+  var property = hyperCubeProps.cols[3];
+  var propertyChildren = null;
+
+  function buildFeatureSimplified(obj) {
+    console.log('QdtmapBox-buildFeatureSimplified', property);
+    var featureObj = {
+      type: 'Feature',
+      properties: defineProperty_default()({
+        count: 1,
+        userID: obj.id
+      }, property, obj[property]),
+      geometry: {
+        type: 'Point',
+        coordinates: [obj.lng, obj.lat]
+      }
+    };
+    return featureObj;
+  }
+
+  var createPropertyChilderFromQData = function createPropertyChilderFromQData() {
+    return propertyChildren = toConsumableArray_default()(new Set(qData.qMatrix.map(function (array) {
+      return array[3].qText;
+    })));
+  }; // ========================================================
+  // Convert qMatrix to GeoJSON
+  //
+  // Given the qMatrix Data, it converts it to properly formatted GeoJSON
+
+
+  function buildGeoJSON() {
+    console.log('QdtmapBox-buildGeoJSON');
+    var goodGeoJSON = {
+      type: 'FeatureCollection',
+      features: []
+    };
+    createPropertyChilderFromQData();
+    qData.qMatrix.map(function (array) {
+      if (typeof array[1].qNum !== 'number' || typeof array[2].qNum !== 'number') return false;
+      var obj = {
+        id: Number(array[0].qNum),
+        lat: Number(array[1].qNum),
+        lng: Number(array[2].qNum)
+      };
+      obj[property] = array[3].qText;
+      var feature = buildFeatureSimplified(obj);
+      goodGeoJSON.features.push(feature);
+      return obj;
+    });
+    return goodGeoJSON;
+  } // ========================================================
+  // Build Layer
+
+
+  function buildLayer() {
+    console.log('QdtmapBox-buildLayer', propertyChildren);
+    var layer = {
+      id: 'dots',
+      type: 'circle',
+      source: 'users',
+      paint: {
+        'circle-stroke-width': 0,
+        'circle-radius': 5,
+        'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
+        'circle-opacity': 1
+      }
+    };
+    return layer;
+  } // ======================================================
+  // Build Map Items (Source, Layers)
+  //
+  // Using the GeoJSON and map object, we create a Layer for the dots and add them to the map
+  // This function also sets up the periodic update to cycle through the dots
+
+
+  var buildMap = function buildMap() {
+    console.log('QdtmapBox-buildMap');
+    QdtMapBox_map.addSource('users', {
+      type: 'geojson',
+      data: GeoJSON
+    });
+    var layer = buildLayer();
+    QdtMapBox_map.addLayer(layer);
+  }; // ==========================================================================
+  // Updates the map to display the appropriate layer
+
+
+  var updateLayers = function updateLayers() {
+    console.log('QdtmapBox-updateLayers');
+    var nextChunk = qData.qMatrix.map(function (array) {
+      var obj = defineProperty_default()({
+        id: Number(array[0].qNum),
+        lat: Number(array[1].qNum),
+        lng: Number(array[2].qNum)
+      }, property, array[3].qText);
+
+      return buildFeatureSimplified(obj);
+    });
+
+    if (GeoJSON) {
+      console.log('QdtmapBox-updateLayers-11');
+      GeoJSON = QdtMapBox_objectSpread({}, GeoJSON, {
+        features: [].concat(toConsumableArray_default()(GeoJSON.features), toConsumableArray_default()(nextChunk))
+      });
+      console.log('QdtmapBox-updateLayers-12');
+      QdtMapBox_map.getSource('users').setData(GeoJSON);
+    } else {
+      console.log('QdtmapBox-updateLayers-2');
+      GeoJSON = buildGeoJSON();
+      buildMap();
+    }
+  };
 
   var mapInit = function mapInit() {
+    console.log('QdtmapBox-mapInit');
     mapbox_gl_default.a.accessToken = accessToken;
     QdtMapBox_map = new mapbox_gl_default.a.Map({
       container: node.current,
@@ -53280,13 +53390,17 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       // starting position [lng, lat]
       zoom: zoom // starting zoom
 
+    }); // After Map is loaded, update GeoJSON & save Map object before continuing
+
+    QdtMapBox_map.on('load', function () {
+      updateLayers(qData);
+      mapData = [].concat(toConsumableArray_default()(mapData), toConsumableArray_default()(qData.qMatrix));
     });
-    console.log(QdtMapBox_map);
   };
 
   Object(react["useEffect"])(function () {
-    console.log('QdtMapBox-useEffect', qData);
-    mapInit(); // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log('QdtMapBox-useEffect');
+    if (qData) mapInit(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     ref: node,
