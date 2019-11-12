@@ -249,6 +249,8 @@ Create a map with layers using MapBox
 | zoom             | Int           | `4`             |
 | height           | Int           | `400`             |
 
+Live https://qdt-apps.qlik.com/qdt-components/react/#/mapbox
+
 ### Version Log
 - 2.1.0   Add mapbox
 - 2.0.0   Rewrite with hooks
