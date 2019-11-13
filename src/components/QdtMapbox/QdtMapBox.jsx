@@ -11,7 +11,7 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, ...hyperCubeProps
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -76,7 +76,7 @@ const QdtMapBox = ({
       source: 'users',
       paint: {
         'circle-stroke-width': 0,
-        'circle-radius': 5,
+        'circle-radius': circleRadius,
         // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
         'circle-color': match,
         'circle-opacity': 1,
@@ -185,6 +185,7 @@ QdtMapBox.propTypes = {
   minWidth: PropTypes.string,
   minHeight: PropTypes.string,
   legend: PropTypes.bool,
+  circleRadius: PropTypes.number,
   // useHyperCube props
   cols: PropTypes.array,
   qPage: PropTypes.object,
@@ -207,6 +208,7 @@ QdtMapBox.defaultProps = {
   minWidth: 'auto',
   minHeight: 'auto',
   legend: true, // @TODO - Dock options left, top, bottom or none
+  circleRadius: 5,
   // useHyperCube props
   cols: null,
   qPage: {

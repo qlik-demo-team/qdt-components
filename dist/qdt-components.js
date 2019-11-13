@@ -53265,7 +53265,8 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       center = _ref.center,
       zoom = _ref.zoom,
       legend = _ref.legend,
-      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend"]);
+      circleRadius = _ref.circleRadius,
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend", "circleRadius"]);
 
   var node = Object(react["useRef"])(null);
 
@@ -53337,7 +53338,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       source: 'users',
       paint: {
         'circle-stroke-width': 0,
-        'circle-radius': 5,
+        'circle-radius': circleRadius,
         // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
         'circle-color': match,
         'circle-opacity': 1
@@ -53460,6 +53461,7 @@ QdtMapBox_QdtMapBox.propTypes = {
   minWidth: prop_types_default.a.string,
   minHeight: prop_types_default.a.string,
   legend: prop_types_default.a.bool,
+  circleRadius: prop_types_default.a.number,
   // useHyperCube props
   cols: prop_types_default.a.array,
   qPage: prop_types_default.a.object,
@@ -53482,6 +53484,7 @@ QdtMapBox_QdtMapBox.defaultProps = {
   minHeight: 'auto',
   legend: true,
   // @TODO - Dock options left, top, bottom or none
+  circleRadius: 5,
   // useHyperCube props
   cols: null,
   qPage: {
