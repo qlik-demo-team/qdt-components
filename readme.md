@@ -148,26 +148,7 @@ export default class QdtComponent extends React.Component {
 
 ### Component Docs ###
 
-#### QdtViz
-This component can be used to create or get a native Qlik Sense viz. If you define the `id` prop, then it will get that Qlik Sense viz. If you define the `type`, `cols`, and `options` props it will create a new viz. The `width` and `height` props are both optional, and default to '100%'.
-
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| id               | String        | Id for an existing visualization |
-| type             | String        | [see here][vizApiCreate] |
-| cols             | Array         | [see here][vizApiCreate] |
-| options          | Object        | [see here][vizApiCreate] |
-| width            | String        | Sets width of viz |
-| height           | String        | Sets height of viz |
-| exportData       | Boolean       | Show button for export in CSV |
-| exportDataTitle  | String        | Optional. Set the button title. Defaults to `Export Data`  |
-| eportDataOptions | Object        | [see here][exportData]. Defaults to `{ format: 'CSV_T', state: 'P' }` |
-| exportImg        | Boolean       | Show button for export in JPG |
-| exportImgTitle   | String        | Optional. Set the button title. Defaults to `Export Image`  |
-| eportImgOptions  | Object        | [see here][exportImg]. Defaults to `{ width: 300, height: 400, format: 'JPG' }` |
-| exportPdf        | Boolean       | Show button for export in PDF |
-| exportPdfTitle   | String        | Optional. Set the button title. Defaults to `Export Pdf`  |
-| eportPdfOptions  | Object        | [see here][exportPdf]. Default to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` |
+- #### [QtdViz](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtViz.md)
 
 #### QdtFilter
 This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
@@ -237,7 +218,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 | showGo           | Boolean       | false         |
 
-#### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/QdtMapBox.md)
+- #### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtMapBox.md)
 
 ### Contributing
 
