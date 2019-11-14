@@ -152,14 +152,7 @@ export default class QdtComponent extends React.Component {
 
 - #### [QtdFilter](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtFilter.md)
 
-#### QdtSelectionToolbar
-This populated a toolbar with the current app selections.
-* [Live Example](https://webapps.qlik.com/qdt-components/plain-html/picasso-horizontalbarchart.html).
-
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| title            | String        | `SELECTIONS`  |
-| btnText          | String        | `Clear All `  |
+- #### [QdtSelectionToolbar](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtSelectionToolbar.md)
 
 #### QdtBarchart
 This creates a barchart based on [Picasso.js](https://picassojs.com/).

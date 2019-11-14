@@ -44,4 +44,4 @@
 | getData            | Function      | const callback = (qData, qLayout) => {}           |
 | getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
 
-Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
+#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
