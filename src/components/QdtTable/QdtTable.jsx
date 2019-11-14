@@ -1,4 +1,6 @@
-import React, { useMemo } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import useHyperCube from '../../hooks/useHyperCube';
@@ -14,13 +16,6 @@ const QdtTable = ({
   const {
     qLayout, qData, offset, select, applyPatches, //eslint-disable-line
   } = useHyperCube({ qDocPromise, cols, qPage });
-
-  // const _select = (e) => {
-  //   const { qstate, qElemNumber, index } = e.target.dataset;
-  //   if (qstate !== 'L') {
-  //     select(Number(index), [Number(qElemNumber)]);
-  //   }
-  // };
 
   const columns = useMemo(() => (
     qLayout
@@ -51,8 +46,20 @@ const QdtTable = ({
 
   const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight), [qLayout, qPage]);
 
-  const handlePageChange = (pageIndex) => { offset(pageIndex * qPage.qHeight); };
-  const handleSortedChange = async (newSorted, column) => {
+  const [page, setPage] = useState(0);
+  useEffect(() => {
+    if (page >= pages) {
+      setPage(0);
+    }
+  }, [page, pages]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, [qData]);
+
+  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * qPage.qHeight); }, [offset, qPage.qHeight]);
+  const handleSortedChange = useCallback(async (newSorted, column) => {
+    setLoading(true);
     // If no sort is set, we need to set a default sort order
     if (column.qSortIndicator === 'N') {
       if (column.qPath.includes('qDimensions')) {
@@ -78,7 +85,7 @@ const QdtTable = ({
       {
         qOp: 'replace',
         qPath: `${column.qPath}/qDef/qReverseSort`,
-        qValue: JSON.stringify(newSorted[0].desc !== column.defaultSortDesc ? !column.qReverseSort : !!column.qReverseSort),
+        qValue: JSON.stringify((newSorted[0].desc !== column.defaultSortDesc) !== !!column.qReverseSort),
       },
       {
         qOp: 'replace',
@@ -86,24 +93,34 @@ const QdtTable = ({
         qValue: JSON.stringify([column.qInterColumnIndex]),
       },
     ]);
-  };
+  }, [applyPatches]);
 
   return (
     <div>
-      {/* {console.log(qData, qLayout)} */}
       <ReactTable
         manual
         data={qData ? qData.qMatrix : []}
         columns={columns}
         pages={pages}
-        loading={!qData}
+        page={page}
+        loading={loading}
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
         defaultPageSize={qPage.qHeight}
         showPageSizeOptions={false}
         multiSort={false}
-        className="-striped -highlight"
+        className="-striped"
         style={style}
+        getTdProps={(_, rowInfo, column) => ({
+          onClick: (e, handleOriginal) => {
+            if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+              select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+            }
+            if (handleOriginal) {
+              handleOriginal();
+            }
+          },
+        })}
       />
     </div>
   );

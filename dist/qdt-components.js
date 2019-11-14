@@ -177,6 +177,22 @@ module.exports = _asyncToGenerator;
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var arrayWithHoles = __webpack_require__(20);
+
+var iterableToArrayLimit = __webpack_require__(35);
+
+var nonIterableRest = __webpack_require__(21);
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -229,22 +245,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	} else {}
 }());
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(20);
-
-var iterableToArrayLimit = __webpack_require__(35);
-
-var nonIterableRest = __webpack_require__(21);
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
 
 /***/ }),
 /* 6 */
@@ -13909,7 +13909,7 @@ var gantt_setting = {
   gantt: gantt
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
-var slicedToArray = __webpack_require__(5);
+var slicedToArray = __webpack_require__(4);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -15157,7 +15157,7 @@ var toConsumableArray = __webpack_require__(11);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(4);
+var classnames = __webpack_require__(5);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // CONCATENATED MODULE: ./node_modules/react-table/es/utils.js
@@ -18322,6 +18322,7 @@ var react_table = __webpack_require__(50);
 
 
 
+
  // TODO - handle if qInterColumnSortOrder is set, instead of just overriding it
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
@@ -18340,13 +18341,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
       qData = _useHyperCube.qData,
       offset = _useHyperCube.offset,
       select = _useHyperCube.select,
-      applyPatches = _useHyperCube.applyPatches; // const _select = (e) => {
-  //   const { qstate, qElemNumber, index } = e.target.dataset;
-  //   if (qstate !== 'L') {
-  //     select(Number(index), [Number(qElemNumber)]);
-  //   }
-  // };
-
+      applyPatches = _useHyperCube.applyPatches;
 
   var columns = Object(react["useMemo"])(function () {
     return qLayout ? [].concat(toConsumableArray_default()(qLayout.qHyperCube.qDimensionInfo.map(function (col, index) {
@@ -18381,11 +18376,31 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     return qLayout && qPage && Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight);
   }, [qLayout, qPage]);
 
-  var handlePageChange = function handlePageChange(pageIndex) {
-    offset(pageIndex * qPage.qHeight);
-  };
+  var _useState = Object(react["useState"])(0),
+      _useState2 = slicedToArray_default()(_useState, 2),
+      page = _useState2[0],
+      setPage = _useState2[1];
 
-  var handleSortedChange =
+  Object(react["useEffect"])(function () {
+    if (page >= pages) {
+      setPage(0);
+    }
+  }, [page, pages]);
+
+  var _useState3 = Object(react["useState"])(true),
+      _useState4 = slicedToArray_default()(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  Object(react["useEffect"])(function () {
+    setLoading(false);
+  }, [qData]);
+  var handlePageChange = Object(react["useCallback"])(function (pageIndex) {
+    setPage(pageIndex);
+    setLoading(true);
+    offset(pageIndex * qPage.qHeight);
+  }, [offset, qPage.qHeight]);
+  var handleSortedChange = Object(react["useCallback"])(
   /*#__PURE__*/
   function () {
     var _ref2 = asyncToGenerator_default()(
@@ -18395,17 +18410,19 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              setLoading(true); // If no sort is set, we need to set a default sort order
+
               if (!(column.qSortIndicator === 'N')) {
-                _context.next = 7;
+                _context.next = 8;
                 break;
               }
 
               if (!column.qPath.includes('qDimensions')) {
-                _context.next = 4;
+                _context.next = 5;
                 break;
               }
 
-              _context.next = 4;
+              _context.next = 5;
               return applyPatches([{
                 qOp: 'add',
                 qPath: "".concat(column.qPath, "/qDef/qSortCriterias"),
@@ -18414,13 +18431,13 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
                 }])
               }]);
 
-            case 4:
+            case 5:
               if (!column.qPath.includes('qMeasures')) {
-                _context.next = 7;
+                _context.next = 8;
                 break;
               }
 
-              _context.next = 7;
+              _context.next = 8;
               return applyPatches([{
                 qOp: 'add',
                 qPath: "".concat(column.qPath, "/qSortBy"),
@@ -18429,18 +18446,18 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
                 }])
               }]);
 
-            case 7:
+            case 8:
               applyPatches([{
                 qOp: 'replace',
                 qPath: "".concat(column.qPath, "/qDef/qReverseSort"),
-                qValue: JSON.stringify(newSorted[0].desc !== column.defaultSortDesc ? !column.qReverseSort : !!column.qReverseSort)
+                qValue: JSON.stringify(newSorted[0].desc !== column.defaultSortDesc !== !!column.qReverseSort)
               }, {
                 qOp: 'replace',
                 qPath: '/qHyperCubeDef/qInterColumnSortOrder',
                 qValue: JSON.stringify([column.qInterColumnIndex])
               }]);
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -18448,24 +18465,37 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
       }, _callee);
     }));
 
-    return function handleSortedChange(_x, _x2) {
+    return function (_x, _x2) {
       return _ref2.apply(this, arguments);
     };
-  }();
-
+  }(), [applyPatches]);
   return react_default.a.createElement("div", null, react_default.a.createElement(es, {
     manual: true,
     data: qData ? qData.qMatrix : [],
     columns: columns,
     pages: pages,
-    loading: !qData,
+    page: page,
+    loading: loading,
     onPageChange: handlePageChange,
     onSortedChange: handleSortedChange,
     defaultPageSize: qPage.qHeight,
     showPageSizeOptions: false,
     multiSort: false,
-    className: "-striped -highlight",
-    style: style
+    className: "-striped",
+    style: style,
+    getTdProps: function getTdProps(_, rowInfo, column) {
+      return {
+        onClick: function onClick(e, handleOriginal) {
+          if (column && rowInfo && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+            select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+          }
+
+          if (handleOriginal) {
+            handleOriginal();
+          }
+        }
+      };
+    }
   }));
 };
 
