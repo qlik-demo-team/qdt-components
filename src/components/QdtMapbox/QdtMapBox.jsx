@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useEffect, useState, useRef, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
 import useHyperCube from '../../hooks/useHyperCube';
@@ -11,12 +13,13 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, ...hyperCubeProps
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { qData } = useHyperCube({ ...hyperCubeProps });
+  const { qData, qLayout, offset } = useHyperCube({ qPage, ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
+  const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -131,17 +134,33 @@ const QdtMapBox = ({
     });
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
-      updateLayers(qData);
+      updateLayers(qData); // Draw the first set of data, in case we load all
+      setIsLoaded(true);
       mapData = [...mapData, ...qData.qMatrix];
     });
   };
 
+  const getAllData = () => {
+    let currentPage = 1; // 0 has already been populated
+    const totalPages = Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight);
+    const populateDataID = setInterval(async () => {
+      if (currentPage === totalPages) {
+        clearInterval(populateDataID);
+      } else {
+        offset(currentPage * qPage.qHeight);
+        currentPage += 1;
+      }
+    }, getAllDataInterval * 1000);
+  };
+
   useEffect(() => {
-    if (qData) {
-      setIsLoaded(true);
+    if (qData && !isLoaded) {
+      if (getData) handleCallback();
+      if (getAllDataInterval) getAllData();
       createPropertyChilderFromQData();
       mapInit();
     }
+    if (isLoaded) updateLayers(qData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
 
@@ -162,7 +181,7 @@ const QdtMapBox = ({
         {legend && isLoaded && propertyChildrenWithColors.map((value, index) => ((index % 2 === 0) ? (
           <div style={{ display: 'inline-block' }}>
             {value}
-:
+            :
           </div>
         ) : (
           <div style={{
@@ -186,6 +205,8 @@ QdtMapBox.propTypes = {
   minHeight: PropTypes.string,
   legend: PropTypes.bool,
   circleRadius: PropTypes.number,
+  getData: PropTypes.func,
+  getAllDataInterval: PropTypes.number,
   // useHyperCube props
   cols: PropTypes.array,
   qPage: PropTypes.object,
@@ -209,6 +230,8 @@ QdtMapBox.defaultProps = {
   minHeight: 'auto',
   legend: true, // @TODO - Dock options left, top, bottom or none
   circleRadius: 5,
+  getData: null,
+  getAllDataInterval: 0,
   // useHyperCube props
   cols: null,
   qPage: {
