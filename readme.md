@@ -237,9 +237,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 | tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
 | showGo           | Boolean       | false         |
 
-#### QdtMapBox
-
-QtdMapBox](https://github.com/qlik-demo-team/qdt-components/wiki/QdtMapBox)
+#### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/wiki/QdtMapBox)
 
 ### Contributing
 
