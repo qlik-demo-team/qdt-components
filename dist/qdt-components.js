@@ -53240,6 +53240,8 @@ var mapbox_gl_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl);
 
 
 
+
+
 function QdtMapBox_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QdtMapBox_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QdtMapBox_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -53265,7 +53267,11 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       center = _ref.center,
       zoom = _ref.zoom,
       legend = _ref.legend,
-      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend"]);
+      circleRadius = _ref.circleRadius,
+      getData = _ref.getData,
+      getAllDataInterval = _ref.getAllDataInterval,
+      qPage = _ref.qPage,
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend", "circleRadius", "getData", "getAllDataInterval", "qPage"]);
 
   var node = Object(react["useRef"])(null);
 
@@ -53274,10 +53280,17 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       isLoaded = _useState2[0],
       setIsLoaded = _useState2[1];
 
-  var _useHyperCube = hooks_useHyperCube(QdtMapBox_objectSpread({}, hyperCubeProps)),
-      qData = _useHyperCube.qData;
+  var _useHyperCube = hooks_useHyperCube(QdtMapBox_objectSpread({
+    qPage: qPage
+  }, hyperCubeProps)),
+      qData = _useHyperCube.qData,
+      qLayout = _useHyperCube.qLayout,
+      offset = _useHyperCube.offset;
 
   var property = hyperCubeProps.cols[3];
+  var handleCallback = Object(react["useCallback"])(function () {
+    return getData(qData, qLayout);
+  }, [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     var featureObj = {
@@ -53337,7 +53350,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       source: 'users',
       paint: {
         'circle-stroke-width': 0,
-        'circle-radius': 5,
+        'circle-radius': circleRadius,
         // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
         'circle-color': match,
         'circle-opacity': 1
@@ -53398,18 +53411,51 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     }); // After Map is loaded, update GeoJSON & save Map object before continuing
 
     QdtMapBox_map.on('load', function () {
-      updateLayers(qData);
+      updateLayers(qData); // Draw the first set of data, in case we load all
+
+      setIsLoaded(true);
       mapData = [].concat(toConsumableArray_default()(mapData), toConsumableArray_default()(qData.qMatrix));
     });
   };
 
+  var getAllData = function getAllData() {
+    var currentPage = 1; // 0 has already been populated
+
+    var totalPages = Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight);
+    var populateDataID = setInterval(
+    /*#__PURE__*/
+    asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee() {
+      return regenerator_default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (currentPage === totalPages) {
+                clearInterval(populateDataID);
+              } else {
+                offset(currentPage * qPage.qHeight);
+                currentPage += 1;
+              }
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })), getAllDataInterval * 1000);
+  };
+
   Object(react["useEffect"])(function () {
-    if (qData) {
-      setIsLoaded(true);
+    if (qData && !isLoaded) {
+      if (getData) handleCallback();
+      if (getAllDataInterval) getAllData();
       createPropertyChilderFromQData();
       mapInit();
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
 
+    if (isLoaded) updateLayers(qData); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     style: {
@@ -53460,6 +53506,9 @@ QdtMapBox_QdtMapBox.propTypes = {
   minWidth: prop_types_default.a.string,
   minHeight: prop_types_default.a.string,
   legend: prop_types_default.a.bool,
+  circleRadius: prop_types_default.a.number,
+  getData: prop_types_default.a.func,
+  getAllDataInterval: prop_types_default.a.number,
   // useHyperCube props
   cols: prop_types_default.a.array,
   qPage: prop_types_default.a.object,
@@ -53482,6 +53531,9 @@ QdtMapBox_QdtMapBox.defaultProps = {
   minHeight: 'auto',
   legend: true,
   // @TODO - Dock options left, top, bottom or none
+  circleRadius: 5,
+  getData: null,
+  getAllDataInterval: 0,
   // useHyperCube props
   cols: null,
   qPage: {
