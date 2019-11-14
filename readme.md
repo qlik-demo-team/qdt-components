@@ -255,7 +255,7 @@ Live https://qdt-apps.qlik.com/qdt-components/react/#/mapbox
 
 - We welcome all contributions to this project.
 - We do not need a signed CLA agreeement.
-- For a local isntallation, start with `npm install` and then `npm run start`
+- For a local installation, start with `npm install` and then `npm run start`
 - Before you commit, run `npm run lint` and that there are no warnings or errors.
 - Follow the commit message guidelines below
 
