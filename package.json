@@ -33,6 +33,7 @@
     "qdt-lui": "^0.1.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
+    "react-table": "^6.10.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "ws": "^7.0.0"
   },
