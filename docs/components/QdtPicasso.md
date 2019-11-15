@@ -12,16 +12,15 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
 
 
-## Horizontal Barchart
-
-
-
 ### Html Code
 
 ```
 <QdtComponent
   type="QdtPicasso"
   props={{
+    type: 'horizontalBarchart', 
+    cols: ['Case Owner Group', '=Avg([Case Duration Time])'], 
+    outerHeight: 300,
   }}
 />
 ```
