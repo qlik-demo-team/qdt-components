@@ -30,4 +30,8 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 
 | Picasso Horizontal Barchart       | Picasso Vertical Barchart     |
 | :----:                            |    :----:                     |
-| ![picassoHorizontalBarchart](../assets/picassoHorizontalBarchart.png?raw=true "picassoHorizontalBarchart")| ![picassoVerticalBarchart](../assets/picassoVerticalBarchart.png?raw=true "picassoVerticalBarchart") |
+| [![picassoHorizontalBarchart](../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)| [![picassoVerticalBarchart](../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart) |
+
+
+
+
