@@ -1,8 +1,10 @@
 ## Get a visualization from Qlik Sense
 
+![QdtViz](../assets/embedded.png?raw=true "QdtViz")
+
 This component can be used to create or get a native Qlik Sense viz. If you define the `id` prop, then it will get that Qlik Sense viz. If you define the `type`, `cols`, and `options` props it will create a new viz. The `width` and `height` props are both optional, and default to '100%'.
 
-[Capability Api](https://help.qlik.com/en-US/sense-developer/)
+[Capability Api - getObject](https://help.qlik.com/en-US/sense-developer/November2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/AppAPI/getObject-method.htm)
 
 ### Html Code
 
@@ -42,4 +44,8 @@ This component can be used to create or get a native Qlik Sense viz. If you defi
 | exportPdfTitle   | String        | Optional. Set the button title. Defaults to `Export Pdf`  |
 | eportPdfOptions  | Object        | [see here][exportPdf]. Default to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` |       |
 
-Live [https://qdt-apps.qlik.com/qdt-components/react/#/embed-object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
+#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/embed-object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
+
+#### [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app)
+
+#### [Create a Session Object](https://qdt-apps.qlik.com/qdt-components/react/#/session-object)

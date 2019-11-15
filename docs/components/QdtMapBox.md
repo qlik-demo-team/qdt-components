@@ -1,6 +1,6 @@
 ## Create a map with layers using MapBox
 
-![QdtMapBox](assets/mapbox.png?raw=true "QdtMapBox")
+![QdtMapBox](../assets/picassoMapbox.png "QdtMapBox")
 
 [MapBox Api Docs](https://docs.mapbox.com/mapbox-gl-js/overview/)
 
@@ -44,4 +44,4 @@
 | getData            | Function      | const callback = (qData, qLayout) => {}           |
 | getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
 
-Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
+#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
