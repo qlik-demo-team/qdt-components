@@ -28,26 +28,28 @@ Click below to see how you can use qdt-components
 * #### [With Vue](docs/usage/Vue.md)
 
 
-### Component Docs ###
+### Components
 
-| [QtdViz](docs/components/QdtViz.md)                        | [QtdFilter](docs/components/QtdFilter.md)                    |
-| :----:                                                          |    :----:                                                         |
+| [QtdViz](docs/components/QdtViz.md)                               | [QtdFilter](docs/components/QtdFilter.md)                           |
+| :----:                                                            |    :----:                                                           |
 | [![QtdViz](docs/assets/embedded.png)](docs/components/QdtViz.md)  | [![QtdViz](docs/assets/filters.png)](docs/components/QtdFilter.md)  |
 
 
-* #### [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)
+| [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     | [QdtPicasso](docs/components/QdtPicasso.md)                           |
+| :----:                                                            |    :----:                                                           |
+| [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso.md)  |
 
-* #### [QdtPicasso](docs/components/QdtPicasso.md)
 
-* #### [QdtSearch](docs/components/QdtSearch.md)
+| [QdtSearch](docs/components/QdtSearch.md)                               | [QtdMapBox](docs/components/QtdMapBox.md)                           |
+| :----:                                                            |    :----:                                                           |
+| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QtdMapBox.md)  |
+
 
 * #### QdtButton
 
 * #### QdtTable
 
 * #### QdtCurrentSelections
-
-- #### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/components/QdtMapBox.md)
 
 
 ### Contributing
