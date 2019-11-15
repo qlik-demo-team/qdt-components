@@ -1,6 +1,6 @@
 ## Get a visualization from Qlik Sense
 
-![QdtViz](assets/embedded.png?raw=true "QdtViz")
+![QdtViz](../assets/embedded.png?raw=true "QdtViz")
 
 This component can be used to create or get a native Qlik Sense viz. If you define the `id` prop, then it will get that Qlik Sense viz. If you define the `type`, `cols`, and `options` props it will create a new viz. The `width` and `height` props are both optional, and default to '100%'.
 

@@ -26,9 +26,7 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 />
 ```
 
-#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)
-
-| Picasso Horizontal Barchart       | Picasso Vertical Barchart     |
+| #### Picasso Horizontal Barchart       | #### Picasso Vertical Barchart     |
 | :----:                            |    :----:                     |
 | [![picassoHorizontalBarchart](../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)| [![picassoVerticalBarchart](../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart) |
 
