@@ -44,4 +44,8 @@ This component can be used to create or get a native Qlik Sense viz. If you defi
 | exportPdfTitle   | String        | Optional. Set the button title. Defaults to `Export Pdf`  |
 | eportPdfOptions  | Object        | [see here][exportPdf]. Default to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` |       |
 
-Live [https://qdt-apps.qlik.com/qdt-components/react/#/embed-object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
+#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/embed-object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
+
+#### [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app)
+
+#### [Create a Session Object](https://qdt-apps.qlik.com/qdt-components/react/#/session-object)

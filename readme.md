@@ -14,182 +14,35 @@
 
 ### Usage
 
-#### Simple Html
-- [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
-- Download the [latest build](../blob/master/dist/qdt-components.js)
-- Add the Html
-```html
-<head>
-  <script type="text/javascript" src="qdt-components.js"></script>
-</head>
-<body>
-  <qdt-component id="qdt1"></qdt-component>
-</body>
-```
-- Add the Javascript
-```javascript
-<script type="text/javascript">
-  var options = {
-    config: {
-      host: "sense-demo.qlik.com",
-      secure: true,
-      port: 443,
-      prefix: "",
-      appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-    },
-    connections: { 
-      vizApi: true, 
-      engineApi: true 
-    }
-  }
-  var qdtComponents = new QdtComponents(options.config, options.connections);
-  var element = document.getElementById('qdt1');
-  qdtComponents.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
-</script>
-```
+Click below to see how you can use qdt-components
 
-#### Angular 6 (cli)
-- [Live Demo](https://webapps.qlik.com/qdt-components/angular/index.html)
-- `npm install --save qdt-components`
-- create an Angular 6 component that implements qdt-components
-```javascript
-import { Component, OnInit, OnDestroy, ElementRef, Input } from '@angular/core';
-import QdtComponents from 'qdt-components';
+* #### [On a simple Html page](docs/usage/Html.md)
 
-const options = {
-  config: {
-    host: "sense-demo.qlik.com",
-    secure: true,
-    port: 443,
-    prefix: "",
-    appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-  },
-  connections: { 
-    vizApi: true, 
-    engineApi: true 
-  }
-}
+* #### [With Angular](docs/usage/Angular.md)
 
-const qdtComponents = new QdtComponents(options.config, options.connections);
+* #### [With React](docs/usage/React.md)
 
-@Component({
-  selector: 'qdt-component',
-  templateUrl: './qdt-component.component.html',
-  styleUrls: ['./qdt-component.component.less']
-})
-export class QdtComponent implements OnInit, OnDestroy {
-
-  @Input() type: string;
-  @Input() props: object;
-
-  constructor(private elementRef: ElementRef) { }
-
-  ngOnInit() {
-    qdtComponents.render(this.type, this.props, this.elementRef.nativeElement);
-  }
-
-  ngOnDestroy() {
-    QdtComponents.unmountQdtComponent(this.elementRef.nativeElement)
-  }
-}
-```
-
-#### React
-- [Live Demo](https://webapps.qlik.com/qdt-components/react/index.html)
-- `npm install --save qdt-components`
-- create a React component that implements qdt-components
-```javascript
-import React from 'react';
-import PropTypes from 'prop-types';
-import QdtComponents from 'qdt-components';
-
-const options = {
-  config: {
-    host: "sense-demo.qlik.com",
-    secure: true,
-    port: 443,
-    prefix: "",
-    appId: "133dab5d-8f56-4d40-b3e0-a6b401391bde"
-  },
-  connections: { 
-    vizApi: true, 
-    engineApi: true 
-  }
-}
-
-const qdtComponents = new QdtComponents(options.config, options.connections);
-
-export default class QdtComponent extends React.Component {
-  static propTypes = {
-    type: PropTypes.string.isRequired,
-    props: PropTypes.object.isRequired,
-  }
-  componentDidMount() {
-    const { type, props } = this.props;
-    qdtComponents.render(type, props, this.node);
-  }
-
-  componentWillUnmount() {
-    QdtComponents.unmountQdtComponent(this.node)
-  }
-
-  render() {
-    return (
-      <div ref={(node) => { this.node = node; }} />
-    );
-  }
-}
-```
-
-#### Vue
-- [Live Demo](https://webapps.qlik.com/qdt-components/react/index.html)
-- [Git](https://github.com/qlik-demo-team/qdt-vue-template)
+* #### [With Vue](docs/usage/Vue.md)
 
 
 ### Component Docs ###
 
-- #### [QtdViz](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtViz.md)
+* #### [QtdViz](docs/QdtViz.md)
 
-- #### [QtdFilter](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtFilter.md)
+* #### [QtdFilter](docs/QdtFilter.md)
 
-- #### [QdtSelectionToolbar](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtSelectionToolbar.md)
+* #### [QdtSelectionToolbar](docs/QdtSelectionToolbar.md)
 
-#### QdtBarchart
-This creates a barchart based on [Picasso.js](https://picassojs.com/).
-* [Live Example](https://webapps.qlik.com/qdt-components/plain-html/picasso-horizontalbarchart.html).
+* #### [QdtPicasso](docs/QdtPicassos.md)
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| type             | String        | `horizontal` |
-| cols             | Array         | `[dimension, measure]` |
-| options          | Object        | `barcolor` |
-| width            | String        | Sets width of viz, default 100% |
-| height           | String        | Sets height of viz, default 100% |
+* #### [QdtSearch](docs/QdtSearch.md)
 
-#### QdtPicasso
-This creates a Line Chart based on [Picasso.js](https://picassojs.com/).
-* [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/picasso-line-chart).
+* #### QdtButton
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `scatterplot`, `verticalBarchart`, `stackedBarchart`, `verticalGauge`, `verticalRangeGauge`, `rangeArea`, `verticalGroupBarchart` |
-| cols             | Array         | `[dimension, measure]` |
-| options          | Object        | `color` |
-| prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
+* #### QdtTable
 
-#### QdtSearch
-This creates a search input field based on [Leonardo UI - input](https://qlik-oss.github.io/leonardo-ui/input.html).
-* Tooltips are also based on [Leonardo UI - Tooltip](https://qlik-oss.github.io/leonardo-ui/tooltip.html)
-* [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/search).
+* #### QdtCurrentSelections
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| cols             | Array         | `[dimension]` |
-| invert           | Boolean       | false         |
-| placeholder      | String        | `Search for`  |
-| tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
-| tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
-| showGo           | Boolean       | false         |
 
 - #### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtMapBox.md)
 
