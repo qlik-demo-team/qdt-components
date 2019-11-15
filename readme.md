@@ -6,11 +6,14 @@
 
 - Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular6, React 16 and Vue 2
 
+
 ### Installation
 - `npm install --save qdt-components`
 
+
 ### Live Demo with the latest additions
 - https://qdt-apps.qlik.com/qdt-components/react/
+
 
 ### Usage
 
@@ -27,15 +30,15 @@ Click below to see how you can use qdt-components
 
 ### Component Docs ###
 
-* #### [QtdViz](docs/QdtViz.md)
+* #### [QtdViz](docs/components/QdtViz.md)
 
-* #### [QtdFilter](docs/QdtFilter.md)
+* #### [QtdFilter](docs/components/QdtFilter.md)
 
-* #### [QdtSelectionToolbar](docs/QdtSelectionToolbar.md)
+* #### [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)
 
-* #### [QdtPicasso](docs/QdtPicassos.md)
+* #### [QdtPicasso](docs/components/QdtPicassos.md)
 
-* #### [QdtSearch](docs/QdtSearch.md)
+* #### [QdtSearch](docs/components/QdtSearch.md)
 
 * #### QdtButton
 
@@ -43,8 +46,8 @@ Click below to see how you can use qdt-components
 
 * #### QdtCurrentSelections
 
+- #### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/components/QdtMapBox.md)
 
-- #### [QtdMapBox](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/QdtMapBox.md)
 
 ### Contributing
 
@@ -53,6 +56,7 @@ Click below to see how you can use qdt-components
 - For a local installation, start with `npm install` and then `npm run start`
 - Before you commit, run `npm run lint` and that there are no warnings or errors.
 - Follow the commit message guidelines below
+
 
 ### Commit message guidelines
 
