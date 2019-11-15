@@ -1,4 +1,4 @@
-![Banner](assets/graphic.png "Banner") 
+![Banner](docs/assets/banner.png "Banner") 
 
 [![latest npm badge](https://img.shields.io/npm/v/qdt-components/latest.svg)](https://www.npmjs.com/package/qdt-components) [![Greenkeeper badge](https://badges.greenkeeper.io/qlik-demo-team/qdt-components.svg)](https://greenkeeper.io/)
 
@@ -30,9 +30,9 @@ Click below to see how you can use qdt-components
 
 ### Components
 
-| [QtdViz](docs/components/QdtViz.md)                               | [QtdFilter](docs/components/QtdFilter.md)                           |
+| [QtdViz](docs/components/QdtViz.md)                               | [QdtFilter](docs/components/QdtFilter.md)                           |
 | :----:                                                            |    :----:                                                           |
-| [![QtdViz](docs/assets/embedded.png)](docs/components/QdtViz.md)  | [![QtdViz](docs/assets/filters.png)](docs/components/QtdFilter.md)  |
+| [![QtdViz](docs/assets/embedded.png)](docs/components/QdtViz.md)  | [![QdtFilter](docs/assets/filters.png)](docs/components/QdtFilter.md)  |
 
 
 | [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     | [QdtPicasso](docs/components/QdtPicasso.md)                           |
@@ -40,16 +40,13 @@ Click below to see how you can use qdt-components
 | [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso.md)  |
 
 
-| [QdtSearch](docs/components/QdtSearch.md)                               | [QtdMapBox](docs/components/QtdMapBox.md)                           |
+| [QdtSearch](docs/components/QdtSearch.md)                         | [QtdMapBox](docs/components/QtdMapBox.md)                           |
 | :----:                                                            |    :----:                                                           |
 | [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QtdMapBox.md)  |
 
-
-* #### QdtButton
-
-* #### QdtTable
-
-* #### QdtCurrentSelections
+| [QdtTable](docs/components/QdtTable.md)                           | [QdtCurrentSelections](docs/components/QdtCurrentSelections.md)                           |
+| :----:                                                            |    :----:                                                           |
+| [![QdtTable](docs/assets/table.png)](docs/components/QdtTable.md) | [![QdtCurrentSelections](docs/assets/currentSelections.png)](docs/components/QdtCurrentSelections.md)  |
 
 
 ### Contributing
