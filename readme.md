@@ -30,7 +30,7 @@ Click below to see how you can use qdt-components
 
 ### Component Docs ###
 
-| #### [QtdViz](docs/components/QdtViz.md)                        | #### [QtdFilter](docs/components/QtdFilter.md)                    |
+| [QtdViz](docs/components/QdtViz.md)                        | [QtdFilter](docs/components/QtdFilter.md)                    |
 | :----:                                                          |    :----:                                                         |
 | [![QtdViz](../assets/embedded.png)](docs/components/QdtViz.md)  | [![QtdViz](../assets/filters.png)](docs/components/QtdFilter.md)  |
 
