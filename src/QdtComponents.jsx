@@ -15,9 +15,10 @@ import QdtButton from './components/QdtButton/QdtButton';
 import QdtPicasso from './components/QdtPicasso/QdtPicasso';
 import QdtSearch from './components/QdtSearch/QdtSearch';
 import QdtCurrentSelections from './components/QdtCurrentSelections/QdtCurrentSelections';
+import QdtMapBox from './components/QdtMapbox/QdtMapBox';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections,
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections, QdtMapBox,
 };
 
 const QdtComponents = class {
