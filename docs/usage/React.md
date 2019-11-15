@@ -48,4 +48,5 @@ export default class QdtComponent extends React.Component {
 }
 ```
 
-[Or Use this template](https://github.com/qlik-demo-team/qdt-react-template)
+### Template
+[https://github.com/qlik-demo-team/qdt-react-template](https://github.com/qlik-demo-team/qdt-react-template)

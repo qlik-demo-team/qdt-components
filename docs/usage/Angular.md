@@ -46,4 +46,5 @@ export class QdtComponent implements OnInit, OnDestroy {
 }
 ```
 
-[Or Use this template](https://github.com/qlik-demo-team/qdt-angular-template)
+### Template
+[https://github.com/qlik-demo-team/qdt-angular-template](https://github.com/qlik-demo-team/qdt-angular-template)

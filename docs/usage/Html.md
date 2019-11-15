@@ -35,4 +35,5 @@ This is a guide on how you can use qdt-components on a simple html page.
 </script>
 ```
 
-[Or Use this template](https://github.com/qlik-demo-team/qdt-html-template)
+### Template
+[https://github.com/qlik-demo-team/qdt-html-template](https://github.com/qlik-demo-team/qdt-html-template)
