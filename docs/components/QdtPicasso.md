@@ -14,7 +14,6 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 
 ## Horizontal Barchart
 
-![QdtPicasso](assets/filters.png?raw=true "QdtPicasso")
 
 
 ### Html Code
@@ -28,3 +27,7 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 ```
 
 #### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)
+
+| Picasso Horizontal Barchart       | Picasso Vertical Barchart     |
+| :----:                            |    :----:                     |
+| ![picassoHorizontalBarchart](../assets/picassoHorizontalBarchart.png?raw=true "picassoHorizontalBarchart")| ![picassoVerticalBarchart](../assets/picassoVerticalBarchart.png?raw=true "picassoVerticalBarchart") |

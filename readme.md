@@ -36,7 +36,7 @@ Click below to see how you can use qdt-components
 
 * #### [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)
 
-* #### [QdtPicasso](docs/components/QdtPicassos.md)
+* #### [QdtPicasso](docs/components/QdtPicasso.md)
 
 * #### [QdtSearch](docs/components/QdtSearch.md)
 
