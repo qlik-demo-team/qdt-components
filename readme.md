@@ -1,6 +1,6 @@
 ![Banner](docs/assets/banner.png "Banner") 
 
-[![latest npm badge](https://img.shields.io/npm/v/qdt-components/latest.svg)](https://www.npmjs.com/package/qdt-components) [![Greenkeeper badge](https://badges.greenkeeper.io/qlik-demo-team/qdt-components.svg)](https://greenkeeper.io/)
+[![latest npm badge](https://img.shields.io/npm/v/qdt-components/latest.svg)](https://www.npmjs.com/package/qdt-components)
 
 # Qdt (aka Qlik Demo Team) Components
 
@@ -14,6 +14,7 @@
 ### Live Demo with the latest additions
 - https://qdt-apps.qlik.com/qdt-components/react/
 
+---
 
 ### Usage
 
@@ -27,6 +28,7 @@ Click below to see how you can use qdt-components
 
 * #### [With Vue](docs/usage/Vue.md)
 
+---
 
 ### Components
 
@@ -48,6 +50,7 @@ Click below to see how you can use qdt-components
 | :----:                                                            |    :----:                                                           |
 | [![QdtTable](docs/assets/table.png)](docs/components/QdtTable.md) | [![QdtCurrentSelections](docs/assets/currentSelections.png)](docs/components/QdtCurrentSelections.md)  |
 
+---
 
 ### Contributing
 

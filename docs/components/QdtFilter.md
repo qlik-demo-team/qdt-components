@@ -1,6 +1,6 @@
 ## Get a visualization from Qlik Sense
 
-![QdtFilter](assets/filters.png?raw=true "QdtFilter")
+![QdtFilter](../assets/filters.png?raw=true "QdtFilter")
 
 This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
 

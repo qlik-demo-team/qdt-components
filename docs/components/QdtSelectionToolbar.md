@@ -1,6 +1,6 @@
 ## QdtSelectionToolbar
 
-![QdtSelectionToolbar](docs/assets/selectionToolbar.png "QdtSelectionToolbar")
+![QdtSelectionToolbar](../assets/selectionToolbar.png "QdtSelectionToolbar")
 
 This populated a toolbar with the current app selections.
 

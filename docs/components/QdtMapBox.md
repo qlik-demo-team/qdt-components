@@ -1,6 +1,6 @@
 ## Create a map with layers using MapBox
 
-![QdtMapBox](assets/mapbox.png?raw=true "QdtMapBox")
+![QdtMapBox](../assets/picassoMapbox.png "QdtMapBox")
 
 [MapBox Api Docs](https://docs.mapbox.com/mapbox-gl-js/overview/)
 

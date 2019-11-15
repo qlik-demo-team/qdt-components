@@ -1,6 +1,6 @@
 ## QdtCurrentSelections
 
-![QdtCurrentSelections](docs/assets/currentSelections.png "QdtCurrentSelections")
+![QdtCurrentSelections](../assets/currentSelections.png "QdtCurrentSelections")
 
 ### Html Code
 

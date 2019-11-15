@@ -5,7 +5,6 @@
 
 This creates a search input field based on [Leonardo UI - input](https://qlik-oss.github.io/leonardo-ui/input.html).
 * Tooltips are also based on [Leonardo UI - Tooltip](https://qlik-oss.github.io/leonardo-ui/tooltip.html)
-* [Live Example](https://webapps.qlik.com/qdt-components/react/index.html#/search).
 
 ### Html Code
 

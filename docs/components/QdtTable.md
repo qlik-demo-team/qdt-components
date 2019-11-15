@@ -1,6 +1,6 @@
 ## QdtTable
 
-![QdtTable](docs/assets/table.png "QdtTable")
+![QdtTable](../assets/table.png "QdtTable")
 
 ### Html Code
 
