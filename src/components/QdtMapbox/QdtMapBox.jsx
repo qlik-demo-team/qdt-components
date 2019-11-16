@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState, useRef, useCallback,
+  useEffect, useState, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
@@ -19,7 +19,7 @@ const QdtMapBox = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const { qData, qLayout, offset } = useHyperCube({ qPage, ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
-  const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
+  // const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -155,14 +155,14 @@ const QdtMapBox = ({
 
   useEffect(() => {
     if (qData && !isLoaded) {
-      if (getData) handleCallback();
       if (getAllDataInterval) getAllData();
       createPropertyChilderFromQData();
       mapInit();
     }
+    if (qData && getData) getData(qData, qLayout);
     if (isLoaded) updateLayers(qData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData]);
+  }, [qData, qLayout]);
 
   return (
     <>

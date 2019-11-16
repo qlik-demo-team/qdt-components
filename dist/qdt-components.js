@@ -53287,10 +53287,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       qLayout = _useHyperCube.qLayout,
       offset = _useHyperCube.offset;
 
-  var property = hyperCubeProps.cols[3];
-  var handleCallback = Object(react["useCallback"])(function () {
-    return getData(qData, qLayout);
-  }, [getData, qData, qLayout]);
+  var property = hyperCubeProps.cols[3]; // const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     var featureObj = {
@@ -53449,14 +53446,14 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
   Object(react["useEffect"])(function () {
     if (qData && !isLoaded) {
-      if (getData) handleCallback();
       if (getAllDataInterval) getAllData();
       createPropertyChilderFromQData();
       mapInit();
     }
 
+    if (qData && getData) getData(qData, qLayout);
     if (isLoaded) updateLayers(qData); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData]);
+  }, [qData, qLayout]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     style: {
       display: 'block',
