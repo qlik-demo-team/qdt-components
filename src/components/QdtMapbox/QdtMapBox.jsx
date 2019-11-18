@@ -155,14 +155,14 @@ const QdtMapBox = ({
 
   useEffect(() => {
     if (qData && !isLoaded) {
-      if (getData) handleCallback();
       if (getAllDataInterval) getAllData();
       createPropertyChilderFromQData();
       mapInit();
     }
+    if (qData && getData) handleCallback();
     if (isLoaded) updateLayers(qData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData]);
+  }, [qData, qLayout]);
 
   return (
     <>
