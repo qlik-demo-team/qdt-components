@@ -2,9 +2,9 @@
 
 [![latest npm badge](https://img.shields.io/npm/v/qdt-components/latest.svg)](https://www.npmjs.com/package/qdt-components)
 
-# Qdt (aka Qlik Demo Team) Components
+# Qdt Components
 
-- Qlik-powered components built by the Qlik Demo Team. For use with simple html, Angular6, React 16 and Vue 2
+- Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple html, Angular6, React 16 and Vue 2
 
 
 ### Installation

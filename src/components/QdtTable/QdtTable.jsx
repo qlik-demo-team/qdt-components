@@ -1,108 +1,136 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import PropTypes from 'prop-types';
+import ReactTable from 'react-table';
 import useHyperCube from '../../hooks/useHyperCube';
-import QdtVirtualScroll from '../QdtVirtualScroll/QdtVirtualScroll';
-import TableHead from './TableHead';
-import TableBody from './TableBody';
+import 'react-table/react-table.css';
 import '../../styles/index.scss';
 
-let columnWidth = null;
-let labels = null;
+// TODO - handle if qInterColumnSortOrder is set, instead of just overriding it
+// TODO - set qColumnOrder in useHyperCube so it can be used here.
 
 const QdtTable = ({
-  qDocPromise, cols, qPage, height, rowHeight,
+  qDocPromise, cols, qPage, style,
 }) => {
-  const [sortColumn, setSortColumn] = useState(0);
-  const node = useRef(null);
   const {
-    qLayout, qData, offset, select, applyPatches,
+    qLayout, qData, offset, select, applyPatches, //eslint-disable-line
   } = useHyperCube({ qDocPromise, cols, qPage });
 
-  if (qLayout) {
-    columnWidth = 100 / qLayout.qHyperCube.qSize.qcx;
-    labels = [
-      ...qLayout.qHyperCube.qDimensionInfo.map((dim) => dim.qFallbackTitle),
-      ...qLayout.qHyperCube.qMeasureInfo.map((measure) => measure.qFallbackTitle),
-    ];
-  }
+  const columns = useMemo(() => (
+    qLayout
+      ? [
+        ...qLayout.qHyperCube.qDimensionInfo.map((col, index) => ({
+          Header: col.qFallbackTitle,
+          accessor: (d) => d[index].qText,
+          defaultSortDesc: col.qSortIndicator === 'D',
+          id: col.qFallbackTitle,
+          qInterColumnIndex: index,
+          qPath: `/qHyperCubeDef/qDimensions/${index}`,
+          qSortIndicator: col.qSortIndicator,
+          qReverseSort: col.qReverseSort,
+        })),
+        ...qLayout.qHyperCube.qMeasureInfo.map((col, index) => ({
+          Header: col.qFallbackTitle,
+          accessor: (d) => d[index + qLayout.qHyperCube.qDimensionInfo.length].qText,
+          defaultSortDesc: col.qSortIndicator === 'D',
+          id: col.qFallbackTitle,
+          qInterColumnIndex: index + qLayout.qHyperCube.qDimensionInfo.length,
+          qPath: `/qHyperCubeDef/qMeasures/${index}`,
+          qSortIndicator: col.qSortIndicator,
+          qReverseSort: col.qReverseSort,
+        })),
+      ]
+      : []
+  ), [qLayout]);
 
-  const _setSortColumn = async (event) => {
-    const index = Number(event.target.dataset.index);
-    await applyPatches([{
-      qOp: 'replace',
-      qPath: '/qHyperCubeDef/qInterColumnSortOrder',
-      qValue: JSON.stringify([index]),
-    }]);
-    setSortColumn(index);
-  };
+  const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight), [qLayout, qPage]);
 
-  const _select = (e) => {
-    const { qstate, qElemNumber, index } = e.target.dataset;
-    if (qstate !== 'L') {
-      select(Number(index), [Number(qElemNumber)]);
-    }
-  };
-
-  const resize = () => {
-    const thead = node.current.getElementsByTagName('thead')[0];
-    const tbody = node.current.getElementsByTagName('tbody')[0];
-    thead.style.width = `${tbody.clientWidth}px`;
-  };
-
+  const [page, setPage] = useState(0);
   useEffect(() => {
-    if (qData) resize();
-    window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (page >= pages) {
+      setPage(0);
+    }
+  }, [page, pages]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
   }, [qData]);
 
+  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * qPage.qHeight); }, [offset, qPage.qHeight]);
+  const handleSortedChange = useCallback(async (newSorted, column) => {
+    setLoading(true);
+    // If no sort is set, we need to set a default sort order
+    if (column.qSortIndicator === 'N') {
+      if (column.qPath.includes('qDimensions')) {
+        await applyPatches([
+          {
+            qOp: 'add',
+            qPath: `${column.qPath}/qDef/qSortCriterias`,
+            qValue: JSON.stringify([{ qSortByLoadOrder: 1 }]),
+          },
+        ]);
+      }
+      if (column.qPath.includes('qMeasures')) {
+        await applyPatches([
+          {
+            qOp: 'add',
+            qPath: `${column.qPath}/qSortBy`,
+            qValue: JSON.stringify([{ qSortByLoadOrder: 1 }]),
+          },
+        ]);
+      }
+    }
+    applyPatches([
+      {
+        qOp: 'replace',
+        qPath: `${column.qPath}/qDef/qReverseSort`,
+        qValue: JSON.stringify((newSorted[0].desc !== column.defaultSortDesc) !== !!column.qReverseSort),
+      },
+      {
+        qOp: 'replace',
+        qPath: '/qHyperCubeDef/qInterColumnSortOrder',
+        qValue: JSON.stringify([column.qInterColumnIndex]),
+      },
+    ]);
+  }, [applyPatches]);
+
   return (
-    <div ref={node}>
-      { qData
-        && (
-        <TableHead
-          columnWidth={columnWidth}
-          labels={labels}
-          sortColumn={sortColumn}
-          setSortColumn={_setSortColumn}
-        />
-        )}
-      { qData
-        && (
-        <QdtVirtualScroll
-          qData={qData}
-          qcy={qLayout.qHyperCube.qSize.qcy}
-          Component={TableBody}
-          componentProps={{ qData, columnWidth, select: _select }}
-          offset={offset}
-          rowHeight={rowHeight}
-          viewportHeight={height}
-        />
-        )}
+    <div>
+      <ReactTable
+        manual
+        data={qData ? qData.qMatrix : []}
+        columns={columns}
+        pages={pages}
+        page={page}
+        loading={loading}
+        onPageChange={handlePageChange}
+        onSortedChange={handleSortedChange}
+        defaultPageSize={qPage.qHeight}
+        showPageSizeOptions={false}
+        multiSort={false}
+        className="-striped"
+        style={style}
+        getTdProps={(_, rowInfo, column) => ({
+          onClick: (e, handleOriginal) => {
+            if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+              select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+            }
+            if (handleOriginal) {
+              handleOriginal();
+            }
+          },
+        })}
+      />
     </div>
   );
 };
 
-// QdtTableComponent.propTypes = {
-//   qData: PropTypes.object.isRequired,
-//   qLayout: PropTypes.object.isRequired,
-//   offset: PropTypes.func.isRequired,
-//   select: PropTypes.func.isRequired,
-//   applyPatches: PropTypes.func.isRequired,
-//   height: PropTypes.number.isRequired,
-//   rowHeight: PropTypes.number.isRequired,
-// };
-
-// const QdtTable = withHyperCube(QdtTableComponent);
 QdtTable.propTypes = {
   qDocPromise: PropTypes.object.isRequired,
   cols: PropTypes.array,
   qPage: PropTypes.object,
-  // width: PropTypes.string,
-  height: PropTypes.number,
-  rowHeight: PropTypes.number,
+  style: PropTypes.object,
 };
 QdtTable.defaultProps = {
   cols: null,
@@ -110,11 +138,9 @@ QdtTable.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 10,
-    qHeight: 100,
+    qHeight: 20,
   },
-  // width: '100%',
-  height: 400,
-  rowHeight: 50,
+  style: { height: '100%' },
 };
 
 export default QdtTable;
