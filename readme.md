@@ -42,9 +42,9 @@ Click below to see how you can use qdt-components
 | [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso.md)  |
 
 
-| [QdtSearch](docs/components/QdtSearch.md)                         | [QtdMapBox](docs/components/QtdMapBox.md)                           |
+| [QdtSearch](docs/components/QdtSearch.md)                         | [QtdMapBox](docs/components/QdtMapBox.md)                           |
 | :----:                                                            |    :----:                                                           |
-| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QtdMapBox.md)  |
+| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QdtMapBox.md)  |
 
 | [QdtTable](docs/components/QdtTable.md)                           | [QdtCurrentSelections](docs/components/QdtCurrentSelections.md)                           |
 | :----:                                                            |    :----:                                                           |
