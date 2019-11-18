@@ -19017,10 +19017,7 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
       width: width,
       height: height,
       minWidth: minWidth,
-      minHeight: minHeight,
-      position: 'absolute',
-      top: 0,
-      bottom: 0
+      minHeight: minHeight
     }
   }), exportData && react_default.a.createElement("div", {
     style: btnStyle

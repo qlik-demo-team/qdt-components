@@ -59,7 +59,7 @@ const QdtViz = ({
             <div
               ref={node}
               style={{
-                width, height, minWidth, minHeight, position: 'absolute', top: 0, bottom: 0,
+                width, height, minWidth, minHeight,
               }}
             />
             {exportData && (
