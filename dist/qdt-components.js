@@ -55310,18 +55310,25 @@ QdtPicassoMiniMap_QdtPicassoMiniMap.propTypes = {
   offsetPicasso: prop_types_default.a.func.isRequired
 };
 /* harmony default export */ var QdtPicasso_QdtPicassoMiniMap = (QdtPicassoMiniMap_QdtPicassoMiniMap);
-// CONCATENATED MODULE: ./src/components/QdtPicasso/SelectionToolbar.jsx
+// CONCATENATED MODULE: ./src/components/QdtLui/LuiSelectionModal.jsx
 
 
 
-var SelectionToolbar_SelectionToolbar = function SelectionToolbar(_ref) {
+var LuiSelectionModal_LuiSelectionModal = function LuiSelectionModal(_ref) {
   var cancelSelections = _ref.cancelSelections,
-      confirmSelections = _ref.confirmSelections;
-  return react_default.a.createElement("div", {
+      confirmSelections = _ref.confirmSelections,
+      isOpen = _ref.isOpen;
+  return react_default.a.createElement(react_default.a.Fragment, null, isOpen && react_default.a.createElement("div", {
     style: {
       position: 'absolute',
-      top: '-2rem',
-      right: 0
+      top: -40,
+      right: 0,
+      width: '100%',
+      borderTop: '1px solid #CCCCCC',
+      borderLeft: '1px solid #CCCCCC',
+      borderRight: '1px solid #CCCCCC',
+      textAlign: 'right',
+      padding: 5
     }
   }, react_default.a.createElement("button", {
     type: "button",
@@ -55335,20 +55342,21 @@ var SelectionToolbar_SelectionToolbar = function SelectionToolbar(_ref) {
   })), react_default.a.createElement("button", {
     type: "button",
     className: "lui-button lui-button--success",
-    style: {
-      marginRight: '1rem'
-    },
     onClick: confirmSelections
   }, react_default.a.createElement("span", {
     className: "lui-icon lui-icon--tick"
-  })));
+  }))));
 };
 
-SelectionToolbar_SelectionToolbar.propTypes = {
+LuiSelectionModal_LuiSelectionModal.propTypes = {
   cancelSelections: prop_types_default.a.func.isRequired,
-  confirmSelections: prop_types_default.a.func.isRequired
+  confirmSelections: prop_types_default.a.func.isRequired,
+  isOpen: prop_types_default.a.bool
 };
-/* harmony default export */ var QdtPicasso_SelectionToolbar = (SelectionToolbar_SelectionToolbar);
+LuiSelectionModal_LuiSelectionModal.defaultProps = {
+  isOpen: false
+};
+/* harmony default export */ var QdtLui_LuiSelectionModal = (LuiSelectionModal_LuiSelectionModal);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/QdtPicasso.jsx
 
 
@@ -55610,7 +55618,10 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       width: outerWidth,
       height: outerHeight,
       overflow: 'auto',
-      paddingRight: 10
+      paddingRight: 10,
+      border: isSelectionBarVisible ? '1px solid #CCCCCC' : 'none',
+      overflowX: isSelectionBarVisible ? 'hidden' : 'auto',
+      overflowY: isSelectionBarVisible ? 'hidden' : 'auto'
     }
   }, react_default.a.createElement("div", {
     ref: elementNode,
@@ -55630,7 +55641,8 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
     offsetPicasso: offsetPicasso,
     outerWidth: outerWidth,
     innerWidth: innerWidth
-  }), isSelectionBarVisible && react_default.a.createElement(QdtPicasso_SelectionToolbar, {
+  }), react_default.a.createElement(QdtLui_LuiSelectionModal, {
+    isOpen: isSelectionBarVisible,
     cancelSelections: cancelSelections,
     confirmSelections: confirmSelections
   }));
