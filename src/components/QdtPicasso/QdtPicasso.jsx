@@ -7,7 +7,7 @@ import useHyperCube from '../../hooks/useHyperCube';
 import { domPointLabel, domPointImage } from './picasso/components';
 import preconfiguredSettings from './picasso/settings';
 import QdtPicassoMiniMap from './QdtPicassoMiniMap';
-import SelectionToolbar from './SelectionToolbar';
+import LuiSelectionModal from '../QdtLui/LuiSelectionModal';
 import '../../styles/index.scss';
 
 const miniMapVisible = true;
@@ -141,7 +141,14 @@ const QdtPicasso = ({
   return (
     <div ref={rootNode} style={{ position: 'relative' }}>
       <div style={{
-        position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto', paddingRight: 10,
+        position: 'relative',
+        width: outerWidth,
+        height: outerHeight,
+        overflow: 'auto',
+        paddingRight: 10,
+        border: (isSelectionBarVisible) ? '1px solid #CCCCCC' : 'none',
+        overflowX: (isSelectionBarVisible) ? 'hidden' : 'auto',
+        overflowY: (isSelectionBarVisible) ? 'hidden' : 'auto',
       }}
       >
         <div
@@ -168,8 +175,11 @@ const QdtPicasso = ({
           innerWidth={innerWidth}
         />
         )}
-      { isSelectionBarVisible
-        && <SelectionToolbar cancelSelections={cancelSelections} confirmSelections={confirmSelections} /> }
+      <LuiSelectionModal
+        isOpen={isSelectionBarVisible}
+        cancelSelections={cancelSelections}
+        confirmSelections={confirmSelections}
+      />
     </div>
   );
 };
