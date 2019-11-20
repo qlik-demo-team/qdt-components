@@ -18496,6 +18496,8 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     var _ref2 = asyncToGenerator_default()(
     /*#__PURE__*/
     regenerator_default.a.mark(function _callee(newSorted, column) {
+      var dimensionIndex, qValue, measureIndex, _qValue;
+
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -18503,40 +18505,48 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
               setLoading(true); // If no sort is set, we need to set a default sort order
 
               if (!(column.qSortIndicator === 'N')) {
-                _context.next = 8;
+                _context.next = 12;
                 break;
               }
 
               if (!column.qPath.includes('qDimensions')) {
-                _context.next = 5;
+                _context.next = 7;
                 break;
               }
 
-              _context.next = 5;
+              dimensionIndex = column.qPath.split('/')[3];
+              qValue = qLayout.qHyperCube.qDimensionInfo[dimensionIndex].qNumFormat.qType === 'R' ? JSON.stringify([{
+                qSortByAscii: 1
+              }]) : JSON.stringify([{
+                qSortByLoadOrder: 1
+              }]);
+              _context.next = 7;
               return applyPatches([{
                 qOp: 'add',
                 qPath: "".concat(column.qPath, "/qDef/qSortCriterias"),
-                qValue: JSON.stringify([{
-                  qSortByLoadOrder: 1
-                }])
+                qValue: qValue
               }]);
 
-            case 5:
+            case 7:
               if (!column.qPath.includes('qMeasures')) {
-                _context.next = 8;
+                _context.next = 12;
                 break;
               }
 
-              _context.next = 8;
+              measureIndex = column.qPath.split('/')[3];
+              _qValue = qLayout.qHyperCube.qMeasureInfo[measureIndex].qNumFormat.qType === 'M' || qLayout.qHyperCube.qMeasureInfo[measureIndex].qNumFormat.qType === 'U' ? JSON.stringify({
+                qSortByNumeric: 1
+              }) : JSON.stringify({
+                qSortByLoadOrder: 1
+              });
+              _context.next = 12;
               return applyPatches([{
                 qOp: 'add',
                 qPath: "".concat(column.qPath, "/qSortBy"),
-                qValue: JSON.stringify({
-                  qSortByLoadOrder: 1
-                })
+                qValue: _qValue
               }]);
 
-            case 8:
+            case 12:
               applyPatches([{
                 qOp: 'replace',
                 qPath: "".concat(column.qPath, "/qDef/qReverseSort"),
@@ -18547,7 +18557,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
                 qValue: JSON.stringify([column.qInterColumnIndex])
               }]);
 
-            case 9:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -18558,7 +18568,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     return function (_x, _x2) {
       return _ref2.apply(this, arguments);
     };
-  }(), [applyPatches]);
+  }(), [applyPatches, qLayout]);
   return react_default.a.createElement("div", null, react_default.a.createElement(es, {
     manual: true,
     data: qData ? qData.qMatrix : [],

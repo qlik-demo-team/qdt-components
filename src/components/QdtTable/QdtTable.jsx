@@ -63,20 +63,24 @@ const QdtTable = ({
     // If no sort is set, we need to set a default sort order
     if (column.qSortIndicator === 'N') {
       if (column.qPath.includes('qDimensions')) {
+        const dimensionIndex = column.qPath.split('/')[3];
+        const qValue = (qLayout.qHyperCube.qDimensionInfo[dimensionIndex].qNumFormat.qType === 'R') ? JSON.stringify([{ qSortByAscii: 1 }]) : JSON.stringify([{ qSortByLoadOrder: 1 }]);
         await applyPatches([
           {
             qOp: 'add',
             qPath: `${column.qPath}/qDef/qSortCriterias`,
-            qValue: JSON.stringify([{ qSortByLoadOrder: 1 }]),
+            qValue,
           },
         ]);
       }
       if (column.qPath.includes('qMeasures')) {
+        const measureIndex = column.qPath.split('/')[3];
+        const qValue = (qLayout.qHyperCube.qMeasureInfo[measureIndex].qNumFormat.qType === 'M' || qLayout.qHyperCube.qMeasureInfo[measureIndex].qNumFormat.qType === 'U') ? JSON.stringify({ qSortByNumeric: 1 }) : JSON.stringify({ qSortByLoadOrder: 1 });
         await applyPatches([
           {
             qOp: 'add',
             qPath: `${column.qPath}/qSortBy`,
-            qValue: JSON.stringify({ qSortByLoadOrder: 1 }),
+            qValue,
           },
         ]);
       }
@@ -93,7 +97,7 @@ const QdtTable = ({
         qValue: JSON.stringify([column.qInterColumnIndex]),
       },
     ]);
-  }, [applyPatches]);
+  }, [applyPatches, qLayout]);
 
   return (
     <div>
