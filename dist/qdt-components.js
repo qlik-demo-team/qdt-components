@@ -768,7 +768,7 @@ module.exports = function (list, options) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Hammer) {/*
-* picasso-plugin-hammer v0.27.0
+* picasso-plugin-hammer v0.27.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -982,7 +982,7 @@ function initialize(picasso) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*
-* picasso-plugin-q v0.27.0
+* picasso-plugin-q v0.27.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -18413,14 +18413,14 @@ var react_table = __webpack_require__(51);
 
 
 
- // TODO - handle if qInterColumnSortOrder is set, instead of just overriding it
-// TODO - set qColumnOrder in useHyperCube so it can be used here.
+ // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
 var QdtTable_QdtTable = function QdtTable(_ref) {
   var qDocPromise = _ref.qDocPromise,
       cols = _ref.cols,
       qPage = _ref.qPage,
-      style = _ref.style;
+      style = _ref.style,
+      minRows = _ref.minRows;
 
   var _useHyperCube = hooks_useHyperCube({
     qDocPromise: qDocPromise,
@@ -18537,17 +18537,24 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
               }]);
 
             case 8:
-              applyPatches([{
+              _context.next = 10;
+              return applyPatches([{
                 qOp: 'replace',
                 qPath: "".concat(column.qPath, "/qDef/qReverseSort"),
                 qValue: JSON.stringify(newSorted[0].desc !== column.defaultSortDesc !== !!column.qReverseSort)
               }, {
                 qOp: 'replace',
                 qPath: '/qHyperCubeDef/qInterColumnSortOrder',
-                qValue: JSON.stringify([column.qInterColumnIndex])
+                qValue: JSON.stringify(toConsumableArray_default()(qLayout.qHyperCube.qEffectiveInterColumnSortOrder).sort(function (a, b) {
+                  return a === column.qInterColumnIndex ? -1 : b === column.qInterColumnIndex ? 1 : 0;
+                })) //eslint-disable-line
+
               }]);
 
-            case 9:
+            case 10:
+              setPage(0);
+
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -18558,7 +18565,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     return function (_x, _x2) {
       return _ref2.apply(this, arguments);
     };
-  }(), [applyPatches]);
+  }(), [applyPatches, qLayout]);
   return react_default.a.createElement("div", null, react_default.a.createElement(es, {
     manual: true,
     data: qData ? qData.qMatrix : [],
@@ -18569,6 +18576,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     onPageChange: handlePageChange,
     onSortedChange: handleSortedChange,
     defaultPageSize: qPage.qHeight,
+    minRows: minRows,
     showPageSizeOptions: false,
     multiSort: false,
     className: "-striped",
@@ -18593,7 +18601,8 @@ QdtTable_QdtTable.propTypes = {
   qDocPromise: prop_types_default.a.object.isRequired,
   cols: prop_types_default.a.array,
   qPage: prop_types_default.a.object,
-  style: prop_types_default.a.object
+  style: prop_types_default.a.object,
+  minRows: prop_types_default.a.number
 };
 QdtTable_QdtTable.defaultProps = {
   cols: null,
@@ -18605,7 +18614,8 @@ QdtTable_QdtTable.defaultProps = {
   },
   style: {
     height: '100%'
-  }
+  },
+  minRows: undefined
 };
 /* harmony default export */ var components_QdtTable_QdtTable = (QdtTable_QdtTable);
 // CONCATENATED MODULE: ./src/utilities/Preloader.jsx
@@ -19489,7 +19499,7 @@ QdtKpi_QdtKpi.defaultProps = {
 /* harmony default export */ var components_QdtKpi_QdtKpi = (QdtKpi_QdtKpi);
 // CONCATENATED MODULE: ./node_modules/picasso.js/dist/picasso.esm.js
 /*
-* picasso.js v0.27.0
+* picasso.js v0.27.1
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -20228,7 +20238,7 @@ var extend = function extend() {
 };
 
 var about = {
-  version: '0.27.0'
+  version: '0.27.1'
 };
 
 function _typeof(obj) {
@@ -31432,17 +31442,17 @@ function bar(options) {
   return rect;
 }
 
-var reg$1 = registryFactory();
-reg$1.add('circle', circle);
-reg$1.add('diamond', diamond);
-reg$1.add('saltire', saltire);
-reg$1.add('square', square);
-reg$1.add('triangle', triangle);
-reg$1.add('line', line$1);
-reg$1.add('star', star);
-reg$1.add('n-polygon', nPolygon);
-reg$1.add('cross', cross);
-reg$1.add('bar', bar);
+var parentReg = registryFactory();
+parentReg.add('circle', circle);
+parentReg.add('diamond', diamond);
+parentReg.add('saltire', saltire);
+parentReg.add('square', square);
+parentReg.add('triangle', triangle);
+parentReg.add('line', line$1);
+parentReg.add('star', star);
+parentReg.add('n-polygon', nPolygon);
+parentReg.add('cross', cross);
+parentReg.add('bar', bar);
 
 function applyOpts(obj) {
   var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -31461,24 +31471,27 @@ function applyOpts(obj) {
  */
 
 
-function create$3() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  // TODO handle reserverd properties x, y, size, data, etc..
-  var fn = reg$1.get(options.type);
+var create$3 = function create() {
+  var reg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : parentReg;
+  return function () {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    // TODO handle reserverd properties x, y, size, data, etc..
+    var fn = reg.get(options.type);
 
-  if (fn) {
-    var s = fn(options);
-    applyOpts(s, options);
+    if (fn) {
+      var s = fn(options);
+      applyOpts(s, options);
 
-    if (typeof options.data !== 'undefined') {
-      s.data = options.data;
+      if (typeof options.data !== 'undefined') {
+        s.data = options.data;
+      }
+
+      return s;
     }
 
-    return s;
-  }
-
-  return fn;
-}
+    return fn;
+  };
+};
 /**
  * Mandatory symbol config
  * @typedef {object} symbol-config
@@ -32064,7 +32077,7 @@ function componentFactory(definition) {
       return _resolver;
     },
     symbol: function symbol() {
-      return create$3;
+      return create$3(_registries.symbol);
     }
   });
   prepareContext(instanceContext, config, {
@@ -34910,8 +34923,8 @@ function picasso_esm_native(chart, mediator, element) {
   };
 }
 
-var reg$2 = registryFactory();
-reg$2('native', picasso_esm_native);
+var reg$1 = registryFactory();
+reg$1('native', picasso_esm_native);
 
 /**
  * Short-hand for max(min())
@@ -35698,11 +35711,11 @@ function box$1(picasso) {
  * @property {number} [whisker.strokeWidth=1]
  * @property {number} [whisker.width=1]
  * @property {object} [median] Visual properties for the median
- * @property {number} [median.show=true]
+ * @property {boolean} [median.show=true]
  * @property {string} [median.stroke='#000']
  * @property {number} [median.strokeWidth=1]
  * @property {object} [oob] EXPERIMENTAL: Out of bounds symbol utilizing the symbol API
- * @property {number} [oob.show=true]
+ * @property {boolean} [oob.show=true]
  * @property {string} [oob.type='n-polygon'] Type of the symbol to be used
  * @property {string} [oob.fill='#999'] Fill color of the symbol
  * @property {string} [oob.stroke='#000'] Stroke color
@@ -35873,7 +35886,7 @@ function createDisplayPoints(dataPoints, _ref, pointSize, shapeFn) {
 }
 
 var component$1 = {
-  require: ['chart', 'resolver'],
+  require: ['chart', 'resolver', 'symbol'],
   defaultSettings: {
     settings: {},
     data: {},
@@ -35904,7 +35917,7 @@ var component$1 = {
     var limits = extend({}, SIZE_LIMITS, this.settings.settings.sizeLimits);
     var points = resolved.items;
     var pointSize = getPointSizeLimits(resolved.settings.x, resolved.settings.y, width, height, limits);
-    return createDisplayPoints(points, this.rect, pointSize, this.settings.shapeFn || create$3);
+    return createDisplayPoints(points, this.rect, pointSize, this.settings.shapeFn || this.symbol);
   }
 };
 
@@ -41291,8 +41304,31 @@ function toBackground(label) {
   }, label.backgroundBounds);
 }
 
-function isTextInRect(rect, textMetrics, opts) {
-  return opts.rotate ? !(rect.width < textMetrics.height || rect.height < textMetrics.width) : !(rect.width < textMetrics.width || rect.height < textMetrics.height);
+function isTextWidthInRectWidth(rect, label, rotate) {
+  return rotate ? rect.width >= label.height : rect.width >= label.width;
+}
+
+function isTextHeightInRectHeight(rect, label, rotate) {
+  return rotate ? rect.height >= label.width : rect.height >= label.height;
+}
+
+function isGoodPlacement(orientation, rect, label, fitsHorizontally, overflow) {
+  var fitWidth;
+  var fitHeight;
+
+  if (orientation === 'v') {
+    fitWidth = fitsHorizontally || overflow || isTextWidthInRectWidth(rect, label, true);
+    fitHeight = isTextHeightInRectHeight(rect, label, !fitsHorizontally);
+  } else {
+    fitWidth = isTextWidthInRectWidth(rect, label);
+    fitHeight = overflow || isTextHeightInRectHeight(rect, label, false);
+  }
+
+  return fitWidth && fitHeight;
+}
+
+function isTextInRect(rect, label, opts) {
+  return isTextWidthInRectWidth(rect, label, opts.rotate) && isTextHeightInRectHeight(rect, label, opts.rotate);
 }
 function placeSegmentInSegment(majorSegmentPosition, majorSegmentSize, minorSegmentSize, align) {
   var majorSegmentCenter = majorSegmentPosition + majorSegmentSize * 0.5;
@@ -41417,6 +41453,7 @@ function findBestPlacement(_ref2) {
   var testBounds;
   var p;
   var boundaries = [];
+  var dimension = orientation === 'h' ? 'width' : 'height';
 
   for (p = 0; p < placementSettings.length; p++) {
     placement = placementSettings[p];
@@ -41428,12 +41465,9 @@ function findBestPlacement(_ref2) {
       padding: placement.padding
     });
     boundaries.push(testBounds);
-    largest = !p || testBounds.height > largest.height ? testBounds : largest;
+    largest = !p || testBounds[dimension] > largest[dimension] ? testBounds : largest;
 
-    if (orientation === 'v' && (fitsHorizontally && testBounds.height >= measured.height || !fitsHorizontally && testBounds.height >= measured.width && testBounds.width >= measured.height)) {
-      bounds = testBounds;
-      break;
-    } else if (orientation === 'h' && testBounds.height >= measured.height && testBounds.width >= measured.width) {
+    if (isGoodPlacement(orientation, testBounds, measured, fitsHorizontally, placement.overflow)) {
       bounds = testBounds;
       break;
     }
@@ -44037,8 +44071,7 @@ function createRenderItem(_ref) {
       y = _ref.y,
       item = _ref.item,
       globalMetrics = _ref.globalMetrics,
-      _ref$symbolFn = _ref.symbolFn,
-      symbolFn = _ref$symbolFn === void 0 ? create$3 : _ref$symbolFn,
+      createSymbol = _ref.createSymbol,
       _ref$direction = _ref.direction,
       direction = _ref$direction === void 0 ? 'ltr' : _ref$direction;
   var label = item.label.displayObject;
@@ -44060,7 +44093,7 @@ function createRenderItem(_ref) {
     align: typeof symbolItem.align === 'undefined' ? 0.5 : symbolItem.align,
     justify: typeof symbolItem.justify === 'undefined' ? 0.5 : symbolItem.justify
   });
-  var symbol = symbolFn(extend({}, symbolItem, wiggled));
+  var symbol = createSymbol(extend({}, symbolItem, wiggled));
   delete symbol.collider;
   label.anchor = rtl ? 'end' : 'start';
   placeTextInRect$2(labelRect, label, {
@@ -44092,7 +44125,8 @@ function _getItemsToRender(_ref2, rect, _ref3) {
   var itemized = _ref3.itemized,
       _ref3$create = _ref3.create,
       create = _ref3$create === void 0 ? createRenderItem : _ref3$create,
-      parallels = _ref3.parallels;
+      parallels = _ref3.parallels,
+      createSymbol = _ref3.createSymbol;
   var direction = itemized.layout.direction;
   var globalMetrics = itemized.globalMetrics;
   var legendItems = itemized.items;
@@ -44113,7 +44147,8 @@ function _getItemsToRender(_ref2, rect, _ref3) {
       x: direction === 'rtl' ? viewRect.x + shift + viewRect.width - fixedWidth - (x - rect.x) : x,
       item: legendItems[i],
       globalMetrics: globalMetrics,
-      direction: direction
+      direction: direction,
+      createSymbol: createSymbol
     });
 
     if (isHorizontal && x >= viewRect.x - fixedWidth || !isHorizontal && y >= viewRect.y - fixedHeight) {
@@ -44278,7 +44313,8 @@ function itemRendererFactory (legend, _ref5) {
       containerRect[offsetProperty === 'x' ? 'width' : 'height'] = ext;
       return _getItemsToRender(obj, containerRect, {
         itemized: itemized,
-        parallels: parallels
+        parallels: parallels,
+        createSymbol: legend.symbol
       });
     },
     parallelize: function parallelize(availableExtent, availableSpread) {
@@ -44821,7 +44857,7 @@ function _render$3(legend) {
 }
 
 var component$2 = {
-  require: ['chart', 'settings', 'renderer', 'update', 'resolver', 'registries'],
+  require: ['chart', 'settings', 'renderer', 'update', 'resolver', 'registries', 'symbol'],
   defaultSettings: {
     settings: {},
     style: {
@@ -45916,12 +45952,11 @@ var lineMarkerComponent = {
           id: v.layerObj.id,
           data: v.layerObj.data
         };
-      });
-      sortable.sort(this.stngs.layers.sort).map(function (s) {
+      }).sort(this.stngs.layers.sort).map(function (s) {
         return s.id;
       });
       visibleLayers.sort(function (a, b) {
-        return sortable.indexOf(b.layerObj.id) - sortable.indexOf(a.layerObj.id);
+        return sortable.indexOf(a.layerObj.id) - sortable.indexOf(b.layerObj.id);
       });
     } else {
       visibleLayers.sort(function (a, b) {
@@ -49019,15 +49054,15 @@ function create$8() {
   return _construct(GeoPolyline, a);
 }
 
-var reg$3 = registryFactory();
-reg$3.add('rect', create$4);
-reg$3.add('circle', create$5);
-reg$3.add('line', create$6);
-reg$3.add('polygon', create$7);
-reg$3.add('polyline', create$8);
+var reg$2 = registryFactory();
+reg$2.add('rect', create$4);
+reg$2.add('circle', create$5);
+reg$2.add('line', create$6);
+reg$2.add('polygon', create$7);
+reg$2.add('polyline', create$8);
 function create$9(type, input) {
   // eslint-disable-line import/prefer-default-export
-  return reg$3.get(type)(input);
+  return reg$2.get(type)(input);
 }
 /**
  * @typedef {object} rect
@@ -52151,22 +52186,22 @@ function create$l() {
   return _construct(Text, s);
 }
 
-var reg$4 = registryFactory();
-reg$4.add('rect', create$h);
-reg$4.add('circle', create$i);
-reg$4.add('text', create$l);
-reg$4.add('line', create$j);
-reg$4.add('path', create$k);
-reg$4.add('stage', create$e);
-reg$4.add('container', create$d);
-reg$4.add('defs', create$d);
-reg$4.add('linearGradient', create$f);
-reg$4.add('radialGradient', create$f);
-reg$4.add('stop', create$f);
-reg$4.add('pattern', create$g);
+var reg$3 = registryFactory();
+reg$3.add('rect', create$h);
+reg$3.add('circle', create$i);
+reg$3.add('text', create$l);
+reg$3.add('line', create$j);
+reg$3.add('path', create$k);
+reg$3.add('stage', create$e);
+reg$3.add('container', create$d);
+reg$3.add('defs', create$d);
+reg$3.add('linearGradient', create$f);
+reg$3.add('radialGradient', create$f);
+reg$3.add('stop', create$f);
+reg$3.add('pattern', create$g);
 function create$m(type, input) {
   // eslint-disable-line import/prefer-default-export
-  return reg$4.get(type)(input);
+  return reg$3.get(type)(input);
 }
 
 /**
@@ -52597,7 +52632,7 @@ function injectTextBoundsFn(renderer) {
   };
 }
 
-var reg$5 = registryFactory();
+var reg$4 = registryFactory();
 
 function toLineDash(p) {
   if (Array.isArray(p)) {
@@ -52678,8 +52713,8 @@ function renderShapes(shapes, g, shapeToCanvasMap, deps) {
       resolveMatrix(shape.modelViewMatrix.elements, g);
     }
 
-    if (reg$5.has(shape.type)) {
-      reg$5.get(shape.type)(shape.attrs, {
+    if (reg$4.has(shape.type)) {
+      reg$4.get(shape.type)(shape.attrs, {
         g: g,
         doFill: 'fill' in shape.attrs && shape.attrs.fill !== 'none',
         doStroke: 'stroke' in shape.attrs && shape.attrs['stroke-width'] !== 0,
@@ -52834,7 +52869,7 @@ function renderer() {
   return canvasRenderer;
 }
 function register(type, renderFn) {
-  reg$5.add(type, renderFn);
+  reg$4.add(type, renderFn);
 }
 
 function clampRadius(max, value) {
@@ -54825,10 +54860,10 @@ var picasso_esm_p = pic({
   component: componentRegistry,
   data: dataRegistry,
   formatter: formatterRegistry,
-  interaction: reg$2,
+  interaction: reg$1,
   renderer: rendererRegistry(),
   scale: scaleRegistry,
-  symbol: reg$1
+  symbol: parentReg
 });
 components.forEach(picasso_esm_p.use);
 renderers.forEach(picasso_esm_p.use);

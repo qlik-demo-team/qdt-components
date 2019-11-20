@@ -7,11 +7,10 @@ import useHyperCube from '../../hooks/useHyperCube';
 import 'react-table/react-table.css';
 import '../../styles/index.scss';
 
-// TODO - handle if qInterColumnSortOrder is set, instead of just overriding it
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
 const QdtTable = ({
-  qDocPromise, cols, qPage, style,
+  qDocPromise, cols, qPage, style, minRows,
 }) => {
   const {
     qLayout, qData, offset, select, applyPatches, //eslint-disable-line
@@ -81,7 +80,7 @@ const QdtTable = ({
         ]);
       }
     }
-    applyPatches([
+    await applyPatches([
       {
         qOp: 'replace',
         qPath: `${column.qPath}/qDef/qReverseSort`,
@@ -90,10 +89,11 @@ const QdtTable = ({
       {
         qOp: 'replace',
         qPath: '/qHyperCubeDef/qInterColumnSortOrder',
-        qValue: JSON.stringify([column.qInterColumnIndex]),
+        qValue: JSON.stringify([...qLayout.qHyperCube.qEffectiveInterColumnSortOrder].sort((a, b) => (a === column.qInterColumnIndex ? -1 : b === column.qInterColumnIndex ? 1 : 0))), //eslint-disable-line
       },
     ]);
-  }, [applyPatches]);
+    setPage(0);
+  }, [applyPatches, qLayout]);
 
   return (
     <div>
@@ -107,6 +107,7 @@ const QdtTable = ({
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
         defaultPageSize={qPage.qHeight}
+        minRows={minRows}
         showPageSizeOptions={false}
         multiSort={false}
         className="-striped"
@@ -131,6 +132,7 @@ QdtTable.propTypes = {
   cols: PropTypes.array,
   qPage: PropTypes.object,
   style: PropTypes.object,
+  minRows: PropTypes.number,
 };
 QdtTable.defaultProps = {
   cols: null,
@@ -141,6 +143,7 @@ QdtTable.defaultProps = {
     qHeight: 20,
   },
   style: { height: '100%' },
+  minRows: undefined,
 };
 
 export default QdtTable;
