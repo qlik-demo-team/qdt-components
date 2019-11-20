@@ -18569,7 +18569,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
       return _ref2.apply(this, arguments);
     };
   }(), [applyPatches, qLayout]);
-  return react_default.a.createElement("div", null, react_default.a.createElement(es, {
+  return react_default.a.createElement("div", null, qLayout && react_default.a.createElement(es, {
     manual: true,
     data: qData ? qData.qMatrix : [],
     columns: columns,
@@ -18578,7 +18578,7 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
     loading: loading,
     onPageChange: handlePageChange,
     onSortedChange: handleSortedChange,
-    defaultPageSize: qPage.qHeight,
+    defaultPageSize: qLayout.qHyperCube.qSize.qcy < qPage.qHeight ? qLayout.qHyperCube.qSize.qcy : qPage.qHeight,
     showPageSizeOptions: false,
     multiSort: false,
     className: "-striped",

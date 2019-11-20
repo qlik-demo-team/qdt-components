@@ -101,31 +101,34 @@ const QdtTable = ({
 
   return (
     <div>
-      <ReactTable
-        manual
-        data={qData ? qData.qMatrix : []}
-        columns={columns}
-        pages={pages}
-        page={page}
-        loading={loading}
-        onPageChange={handlePageChange}
-        onSortedChange={handleSortedChange}
-        defaultPageSize={qPage.qHeight}
-        showPageSizeOptions={false}
-        multiSort={false}
-        className="-striped"
-        style={style}
-        getTdProps={(_, rowInfo, column) => ({
-          onClick: (e, handleOriginal) => {
-            if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
-              select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
-            }
-            if (handleOriginal) {
-              handleOriginal();
-            }
-          },
-        })}
-      />
+      { qLayout
+        && (
+        <ReactTable
+          manual
+          data={qData ? qData.qMatrix : []}
+          columns={columns}
+          pages={pages}
+          page={page}
+          loading={loading}
+          onPageChange={handlePageChange}
+          onSortedChange={handleSortedChange}
+          defaultPageSize={(qLayout.qHyperCube.qSize.qcy < qPage.qHeight) ? qLayout.qHyperCube.qSize.qcy : qPage.qHeight}
+          showPageSizeOptions={false}
+          multiSort={false}
+          className="-striped"
+          style={style}
+          getTdProps={(_, rowInfo, column) => ({
+            onClick: (e, handleOriginal) => {
+              if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+                select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+              }
+              if (handleOriginal) {
+                handleOriginal();
+              }
+            },
+          })}
+        />
+        )}
     </div>
   );
 };
