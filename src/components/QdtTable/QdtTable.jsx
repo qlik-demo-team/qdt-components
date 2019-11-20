@@ -76,7 +76,7 @@ const QdtTable = ({
           {
             qOp: 'add',
             qPath: `${column.qPath}/qSortBy`,
-            qValue: JSON.stringify([{ qSortByLoadOrder: 1 }]),
+            qValue: JSON.stringify({ qSortByLoadOrder: 1 }),
           },
         ]);
       }
