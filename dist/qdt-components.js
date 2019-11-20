@@ -18531,9 +18531,9 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
               return applyPatches([{
                 qOp: 'add',
                 qPath: "".concat(column.qPath, "/qSortBy"),
-                qValue: JSON.stringify([{
+                qValue: JSON.stringify({
                   qSortByLoadOrder: 1
-                }])
+                })
               }]);
 
             case 8:
