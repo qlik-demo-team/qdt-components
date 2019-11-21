@@ -37,11 +37,11 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
   </thead>
   <tbody>
     <tr>
-      <td>[![picassoHorizontalBarchart](../../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)</td>
-      <td>[![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart)</td>
-      <td>[![picassoPie](../../assets/picassoPie.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pie-chart)</td>
-      <td>[![picassoScotterplot](../../assets/picassoScotterplot.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-scatterplot)</td>
-      <td>[![picassoLinechart](../../assets/picassoLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-line-chart)</td>
+      <td>![picassoHorizontalBarchart](../../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)</td>
+      <td>![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart)</td>
+      <td>![picassoPie](../../assets/picassoPie.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pie-chart)</td>
+      <td>![picassoScotterplot](../../assets/picassoScotterplot.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-scatterplot)</td>
+      <td>![picassoLinechart](../../assets/picassoLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-line-chart)</td>
     </tr>
   </tbody>
 </table>
