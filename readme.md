@@ -37,9 +37,9 @@ Click below to see how you can use qdt-components
 | [![QtdViz](docs/assets/embedded.png)](docs/components/QdtViz.md)  | [![QdtFilter](docs/assets/filters.png)](docs/components/QdtFilter.md)  |
 
 
-| [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     | [QdtPicasso](docs/components/QdtPicasso.md)                           |
+| [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     | [QdtPicasso](docs/components/QdtPicasso/)                           |
 | :----:                                                            |    :----:                                                           |
-| [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso.md)  |
+| [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)  |
 
 
 | [QdtSearch](docs/components/QdtSearch.md)                         | [QtdMapBox](docs/components/QdtMapBox.md)                           |
