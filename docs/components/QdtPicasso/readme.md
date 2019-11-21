@@ -26,9 +26,14 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 ```
 
 
-|[Horizontal Barchart](https://github.com/qlik-demo-team/qdt-components/tree/picasso-docs/docs/components/QdtPicasso/HorizontalBarChart)|[Vertical Barchart](./VerticalBarChart)|Pie Chart|Scatterplot|Line Chart|
+|[Horizontal Barchart](./HorizontalBarChart)|[Vertical Barchart](./VerticalBarChart)|Pie Chart|Scatterplot|Line Chart|
 |:---:|:---:|:---:|:---:|:---:|
 |[![picassoHorizontalBarchart](../../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)|[![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart)|[![picassoPie](../../assets/picassoPie.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pie-chart)|[![picassoScotterplot](../../assets/picassoScotterplot.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-scatterplot)|[![picassoLinechart](../../assets/picassoLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-line-chart)|
+
+|Multi-Line Chart|Stacked Bar Chart|Gauge|Range Area|Vertical Group Bar Chart|
+|:---:|:---:|:---:|:---:|:---:|
+|[![picassoMultiLinechart](../../assets/picassoMultiLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-multi-line-chart)|[![picassoStackedBarchart](../../assets/picassoStackedBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/stacked-barchart)|[![gauge](../../assets/gauge.png)](https://qdt-apps.qlik.com/qdt-components/react/#/gauge)|[![picassoRangeAreaChart](../../assets/picassoRangeAreaChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-range-area-chart)|[![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-group-barchart)|
+
 
 
 | [Horizontal Barchart](https://github.com/qlik-demo-team/qdt-components/tree/picasso-docs/docs/components/QdtPicasso/HorizontalBarChart) | [Vertical Barchart](./VerticalBarChart) |
