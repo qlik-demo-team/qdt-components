@@ -25,26 +25,11 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 />
 ```
 
-<table>
-  <thead>
-    <tr>
-      <td>[Horizontal Barchart](https://github.com/qlik-demo-team/qdt-components/tree/picasso-docs/docs/components/QdtPicasso/HorizontalBarChart)</td>
-      <td>[Vertical Barchart](./VerticalBarChart)</td>
-      <td>Pie Chart</td>
-      <td>Scatterplot</td>
-      <td>Line Chart</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>![picassoHorizontalBarchart](../../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)</td>
-      <td>![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart)</td>
-      <td>![picassoPie](../../assets/picassoPie.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pie-chart)</td>
-      <td>![picassoScotterplot](../../assets/picassoScotterplot.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-scatterplot)</td>
-      <td>![picassoLinechart](../../assets/picassoLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-line-chart)</td>
-    </tr>
-  </tbody>
-</table>
+
+|[Horizontal Barchart](https://github.com/qlik-demo-team/qdt-components/tree/picasso-docs/docs/components/QdtPicasso/HorizontalBarChart)|[Vertical Barchart](./VerticalBarChart)|Pie Chart|Scatterplot|Line Chart|
+|:---:|:---:|:---:|:---:|:---:|
+|![picassoHorizontalBarchart](../../assets/picassoHorizontalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-horizontal-barchart)|![picassoVerticalBarchart](../../assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-barchart)|![picassoPie](../../assets/picassoPie.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pie-chart)|![picassoScotterplot](../../assets/picassoScotterplot.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-scatterplot)|![picassoLinechart](../../assets/picassoLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-line-chart)|
+
 
 | [Horizontal Barchart](https://github.com/qlik-demo-team/qdt-components/tree/picasso-docs/docs/components/QdtPicasso/HorizontalBarChart) | [Vertical Barchart](./VerticalBarChart) |
 | :----: | :----:                     |
