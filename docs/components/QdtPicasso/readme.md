@@ -14,7 +14,7 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 
 ### Html Code
 
-```js
+```jsx
 <QdtComponent
   type="QdtPicasso"
   props={{
