@@ -14851,7 +14851,7 @@ var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
     }
 
     qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
-  }, [qData.qArea.qTop, qData.qMatrix, qcy]);
+  }, [qData, qcy]);
   return react_default.a.createElement("div", {
     ref: node,
     style: {
@@ -14934,6 +14934,7 @@ var ExpandedHorizontalTab_ExpandedHorizontalTab = function ExpandedHorizontalTab
   var qData = _ref.qData,
       select = _ref.select,
       expandedHorizontalSense = _ref.expandedHorizontalSense;
+  console.log(qData);
   var element = qData.qMatrix.map(function (row) {
     var className = expandedHorizontalSense ? "".concat(row[0].qState) : '';
     if (!expandedHorizontalSense && row[0].qState === 'S') className += ' lui-active';
@@ -15167,7 +15168,7 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     }
   }, react_default.a.createElement(QdtFilter_ExpandedHorizontalTab, {
     qData: qData,
-    select: select,
+    select: _select,
     expandedHorizontalSense: expandedHorizontalSense
   })));
 };

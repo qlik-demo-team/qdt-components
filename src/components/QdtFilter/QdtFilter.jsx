@@ -146,7 +146,7 @@ const QdtFilter = ({
         >
           <ExpandedHorizontalTab
             qData={qData}
-            select={select}
+            select={_select}
             expandedHorizontalSense={expandedHorizontalSense}
           />
         </LuiTabset>
