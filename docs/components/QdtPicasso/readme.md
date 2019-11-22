@@ -15,7 +15,6 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
 
-[top](#top)
 
 ### HTML (and Vanilla JavaScript)
 
@@ -58,7 +57,8 @@ qdtComponents.render(
   element
 );
 ```
-[top](#top)
+
+[[↑] Back to top](#top)
 
 ### React (JSX)
 
@@ -73,12 +73,12 @@ qdtComponents.render(
 />
 ```
 
-[top](#top)
+[[↑] Back to top](#top)
 
 ### Angular
 
 
-[top](#top)
+[[↑] Back to top](#top)
 
 ## Examples
 
@@ -99,4 +99,4 @@ Since we have made all elements into individual components, you can create custo
 | [![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)| [![picassoCustomGroupBarchart](./assets/picassoCustomGroupBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-vertical-group-barchart) |
 
 
-[top](#top)
+[[↑] Back to top](#top)
