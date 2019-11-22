@@ -2,4 +2,4 @@
 
 ![Gauge](../assets/gauge.png)
 
-[Back](../)
+[← QdtPicasso](../)

@@ -1,5 +1,7 @@
-# QdtPicasso
 <a id="top"></a>
+
+# QdtPicasso
+
 
 Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([Nov 2019 docs](https://help.qlik.com/en-US/sense-developer/November2019/APIs/EngineAPI/index.html)) in:
  - [Vanilla JavaScript](#html-and-vanilla-javascript)

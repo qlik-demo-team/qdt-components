@@ -2,4 +2,4 @@
 
 ![Line Chart](../assets/picassoLinechart.png)
 
-[Back](../)
+[← QdtPicasso](../)

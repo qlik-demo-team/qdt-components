@@ -2,4 +2,4 @@
 
 ![Range Area](../assets/picassoRangeAreaChart.png)
 
-[Back](../)
+[← QdtPicasso](../)

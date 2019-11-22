@@ -2,4 +2,4 @@
 
 ![Scatterplot](../assets/picassoScotterplot.png)
 
-[Back](../)
+[← QdtPicasso](../)

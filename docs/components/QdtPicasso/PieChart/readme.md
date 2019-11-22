@@ -2,4 +2,4 @@
 
 ![Pie Chart](../assets/picassoPie.png)
 
-[Back](../)
+[← QdtPicasso](../)

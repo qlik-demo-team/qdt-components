@@ -2,4 +2,4 @@
 
 ![Multi-Line Chart](../assets/picassoMultiLinechart.png)
 
-[Back](../)
+[← QdtPicasso](../)

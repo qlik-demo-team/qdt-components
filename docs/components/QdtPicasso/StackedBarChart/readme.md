@@ -2,4 +2,4 @@
 
 ![Stacked Bar Chart](../assets/picassoStackedBarchart.png)
 
-[Back](../)
+[← QdtPicasso](../)

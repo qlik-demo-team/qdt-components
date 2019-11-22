@@ -2,4 +2,4 @@
 
 ![Vertical Group Bar Chart](../assets/picassoVerticalBarchart.png)
 
-[Back](../)
+[← QdtPicasso](../)

@@ -2,5 +2,5 @@
 
 ![Horizontal Bar Chart](../assets/picassoHorizontalBarchart.png)
 
-[Back](../)
+[← QdtPicasso](../)
 
