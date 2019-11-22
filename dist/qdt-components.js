@@ -55266,7 +55266,6 @@ function QdtPicasso_objectSpread(target) { for (var i = 1; i < arguments.length;
 
 
 
-var miniMapVisible = true;
 var _settings = null;
 var QdtPicasso_pic = null;
 var QdtPicasso_maxWidth = '100%';
@@ -55286,7 +55285,8 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
       innerWidth = _ref.innerWidth,
       outerHeight = _ref.outerHeight,
       afterConfirmSelections = _ref.afterConfirmSelections,
-      otherProps = objectWithoutProperties_default()(_ref, ["settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections"]);
+      miniMapVisible = _ref.miniMapVisible,
+      otherProps = objectWithoutProperties_default()(_ref, ["settings", "type", "prio", "options", "innerHeight", "outerWidth", "innerWidth", "outerHeight", "afterConfirmSelections", "miniMapVisible"]);
 
   var rootNode = Object(react["useRef"])(null);
   var elementNode = Object(react["useRef"])(null);
@@ -55555,7 +55555,8 @@ QdtPicasso_QdtPicasso.propTypes = {
   qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
   qSuppressMissing: prop_types_default.a.bool,
   qExpression: prop_types_default.a.object,
-  getQRData: prop_types_default.a.bool
+  getQRData: prop_types_default.a.bool,
+  miniMapVisible: prop_types_default.a.bool
 };
 QdtPicasso_QdtPicasso.defaultProps = {
   type: null,
@@ -55581,7 +55582,8 @@ QdtPicasso_QdtPicasso.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: false,
   qExpression: null,
-  getQRData: true
+  getQRData: true,
+  miniMapVisible: false
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);
 // CONCATENATED MODULE: ./src/components/QdtVirtualScroll/QdtVirtualScroll.jsx

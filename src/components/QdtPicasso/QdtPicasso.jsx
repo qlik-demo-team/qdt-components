@@ -10,7 +10,7 @@ import QdtPicassoMiniMap from './QdtPicassoMiniMap';
 import LuiSelectionModal from '../QdtLui/LuiSelectionModal';
 import '../../styles/index.scss';
 
-const miniMapVisible = true;
+
 let _settings = null;
 let pic = null;
 let maxWidth = '100%';
@@ -22,7 +22,7 @@ picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
 const QdtPicasso = ({
-  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, ...otherProps
+  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, miniMapVisible, ...otherProps
 }) => {
   const rootNode = useRef(null);
   const elementNode = useRef(null);
@@ -221,6 +221,7 @@ QdtPicasso.propTypes = {
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
   getQRData: PropTypes.bool,
+  miniMapVisible: PropTypes.bool,
 };
 
 QdtPicasso.defaultProps = {
@@ -248,6 +249,7 @@ QdtPicasso.defaultProps = {
   qSuppressMissing: false,
   qExpression: null,
   getQRData: true,
+  miniMapVisible: false,
 };
 
 export default QdtPicasso;
