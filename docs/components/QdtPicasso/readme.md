@@ -1,6 +1,7 @@
-## Create a chart from the Engine Api
+# QdtPicasso
+<a id="top"></a>
 
-Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com/).
+Create a chart in [Picasso.js](https://picassojs.com/) using the Engine Api ([Nov 2019 docs](https://help.qlik.com/en-US/sense-developer/November2019/APIs/EngineAPI/index.html)) in [Vanilla JavaScript](#html-and-vanilla-javascript), [React](#react-jsx), [Angular](#angular)
 
 ### Properties
 
@@ -10,6 +11,8 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 | cols             | Array         | `[dimension, measure]` |
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
+
+[top](#top)
 
 ### HTML (and Vanilla JavaScript)
 
@@ -52,7 +55,7 @@ qdtComponents.render(
   element
 );
 ```
-
+[top](#top)
 
 ### React (JSX)
 
@@ -67,8 +70,14 @@ qdtComponents.render(
 />
 ```
 
+[top](#top)
+
 ### Angular
 
+
+[top](#top)
+
+## Examples
 
 |[Horizontal Barchart](./HorizontalBarChart)|[Vertical Barchart](./VerticalBarChart)|[Pie Chart](./PieChart)|[Scatterplot](./ScatterplotChart)|[Line Chart](./LineChart)|
 |:---:|:---:|:---:|:---:|:---:|
@@ -85,3 +94,6 @@ Since we have made all elements into individual components, you can create custo
 | [Custom Combo Chart](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart) | [Custom Group Barchart](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-vertical-group-barchart) |
 | :----:                            |    :----:                     |
 | [![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)| [![picassoCustomGroupBarchart](./assets/picassoCustomGroupBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-vertical-group-barchart) |
+
+
+[top](#top)
