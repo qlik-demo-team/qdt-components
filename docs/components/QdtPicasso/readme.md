@@ -64,15 +64,65 @@ qdtComponents.render(
 
 ### React (JSX)
 
+- All QdtPicasso Components use the `<QdtComponent>` laid out in the 
+[React Template](https://github.com/qlik-demo-team/qdt-components/blob/picasso-docs/docs/usage/React.md).
+We recommend creating a `QdtComponent.jsx` file and copying the QdtComponent class there with your
+Qlik Sense configuration. This will allow you to effortlessly create any Picasso chart you want. Below is 
+an example creation of a Vertical Bar Chart and then its use:
+
 ```jsx
-<QdtComponent
-  type="QdtPicasso"
-  props={{
-    type: 'horizontalBarchart', 
-    cols: ['Case Owner Group', '=Avg([Case Duration Time])'], 
-    outerHeight: 300,
-  }}
-/>
+// horizontalBarChart.js
+import React from 'react';
+import QdtComponent from './QdtComponent'; // see React Template above for code
+
+const chart_options = {
+  type: 'QdtPicasso',
+  props: {
+      type: 'verticalBarchart', 
+      cols: [
+        'Champion_Full',
+        "=Sum(if(Club = [Champion], [Total Compensation]))"
+      ], 
+      outerHeight: 400,
+  },
+};
+
+// Version #1
+const PicassoBarChart = () => (
+  <div className="picasso-bar">
+    <QdtComponent {...chart_options} />
+  </div>
+)
+
+// Version #2
+const PicassoBarChart = () => (
+  <div className="picasso-bar">
+    <QdtComponent 
+      type={chart_options.type} 
+      props={chart_options.props}
+    />
+  </div>
+)
+
+export { PicassoBarChart };
+```
+
+```jsx
+// index.js
+import React from 'react';
+import { render } from 'react-dom';
+
+import { PicassoBarChart} from './horizontalBarChart';
+
+const App = () => {
+    return (
+        <main>
+            <PicassoBarChart />
+        </main>
+    )
+}
+
+render(<App />, document.getElementById('root'));
 ```
 
 [[↑] Back to top](#top)
