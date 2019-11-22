@@ -40,7 +40,7 @@ var element = document.getElementById('qdt1');
 // ============
 // #3: render the chart
 qdtComponents.render(
-  'QdtPicasso', 
+  "QdtPicasso", 
   {
     type: 'verticalBarchart', 
     cols: [
@@ -66,6 +66,8 @@ qdtComponents.render(
   }}
 />
 ```
+
+### Angular
 
 
 |[Horizontal Barchart](./HorizontalBarChart)|[Vertical Barchart](./VerticalBarChart)|[Pie Chart](./PieChart)|[Scatterplot](./ScatterplotChart)|[Line Chart](./LineChart)|
