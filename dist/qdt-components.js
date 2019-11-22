@@ -768,7 +768,7 @@ module.exports = function (list, options) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Hammer) {/*
-* picasso-plugin-hammer v0.27.1
+* picasso-plugin-hammer v0.27.0
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -982,7 +982,7 @@ function initialize(picasso) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*
-* picasso-plugin-q v0.27.1
+* picasso-plugin-q v0.27.0
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -8413,8 +8413,8 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
- * enigma.js v2.6.1
- * Copyright (c) 2019 QlikTech International AB
+ * enigma.js v2.4.0
+ * Copyright (c) 2018 QlikTech International AB
  * This library is licensed under MIT - See the LICENSE file for full details
  */
 
@@ -8422,6 +8422,139 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
    true ? module.exports = factory() :
   undefined;
 }(this, (function () { 'use strict';
+
+  function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+  }
+
+  function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+      return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
+
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return self;
+  }
+
+  function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) {
+      return call;
+    }
+
+    return _assertThisInitialized(self);
+  }
+
+  function _superPropBase(object, property) {
+    while (!Object.prototype.hasOwnProperty.call(object, property)) {
+      object = _getPrototypeOf(object);
+      if (object === null) break;
+    }
+
+    return object;
+  }
+
+  function _get(target, property, receiver) {
+    if (typeof Reflect !== "undefined" && Reflect.get) {
+      _get = Reflect.get;
+    } else {
+      _get = function _get(target, property, receiver) {
+        var base = _superPropBase(target, property);
+
+        if (!base) return;
+        var desc = Object.getOwnPropertyDescriptor(base, property);
+
+        if (desc.get) {
+          return desc.get.call(receiver);
+        }
+
+        return desc.value;
+      };
+    }
+
+    return _get(target, property, receiver || target);
+  }
+
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
+  }
+
+  function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
 
   /**
    * Utility functions
@@ -8493,6 +8626,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       } else {
         throw Error('Uncaught, unspecified "error" event.');
       }
+      return false;
     }
 
     handler = this._events[type];
@@ -8736,152 +8870,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     }
   };
 
-  function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-  function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
-
-  function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-  function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-
-  function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
-
-  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-  /**
-   * Error containing a custom error code.
-   * @extends Error
-   * @property {number} code The error code as defined by `errorCodes`
-   * @property {boolean} enigmaError=true
-   */
-  var EnigmaError =
-  /*#__PURE__*/
-  function (_Error) {
-    _inherits(EnigmaError, _Error);
-
-    function EnigmaError(name, code) {
-      var _this;
-
-      _classCallCheck(this, EnigmaError);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(EnigmaError).call(this, name));
-      _this.code = code;
-      _this.enigmaError = true;
-      return _this;
-    }
-
-    return EnigmaError;
-  }(_wrapNativeSuper(Error));
-  /**
-   * Create an enigmaError
-   * @param {Number} code A proper error code from `errorCodes`
-   * @param {String} name A message/name of the enigmaError.
-   * @returns {EnigmaError}
-   */
-
-
-  function createEnigmaError(code, name) {
-    return new EnigmaError(name, code);
-  }
-
-  /**
-   * @enum
-   */
-  var errorCodes = {
-    /**
-     * You're trying to send data on a socket that's not created
-     * @type {number}
-     */
-    NOT_CONNECTED: -1,
-
-    /**
-     * The object you're trying to fetch does not exist
-     * @type {number}
-     */
-    OBJECT_NOT_FOUND: -2,
-
-    /**
-     * Unexpected RPC response, expected array of patches
-     * @type {number}
-     */
-    EXPECTED_ARRAY_OF_PATCHES: -3,
-
-    /**
-     * Patchee is not an object we can patch
-     * @type {number}
-     */
-    PATCH_HAS_NO_PARENT: -4,
-
-    /**
-     * This entry is already defined with another key
-     * @type {number}
-     */
-    ENTRY_ALREADY_DEFINED: -5,
-
-    /**
-     * You need to supply a configuration
-     * @type {number}
-     */
-    NO_CONFIG_SUPPLIED: -6,
-
-    /**
-     * There's no promise object available (polyfill required?)
-     * @type {number}
-     */
-    PROMISE_REQUIRED: -7,
-
-    /**
-     * The schema struct type you requested does not exist
-     * @type {number}
-     */
-    SCHEMA_STRUCT_TYPE_NOT_FOUND: -8,
-
-    /**
-     * Can't override this function
-     * @type {number}
-     */
-    SCHEMA_MIXIN_CANT_OVERRIDE_FUNCTION: -9,
-
-    /**
-     * Extend is not allowed for this mixin
-     * @type {number}
-     */
-    SCHEMA_MIXIN_EXTEND_NOT_ALLOWED: -10,
-
-    /**
-     * Session suspended - no interaction allowed
-     * @type {number}
-     */
-    SESSION_SUSPENDED: -11,
-
-    /**
-     * onlyIfAttached supplied, but you got SESSION_CREATED
-     * @type {number}
-     */
-    SESSION_NOT_ATTACHED: -12
-  };
-
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
   var RPC_CLOSE_NORMAL = 1000;
   var RPC_CLOSE_MANUAL_SUSPEND = 4000;
   var cacheId = 0;
@@ -8892,6 +8880,40 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   var Session =
   /*#__PURE__*/
   function () {
+    /**
+     * Handle opened state. This event is triggered whenever the websocket is connected and ready for
+     * communication.
+     * @event Session#opened
+     * @type {Object}
+     */
+
+    /**
+     * Handle closed state. This event is triggered when the underlying websocket is closed and
+     * config.suspendOnClose is false.
+     * @event Session#closed
+     * @type {Object}
+     */
+
+    /**
+     * Handle suspended state. This event is triggered in two cases (listed below). It is useful
+     * in scenarios where you for example want to block interaction in your application until you
+     * are resumed again. If config.suspendOnClose is true and there was a network disconnect
+     * (socked closed) or if you ran session.suspend().
+     * @event Session#suspended
+     * @type {Object}
+     * @param {Object} evt Event object.
+     * @param {String} evt.initiator String indication what triggered the suspended state. Possible
+     * values network, manual.
+     */
+
+    /**
+     * Handle resumed state. This event is triggered when the session was properly resumed. It is
+     * useful in scenarios where you for example can close blocking modal dialogs and allow the user
+     * to interact with your application again.
+     * @event Session#resumed
+     * @type {Object}
+     */
+
     /**
      * Handle all JSON-RPC notification event, 'notification:*. Or handle a specific JSON-RPC
      * notification event, 'notification:OnConnected'. These events depend on the product you use QIX
@@ -8908,7 +8930,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     * @type {Object}
     */
     function Session(options) {
-      _classCallCheck$1(this, Session);
+      _classCallCheck(this, Session);
 
       var session = this;
       Object.assign(session, options);
@@ -8956,17 +8978,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       value: function onRpcClosed(evt) {
         var _this = this;
 
-        /**
-         * Handle suspended state. This event is triggered in two cases (listed below). It is useful
-         * in scenarios where you for example want to block interaction in your application until you
-         * are resumed again. If config.suspendOnClose is true and there was a network disconnect
-         * (socked closed) or if you ran session.suspend().
-         * @event Session#suspended
-         * @type {Object}
-         * @param {Object} evt Event object.
-         * @param {String} evt.initiator String indication what triggered the suspended state. Possible
-         * values network, manual.
-         */
         if (this.suspendResume.isSuspended) {
           return;
         }
@@ -8976,13 +8987,9 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
         }
 
         if (this.config.suspendOnClose) {
-          var code = evt.code,
-              reason = evt.reason;
           this.suspendResume.suspend().then(function () {
             return _this.emit('suspended', {
-              initiator: 'network',
-              code: code,
-              reason: reason
+              initiator: 'network'
             });
           });
         } else {
@@ -9106,12 +9113,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       value: function open() {
         var _this3 = this;
 
-        /**
-         * Handle opened state. This event is triggered whenever the websocket is connected and ready for
-         * communication.
-         * @event Session#opened
-         * @type {Object}
-         */
         if (!this.globalPromise) {
           var args = {
             handle: -1,
@@ -9142,15 +9143,14 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
         var _this4 = this;
 
         if (this.suspendResume.isSuspended) {
-          return this.Promise.reject(createEnigmaError(errorCodes.SESSION_SUSPENDED, 'Session suspended'));
+          return this.Promise.reject(new Error('Session suspended'));
         }
 
         request.id = this.rpc.createRequestId();
         var promise = this.intercept.executeRequests(this, this.Promise.resolve(request)).then(function (augmentedRequest) {
-          var data = _objectSpread({}, _this4.config.protocol, {}, augmentedRequest); // the outKey value is used by multiple-out interceptor, at some point
+          var data = Object.assign({}, _this4.config.protocol, augmentedRequest); // the outKey value is used by multiple-out interceptor, at some point
           // we need to refactor that implementation and figure out how to transport
           // this value without hijacking the JSONRPC request object:
-
 
           delete data.outKey;
 
@@ -9169,9 +9169,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       * Suspends the enigma.js session by closing the websocket and rejecting all method calls
       * until is has been resumed again.
       * @emits Session#suspended
-      * @param {Number} [code=4000] - The reason code for suspending the connection.
-      * @param {String} [reason=""] - The human readable string describing
-      * why the connection is suspended.
       * @returns {Promise<Object>} Eventually resolved when the websocket has been closed.
       */
 
@@ -9180,13 +9177,9 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       value: function suspend() {
         var _this5 = this;
 
-        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 4000;
-        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        return this.suspendResume.suspend(code, reason).then(function () {
+        return this.suspendResume.suspend().then(function () {
           return _this5.emit('suspended', {
-            initiator: 'manual',
-            code: code,
-            reason: reason
+            initiator: 'manual'
           });
         });
       }
@@ -9207,13 +9200,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       value: function resume(onlyIfAttached) {
         var _this6 = this;
 
-        /**
-         * Handle resumed state. This event is triggered when the session was properly resumed. It is
-         * useful in scenarios where you for example can close blocking modal dialogs and allow the user
-         * to interact with your application again.
-         * @event Session#resumed
-         * @type {Object}
-         */
         return this.suspendResume.resume(onlyIfAttached).then(function (value) {
           _this6.emit('resumed');
 
@@ -9225,8 +9211,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       * on all generated APIs. Note that you have to manually invoke this when you want to
       * close a session and config.suspendOnClose is true.
       * @emits Session#closed
-      * @param {Number} [code=1000] - The reason code for closing the connection.
-      * @param {String} [reason=""] - The human readable string describing why the connection is closed.
       * @returns {Promise<Object>} Eventually resolved when the websocket has been closed.
       */
 
@@ -9235,17 +9219,8 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       value: function close() {
         var _this7 = this;
 
-        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
-        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        /**
-         * Handle closed state. This event is triggered when the underlying websocket is closed and
-         * config.suspendOnClose is false.
-         * @event Session#closed
-         * @type {Object}
-         */
         this.globalPromise = undefined;
-        return this.rpc.close(code, reason).then(function (evt) {
+        return this.rpc.close().then(function (evt) {
           return _this7.emit('closed', evt);
         });
       }
@@ -9313,21 +9288,15 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return Session;
   }();
 
-  function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
   /**
   * Key-value cache
   * @private
   */
-
   var KeyValueCache =
   /*#__PURE__*/
   function () {
     function KeyValueCache() {
-      _classCallCheck$2(this, KeyValueCache);
+      _classCallCheck(this, KeyValueCache);
 
       this.entries = {};
     }
@@ -9340,13 +9309,13 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     */
 
 
-    _createClass$1(KeyValueCache, [{
+    _createClass(KeyValueCache, [{
       key: "add",
       value: function add(key, entry) {
         key += '';
 
         if (typeof this.entries[key] !== 'undefined') {
-          throw createEnigmaError(errorCodes.ENTRY_ALREADY_DEFINED, "Entry already defined with key ".concat(key));
+          throw new Error("Entry already defined with key ".concat(key));
         }
 
         this.entries[key] = entry;
@@ -9442,13 +9411,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return KeyValueCache;
   }();
 
-  function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); return Constructor; }
-
-  function _typeof$1(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
   var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
   /**
   * Returns the camelCase counterpart of a symbol.
@@ -9476,7 +9438,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       params[_key - 2] = arguments[_key];
     }
 
-    if (params.length === 1 && _typeof$1(params[0]) === 'object' && !Array.isArray(params[0])) {
+    if (params.length === 1 && _typeof(params[0]) === 'object' && !Array.isArray(params[0])) {
       var valid = Object.keys(params[0]).every(function (key) {
         return hasOwnProperty$1.call(defaults, key);
       });
@@ -9505,7 +9467,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     * @param {Configuration} config The configuration for QIX.
     */
     function Schema(config) {
-      _classCallCheck$3(this, Schema);
+      _classCallCheck(this, Schema);
 
       this.config = config;
       this.Promise = config.Promise;
@@ -9514,7 +9476,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       this.types = new KeyValueCache();
     }
 
-    _createClass$2(Schema, [{
+    _createClass(Schema, [{
       key: "registerMixin",
       value: function registerMixin(_ref) {
         var _this = this;
@@ -9567,7 +9529,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
         }
 
         if (!this.schema.structs[type]) {
-          throw createEnigmaError(errorCodes.SCHEMA_STRUCT_TYPE_NOT_FOUND, "".concat(type, " not found"));
+          throw new Error("".concat(type, " not found"));
         }
 
         var factory = this.generateApi(type, this.schema.structs[type]);
@@ -9701,13 +9663,13 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
                   return override[key].apply(this, [baseFn.bind(this)].concat(args));
                 };
               } else {
-                throw createEnigmaError(errorCodes.SCHEMA_MIXIN_CANT_OVERRIDE_FUNCTION, "No function to override. Type: ".concat(type, " function: ").concat(key));
+                throw new Error("No function to override. Type: ".concat(type, " function: ").concat(key));
               }
             });
             Object.keys(extend).forEach(function (key) {
               // handle overrides
               if (typeof api[key] === 'function' && typeof extend[key] === 'function') {
-                throw createEnigmaError(errorCodes.SCHEMA_MIXIN_EXTEND_NOT_ALLOWED, "Extend is not allowed for this mixin. Type: ".concat(type, " function: ").concat(key));
+                throw new Error("Extend is not allowed for this mixin. Type: ".concat(type, " function: ").concat(key));
               } else {
                 api[key] = extend[key];
               }
@@ -9747,11 +9709,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return Schema;
   }();
 
-  function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); return Constructor; }
   /**
    * Helper class for handling RPC calls
    * @private
@@ -9761,7 +9718,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   /*#__PURE__*/
   function () {
     function RPCResolver(id, handle, resolve, reject) {
-      _classCallCheck$4(this, RPCResolver);
+      _classCallCheck(this, RPCResolver);
 
       Events.mixin(this);
       this.id = id;
@@ -9770,7 +9727,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       this.reject = reject;
     }
 
-    _createClass$3(RPCResolver, [{
+    _createClass(RPCResolver, [{
       key: "resolveWith",
       value: function resolveWith(data) {
         this.resolve(data);
@@ -9787,11 +9744,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return RPCResolver;
   }();
 
-  function _classCallCheck$5(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
   /**
   * This class handles remote procedure calls on a web socket.
   * @private
@@ -9809,7 +9761,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     * @param {Function} options.createSocket The function callback to create a WebSocket.
     */
     function RPC(options) {
-      _classCallCheck$5(this, RPC);
+      _classCallCheck(this, RPC);
 
       Object.assign(this, options);
       Events.mixin(this);
@@ -9825,7 +9777,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     */
 
 
-    _createClass$4(RPC, [{
+    _createClass(RPC, [{
       key: "open",
       value: function open() {
         var _this = this;
@@ -10016,7 +9968,8 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
         var _this5 = this;
 
         if (!this.socket || this.socket.readyState !== this.socket.OPEN) {
-          var error = createEnigmaError(errorCodes.NOT_CONNECTED, 'Not connected');
+          var error = new Error('Not connected');
+          error.code = -1;
           return this.Promise.reject(error);
         }
 
@@ -10044,11 +9997,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return RPC;
   }();
 
-  function _classCallCheck$6(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
   var ON_ATTACHED_TIMEOUT_MS = 5000;
   var RPC_CLOSE_MANUAL_SUSPEND$1 = 4000;
 
@@ -10066,7 +10014,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     function SuspendResume(options) {
       var _this = this;
 
-      _classCallCheck$6(this, SuspendResume);
+      _classCallCheck(this, SuspendResume);
 
       Object.assign(this, options);
       this.isSuspended = false;
@@ -10085,14 +10033,14 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     */
 
 
-    _createClass$5(SuspendResume, [{
+    _createClass(SuspendResume, [{
       key: "restoreRpcConnection",
       value: function restoreRpcConnection(onlyIfAttached) {
         var _this2 = this;
 
         return this.reopen(ON_ATTACHED_TIMEOUT_MS).then(function (sessionState) {
           if (sessionState === 'SESSION_CREATED' && onlyIfAttached) {
-            return _this2.Promise.reject(createEnigmaError(errorCodes.SESSION_NOT_ATTACHED, 'Not attached'));
+            return _this2.Promise.reject(new Error('Not attached'));
           }
 
           return _this2.Promise.resolve();
@@ -10213,18 +10161,13 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       /**
       * Set the instance as suspended.
       * @private
-      * @param {Number} [code=4000] - The reason code for suspending the connection.
-      * @param {String} [reason=""] - The human readable string describing
-      * why the connection is suspended.
       */
 
     }, {
       key: "suspend",
       value: function suspend() {
-        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : RPC_CLOSE_MANUAL_SUSPEND$1;
-        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
         this.isSuspended = true;
-        return this.rpc.close(code, reason);
+        return this.rpc.close(RPC_CLOSE_MANUAL_SUSPEND$1);
       }
       /**
       * Resumes a previously suspended RPC connection, and refreshes the API cache.
@@ -10267,7 +10210,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
               api.emit('changed');
             }
           });
-        })["catch"](function (err) {
+        }).catch(function (err) {
           return _this5.rpc.close().then(function () {
             return _this5.Promise.reject(err);
           });
@@ -10314,7 +10257,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
           _this6.rpc.removeListener('notification', onNotification);
 
           return state;
-        })["catch"](function (err) {
+        }).catch(function (err) {
           _this6.rpc.removeListener('notification', onNotification);
 
           return _this6.Promise.reject(err);
@@ -10365,8 +10308,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   * @param {Object} response - The response.
   * @returns {Object} - Returns the generated API
   */
-
-  function apiResponseInterceptor(session, request, response) {
+  function apiInterceptor(session, request, response) {
     if (response.qHandle && response.qType) {
       return session.getObjectApi({
         handle: response.qHandle,
@@ -10377,8 +10319,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     }
 
     if (response.qHandle === null && response.qType === null) {
-      var error = createEnigmaError(errorCodes.OBJECT_NOT_FOUND, 'Object not found');
-      return session.config.Promise.reject(error);
+      return session.config.Promise.reject(new Error('Object not found'));
     }
 
     return response;
@@ -10500,21 +10441,12 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   	return target;
   };
 
-  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-  function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-  function _typeof$2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
   var extend$1 = extend.bind(null, true);
   var JSONPatch = {};
   var isArray$1 = Array.isArray;
 
   function isObject(v) {
-    return v != null && !Array.isArray(v) && _typeof$2(v) === 'object';
+    return v != null && !Array.isArray(v) && _typeof(v) === 'object';
   }
 
   function isUndef(v) {
@@ -10827,7 +10759,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
           emptyObject(target);
           extend$1(target, patch.value);
         } else if (!parent) {
-          throw createEnigmaError(errorCodes.PATCH_HAS_NO_PARENT, 'Patchee is not an object we can patch');
+          throw new Error('Patchee is not an object we can patch');
         } else {
           // simple value
           parent[key] = patch.value;
@@ -10910,7 +10842,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     JSONPatch.apply(original, JSONPatch.generate(original, newData));
   };
 
-  function _typeof$3(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
   var sessions = {};
   /**
   * Function to make sure we release handle caches when they are closed.
@@ -10972,7 +10903,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     }
 
     if (patches.length) {
-      if (patches[0].path === '/' && _typeof$3(patches[0].value) !== 'object') {
+      if (patches[0].path === '/' && _typeof(patches[0].value) !== 'object') {
         // 'plain' values on root path is not supported (no object reference),
         // so we simply store the value directly:
         entry = patches[0].value;
@@ -10995,7 +10926,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   */
 
 
-  function deltaResponseInterceptor(session, request, response) {
+  function deltaInterceptor(session, request, response) {
     var delta = response.delta,
         result = response.result;
 
@@ -11003,7 +10934,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       // when delta is on the response data is expected to be an array of patches:
       Object.keys(result).forEach(function (key) {
         if (!Array.isArray(result[key])) {
-          throw createEnigmaError(errorCodes.EXPECTED_ARRAY_OF_PATCHES, 'Unexpected RPC response, expected array of patches');
+          throw new Error('Unexpected RPC response, expected array of patches');
         }
 
         result[key] = patchValue(session, request.handle, "".concat(request.method, "-").concat(key), result[key]);
@@ -11015,7 +10946,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return response;
   } // export object reference for testing purposes:
 
-  deltaResponseInterceptor.sessions = sessions;
+  deltaInterceptor.sessions = sessions;
 
   /**
   * Process error interceptor.
@@ -11025,7 +10956,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   * @param {Object} response - The response.
   * @returns {Object} - Returns the defined error for an error, else the response.
   */
-  function errorResponseInterceptor(session, request, response) {
+  function errorInterceptor(session, request, response) {
     if (typeof response.error !== 'undefined') {
       var data = response.error;
       var error = new Error(data.message);
@@ -11048,11 +10979,11 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   * @returns {Object} - Returns the result property on the response
   */
 
-  function outParamResponseInterceptor(session, request, response) {
+  function outParamInterceptor(session, request, response) {
     if (request.method === 'CreateSessionApp' || request.method === 'CreateSessionAppFromApp') {
       // this method returns multiple out params that we need
       // to normalize before processing the response further:
-      response[RETURN_KEY].qGenericId = response.qSessionAppId || response[RETURN_KEY].qGenericId;
+      response[RETURN_KEY].qGenericId = response[RETURN_KEY].qGenericId || response.qSessionAppId;
     } else if (request.method === 'GetInteract') {
       // this method returns a qReturn value when it should only return
       // meta.outKey:
@@ -11078,23 +11009,10 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   * @param {Object} response - The response.
   * @returns {Object} - Returns the result property on the response
   */
-  function resultResponseInterceptor(session, request, response) {
+  function resultInterceptor(session, request, response) {
     return response.result;
   }
 
-  function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _nonIterableSpread$1(); }
-
-  function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-  function _iterableToArray$1(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-  function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-  function _classCallCheck$7(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$6(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$6(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$6(Constructor.prototype, protoProps); if (staticProps) _defineProperties$6(Constructor, staticProps); return Constructor; }
   /**
    * Interceptors is a concept similar to mixins, but run on a lower level. The interceptor concept
    * can augment either the requests (i.e. before sent to QIX Engine), or the responses (i.e. after
@@ -11154,22 +11072,22 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     * @param {Array<Object>} [options.response] The additional response interceptors to use.
     */
     function Intercept(options) {
-      _classCallCheck$7(this, Intercept);
+      _classCallCheck(this, Intercept);
 
       Object.assign(this, options);
       this.request = [{
         onFulfilled: deltaRequestInterceptor
-      }].concat(_toConsumableArray$1(this.request || []));
+      }].concat(_toConsumableArray(this.request || []));
       this.response = [{
-        onFulfilled: errorResponseInterceptor
+        onFulfilled: errorInterceptor
       }, {
-        onFulfilled: deltaResponseInterceptor
+        onFulfilled: deltaInterceptor
       }, {
-        onFulfilled: resultResponseInterceptor
+        onFulfilled: resultInterceptor
       }, {
-        onFulfilled: outParamResponseInterceptor
-      }].concat(_toConsumableArray$1(this.response || []), [{
-        onFulfilled: apiResponseInterceptor
+        onFulfilled: outParamInterceptor
+      }].concat(_toConsumableArray(this.response || []), [{
+        onFulfilled: apiInterceptor
       }]);
     }
     /**
@@ -11182,7 +11100,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     */
 
 
-    _createClass$6(Intercept, [{
+    _createClass(Intercept, [{
       key: "executeRequests",
       value: function executeRequests(session, promise) {
         var _this = this;
@@ -11216,27 +11134,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return Intercept;
   }();
 
-  function _typeof$4(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$4 = function _typeof(obj) { return typeof obj; }; } else { _typeof$4 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$4(obj); }
-
-  function _classCallCheck$8(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$7(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$7(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$7(Constructor.prototype, protoProps); if (staticProps) _defineProperties$7(Constructor, staticProps); return Constructor; }
-
-  function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$1(self); }
-
-  function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-  function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
-
-  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf$1(object); if (object === null) break; } return object; }
-
-  function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
-
-  function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
-
-  function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
   /**
   * API cache for instances of QIX types, e.g. GenericObject.
   * @private
@@ -11246,15 +11143,15 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   var ApiCache =
   /*#__PURE__*/
   function (_KeyValueCache) {
-    _inherits$1(ApiCache, _KeyValueCache);
+    _inherits(ApiCache, _KeyValueCache);
 
     function ApiCache() {
-      _classCallCheck$8(this, ApiCache);
+      _classCallCheck(this, ApiCache);
 
-      return _possibleConstructorReturn$1(this, _getPrototypeOf$1(ApiCache).apply(this, arguments));
+      return _possibleConstructorReturn(this, _getPrototypeOf(ApiCache).apply(this, arguments));
     }
 
-    _createClass$7(ApiCache, [{
+    _createClass(ApiCache, [{
       key: "add",
 
       /**
@@ -11272,7 +11169,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
           api: api
         };
 
-        _get(_getPrototypeOf$1(ApiCache.prototype), "add", this).call(this, handle.toString(), entry);
+        _get(_getPrototypeOf(ApiCache.prototype), "add", this).call(this, handle.toString(), entry);
 
         api.on('closed', function () {
           return _this.remove(handle);
@@ -11303,7 +11200,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     }, {
       key: "getApis",
       value: function getApis() {
-        return _get(_getPrototypeOf$1(ApiCache.prototype), "getAll", this).call(this).map(function (entry) {
+        return _get(_getPrototypeOf(ApiCache.prototype), "getAll", this).call(this).map(function (entry) {
           return {
             handle: entry.key,
             api: entry.value.api
@@ -11330,11 +11227,6 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
     return ApiCache;
   }(KeyValueCache);
 
-  function _classCallCheck$9(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties$8(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass$8(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$8(Constructor.prototype, protoProps); if (staticProps) _defineProperties$8(Constructor, staticProps); return Constructor; }
   /**
    * The enigma.js configuration object.
    * @interface Configuration
@@ -11413,10 +11305,10 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
   /*#__PURE__*/
   function () {
     function Qix() {
-      _classCallCheck$9(this, Qix);
+      _classCallCheck(this, Qix);
     }
 
-    _createClass$8(Qix, null, [{
+    _createClass(Qix, null, [{
       key: "getSession",
 
       /**
@@ -11483,12 +11375,12 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
       key: "configureDefaults",
       value: function configureDefaults(config) {
         if (!config) {
-          throw createEnigmaError(errorCodes.NO_CONFIG_SUPPLIED, 'You need to supply a configuration.');
+          throw new Error('You need to supply a configuration.');
         } // eslint-disable-next-line no-restricted-globals
 
 
         if (!config.Promise && typeof Promise === 'undefined') {
-          throw createEnigmaError(errorCodes.PROMISE_REQUIRED, 'Your environment has no Promise implementation. You must provide a Promise implementation in the config.');
+          throw new Error('Your environment has no Promise implementation. You must provide a Promise implementation in the config.');
         }
 
         if (typeof config.createSocket !== 'function' && typeof WebSocket === 'function') {
@@ -11531,257 +11423,301 @@ module.exports = JSON.parse("{\"structs\":{\"Field\":{\"GetCardinal\":{\"In\":[]
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
- * enigma.js v2.6.1
- * Copyright (c) 2019 QlikTech International AB
+ * enigma.js v2.4.0
+ * Copyright (c) 2018 QlikTech International AB
  * This library is licensed under MIT - See the LICENSE file for full details
  */
 
 (function (global, factory) {
-	 true ? module.exports = factory() :
-	undefined;
+   true ? module.exports = factory() :
+  undefined;
 }(this, (function () { 'use strict';
 
-	function createCommonjsModule(fn, module) {
-		return module = { exports: {} }, fn(module, module.exports), module.exports;
-	}
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-	// Copyright Joyent, Inc. and other Node contributors.
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
 
-	// If obj.hasOwnProperty has been overridden, then calling
-	// obj.hasOwnProperty(prop) will break.
-	// See: https://github.com/joyent/node/issues/1707
-	function hasOwnProperty(obj, prop) {
-	  return Object.prototype.hasOwnProperty.call(obj, prop);
-	}
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
 
-	var decode = function(qs, sep, eq, options) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  var obj = {};
+  // Copyright Joyent, Inc. and other Node contributors.
+  //
+  // Permission is hereby granted, free of charge, to any person obtaining a
+  // copy of this software and associated documentation files (the
+  // "Software"), to deal in the Software without restriction, including
+  // without limitation the rights to use, copy, modify, merge, publish,
+  // distribute, sublicense, and/or sell copies of the Software, and to permit
+  // persons to whom the Software is furnished to do so, subject to the
+  // following conditions:
+  //
+  // The above copyright notice and this permission notice shall be included
+  // in all copies or substantial portions of the Software.
+  //
+  // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  // OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  // NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+  // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	  if (typeof qs !== 'string' || qs.length === 0) {
-	    return obj;
-	  }
 
-	  var regexp = /\+/g;
-	  qs = qs.split(sep);
+  // If obj.hasOwnProperty has been overridden, then calling
+  // obj.hasOwnProperty(prop) will break.
+  // See: https://github.com/joyent/node/issues/1707
+  function hasOwnProperty(obj, prop) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  }
+  var isArray = Array.isArray || function (xs) {
+    return Object.prototype.toString.call(xs) === '[object Array]';
+  };
+  function stringifyPrimitive(v) {
+    switch (typeof v) {
+      case 'string':
+        return v;
 
-	  var maxKeys = 1000;
-	  if (options && typeof options.maxKeys === 'number') {
-	    maxKeys = options.maxKeys;
-	  }
+      case 'boolean':
+        return v ? 'true' : 'false';
 
-	  var len = qs.length;
-	  // maxKeys <= 0 means that we should not limit keys count
-	  if (maxKeys > 0 && len > maxKeys) {
-	    len = maxKeys;
-	  }
+      case 'number':
+        return isFinite(v) ? v : '';
 
-	  for (var i = 0; i < len; ++i) {
-	    var x = qs[i].replace(regexp, '%20'),
-	        idx = x.indexOf(eq),
-	        kstr, vstr, k, v;
+      default:
+        return '';
+    }
+  }
 
-	    if (idx >= 0) {
-	      kstr = x.substr(0, idx);
-	      vstr = x.substr(idx + 1);
-	    } else {
-	      kstr = x;
-	      vstr = '';
-	    }
+  function stringify (obj, sep, eq, name) {
+    sep = sep || '&';
+    eq = eq || '=';
+    if (obj === null) {
+      obj = undefined;
+    }
 
-	    k = decodeURIComponent(kstr);
-	    v = decodeURIComponent(vstr);
+    if (typeof obj === 'object') {
+      return map(objectKeys(obj), function(k) {
+        var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
+        if (isArray(obj[k])) {
+          return map(obj[k], function(v) {
+            return ks + encodeURIComponent(stringifyPrimitive(v));
+          }).join(sep);
+        } else {
+          return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
+        }
+      }).join(sep);
 
-	    if (!hasOwnProperty(obj, k)) {
-	      obj[k] = v;
-	    } else if (Array.isArray(obj[k])) {
-	      obj[k].push(v);
-	    } else {
-	      obj[k] = [obj[k], v];
-	    }
-	  }
+    }
 
-	  return obj;
-	};
+    if (!name) return '';
+    return encodeURIComponent(stringifyPrimitive(name)) + eq +
+           encodeURIComponent(stringifyPrimitive(obj));
+  }
+  function map (xs, f) {
+    if (xs.map) return xs.map(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+      res.push(f(xs[i], i));
+    }
+    return res;
+  }
 
-	// Copyright Joyent, Inc. and other Node contributors.
+  var objectKeys = Object.keys || function (obj) {
+    var res = [];
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
+    }
+    return res;
+  };
 
-	var stringifyPrimitive = function(v) {
-	  switch (typeof v) {
-	    case 'string':
-	      return v;
+  function parse(qs, sep, eq, options) {
+    sep = sep || '&';
+    eq = eq || '=';
+    var obj = {};
 
-	    case 'boolean':
-	      return v ? 'true' : 'false';
+    if (typeof qs !== 'string' || qs.length === 0) {
+      return obj;
+    }
 
-	    case 'number':
-	      return isFinite(v) ? v : '';
+    var regexp = /\+/g;
+    qs = qs.split(sep);
 
-	    default:
-	      return '';
-	  }
-	};
+    var maxKeys = 1000;
+    if (options && typeof options.maxKeys === 'number') {
+      maxKeys = options.maxKeys;
+    }
 
-	var encode = function(obj, sep, eq, name) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  if (obj === null) {
-	    obj = undefined;
-	  }
+    var len = qs.length;
+    // maxKeys <= 0 means that we should not limit keys count
+    if (maxKeys > 0 && len > maxKeys) {
+      len = maxKeys;
+    }
 
-	  if (typeof obj === 'object') {
-	    return Object.keys(obj).map(function(k) {
-	      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
-	      if (Array.isArray(obj[k])) {
-	        return obj[k].map(function(v) {
-	          return ks + encodeURIComponent(stringifyPrimitive(v));
-	        }).join(sep);
-	      } else {
-	        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
-	      }
-	    }).join(sep);
+    for (var i = 0; i < len; ++i) {
+      var x = qs[i].replace(regexp, '%20'),
+          idx = x.indexOf(eq),
+          kstr, vstr, k, v;
 
-	  }
+      if (idx >= 0) {
+        kstr = x.substr(0, idx);
+        vstr = x.substr(idx + 1);
+      } else {
+        kstr = x;
+        vstr = '';
+      }
 
-	  if (!name) return '';
-	  return encodeURIComponent(stringifyPrimitive(name)) + eq +
-	         encodeURIComponent(stringifyPrimitive(obj));
-	};
+      k = decodeURIComponent(kstr);
+      v = decodeURIComponent(vstr);
 
-	var querystring = createCommonjsModule(function (module, exports) {
+      if (!hasOwnProperty(obj, k)) {
+        obj[k] = v;
+      } else if (isArray(obj[k])) {
+        obj[k].push(v);
+      } else {
+        obj[k] = [obj[k], v];
+      }
+    }
 
-	exports.decode = exports.parse = decode;
-	exports.encode = exports.stringify = encode;
-	});
-	var querystring_1 = querystring.decode;
-	var querystring_2 = querystring.parse;
-	var querystring_3 = querystring.encode;
-	var querystring_4 = querystring.stringify;
+    return obj;
+  }var QueryString = {
+    encode: stringify,
+    stringify: stringify,
+    decode: parse,
+    parse: parse
+  };
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  /**
+  * The Qlik Sense configuration object.
+  * @typedef {Object} SenseConfiguration
+  * @property {String} [appId] The app id. If omitted, only the global object is returned.
+  *                            Otherwise both global and app object are returned.
+  * @property {Boolean} [noData=false] Whether to open the app without data.
+  * @property {Boolean} [secure=true] Set to false if an unsecure WebSocket should be used.
+  * @property {String} [host] Host address.
+  * @property {Number} [port] Port to connect to.
+  * @property {String} [prefix="/"] The absolute base path to use when connecting.
+  *                             Used for proxy prefixes.
+  * @property {String} [subpath=""] The subpath.
+  * @property {String} [route=""] Used to instruct Proxy to route to the correct receiver.
+  * @property {String} [identity=""] Identity to use.
+  * @property {Object} [urlParams={}] Used to add parameters to the WebSocket URL.
+  * @property {Number} [ttl] A value in seconds that QIX Engine should keep the session
+  *                             alive after socket disconnect (only works if QIX Engine supports it).
+  */
 
-	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  function replaceLeadingAndTrailingSlashes(str) {
+    return str.replace(/(^[/]+)|([/]+$)/g, '');
+  }
 
-	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-	/**
-	* The Qlik Sense configuration object.
-	* @typedef {Object} SenseConfiguration
-	* @property {String} [appId] The app id. If omitted, only the global object is returned.
-	*                            Otherwise both global and app object are returned.
-	* @property {Boolean} [noData=false] Whether to open the app without data.
-	* @property {Boolean} [secure=true] Set to false if an unsecure WebSocket should be used.
-	* @property {String} [host] Host address.
-	* @property {Number} [port] Port to connect to.
-	* @property {String} [prefix="/"] The absolute base path to use when connecting.
-	*                             Used for proxy prefixes.
-	* @property {String} [subpath=""] The subpath.
-	* @property {String} [route=""] Used to instruct Proxy to route to the correct receiver.
-	* @property {String} [identity=""] Identity to use.
-	* @property {Object} [urlParams={}] Used to add parameters to the WebSocket URL.
-	* @property {Number} [ttl] A value in seconds that QIX Engine should keep the session
-	*                             alive after socket disconnect (only works if QIX Engine supports it).
-	*/
+  var SenseUtilities =
+  /*#__PURE__*/
+  function () {
+    function SenseUtilities() {
+      _classCallCheck(this, SenseUtilities);
+    }
 
-	function replaceLeadingAndTrailingSlashes(str) {
-	  return str.replace(/(^[/]+)|([/]+$)/g, '');
-	}
+    _createClass(SenseUtilities, null, [{
+      key: "configureDefaults",
 
-	var SenseUtilities =
-	/*#__PURE__*/
-	function () {
-	  function SenseUtilities() {
-	    _classCallCheck(this, SenseUtilities);
-	  }
+      /**
+      * Ensures that the configuration has defaults set.
+      *
+      * @private
+      * @param {SenseConfiguration} senseConfig The configuration to ensure defaults on.
+      */
+      value: function configureDefaults(senseConfig) {
+        if (!senseConfig.host) {
+          senseConfig.host = 'localhost';
+        }
 
-	  _createClass(SenseUtilities, null, [{
-	    key: "configureDefaults",
+        if (typeof senseConfig.secure === 'undefined') {
+          senseConfig.secure = true;
+        }
 
-	    /**
-	    * Ensures that the configuration has defaults set.
-	    *
-	    * @private
-	    * @param {SenseConfiguration} senseConfig The configuration to ensure defaults on.
-	    */
-	    value: function configureDefaults(senseConfig) {
-	      if (!senseConfig.host) {
-	        senseConfig.host = 'localhost';
-	      }
+        if (!senseConfig.appId && !senseConfig.route) {
+          senseConfig.route = 'app/engineData';
+        }
 
-	      if (typeof senseConfig.secure === 'undefined') {
-	        senseConfig.secure = true;
-	      }
+        if (typeof senseConfig.noData === 'undefined') {
+          senseConfig.noData = false;
+        }
+      }
+      /**
+      * Function used to build an URL.
+      * @param {SenseConfiguration} urlConfig - The URL configuration object.
+      * @returns {String} Returns the websocket URL.
+      */
 
-	      if (!senseConfig.appId && !senseConfig.route) {
-	        senseConfig.route = 'app/engineData';
-	      }
+    }, {
+      key: "buildUrl",
+      value: function buildUrl(urlConfig) {
+        SenseUtilities.configureDefaults(urlConfig);
+        var secure = urlConfig.secure,
+            host = urlConfig.host,
+            port = urlConfig.port,
+            prefix = urlConfig.prefix,
+            subpath = urlConfig.subpath,
+            route = urlConfig.route,
+            identity = urlConfig.identity,
+            urlParams = urlConfig.urlParams,
+            ttl = urlConfig.ttl,
+            appId = urlConfig.appId;
+        var url = '';
+        url += "".concat(secure ? 'wss' : 'ws', "://");
+        url += host || 'localhost';
 
-	      if (typeof senseConfig.noData === 'undefined') {
-	        senseConfig.noData = false;
-	      }
-	    }
-	    /**
-	    * Function used to build an URL.
-	    * @param {SenseConfiguration} urlConfig - The URL configuration object.
-	    * @returns {String} Returns the websocket URL.
-	    */
+        if (port) {
+          url += ":".concat(port);
+        }
 
-	  }, {
-	    key: "buildUrl",
-	    value: function buildUrl(urlConfig) {
-	      SenseUtilities.configureDefaults(urlConfig);
-	      var secure = urlConfig.secure,
-	          host = urlConfig.host,
-	          port = urlConfig.port,
-	          prefix = urlConfig.prefix,
-	          subpath = urlConfig.subpath,
-	          route = urlConfig.route,
-	          identity = urlConfig.identity,
-	          urlParams = urlConfig.urlParams,
-	          ttl = urlConfig.ttl,
-	          appId = urlConfig.appId;
-	      var url = '';
-	      url += "".concat(secure ? 'wss' : 'ws', "://");
-	      url += host || 'localhost';
+        if (prefix) {
+          url += "/".concat(replaceLeadingAndTrailingSlashes(prefix));
+        }
 
-	      if (port) {
-	        url += ":".concat(port);
-	      }
+        if (subpath) {
+          url += "/".concat(replaceLeadingAndTrailingSlashes(subpath));
+        }
 
-	      if (prefix) {
-	        url += "/".concat(replaceLeadingAndTrailingSlashes(prefix));
-	      }
+        if (route) {
+          url += "/".concat(replaceLeadingAndTrailingSlashes(route));
+        } else if (appId && appId !== '') {
+          url += "/app/".concat(encodeURIComponent(appId));
+        }
 
-	      if (subpath) {
-	        url += "/".concat(replaceLeadingAndTrailingSlashes(subpath));
-	      }
+        if (identity) {
+          url += "/identity/".concat(encodeURIComponent(identity));
+        }
 
-	      if (route) {
-	        url += "/".concat(replaceLeadingAndTrailingSlashes(route));
-	      } else if (appId) {
-	        url += "/app/".concat(encodeURIComponent(appId));
-	      }
+        if (ttl) {
+          url += "/ttl/".concat(ttl);
+        }
 
-	      if (identity) {
-	        url += "/identity/".concat(encodeURIComponent(identity));
-	      }
+        if (urlParams) {
+          url += "?".concat(QueryString.stringify(urlParams));
+        }
 
-	      if (ttl) {
-	        url += "/ttl/".concat(ttl);
-	      }
+        return url;
+      }
+    }]);
 
-	      if (urlParams) {
-	        url += "?".concat(querystring.stringify(urlParams));
-	      }
+    return SenseUtilities;
+  }();
 
-	      return url;
-	    }
-	  }]);
-
-	  return SenseUtilities;
-	}();
-
-	return SenseUtilities;
+  return SenseUtilities;
 
 })));
 //# sourceMappingURL=sense-utilities.js.map
@@ -14431,10 +14367,41 @@ function useListObject_objectSpread(target) { for (var i = 1; i < arguments.leng
 
 
 
-var useListObject_qDoc = null;
-var qObject = null;
-var useListObject_qLayout = null;
-var useListObject_selections = null;
+var initialState = {
+  qDoc: null,
+  qObject: null,
+  qData: null,
+  qLayout: null,
+  selections: null
+};
+
+function reducer(state, action) {
+  var _action$payload = action.payload,
+      qDoc = _action$payload.qDoc,
+      qObject = _action$payload.qObject,
+      qData = _action$payload.qData,
+      qLayout = _action$payload.qLayout,
+      selections = _action$payload.selections,
+      type = action.type;
+
+  switch (type) {
+    case 'update':
+      return useListObject_objectSpread({}, state, {
+        qData: qData,
+        qLayout: qLayout,
+        selections: selections
+      });
+
+    case 'init':
+      return useListObject_objectSpread({}, state, {
+        qDoc: qDoc,
+        qObject: qObject
+      });
+
+    default:
+      throw new Error();
+  }
+}
 
 var useListObject_useListObject = function useListObject(_ref) {
   var qDocPromise = _ref.qDocPromise,
@@ -14445,12 +14412,16 @@ var useListObject_useListObject = function useListObject(_ref) {
       qSortByLoadOrder = _ref.qSortByLoadOrder,
       autoSortByState = _ref.autoSortByState;
 
-  var _useState = Object(react["useState"])(null),
-      _useState2 = slicedToArray_default()(_useState, 2),
-      qData = _useState2[0],
-      setQData = _useState2[1];
-  /** Generate the Definition file */
+  var _useReducer = Object(react["useReducer"])(reducer, initialState),
+      _useReducer2 = slicedToArray_default()(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
 
+  var qData = state.qData,
+      qLayout = state.qLayout,
+      qObject = state.qObject,
+      selections = state.selections;
+  /** Generate the Definition file */
 
   var generateQProp = function generateQProp() {
     var currentColumn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -14495,24 +14466,29 @@ var useListObject_useListObject = function useListObject(_ref) {
     return qProp;
   };
 
-  var getLayout =
+  var getLayout = function getLayout() {
+    return qObject.getLayout();
+  };
+
+  var getData =
   /*#__PURE__*/
   function () {
     var _ref2 = asyncToGenerator_default()(
     /*#__PURE__*/
-    regenerator_default.a.mark(function _callee() {
-      var _qLayout;
-
+    regenerator_default.a.mark(function _callee(qTop) {
+      var qDataPages;
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return qObject.getLayout();
+              return qObject.getListObjectData('/qListObjectDef', [useListObject_objectSpread({}, qPage, {
+                qTop: qTop
+              })]);
 
             case 2:
-              _qLayout = _context.sent;
-              return _context.abrupt("return", _qLayout);
+              qDataPages = _context.sent;
+              return _context.abrupt("return", qDataPages[0]);
 
             case 4:
             case "end":
@@ -14522,32 +14498,63 @@ var useListObject_useListObject = function useListObject(_ref) {
       }, _callee);
     }));
 
-    return function getLayout() {
+    return function getData(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
 
-  var getData =
+  var update =
   /*#__PURE__*/
   function () {
     var _ref3 = asyncToGenerator_default()(
     /*#__PURE__*/
-    regenerator_default.a.mark(function _callee2(qTop) {
-      var qDataPages;
+    regenerator_default.a.mark(function _callee2() {
+      var qTopPassed,
+          _ref4,
+          qDataGenerated,
+          _ref5,
+          qArea,
+          _ref6,
+          qTopGenerated,
+          qTop,
+          _qLayout,
+          _qData,
+          _selections,
+          _args2 = arguments;
+
       return regenerator_default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
-              return qObject.getListObjectData('/qListObjectDef', [useListObject_objectSpread({}, qPage, {
-                qTop: qTop
-              })]);
+              qTopPassed = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 0;
+              // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
+              _ref4 = qData || {}, qDataGenerated = _ref4.qDataGenerated;
+              _ref5 = qDataGenerated || {}, qArea = _ref5.qArea;
+              _ref6 = qArea || {}, qTopGenerated = _ref6.qTop;
+              qTop = qTopPassed || qTopGenerated;
+              _context2.next = 7;
+              return getLayout();
 
-            case 2:
-              qDataPages = _context2.sent;
-              return _context2.abrupt("return", qDataPages[0]);
+            case 7:
+              _qLayout = _context2.sent;
+              _context2.next = 10;
+              return getData(qTop);
 
-            case 4:
+            case 10:
+              _qData = _context2.sent;
+              _selections = _qData.qMatrix.filter(function (row) {
+                return row[0].qState === 'S';
+              });
+              dispatch({
+                type: 'update',
+                payload: {
+                  qData: _qData,
+                  qLayout: _qLayout,
+                  selections: _selections
+                }
+              });
+
+            case 13:
             case "end":
               return _context2.stop();
           }
@@ -14555,63 +14562,8 @@ var useListObject_useListObject = function useListObject(_ref) {
       }, _callee2);
     }));
 
-    return function getData(_x) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
-  var update =
-  /*#__PURE__*/
-  function () {
-    var _ref4 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee3() {
-      var qTopPassed,
-          _ref5,
-          qDataGenerated,
-          _ref6,
-          qArea,
-          _ref7,
-          qTopGenerated,
-          qTop,
-          _qData,
-          _args3 = arguments;
-
-      return regenerator_default.a.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              qTopPassed = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 0;
-              // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
-              _ref5 = qData || {}, qDataGenerated = _ref5.qDataGenerated;
-              _ref6 = qDataGenerated || {}, qArea = _ref6.qArea;
-              _ref7 = qArea || {}, qTopGenerated = _ref7.qTop;
-              qTop = qTopPassed || qTopGenerated;
-              _context3.next = 7;
-              return getLayout();
-
-            case 7:
-              useListObject_qLayout = _context3.sent;
-              _context3.next = 10;
-              return getData(qTop);
-
-            case 10:
-              _qData = _context3.sent;
-              useListObject_selections = _qData.qMatrix.filter(function (row) {
-                return row[0].qState === 'S';
-              });
-              setQData(_qData);
-
-            case 13:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
     return function update() {
-      return _ref4.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -14622,212 +14574,103 @@ var useListObject_useListObject = function useListObject(_ref) {
   var beginSelections =
   /*#__PURE__*/
   function () {
-    var _ref8 = asyncToGenerator_default()(
+    var _ref7 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee3() {
+      return regenerator_default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return qObject.beginSelections(['/qListObjectDef']);
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function beginSelections() {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var endSelections = function endSelections(qAccept) {
+    return qObject.endSelections(qAccept);
+  };
+
+  var select = function select(qElemNumber) {
+    var toggle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    var ignoreLock = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    return qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
+  };
+
+  var searchListObjectFor = function searchListObjectFor(string) {
+    return qObject.searchListObjectFor('/qListObjectDef', string);
+  };
+
+  var acceptListObjectSearch = function acceptListObjectSearch() {
+    var ignoreLock = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
+  };
+
+  var applyPatches = function applyPatches(patches) {
+    return qObject.applyPatches(patches);
+  };
+
+  Object(react["useEffect"])(function () {
+    asyncToGenerator_default()(
     /*#__PURE__*/
     regenerator_default.a.mark(function _callee4() {
+      var qProp, qDoc, _qObject;
+
       return regenerator_default.a.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return qObject.beginSelections(['/qListObjectDef']);
+              return generateQProp();
 
             case 2:
+              qProp = _context4.sent;
+              _context4.next = 5;
+              return qDocPromise;
+
+            case 5:
+              qDoc = _context4.sent;
+              _context4.next = 8;
+              return qDoc.createSessionObject(qProp);
+
+            case 8:
+              _qObject = _context4.sent;
+              if (!state.qDoc) dispatch({
+                type: 'init',
+                payload: {
+                  qDoc: qDoc,
+                  qObject: _qObject
+                }
+              });
+
+              if (state.qDoc && !state.qLayout) {
+                update();
+                qObject.on('changed', function () {
+                  update();
+                });
+              }
+
+            case 11:
             case "end":
               return _context4.stop();
           }
         }
       }, _callee4);
-    }));
+    }))(); // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return function beginSelections() {
-      return _ref8.apply(this, arguments);
-    };
-  }();
-
-  var endSelections =
-  /*#__PURE__*/
-  function () {
-    var _ref9 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee5(qAccept) {
-      return regenerator_default.a.wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.next = 2;
-              return qObject.endSelections(qAccept);
-
-            case 2:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }));
-
-    return function endSelections(_x2) {
-      return _ref9.apply(this, arguments);
-    };
-  }();
-
-  var select =
-  /*#__PURE__*/
-  function () {
-    var _ref10 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee6(qElemNumber) {
-      var toggle,
-          ignoreLock,
-          _args6 = arguments;
-      return regenerator_default.a.wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              toggle = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : true;
-              ignoreLock = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : false;
-              _context6.next = 4;
-              return qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
-
-            case 4:
-            case "end":
-              return _context6.stop();
-          }
-        }
-      }, _callee6);
-    }));
-
-    return function select(_x3) {
-      return _ref10.apply(this, arguments);
-    };
-  }();
-
-  var searchListObjectFor =
-  /*#__PURE__*/
-  function () {
-    var _ref11 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee7(string) {
-      return regenerator_default.a.wrap(function _callee7$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return qObject.searchListObjectFor('/qListObjectDef', string);
-
-            case 2:
-            case "end":
-              return _context7.stop();
-          }
-        }
-      }, _callee7);
-    }));
-
-    return function searchListObjectFor(_x4) {
-      return _ref11.apply(this, arguments);
-    };
-  }();
-
-  var acceptListObjectSearch =
-  /*#__PURE__*/
-  function () {
-    var _ref12 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee8() {
-      var ignoreLock,
-          _args8 = arguments;
-      return regenerator_default.a.wrap(function _callee8$(_context8) {
-        while (1) {
-          switch (_context8.prev = _context8.next) {
-            case 0:
-              ignoreLock = _args8.length > 0 && _args8[0] !== undefined ? _args8[0] : false;
-              _context8.next = 3;
-              return qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
-
-            case 3:
-            case "end":
-              return _context8.stop();
-          }
-        }
-      }, _callee8);
-    }));
-
-    return function acceptListObjectSearch() {
-      return _ref12.apply(this, arguments);
-    };
-  }();
-
-  var applyPatches =
-  /*#__PURE__*/
-  function () {
-    var _ref13 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee9(patches) {
-      return regenerator_default.a.wrap(function _callee9$(_context9) {
-        while (1) {
-          switch (_context9.prev = _context9.next) {
-            case 0:
-              _context9.next = 2;
-              return qObject.applyPatches(patches);
-
-            case 2:
-            case "end":
-              return _context9.stop();
-          }
-        }
-      }, _callee9);
-    }));
-
-    return function applyPatches(_x5) {
-      return _ref13.apply(this, arguments);
-    };
-  }();
-
-  Object(react["useEffect"])(function () {
-    asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee10() {
-      var qProp;
-      return regenerator_default.a.wrap(function _callee10$(_context10) {
-        while (1) {
-          switch (_context10.prev = _context10.next) {
-            case 0:
-              _context10.next = 2;
-              return generateQProp();
-
-            case 2:
-              qProp = _context10.sent;
-              _context10.next = 5;
-              return qDocPromise;
-
-            case 5:
-              useListObject_qDoc = _context10.sent;
-              _context10.next = 8;
-              return useListObject_qDoc.createSessionObject(qProp);
-
-            case 8:
-              qObject = _context10.sent;
-              qObject.on('changed', function () {
-                update();
-              });
-              update();
-
-            case 11:
-            case "end":
-              return _context10.stop();
-          }
-        }
-      }, _callee10);
-    }))();
-
-    return function () {
-      var _qObject = qObject,
-          id = _qObject.id;
-      useListObject_qDoc.destroySessionObject(id);
-    }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.qDoc, state.qLayout]);
   return {
-    qLayout: useListObject_qLayout,
+    qLayout: qLayout,
     qData: qData,
     offset: offset,
     select: select,
@@ -14836,7 +14679,7 @@ var useListObject_useListObject = function useListObject(_ref) {
     searchListObjectFor: searchListObjectFor,
     acceptListObjectSearch: acceptListObjectSearch,
     applyPatches: applyPatches,
-    selections: useListObject_selections
+    selections: selections
   };
 };
 
@@ -14863,32 +14706,32 @@ useListObject_useListObject.defaultProps = {
   }
 };
 /* harmony default export */ var hooks_useListObject = (useListObject_useListObject);
-// CONCATENATED MODULE: ./src/components/QdtVirtualScroll/QdtVirtualScroll.jsx
+// CONCATENATED MODULE: ./src/components/QdtFilter/DropdownItemList.jsx
 
 
 
 
 var start = 0;
 var end = 0;
-var translateY = 0;
-var _qcy = 0;
-var qMatrix = null;
+var translateY = 0; // let _qcy = 0;
+// let qMatrix = null;
 
-var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
+/** Create the DropDown list */
+
+var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
+  var qData = _ref.qData,
+      rowHeight = _ref.rowHeight,
+      viewportHeight = _ref.viewportHeight,
+      select = _ref.select,
+      qcy = _ref.qcy,
+      offset = _ref.offset;
+
   var _useState = Object(react["useState"])(false),
       _useState2 = slicedToArray_default()(_useState, 2),
       updating = _useState2[0],
       setUpdating = _useState2[1];
 
   var node = Object(react["useRef"])(null);
-  var viewportHeight = props.viewportHeight,
-      rowHeight = props.rowHeight,
-      qcy = props.qcy,
-      qData = props.qData,
-      offset = props.offset,
-      Component = props.Component,
-      componentProps = props.componentProps;
-  end = viewportHeight / rowHeight;
 
   var handleScroll = function handleScroll(event) {
     var scrollTop = event.target.scrollTop;
@@ -14908,20 +14751,16 @@ var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
     setUpdating(false);
   };
 
-  Object(react["useEffect"])(function () {
-    if (_qcy !== qcy) {
-      node.current.scrollTop = 0;
-      _qcy = qcy;
-    }
-
-    qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
-  }, [qData.qArea.qTop, qData.qMatrix, qcy]);
   return react_default.a.createElement("div", {
     ref: node,
     style: {
       position: 'relative',
       height: "".concat(viewportHeight, "px"),
-      overflowY: 'auto'
+      overflowY: 'auto',
+      backgroundColor: '#FFFFFF',
+      borderRight: '1px solid #dee2e6',
+      borderLeft: '1px solid #dee2e6',
+      borderBottom: '1px solid #dee2e6'
     },
     onScroll: handleScroll
   }, react_default.a.createElement("div", {
@@ -14932,42 +14771,7 @@ var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
       // overflow: 'hidden',
       position: 'absolute'
     }
-  }, !updating && react_default.a.createElement(Component, extends_default()({}, componentProps, {
-    qMatrix: qMatrix,
-    rowHeight: rowHeight
-  }))), react_default.a.createElement("div", {
-    style: {
-      height: "".concat(rowHeight * qcy, "px")
-    }
-  }));
-};
-
-QdtVirtualScroll_QdtVirtualScroll.propTypes = {
-  qData: prop_types_default.a.object.isRequired,
-  qcy: prop_types_default.a.number.isRequired,
-  Component: prop_types_default.a.func.isRequired,
-  componentProps: prop_types_default.a.object,
-  offset: prop_types_default.a.func.isRequired,
-  rowHeight: prop_types_default.a.number,
-  viewportHeight: prop_types_default.a.number
-};
-QdtVirtualScroll_QdtVirtualScroll.defaultProps = {
-  componentProps: {},
-  rowHeight: 40,
-  viewportHeight: 200
-};
-/* harmony default export */ var components_QdtVirtualScroll_QdtVirtualScroll = (QdtVirtualScroll_QdtVirtualScroll);
-// CONCATENATED MODULE: ./src/components/QdtFilter/DropdownItemList.jsx
-
-
-
-/** Create the DropDown list */
-
-var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
-  var qData = _ref.qData,
-      rowHeight = _ref.rowHeight,
-      select = _ref.select;
-  return react_default.a.createElement("span", null, qData.qMatrix.map(function (row) {
+  }, !updating && react_default.a.createElement("span", null, qData.qMatrix.map(function (row) {
     return react_default.a.createElement(QdtLui_LuiListItem, {
       className: "".concat(row[0].qState),
       key: row[0].qElemNumber,
@@ -14976,16 +14780,30 @@ var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
       "data-q-text": row[0].qText,
       onClick: select,
       style: {
-        height: "".concat(rowHeight - 1, "px")
+        height: "".concat(rowHeight - 1, "px"),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }
     }, row[0].qText);
+  }))), react_default.a.createElement("div", {
+    style: {
+      height: "".concat(rowHeight * qcy, "px")
+    }
   }));
 };
 
 DropdownItemList_DropdownItemList.propTypes = {
   qData: prop_types_default.a.array.isRequired,
-  rowHeight: prop_types_default.a.number.isRequired,
-  select: prop_types_default.a.func.isRequired
+  select: prop_types_default.a.func.isRequired,
+  offset: prop_types_default.a.func.isRequired,
+  qcy: prop_types_default.a.number.isRequired,
+  rowHeight: prop_types_default.a.number,
+  viewportHeight: prop_types_default.a.number
+};
+DropdownItemList_DropdownItemList.defaultProps = {
+  rowHeight: 40,
+  viewportHeight: 200
 };
 /* harmony default export */ var QdtFilter_DropdownItemList = (DropdownItemList_DropdownItemList);
 // CONCATENATED MODULE: ./src/components/QdtFilter/ExpandedHorizontalTab.jsx
@@ -15079,10 +14897,6 @@ var src_styles_0 = __webpack_require__(10);
 
 
 
-
-var searchListInputValue = '';
-var qStateCounts = 0;
-var QdtFilter_totalStateCounts = {};
 /** The Actual Component */
 
 var QdtFilter_QdtFilter = function QdtFilter(_ref) {
@@ -15100,8 +14914,14 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
   var _useState = Object(react["useState"])(false),
       _useState2 = slicedToArray_default()(_useState, 2),
       dropdownOpen = _useState2[0],
-      setDropDownOpen = _useState2[1]; // const [searchListInputValue, setSearchListInputValue] = useState('');
+      setDropDownOpen = _useState2[1];
 
+  var _useState3 = Object(react["useState"])(null),
+      _useState4 = slicedToArray_default()(_useState3, 2),
+      totalStateCounts = _useState4[0],
+      setTotalStateCounts = _useState4[1];
+
+  var searchListInputValue = '';
 
   var _useListObject = hooks_useListObject({
     qDocPromise: qDocPromise,
@@ -15156,32 +14976,33 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
   var _select = function _select(event) {
     var _event$currentTarget$ = event.currentTarget.dataset,
         qElemNumber = _event$currentTarget$.qElemNumber,
-        qState = _event$currentTarget$.qState; // qText
-
-    if (qState === 'S') {
-      select(Number(qElemNumber));
-    } else {
-      select(Number(qElemNumber), !single);
-    }
-
-    if (single) _toggle();
+        qState = _event$currentTarget$.qState;
+    var toggleSelections = !(!single && qState === 'S' || expandedHorizontal || single);
+    select(Number(qElemNumber), toggleSelections);
+    if (single && (!expanded || !QdtFilter_ExpandedHorizontalTab)) _toggle();
+    if (expandedHorizontal) endSelections(true);
   };
 
   Object(react["useEffect"])(function () {
-    if (qData) {
-      qStateCounts = qLayout.qListObject.qDimensionInfo.qStateCounts;
-      QdtFilter_totalStateCounts = Object.values(qStateCounts).reduce(function (a, b) {
+    if (qData && qLayout) {
+      var qStateCounts = qLayout.qListObject.qDimensionInfo.qStateCounts;
+
+      var _totalStateCounts = Object.values(qStateCounts).reduce(function (a, b) {
         return a + b;
+      });
+
+      setTotalStateCounts({
+        _totalStateCounts: _totalStateCounts
       });
     } // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  }, [qData]);
-  return react_default.a.createElement(react_default.a.Fragment, null, qData && !expanded && !expandedHorizontal && react_default.a.createElement(QdtLui_LuiDropdown, {
+  }, [qData, qLayout, selections]);
+  return react_default.a.createElement(react_default.a.Fragment, null, qData && qLayout && !expanded && !expandedHorizontal && react_default.a.createElement(QdtLui_LuiDropdown, {
     isOpen: dropdownOpen,
     toggle: function toggle() {
       return _toggle();
     }
-  }, react_default.a.createElement("span", null, !showStateInDropdown && placeholder, showStateInDropdown && selections && selections.length === 0 && placeholder, showStateInDropdown && selections && selections.length === 1 && "".concat(placeholder, ": ").concat(selections[0][0].qText), showStateInDropdown && selections && selections.length > 1 && "".concat(placeholder, ": ").concat(selections.length, " of ").concat(QdtFilter_totalStateCounts)), react_default.a.createElement(QdtLui_LuiList, {
+  }, react_default.a.createElement("span", null, !showStateInDropdown && placeholder, showStateInDropdown && selections && selections.length === 0 && placeholder, showStateInDropdown && selections && selections.length === 1 && "".concat(placeholder, ": ").concat(selections[0][0].qText), showStateInDropdown && selections && selections.length > 1 && "".concat(placeholder, ": ").concat(selections.length, " of ").concat(totalStateCounts)), react_default.a.createElement(QdtLui_LuiList, {
     style: {
       width: '15rem'
     }
@@ -15190,21 +15011,16 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     clear: clear,
     onChange: _searchListObjectFor,
     onKeyPress: _acceptListObjectSearch
-  }), react_default.a.createElement(components_QdtVirtualScroll_QdtVirtualScroll, {
+  }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
-    qcy: qLayout.qListObject.qSize.qcy,
-    Component: QdtFilter_DropdownItemList,
-    componentProps: {
-      qData: qData,
-      select: _select
-    },
-    offset: offset,
     rowHeight: 38,
-    viewportHeight: 190
-  })), !hideStateCountsBar && react_default.a.createElement(QdtFilter_StateCountsBar, {
-    totalStateCounts: QdtFilter_totalStateCounts,
+    select: _select,
+    qcy: qLayout.qListObject.qSize.qcy,
+    offset: offset
+  })), !hideStateCountsBar && totalStateCounts && selections && react_default.a.createElement(QdtFilter_StateCountsBar, {
+    totalStateCounts: totalStateCounts,
     selections: selections
-  })), qData && expanded && react_default.a.createElement(QdtLui_LuiList, {
+  })), qData && qLayout && expanded && react_default.a.createElement(QdtLui_LuiList, {
     style: {
       width: '15rem'
     }
@@ -15213,17 +15029,12 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     clear: clear,
     onChange: _searchListObjectFor,
     onKeyPress: acceptListObjectSearch
-  }), react_default.a.createElement(components_QdtVirtualScroll_QdtVirtualScroll, {
+  }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
-    qcy: qLayout.qListObject.qSize.qcy,
-    Component: QdtFilter_DropdownItemList,
-    componentProps: {
-      qData: qData,
-      select: _select
-    },
-    offset: offset,
     rowHeight: 38,
-    viewportHeight: 190
+    select: _select,
+    qcy: qLayout.qListObject.qSize.qcy,
+    offset: offset
   })), qData && expandedHorizontal && react_default.a.createElement(QdtLui_LuiTabset, {
     fill: true,
     style: {
@@ -15231,7 +15042,7 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     }
   }, react_default.a.createElement(QdtFilter_ExpandedHorizontalTab, {
     qData: qData,
-    select: select,
+    select: _select,
     expandedHorizontalSense: expandedHorizontalSense
   })));
 };
@@ -19564,7 +19375,7 @@ QdtKpi_QdtKpi.defaultProps = {
 /* harmony default export */ var components_QdtKpi_QdtKpi = (QdtKpi_QdtKpi);
 // CONCATENATED MODULE: ./node_modules/picasso.js/dist/picasso.esm.js
 /*
-* picasso.js v0.27.1
+* picasso.js v0.27.0
 * Copyright (c) 2019 QlikTech International AB
 * Released under the MIT license.
 */
@@ -20303,7 +20114,7 @@ var extend = function extend() {
 };
 
 var about = {
-  version: '0.27.1'
+  version: '0.27.0'
 };
 
 function _typeof(obj) {
@@ -25905,7 +25716,7 @@ function one(b) {
   };
 }
 
-function picasso_esm_string(a, b) {
+function string(a, b) {
   var bi = reA.lastIndex = reB.lastIndex = 0, // scan index for next number in b
       am, // current match in a
       bm, // current match in b
@@ -25957,7 +25768,7 @@ function interpolateValue(a, b) {
   var t = typeof b, c;
   return b == null || t === "boolean" ? constant$1(b)
       : (t === "number" ? interpolateNumber
-      : t === "string" ? ((c = picasso_esm_color(b)) ? (b = c, interpolateRgb) : picasso_esm_string)
+      : t === "string" ? ((c = picasso_esm_color(b)) ? (b = c, interpolateRgb) : string)
       : b instanceof picasso_esm_color ? interpolateRgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array$1
@@ -31507,17 +31318,17 @@ function bar(options) {
   return rect;
 }
 
-var parentReg = registryFactory();
-parentReg.add('circle', circle);
-parentReg.add('diamond', diamond);
-parentReg.add('saltire', saltire);
-parentReg.add('square', square);
-parentReg.add('triangle', triangle);
-parentReg.add('line', line$1);
-parentReg.add('star', star);
-parentReg.add('n-polygon', nPolygon);
-parentReg.add('cross', cross);
-parentReg.add('bar', bar);
+var reg$1 = registryFactory();
+reg$1.add('circle', circle);
+reg$1.add('diamond', diamond);
+reg$1.add('saltire', saltire);
+reg$1.add('square', square);
+reg$1.add('triangle', triangle);
+reg$1.add('line', line$1);
+reg$1.add('star', star);
+reg$1.add('n-polygon', nPolygon);
+reg$1.add('cross', cross);
+reg$1.add('bar', bar);
 
 function applyOpts(obj) {
   var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -31536,27 +31347,24 @@ function applyOpts(obj) {
  */
 
 
-var create$3 = function create() {
-  var reg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : parentReg;
-  return function () {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    // TODO handle reserverd properties x, y, size, data, etc..
-    var fn = reg.get(options.type);
+function create$3() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  // TODO handle reserverd properties x, y, size, data, etc..
+  var fn = reg$1.get(options.type);
 
-    if (fn) {
-      var s = fn(options);
-      applyOpts(s, options);
+  if (fn) {
+    var s = fn(options);
+    applyOpts(s, options);
 
-      if (typeof options.data !== 'undefined') {
-        s.data = options.data;
-      }
-
-      return s;
+    if (typeof options.data !== 'undefined') {
+      s.data = options.data;
     }
 
-    return fn;
-  };
-};
+    return s;
+  }
+
+  return fn;
+}
 /**
  * Mandatory symbol config
  * @typedef {object} symbol-config
@@ -32142,7 +31950,7 @@ function componentFactory(definition) {
       return _resolver;
     },
     symbol: function symbol() {
-      return create$3(_registries.symbol);
+      return create$3;
     }
   });
   prepareContext(instanceContext, config, {
@@ -34988,8 +34796,8 @@ function picasso_esm_native(chart, mediator, element) {
   };
 }
 
-var reg$1 = registryFactory();
-reg$1('native', picasso_esm_native);
+var reg$2 = registryFactory();
+reg$2('native', picasso_esm_native);
 
 /**
  * Short-hand for max(min())
@@ -35776,11 +35584,11 @@ function box$1(picasso) {
  * @property {number} [whisker.strokeWidth=1]
  * @property {number} [whisker.width=1]
  * @property {object} [median] Visual properties for the median
- * @property {boolean} [median.show=true]
+ * @property {number} [median.show=true]
  * @property {string} [median.stroke='#000']
  * @property {number} [median.strokeWidth=1]
  * @property {object} [oob] EXPERIMENTAL: Out of bounds symbol utilizing the symbol API
- * @property {boolean} [oob.show=true]
+ * @property {number} [oob.show=true]
  * @property {string} [oob.type='n-polygon'] Type of the symbol to be used
  * @property {string} [oob.fill='#999'] Fill color of the symbol
  * @property {string} [oob.stroke='#000'] Stroke color
@@ -35951,7 +35759,7 @@ function createDisplayPoints(dataPoints, _ref, pointSize, shapeFn) {
 }
 
 var component$1 = {
-  require: ['chart', 'resolver', 'symbol'],
+  require: ['chart', 'resolver'],
   defaultSettings: {
     settings: {},
     data: {},
@@ -35982,7 +35790,7 @@ var component$1 = {
     var limits = extend({}, SIZE_LIMITS, this.settings.settings.sizeLimits);
     var points = resolved.items;
     var pointSize = getPointSizeLimits(resolved.settings.x, resolved.settings.y, width, height, limits);
-    return createDisplayPoints(points, this.rect, pointSize, this.settings.shapeFn || this.symbol);
+    return createDisplayPoints(points, this.rect, pointSize, this.settings.shapeFn || create$3);
   }
 };
 
@@ -41369,31 +41177,8 @@ function toBackground(label) {
   }, label.backgroundBounds);
 }
 
-function isTextWidthInRectWidth(rect, label, rotate) {
-  return rotate ? rect.width >= label.height : rect.width >= label.width;
-}
-
-function isTextHeightInRectHeight(rect, label, rotate) {
-  return rotate ? rect.height >= label.width : rect.height >= label.height;
-}
-
-function isGoodPlacement(orientation, rect, label, fitsHorizontally, overflow) {
-  var fitWidth;
-  var fitHeight;
-
-  if (orientation === 'v') {
-    fitWidth = fitsHorizontally || overflow || isTextWidthInRectWidth(rect, label, true);
-    fitHeight = isTextHeightInRectHeight(rect, label, !fitsHorizontally);
-  } else {
-    fitWidth = isTextWidthInRectWidth(rect, label);
-    fitHeight = overflow || isTextHeightInRectHeight(rect, label, false);
-  }
-
-  return fitWidth && fitHeight;
-}
-
-function isTextInRect(rect, label, opts) {
-  return isTextWidthInRectWidth(rect, label, opts.rotate) && isTextHeightInRectHeight(rect, label, opts.rotate);
+function isTextInRect(rect, textMetrics, opts) {
+  return opts.rotate ? !(rect.width < textMetrics.height || rect.height < textMetrics.width) : !(rect.width < textMetrics.width || rect.height < textMetrics.height);
 }
 function placeSegmentInSegment(majorSegmentPosition, majorSegmentSize, minorSegmentSize, align) {
   var majorSegmentCenter = majorSegmentPosition + majorSegmentSize * 0.5;
@@ -41518,7 +41303,6 @@ function findBestPlacement(_ref2) {
   var testBounds;
   var p;
   var boundaries = [];
-  var dimension = orientation === 'h' ? 'width' : 'height';
 
   for (p = 0; p < placementSettings.length; p++) {
     placement = placementSettings[p];
@@ -41530,9 +41314,12 @@ function findBestPlacement(_ref2) {
       padding: placement.padding
     });
     boundaries.push(testBounds);
-    largest = !p || testBounds[dimension] > largest[dimension] ? testBounds : largest;
+    largest = !p || testBounds.height > largest.height ? testBounds : largest;
 
-    if (isGoodPlacement(orientation, testBounds, measured, fitsHorizontally, placement.overflow)) {
+    if (orientation === 'v' && (fitsHorizontally && testBounds.height >= measured.height || !fitsHorizontally && testBounds.height >= measured.width && testBounds.width >= measured.height)) {
+      bounds = testBounds;
+      break;
+    } else if (orientation === 'h' && testBounds.height >= measured.height && testBounds.width >= measured.width) {
       bounds = testBounds;
       break;
     }
@@ -44136,7 +43923,8 @@ function createRenderItem(_ref) {
       y = _ref.y,
       item = _ref.item,
       globalMetrics = _ref.globalMetrics,
-      createSymbol = _ref.createSymbol,
+      _ref$symbolFn = _ref.symbolFn,
+      symbolFn = _ref$symbolFn === void 0 ? create$3 : _ref$symbolFn,
       _ref$direction = _ref.direction,
       direction = _ref$direction === void 0 ? 'ltr' : _ref$direction;
   var label = item.label.displayObject;
@@ -44158,7 +43946,7 @@ function createRenderItem(_ref) {
     align: typeof symbolItem.align === 'undefined' ? 0.5 : symbolItem.align,
     justify: typeof symbolItem.justify === 'undefined' ? 0.5 : symbolItem.justify
   });
-  var symbol = createSymbol(extend({}, symbolItem, wiggled));
+  var symbol = symbolFn(extend({}, symbolItem, wiggled));
   delete symbol.collider;
   label.anchor = rtl ? 'end' : 'start';
   placeTextInRect$2(labelRect, label, {
@@ -44190,8 +43978,7 @@ function _getItemsToRender(_ref2, rect, _ref3) {
   var itemized = _ref3.itemized,
       _ref3$create = _ref3.create,
       create = _ref3$create === void 0 ? createRenderItem : _ref3$create,
-      parallels = _ref3.parallels,
-      createSymbol = _ref3.createSymbol;
+      parallels = _ref3.parallels;
   var direction = itemized.layout.direction;
   var globalMetrics = itemized.globalMetrics;
   var legendItems = itemized.items;
@@ -44212,8 +43999,7 @@ function _getItemsToRender(_ref2, rect, _ref3) {
       x: direction === 'rtl' ? viewRect.x + shift + viewRect.width - fixedWidth - (x - rect.x) : x,
       item: legendItems[i],
       globalMetrics: globalMetrics,
-      direction: direction,
-      createSymbol: createSymbol
+      direction: direction
     });
 
     if (isHorizontal && x >= viewRect.x - fixedWidth || !isHorizontal && y >= viewRect.y - fixedHeight) {
@@ -44378,8 +44164,7 @@ function itemRendererFactory (legend, _ref5) {
       containerRect[offsetProperty === 'x' ? 'width' : 'height'] = ext;
       return _getItemsToRender(obj, containerRect, {
         itemized: itemized,
-        parallels: parallels,
-        createSymbol: legend.symbol
+        parallels: parallels
       });
     },
     parallelize: function parallelize(availableExtent, availableSpread) {
@@ -44922,7 +44707,7 @@ function _render$3(legend) {
 }
 
 var component$2 = {
-  require: ['chart', 'settings', 'renderer', 'update', 'resolver', 'registries', 'symbol'],
+  require: ['chart', 'settings', 'renderer', 'update', 'resolver', 'registries'],
   defaultSettings: {
     settings: {},
     style: {
@@ -46017,11 +45802,12 @@ var lineMarkerComponent = {
           id: v.layerObj.id,
           data: v.layerObj.data
         };
-      }).sort(this.stngs.layers.sort).map(function (s) {
+      });
+      sortable.sort(this.stngs.layers.sort).map(function (s) {
         return s.id;
       });
       visibleLayers.sort(function (a, b) {
-        return sortable.indexOf(a.layerObj.id) - sortable.indexOf(b.layerObj.id);
+        return sortable.indexOf(b.layerObj.id) - sortable.indexOf(a.layerObj.id);
       });
     } else {
       visibleLayers.sort(function (a, b) {
@@ -49119,15 +48905,15 @@ function create$8() {
   return _construct(GeoPolyline, a);
 }
 
-var reg$2 = registryFactory();
-reg$2.add('rect', create$4);
-reg$2.add('circle', create$5);
-reg$2.add('line', create$6);
-reg$2.add('polygon', create$7);
-reg$2.add('polyline', create$8);
+var reg$3 = registryFactory();
+reg$3.add('rect', create$4);
+reg$3.add('circle', create$5);
+reg$3.add('line', create$6);
+reg$3.add('polygon', create$7);
+reg$3.add('polyline', create$8);
 function create$9(type, input) {
   // eslint-disable-line import/prefer-default-export
-  return reg$2.get(type)(input);
+  return reg$3.get(type)(input);
 }
 /**
  * @typedef {object} rect
@@ -52251,22 +52037,22 @@ function create$l() {
   return _construct(Text, s);
 }
 
-var reg$3 = registryFactory();
-reg$3.add('rect', create$h);
-reg$3.add('circle', create$i);
-reg$3.add('text', create$l);
-reg$3.add('line', create$j);
-reg$3.add('path', create$k);
-reg$3.add('stage', create$e);
-reg$3.add('container', create$d);
-reg$3.add('defs', create$d);
-reg$3.add('linearGradient', create$f);
-reg$3.add('radialGradient', create$f);
-reg$3.add('stop', create$f);
-reg$3.add('pattern', create$g);
+var reg$4 = registryFactory();
+reg$4.add('rect', create$h);
+reg$4.add('circle', create$i);
+reg$4.add('text', create$l);
+reg$4.add('line', create$j);
+reg$4.add('path', create$k);
+reg$4.add('stage', create$e);
+reg$4.add('container', create$d);
+reg$4.add('defs', create$d);
+reg$4.add('linearGradient', create$f);
+reg$4.add('radialGradient', create$f);
+reg$4.add('stop', create$f);
+reg$4.add('pattern', create$g);
 function create$m(type, input) {
   // eslint-disable-line import/prefer-default-export
-  return reg$3.get(type)(input);
+  return reg$4.get(type)(input);
 }
 
 /**
@@ -52697,7 +52483,7 @@ function injectTextBoundsFn(renderer) {
   };
 }
 
-var reg$4 = registryFactory();
+var reg$5 = registryFactory();
 
 function toLineDash(p) {
   if (Array.isArray(p)) {
@@ -52778,8 +52564,8 @@ function renderShapes(shapes, g, shapeToCanvasMap, deps) {
       resolveMatrix(shape.modelViewMatrix.elements, g);
     }
 
-    if (reg$4.has(shape.type)) {
-      reg$4.get(shape.type)(shape.attrs, {
+    if (reg$5.has(shape.type)) {
+      reg$5.get(shape.type)(shape.attrs, {
         g: g,
         doFill: 'fill' in shape.attrs && shape.attrs.fill !== 'none',
         doStroke: 'stroke' in shape.attrs && shape.attrs['stroke-width'] !== 0,
@@ -52934,7 +52720,7 @@ function renderer() {
   return canvasRenderer;
 }
 function register(type, renderFn) {
-  reg$4.add(type, renderFn);
+  reg$5.add(type, renderFn);
 }
 
 function clampRadius(max, value) {
@@ -54925,10 +54711,10 @@ var picasso_esm_p = pic({
   component: componentRegistry,
   data: dataRegistry,
   formatter: formatterRegistry,
-  interaction: reg$1,
+  interaction: reg$2,
   renderer: rendererRegistry(),
   scale: scaleRegistry,
-  symbol: parentReg
+  symbol: reg$1
 });
 components.forEach(picasso_esm_p.use);
 renderers.forEach(picasso_esm_p.use);
@@ -55800,6 +55586,100 @@ QdtPicasso_QdtPicasso.defaultProps = {
   miniMapVisible: false
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);
+// CONCATENATED MODULE: ./src/components/QdtVirtualScroll/QdtVirtualScroll.jsx
+
+
+
+
+var QdtVirtualScroll_start = 0;
+var QdtVirtualScroll_end = 0;
+var QdtVirtualScroll_translateY = 0;
+var _qcy = 0;
+var qMatrix = null;
+
+var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
+  var _useState = Object(react["useState"])(false),
+      _useState2 = slicedToArray_default()(_useState, 2),
+      updating = _useState2[0],
+      setUpdating = _useState2[1];
+
+  var node = Object(react["useRef"])(null);
+  var viewportHeight = props.viewportHeight,
+      rowHeight = props.rowHeight,
+      qcy = props.qcy,
+      qData = props.qData,
+      offset = props.offset,
+      Component = props.Component,
+      componentProps = props.componentProps;
+  QdtVirtualScroll_end = viewportHeight / rowHeight;
+
+  var handleScroll = function handleScroll(event) {
+    var scrollTop = event.target.scrollTop;
+    var numOfViewportItems = viewportHeight / rowHeight;
+    QdtVirtualScroll_start = scrollTop / rowHeight;
+    QdtVirtualScroll_end = QdtVirtualScroll_start + numOfViewportItems;
+    QdtVirtualScroll_translateY = rowHeight * QdtVirtualScroll_start;
+
+    if (qData.qArea.qTop > QdtVirtualScroll_start) {
+      var qTop = Math.max(0, QdtVirtualScroll_start - qData.qArea.qHeight + numOfViewportItems);
+      offset(qTop);
+    } else if (qData.qArea.qTop + qData.qArea.qHeight < QdtVirtualScroll_end) {
+      var _qTop = QdtVirtualScroll_start;
+      offset(_qTop);
+    }
+
+    setUpdating(false);
+  };
+
+  Object(react["useEffect"])(function () {
+    if (_qcy !== qcy) {
+      node.current.scrollTop = 0;
+      _qcy = qcy;
+    }
+
+    qMatrix = qData.qMatrix.slice(QdtVirtualScroll_start - qData.qArea.qTop, QdtVirtualScroll_end - qData.qArea.qTop);
+  }, [qData, qcy]);
+  return react_default.a.createElement("div", {
+    ref: node,
+    style: {
+      position: 'relative',
+      height: "".concat(viewportHeight, "px"),
+      overflowY: 'auto'
+    },
+    onScroll: handleScroll
+  }, react_default.a.createElement("div", {
+    style: {
+      transform: "translateY(".concat(QdtVirtualScroll_translateY, "px)"),
+      width: '100%',
+      maxHeight: '100%',
+      // overflow: 'hidden',
+      position: 'absolute'
+    }
+  }, !updating && react_default.a.createElement(Component, extends_default()({}, componentProps, {
+    qMatrix: qMatrix,
+    rowHeight: rowHeight
+  }))), react_default.a.createElement("div", {
+    style: {
+      height: "".concat(rowHeight * qcy, "px")
+    }
+  }));
+};
+
+QdtVirtualScroll_QdtVirtualScroll.propTypes = {
+  qData: prop_types_default.a.object.isRequired,
+  qcy: prop_types_default.a.number.isRequired,
+  Component: prop_types_default.a.func.isRequired,
+  componentProps: prop_types_default.a.object,
+  offset: prop_types_default.a.func.isRequired,
+  rowHeight: prop_types_default.a.number,
+  viewportHeight: prop_types_default.a.number
+};
+QdtVirtualScroll_QdtVirtualScroll.defaultProps = {
+  componentProps: {},
+  rowHeight: 40,
+  viewportHeight: 200
+};
+/* harmony default export */ var components_QdtVirtualScroll_QdtVirtualScroll = (QdtVirtualScroll_QdtVirtualScroll);
 // CONCATENATED MODULE: ./src/components/QdtSearch/DropdownItemList.jsx
 
 
