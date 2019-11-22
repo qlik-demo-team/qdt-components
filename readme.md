@@ -39,7 +39,7 @@ Click below to see how you can use qdt-components
 
 | [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     | [QdtPicasso](docs/components/QdtPicasso/)                           |
 | :----:                                                            |    :----:                                                           |
-| [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)  |
+| [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md)  | [![QdtPicasso](docs/components/QdtPicasso/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)  |
 
 
 | [QdtSearch](docs/components/QdtSearch.md)                         | [QtdMapBox](docs/components/QdtMapBox.md)                           |

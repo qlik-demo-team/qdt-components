@@ -20,18 +20,24 @@ basic page setup. The two main items are:
 - Here is a simple example of the JavaScript required
 
 ```js
+// main.js
+
+// ============
 // configuration options for qdtComponents; see template link above for specifics
 var options = {
   config: { /* host, port, appid, etc. */ },
   connections: { /* vizApi, engineAPI */}
 }
 
+// ============
 // #1: Instantiate new instance of QdtComponents
 var qdtComponents = new QdtComponents(options.config, options.connections);
 
+// ============
 // #2: select element where you'll be placing the Picasso chart
 var element = document.getElementById('qdt1');
 
+// ============
 // #3: render the chart
 qdtComponents.render(
   'QdtPicasso', 
