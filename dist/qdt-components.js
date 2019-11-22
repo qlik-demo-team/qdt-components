@@ -14976,15 +14976,11 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
   var _select = function _select(event) {
     var _event$currentTarget$ = event.currentTarget.dataset,
         qElemNumber = _event$currentTarget$.qElemNumber,
-        qState = _event$currentTarget$.qState; // qText
-
-    if (qState === 'S') {
-      select(Number(qElemNumber));
-    } else {
-      select(Number(qElemNumber), !single);
-    }
-
-    if (single && !expanded) _toggle();
+        qState = _event$currentTarget$.qState;
+    var toggleSelections = !(!single && qState === 'S' || expandedHorizontal || single);
+    select(Number(qElemNumber), toggleSelections);
+    if (single && (!expanded || !QdtFilter_ExpandedHorizontalTab)) _toggle();
+    if (expandedHorizontal) endSelections(true);
   };
 
   Object(react["useEffect"])(function () {

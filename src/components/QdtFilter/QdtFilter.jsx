@@ -69,9 +69,11 @@ const QdtFilter = ({
 
   /** Make Selections */
   const _select = (event) => {
-    const { qElemNumber, qState } = event.currentTarget.dataset; // qText
-    if (qState === 'S') { select(Number(qElemNumber)); } else { select(Number(qElemNumber), !single); }
-    if (single && !expanded) toggle();
+    const { qElemNumber, qState } = event.currentTarget.dataset;
+    const toggleSelections = !(((!single && qState === 'S') || (expandedHorizontal) || single));
+    select(Number(qElemNumber), toggleSelections);
+    if (single && (!expanded || !ExpandedHorizontalTab)) toggle();
+    if (expandedHorizontal) endSelections(true);
   };
 
   useEffect(() => {
