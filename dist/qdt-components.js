@@ -14367,10 +14367,41 @@ function useListObject_objectSpread(target) { for (var i = 1; i < arguments.leng
 
 
 
-var useListObject_qDoc = null;
-var qObject = null;
-var useListObject_qLayout = null;
-var useListObject_selections = null;
+var initialState = {
+  qDoc: null,
+  qObject: null,
+  qData: null,
+  qLayout: null,
+  selections: null
+};
+
+function reducer(state, action) {
+  var _action$payload = action.payload,
+      qDoc = _action$payload.qDoc,
+      qObject = _action$payload.qObject,
+      qData = _action$payload.qData,
+      qLayout = _action$payload.qLayout,
+      selections = _action$payload.selections,
+      type = action.type;
+
+  switch (type) {
+    case 'update':
+      return useListObject_objectSpread({}, state, {
+        qData: qData,
+        qLayout: qLayout,
+        selections: selections
+      });
+
+    case 'init':
+      return useListObject_objectSpread({}, state, {
+        qDoc: qDoc,
+        qObject: qObject
+      });
+
+    default:
+      throw new Error();
+  }
+}
 
 var useListObject_useListObject = function useListObject(_ref) {
   var qDocPromise = _ref.qDocPromise,
@@ -14381,12 +14412,16 @@ var useListObject_useListObject = function useListObject(_ref) {
       qSortByLoadOrder = _ref.qSortByLoadOrder,
       autoSortByState = _ref.autoSortByState;
 
-  var _useState = Object(react["useState"])(null),
-      _useState2 = slicedToArray_default()(_useState, 2),
-      qData = _useState2[0],
-      setQData = _useState2[1];
-  /** Generate the Definition file */
+  var _useReducer = Object(react["useReducer"])(reducer, initialState),
+      _useReducer2 = slicedToArray_default()(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
 
+  var qData = state.qData,
+      qLayout = state.qLayout,
+      qObject = state.qObject,
+      selections = state.selections;
+  /** Generate the Definition file */
 
   var generateQProp = function generateQProp() {
     var currentColumn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -14431,24 +14466,29 @@ var useListObject_useListObject = function useListObject(_ref) {
     return qProp;
   };
 
-  var getLayout =
+  var getLayout = function getLayout() {
+    return qObject.getLayout();
+  };
+
+  var getData =
   /*#__PURE__*/
   function () {
     var _ref2 = asyncToGenerator_default()(
     /*#__PURE__*/
-    regenerator_default.a.mark(function _callee() {
-      var _qLayout;
-
+    regenerator_default.a.mark(function _callee(qTop) {
+      var qDataPages;
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return qObject.getLayout();
+              return qObject.getListObjectData('/qListObjectDef', [useListObject_objectSpread({}, qPage, {
+                qTop: qTop
+              })]);
 
             case 2:
-              _qLayout = _context.sent;
-              return _context.abrupt("return", _qLayout);
+              qDataPages = _context.sent;
+              return _context.abrupt("return", qDataPages[0]);
 
             case 4:
             case "end":
@@ -14458,32 +14498,63 @@ var useListObject_useListObject = function useListObject(_ref) {
       }, _callee);
     }));
 
-    return function getLayout() {
+    return function getData(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
 
-  var getData =
+  var update =
   /*#__PURE__*/
   function () {
     var _ref3 = asyncToGenerator_default()(
     /*#__PURE__*/
-    regenerator_default.a.mark(function _callee2(qTop) {
-      var qDataPages;
+    regenerator_default.a.mark(function _callee2() {
+      var qTopPassed,
+          _ref4,
+          qDataGenerated,
+          _ref5,
+          qArea,
+          _ref6,
+          qTopGenerated,
+          qTop,
+          _qLayout,
+          _qData,
+          _selections,
+          _args2 = arguments;
+
       return regenerator_default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
-              return qObject.getListObjectData('/qListObjectDef', [useListObject_objectSpread({}, qPage, {
-                qTop: qTop
-              })]);
+              qTopPassed = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 0;
+              // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
+              _ref4 = qData || {}, qDataGenerated = _ref4.qDataGenerated;
+              _ref5 = qDataGenerated || {}, qArea = _ref5.qArea;
+              _ref6 = qArea || {}, qTopGenerated = _ref6.qTop;
+              qTop = qTopPassed || qTopGenerated;
+              _context2.next = 7;
+              return getLayout();
 
-            case 2:
-              qDataPages = _context2.sent;
-              return _context2.abrupt("return", qDataPages[0]);
+            case 7:
+              _qLayout = _context2.sent;
+              _context2.next = 10;
+              return getData(qTop);
 
-            case 4:
+            case 10:
+              _qData = _context2.sent;
+              _selections = _qData.qMatrix.filter(function (row) {
+                return row[0].qState === 'S';
+              });
+              dispatch({
+                type: 'update',
+                payload: {
+                  qData: _qData,
+                  qLayout: _qLayout,
+                  selections: _selections
+                }
+              });
+
+            case 13:
             case "end":
               return _context2.stop();
           }
@@ -14491,63 +14562,8 @@ var useListObject_useListObject = function useListObject(_ref) {
       }, _callee2);
     }));
 
-    return function getData(_x) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
-  var update =
-  /*#__PURE__*/
-  function () {
-    var _ref4 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee3() {
-      var qTopPassed,
-          _ref5,
-          qDataGenerated,
-          _ref6,
-          qArea,
-          _ref7,
-          qTopGenerated,
-          qTop,
-          _qData,
-          _args3 = arguments;
-
-      return regenerator_default.a.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              qTopPassed = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 0;
-              // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
-              _ref5 = qData || {}, qDataGenerated = _ref5.qDataGenerated;
-              _ref6 = qDataGenerated || {}, qArea = _ref6.qArea;
-              _ref7 = qArea || {}, qTopGenerated = _ref7.qTop;
-              qTop = qTopPassed || qTopGenerated;
-              _context3.next = 7;
-              return getLayout();
-
-            case 7:
-              useListObject_qLayout = _context3.sent;
-              _context3.next = 10;
-              return getData(qTop);
-
-            case 10:
-              _qData = _context3.sent;
-              useListObject_selections = _qData.qMatrix.filter(function (row) {
-                return row[0].qState === 'S';
-              });
-              setQData(_qData);
-
-            case 13:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
     return function update() {
-      return _ref4.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -14558,212 +14574,103 @@ var useListObject_useListObject = function useListObject(_ref) {
   var beginSelections =
   /*#__PURE__*/
   function () {
-    var _ref8 = asyncToGenerator_default()(
+    var _ref7 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee3() {
+      return regenerator_default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return qObject.beginSelections(['/qListObjectDef']);
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function beginSelections() {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var endSelections = function endSelections(qAccept) {
+    return qObject.endSelections(qAccept);
+  };
+
+  var select = function select(qElemNumber) {
+    var toggle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    var ignoreLock = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    return qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
+  };
+
+  var searchListObjectFor = function searchListObjectFor(string) {
+    return qObject.searchListObjectFor('/qListObjectDef', string);
+  };
+
+  var acceptListObjectSearch = function acceptListObjectSearch() {
+    var ignoreLock = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
+  };
+
+  var applyPatches = function applyPatches(patches) {
+    return qObject.applyPatches(patches);
+  };
+
+  Object(react["useEffect"])(function () {
+    asyncToGenerator_default()(
     /*#__PURE__*/
     regenerator_default.a.mark(function _callee4() {
+      var qProp, qDoc, _qObject;
+
       return regenerator_default.a.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return qObject.beginSelections(['/qListObjectDef']);
+              return generateQProp();
 
             case 2:
+              qProp = _context4.sent;
+              _context4.next = 5;
+              return qDocPromise;
+
+            case 5:
+              qDoc = _context4.sent;
+              _context4.next = 8;
+              return qDoc.createSessionObject(qProp);
+
+            case 8:
+              _qObject = _context4.sent;
+              if (!state.qDoc) dispatch({
+                type: 'init',
+                payload: {
+                  qDoc: qDoc,
+                  qObject: _qObject
+                }
+              });
+
+              if (state.qDoc && !state.qLayout) {
+                update();
+                qObject.on('changed', function () {
+                  update();
+                });
+              }
+
+            case 11:
             case "end":
               return _context4.stop();
           }
         }
       }, _callee4);
-    }));
+    }))(); // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return function beginSelections() {
-      return _ref8.apply(this, arguments);
-    };
-  }();
-
-  var endSelections =
-  /*#__PURE__*/
-  function () {
-    var _ref9 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee5(qAccept) {
-      return regenerator_default.a.wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.next = 2;
-              return qObject.endSelections(qAccept);
-
-            case 2:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }));
-
-    return function endSelections(_x2) {
-      return _ref9.apply(this, arguments);
-    };
-  }();
-
-  var select =
-  /*#__PURE__*/
-  function () {
-    var _ref10 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee6(qElemNumber) {
-      var toggle,
-          ignoreLock,
-          _args6 = arguments;
-      return regenerator_default.a.wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              toggle = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : true;
-              ignoreLock = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : false;
-              _context6.next = 4;
-              return qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
-
-            case 4:
-            case "end":
-              return _context6.stop();
-          }
-        }
-      }, _callee6);
-    }));
-
-    return function select(_x3) {
-      return _ref10.apply(this, arguments);
-    };
-  }();
-
-  var searchListObjectFor =
-  /*#__PURE__*/
-  function () {
-    var _ref11 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee7(string) {
-      return regenerator_default.a.wrap(function _callee7$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return qObject.searchListObjectFor('/qListObjectDef', string);
-
-            case 2:
-            case "end":
-              return _context7.stop();
-          }
-        }
-      }, _callee7);
-    }));
-
-    return function searchListObjectFor(_x4) {
-      return _ref11.apply(this, arguments);
-    };
-  }();
-
-  var acceptListObjectSearch =
-  /*#__PURE__*/
-  function () {
-    var _ref12 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee8() {
-      var ignoreLock,
-          _args8 = arguments;
-      return regenerator_default.a.wrap(function _callee8$(_context8) {
-        while (1) {
-          switch (_context8.prev = _context8.next) {
-            case 0:
-              ignoreLock = _args8.length > 0 && _args8[0] !== undefined ? _args8[0] : false;
-              _context8.next = 3;
-              return qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
-
-            case 3:
-            case "end":
-              return _context8.stop();
-          }
-        }
-      }, _callee8);
-    }));
-
-    return function acceptListObjectSearch() {
-      return _ref12.apply(this, arguments);
-    };
-  }();
-
-  var applyPatches =
-  /*#__PURE__*/
-  function () {
-    var _ref13 = asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee9(patches) {
-      return regenerator_default.a.wrap(function _callee9$(_context9) {
-        while (1) {
-          switch (_context9.prev = _context9.next) {
-            case 0:
-              _context9.next = 2;
-              return qObject.applyPatches(patches);
-
-            case 2:
-            case "end":
-              return _context9.stop();
-          }
-        }
-      }, _callee9);
-    }));
-
-    return function applyPatches(_x5) {
-      return _ref13.apply(this, arguments);
-    };
-  }();
-
-  Object(react["useEffect"])(function () {
-    asyncToGenerator_default()(
-    /*#__PURE__*/
-    regenerator_default.a.mark(function _callee10() {
-      var qProp;
-      return regenerator_default.a.wrap(function _callee10$(_context10) {
-        while (1) {
-          switch (_context10.prev = _context10.next) {
-            case 0:
-              _context10.next = 2;
-              return generateQProp();
-
-            case 2:
-              qProp = _context10.sent;
-              _context10.next = 5;
-              return qDocPromise;
-
-            case 5:
-              useListObject_qDoc = _context10.sent;
-              _context10.next = 8;
-              return useListObject_qDoc.createSessionObject(qProp);
-
-            case 8:
-              qObject = _context10.sent;
-              qObject.on('changed', function () {
-                update();
-              });
-              update();
-
-            case 11:
-            case "end":
-              return _context10.stop();
-          }
-        }
-      }, _callee10);
-    }))();
-
-    return function () {
-      var _qObject = qObject,
-          id = _qObject.id;
-      useListObject_qDoc.destroySessionObject(id);
-    }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.qDoc, state.qLayout]);
   return {
-    qLayout: useListObject_qLayout,
+    qLayout: qLayout,
     qData: qData,
     offset: offset,
     select: select,
@@ -14772,7 +14679,7 @@ var useListObject_useListObject = function useListObject(_ref) {
     searchListObjectFor: searchListObjectFor,
     acceptListObjectSearch: acceptListObjectSearch,
     applyPatches: applyPatches,
-    selections: useListObject_selections
+    selections: selections
   };
 };
 
@@ -14799,32 +14706,32 @@ useListObject_useListObject.defaultProps = {
   }
 };
 /* harmony default export */ var hooks_useListObject = (useListObject_useListObject);
-// CONCATENATED MODULE: ./src/components/QdtVirtualScroll/QdtVirtualScroll.jsx
+// CONCATENATED MODULE: ./src/components/QdtFilter/DropdownItemList.jsx
 
 
 
 
 var start = 0;
 var end = 0;
-var translateY = 0;
-var _qcy = 0;
-var qMatrix = null;
+var translateY = 0; // let _qcy = 0;
+// let qMatrix = null;
 
-var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
+/** Create the DropDown list */
+
+var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
+  var qData = _ref.qData,
+      rowHeight = _ref.rowHeight,
+      viewportHeight = _ref.viewportHeight,
+      select = _ref.select,
+      qcy = _ref.qcy,
+      offset = _ref.offset;
+
   var _useState = Object(react["useState"])(false),
       _useState2 = slicedToArray_default()(_useState, 2),
       updating = _useState2[0],
       setUpdating = _useState2[1];
 
   var node = Object(react["useRef"])(null);
-  var viewportHeight = props.viewportHeight,
-      rowHeight = props.rowHeight,
-      qcy = props.qcy,
-      qData = props.qData,
-      offset = props.offset,
-      Component = props.Component,
-      componentProps = props.componentProps;
-  end = viewportHeight / rowHeight;
 
   var handleScroll = function handleScroll(event) {
     var scrollTop = event.target.scrollTop;
@@ -14844,20 +14751,16 @@ var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
     setUpdating(false);
   };
 
-  Object(react["useEffect"])(function () {
-    if (_qcy !== qcy) {
-      node.current.scrollTop = 0;
-      _qcy = qcy;
-    }
-
-    qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
-  }, [qData, qcy]);
   return react_default.a.createElement("div", {
     ref: node,
     style: {
       position: 'relative',
       height: "".concat(viewportHeight, "px"),
-      overflowY: 'auto'
+      overflowY: 'auto',
+      backgroundColor: '#FFFFFF',
+      borderRight: '1px solid #dee2e6',
+      borderLeft: '1px solid #dee2e6',
+      borderBottom: '1px solid #dee2e6'
     },
     onScroll: handleScroll
   }, react_default.a.createElement("div", {
@@ -14868,42 +14771,7 @@ var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
       // overflow: 'hidden',
       position: 'absolute'
     }
-  }, !updating && react_default.a.createElement(Component, extends_default()({}, componentProps, {
-    qMatrix: qMatrix,
-    rowHeight: rowHeight
-  }))), react_default.a.createElement("div", {
-    style: {
-      height: "".concat(rowHeight * qcy, "px")
-    }
-  }));
-};
-
-QdtVirtualScroll_QdtVirtualScroll.propTypes = {
-  qData: prop_types_default.a.object.isRequired,
-  qcy: prop_types_default.a.number.isRequired,
-  Component: prop_types_default.a.func.isRequired,
-  componentProps: prop_types_default.a.object,
-  offset: prop_types_default.a.func.isRequired,
-  rowHeight: prop_types_default.a.number,
-  viewportHeight: prop_types_default.a.number
-};
-QdtVirtualScroll_QdtVirtualScroll.defaultProps = {
-  componentProps: {},
-  rowHeight: 40,
-  viewportHeight: 200
-};
-/* harmony default export */ var components_QdtVirtualScroll_QdtVirtualScroll = (QdtVirtualScroll_QdtVirtualScroll);
-// CONCATENATED MODULE: ./src/components/QdtFilter/DropdownItemList.jsx
-
-
-
-/** Create the DropDown list */
-
-var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
-  var qData = _ref.qData,
-      rowHeight = _ref.rowHeight,
-      select = _ref.select;
-  return react_default.a.createElement("span", null, qData.qMatrix.map(function (row) {
+  }, !updating && react_default.a.createElement("span", null, qData.qMatrix.map(function (row) {
     return react_default.a.createElement(QdtLui_LuiListItem, {
       className: "".concat(row[0].qState),
       key: row[0].qElemNumber,
@@ -14912,16 +14780,30 @@ var DropdownItemList_DropdownItemList = function DropdownItemList(_ref) {
       "data-q-text": row[0].qText,
       onClick: select,
       style: {
-        height: "".concat(rowHeight - 1, "px")
+        height: "".concat(rowHeight - 1, "px"),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }
     }, row[0].qText);
+  }))), react_default.a.createElement("div", {
+    style: {
+      height: "".concat(rowHeight * qcy, "px")
+    }
   }));
 };
 
 DropdownItemList_DropdownItemList.propTypes = {
   qData: prop_types_default.a.array.isRequired,
-  rowHeight: prop_types_default.a.number.isRequired,
-  select: prop_types_default.a.func.isRequired
+  select: prop_types_default.a.func.isRequired,
+  offset: prop_types_default.a.func.isRequired,
+  qcy: prop_types_default.a.number.isRequired,
+  rowHeight: prop_types_default.a.number,
+  viewportHeight: prop_types_default.a.number
+};
+DropdownItemList_DropdownItemList.defaultProps = {
+  rowHeight: 40,
+  viewportHeight: 200
 };
 /* harmony default export */ var QdtFilter_DropdownItemList = (DropdownItemList_DropdownItemList);
 // CONCATENATED MODULE: ./src/components/QdtFilter/ExpandedHorizontalTab.jsx
@@ -14934,7 +14816,6 @@ var ExpandedHorizontalTab_ExpandedHorizontalTab = function ExpandedHorizontalTab
   var qData = _ref.qData,
       select = _ref.select,
       expandedHorizontalSense = _ref.expandedHorizontalSense;
-  console.log(qData);
   var element = qData.qMatrix.map(function (row) {
     var className = expandedHorizontalSense ? "".concat(row[0].qState) : '';
     if (!expandedHorizontalSense && row[0].qState === 'S') className += ' lui-active';
@@ -15016,10 +14897,6 @@ var src_styles_0 = __webpack_require__(10);
 
 
 
-
-var searchListInputValue = '';
-var qStateCounts = 0;
-var QdtFilter_totalStateCounts = {};
 /** The Actual Component */
 
 var QdtFilter_QdtFilter = function QdtFilter(_ref) {
@@ -15037,8 +14914,14 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
   var _useState = Object(react["useState"])(false),
       _useState2 = slicedToArray_default()(_useState, 2),
       dropdownOpen = _useState2[0],
-      setDropDownOpen = _useState2[1]; // const [searchListInputValue, setSearchListInputValue] = useState('');
+      setDropDownOpen = _useState2[1];
 
+  var _useState3 = Object(react["useState"])(null),
+      _useState4 = slicedToArray_default()(_useState3, 2),
+      totalStateCounts = _useState4[0],
+      setTotalStateCounts = _useState4[1];
+
+  var searchListInputValue = '';
 
   var _useListObject = hooks_useListObject({
     qDocPromise: qDocPromise,
@@ -15101,24 +14984,29 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
       select(Number(qElemNumber), !single);
     }
 
-    if (single) _toggle();
+    if (single && !expanded) _toggle();
   };
 
   Object(react["useEffect"])(function () {
-    if (qData) {
-      qStateCounts = qLayout.qListObject.qDimensionInfo.qStateCounts;
-      QdtFilter_totalStateCounts = Object.values(qStateCounts).reduce(function (a, b) {
+    if (qData && qLayout) {
+      var qStateCounts = qLayout.qListObject.qDimensionInfo.qStateCounts;
+
+      var _totalStateCounts = Object.values(qStateCounts).reduce(function (a, b) {
         return a + b;
+      });
+
+      setTotalStateCounts({
+        _totalStateCounts: _totalStateCounts
       });
     } // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  }, [qData]);
-  return react_default.a.createElement(react_default.a.Fragment, null, qData && !expanded && !expandedHorizontal && react_default.a.createElement(QdtLui_LuiDropdown, {
+  }, [qData, qLayout, selections]);
+  return react_default.a.createElement(react_default.a.Fragment, null, qData && qLayout && !expanded && !expandedHorizontal && react_default.a.createElement(QdtLui_LuiDropdown, {
     isOpen: dropdownOpen,
     toggle: function toggle() {
       return _toggle();
     }
-  }, react_default.a.createElement("span", null, !showStateInDropdown && placeholder, showStateInDropdown && selections && selections.length === 0 && placeholder, showStateInDropdown && selections && selections.length === 1 && "".concat(placeholder, ": ").concat(selections[0][0].qText), showStateInDropdown && selections && selections.length > 1 && "".concat(placeholder, ": ").concat(selections.length, " of ").concat(QdtFilter_totalStateCounts)), react_default.a.createElement(QdtLui_LuiList, {
+  }, react_default.a.createElement("span", null, !showStateInDropdown && placeholder, showStateInDropdown && selections && selections.length === 0 && placeholder, showStateInDropdown && selections && selections.length === 1 && "".concat(placeholder, ": ").concat(selections[0][0].qText), showStateInDropdown && selections && selections.length > 1 && "".concat(placeholder, ": ").concat(selections.length, " of ").concat(totalStateCounts)), react_default.a.createElement(QdtLui_LuiList, {
     style: {
       width: '15rem'
     }
@@ -15127,21 +15015,16 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     clear: clear,
     onChange: _searchListObjectFor,
     onKeyPress: _acceptListObjectSearch
-  }), react_default.a.createElement(components_QdtVirtualScroll_QdtVirtualScroll, {
+  }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
-    qcy: qLayout.qListObject.qSize.qcy,
-    Component: QdtFilter_DropdownItemList,
-    componentProps: {
-      qData: qData,
-      select: _select
-    },
-    offset: offset,
     rowHeight: 38,
-    viewportHeight: 190
-  })), !hideStateCountsBar && react_default.a.createElement(QdtFilter_StateCountsBar, {
-    totalStateCounts: QdtFilter_totalStateCounts,
+    select: _select,
+    qcy: qLayout.qListObject.qSize.qcy,
+    offset: offset
+  })), !hideStateCountsBar && totalStateCounts && selections && react_default.a.createElement(QdtFilter_StateCountsBar, {
+    totalStateCounts: totalStateCounts,
     selections: selections
-  })), qData && expanded && react_default.a.createElement(QdtLui_LuiList, {
+  })), qData && qLayout && expanded && react_default.a.createElement(QdtLui_LuiList, {
     style: {
       width: '15rem'
     }
@@ -15150,17 +15033,12 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
     clear: clear,
     onChange: _searchListObjectFor,
     onKeyPress: acceptListObjectSearch
-  }), react_default.a.createElement(components_QdtVirtualScroll_QdtVirtualScroll, {
+  }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
-    qcy: qLayout.qListObject.qSize.qcy,
-    Component: QdtFilter_DropdownItemList,
-    componentProps: {
-      qData: qData,
-      select: _select
-    },
-    offset: offset,
     rowHeight: 38,
-    viewportHeight: 190
+    select: _select,
+    qcy: qLayout.qListObject.qSize.qcy,
+    offset: offset
   })), qData && expandedHorizontal && react_default.a.createElement(QdtLui_LuiTabset, {
     fill: true,
     style: {
@@ -25842,7 +25720,7 @@ function one(b) {
   };
 }
 
-function picasso_esm_string(a, b) {
+function string(a, b) {
   var bi = reA.lastIndex = reB.lastIndex = 0, // scan index for next number in b
       am, // current match in a
       bm, // current match in b
@@ -25894,7 +25772,7 @@ function interpolateValue(a, b) {
   var t = typeof b, c;
   return b == null || t === "boolean" ? constant$1(b)
       : (t === "number" ? interpolateNumber
-      : t === "string" ? ((c = picasso_esm_color(b)) ? (b = c, interpolateRgb) : picasso_esm_string)
+      : t === "string" ? ((c = picasso_esm_color(b)) ? (b = c, interpolateRgb) : string)
       : b instanceof picasso_esm_color ? interpolateRgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array$1
@@ -55710,6 +55588,100 @@ QdtPicasso_QdtPicasso.defaultProps = {
   getQRData: true
 };
 /* harmony default export */ var components_QdtPicasso_QdtPicasso = (QdtPicasso_QdtPicasso);
+// CONCATENATED MODULE: ./src/components/QdtVirtualScroll/QdtVirtualScroll.jsx
+
+
+
+
+var QdtVirtualScroll_start = 0;
+var QdtVirtualScroll_end = 0;
+var QdtVirtualScroll_translateY = 0;
+var _qcy = 0;
+var qMatrix = null;
+
+var QdtVirtualScroll_QdtVirtualScroll = function QdtVirtualScroll(props) {
+  var _useState = Object(react["useState"])(false),
+      _useState2 = slicedToArray_default()(_useState, 2),
+      updating = _useState2[0],
+      setUpdating = _useState2[1];
+
+  var node = Object(react["useRef"])(null);
+  var viewportHeight = props.viewportHeight,
+      rowHeight = props.rowHeight,
+      qcy = props.qcy,
+      qData = props.qData,
+      offset = props.offset,
+      Component = props.Component,
+      componentProps = props.componentProps;
+  QdtVirtualScroll_end = viewportHeight / rowHeight;
+
+  var handleScroll = function handleScroll(event) {
+    var scrollTop = event.target.scrollTop;
+    var numOfViewportItems = viewportHeight / rowHeight;
+    QdtVirtualScroll_start = scrollTop / rowHeight;
+    QdtVirtualScroll_end = QdtVirtualScroll_start + numOfViewportItems;
+    QdtVirtualScroll_translateY = rowHeight * QdtVirtualScroll_start;
+
+    if (qData.qArea.qTop > QdtVirtualScroll_start) {
+      var qTop = Math.max(0, QdtVirtualScroll_start - qData.qArea.qHeight + numOfViewportItems);
+      offset(qTop);
+    } else if (qData.qArea.qTop + qData.qArea.qHeight < QdtVirtualScroll_end) {
+      var _qTop = QdtVirtualScroll_start;
+      offset(_qTop);
+    }
+
+    setUpdating(false);
+  };
+
+  Object(react["useEffect"])(function () {
+    if (_qcy !== qcy) {
+      node.current.scrollTop = 0;
+      _qcy = qcy;
+    }
+
+    qMatrix = qData.qMatrix.slice(QdtVirtualScroll_start - qData.qArea.qTop, QdtVirtualScroll_end - qData.qArea.qTop);
+  }, [qData, qcy]);
+  return react_default.a.createElement("div", {
+    ref: node,
+    style: {
+      position: 'relative',
+      height: "".concat(viewportHeight, "px"),
+      overflowY: 'auto'
+    },
+    onScroll: handleScroll
+  }, react_default.a.createElement("div", {
+    style: {
+      transform: "translateY(".concat(QdtVirtualScroll_translateY, "px)"),
+      width: '100%',
+      maxHeight: '100%',
+      // overflow: 'hidden',
+      position: 'absolute'
+    }
+  }, !updating && react_default.a.createElement(Component, extends_default()({}, componentProps, {
+    qMatrix: qMatrix,
+    rowHeight: rowHeight
+  }))), react_default.a.createElement("div", {
+    style: {
+      height: "".concat(rowHeight * qcy, "px")
+    }
+  }));
+};
+
+QdtVirtualScroll_QdtVirtualScroll.propTypes = {
+  qData: prop_types_default.a.object.isRequired,
+  qcy: prop_types_default.a.number.isRequired,
+  Component: prop_types_default.a.func.isRequired,
+  componentProps: prop_types_default.a.object,
+  offset: prop_types_default.a.func.isRequired,
+  rowHeight: prop_types_default.a.number,
+  viewportHeight: prop_types_default.a.number
+};
+QdtVirtualScroll_QdtVirtualScroll.defaultProps = {
+  componentProps: {},
+  rowHeight: 40,
+  viewportHeight: 200
+};
+/* harmony default export */ var components_QdtVirtualScroll_QdtVirtualScroll = (QdtVirtualScroll_QdtVirtualScroll);
 // CONCATENATED MODULE: ./src/components/QdtSearch/DropdownItemList.jsx
 
 

@@ -4,7 +4,6 @@ import { LuiTab } from '../QdtLui';
 
 /** Create the Tabs */
 const ExpandedHorizontalTab = ({ qData, select, expandedHorizontalSense }) => {
-  console.log(qData);
   const element = qData.qMatrix.map((row) => {
     let className = (expandedHorizontalSense) ? `${row[0].qState}` : '';
     if (!expandedHorizontalSense && row[0].qState === 'S') className += ' lui-active';
