@@ -11,6 +11,42 @@ Set of charts created from the Engine Api and [Picasso.js](https://picassojs.com
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
 
+### HTML (and Vanilla JavaScript)
+
+- See the [HTML Template](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/usage/Html.md) for the
+basic page setup. The two main items are:
+  - qdt-components.js `<script>` tag in the `<head>` 
+  - root HTML element in the `<body>` with desired id; example: `<div id="qdt1"></div>`
+- Here is a simple example of the JavaScript required
+
+```js
+// configuration options for qdtComponents; see template link above for specifics
+var options = {
+  config: { /* host, port, appid, etc. */ },
+  connections: { /* vizApi, engineAPI */}
+}
+
+// #1: Instantiate new instance of QdtComponents
+var qdtComponents = new QdtComponents(options.config, options.connections);
+
+// #2: select element where you'll be placing the Picasso chart
+var element = document.getElementById('qdt1');
+
+// #3: render the chart
+qdtComponents.render(
+  'QdtPicasso', 
+  {
+    type: 'verticalBarchart', 
+    cols: [
+      'Champion_Full',
+      "=Sum(if(Club = [Champion], [Total Compensation]))"
+    ], 
+    outerHeight: 400,
+  }, 
+  element
+);
+```
+
 
 ### React (JSX)
 
