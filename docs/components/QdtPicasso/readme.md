@@ -4,7 +4,7 @@
 
 
 Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([Nov 2019 docs](https://help.qlik.com/en-US/sense-developer/November2019/APIs/EngineAPI/index.html)) in:
- - [Vanilla JavaScript](#html-and-vanilla-javascript)
+ - [Vanilla JavaScript](#vanilla-javascript)
  - [React](#react-jsx)
  - [Angular](#angular)
 
@@ -18,7 +18,7 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
 
 
-### HTML (and Vanilla JavaScript)
+### Vanilla JavaScript
 
 - See the [HTML Template](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/usage/Html.md) for the
 basic page setup. The two main items are:
@@ -67,8 +67,8 @@ qdtComponents.render(
 - All QdtPicasso Components use the `<QdtComponent>` laid out in the 
 [React Template](https://github.com/qlik-demo-team/qdt-components/blob/picasso-docs/docs/usage/React.md).
 We recommend creating a `QdtComponent.jsx` file and copying the QdtComponent class there with your
-Qlik Sense configuration. This will allow you to effortlessly create any Picasso chart you want. Below is 
-an example creation of a Vertical Bar Chart and then its use:
+Qlik Sense configuration. This will allow you to effortlessly create any Picasso chart you want. 
+- Below is an example creation of a Vertical Bar Chart and then its use:
 
 ```jsx
 // horizontalBarChart.js
