@@ -24,7 +24,8 @@ qdtComponents.render(
     cols: [
       'Date.autoCalendar.YearMonth',
       '=Count( {$<Priority={\'High\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
-      '=Count( {$<Priority={\'Low\'}, Status -={\'Closed\'} >} Distinct %CaseId )'],
+      '=Count( {$<Priority={\'Low\'}, Status -={\'Closed\'} >} Distinct %CaseId )'
+    ],
     outerHeight: 300,
   }, 
   element
@@ -41,7 +42,8 @@ const chart_options = {
     cols: [
       'Date.autoCalendar.YearMonth',
       '=Count( {$<Priority={\'High\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
-      '=Count( {$<Priority={\'Low\'}, Status -={\'Closed\'} >} Distinct %CaseId )'],
+      '=Count( {$<Priority={\'Low\'}, Status -={\'Closed\'} >} Distinct %CaseId )'
+    ],
     outerHeight: 300,
   },
 };
