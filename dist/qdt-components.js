@@ -11958,7 +11958,7 @@ var getUrl = __webpack_require__(23);
 var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(47));
 var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(48));
 // Module
-exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}.pic-tooltip-content{padding:8px 15px !important}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box{position:relative;display:inline-block;width:10px;height:12px;left:-14px;bottom:-2px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title{display:inline-block;position:relative;left:-10px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure{display:inline-block;text-align:right}.pic-tooltip-content .text-right{text-align:right}.pic-tooltip-content .qdt-tooltip-row{display:block}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{display:inline-block;width:50%;padding-left:5px}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{text-align:right}\n", ""]);
+exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}\n", ""]);
 
 
 /***/ }),
@@ -12466,7 +12466,9 @@ var axis_component = function component() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       _ref$scale = _ref.scale,
       scale = _ref$scale === void 0 ? 'x' : _ref$scale,
-      format = _ref.format;
+      format = _ref.format,
+      _ref$formatter = _ref.formatter,
+      formatter = _ref$formatter === void 0 ? null : _ref$formatter;
 
   var comp = {
     type: 'axis',
@@ -12507,8 +12509,8 @@ var axis_component = function component() {
       //   align: 'left', // auto
 
     }
-  }; // if (formatter) comp.formatter = formatter;
-
+  };
+  if (formatter) comp.formatter = formatter;
   return comp;
 };
 
@@ -12644,7 +12646,9 @@ var box_component = function component() {
     field: 'qMeasureInfo/0'
   } : _ref$end,
       _ref$measures = _ref.measures,
-      measures = _ref$measures === void 0 ? 1 : _ref$measures;
+      measures = _ref$measures === void 0 ? 1 : _ref$measures,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? null : _ref$type;
 
   var comp = {
     type: 'box',
@@ -12704,10 +12708,48 @@ var box_component = function component() {
     comp.data = {
       collection: collection
     };
-    comp.minor = {
+    comp.settings.minor = {
       scale: 'y',
       ref: 'end'
     };
+  }
+
+  if (type === 'merimekko') {
+    comp.settings.major = {
+      binStart: {
+        scale: 'x',
+        fn: function fn(b) {
+          var ss = b.resources.scale('b');
+          return b.resources.scale('x')(ss.datum(b.datum.series.value).start.value);
+        }
+      },
+      binEnd: {
+        fn: function fn(b) {
+          var ss = b.resources.scale('b');
+          return b.resources.scale('x')(ss.datum(b.datum.series.value).end.value);
+        }
+      }
+    };
+    comp.brush.trigger[0].data = ['series'];
+    comp.settings.minor = {
+      scale: 'y',
+      ref: 'end'
+    };
+    if (collection !== 'span') comp.settings.major.ref = 'series';
+
+    if (collection === 'span') {
+      comp.dock = 'top';
+
+      comp.preferredSize = function () {
+        return 24;
+      };
+
+      comp.settings.minor = {
+        start: 0,
+        end: 1
+      };
+      delete comp.settings.orientation;
+    }
   }
 
   return comp;
@@ -12734,12 +12776,17 @@ var labels = function labels() {
       _ref$insideFill = _ref.insideFill,
       insideFill = _ref$insideFill === void 0 ? '#FFFFFF' : _ref$insideFill,
       _ref$outsideFill = _ref.outsideFill,
-      outsideFill = _ref$outsideFill === void 0 ? '#666666' : _ref$outsideFill;
+      outsideFill = _ref$outsideFill === void 0 ? '#666666' : _ref$outsideFill,
+      _ref$dock = _ref.dock,
+      dock = _ref$dock === void 0 ? null : _ref$dock,
+      _ref$justify = _ref.justify,
+      justify = _ref$justify === void 0 ? direction === 'down' ? 0 : 1 : _ref$justify;
 
   var comp = {
     type: 'labels',
     key: key,
     displayOrder: displayOrder,
+    dock: dock,
     settings: {
       sources: [{
         component: component,
@@ -12759,12 +12806,14 @@ var labels = function labels() {
 
                 if (data && component === 'pie') myLabel = "".concat(data.label, ": ").concat(data.num.label);
                 if (data && component === 'line') myLabel = data.label;
+                if (data && component === 'bar-labels') myLabel = "".concat(data.label, " (").concat(Math.round(data.metric.value), "%)"); // Mekko
+
                 return myLabel;
               },
               placements: [{
                 position: 'inside',
                 fill: insideFill,
-                justify: direction === 'down' ? 0 : 1
+                justify: justify
               }, {
                 position: 'outside',
                 fill: outsideFill
@@ -12775,6 +12824,26 @@ var labels = function labels() {
       }]
     }
   };
+
+  if (type === 'rows') {
+    // merimekko
+    comp.settings.sources[0].strategy.settings = {
+      fill: '#FFFFFF',
+      labels: [{
+        label: function label(d) {
+          return d.data ? "".concat(d.data.label, " (").concat(((d.data.end.value - d.data.start.value) * 100).toFixed(2), "%)") : '';
+        } // label: (d) => (d.data ? d.data.series.label : ''),
+        // }, {
+        //   label: (d) => (d.data ? `${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%` : ''),
+
+      }, {
+        label: function label(d) {
+          return d.data ? d.data.metric.value.toFixed(0) : '';
+        }
+      }]
+    };
+  }
+
   return comp;
 };
 
@@ -12788,10 +12857,10 @@ var tooltip_component = {
     // Since we only want to target the point marker
     filter: function filter(nodes) {
       return nodes.filter(function (node) {
-        return node.key === 'bar' || node.key === 'range' || node.key === 'point' || node.key === 'point2' || node.key === 'pie';
+        return node.key === 'bar' || node.key === 'range' || node.key === 'point' || node.key === 'point2' || node.key === 'pie' || node.key === 'rects';
       });
     },
-    //   node.key === 'legend');
+    // Mekko
     // Create the data model
     extract: function extract(_ref) {
       var node = _ref.node,
@@ -12849,6 +12918,22 @@ var tooltip_component = {
             backgroundColor: data[0].color
           }
         }, ''), h('div.qdt-tooltip-header-title', {}, "".concat(data[0].props[0].value, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].props[1].value))]);
+      } else if (data.length && data[0].props.length === 3) {
+        // Mekko
+        html = h('div', {}, [h('div', {
+          align: 'center',
+          style: {
+            'border-bottom': '1px solid rgba(255,255,255,0.2)',
+            'padding-bottom': '5px'
+          }
+        }, "".concat(data[0].props[0].value)), h('div', {
+          align: 'center',
+          style: {
+            'padding-top': '5px'
+          }
+        }, "".concat(data[0].title, " (").concat(Math.round(data[0].props[2].value * 100), "%)")), h('div', {
+          align: 'center'
+        }, "".concat(data[0].props[1].value))]);
       }
 
       return h('div', {
@@ -13081,6 +13166,7 @@ var interaction = {
   type: 'native',
   events: {
     mousemove: function mousemove(e) {
+      // console.log('mousemove', e);
       this.chart.component('tooltip').emit('show', e);
     },
     mouseleave: function mouseleave() {
@@ -13924,7 +14010,155 @@ var gantt_setting = {
   })]
 };
 /* harmony default export */ var gantt = (gantt_setting);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/merimekko.js
+
+
+
+var merimekko_setting = {
+  collections: [{
+    key: 'stacked',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/1',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0'
+          },
+          metric: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum'
+          },
+          end: {
+            field: 'qMeasureInfo/0',
+            reduce: 'sum'
+          }
+        }
+      },
+      stack: {
+        stackKey: function stackKey(d) {
+          return d.series.value;
+        },
+        value: function value(d) {
+          return d.end.value;
+        },
+        offset: 'expand'
+      }
+    }
+  }, {
+    key: 'span',
+    data: {
+      extract: {
+        field: 'qDimensionInfo/0',
+        trackBy: function trackBy(d) {
+          return d.qElemNumber;
+        },
+        reduce: 'first',
+        props: {
+          series: {
+            field: 'qDimensionInfo/0'
+          },
+          metric: {
+            field: 'qMeasureInfo/0'
+          },
+          end: {
+            field: 'qMeasureInfo/0'
+          }
+        }
+      },
+      stack: {
+        stackKey: function stackKey() {
+          return -1;
+        },
+        value: function value(d) {
+          return d.end.value;
+        },
+        // value: (d) => d.series.value,
+        offset: 'expand'
+      }
+    }
+  }],
+  scales: {
+    y: {
+      data: {
+        collection: {
+          key: 'stacked'
+        }
+      },
+      invert: true
+    },
+    b: {
+      data: {
+        collection: {
+          key: 'span'
+        }
+      },
+      type: 'band'
+    },
+    x: {
+      // m
+      data: {
+        collection: {
+          key: 'span'
+        }
+      },
+      max: 1
+    },
+    c: {
+      data: {
+        extract: {
+          field: 'qDimensionInfo/1'
+        }
+      },
+      range: src_styles.palette,
+      type: 'color'
+    }
+  },
+  components: [axis({
+    scale: 'y',
+    formatter: {
+      type: 'd3-number',
+      format: '.0%'
+    }
+  }), axis({
+    scale: 'x',
+    formatter: {
+      type: 'd3-number',
+      format: '.0%'
+    }
+  }), components_box({
+    key: 'rects',
+    collection: 'stacked',
+    type: 'merimekko',
+    fill: {
+      scale: 'c'
+    }
+  }), components_box({
+    key: 'bar-labels',
+    collection: 'span',
+    type: 'merimekko',
+    fill: 'rgba(100, 0, 0, 0.0)',
+    strokeWidth: 0,
+    displayOrder: 2
+  }), components_labels({
+    key: 'bar-labels-ts',
+    dock: '@bar-labels',
+    component: 'bar-labels',
+    fontSize: 10,
+    displayOrder: 3,
+    insideFill: '#000',
+    justify: 0.5,
+    direction: 'right'
+  }), components_labels({
+    dock: '@rects',
+    component: 'rects',
+    type: 'rows',
+    displayOrder: 4
+  }), components_legend, range(), tooltip],
+  interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
+};
+/* harmony default export */ var merimekko = (merimekko_setting);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/index.js
+
 
 
 
@@ -13953,7 +14187,8 @@ var gantt_setting = {
   verticalGauge: verticalGauge,
   verticalGroupBarchart: verticalGroupBarchart,
   rangeArea: rangeArea,
-  gantt: gantt
+  gantt: gantt,
+  merimekko: merimekko
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
 var slicedToArray = __webpack_require__(4);
@@ -55243,6 +55478,9 @@ LuiSelectionModal_LuiSelectionModal.defaultProps = {
   isOpen: false
 };
 /* harmony default export */ var QdtLui_LuiSelectionModal = (LuiSelectionModal_LuiSelectionModal);
+// EXTERNAL MODULE: ./src/components/QdtPicasso/style.scss
+var QdtPicasso_style = __webpack_require__(55);
+
 // CONCATENATED MODULE: ./src/components/QdtPicasso/QdtPicasso.jsx
 
 
@@ -55254,6 +55492,7 @@ LuiSelectionModal_LuiSelectionModal.defaultProps = {
 function QdtPicasso_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function QdtPicasso_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QdtPicasso_ownKeys(source, true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QdtPicasso_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -55486,11 +55725,11 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 
   Object(react["useEffect"])(function () {
     if (qData && !isSelectionBarVisible) createPic();
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('resize', handleResize);
+    window.addEventListener('click', handleOutsideClick);
+    window.addEventListener('resize', handleResize);
     return function () {
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('resize', handleResize);
+      window.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener('resize', handleResize);
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
   return react_default.a.createElement("div", {
@@ -55535,7 +55774,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 };
 
 QdtPicasso_QdtPicasso.propTypes = {
-  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt']),
+  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt', 'merimekko']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
   outerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),
@@ -56425,6 +56664,37 @@ var QdtComponents_QdtComponents = (_temp = QdtComponents_class = function QdtCom
 // CONCATENATED MODULE: ./src/index.jsx
 
 /* harmony default export */ var src_0 = __webpack_exports__["default"] = (src_QdtComponents);
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(56);
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(13)(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// Module
+exports.push([module.i, ".pic-tooltip-content{padding:8px 15px !important}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box{position:relative;display:inline-block;width:10px;height:12px;left:-14px;bottom:-2px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title{display:inline-block;position:relative;left:-10px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure{display:inline-block;text-align:right}.pic-tooltip-content .text-right{text-align:right}.pic-tooltip-content .qdt-tooltip-row{display:block}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{display:inline-block;width:50%;padding-left:5px}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{text-align:right}\n", ""]);
+
 
 /***/ })
 /******/ ])["default"];
