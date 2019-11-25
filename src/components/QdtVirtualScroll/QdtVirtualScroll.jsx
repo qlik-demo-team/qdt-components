@@ -39,7 +39,7 @@ const QdtVirtualScroll = (props) => {
       _qcy = qcy;
     }
     qMatrix = qData.qMatrix.slice(start - qData.qArea.qTop, end - qData.qArea.qTop);
-  }, [qData.qArea.qTop, qData.qMatrix, qcy]);
+  }, [qData, qcy]);
 
   return (
     <div

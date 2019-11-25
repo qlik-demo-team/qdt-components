@@ -1,15 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-let qDoc = null;
-let qObject = null;
-let qLayout = null;
-let selections = null;
+const initialState = {
+  qDoc: null,
+  qObject: null,
+  qData: null,
+  qLayout: null,
+  selections: null,
+};
+
+function reducer(state, action) {
+  const {
+    payload: {
+      qDoc, qObject, qData, qLayout, selections,
+    }, type,
+  } = action;
+  switch (type) {
+    case 'update':
+      return {
+        ...state, qData, qLayout, selections,
+      };
+    case 'init':
+      return {
+        ...state, qDoc, qObject,
+      };
+    default:
+      throw new Error();
+  }
+}
 
 const useListObject = ({
   qDocPromise, qPage, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder, autoSortByState,
 }) => {
-  const [qData, setQData] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const {
+    qData, qLayout, qObject, selections,
+  } = state;
 
   /** Generate the Definition file */
   const generateQProp = (currentColumn = 0) => {
@@ -38,10 +65,7 @@ const useListObject = ({
     return qProp;
   };
 
-  const getLayout = async () => {
-    const _qLayout = await qObject.getLayout();
-    return _qLayout;
-  };
+  const getLayout = () => qObject.getLayout();
 
   const getData = async (qTop) => {
     const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ ...qPage, qTop }]);
@@ -54,10 +78,10 @@ const useListObject = ({
     const { qArea } = qDataGenerated || {};
     const { qTop: qTopGenerated } = qArea || {};
     const qTop = (qTopPassed) || qTopGenerated;
-    qLayout = await getLayout();
+    const _qLayout = await getLayout();
     const _qData = await getData(qTop);
-    selections = _qData.qMatrix.filter((row) => row[0].qState === 'S');
-    setQData(_qData);
+    const _selections = _qData.qMatrix.filter((row) => row[0].qState === 'S');
+    dispatch({ type: 'update', payload: { qData: _qData, qLayout: _qLayout, selections: _selections } });
   };
 
   const offset = (qTop) => update(qTop);
@@ -68,40 +92,29 @@ const useListObject = ({
     await qObject.beginSelections(['/qListObjectDef']);
   };
 
-  const endSelections = async (qAccept) => {
-    await qObject.endSelections(qAccept);
-  };
+  const endSelections = (qAccept) => qObject.endSelections(qAccept);
 
-  const select = async (qElemNumber, toggle = true, ignoreLock = false) => {
-    await qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
-  };
+  const select = (qElemNumber, toggle = true, ignoreLock = false) => qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
 
-  const searchListObjectFor = async (string) => {
-    await qObject.searchListObjectFor('/qListObjectDef', string);
-  };
+  const searchListObjectFor = (string) => qObject.searchListObjectFor('/qListObjectDef', string);
 
-  const acceptListObjectSearch = async (ignoreLock = false) => {
-    await qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
-  };
+  const acceptListObjectSearch = (ignoreLock = false) => qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
 
-  const applyPatches = async (patches) => {
-    await qObject.applyPatches(patches);
-  };
+  const applyPatches = (patches) => qObject.applyPatches(patches);
 
   useEffect(() => {
     (async () => {
       const qProp = await generateQProp();
-      qDoc = await qDocPromise;
-      qObject = await qDoc.createSessionObject(qProp);
-      qObject.on('changed', () => { update(); });
-      update();
+      const qDoc = await qDocPromise;
+      const _qObject = await qDoc.createSessionObject(qProp);
+      if (!state.qDoc) dispatch({ type: 'init', payload: { qDoc, qObject: _qObject } });
+      if (state.qDoc && !state.qLayout) {
+        update();
+        qObject.on('changed', () => { update(); });
+      }
     })();
-    return () => {
-      const { id } = qObject;
-      qDoc.destroySessionObject(id);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.qDoc, state.qLayout]);
 
   return {
     qLayout, qData, offset, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections,

@@ -2,7 +2,7 @@
 const component = function component({
   scale = 'x',
   format,
-  // formatter = null,
+  formatter = null,
 } = {}) {
   const comp = {
     type: 'axis',
@@ -36,7 +36,7 @@ const component = function component({
     },
   };
 
-  // if (formatter) comp.formatter = formatter;
+  if (formatter) comp.formatter = formatter;
 
   return comp;
 };

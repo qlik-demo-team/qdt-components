@@ -33,7 +33,7 @@ const useHyperCube = ({
       return isDimension;
     }).map((col) => {
       if (typeof col === 'string') {
-        return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } }; //
+        return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] }, qNullSuppression: true }; //
       }
       return col;
     });
@@ -153,7 +153,7 @@ useHyperCube.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
-  getQRData: PropTypes.bool,
+  getQRData: PropTypes.bool, // Engine breaks on some HyperCubes
 };
 
 useHyperCube.defaultProps = {

@@ -2,6 +2,7 @@ const interaction = {
   type: 'native',
   events: {
     mousemove(e) {
+      // console.log('mousemove', e);
       this.chart.component('tooltip').emit('show', e);
     },
     mouseleave() {

@@ -7,10 +7,11 @@ import useHyperCube from '../../hooks/useHyperCube';
 import { domPointLabel, domPointImage } from './picasso/components';
 import preconfiguredSettings from './picasso/settings';
 import QdtPicassoMiniMap from './QdtPicassoMiniMap';
-import SelectionToolbar from './SelectionToolbar';
+import LuiSelectionModal from '../QdtLui/LuiSelectionModal';
 import '../../styles/index.scss';
+import './style.scss';
 
-const miniMapVisible = true;
+
 let _settings = null;
 let pic = null;
 let maxWidth = '100%';
@@ -22,7 +23,7 @@ picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
 const QdtPicasso = ({
-  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, ...otherProps
+  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, miniMapVisible, ...otherProps
 }) => {
   const rootNode = useRef(null);
   const elementNode = useRef(null);
@@ -129,11 +130,11 @@ const QdtPicasso = ({
 
   useEffect(() => {
     if (qData && !isSelectionBarVisible) createPic();
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('resize', handleResize);
+    window.addEventListener('click', handleOutsideClick);
+    window.addEventListener('resize', handleResize);
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('resize', handleResize);
+      window.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener('resize', handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
@@ -141,7 +142,14 @@ const QdtPicasso = ({
   return (
     <div ref={rootNode} style={{ position: 'relative' }}>
       <div style={{
-        position: 'relative', width: outerWidth, height: outerHeight, overflow: 'auto', paddingRight: 10,
+        position: 'relative',
+        width: outerWidth,
+        height: outerHeight,
+        overflow: 'auto',
+        paddingRight: 10,
+        border: (isSelectionBarVisible) ? '1px solid #CCCCCC' : 'none',
+        overflowX: (isSelectionBarVisible) ? 'hidden' : 'auto',
+        overflowY: (isSelectionBarVisible) ? 'hidden' : 'auto',
       }}
       >
         <div
@@ -168,8 +176,11 @@ const QdtPicasso = ({
           innerWidth={innerWidth}
         />
         )}
-      { isSelectionBarVisible
-        && <SelectionToolbar cancelSelections={cancelSelections} confirmSelections={confirmSelections} /> }
+      <LuiSelectionModal
+        isOpen={isSelectionBarVisible}
+        cancelSelections={cancelSelections}
+        confirmSelections={confirmSelections}
+      />
     </div>
   );
 };
@@ -190,7 +201,7 @@ QdtPicasso.propTypes = {
     'verticalRangeGauge',
     'rangeArea',
     'gantt',
-    'mekko',
+    'merimekko',
   ]),
   settings: PropTypes.object,
   options: PropTypes.object,
@@ -212,6 +223,7 @@ QdtPicasso.propTypes = {
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
   getQRData: PropTypes.bool,
+  miniMapVisible: PropTypes.bool,
 };
 
 QdtPicasso.defaultProps = {
@@ -239,6 +251,7 @@ QdtPicasso.defaultProps = {
   qSuppressMissing: false,
   qExpression: null,
   getQRData: true,
+  miniMapVisible: false,
 };
 
 export default QdtPicasso;

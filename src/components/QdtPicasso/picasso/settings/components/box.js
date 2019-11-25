@@ -10,6 +10,7 @@ const component = function component({
   start = 0,
   end = { field: 'qMeasureInfo/0' },
   measures = 1, // Group Bar Chart
+  type = null,
 } = {}) {
   const comp = {
     type: 'box',
@@ -65,7 +66,34 @@ const component = function component({
   // If we initiate connection in the schema, we get errors
   if (collection) {
     comp.data = { collection };
-    comp.minor = { scale: 'y', ref: 'end' };
+    comp.settings.minor = { scale: 'y', ref: 'end' };
+  }
+
+  if (type === 'merimekko') {
+    comp.settings.major = {
+      binStart: {
+        scale: 'x',
+        fn: (b) => {
+          const ss = b.resources.scale('b');
+          return b.resources.scale('x')(ss.datum(b.datum.series.value).start.value);
+        },
+      },
+      binEnd: {
+        fn: (b) => {
+          const ss = b.resources.scale('b');
+          return b.resources.scale('x')(ss.datum(b.datum.series.value).end.value);
+        },
+      },
+    };
+    comp.brush.trigger[0].data = ['series'];
+    comp.settings.minor = { scale: 'y', ref: 'end' };
+    if (collection !== 'span') comp.settings.major.ref = 'series';
+    if (collection === 'span') {
+      comp.dock = 'top';
+      comp.preferredSize = () => 24;
+      comp.settings.minor = { start: 0, end: 1 };
+      delete comp.settings.orientation;
+    }
   }
 
   return comp;

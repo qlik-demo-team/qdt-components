@@ -9,10 +9,6 @@ import range from './range';
 import pie from './pie';
 import line from './line';
 import grid from './grid';
-import column from './column';
-import columnLabels from './columnLabels';
-import mekkoLabels from './mekkoLabels';
-import cell from './cell';
 
 export {
   domPointLabel,
@@ -26,8 +22,4 @@ export {
   pie,
   line,
   grid,
-  column,
-  columnLabels,
-  mekkoLabels,
-  cell,
 };
