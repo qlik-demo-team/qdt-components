@@ -65,7 +65,7 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
-```ts
+```js
 // vertical-barchart.component.ts
 import { Component, OnInit, ElementRef } from '@angular/core';
 
@@ -76,13 +76,16 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class PicassoVerticalBarchartComponent implements OnInit {
 
-	constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) { }
 
-	chart_options = {
+  chart_options = {
     type: 'QdtPicasso',
     props: {
       type: 'verticalBarchart',
-      cols: ['Priority', '=Count(Distinct [%CaseId])'],
+      cols: [
+        'Priority',
+        '=Count(Distinct [%CaseId])'
+      ],
       outerHeight: 300,
     },
   };
