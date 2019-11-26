@@ -62,4 +62,41 @@ render(<App />, document.getElementById('root'));
 ### Angular
 
 
+```js
+// gauge.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-gauge',
+  templateUrl: './picasso-gauge.component.html',
+})
+export class PicassoGaugeComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'verticalGauge',
+      cols: ['=Avg([Case Duration Time])'],
+      options: {
+        min: 10,
+        max: 40 
+      },
+      outerHeight: 400,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-gauge [Component]="chart_options.type" [props]="chart_options.props"></picasso-gauge>
+```
+
 [← QdtPicasso](../)

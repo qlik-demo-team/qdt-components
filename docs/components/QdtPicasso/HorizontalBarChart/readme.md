@@ -63,7 +63,43 @@ const App = () => {
 render(<App />, document.getElementById('root'));
 ```
 
+### Angular
 
+```js
+// horizontal-barchart.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-horizontal-barchart',
+  templateUrl: './picasso-horizontal-barchart.component.html',
+})
+export class PicassoHorizontalBarchartComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+        type: 'horizontalBarchart', 
+        cols: [
+          'Champion_Full',
+          "=Sum(if(Club = [Champion], [Total Compensation]))"
+        ], 
+        outerHeight: 400,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-horizontal-barchart [Component]="chart_options.type" [props]="chart_options.props"></picasso-horizontal-barchart>
+```
 
 
 
