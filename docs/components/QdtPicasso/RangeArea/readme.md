@@ -61,6 +61,41 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
+```js
+// range-area.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
 
+@Component({
+  selector: 'picasso-range-area',
+  templateUrl: './picasso-range-area.component.html',
+})
+export class PicassoRangeAreaComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'rangeArea',
+      cols: [
+        'Date.autoCalendar.YearMonth',
+        '=Count( {$<Priority={\'High\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+        '=Count( {$<Priority={\'Low\'}, Status -={\'Closed\'} >} Distinct %CaseId )'
+      ],
+      outerHeight: 300,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-range-area [Component]="chart_options.type" [props]="chart_options.props"></picasso-range-area>
+```
 
 [← QdtPicasso](../)

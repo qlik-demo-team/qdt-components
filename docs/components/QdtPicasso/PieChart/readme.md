@@ -59,4 +59,40 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
+```js
+// pie-chart.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-pie-chart',
+  templateUrl: './picasso-pie-chart.component.html',
+})
+export class PicassoPieChartComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'pie',
+      cols: [
+        'Case Owner Group',
+        '=Num(Avg([Case Duration Time]), "##")'
+      ],
+      outerHeight: 300,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-pie-chart [Component]="chart_options.type" [props]="chart_options.props"></picasso-pie-chart>
+```
+
 [← QdtPicasso](../)

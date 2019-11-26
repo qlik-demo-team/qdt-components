@@ -77,5 +77,49 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
+```js
+// scatterplot.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-scatterplot',
+  templateUrl: './picasso-scatterplot.component.html',
+})
+export class PicassoScatterplotComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'scatterplot',
+      cols: [
+        'Case Owner', 
+        { 
+          qDef: { 
+            qDef: '=Avg([Case Duration Time])', 
+            qLabel: 'Avg Case Duration Time' 
+          }
+        },
+        '=Count( {$<Status -={\'Closed\'} >} Distinct %CaseId )'
+      ],
+      options: { 
+        noTooltip: true
+      },
+      outerHeight: 300,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-scatterplot [Component]="chart_options.type" [props]="chart_options.props"></picasso-scatterplot>
+```
 
 [← QdtPicasso](../)

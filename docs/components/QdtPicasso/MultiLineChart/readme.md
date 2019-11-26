@@ -61,6 +61,42 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
+```js
+// multi-line-chart.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-mline-chart',
+  templateUrl: './picasso-mline-chart.component.html',
+})
+export class PicassoMultiLinechartComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'multiLineChart',
+      cols: [
+        'Date.autoCalendar.YearMonth',
+        '=Sum([Number of New Cases])',
+        '=Sum([Number of Closed Cases])'
+      ],
+      outerHeight: 300,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<picasso-mline-chart [Component]="chart_options.type" [props]="chart_options.props"></picasso-mline-chart>
+```
 
 
 [← QdtPicasso](../)
