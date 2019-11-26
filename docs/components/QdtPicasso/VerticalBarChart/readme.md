@@ -63,5 +63,39 @@ const App = () => {
 render(<App />, document.getElementById('root'));
 ```
 
+### Angular
+
+```js
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'picasso-vertical-barchart',
+  templateUrl: './picasso-vertical-barchart.component.html',
+  styleUrls: ['./picasso-vertical-barchart.component.css']
+})
+export class PicassoVerticalBarchartComponent implements OnInit {
+
+	constructor(private el: ElementRef) { }
+
+	chart_options = {
+    type: 'QdtPicasso',
+    props: {
+      type: 'verticalBarchart',
+      cols: ['Priority', '=Count(Distinct [%CaseId])'],
+      outerHeight: 300,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<qdt-component [Component]="chart_options.type" [props]="chart_options.props"></qdt-component>
+```
+
 [← QdtPicasso](../)
 
