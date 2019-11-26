@@ -97,7 +97,7 @@ export class PicassoVerticalBarchartComponent implements OnInit {
 ```
 
 ```html
-<!-- index.html -->
+<!-- html -->
 <picasso-vertical-barchart [Component]="chart_options.type" [props]="chart_options.props"></picasso-vertical-barchart>
 ```
 
