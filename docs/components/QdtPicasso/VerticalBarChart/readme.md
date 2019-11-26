@@ -72,7 +72,6 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 @Component({
   selector: 'picasso-vertical-barchart',
   templateUrl: './picasso-vertical-barchart.component.html',
-  styleUrls: ['./picasso-vertical-barchart.component.css']
 })
 export class PicassoVerticalBarchartComponent implements OnInit {
 
@@ -99,7 +98,7 @@ export class PicassoVerticalBarchartComponent implements OnInit {
 
 ```html
 <!-- index.html -->
-<qdt-component [Component]="chart_options.type" [props]="chart_options.props"></qdt-component>
+<picasso-vertical-barchart [Component]="chart_options.type" [props]="chart_options.props"></picasso-vertical-barchart>
 ```
 
 [← QdtPicasso](../)
