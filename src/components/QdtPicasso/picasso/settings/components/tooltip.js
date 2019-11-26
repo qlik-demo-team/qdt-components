@@ -61,6 +61,7 @@ const component = {
           h('div.qdt-tooltip-header-measure', {}, `${data[0].props[1].value}`),
         ]);
       } else if (data.length && data[0].props.length === 3) { // Mekko
+        console.log(data);
         html = h('div', {}, [
           h('div', { align: 'center', style: { 'border-bottom': '1px solid rgba(255,255,255,0.2)', 'padding-bottom': '5px' } }, `${data[0].props[0].value}`),
           h('div', { align: 'center', style: { 'padding-top': '5px' } }, `${data[0].title} (${Math.round(data[0].props[2].value * 100)}%)`),

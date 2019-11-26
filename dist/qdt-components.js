@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -12058,6 +12058,37 @@ module.exports = g;
 
 /***/ }),
 /* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(55);
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(13)(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// Module
+exports.push([module.i, ".pic-tooltip-content{padding:8px 15px !important}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box{position:relative;display:inline-block;width:10px;height:12px;left:-14px;bottom:-2px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title{display:inline-block;position:relative;left:-10px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure{display:inline-block;text-align:right}.pic-tooltip-content .text-right{text-align:right}.pic-tooltip-content .qdt-tooltip-row{display:block}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{display:inline-block;width:50%;padding-left:5px}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{text-align:right}\n", ""]);
+
+
+/***/ }),
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12920,6 +12951,7 @@ var tooltip_component = {
         }, ''), h('div.qdt-tooltip-header-title', {}, "".concat(data[0].props[0].value, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].props[1].value))]);
       } else if (data.length && data[0].props.length === 3) {
         // Mekko
+        console.log(data);
         html = h('div', {}, [h('div', {
           align: 'center',
           style: {
@@ -55479,7 +55511,7 @@ LuiSelectionModal_LuiSelectionModal.defaultProps = {
 };
 /* harmony default export */ var QdtLui_LuiSelectionModal = (LuiSelectionModal_LuiSelectionModal);
 // EXTERNAL MODULE: ./src/components/QdtPicasso/style.scss
-var QdtPicasso_style = __webpack_require__(55);
+var QdtPicasso_style = __webpack_require__(54);
 
 // CONCATENATED MODULE: ./src/components/QdtPicasso/QdtPicasso.jsx
 
@@ -56664,37 +56696,6 @@ var QdtComponents_QdtComponents = (_temp = QdtComponents_class = function QdtCom
 // CONCATENATED MODULE: ./src/index.jsx
 
 /* harmony default export */ var src_0 = __webpack_exports__["default"] = (src_QdtComponents);
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(56);
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(13)(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)(false);
-// Module
-exports.push([module.i, ".pic-tooltip-content{padding:8px 15px !important}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-box{position:relative;display:inline-block;width:10px;height:12px;left:-14px;bottom:-2px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-title{display:inline-block;position:relative;left:-10px}.pic-tooltip-content .qdt-tooltip-header .qdt-tooltip-header-measure{display:inline-block;text-align:right}.pic-tooltip-content .text-right{text-align:right}.pic-tooltip-content .qdt-tooltip-row{display:block}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-label,.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{display:inline-block;width:50%;padding-left:5px}.pic-tooltip-content .qdt-tooltip-row .qdt-tooltip-col-value{text-align:right}\n", ""]);
-
 
 /***/ })
 /******/ ])["default"];
