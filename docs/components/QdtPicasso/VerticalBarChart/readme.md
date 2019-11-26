@@ -65,7 +65,7 @@ render(<App />, document.getElementById('root'));
 
 ### Angular
 
-```js
+```ts
 // vertical-barchart.component.ts
 import { Component, OnInit, ElementRef } from '@angular/core';
 
