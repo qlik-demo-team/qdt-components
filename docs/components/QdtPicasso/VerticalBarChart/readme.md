@@ -66,6 +66,7 @@ render(<App />, document.getElementById('root'));
 ### Angular
 
 ```js
+// vertical-barchart.component.ts
 import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
@@ -94,6 +95,7 @@ export class PicassoVerticalBarchartComponent implements OnInit {
 ```
 
 ```html
+<!-- index.html -->
 <qdt-component [Component]="chart_options.type" [props]="chart_options.props"></qdt-component>
 ```
 
