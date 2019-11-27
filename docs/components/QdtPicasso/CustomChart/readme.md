@@ -1,4 +1,4 @@
-# Custom Combo Chart
+# Custom Chart
 
 ![Custom Combo Chart](../assets/picassoCustomChart.png)
 
