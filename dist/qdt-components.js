@@ -12894,79 +12894,105 @@ var tooltip_component = {
     // Mekko
     // Create the data model
     extract: function extract(_ref) {
-      var node = _ref.node,
-          resources = _ref.resources;
-      var formatterFn = resources.formatter({
-        type: 'd3-number',
-        format: '.2s'
-      });
-      var dataProps = Object.keys(node.data).filter(function (key) {
-        return key !== 'value' && key !== 'label' && key !== 'source' //   key !== 'legend' &&
-        && key !== 'x' && key !== 'y' && key !== 'start';
-      }).map(function (key) {
-        var _node$data$key = node.data[key],
-            label = _node$data$key.label,
-            end = _node$data$key.end,
-            value = _node$data$key.value; // Series for Stacked Barchart
+      var node = _ref.node;
+      // resources
+      var data = node.data,
+          key = node.key; // console.log(data, key);
+      // const formatterFn = resources.formatter({ type: 'd3-number', format: '.2s' });
+      // const dataProps = Object.keys(node.data)
+      //   .filter((key) => key !== 'value'
+      //     && key !== 'label'
+      //     && key !== 'source'
+      //     //   key !== 'legend' &&
+      //     && key !== 'x'
+      //     && key !== 'y')
+      //   .map((key) => {
+      //     const {
+      //       label, end, value, start,
+      //     } = node.data[key]; // Series for Stacked Barchart
+      //     let myValue = (label) || value; // Value si for the Stacked bar
+      //     const myLabel = (node.data[key].source && node.data[key].source.field) ? node.data[key].source.field : key;
+      //     if (end) {
+      //       const { value: evalue } = end;
+      //       if (evalue) myValue = evalue;
+      //     }
+      //     if (start) {
+      //       const { value: evalue } = start;
+      //       if (evalue) myValue = evalue;
+      //     }
+      //     if (Number.isNaN(myValue)) myValue = formatterFn(myValue);
+      //     return ({
+      //       label: myLabel,
+      //       value: myValue,
+      //     });
+      //   });
+      // return {
+      //   title: node.data.label,
+      //   color: node.attrs.fill,
+      //   props: dataProps,
+      // };
 
-        var myValue = label || value; // Value si for the Stacked bar
-
-        var myLabel = node.data[key].source && node.data[key].source.field ? node.data[key].source.field : '';
-
-        if (end) {
-          var evalue = end.value;
-          if (evalue) myValue = evalue;
-        }
-
-        if (Number.isNaN(myValue)) myValue = formatterFn(myValue);
-        return {
-          label: myLabel,
-          value: myValue
-        };
-      });
       return {
-        title: node.data.label,
-        color: node.attrs.fill,
-        props: dataProps
+        data: data,
+        key: key
       };
     },
     // Generate virtual nodes
     content: function content(_ref2) {
       var h = _ref2.h,
           data = _ref2.data;
+      console.log(data);
       var html = '';
 
-      if (data.length && data[0].props.length === 1) {
-        // Single Barchart
-        html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-box', {
-          style: {
-            backgroundColor: data[0].color
-          }
-        }, ''), h('div.qdt-tooltip-header-title', {}, "".concat(data[0].title, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].props[0].value))]);
-      } else if (data.length && data[0].props.length === 2) {
-        html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-box', {
-          style: {
-            backgroundColor: data[0].color
-          }
-        }, ''), h('div.qdt-tooltip-header-title', {}, "".concat(data[0].props[0].value, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].props[1].value))]);
-      } else if (data.length && data[0].props.length === 3) {
-        // Mekko
-        console.log(data);
-        html = h('div', {}, [h('div', {
-          align: 'center',
-          style: {
-            'border-bottom': '1px solid rgba(255,255,255,0.2)',
-            'padding-bottom': '5px'
-          }
-        }, "".concat(data[0].props[0].value)), h('div', {
-          align: 'center',
-          style: {
-            'padding-top': '5px'
-          }
-        }, "".concat(data[0].title, " (").concat(Math.round(data[0].props[2].value * 100), "%)")), h('div', {
-          align: 'center'
-        }, "".concat(data[0].props[1].value))]);
-      }
+      switch (data[0].key) {
+        // line, dots
+        case 'point':
+        case 'point2':
+          html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-title', {}, "".concat(data[0].data.x.label, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].data.y.label))]);
+          break;
+        // Pie
+
+        case 'pie':
+          html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-title', {}, "".concat(data[0].data.label, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].data.num.label))]);
+          break;
+        // Barcharts
+
+        case 'bar':
+        default:
+          html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-title', {}, "".concat(data[0].data.label, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].data.end.label))]);
+          break;
+      } // else if (data[0].data.length && data[0].data.props.length === 1) { // Pie, scatterplot, line
+      //   html = h('div.qdt-tooltip-header', {}, [
+      //     h('div.qdt-tooltip-header-box', {
+      //       style: { backgroundColor: data[0].color },
+      //     }, ''),
+      //     h('div.qdt-tooltip-header-title', {}, `${data[0].title}: `),
+      //     h('div.qdt-tooltip-header-measure', {}, `${data[0].props[0].value}`),
+      //   ]);
+      // } else if (data[0].data.length && data[0].props.length === 2) { // Single Barchart
+      //   html = h('div.qdt-tooltip-header', {}, [
+      //     h('div.qdt-tooltip-header-box', {
+      //       style: { backgroundColor: data[0].color },
+      //     }, ''),
+      //     h('div.qdt-tooltip-header-title', {}, `${data[0].title}: `),
+      //     h('div.qdt-tooltip-header-measure', {}, `${data[0].props[1].value}`),
+      //   ]);
+      // } else if (data.length && data[0].props.length === 3) {
+      //   html = h('div.qdt-tooltip-header', {}, [
+      //     h('div.qdt-tooltip-header-box', {
+      //       style: { backgroundColor: data[0].color },
+      //     }, ''),
+      //     h('div.qdt-tooltip-header-title', {}, `${data[0].props[0].value}: `),
+      //     h('div.qdt-tooltip-header-measure', {}, `${data[0].props[1].value}`),
+      //   ]);
+      // } else if (data.length && data[0].props.length === 4) { // Mekko
+      //   html = h('div', {}, [
+      //     h('div', { align: 'center', style: { 'border-bottom': '1px solid rgba(255,255,255,0.2)', 'padding-bottom': '5px' } }, `${data[0].props[0].value}`),
+      //     h('div', { align: 'center', style: { 'padding-top': '5px' } }, `${data[0].title} (${Math.round((data[0].props[2].value - data[0].props[3].value) * 100)}%)`),
+      //     h('div', { align: 'center' }, `${data[0].props[1].value}`),
+      //   ]);
+      // }
+
 
       return h('div', {
         display: 'table'
