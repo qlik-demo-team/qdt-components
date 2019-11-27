@@ -9,6 +9,7 @@ import preconfiguredSettings from './picasso/settings';
 import QdtPicassoMiniMap from './QdtPicassoMiniMap';
 import LuiSelectionModal from '../QdtLui/LuiSelectionModal';
 import '../../styles/index.scss';
+import './style.scss';
 
 
 let _settings = null;
@@ -129,11 +130,11 @@ const QdtPicasso = ({
 
   useEffect(() => {
     if (qData && !isSelectionBarVisible) createPic();
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('resize', handleResize);
+    window.addEventListener('click', handleOutsideClick);
+    window.addEventListener('resize', handleResize);
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('resize', handleResize);
+      window.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener('resize', handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData]);
@@ -200,6 +201,7 @@ QdtPicasso.propTypes = {
     'verticalRangeGauge',
     'rangeArea',
     'gantt',
+    'merimekko',
   ]),
   settings: PropTypes.object,
   options: PropTypes.object,
