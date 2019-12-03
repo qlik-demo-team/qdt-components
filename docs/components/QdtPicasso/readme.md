@@ -30,7 +30,7 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 
 |[Gannt Chart](./Gannt)|[Marimekko Chart](./Mekko)|[Custom Chart](./CustomChart)|
 |:----:|:----:|:----:|
-|||[![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)|
+|[![Picasso Gannt Chart](./assets/picassoGantt.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-gantt)|[![Picasso Mekko Chart](./assets/picassoMekko.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-mekko)|[![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)|
 
 [[↑] Back to top](#top)
 
