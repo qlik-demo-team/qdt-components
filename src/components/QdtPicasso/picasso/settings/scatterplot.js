@@ -1,7 +1,7 @@
 import {
   axis, tooltip, legend, point, domPointLabel, range,
 } from './components';
-import { itooltip, pan } from './interactions';
+import { itooltip, pan, ilegend } from './interactions';
 import theme from '../../../../styles';
 
 const component = {
@@ -17,14 +17,14 @@ const component = {
   components: [
     axis(),
     axis({ scale: 'y' }),
-    legend,
+    legend(),
     domPointLabel,
     point({ x: { field: 'qMeasureInfo/1' } }),
     tooltip,
     range(),
     range({ scale: 'y' }),
   ],
-  interactions: [itooltip, pan(), pan({ scale: 'y' })],
+  interactions: [itooltip, pan(), pan({ scale: 'y' }), ilegend],
 };
 
 export default component;
