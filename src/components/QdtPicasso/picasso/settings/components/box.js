@@ -94,6 +94,31 @@ const component = function component({
       comp.settings.minor = { start: 0, end: 1 };
       delete comp.settings.orientation;
     }
+  } else if (type === 'pyramid') {
+    comp.data.extract = [
+      {
+        field: 'qDimensionInfo/0',
+        props: {
+          idx: 0,
+          start: 0,
+          end: { field: 'qMeasureInfo/0' },
+        },
+      },
+      {
+        field: 'qDimensionInfo/0',
+        props: {
+          idx: 1,
+          start: 0,
+          end: { field: 'qMeasureInfo/1' },
+        },
+      },
+    ];
+    comp.settings.minor = {
+      start: (d) => d.resources.scale('x')(0),
+      end: (d) => d.resources.scale('x')(
+        d.datum.end.value * (d.datum.idx.value === 1 ? -1 : 1),
+      ),
+    };
   }
 
   return comp;

@@ -203,6 +203,7 @@ QdtPicasso.propTypes = {
     'gantt',
     'merimekko',
     'pointDistribution',
+    'pyramid',
   ]),
   settings: PropTypes.object,
   options: PropTypes.object,
