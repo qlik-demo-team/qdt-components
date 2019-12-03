@@ -202,6 +202,7 @@ QdtPicasso.propTypes = {
     'rangeArea',
     'gantt',
     'merimekko',
+    'pointDistribution',
   ]),
   settings: PropTypes.object,
   options: PropTypes.object,
