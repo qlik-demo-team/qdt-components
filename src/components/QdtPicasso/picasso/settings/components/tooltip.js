@@ -59,6 +59,7 @@ const component = {
           html = h('div.qdt-tooltip-header', {}, [
             h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
             h('div.qdt-tooltip-header-measure', {}, `${data[0].data.y.label}`),
+            // h('div.qdt-tooltip-header-measure', {}, `${(data[0].data.group) ? data[0].data.group.label : data[0].data.y.label}`),
           ]);
           break;
         // Pie

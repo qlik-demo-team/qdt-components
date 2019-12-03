@@ -13,6 +13,7 @@ import verticalGroupBarchart from './verticalGroupBarchart';
 import rangeArea from './rangeArea';
 import gantt from './gantt';
 import merimekko from './merimekko';
+import pointDistribution from './pointDistribution';
 
 export default {
   horizontalBarchart,
@@ -30,4 +31,5 @@ export default {
   rangeArea,
   gantt,
   merimekko,
+  pointDistribution,
 };

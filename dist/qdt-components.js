@@ -12947,7 +12947,8 @@ var tooltip_component = {
         // line, dots
         case 'point':
         case 'point2':
-          html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-title', {}, "".concat(data[0].data.label, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].data.y.label))]);
+          html = h('div.qdt-tooltip-header', {}, [h('div.qdt-tooltip-header-title', {}, "".concat(data[0].data.label, ": ")), h('div.qdt-tooltip-header-measure', {}, "".concat(data[0].data.y.label)) // h('div.qdt-tooltip-header-measure', {}, `${(data[0].data.group) ? data[0].data.group.label : data[0].data.y.label}`),
+          ]);
           break;
         // Pie
 
@@ -14201,7 +14202,80 @@ var merimekko_setting = {
   interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
 };
 /* harmony default export */ var merimekko = (merimekko_setting);
+// CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/pointDistribution.js
+
+
+
+var _point = point({
+  field: 'qDimensionInfo/1',
+  size: {
+    scale: 's'
+  },
+  x: {
+    field: 'qMeasureInfo/1'
+  },
+  fill: {
+    scale: 'c',
+    ref: 'group'
+  }
+});
+
+_point.data.extract.props.size = {
+  field: 'qMeasureInfo/0'
+};
+_point.data.extract.props.group = {
+  field: 'qDimensionInfo/0'
+};
+_point.settings.y = {
+  scale: 'y',
+  ref: 'group'
+};
+delete _point.data.extract.props.num;
+var pointDistribution_setting = {
+  scales: {
+    y: {
+      data: {
+        extract: {
+          field: 'qDimensionInfo/0'
+        }
+      }
+    },
+    x: {
+      data: {
+        extract: {
+          field: 'qMeasureInfo/1'
+        }
+      },
+      expand: 0.1
+    },
+    // m
+    s: {
+      data: {
+        extract: {
+          field: 'qMeasureInfo/0'
+        }
+      }
+    },
+    c: {
+      data: {
+        extract: {
+          field: 'qDimensionInfo/0'
+        }
+      },
+      type: 'color'
+    }
+  },
+  components: [{
+    type: 'grid-line',
+    y: 'y'
+  }, axis(), axis({
+    scale: 'y'
+  }), _point, tooltip, range()],
+  interactions: [interactions_tooltip, Object(pan["a" /* default */])()]
+};
+/* harmony default export */ var pointDistribution = (pointDistribution_setting);
 // CONCATENATED MODULE: ./src/components/QdtPicasso/picasso/settings/index.js
+
 
 
 
@@ -14232,7 +14306,8 @@ var merimekko_setting = {
   verticalGroupBarchart: verticalGroupBarchart,
   rangeArea: rangeArea,
   gantt: gantt,
-  merimekko: merimekko
+  merimekko: merimekko,
+  pointDistribution: pointDistribution
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
 var slicedToArray = __webpack_require__(4);
@@ -19532,7 +19607,7 @@ var QdtSelectionToolbar_QdtSelectionToolbar = function QdtSelectionToolbar(_ref)
       selections = selectedFields.map(function (value) {
         if (value.qSelectedCount >= 1 && value.qSelectedCount <= 6) {
           return {
-            field: value.qField,
+            field: value.qReadableName,
             selected: value.qSelectedFieldSelectionInfo.map(function (valueInner) {
               return valueInner.qName;
             }),
@@ -55818,7 +55893,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 };
 
 QdtPicasso_QdtPicasso.propTypes = {
-  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt', 'merimekko']),
+  type: prop_types_default.a.oneOf(['comboLineBarchart', 'horizontalBarchart', 'lineChart', 'multiLineChart', 'pie', 'piechart', 'scatterplot', 'verticalBarchart', 'verticalGroupBarchart', 'stackedBarchart', 'verticalGauge', 'verticalRangeGauge', 'rangeArea', 'gantt', 'merimekko', 'pointDistribution']),
   settings: prop_types_default.a.object,
   options: prop_types_default.a.object,
   outerWidth: prop_types_default.a.oneOfType([prop_types_default.a.number, prop_types_default.a.string]),

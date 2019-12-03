@@ -18,7 +18,7 @@ const QdtSelectionToolbar = ({
       selections = selectedFields.map((value) => {
         if (value.qSelectedCount >= 1 && value.qSelectedCount <= 6) {
           return {
-            field: value.qField,
+            field: value.qReadableName,
             selected: value.qSelectedFieldSelectionInfo.map((valueInner) => valueInner.qName),
             total: value.qTotal,
           };
