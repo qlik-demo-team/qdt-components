@@ -63,3 +63,5 @@ method
 #### [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app)
 
 #### [Create a Session Object](https://qdt-apps.qlik.com/qdt-components/react/#/session-object)
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)
