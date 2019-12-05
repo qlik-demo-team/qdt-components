@@ -124,11 +124,9 @@ export class QdtVizComponent implements OnInit {
 ## Examples
 
 
-#### [Live Example](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
-
-#### [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app)
-
-#### [Create a Session Object](https://qdt-apps.qlik.com/qdt-components/react/#/session-object)
+- [Embed Object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object) (React)
+- [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app) (React)
+- [Create a Session Object](https://qdt-apps.qlik.com/qdt-components/react/#/session-object) (React)
 
 ---
 

@@ -102,7 +102,7 @@ export class QdtTableComponent implements OnInit {
 
 ## Examples
 
-#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/table-engine)
+- [https://qdt-apps.qlik.com/qdt-components/react/#/table-engine](https://qdt-apps.qlik.com/qdt-components/react/#/table-engine)
 
 ---
 

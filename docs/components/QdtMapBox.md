@@ -2,7 +2,7 @@
 
 ![QdtMapBox](../assets/picassoMapbox.png "QdtMapBox")
 
-- `QdtMapBox` allows you to create a Map and MapBox layer(s). 
+- `QdtMapBox` allows you to create a MapBox map and layer(s). 
 - See the [MapBox Api Docs](https://docs.mapbox.com/mapbox-gl-js/overview/) for more information on MapBox and to get your access token
 
 ## Properties
