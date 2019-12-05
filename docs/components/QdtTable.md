@@ -2,24 +2,8 @@
 
 ![QdtTable](../assets/table.png "QdtTable")
 
-### Html Code
 
-```
-<QdtComponent
-  type: 'QdtTable',
-  props: {
-    cols: [
-      'Case Owner',
-      'Employee Status',
-      "=Count( {$<Status -={'Closed'} >} Distinct %CaseId )",
-    ],
-    height: 400,
-    rowHeight: 40,
-  },
-/>
-```
-
-### Properties
+## Properties
 
 | prop             | type          | description            |
 | ---------------- | ------------- | -------------          |
@@ -27,8 +11,32 @@
 | height           | Number        | `400`                  |
 | rowHeight        | Number        | `40`                   |
 
+## Code 
 
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/table-engine](https://qdt-apps.qlik.com/qdt-components/react/#/table-engine)
+### Vanilla JavaScript
+
+### React
+
+```jsx
+<QdtComponent
+  type='QdtTable'
+  props={{
+    cols: [
+      'Case Owner',
+      'Employee Status',
+      "=Count( {$<Status -={'Closed'} >} Distinct %CaseId )",
+    ],
+    height: 400,
+    rowHeight: 40,
+  }}
+/>
+```
+
+### Angular
+
+## Examples
+
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/table-engine)
 
 ---
 

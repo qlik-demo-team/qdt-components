@@ -2,11 +2,23 @@
 
 ![QdtSelectionToolbar](../assets/selectionToolbar.png "QdtSelectionToolbar")
 
-This populated a toolbar with the current app selections.
+- This populated a toolbar with the current app selections.
 
-### Html Code
+## Properties
 
-```
+| prop             | type          | description   |
+| ---------------- | ------------- | ------------- |
+| title            | String        | `SELECTIONS`  |
+| btnText          | String        | `Clear All `  |
+
+
+## Code
+
+### Vanilla JavaScript
+
+### React
+
+```jsx
 <QdtComponent
   type="QdtSelectionToolbar"
   props={{
@@ -16,15 +28,11 @@ This populated a toolbar with the current app selections.
 />
 ```
 
-### Properties
+### Angular
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| title            | String        | `SELECTIONS`  |
-| btnText          | String        | `Clear All `  |
+## Examples
 
-
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/selection-toolbar](https://qdt-apps.qlik.com/qdt-components/react/#/selection-toolbar)
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/selection-toolbar)
 
 ---
 

@@ -6,9 +6,24 @@
 This creates a search input field based on [Leonardo UI - input](https://qlik-oss.github.io/leonardo-ui/input.html).
 * Tooltips are also based on [Leonardo UI - Tooltip](https://qlik-oss.github.io/leonardo-ui/tooltip.html)
 
-### Html Code
+## Properties
 
-```
+| prop             | type          | description   |
+| ---------------- | ------------- | ------------- |
+| cols             | Array         | `[dimension]` |
+| invert           | Boolean       | false         |
+| placeholder      | String        | `Search for`  |
+| tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
+| tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
+| showGo           | Boolean       | false         |
+
+## Code
+
+### Vanilla JavaScript
+
+### React
+
+```jsx
 <QdtComponent
   type="QdtSelectionToolbar"
   props={{
@@ -20,19 +35,11 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 />
 ```
 
-### Properties
+### Angular
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| cols             | Array         | `[dimension]` |
-| invert           | Boolean       | false         |
-| placeholder      | String        | `Search for`  |
-| tooltipDock      | String        | `'top', 'right', 'bottom', 'left' `|
-| tooltipContent   | String        | `<h5>Tooltip Header</h5> more content here.` |
-| showGo           | Boolean       | false         |
+## Examples
 
-
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/search](https://qdt-apps.qlik.com/qdt-components/react/#/search)
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/search)
 
 ---
 
