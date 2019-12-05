@@ -1,4 +1,4 @@
-## Get a visualization from Qlik Sense
+# QdtFilter: *Dropdown or List Filter Component*
 
 ![QdtFilter](../assets/filters.png?raw=true "QdtFilter")
 

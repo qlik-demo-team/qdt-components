@@ -1,6 +1,6 @@
-## QdtSelectionToolbar
+# QdtSearch: *Create a Search Input Field*
 
-![QdtSelectionToolbar](../assets/selectionToolbar.png?raw=true "QdtSelectionToolbar")
+![QdtSearch](../assets/search.png?raw=true "QdtSearch")
 
 
 This creates a search input field based on [Leonardo UI - input](https://qlik-oss.github.io/leonardo-ui/input.html).

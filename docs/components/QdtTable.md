@@ -1,4 +1,4 @@
-## QdtTable
+# QdtTable: *Create an Interactive Table*
 
 ![QdtTable](../assets/table.png "QdtTable")
 

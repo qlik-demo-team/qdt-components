@@ -1,4 +1,4 @@
-## QdtCurrentSelections
+# QdtCurrentSelections: *Show Current Selections Bar*
 
 ![QdtCurrentSelections](../assets/currentSelections.png "QdtCurrentSelections")
 

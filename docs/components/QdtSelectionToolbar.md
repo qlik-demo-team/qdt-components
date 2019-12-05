@@ -1,4 +1,4 @@
-## QdtSelectionToolbar
+# QdtSelectionToolbar: *Create Toolbar with Current Selections*
 
 ![QdtSelectionToolbar](../assets/selectionToolbar.png "QdtSelectionToolbar")
 

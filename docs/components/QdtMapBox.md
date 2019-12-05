@@ -1,4 +1,4 @@
-## Create a map with layers using MapBox
+# QdtMapBox: *Create a map with layers using MapBox*
 
 ![QdtMapBox](../assets/picassoMapbox.png "QdtMapBox")
 
