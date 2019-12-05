@@ -25,3 +25,7 @@ This populated a toolbar with the current app selections.
 
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/selection-toolbar](https://qdt-apps.qlik.com/qdt-components/react/#/selection-toolbar)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)

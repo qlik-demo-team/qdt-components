@@ -29,3 +29,7 @@
 
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/table-engine](https://qdt-apps.qlik.com/qdt-components/react/#/table-engine)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)

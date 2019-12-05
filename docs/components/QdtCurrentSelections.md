@@ -21,3 +21,7 @@
 
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/current-selections](https://qdt-apps.qlik.com/qdt-components/react/#/current-selections)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)

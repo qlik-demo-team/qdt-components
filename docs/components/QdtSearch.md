@@ -33,3 +33,7 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/search](https://qdt-apps.qlik.com/qdt-components/react/#/search)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)

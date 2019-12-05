@@ -44,3 +44,7 @@ This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` wi
 [exportPdf]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportPdf-method.htm
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/filters](https://qdt-apps.qlik.com/qdt-components/react/#/filters)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)

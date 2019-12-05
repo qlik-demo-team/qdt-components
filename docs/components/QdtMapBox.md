@@ -45,3 +45,7 @@
 | getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
 
 #### Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)
