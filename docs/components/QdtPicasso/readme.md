@@ -149,3 +149,8 @@ render(<App />, document.getElementById('root'));
 
 
 [[↑] Back to top](#top)
+
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components#components)

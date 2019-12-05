@@ -36,4 +36,4 @@ This creates a search input field based on [Leonardo UI - input](https://qlik-os
 
 ---
 
-[← Back to All Components](https://github.com/qlik-demo-team/qdt-components/tree/more-docs#components)
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components#components)
