@@ -33,6 +33,35 @@ method
 
 ### Vanilla JavaScript
 
+- See the [HTML Template](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/usage/Html.md) for the
+basic page setup. 
+
+```js
+var options = {
+  config: { /* host, port, appid, etc. */ },
+  connections: { /* vizApi, engineAPI */}
+}
+
+var qdtComponents = new QdtComponents(options.config, options.connections);
+
+var element = document.getElementById('qdt1');
+
+qdtComponents.render(
+  "QdtViz", 
+  {
+    type: 'barchart',
+    id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398',
+    height: '300px',
+    exportData: true,
+    exportImg: true,
+    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
+    exportPdf: true,
+    exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+  }, 
+  element
+);
+```
+
 ### React
 
 ```jsx
@@ -53,6 +82,43 @@ method
 
 ### Angular
 
+```js
+// qdt-viz.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'qdt-viz',
+  templateUrl: './qdt-viz.component.html',
+})
+export class QdtVizComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtViz',
+    props: {
+      type: 'barchart',
+      id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398',
+      height: '300px',
+      exportData: true,
+      exportImg: true,
+      exportImgOptions: { width: 600, height: 400, format: 'JPG' },
+      exportPdf: true,
+      exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<qdt-viz [Component]="chart_options.type" [props]="chart_options.props"></qdt-viz>
+```
 
 
 ## Examples

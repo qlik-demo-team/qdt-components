@@ -2,7 +2,7 @@
 
 ![QdtFilter](../assets/filters.png?raw=true "QdtFilter")
 
-- This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
+- This component creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
 
 ## Properties
 
@@ -12,10 +12,10 @@
 | qListObjectDef   | Object        | [see here][qListObjectDef] |
 | single           | Boolean       | Default `false`. For single selections |
 | placeholder      | String        | Default `DropDown` |
-| expanded         | Boolean       | Default `false`. For a list like menu instead of a dropdown |
+| expanded         | Boolean       | Default `false`. For a list-like menu instead of a dropdown |
 | expandedHorizontal| Boolean      | Default `false`. For a horizontal menu |
-| expandedHorizontalSense| Boolean | Default `true`. For a Qlik sense style selections look and feel. If `false` then they are regular tabs |
-| autoSortByState  | Number        | Default `1`. [see here][https://help.qlik.com/en-US/sense-developer/June2018/APIs/EngineAPI/genericobject-property-ListObjectDef.html] |
+| expandedHorizontalSense| Boolean | Default `true`. For a Qlik Sense-style selections look and feel; `false` for regular tabs |
+| autoSortByState  | Number        | Default `1`. [see here](https://help.qlik.com/en-US/sense-developer/June2018/APIs/EngineAPI/genericobject-property-ListObjectDef.html) |
 
 
 [vizApiCreate]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/create-method.htm
@@ -29,29 +29,87 @@
 
 ### Vanilla JavaScript
 
+- See the [HTML Template](https://github.com/qlik-demo-team/qdt-components/blob/master/docs/usage/Html.md) for the
+basic page setup. 
+
+```js
+var options = {
+  config: { /* host, port, appid, etc. */ },
+  connections: { /* vizApi, engineAPI */}
+}
+
+var qdtComponents = new QdtComponents(options.config, options.connections);
+
+var element = document.getElementById('qdt1');
+
+qdtComponents.render(
+  "QdtFilter", 
+  {
+    cols: ['Case Owner Group'],
+    placeholder: 'Case Owner Group',
+    single: true,
+    autoSortByState: 0,
+    showStateInDropdown: true,
+  }, 
+  element
+);
+```
+
 ### React
 
 ```jsx
 <QdtComponent
-  type="QdtViz"
+  type="QdtFilter"
   props={{
-    type: 'barchart',
-    id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398',
-    height: '300px',
-    exportData: true,
-    exportImg: true,
-    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
-    exportPdf: true,
-    exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+    cols: ['Case Owner Group'],
+    placeholder: 'Case Owner Group',
+    single: true,
+    autoSortByState: 0,
+    showStateInDropdown: true,
   }}
 />
 ```
 
 ### Angular
 
+```js
+// qdt-filter.component.ts
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'qdt-filter',
+  templateUrl: './qdt-filter.component.html',
+})
+export class QdtFilterComponent implements OnInit {
+
+  constructor(private el: ElementRef) { }
+
+  chart_options = {
+    type: 'QdtFilter',
+    props: {
+      cols: ['Case Owner Group'],
+      placeholder: 'Case Owner Group',
+      single: true,
+      autoSortByState: 0,
+      showStateInDropdown: true,
+    },
+  };
+
+  ngOnInit() {
+
+  }
+
+}
+```
+
+```html
+<!-- html -->
+<qdt-filter [Component]="chart_options.type" [props]="chart_options.props"></qdt-filter>
+```
+
 ## Examples
 
-#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/filters)
+- [https://qdt-apps.qlik.com/qdt-components/react/#/filters](https://qdt-apps.qlik.com/qdt-components/react/#/filters) (React)
 
 ---
 
