@@ -1,10 +1,10 @@
-## Get a visualization from Qlik Sense
+## Get a Visualization from Qlik Sense
 
 ![QdtViz](../assets/embedded.png?raw=true "QdtViz")
 
 - This component can be used to create or get a native Qlik Sense vizualization. There are two primary ways to do this:
-  - If you define the `id` prop, then it will get that Qlik Sense vizualization.
-  - If you define the `type`, `cols`, and `options` props it will create a new vizualization. 
+  - **Get Existing:** If you define the `id` prop, then it will get that Qlik Sense vizualization.
+  - **Create New:** If you define the `type`, `cols`, and `options` props it will create a new vizualization. 
 - The `width` and `height` props are both optional, and default to '100%'.
 - The `QdtViz` Component uses the [Capability Api - getObject](https://help.qlik.com/en-US/sense-developer/November2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/AppAPI/getObject-method.htm)
 method
@@ -51,9 +51,14 @@ method
 />
 ```
 
+### Angular
 
 
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/embed-object](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
+
+## Examples
+
+
+#### [Live Example](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object)
 
 #### [Embed Objects from Multiple Apps](https://qdt-apps.qlik.com/qdt-components/react/#/embed-object-multi-app)
 
