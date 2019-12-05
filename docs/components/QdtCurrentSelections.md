@@ -2,9 +2,19 @@
 
 ![QdtCurrentSelections](../assets/currentSelections.png "QdtCurrentSelections")
 
-### Html Code
+## Properties
 
-```
+| prop             | type          | description   |
+| ---------------- | ------------- | ------------- |
+| height           | String        | `40px`  |
+
+## Code
+
+### Vanilla JavaScript
+
+### React
+
+```jsx
 <QdtComponent
   type="QdtCurrentSelections"
   props={{
@@ -13,14 +23,12 @@
 />
 ```
 
-### Properties
+### Angular
 
-| prop             | type          | description   |
-| ---------------- | ------------- | ------------- |
-| height           | String        | `40px`  |
+## Examples
 
 
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/current-selections](https://qdt-apps.qlik.com/qdt-components/react/#/current-selections)
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/current-selections)
 
 ---
 

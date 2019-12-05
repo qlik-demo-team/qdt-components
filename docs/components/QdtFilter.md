@@ -2,27 +2,9 @@
 
 ![QdtFilter](../assets/filters.png?raw=true "QdtFilter")
 
-This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
+- This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` will be ignored.
 
-### Html Code
-
-```
-<QdtComponent
-  type="QdtViz"
-  props={{
-    type: 'barchart',
-    id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398',
-    height: '300px',
-    exportData: true,
-    exportImg: true,
-    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
-    exportPdf: true,
-    exportPdfOptions: { documentSize: { width: 300, height: 150 } },
-  }}
-/>
-```
-
-### Properties
+## Properties
 
 | prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
@@ -43,7 +25,33 @@ This creates a custom filter dropdown. If `cols` is defined, `qListObjectDef` wi
 [exportImg]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportImg-method.htm
 [exportPdf]: https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportPdf-method.htm
 
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/filters](https://qdt-apps.qlik.com/qdt-components/react/#/filters)
+## Code
+
+### Vanilla JavaScript
+
+### React
+
+```jsx
+<QdtComponent
+  type="QdtViz"
+  props={{
+    type: 'barchart',
+    id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398',
+    height: '300px',
+    exportData: true,
+    exportImg: true,
+    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
+    exportPdf: true,
+    exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+  }}
+/>
+```
+
+### Angular
+
+## Examples
+
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/filters)
 
 ---
 

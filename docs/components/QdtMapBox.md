@@ -2,11 +2,30 @@
 
 ![QdtMapBox](../assets/picassoMapbox.png "QdtMapBox")
 
-[MapBox Api Docs](https://docs.mapbox.com/mapbox-gl-js/overview/)
+- `QdtMapBox` allows you to create a Map and MapBox layer(s). 
+- See the [MapBox Api Docs](https://docs.mapbox.com/mapbox-gl-js/overview/) for more information on MapBox and to get your access token
 
-### Html Code
+## Properties
 
-```
+| prop               | type          | description   |
+| ------------------ | ------------- | ------------- |
+| cols               | Array         | `[id],[lat],[lon],[field]` |
+| accessToken        | String        | `pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q`  |
+| style              | String        | `mapbox://styles/mapbox/streets-v11`  |
+| center             | Array         | `[-74.50, 40]`  |
+| zoom               | Int           | `4`             |
+| height             | Int           | `400`           |
+| getData            | Function      | `const callback = (qData, qLayout) => {}`           |
+| getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
+
+## Code
+
+### Vanilla JavaScript
+
+
+### React
+
+```jsx
 <QdtComponent
   type="QdtMapBox"
   props={{
@@ -30,21 +49,11 @@
   }}
 />
 ```
+### Angular
 
-### Properties
+## Examples
 
-| prop               | type          | description   |
-| ------------------ | ------------- | ------------- |
-| cols               | Array         | `[id],[lat],[lon],[field]` |
-| accessToken        | String        | `pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q`  |
-| style              | String        | `mapbox://styles/mapbox/streets-v11`  |
-| center             | Array         | `[-74.50, 40]`  |
-| zoom               | Int           | `4`             |
-| height             | Int           | `400`           |
-| getData            | Function      | const callback = (qData, qLayout) => {}           |
-| getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
-
-#### Live [https://qdt-apps.qlik.com/qdt-components/react/#/mapbox](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
+#### [Live](https://qdt-apps.qlik.com/qdt-components/react/#/mapbox)
 
 ---
 
