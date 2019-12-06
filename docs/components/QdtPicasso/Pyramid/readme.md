@@ -20,12 +20,23 @@ var element = document.getElementById('qdt1');
 qdtComponents.render(
   "QdtPicasso", 
   {
-    type: 'pie', 
+    type: 'pyramid',
     cols: [
-      'Case Owner Group',
-      '=Num(Avg([Case Duration Time]), "##")'
+      '[Case Owner Group]',
+      {
+        qDef: {
+          qLabel: 'Open Cases',
+          qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+        },
+      },
+      {
+        qDef: {
+          qLabel: 'Closed Cases',
+          qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+        },
+      },
     ],
-    outerHeight: 300,
+    outerHeight: 400,
   }, 
   element
 );
@@ -37,12 +48,23 @@ qdtComponents.render(
 const chart_options = {
   type: 'QdtPicasso',
   props: {
-    type: 'pie',
+    type: 'pyramid',
     cols: [
-      'Case Owner Group',
-      '=Num(Avg([Case Duration Time]), "##")'
+      '[Case Owner Group]',
+      {
+        qDef: {
+          qLabel: 'Open Cases',
+          qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+        },
+      },
+      {
+        qDef: {
+          qLabel: 'Closed Cases',
+          qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+        },
+      },
     ],
-    outerHeight: 300,
+    outerHeight: 400,
   },
 };
 
@@ -60,26 +82,37 @@ render(<App />, document.getElementById('root'));
 ### Angular
 
 ```js
-// pie-chart.component.ts
+// pyramid-chart.component.ts
 import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'picasso-pie-chart',
-  templateUrl: './picasso-pie-chart.component.html',
+  selector: 'picasso-pyramid-chart',
+  templateUrl: './picasso-pyramid-chart.component.html',
 })
-export class PicassoPieChartComponent implements OnInit {
+export class PicassoPyramidChartComponent implements OnInit {
 
   constructor(private el: ElementRef) { }
 
   chart_options = {
     type: 'QdtPicasso',
     props: {
-      type: 'pie',
+      type: 'pyramid',
       cols: [
-        'Case Owner Group',
-        '=Num(Avg([Case Duration Time]), "##")'
+        '[Case Owner Group]',
+        {
+          qDef: {
+            qLabel: 'Open Cases',
+            qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+          },
+        },
+        {
+          qDef: {
+            qLabel: 'Closed Cases',
+            qDef: '=Count( {$<Priority={\'Medium\'}, Status -={\'Closed\'} >} Distinct %CaseId )',
+          },
+        },
       ],
-      outerHeight: 300,
+      outerHeight: 400,
     },
   };
 
@@ -92,7 +125,7 @@ export class PicassoPieChartComponent implements OnInit {
 
 ```html
 <!-- html -->
-<picasso-pie-chart [Component]="chart_options.type" [props]="chart_options.props"></picasso-pie-chart>
+<picasso-pyramid-chart [Component]="chart_options.type" [props]="chart_options.props"></picasso-pyramid-chart>
 ```
 
 [← QdtPicasso](../)
