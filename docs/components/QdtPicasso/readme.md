@@ -12,7 +12,7 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 
 | prop             | type          | description   |
 | :---: | :---: | :--- |
-| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `scatterplot`, `verticalBarchart`, `stackedBarchart`, `verticalGauge`, `verticalRangeGauge`, `rangeArea`, `verticalGroupBarchart` |
+| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `pointDistribution`, `pyramid`, `rangeArea`, `scatterplot`, `stackedBarchart`,  `verticalBarchart`, `verticalGauge`,  `verticalGroupBarchart`, `verticalRangeGauge` |
 | cols             | Array         | `[dimension, measure]` |
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
