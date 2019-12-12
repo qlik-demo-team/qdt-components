@@ -12,7 +12,7 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 
 | prop             | type          | description   |
 | :---: | :---: | :--- |
-| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `scatterplot`, `verticalBarchart`, `stackedBarchart`, `verticalGauge`, `verticalRangeGauge`, `rangeArea`, `verticalGroupBarchart` |
+| type             | String        | `comboLineBarchart`, `horizontalBarchart`, `lineChart`, `multiLineChart`, `pie`, `piechart`, `pointDistribution`, `pyramid`, `rangeArea`, `scatterplot`, `stackedBarchart`,  `verticalBarchart`, `verticalGauge`,  `verticalGroupBarchart`, `verticalRangeGauge` |
 | cols             | Array         | `[dimension, measure]` |
 | options          | Object        | `color` |
 | prio             | String        | `canvas` or `svg`. If omitted, it defaults to canvas |
@@ -28,13 +28,9 @@ Create a chart in [Picasso.js](https://picassojs.com/) using the Engine API ([No
 |:---:|:---:|:---:|:---:|:---:|
 |[![picassoMultiLinechart](./assets/picassoMultiLinechart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-multi-line-chart)|[![picassoStackedBarchart](./assets/picassoStackedBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/stacked-barchart)|[![gauge](./assets/gauge.png)](https://qdt-apps.qlik.com/qdt-components/react/#/gauge)|[![picassoRangeAreaChart](./assets/picassoRangeAreaChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-range-area-chart)|[![picassoVerticalBarchart](./assets/picassoVerticalBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-vertical-group-barchart)|
 
----
-
-Since we have made all elements into individual components, you can create custom charts by mixing components like boxes and lines
-
-| [Custom Combo Chart](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart) | [Custom Group Barchart](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-vertical-group-barchart) |
-| :----:                            |    :----:                     |
-| [![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)| [![picassoCustomGroupBarchart](./assets/picassoCustomGroupBarchart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-vertical-group-barchart) |
+|[Gantt Chart](./Gantt)|[Marimekko Chart](./Mekko)|[Custom Chart](./CustomChart)|[Point Distribution](./PointDistribution)|[Pyramid](./Pyramid)|
+|:----:|:----:|:----:|:----:|:----:|
+|[![Picasso Gantt Chart](./assets/picassoGantt.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-gantt)|[![Picasso Mekko Chart](./assets/picassoMekko.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-mekko)|[![picassoCustomChart](./assets/picassoCustomChart.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-custom-combo-chart)|[![Picasso Point Distribution](./assets/picassoPointDistribution.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-point-distribution)|[![Picasso Pyramid](./assets/picassoPyramid.png)](https://qdt-apps.qlik.com/qdt-components/react/#/picasso-pyramid)|
 
 [[↑] Back to top](#top)
 
@@ -153,3 +149,8 @@ render(<App />, document.getElementById('root'));
 
 
 [[↑] Back to top](#top)
+
+
+---
+
+[← Back to All Components](https://github.com/qlik-demo-team/qdt-components#components)

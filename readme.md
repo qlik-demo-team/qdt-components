@@ -20,13 +20,13 @@
 
 Click below to see how you can use qdt-components
 
-* #### [On a simple Html page](docs/usage/Html.md)
+* [On a simple Html page](docs/usage/Html.md)
 
-* #### [With Angular](docs/usage/Angular.md)
+* [With Angular](docs/usage/Angular.md)
 
-* #### [With React](docs/usage/React.md)
+* [With React](docs/usage/React.md)
 
-* #### [With Vue](docs/usage/Vue.md)
+* [With Vue](docs/usage/Vue.md)
 
 ---
 
