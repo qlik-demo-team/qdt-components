@@ -14379,6 +14379,12 @@ _point.settings.y = {
   scale: 'y',
   ref: 'group'
 };
+_point.data.extract.props.d = {
+  field: 'qDimensionInfo/0'
+}; // Need to add a new prop for selections to work
+
+_point.brush.trigger[0].data = ['d'];
+_point.brush.consume[0].data = ['d'];
 delete _point.data.extract.props.num;
 var pointDistribution_setting = {
   scales: {

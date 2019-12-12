@@ -12,6 +12,9 @@ const _point = point({
 _point.data.extract.props.size = { field: 'qMeasureInfo/0' };
 _point.data.extract.props.group = { field: 'qDimensionInfo/0' };
 _point.settings.y = { scale: 'y', ref: 'group' };
+_point.data.extract.props.d = { field: 'qDimensionInfo/0' }; // Need to add a new prop for selections to work
+_point.brush.trigger[0].data = ['d'];
+_point.brush.consume[0].data = ['d'];
 delete _point.data.extract.props.num;
 const setting = {
   scales: {
