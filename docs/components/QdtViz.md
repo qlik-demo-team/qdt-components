@@ -11,7 +11,7 @@ method
 
 ## Properties
 
- prop             | type          | description   |
+| prop             | type          | description   |
 | ---------------- | ------------- | ------------- |
 | id               | String        | Id for an existing visualization |
 | type             | String        | [see here][vizApiCreate] |
@@ -21,13 +21,13 @@ method
 | height           | String        | Sets height of viz |
 | exportData       | Boolean       | Show button for export in CSV |
 | exportDataTitle  | String        | Optional. Set the button title. Defaults to `Export Data`  |
-| eportDataOptions | Object        | [see here][exportData]. Defaults to `{ format: 'CSV_T', state: 'P' }` |
+| exportDataOptions | Object        | [see here][exportData]. Defaults to `{ format: 'CSV_T', state: 'P' }` |
 | exportImg        | Boolean       | Show button for export in JPG |
 | exportImgTitle   | String        | Optional. Set the button title. Defaults to `Export Image`  |
-| eportImgOptions  | Object        | [see here][exportImg]. Defaults to `{ width: 300, height: 400, format: 'JPG' }` |
+| exportImgOptions  | Object        | [see here][exportImg]. Defaults to `{ width: 300, height: 400, format: 'JPG' }` |
 | exportPdf        | Boolean       | Show button for export in PDF |
 | exportPdfTitle   | String        | Optional. Set the button title. Defaults to `Export Pdf`  |
-| eportPdfOptions  | Object        | [see here][exportPdf]. Default to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` |       |
+| exportPdfOptions  | Object        | [see here][exportPdf]. Defaults to `{ documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 }` | 
 
 [vizApiCreate]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/create-method.htm
 [cols]: https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/VisualizationAPI/columns.htm
