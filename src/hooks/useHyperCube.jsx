@@ -1,16 +1,47 @@
-import { useState, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-let qDoc = null;
-let qObject = null;
-let qLayout = null;
-let selections = null;
-let qRData = null;
+const initialState = {
+  qDoc: null,
+  qObject: null,
+  qData: null,
+  qRData: null,
+  qLayout: null,
+  selections: null,
+};
+
+function reducer(state, action) {
+  const {
+    payload: {
+      qDoc, qObject, qData, qRData, qLayout, selections,
+    }, type,
+  } = action;
+  switch (type) {
+    case 'updateReducedData':
+      return {
+        ...state, qRData,
+      };
+    case 'update':
+      return {
+        ...state, qData, qLayout, selections,
+      };
+    case 'init':
+      return {
+        ...state, qDoc, qObject, qRData,
+      };
+    default:
+      throw new Error();
+  }
+}
 
 const useHyperCube = ({
   qDocPromise, qPage, cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qInterColumnSortOrder, qSuppressZero, qSortByExpression, qSuppressMissing, qExpression, getQRData,
 }) => {
-  const [qData, setQData] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const {
+    qData, qRData, qLayout, qObject, selections,
+  } = state;
 
   const generateQProp = () => {
     const qProp = { qInfo: { qType: 'visualization' } };
@@ -65,10 +96,7 @@ const useHyperCube = ({
     return qProp;
   };
 
-  const getLayout = async () => {
-    const _qLayout = await qObject.getLayout();
-    return _qLayout;
-  };
+  const getLayout = () => qObject.getLayout();
 
   const getData = async (qTop) => {
     const qDataPages = await qObject.getHyperCubeData('/qHyperCubeDef', [{ ...qPage, qTop }]);
@@ -94,10 +122,10 @@ const useHyperCube = ({
     const { qTop: qTopGenerated } = qArea || {};
     // We need to be able to pass qTopPassed=0 to force the update with qTop=0
     const qTop = (qTopPassed !== null && qTopPassed >= 0) ? qTopPassed : qTopGenerated;
-    qLayout = await getLayout();
+    const _qLayout = await getLayout();
     const _qData = await getData(qTop);
-    selections = _qData.qMatrix.filter((row) => row[0].qState === 'S');
-    setQData(_qData);
+    const _selections = _qData.qMatrix.filter((row) => row[0].qState === 'S');
+    dispatch({ type: 'update', payload: { qData: _qData, qLayout: _qLayout, selections: _selections } });
   };
 
   const offset = (qTop) => update(qTop);
@@ -107,34 +135,31 @@ const useHyperCube = ({
     await qObject.beginSelections(['/qHyperCubeDef']);
   };
 
-  const endSelections = async (qAccept) => {
-    await qObject.endSelections(qAccept);
-    // await qDoc.abortModal(qAccept);
+  const endSelections = (qAccept) => qObject.endSelections(qAccept);
+
+  const select = async (qElemNumber, _selections, toggle = true) => {
+    await qObject.selectHyperCubeValues('/qHyperCubeDef', qElemNumber, _selections, toggle);
   };
 
-  const select = async (dimIndex, _selections, toggle = true) => {
-    await qObject.selectHyperCubeValues('/qHyperCubeDef', dimIndex, _selections, toggle);
-  };
-
-  const applyPatches = async (patches) => {
-    await qObject.applyPatches(patches);
-  };
+  const applyPatches = (patches) => qObject.applyPatches(patches);
 
   useEffect(() => {
     (async () => {
       const qProp = await generateQProp();
-      qDoc = await qDocPromise;
-      qObject = await qDoc.createSessionObject(qProp);
-      qObject.on('changed', () => { update(); });
-      if (getQRData) qRData = await getReducedData();
-      update();
+      const qDoc = await qDocPromise;
+      const _qObject = await qDoc.createSessionObject(qProp);
+      if (!state.qDoc) dispatch({ type: 'init', payload: { qDoc, qObject: _qObject } });
+      if (state.qDoc && !state.qLayout) {
+        if (getQRData) {
+          const _qRData = await getReducedData();
+          dispatch({ type: 'updateReducedData', payload: { qRData: _qRData } });
+        }
+        update();
+        qObject.on('changed', () => { update(); });
+      }
     })();
-    return () => {
-      const { id } = qObject;
-      qDoc.destroySessionObject(id);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state.qDoc, state.qLayout]);
 
   return {
     beginSelections, endSelections, qLayout, qData, qRData, offset, selections, select, applyPatches,
