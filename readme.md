@@ -35,13 +35,13 @@ Click below to see how you can use qdt-components
 | [QtdViz](docs/components/QdtViz.md)| [QdtCurrentSelections](docs/components/QdtCurrentSelections.md)| [QdtFilter](docs/components/QdtFilter.md) | [QdtSelectionToolbar](docs/components/QdtSelectionToolbar.md)     |
 | :----:| :----: |:----: |:----: |
 | [![QtdViz](docs/assets/embedded.png)](docs/components/QdtViz.md)  | [![QdtCurrentSelections](docs/assets/currentSelections.png)](docs/components/QdtCurrentSelections.md)| [![QdtFilter](docs/assets/filters.png)](docs/components/QdtFilter.md)  | [![QdtSelectionToolbar](docs/assets/selectionToolbar.png)](docs/components/QdtSelectionToolbar.md) |
-|`vizApi: true`|`vizApi: true`|`engineApi: true`|`engineApi: true`|
+|Visualization API|Visualization API|Engine API|Engine API|
 
 
 | [QdtPicasso](docs/components/QdtPicasso/)| [QdtSearch](docs/components/QdtSearch.md)| [QtdMapBox](docs/components/QdtMapBox.md)| [QdtTable](docs/components/QdtTable.md)                           |
 | :----:| :----: |:----: |:----: |
 |[![QdtPicasso](docs/components/QdtPicasso/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QdtMapBox.md) |[![QdtTable](docs/assets/table.png)](docs/components/QdtTable.md) |
-|`engineApi: true`|`engineApi: true`|`engineApi: true`|`engineApi: true`|
+|Engine API|Engine API|Engine API|Engine API|
 
 ---
 
