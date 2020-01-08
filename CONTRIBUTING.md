@@ -13,11 +13,11 @@ Commit messages should follow the commit message convention. Each type should be
 
 |Prefix|Purpose|
 |:---:|:---|
-|**build**|Changes that affect the build system or external dependencies|
-|**docs**|Changes to documentation|
-|**feat**|A new feature|
-|**fix**|A bug fix|
-|**perf**|A code change that improves performance|
-|**refactor**|Changes to production code that is neither a new feature nor a bug fix|
-|**revert**|Reverts a previous commit|
-|**style**|Changes to code style formatting (white space, commas etc)|
+|"build:"|Changes that affect the build system or external dependencies|
+|"docs:"|Changes to documentation|
+|"feat:"|A new feature|
+|"fix:"|A bug fix|
+|"perf:"|A code change that improves performance|
+|"refactor:"|Changes to production code that is neither a new feature nor a bug fix|
+|"revert:"|Reverts a previous commit|
+|"style:"|Changes to code style formatting (white space, commas etc)|
