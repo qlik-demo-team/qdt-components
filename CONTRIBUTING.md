@@ -6,7 +6,7 @@ We do not need a signed CLA agreeement.
 For a local installation, start with `npm install` and then `npm run start`.
 
 Before you commit, run `npm run lint`, verify that there are no warnings or errors, and 
-please follow the commit message guidelines below.
+please follow the [commit message guidelines](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Commit message guidelines
 Commit messages should follow the commit message convention. Each type should be one of the following:
