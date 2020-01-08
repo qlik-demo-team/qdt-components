@@ -26,5 +26,3 @@ Commit messages should follow the commit message convention. Each type should be
 **revert**: Reverts a previous commit
 
 **style**: Changes to code style formatting (white space, commas etc)
-
-**test**: Changes in test cases of production code
