@@ -4,7 +4,7 @@
 
 # Qdt Components
 
-- Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple html, Angular6, React 16 and Vue 2
+- Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple HTML (Vanilla JavaScript), Angular6, React 16, and Vue 2
 
 
 ### Installation
@@ -20,7 +20,7 @@
 
 Click below to see how you can use qdt-components
 
-* [On a simple Html page](docs/usage/Html.md)
+* [On a simple HTML page](docs/usage/Html.md)
 
 * [With Angular](docs/usage/Angular.md)
 
