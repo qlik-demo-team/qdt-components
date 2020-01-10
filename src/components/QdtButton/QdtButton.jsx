@@ -4,18 +4,21 @@
  * @param {string} title - The text on the button
  * @description
  * exportData, exportImg, exportPdf documentation:
- * https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/QVisualization.htm
+ * https://help.qlik.com/en-US/sense-developer/November2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/QVisualization.htm
 */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { LuiButton } from '../QdtLui';
 import '../../styles/index.scss';
 
 const QdtButton = (props) => {
   const {
-    type, qDocPromise, qAppPromise, qVizPromise, options, title, block,
+    type, qDocPromise, qAppPromise, qViz, options, title, block,
   } = props;
+
+  let qDoc = null;
+  let qApp = null;
 
   // Sept 2018 BUG. Adds the current www folder in the path
   const urlFix = (url) => {
@@ -26,9 +29,6 @@ const QdtButton = (props) => {
   };
 
   const action = async () => {
-    const qDoc = (qDocPromise) ? await qDocPromise : null;
-    const qApp = (qAppPromise) ? await qAppPromise : null;
-    const qViz = (qVizPromise) ? await qVizPromise : null;
     switch (type) {
       default:
       case 'clearSelections':
@@ -37,44 +37,52 @@ const QdtButton = (props) => {
         break;
       case 'exportData':
         if (qViz) {
-          const myOptions = (options) || { format: 'CSV_T', state: 'P' };
-          const url = await qViz.exportData(myOptions);
-          const myUrl = urlFix(url);
-          window.open(myUrl, '_blank');
+          const _options = (options) || { format: 'CSV_T', state: 'P' };
+          const url = await qViz.exportData(_options);
+          const _url = urlFix(url);
+          window.open(_url, '_blank');
         }
         break;
       case 'exportImg':
         if (qViz) {
-          const myOptions = (options) || { width: 300, height: 400, format: 'JPG' };
-          const url = await qViz.exportImg(myOptions);
-          const myUrl = urlFix(url);
-          window.open(myUrl, '_blank');
+          const _options = (options) || { width: 300, height: 400, format: 'JPG' };
+          const url = await qViz.exportImg(_options);
+          const _url = urlFix(url);
+          window.open(_url, '_blank');
         }
         break;
       case 'exportPdf':
         if (qViz) {
-          const myOptions = (options) || { documentSize: 'A4', orientation: 'landscape', aspectRatio: 2 };
-          const url = await qViz.exportPdf(myOptions);
-          const myUrl = urlFix(url);
-          window.open(myUrl, '_blank');
+          const _options = (options) || { documentSize: 'a4', orientation: 'landscape', aspectRatio: 2 };
+          const url = await qViz.exportPdf(_options);
+          const _url = urlFix(url);
+          window.open(_url, '_blank');
         }
         break;
     }
   };
 
+  useEffect(() => {
+    (async () => {
+      if (qDocPromise) qDoc = await qDocPromise;
+      if (qAppPromise) qApp = await qAppPromise;
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qDocPromise, qAppPromise, qViz]);
+
   return (
-    <div>
+    <>
       <LuiButton onClick={action} block={block}>
         {title}
       </LuiButton>
-    </div>
+    </>
   );
 };
 
 QdtButton.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  qAppPromise: PropTypes.object.isRequired,
-  qVizPromise: PropTypes.object,
+  qDocPromise: PropTypes.object,
+  qAppPromise: PropTypes.object,
+  qViz: PropTypes.object,
   type: PropTypes.oneOf(['clearSelections', 'exportData', 'exportImg', 'exportPdf']).isRequired,
   title: PropTypes.string.isRequired,
   block: PropTypes.string,
@@ -82,8 +90,10 @@ QdtButton.propTypes = {
 };
 
 QdtButton.defaultProps = {
+  qDocPromise: null,
+  qAppPromise: null,
+  qViz: null,
   block: false,
-  qVizPromise: null,
   options: {},
 };
 
