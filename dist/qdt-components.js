@@ -54615,7 +54615,7 @@ Preloader_Preloader.defaultProps = {
  * @param {string} title - The text on the button
  * @description
  * exportData, exportImg, exportPdf documentation:
- * https://help.qlik.com/en-US/sense-developer/September2018/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/QVisualization.htm
+ * https://help.qlik.com/en-US/sense-developer/November2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/QVisualization.htm
 */
 
 
@@ -54626,10 +54626,12 @@ var QdtButton_QdtButton = function QdtButton(props) {
   var type = props.type,
       qDocPromise = props.qDocPromise,
       qAppPromise = props.qAppPromise,
-      qVizPromise = props.qVizPromise,
+      qViz = props.qViz,
       options = props.options,
       title = props.title,
-      block = props.block; // Sept 2018 BUG. Adds the current www folder in the path
+      block = props.block;
+  var qDoc = null;
+  var qApp = null; // Sept 2018 BUG. Adds the current www folder in the path
 
   var urlFix = function urlFix(url) {
     var tempUrl = url.split('/');
@@ -54646,143 +54648,87 @@ var QdtButton_QdtButton = function QdtButton(props) {
     var _ref = asyncToGenerator_default()(
     /*#__PURE__*/
     regenerator_default.a.mark(function _callee() {
-      var qDoc, qApp, qViz, myOptions, url, myUrl, _myOptions, _url2, _myUrl, _myOptions2, _url3, _myUrl2;
+      var _options, url, _url, _options2, _url2, _url3, _options3, _url4, _url5;
 
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!qDocPromise) {
-                _context.next = 6;
-                break;
-              }
-
-              _context.next = 3;
-              return qDocPromise;
+              _context.t0 = type;
+              _context.next = _context.t0 === 'clearSelections' ? 3 : _context.t0 === 'exportData' ? 6 : _context.t0 === 'exportImg' ? 14 : _context.t0 === 'exportPdf' ? 22 : 3;
+              break;
 
             case 3:
-              _context.t0 = _context.sent;
-              _context.next = 7;
-              break;
-
-            case 6:
-              _context.t0 = null;
-
-            case 7:
-              qDoc = _context.t0;
-
-              if (!qAppPromise) {
-                _context.next = 14;
-                break;
-              }
-
-              _context.next = 11;
-              return qAppPromise;
-
-            case 11:
-              _context.t1 = _context.sent;
-              _context.next = 15;
-              break;
-
-            case 14:
-              _context.t1 = null;
-
-            case 15:
-              qApp = _context.t1;
-
-              if (!qVizPromise) {
-                _context.next = 22;
-                break;
-              }
-
-              _context.next = 19;
-              return qVizPromise;
-
-            case 19:
-              _context.t2 = _context.sent;
-              _context.next = 23;
-              break;
-
-            case 22:
-              _context.t2 = null;
-
-            case 23:
-              qViz = _context.t2;
-              _context.t3 = type;
-              _context.next = _context.t3 === 'clearSelections' ? 27 : _context.t3 === 'exportData' ? 30 : _context.t3 === 'exportImg' ? 38 : _context.t3 === 'exportPdf' ? 46 : 27;
-              break;
-
-            case 27:
               if (qApp) qApp.clearAll();
               if (qDoc) qDoc.clearAll();
-              return _context.abrupt("break", 54);
+              return _context.abrupt("break", 30);
 
-            case 30:
+            case 6:
               if (!qViz) {
-                _context.next = 37;
+                _context.next = 13;
                 break;
               }
 
-              myOptions = options || {
+              _options = options || {
                 format: 'CSV_T',
                 state: 'P'
               };
-              _context.next = 34;
-              return qViz.exportData(myOptions);
+              _context.next = 10;
+              return qViz.exportData(_options);
 
-            case 34:
+            case 10:
               url = _context.sent;
-              myUrl = urlFix(url);
-              window.open(myUrl, '_blank');
+              _url = urlFix(url);
+              window.open(_url, '_blank');
 
-            case 37:
-              return _context.abrupt("break", 54);
+            case 13:
+              return _context.abrupt("break", 30);
 
-            case 38:
+            case 14:
               if (!qViz) {
-                _context.next = 45;
+                _context.next = 21;
                 break;
               }
 
-              _myOptions = options || {
+              _options2 = options || {
                 width: 300,
                 height: 400,
                 format: 'JPG'
               };
-              _context.next = 42;
-              return qViz.exportImg(_myOptions);
+              _context.next = 18;
+              return qViz.exportImg(_options2);
 
-            case 42:
+            case 18:
               _url2 = _context.sent;
-              _myUrl = urlFix(_url2);
-              window.open(_myUrl, '_blank');
+              _url3 = urlFix(_url2);
+              window.open(_url3, '_blank');
 
-            case 45:
-              return _context.abrupt("break", 54);
+            case 21:
+              return _context.abrupt("break", 30);
 
-            case 46:
+            case 22:
               if (!qViz) {
-                _context.next = 53;
+                _context.next = 29;
                 break;
               }
 
-              _myOptions2 = options || {
-                documentSize: 'A4',
+              _options3 = options || {
+                documentSize: 'a4',
                 orientation: 'landscape',
                 aspectRatio: 2
               };
-              _context.next = 50;
-              return qViz.exportPdf(_myOptions2);
+              _context.next = 26;
+              return qViz.exportPdf(_options3);
 
-            case 50:
-              _url3 = _context.sent;
-              _myUrl2 = urlFix(_url3);
-              window.open(_myUrl2, '_blank');
+            case 26:
+              _url4 = _context.sent;
+              _url5 = urlFix(_url4);
+              window.open(_url5, '_blank');
 
-            case 53:
-              return _context.abrupt("break", 54);
+            case 29:
+              return _context.abrupt("break", 30);
 
-            case 54:
+            case 30:
             case "end":
               return _context.stop();
           }
@@ -54795,24 +54741,66 @@ var QdtButton_QdtButton = function QdtButton(props) {
     };
   }();
 
-  return react_default.a.createElement("div", null, react_default.a.createElement(QdtLui_LuiButton, {
+  Object(react["useEffect"])(function () {
+    asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee2() {
+      return regenerator_default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!qDocPromise) {
+                _context2.next = 4;
+                break;
+              }
+
+              _context2.next = 3;
+              return qDocPromise;
+
+            case 3:
+              qDoc = _context2.sent;
+
+            case 4:
+              if (!qAppPromise) {
+                _context2.next = 8;
+                break;
+              }
+
+              _context2.next = 7;
+              return qAppPromise;
+
+            case 7:
+              qApp = _context2.sent;
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))(); // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [qDocPromise, qAppPromise, qViz]);
+  return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement(QdtLui_LuiButton, {
     onClick: action,
     block: block
   }, title));
 };
 
 QdtButton_QdtButton.propTypes = {
-  qDocPromise: prop_types_default.a.object.isRequired,
-  qAppPromise: prop_types_default.a.object.isRequired,
-  qVizPromise: prop_types_default.a.object,
+  qDocPromise: prop_types_default.a.object,
+  qAppPromise: prop_types_default.a.object,
+  qViz: prop_types_default.a.object,
   type: prop_types_default.a.oneOf(['clearSelections', 'exportData', 'exportImg', 'exportPdf']).isRequired,
   title: prop_types_default.a.string.isRequired,
   block: prop_types_default.a.string,
   options: prop_types_default.a.object
 };
 QdtButton_QdtButton.defaultProps = {
+  qDocPromise: null,
+  qAppPromise: null,
+  qViz: null,
   block: false,
-  qVizPromise: null,
   options: {}
 };
 /* harmony default export */ var components_QdtButton_QdtButton = (QdtButton_QdtButton);
@@ -54847,10 +54835,11 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
       exportPdfTitle = _ref.exportPdfTitle,
       exportPdfOptions = _ref.exportPdfOptions;
 
-  var _useState = Object(react["useState"])(true),
+  // const [loading, setLoading] = useState(true);
+  var _useState = Object(react["useState"])(null),
       _useState2 = slicedToArray_default()(_useState, 2),
-      loading = _useState2[0],
-      setLoading = _useState2[1];
+      qViz = _useState2[0],
+      setQViz = _useState2[1];
 
   var _useState3 = Object(react["useState"])(null),
       _useState4 = slicedToArray_default()(_useState3, 2),
@@ -54858,13 +54847,13 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
       setError = _useState4[1];
 
   var node = Object(react["useRef"])(null);
-  var qViz = null;
+  var qVizPromise = null; // let qViz = null;
+
   var btnStyle = {
     display: 'inline-block',
     paddingRight: 20,
     paddingTop: 15
   };
-  var qVizPromise = null;
 
   var create =
   /*#__PURE__*/
@@ -54872,7 +54861,8 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
     var _ref2 = asyncToGenerator_default()(
     /*#__PURE__*/
     regenerator_default.a.mark(function _callee() {
-      var qApp;
+      var qApp, _qViz;
+
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -54888,18 +54878,15 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
               return qVizPromise;
 
             case 6:
-              qViz = _context.sent;
-              qViz.setOptions(options);
+              _qViz = _context.sent;
+
+              _qViz.setOptions(options); // await setLoading(false);
+
+
               _context.next = 10;
-              return setLoading(false);
+              return setQViz(_qViz);
 
             case 10:
-              qViz.show(node.current, {
-                noSelections: noSelections,
-                noInteraction: noInteraction
-              });
-
-            case 11:
             case "end":
               return _context.stop();
           }
@@ -54911,6 +54898,13 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
+
+  var show = function show() {
+    qViz.show(node.current, {
+      noSelections: noSelections,
+      noInteraction: noInteraction
+    });
+  };
 
   var close = function close() {
     qViz.close();
@@ -54929,13 +54923,19 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                if (qViz) {
+                  _context2.next = 3;
+                  break;
+                }
+
+                _context2.next = 3;
                 return create();
 
-              case 2:
+              case 3:
+                if (qViz) show();
                 window.addEventListener('resize', resize);
 
-              case 3:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -54947,15 +54947,15 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
     }
 
     return function () {
-      close();
+      if (qViz) close();
       window.removeEventListener('resize', resize);
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return react_default.a.createElement(react_default.a.Fragment, null, error && react_default.a.createElement("div", null, error.message), loading && react_default.a.createElement(utilities_Preloader, {
+  }, [qViz]);
+  return react_default.a.createElement(react_default.a.Fragment, null, error && react_default.a.createElement("div", null, error.message), !qViz && react_default.a.createElement(utilities_Preloader, {
     width: width,
     height: height,
     paddingTop: parseInt(height, 0) ? height / 2 - 10 : 0
-  }), !error && !loading && react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
+  }), !error && qViz && react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     ref: node,
     style: {
       width: width,
@@ -54967,21 +54967,21 @@ var QdtViz_QdtViz = function QdtViz(_ref) {
     style: btnStyle
   }, react_default.a.createElement(components_QdtButton_QdtButton, {
     type: "exportData",
-    qVizPromise: qVizPromise,
+    qViz: qViz,
     title: exportDataTitle,
     options: exportDataOptions
   })), exportImg && react_default.a.createElement("div", {
     style: btnStyle
   }, react_default.a.createElement(components_QdtButton_QdtButton, {
     type: "exportImg",
-    qVizPromise: qVizPromise,
+    qViz: qViz,
     title: exportImgTitle,
     options: exportImgOptions
   })), exportPdf && react_default.a.createElement("div", {
     style: btnStyle
   }, react_default.a.createElement(components_QdtButton_QdtButton, {
     type: "exportPdf",
-    qVizPromise: qVizPromise,
+    qViz: qViz,
     title: exportPdfTitle,
     options: exportPdfOptions
   }))));
@@ -55036,7 +55036,7 @@ QdtViz_QdtViz.defaultProps = {
   exportPdf: false,
   exportPdfTitle: 'Export Pdf',
   exportPdfOptions: {
-    documentSize: 'A4',
+    documentSize: 'a4',
     orientation: 'landscape',
     aspectRatio: 2
   }
