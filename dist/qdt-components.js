@@ -56714,24 +56714,6 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   var handleCallback = Object(react["useCallback"])(function () {
     return getData(qData, qLayout);
   }, [getData, qData, qLayout]);
-  /*
-  This is an example of what I could do:
-    - allow the user to pass in a callback
-  // Give access to an object with lat, lon, id, and [property]
-  function doSomething(property, callback) {
-      let obj = {
-          "width": 50,
-          "lat": -77,
-          "lon": 38,
-          "description": null
-      }
-       let newObj = {...obj, [property]: callback(obj)}
-       console.log(newObj)
-  }
-   doSomething('description', (d) => {
-      return `${d.lat},${d.lon}: Items`
-  })
-  */
 
   function buildFeatureSimplified(obj) {
     var featureObj = {
