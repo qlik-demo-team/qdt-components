@@ -331,7 +331,6 @@ th.active:after {
     }
 }
 
-
 /**********************
  * QdtSearch
 **********************/
@@ -343,3 +342,5 @@ th.active:after {
         }
     }
 }
+
+button:focus { outline: 0 !important; }
