@@ -312,6 +312,28 @@ module.exports = _objectWithoutProperties;
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(49);
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(13)(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports) {
 
 function _extends() {
@@ -333,28 +355,6 @@ function _extends() {
 }
 
 module.exports = _extends;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(49);
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(13)(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
 
 /***/ }),
 /* 11 */
@@ -12064,7 +12064,7 @@ var getUrl = __webpack_require__(25);
 var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(50));
 var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(51));
 // Module
-exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}\n", ""]);
+exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}button:focus{outline:0 !important}\n", ""]);
 
 
 /***/ }),
@@ -12219,7 +12219,7 @@ var regenerator = __webpack_require__(2);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(9);
+var helpers_extends = __webpack_require__(10);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
@@ -50422,6 +50422,7 @@ function useListObject_ownKeys(object, enumerableOnly) { var keys = Object.keys(
 function useListObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { useListObject_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { useListObject_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
+ // import useSequencer from './useSequencer';
 
 var initialState = {
   qDoc: null,
@@ -50676,6 +50677,10 @@ var useListObject_useListObject = function useListObject(_ref) {
     return qObject.applyPatches(patches);
   };
 
+  var clearSelections = function clearSelections() {
+    return qObject.clearSelections('/qListObjectDef');
+  };
+
   Object(react["useEffect"])(function () {
     asyncToGenerator_default()(
     /*#__PURE__*/
@@ -50735,7 +50740,8 @@ var useListObject_useListObject = function useListObject(_ref) {
     searchListObjectFor: searchListObjectFor,
     acceptListObjectSearch: acceptListObjectSearch,
     applyPatches: applyPatches,
-    selections: selections
+    selections: selections,
+    clearSelections: clearSelections
   };
 };
 
@@ -50926,7 +50932,7 @@ StateCountsBar_StateCountsBar.propTypes = {
 };
 /* harmony default export */ var QdtFilter_StateCountsBar = (StateCountsBar_StateCountsBar);
 // EXTERNAL MODULE: ./src/styles/index.scss
-var src_styles_0 = __webpack_require__(10);
+var src_styles_0 = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./src/components/QdtFilter/QdtFilter.jsx
 
@@ -57022,6 +57028,183 @@ QdtMapBox_QdtMapBox.defaultProps = {
   qExpression: null
 };
 /* harmony default export */ var QdtMapbox_QdtMapBox = (QdtMapBox_QdtMapBox);
+// CONCATENATED MODULE: ./src/hooks/useSequencer.jsx
+
+
+
+var useSequencer_useSequencer = function useSequencer(_ref) {
+  var qData = _ref.qData,
+      delay = _ref.delay,
+      select = _ref.select,
+      selectRow = _ref.selectRow,
+      toggleSelections = _ref.toggleSelections,
+      keyCode = _ref.keyCode,
+      clearSelections = _ref.clearSelections;
+
+  var _useState = Object(react["useState"])(false),
+      _useState2 = slicedToArray_default()(_useState, 2),
+      init = _useState2[0],
+      setInit = _useState2[1];
+
+  var _useState3 = Object(react["useState"])(false),
+      _useState4 = slicedToArray_default()(_useState3, 2),
+      play = _useState4[0],
+      setPlay = _useState4[1];
+
+  var _useState5 = Object(react["useState"])(0),
+      _useState6 = slicedToArray_default()(_useState5, 2),
+      currentRowIndex = _useState6[0],
+      setCurrentRowIndex = _useState6[1];
+
+  var startSequencer = function startSequencer() {
+    return setPlay(true);
+  };
+
+  var stopSequencer = function stopSequencer() {
+    return setPlay(false);
+  };
+
+  var reloadSequencer = function reloadSequencer() {
+    setCurrentRowIndex(0);
+    if (selectRow) clearSelections();
+  };
+
+  var checkKey = function checkKey(event) {
+    if (event.keyCode === keyCode) setPlay(!play);
+  };
+
+  Object(react["useEffect"])(function () {
+    if (!init && qData) setInit(true);
+    if (init && play) setTimeout(function () {
+      return setCurrentRowIndex(currentRowIndex + 1);
+    }, delay * 1000);
+    if (init && play && selectRow && qData && qData.qMatrix[currentRowIndex]) select(qData.qMatrix[currentRowIndex][0].qElemNumber, toggleSelections, true);
+    if (init && play && currentRowIndex === qData.qMatrix.length) setPlay(false);
+    if (keyCode) window.addEventListener('keydown', checkKey, true);
+    return function () {
+      if (keyCode) window.removeEventListener('keydown', checkKey, true);
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [init, play, currentRowIndex]);
+  return {
+    currentRowIndex: currentRowIndex,
+    play: play,
+    startSequencer: startSequencer,
+    stopSequencer: stopSequencer,
+    reloadSequencer: reloadSequencer
+  };
+};
+
+/* harmony default export */ var hooks_useSequencer = (useSequencer_useSequencer);
+// CONCATENATED MODULE: ./src/components/QdtSequencer/QdtSequencer.jsx
+/**
+ * @name QdtSequencer
+ * @param {array} cols - Dimension for the data to cycle through
+ * @param {number} delay [5] - Loop through the results in given seconds.
+ * @param {bool} selectRow [false] - If we want each cycled row to be selected.
+ * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles play.
+ * @param {bool} navigation [true] - If we want to show / hide the navigation and use only key strokes
+ * @description
+ * Loop through a dimension and make selections.
+*/
+
+
+
+
+
+
+var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
+  var qDocPromise = _ref.qDocPromise,
+      cols = _ref.cols,
+      qPage = _ref.qPage,
+      delay = _ref.delay,
+      selectRow = _ref.selectRow,
+      keyCode = _ref.keyCode,
+      navigation = _ref.navigation,
+      toggleSelections = _ref.toggleSelections;
+
+  var _useListObject = hooks_useListObject({
+    qDocPromise: qDocPromise,
+    cols: cols,
+    qPage: qPage
+  }),
+      qLayout = _useListObject.qLayout,
+      qData = _useListObject.qData,
+      select = _useListObject.select,
+      clearSelections = _useListObject.clearSelections;
+
+  var _useSequencer = hooks_useSequencer({
+    qLayout: qLayout,
+    qData: qData,
+    delay: delay,
+    select: select,
+    selectRow: selectRow,
+    toggleSelections: toggleSelections,
+    keyCode: keyCode,
+    clearSelections: clearSelections
+  }),
+      currentRowIndex = _useSequencer.currentRowIndex,
+      play = _useSequencer.play,
+      startSequencer = _useSequencer.startSequencer,
+      stopSequencer = _useSequencer.stopSequencer,
+      reloadSequencer = _useSequencer.reloadSequencer;
+
+  var style = {
+    bar: {
+      border: '1px solid rgba(0,0,0,0.1)',
+      padding: '3px',
+      textAlign: 'center'
+    },
+    start: !play ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
+    stop: play ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
+    restart: !play && currentRowIndex >= 1 ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled'
+  };
+  return react_default.a.createElement(react_default.a.Fragment, null, navigation && react_default.a.createElement("div", {
+    style: style.bar
+  }, react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("button", {
+    className: style.start,
+    type: "button",
+    onClick: startSequencer
+  }, react_default.a.createElement("span", {
+    className: "lui-fade-button__icon lui-icon lui-icon--triangle-right"
+  })), react_default.a.createElement("button", {
+    className: style.stop,
+    type: "button",
+    onClick: stopSequencer
+  }, react_default.a.createElement("span", {
+    className: "lui-fade-button__icon lui-icon lui-icon--pause"
+  })), react_default.a.createElement("button", {
+    className: style.restart,
+    type: "button",
+    onClick: reloadSequencer
+  }, react_default.a.createElement("span", {
+    className: "lui-fade-button__icon lui-icon lui-icon--stop"
+  }))), qData && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText && react_default.a.createElement("div", null, cols[0], ': ', qData.qMatrix[currentRowIndex][0].qText, ' (', currentRowIndex, ' of ', qData.qMatrix.length, ')')));
+};
+
+QdtSequencer_QdtSequencer.propTypes = {
+  qDocPromise: prop_types_default.a.object.isRequired,
+  cols: prop_types_default.a.isRequired,
+  qPage: prop_types_default.a.object,
+  delay: prop_types_default.a.number,
+  selectRow: prop_types_default.a.bool,
+  navigation: prop_types_default.a.bool,
+  keyCode: prop_types_default.a.number,
+  toggleSelections: prop_types_default.a.bool
+};
+QdtSequencer_QdtSequencer.defaultProps = {
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 1,
+    qHeight: 100
+  },
+  delay: 5,
+  selectRow: true,
+  navigation: true,
+  keyCode: null,
+  toggleSelections: false
+};
+/* harmony default export */ var components_QdtSequencer_QdtSequencer = (QdtSequencer_QdtSequencer);
 // CONCATENATED MODULE: ./src/QdtComponents.jsx
 
 
@@ -57029,6 +57212,7 @@ QdtMapBox_QdtMapBox.defaultProps = {
 
 
 var QdtComponents_class, _temp;
+
 
 
 
@@ -57058,7 +57242,8 @@ var QdtComponents_components = {
   QdtPicasso: components_QdtPicasso_QdtPicasso,
   QdtSearch: components_QdtSearch_QdtSearch,
   QdtCurrentSelections: components_QdtCurrentSelections_QdtCurrentSelections,
-  QdtMapBox: QdtMapbox_QdtMapBox
+  QdtMapBox: QdtMapbox_QdtMapBox,
+  QdtSequencer: components_QdtSequencer_QdtSequencer
 };
 var QdtComponents_QdtComponents = (_temp = QdtComponents_class = function QdtComponents() {
   var _this = this;
