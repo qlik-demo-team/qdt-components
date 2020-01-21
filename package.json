@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "2.2.15",
+  "version": "2.2.16",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types/qdt-components.d.ts",
