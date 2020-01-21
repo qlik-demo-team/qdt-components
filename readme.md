@@ -43,6 +43,11 @@ Click below to see how you can use qdt-components
 |[![QdtPicasso](docs/components/QdtPicasso/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QdtMapBox.md) |[![QdtTable](docs/assets/table.png)](docs/components/QdtTable.md) |
 |Engine API|Engine API|Engine API|Engine API|
 
+| [QtdSequencer](docs/components/QdtSequencer.md)| | | |
+| :----:| :----: | :----: | :----: |
+| [![QtdSequencer](docs/assets/sequencer.png)](docs/components/QdtSequencer/) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) |
+| Engine API | | | |
+
 ---
 
 ### Contributing
