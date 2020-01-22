@@ -1,8 +1,10 @@
-# QdtSequencer: *Create an animation*
+# QdtSequencer
 
 ![QdtSequencer](../assets/sequencer.png "QdtSequencer")
 
-- Loop through a dimension and make selections.
+- Loop through a dimension in a given interval.
+- Decide if you want to make selections or not.
+- Υou can show/hide the navigation and control start/pause with a key stroke like 32 for spacebar.
 
 ## Properties
 
