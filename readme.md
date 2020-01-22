@@ -45,7 +45,7 @@ Click below to see how you can use qdt-components
 
 | [QtdSequencer](docs/components/QdtSequencer.md)| | | |
 | :----:| :----: | :----: | :----: |
-| [![QtdSequencer](docs/assets/sequencer.png)](docs/components/QdtSequencer/) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) |
+| [![QdtSequencer](docs/assets/sequencer.png)](docs/components/QdtSequencer.md) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) |
 | Engine API | | | |
 
 ---
