@@ -56826,7 +56826,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     var layer = {
       id: 'dots',
       type: 'circle',
-      source: 'users',
+      source: 'hyperCubeData',
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': circleRadius,
@@ -56843,7 +56843,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
 
   var buildMap = function buildMap() {
-    QdtMapBox_map.addSource('users', {
+    QdtMapBox_map.addSource('hyperCubeData', {
       type: 'geojson',
       data: GeoJSON
     });
@@ -56868,7 +56868,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       GeoJSON = QdtMapBox_objectSpread({}, GeoJSON, {
         features: [].concat(toConsumableArray_default()(GeoJSON.features), toConsumableArray_default()(nextChunk))
       });
-      QdtMapBox_map.getSource('users').setData(GeoJSON);
+      QdtMapBox_map.getSource('hyperCubeData').setData(GeoJSON);
     } else {
       GeoJSON = buildGeoJSON();
       buildMap();

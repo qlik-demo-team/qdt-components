@@ -76,7 +76,7 @@ const QdtMapBox = ({
     const layer = {
       id: 'dots',
       type: 'circle',
-      source: 'users',
+      source: 'hyperCubeData',
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': circleRadius,
@@ -93,7 +93,7 @@ const QdtMapBox = ({
   // Using the GeoJSON and map object, we create a Layer for the dots and add them to the map
   // This function also sets up the periodic update to cycle through the dots
   const buildMap = () => {
-    map.addSource('users', {
+    map.addSource('hyperCubeData', {
       type: 'geojson',
       data: GeoJSON,
     });
@@ -116,7 +116,7 @@ const QdtMapBox = ({
     });
     if (GeoJSON) {
       GeoJSON = { ...GeoJSON, features: [...GeoJSON.features, ...nextChunk] };
-      map.getSource('users').setData(GeoJSON);
+      map.getSource('hyperCubeData').setData(GeoJSON);
     } else {
       GeoJSON = buildGeoJSON();
       buildMap();
