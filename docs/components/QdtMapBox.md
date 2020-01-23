@@ -7,16 +7,18 @@
 
 ## Properties
 
-| prop               | type          | description   |
-| ------------------ | ------------- | ------------- |
-| cols               | Array         | `[id],[lat],[lon],[field]` |
-| accessToken        | String        | `pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q`  |
-| style              | String        | `mapbox://styles/mapbox/streets-v11`  |
-| center             | Array         | `[-74.50, 40]`  |
-| zoom               | Int           | `4`             |
-| height             | Int           | `400`           |
-| getData            | Function      | `const callback = (qData, qLayout) => {}`           |
-| getAllDataInterval | Int           | `1` Seconds to paginate through all data           |
+| prop               | type      | default        | description   |
+| ------------------ | --------- | -------------- | ------------- |
+| cols               | Array     | `[]`           | Define the dimensions like `[id],[lat],[lon],[field]` |
+| accessToken        | String    | `pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q` | Your MapBox access token  |
+| style              | String    | `mapbox://styles/mapbox/streets-v11` | Your MapBox style | 
+| center             | Array     | `[-74.50, 40]` | The lat and long of the center of your map |
+| zoom               | Int       | `4`            | The zoom level of the map |
+| pitch              | Int       | `0`            | The camera angle |
+| bearing            | Int       | `0`            | The compass direction, in degrees |
+| height             | Int       | `400`          | Define the height of your div in pixels |
+| getData            | Function  |  `null`        | Define a callback so you can work with the map or the data after the dom is drawn`const callback = (qData, qLayout) => {}` |
+| getAllDataInterval | Int       | `0`            | Seconds to paginate through all data |
 
 ## Code
 
