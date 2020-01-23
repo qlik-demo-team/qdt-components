@@ -13,7 +13,7 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -80,7 +80,6 @@ const QdtMapBox = ({
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': circleRadius,
-        // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
         'circle-color': match,
         'circle-opacity': 1,
       },
@@ -131,6 +130,8 @@ const QdtMapBox = ({
       style, // stylesheet location
       center, // starting position [lng, lat]
       zoom, // starting zoom
+      pitch, // Camera Angle
+      bearing, // Compass Direction
     });
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
@@ -199,6 +200,8 @@ QdtMapBox.propTypes = {
   style: PropTypes.string,
   center: PropTypes.array,
   zoom: PropTypes.number,
+  pitch: PropTypes.number,
+  bearing: PropTypes.number,
   width: PropTypes.string,
   height: PropTypes.string,
   minWidth: PropTypes.string,
@@ -224,6 +227,8 @@ QdtMapBox.defaultProps = {
   style: 'mapbox://styles/mapbox/streets-v11',
   center: [-74.50, 40],
   zoom: 4,
+  pitch: 0, // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
+  bearing: 0,
   width: '100%',
   height: '100%',
   minWidth: 'auto',

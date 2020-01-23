@@ -56743,12 +56743,14 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       style = _ref.style,
       center = _ref.center,
       zoom = _ref.zoom,
+      pitch = _ref.pitch,
+      bearing = _ref.bearing,
       legend = _ref.legend,
       circleRadius = _ref.circleRadius,
       getData = _ref.getData,
       getAllDataInterval = _ref.getAllDataInterval,
       qPage = _ref.qPage,
-      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "legend", "circleRadius", "getData", "getAllDataInterval", "qPage"]);
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "pitch", "bearing", "legend", "circleRadius", "getData", "getAllDataInterval", "qPage"]);
 
   var node = Object(react["useRef"])(null);
 
@@ -56828,7 +56830,6 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': circleRadius,
-        // 'circle-color': ['match', ['get', property], 'Male', '#3399CC', 'Female', '#CC6666', '#FFF'],
         'circle-color': match,
         'circle-opacity': 1
       }
@@ -56883,7 +56884,11 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       // stylesheet location
       center: center,
       // starting position [lng, lat]
-      zoom: zoom // starting zoom
+      zoom: zoom,
+      // starting zoom
+      pitch: pitch,
+      // Camera Angle
+      bearing: bearing // Compass Direction
 
     }); // After Map is loaded, update GeoJSON & save Map object before continuing
 
@@ -56978,6 +56983,8 @@ QdtMapBox_QdtMapBox.propTypes = {
   style: prop_types_default.a.string,
   center: prop_types_default.a.array,
   zoom: prop_types_default.a.number,
+  pitch: prop_types_default.a.number,
+  bearing: prop_types_default.a.number,
   width: prop_types_default.a.string,
   height: prop_types_default.a.string,
   minWidth: prop_types_default.a.string,
@@ -57002,6 +57009,9 @@ QdtMapBox_QdtMapBox.defaultProps = {
   style: 'mapbox://styles/mapbox/streets-v11',
   center: [-74.50, 40],
   zoom: 4,
+  pitch: 0,
+  // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
+  bearing: 0,
   width: '100%',
   height: '100%',
   minWidth: 'auto',
