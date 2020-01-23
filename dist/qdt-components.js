@@ -12064,7 +12064,7 @@ var getUrl = __webpack_require__(25);
 var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(50));
 var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(51));
 // Module
-exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}button:focus{outline:0 !important}\n", ""]);
+exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}button:focus{outline:0 !important}.lui-icon-rotate-180{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg)}\n", ""]);
 
 
 /***/ }),
@@ -57038,7 +57038,6 @@ var useSequencer_useSequencer = function useSequencer(_ref) {
       select = _ref.select,
       selectRow = _ref.selectRow,
       toggleSelections = _ref.toggleSelections,
-      keyCode = _ref.keyCode,
       clearSelections = _ref.clearSelections;
 
   var _useState = Object(react["useState"])(false),
@@ -57064,13 +57063,23 @@ var useSequencer_useSequencer = function useSequencer(_ref) {
     return setPlay(false);
   };
 
+  var moveNextSequencer = function moveNextSequencer() {
+    if (currentRowIndex < qData.qMatrix.length - 1) {
+      if (!play && selectRow && qData && qData.qMatrix[currentRowIndex]) select(qData.qMatrix[currentRowIndex + 1][0].qElemNumber, toggleSelections, true);
+      if (qData && qData.qMatrix && currentRowIndex < qData.qMatrix.length) setCurrentRowIndex(currentRowIndex + 1);
+    }
+  };
+
+  var movePreviousSequencer = function movePreviousSequencer() {
+    if (currentRowIndex > 0) {
+      if (!play && selectRow && qData && qData.qMatrix[currentRowIndex]) select(qData.qMatrix[currentRowIndex - 1][0].qElemNumber, toggleSelections, true);
+      if (qData && qData.qMatrix && currentRowIndex > 0) setCurrentRowIndex(currentRowIndex - 1);
+    }
+  };
+
   var reloadSequencer = function reloadSequencer() {
     setCurrentRowIndex(0);
     if (selectRow) clearSelections();
-  };
-
-  var checkKey = function checkKey(event) {
-    if (event.keyCode === keyCode) setPlay(!play);
   };
 
   Object(react["useEffect"])(function () {
@@ -57079,18 +57088,16 @@ var useSequencer_useSequencer = function useSequencer(_ref) {
       return setCurrentRowIndex(currentRowIndex + 1);
     }, delay * 1000);
     if (init && play && selectRow && qData && qData.qMatrix[currentRowIndex]) select(qData.qMatrix[currentRowIndex][0].qElemNumber, toggleSelections, true);
-    if (init && play && currentRowIndex === qData.qMatrix.length) setPlay(false);
-    if (keyCode) window.addEventListener('keydown', checkKey, true);
-    return function () {
-      if (keyCode) window.removeEventListener('keydown', checkKey, true);
-    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (init && play && currentRowIndex === qData.qMatrix.length - 1) setPlay(false); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [init, play, currentRowIndex]);
   return {
     currentRowIndex: currentRowIndex,
     play: play,
     startSequencer: startSequencer,
     stopSequencer: stopSequencer,
-    reloadSequencer: reloadSequencer
+    reloadSequencer: reloadSequencer,
+    moveNextSequencer: moveNextSequencer,
+    movePreviousSequencer: movePreviousSequencer
   };
 };
 
@@ -57120,7 +57127,8 @@ var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
       selectRow = _ref.selectRow,
       keyCode = _ref.keyCode,
       navigation = _ref.navigation,
-      toggleSelections = _ref.toggleSelections;
+      toggleSelections = _ref.toggleSelections,
+      wheel = _ref.wheel;
 
   var _useListObject = hooks_useListObject({
     qDocPromise: qDocPromise,
@@ -57139,15 +57147,17 @@ var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
     select: select,
     selectRow: selectRow,
     toggleSelections: toggleSelections,
-    keyCode: keyCode,
     clearSelections: clearSelections
   }),
       currentRowIndex = _useSequencer.currentRowIndex,
       play = _useSequencer.play,
       startSequencer = _useSequencer.startSequencer,
       stopSequencer = _useSequencer.stopSequencer,
-      reloadSequencer = _useSequencer.reloadSequencer;
+      reloadSequencer = _useSequencer.reloadSequencer,
+      moveNextSequencer = _useSequencer.moveNextSequencer,
+      movePreviousSequencer = _useSequencer.movePreviousSequencer;
 
+  var ref = Object(react["useRef"])(null);
   var style = {
     bar: {
       border: '1px solid rgba(0,0,0,0.1)',
@@ -57156,11 +57166,62 @@ var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
     },
     start: !play ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
     stop: play ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
-    restart: !play && currentRowIndex >= 1 ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled'
+    restart: !play && currentRowIndex >= 1 ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
+    next: !qData || currentRowIndex === qData.qMatrix.length ? 'lui-fade-button lui-disabled' : 'lui-fade-button lui-active',
+    previous: currentRowIndex === 0 ? 'lui-fade-button lui-disabled' : 'lui-fade-button lui-active'
   };
+
+  var checkKey = function checkKey(event) {
+    if (event.keyCode === keyCode) {
+      if (!play) {
+        startSequencer();
+      } else {
+        stopSequencer();
+      }
+    }
+  };
+
+  var wheelNavigation = function wheelNavigation(event) {
+    event.preventDefault();
+    /* Chrome, Safari, Firefox */
+    // event.returnValue = false; /* IE7, IE8 */
+
+    if (event.wheelDeltaY > 0) {
+      moveNextSequencer();
+    } else {
+      movePreviousSequencer();
+    }
+
+    return false;
+  };
+
+  Object(react["useEffect"])(function () {
+    var node = ref.current;
+
+    if (node) {
+      if (keyCode) node.addEventListener('keydown', checkKey, true);
+      if (wheel) node.addEventListener('wheel', wheelNavigation, {
+        passive: false
+      });
+      return function () {
+        if (keyCode) node.removeEventListener('keydown', checkKey, true);
+        if (wheel) node.removeEventListener('wheel', wheelNavigation, {
+          passive: false
+        });
+      };
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [checkKey, play, wheel, ref]);
   return react_default.a.createElement(react_default.a.Fragment, null, navigation && react_default.a.createElement("div", {
-    style: style.bar
+    style: style.bar,
+    ref: ref
   }, react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("button", {
+    className: style.previous,
+    type: "button",
+    onClick: movePreviousSequencer
+  }, react_default.a.createElement("span", {
+    className: "lui-fade-button__icon lui-icon lui-icon--step-in lui-icon-rotate-180"
+  })), react_default.a.createElement("button", {
     className: style.start,
     type: "button",
     onClick: startSequencer
@@ -57178,7 +57239,13 @@ var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
     onClick: reloadSequencer
   }, react_default.a.createElement("span", {
     className: "lui-fade-button__icon lui-icon lui-icon--stop"
-  }))), qData && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText && react_default.a.createElement("div", null, cols[0], ': ', qData.qMatrix[currentRowIndex][0].qText, ' (', currentRowIndex, ' of ', qData.qMatrix.length, ')')));
+  })), react_default.a.createElement("button", {
+    className: style.next,
+    type: "button",
+    onClick: moveNextSequencer
+  }, react_default.a.createElement("span", {
+    className: "lui-fade-button__icon lui-icon lui-icon--step-in"
+  }))), qData && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText && react_default.a.createElement("div", null, cols[0], ': ', qData.qMatrix[currentRowIndex][0].qText, ' (', currentRowIndex + 1, ' of ', qData.qMatrix.length, ')')));
 };
 
 QdtSequencer_QdtSequencer.propTypes = {
@@ -57189,7 +57256,8 @@ QdtSequencer_QdtSequencer.propTypes = {
   selectRow: prop_types_default.a.bool,
   navigation: prop_types_default.a.bool,
   keyCode: prop_types_default.a.number,
-  toggleSelections: prop_types_default.a.bool
+  toggleSelections: prop_types_default.a.bool,
+  wheel: prop_types_default.a.bool
 };
 QdtSequencer_QdtSequencer.defaultProps = {
   qPage: {
@@ -57202,7 +57270,8 @@ QdtSequencer_QdtSequencer.defaultProps = {
   selectRow: true,
   navigation: true,
   keyCode: null,
-  toggleSelections: false
+  toggleSelections: false,
+  wheel: false
 };
 /* harmony default export */ var components_QdtSequencer_QdtSequencer = (QdtSequencer_QdtSequencer);
 // CONCATENATED MODULE: ./src/QdtComponents.jsx
