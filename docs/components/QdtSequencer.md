@@ -15,6 +15,7 @@
 | selectRow  | Boolean  | `true`  | If we want to select the current row |
 | navigation | Boolean  | `true`  | If we want to hide the buttons and handle Sequencer through key strokes. |
 | keyCode    | Number   | `null`  | Key to start and stop the Sequencer, like 32 for spacebar |
+| Wheel      | Boolean  | `false` | Control frames, next and previous with the mouse wheel, only on div hover |
 
 ## Examples
 
