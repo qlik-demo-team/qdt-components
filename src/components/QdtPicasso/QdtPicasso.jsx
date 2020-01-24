@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useCallback, useEffect, useState, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
@@ -13,7 +15,6 @@ import './style.scss';
 
 
 let _settings = null;
-let pic = null;
 let maxWidth = '100%';
 let maxHeight = '100%';
 
@@ -27,6 +28,7 @@ const QdtPicasso = ({
 }) => {
   const rootNode = useRef(null);
   const elementNode = useRef(null);
+  const [pic, setPic] = useState(null);
   const [isSelectionBarVisible, setSelectionBarVisible] = useState(false);
   const {
     beginSelections, endSelections, qLayout, qData, qRData, offset, selections, select,
@@ -35,8 +37,6 @@ const QdtPicasso = ({
   let _innerHeight = innerHeight;
 
   const offsetPicasso = (qTop) => offset(qTop);
-
-  const handleResize = () => pic.update();
 
   const cancelSelections = () => {
     const { brush } = pic;
@@ -68,7 +68,7 @@ const QdtPicasso = ({
       _settings.scales.y.max = options.max;
       _settings.components[1].end = options.max;
     }
-    pic = picasso({ renderer: { prio: [prio] } }).chart({
+    const _pic = picasso({ renderer: { prio: [prio] } }).chart({
       element: elementNode.current,
       data: [{
         type: 'q',
@@ -77,16 +77,17 @@ const QdtPicasso = ({
       }],
       settings: _settings,
     });
-    pic.brush('select').on('start', () => {
+    _pic.brush('select').on('start', () => {
       beginSelections();
       // select(0, [], false);
       setSelectionBarVisible(true);
     });
-    pic.brush('select').on('update', (added, removed) => {
+    _pic.brush('select').on('update', (added, removed) => {
       if (!selections && !added) return;
       const _selections = [...added, ...removed].map((v) => v.values[0]);
       select(0, _selections);
     });
+    setPic(_pic);
   };
 
   const updatePic = () => {
@@ -113,31 +114,39 @@ const QdtPicasso = ({
     });
   };
 
-  const confirmSelections = async () => {
+  const confirmSelections = useCallback(async () => {
     const { brush } = pic;
     brush('select').end();
     await endSelections(true);
     if (afterConfirmSelections) { afterConfirmSelections(); }
     setSelectionBarVisible(false);
-  };
+  });
 
-  const handleOutsideClick = (event) => {
+  const handleResize = useCallback(() => {
+    pic.update();
+  }, [pic]);
+
+  const handleOutsideClick = useCallback((event) => {
     if (isSelectionBarVisible) {
       const outsideClick = !rootNode.current.contains(event.target);
       if (outsideClick && selections) confirmSelections();
     }
-  };
+  }, [confirmSelections, isSelectionBarVisible, selections]);
 
   useEffect(() => {
-    if (qData && !isSelectionBarVisible) createPic();
+    if (qData && !isSelectionBarVisible && !pic) createPic();
+    if (qData && !isSelectionBarVisible && pic) updatePic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qData]);
+
+  useEffect(() => {
     window.addEventListener('click', handleOutsideClick);
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('click', handleOutsideClick);
       window.removeEventListener('resize', handleResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData]);
+  }, [handleOutsideClick, handleResize]);
 
   return (
     <div ref={rootNode} style={{ position: 'relative' }}>
