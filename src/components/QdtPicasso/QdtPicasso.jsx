@@ -46,6 +46,7 @@ const QdtPicasso = ({
   };
 
   const createPic = async () => {
+    console.log('created pic');
     if (type === 'horizontalBarchart' && options.bar && options.bar.height && innerHeight === '100%') {
       maxHeight = qData.qMatrix.length * options.bar.height;
       _innerHeight = maxHeight;
@@ -91,6 +92,7 @@ const QdtPicasso = ({
   };
 
   const updatePic = () => {
+    console.log('updated pic');
     const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
     if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
       _settings.components[2].settings.box.fill = options.bar.fill;

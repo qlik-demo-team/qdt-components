@@ -55940,6 +55940,8 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              console.log('created pic');
+
               if (type === 'horizontalBarchart' && options.bar && options.bar.height && innerHeight === '100%') {
                 maxHeight = qData.qMatrix.length * options.bar.height;
                 _innerHeight = maxHeight;
@@ -56004,7 +56006,7 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
 
               setPic(_pic);
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -56018,6 +56020,8 @@ var QdtPicasso_QdtPicasso = function QdtPicasso(_ref) {
   }();
 
   var updatePic = function updatePic() {
+    console.log('updated pic');
+
     var data = QdtPicasso_objectSpread({}, qLayout, {
       qHyperCube: QdtPicasso_objectSpread({}, qLayout.qHyperCube, {
         qDataPages: [qData]
