@@ -31,27 +31,28 @@ const QdtFilter = ({
 }) => {
   const [dropdownOpen, setDropDownOpen] = useState(false);
   const [totalStateCounts, setTotalStateCounts] = useState(null);
-  let searchListInputValue = '';
+  const [value, setValue] = useState('');
+  // let searchListInputValue = '';
 
   const {
     beginSelections, endSelections, qLayout, qData, offset, selections, select, searchListObjectFor, acceptListObjectSearch,
   } = useListObject({ qDocPromise, cols, qPage });
 
   const _searchListObjectFor = (event) => {
-    searchListInputValue = event.target.value;
-    // offset(0);
+    setValue(event.target.value);
+    offset(0);
     searchListObjectFor(event.target.value);
   };
 
   /** Clear all of the selections */
   const clear = () => {
-    searchListInputValue = '';
+    setValue('');
     searchListObjectFor('');
   };
 
   const _acceptListObjectSearch = (event) => {
     if (event.charCode === 13) {
-      searchListInputValue = '';
+      setValue('');
       acceptListObjectSearch();
     }
   };
@@ -98,10 +99,13 @@ const QdtFilter = ({
           </span>
           <LuiList style={{ width: '15rem' }}>
             <LuiSearch
-              value={searchListInputValue}
+              value={value}
               clear={clear}
               onChange={_searchListObjectFor}
               onKeyPress={_acceptListObjectSearch}
+              // onChange={_searchListObjectFor}
+              // onKeyPress={handleKeyPress}
+              // onGo={showGo ? _acceptListObjectSearch : null}
             />
             <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} offset={offset} />
           </LuiList>
@@ -113,10 +117,10 @@ const QdtFilter = ({
         && (
         <LuiList style={{ width: '15rem' }}>
           <LuiSearch
-            value={searchListInputValue}
+            value={value}
             clear={clear}
             onChange={_searchListObjectFor}
-            onKeyPress={acceptListObjectSearch}
+            onKeyPress={_acceptListObjectSearch}
           />
           <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} offset={offset} />
         </LuiList>

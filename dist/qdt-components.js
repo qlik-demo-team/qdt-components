@@ -50983,7 +50983,11 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
       totalStateCounts = _useState4[0],
       setTotalStateCounts = _useState4[1];
 
-  var searchListInputValue = '';
+  var _useState5 = Object(react["useState"])(''),
+      _useState6 = slicedToArray_default()(_useState5, 2),
+      value = _useState6[0],
+      setValue = _useState6[1]; // let searchListInputValue = '';
+
 
   var _useListObject = hooks_useListObject({
     qDocPromise: qDocPromise,
@@ -51001,21 +51005,21 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
       acceptListObjectSearch = _useListObject.acceptListObjectSearch;
 
   var _searchListObjectFor = function _searchListObjectFor(event) {
-    searchListInputValue = event.target.value; // offset(0);
-
+    setValue(event.target.value);
+    offset(0);
     searchListObjectFor(event.target.value);
   };
   /** Clear all of the selections */
 
 
   var clear = function clear() {
-    searchListInputValue = '';
+    setValue('');
     searchListObjectFor('');
   };
 
   var _acceptListObjectSearch = function _acceptListObjectSearch(event) {
     if (event.charCode === 13) {
-      searchListInputValue = '';
+      setValue('');
       acceptListObjectSearch();
     }
   };
@@ -51069,10 +51073,13 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
       width: '15rem'
     }
   }, react_default.a.createElement(QdtLui_LuiSearch, {
-    value: searchListInputValue,
+    value: value,
     clear: clear,
     onChange: _searchListObjectFor,
-    onKeyPress: _acceptListObjectSearch
+    onKeyPress: _acceptListObjectSearch // onChange={_searchListObjectFor}
+    // onKeyPress={handleKeyPress}
+    // onGo={showGo ? _acceptListObjectSearch : null}
+
   }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
     rowHeight: 38,
@@ -51087,10 +51094,10 @@ var QdtFilter_QdtFilter = function QdtFilter(_ref) {
       width: '15rem'
     }
   }, react_default.a.createElement(QdtLui_LuiSearch, {
-    value: searchListInputValue,
+    value: value,
     clear: clear,
     onChange: _searchListObjectFor,
-    onKeyPress: acceptListObjectSearch
+    onKeyPress: _acceptListObjectSearch
   }), react_default.a.createElement(QdtFilter_DropdownItemList, {
     qData: qData,
     rowHeight: 38,
