@@ -13,17 +13,13 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-<<<<<<< HEAD
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
-=======
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, ...hyperCubeProps
->>>>>>> mapbox-features
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, extraLayers, createLayers, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const { qData, qLayout, offset } = useHyperCube({ qPage, ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
-  const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
+  const handleCallback = useCallback(() => getData(qData, qLayout, map), [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -86,7 +82,7 @@ const QdtMapBox = ({
     const layer = {
       id: 'dots',
       type: 'circle',
-      source: 'users',
+      source: 'hyperCubeData',
       paint: {
         'circle-stroke-width': 0,
         'circle-radius': circleRadius,
@@ -103,12 +99,15 @@ const QdtMapBox = ({
   // Using the GeoJSON and map object, we create a Layer for the dots and add them to the map
   // This function also sets up the periodic update to cycle through the dots
   const buildMap = () => {
-    map.addSource('users', {
+    map.addSource('hyperCubeData', {
       type: 'geojson',
       data: GeoJSON,
     });
     const layer = buildLayer();
     map.addLayer(layer);
+    if (extraLayers && extraLayers.length) {
+      extraLayers.map((_layer) => map.addLayer(_layer));
+    }
 
     // ==== Tooltip Start ===== //
     if (tooltip !== null) {
@@ -163,7 +162,7 @@ const QdtMapBox = ({
     });
     if (GeoJSON) {
       GeoJSON = { ...GeoJSON, features: [...GeoJSON.features, ...nextChunk] };
-      map.getSource('users').setData(GeoJSON);
+      map.getSource('hyperCubeData').setData(GeoJSON);
     } else {
       GeoJSON = buildGeoJSON();
       buildMap();
@@ -182,7 +181,7 @@ const QdtMapBox = ({
     });
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
-      updateLayers(qData); // Draw the first set of data, in case we load all
+      if (createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
       setIsLoaded(true);
       mapData = [...mapData, ...qData.qMatrix];
     });
@@ -204,7 +203,7 @@ const QdtMapBox = ({
   useEffect(() => {
     if (qData && !isLoaded) {
       if (getAllDataInterval) getAllData();
-      createPropertyChilderFromQData();
+      if (createLayers) createPropertyChilderFromQData();
       mapInit();
     }
     if (qData && getData) handleCallback();
@@ -267,6 +266,8 @@ QdtMapBox.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
+  extraLayers: PropTypes.array,
+  createLayers: PropTypes.bool,
   tooltip: PropTypes.func,
 };
 
@@ -300,6 +301,8 @@ QdtMapBox.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: true,
   qExpression: null,
+  extraLayers: null,
+  createLayers: true,
   tooltip: null,
 };
 

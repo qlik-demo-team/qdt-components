@@ -19,6 +19,8 @@
 | height             | Int       | `400`          | Define the height of your div in pixels |
 | getData            | Function  |  `null`        | Define a callback so you can work with the map or the data after the dom is drawn`const callback = (qData, qLayout) => {}` |
 | getAllDataInterval | Int       | `0`            | Seconds to paginate through all data |
+| extraLayers        | Array     | `null`         | Pass your own layers |
+| createLayers       | Boolea    | `true`         | Set `false` if you want to disable the creation of layers. In combination with the `extraLayers` prop, you can only show your custom layers |
 
 ## Code
 
