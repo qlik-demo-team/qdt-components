@@ -13,15 +13,7 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-<<<<<<< HEAD
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, extraLayers, createLayers, ...hyperCubeProps
-=======
-<<<<<<< HEAD
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
-=======
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, ...hyperCubeProps
->>>>>>> mapbox-features
->>>>>>> 82fe8eca68e47f2baf7dac865216fb594680c9e4
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, extraLayers, createLayers, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -113,11 +105,9 @@ const QdtMapBox = ({
     });
     const layer = buildLayer();
     map.addLayer(layer);
-<<<<<<< HEAD
     if (extraLayers && extraLayers.length) {
       extraLayers.map((_layer) => map.addLayer(_layer));
     }
-=======
 
     // ==== Tooltip Start ===== //
     if (tooltip !== null) {
@@ -155,7 +145,6 @@ const QdtMapBox = ({
       });
     }
     // ==== End Tooltip ======= //
->>>>>>> 82fe8eca68e47f2baf7dac865216fb594680c9e4
   };
 
   // ==========================================================================
@@ -277,12 +266,9 @@ QdtMapBox.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
-<<<<<<< HEAD
   extraLayers: PropTypes.array,
   createLayers: PropTypes.bool,
-=======
   tooltip: PropTypes.func,
->>>>>>> 82fe8eca68e47f2baf7dac865216fb594680c9e4
 };
 
 QdtMapBox.defaultProps = {
@@ -315,12 +301,9 @@ QdtMapBox.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: true,
   qExpression: null,
-<<<<<<< HEAD
   extraLayers: null,
   createLayers: true,
-=======
   tooltip: null,
->>>>>>> 82fe8eca68e47f2baf7dac865216fb594680c9e4
 };
 
 export default QdtMapBox;
