@@ -13,7 +13,11 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
+<<<<<<< HEAD
   width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
+=======
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, ...hyperCubeProps
+>>>>>>> mapbox-features
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,6 +38,12 @@ const QdtMapBox = ({
         coordinates: [obj.lng, obj.lat],
       },
     };
+
+    // if no tooltip callback specified, do not add description property
+    if (tooltip !== null) {
+      featureObj.properties.description = tooltip(obj);
+    }
+
     return featureObj;
   }
 
@@ -99,6 +109,43 @@ const QdtMapBox = ({
     });
     const layer = buildLayer();
     map.addLayer(layer);
+
+    // ==== Tooltip Start ===== //
+    if (tooltip !== null) {
+      // Create a popup, but don't add it to the map yet.
+      const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+        className: 'qdt-components-mb-tooltip',
+      });
+
+      map.on('mouseenter', 'dots', (e) => {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const { description } = e.features[0].properties;
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+      });
+
+      map.on('mouseleave', 'dots', () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
+    }
+    // ==== End Tooltip ======= //
   };
 
   // ==========================================================================
@@ -220,6 +267,7 @@ QdtMapBox.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
+  tooltip: PropTypes.func,
 };
 
 QdtMapBox.defaultProps = {
@@ -252,6 +300,7 @@ QdtMapBox.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: true,
   qExpression: null,
+  tooltip: null,
 };
 
 export default QdtMapBox;
