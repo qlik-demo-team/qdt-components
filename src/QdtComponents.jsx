@@ -16,9 +16,10 @@ import QdtPicasso from './components/QdtPicasso/QdtPicasso';
 import QdtSearch from './components/QdtSearch/QdtSearch';
 import QdtCurrentSelections from './components/QdtCurrentSelections/QdtCurrentSelections';
 import QdtMapBox from './components/QdtMapbox/QdtMapBox';
+import QdtSequencer from './components/QdtSequencer/QdtSequencer';
 
 const components = {
-  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections, QdtMapBox,
+  QdtFilter, QdtTable, QdtViz, QdtSelectionToolbar, QdtKpi, QdtButton, QdtPicasso, QdtSearch, QdtCurrentSelections, QdtMapBox, QdtSequencer,
 };
 
 const QdtComponents = class {

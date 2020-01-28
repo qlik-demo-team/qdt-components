@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
+// import useSequencer from './useSequencer';
 
 const initialState = {
   qDoc: null,
@@ -102,6 +103,8 @@ const useListObject = ({
 
   const applyPatches = (patches) => qObject.applyPatches(patches);
 
+  const clearSelections = () => qObject.clearSelections('/qListObjectDef');
+
   useEffect(() => {
     (async () => {
       const qProp = await generateQProp();
@@ -117,7 +120,7 @@ const useListObject = ({
   }, [state.qDoc, state.qLayout]);
 
   return {
-    qLayout, qData, offset, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections,
+    qLayout, qData, offset, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections, clearSelections,
   };
 };
 

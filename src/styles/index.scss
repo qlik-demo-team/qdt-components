@@ -331,7 +331,6 @@ th.active:after {
     }
 }
 
-
 /**********************
  * QdtSearch
 **********************/
@@ -342,4 +341,16 @@ th.active:after {
             text-align: left;
         }
     }
+}
+
+/**********************
+ * QdtSequencer
+**********************/
+button:focus { outline: 0 !important; }
+.lui-icon-rotate-180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
 }

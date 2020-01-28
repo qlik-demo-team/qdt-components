@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "2.2.15",
+  "version": "2.3.1",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types/qdt-components.d.ts",
@@ -16,8 +16,8 @@
     "capability api",
     "react-component",
     "angular-components",
-    "react"
-  ],
+      "react"
+    ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "@types/qlik-engineapi": "^12.67.2",
