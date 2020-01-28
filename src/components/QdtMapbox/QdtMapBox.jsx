@@ -13,13 +13,13 @@ let propertyChildren = null;
 let propertyChildrenWithColors = null;
 
 const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, ...hyperCubeProps
+  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, extraLayers, createLayers, ...hyperCubeProps
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const { qData, qLayout, offset } = useHyperCube({ qPage, ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
-  const handleCallback = useCallback(() => getData(qData, qLayout), [getData, qData, qLayout]);
+  const handleCallback = useCallback(() => getData(qData, qLayout, map), [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -99,6 +99,9 @@ const QdtMapBox = ({
     });
     const layer = buildLayer();
     map.addLayer(layer);
+    if (extraLayers && extraLayers.length) {
+      extraLayers.map((_layer) => map.addLayer(_layer));
+    }
   };
 
   // ==========================================================================
@@ -135,7 +138,7 @@ const QdtMapBox = ({
     });
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
-      updateLayers(qData); // Draw the first set of data, in case we load all
+      if (createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
       setIsLoaded(true);
       mapData = [...mapData, ...qData.qMatrix];
     });
@@ -157,7 +160,7 @@ const QdtMapBox = ({
   useEffect(() => {
     if (qData && !isLoaded) {
       if (getAllDataInterval) getAllData();
-      createPropertyChilderFromQData();
+      if (createLayers) createPropertyChilderFromQData();
       mapInit();
     }
     if (qData && getData) handleCallback();
@@ -220,6 +223,8 @@ QdtMapBox.propTypes = {
   qSortByExpression: PropTypes.oneOf([1, 0, -1]),
   qSuppressMissing: PropTypes.bool,
   qExpression: PropTypes.object,
+  extraLayers: PropTypes.array,
+  createLayers: PropTypes.bool,
 };
 
 QdtMapBox.defaultProps = {
@@ -252,6 +257,8 @@ QdtMapBox.defaultProps = {
   qSortByExpression: 0,
   qSuppressMissing: true,
   qExpression: null,
+  extraLayers: null,
+  createLayers: true,
 };
 
 export default QdtMapBox;

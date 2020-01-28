@@ -56750,7 +56750,9 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
       getData = _ref.getData,
       getAllDataInterval = _ref.getAllDataInterval,
       qPage = _ref.qPage,
-      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "pitch", "bearing", "legend", "circleRadius", "getData", "getAllDataInterval", "qPage"]);
+      extraLayers = _ref.extraLayers,
+      createLayers = _ref.createLayers,
+      hyperCubeProps = objectWithoutProperties_default()(_ref, ["width", "height", "minWidth", "minHeight", "accessToken", "style", "center", "zoom", "pitch", "bearing", "legend", "circleRadius", "getData", "getAllDataInterval", "qPage", "extraLayers", "createLayers"]);
 
   var node = Object(react["useRef"])(null);
 
@@ -56768,7 +56770,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
   var property = hyperCubeProps.cols[3];
   var handleCallback = Object(react["useCallback"])(function () {
-    return getData(qData, qLayout);
+    return getData(qData, qLayout, QdtMapBox_map);
   }, [getData, qData, qLayout]);
 
   function buildFeatureSimplified(obj) {
@@ -56849,6 +56851,12 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     });
     var layer = buildLayer();
     QdtMapBox_map.addLayer(layer);
+
+    if (extraLayers && extraLayers.length) {
+      extraLayers.map(function (_layer) {
+        return QdtMapBox_map.addLayer(_layer);
+      });
+    }
   }; // ==========================================================================
   // Updates the map to display the appropriate layer
 
@@ -56893,7 +56901,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     }); // After Map is loaded, update GeoJSON & save Map object before continuing
 
     QdtMapBox_map.on('load', function () {
-      updateLayers(qData); // Draw the first set of data, in case we load all
+      if (createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
 
       setIsLoaded(true);
       mapData = [].concat(toConsumableArray_default()(mapData), toConsumableArray_default()(qData.qMatrix));
@@ -56932,7 +56940,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   Object(react["useEffect"])(function () {
     if (qData && !isLoaded) {
       if (getAllDataInterval) getAllData();
-      createPropertyChilderFromQData();
+      if (createLayers) createPropertyChilderFromQData();
       mapInit();
     }
 
@@ -57002,7 +57010,9 @@ QdtMapBox_QdtMapBox.propTypes = {
   qSuppressZero: prop_types_default.a.bool,
   qSortByExpression: prop_types_default.a.oneOf([1, 0, -1]),
   qSuppressMissing: prop_types_default.a.bool,
-  qExpression: prop_types_default.a.object
+  qExpression: prop_types_default.a.object,
+  extraLayers: prop_types_default.a.array,
+  createLayers: prop_types_default.a.bool
 };
 QdtMapBox_QdtMapBox.defaultProps = {
   accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',
@@ -57035,7 +57045,9 @@ QdtMapBox_QdtMapBox.defaultProps = {
   qSuppressZero: true,
   qSortByExpression: 0,
   qSuppressMissing: true,
-  qExpression: null
+  qExpression: null,
+  extraLayers: null,
+  createLayers: true
 };
 /* harmony default export */ var QdtMapbox_QdtMapBox = (QdtMapBox_QdtMapBox);
 // CONCATENATED MODULE: ./src/hooks/useSequencer.jsx
