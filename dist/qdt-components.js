@@ -55304,7 +55304,8 @@ var QdtSelectionToolbar_QdtSelectionToolbar = function QdtSelectionToolbar(_ref)
       qPage = _ref.qPage,
       options = _ref.options,
       title = _ref.title,
-      btnText = _ref.btnText;
+      btnText = _ref.btnText,
+      getData = _ref.getData;
 
   var _useSelectionObject = hooks_useSelectionObject({
     qDocPromise: qDocPromise,
@@ -55316,6 +55317,9 @@ var QdtSelectionToolbar_QdtSelectionToolbar = function QdtSelectionToolbar(_ref)
       clearSelections = _useSelectionObject.clearSelections;
 
   var selections = [];
+  var handleCallback = Object(react["useCallback"])(function () {
+    return getData(qLayout);
+  }, [getData, qLayout]);
 
   if (qLayout) {
     var selectedFields = qLayout.qSelectionObject.qSelections;
@@ -55344,6 +55348,9 @@ var QdtSelectionToolbar_QdtSelectionToolbar = function QdtSelectionToolbar(_ref)
     }
   }
 
+  Object(react["useEffect"])(function () {
+    if (qLayout && getData) handleCallback(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qLayout]);
   return react_default.a.createElement("div", {
     className: "qdt-selection-toolbar"
   }, react_default.a.createElement("ul", null, react_default.a.createElement("li", null, react_default.a.createElement("strong", null, title, ":")), selections.length === 0 && react_default.a.createElement("li", {
@@ -55385,7 +55392,8 @@ QdtSelectionToolbar_QdtSelectionToolbar.propTypes = {
   options: prop_types_default.a.object,
   qPage: prop_types_default.a.object,
   title: prop_types_default.a.string,
-  btnText: prop_types_default.a.string
+  btnText: prop_types_default.a.string,
+  getData: prop_types_default.a.func
 };
 QdtSelectionToolbar_QdtSelectionToolbar.defaultProps = {
   cols: [],
@@ -55399,7 +55407,8 @@ QdtSelectionToolbar_QdtSelectionToolbar.defaultProps = {
     qHeight: 1
   },
   title: 'SELECTIONS',
-  btnText: 'Clear All'
+  btnText: 'Clear All',
+  getData: null
 };
 /* harmony default export */ var components_QdtSelectionToolbar_QdtSelectionToolbar = (QdtSelectionToolbar_QdtSelectionToolbar);
 // CONCATENATED MODULE: ./src/components/QdtKpi/QdtKpi.jsx

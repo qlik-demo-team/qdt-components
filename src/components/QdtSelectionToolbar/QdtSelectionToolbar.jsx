@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import useSelectionObject from '../../hooks/useSelectionObject';
 import QdtSelectionToolbarDropdown from './QdtSelectionToolbarDropdown';
 import '../../styles/index.scss';
 
 const QdtSelectionToolbar = ({
-  qDocPromise, cols, qPage, options, title, btnText,
+  qDocPromise, cols, qPage, options, title, btnText, getData,
 }) => {
   const { qLayout, clearSelections } = useSelectionObject({
     qDocPromise, cols, qPage, options,
   });
   let selections = [];
+  const handleCallback = useCallback(() => getData(qLayout), [getData, qLayout]);
 
   if (qLayout) {
     const selectedFields = qLayout.qSelectionObject.qSelections;
@@ -33,6 +34,10 @@ const QdtSelectionToolbar = ({
     }
   }
 
+  useEffect(() => {
+    if (qLayout && getData) handleCallback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qLayout]);
   return (
     <div className="qdt-selection-toolbar">
       <ul>
@@ -77,6 +82,7 @@ QdtSelectionToolbar.propTypes = {
   qPage: PropTypes.object,
   title: PropTypes.string,
   btnText: PropTypes.string,
+  getData: PropTypes.func,
 };
 
 QdtSelectionToolbar.defaultProps = {
@@ -90,6 +96,7 @@ QdtSelectionToolbar.defaultProps = {
   },
   title: 'SELECTIONS',
   btnText: 'Clear All',
+  getData: null,
 };
 
 export default QdtSelectionToolbar;
