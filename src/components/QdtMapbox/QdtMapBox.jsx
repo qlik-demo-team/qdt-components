@@ -207,7 +207,7 @@ const QdtMapBox = ({
       mapInit();
     }
     if (qData && getData) handleCallback();
-    if (isLoaded) updateLayers(qData);
+    if (isLoaded && createLayers) updateLayers(qData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData, qLayout]);
 
