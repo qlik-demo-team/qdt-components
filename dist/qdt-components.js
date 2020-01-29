@@ -56989,7 +56989,7 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     }
 
     if (qData && getData) handleCallback();
-    if (isLoaded) updateLayers(qData); // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (isLoaded && createLayers) updateLayers(qData); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qData, qLayout]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     style: {
