@@ -57322,7 +57322,7 @@ var QdtSequencer_QdtSequencer = function QdtSequencer(_ref) {
     onClick: moveNextSequencer
   }, react_default.a.createElement("span", {
     className: "lui-fade-button__icon lui-icon lui-icon--step-in"
-  }))), qData && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText && react_default.a.createElement("div", null, cols[0], ': ', qData.qMatrix[currentRowIndex][0].qText, ' (', currentRowIndex + 1, ' of ', qData.qMatrix.length, ')')));
+  }))), qData && qLayout && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText && react_default.a.createElement("div", null, qLayout.qListObject.qDimensionInfo.qFallbackTitle, ': ', qData.qMatrix[currentRowIndex][0].qText, ' (', currentRowIndex + 1, ' of ', qData.qMatrix.length, ')')));
 };
 
 QdtSequencer_QdtSequencer.propTypes = {
