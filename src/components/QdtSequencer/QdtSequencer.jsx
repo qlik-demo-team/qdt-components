@@ -93,10 +93,10 @@ const QdtSequencer = ({
               <span className="lui-fade-button__icon lui-icon lui-icon--step-in" />
             </button>
           </>
-          {qData && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText
+          {qData && qLayout && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText
             && (
               <div>
-                {cols[0]}
+                {qLayout.qListObject.qDimensionInfo.qFallbackTitle}
                 {': '}
                 {qData.qMatrix[currentRowIndex][0].qText}
                 {' ('}
