@@ -3,23 +3,22 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import useHyperCube from '../../hooks/useHyperCube';
 import 'react-table/react-table.css';
 import '../../styles/index.scss';
 
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
-const QdtTable = ({
-  qDocPromise, cols, qPage, style, minRows,
-}) => {
-  const {
-    qLayout, qData, offset, select, applyPatches, //eslint-disable-line
-  } = useHyperCube({ qDocPromise, cols, qPage });
+const QdtTable = ({ layout, model, options: optionsProp }) => {
+  const defaultOptions = {
+    minRows: undefined,
+    style: { height: '100%' },
+  };
+  const options = { ...defaultOptions, ...optionsProp };
 
   const columns = useMemo(() => (
-    qLayout
+    layout
       ? [
-        ...qLayout.qHyperCube.qDimensionInfo.map((col, index) => ({
+        ...layout.qHyperCube.qDimensionInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
           accessor: (d) => d[index].qText,
           defaultSortDesc: col.qSortIndicator === 'D',
@@ -29,21 +28,23 @@ const QdtTable = ({
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
         })),
-        ...qLayout.qHyperCube.qMeasureInfo.map((col, index) => ({
+        ...layout.qHyperCube.qMeasureInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
-          accessor: (d) => d[index + qLayout.qHyperCube.qDimensionInfo.length].qText,
+          accessor: (d) => d[index + layout.qHyperCube.qDimensionInfo.length].qText,
           defaultSortDesc: col.qSortIndicator === 'D',
           id: col.qFallbackTitle,
-          qInterColumnIndex: index + qLayout.qHyperCube.qDimensionInfo.length,
+          qInterColumnIndex: index + layout.qHyperCube.qDimensionInfo.length,
           qPath: `/qHyperCubeDef/qMeasures/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
         })),
       ]
       : []
-  ), [qLayout]);
+  ), [layout]);
 
-  const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight), [qLayout, qPage]);
+  const pages = useMemo(() => (
+    layout && Math.ceil(layout.qHyperCube.qSize.qcy / qPage.qHeight)
+  ), [layout]);
 
   const [page, setPage] = useState(0);
   useEffect(() => {
@@ -51,18 +52,31 @@ const QdtTable = ({
       setPage(0);
     }
   }, [page, pages]);
+
+  const [data, setData] = useState(null);
+  useEffect(async () => {
+    if (!layout) return;
+    setLoading(true);
+    const _data = await model.getHyperCubeData(
+      '/qHyperCubeDef', 
+      [{ ...qPage, qTop: (qPage.qTop + qPage.qHeight) * page }]
+    );
+    setData(_data);
+    setLoading(false);
+  }, [layout, page]);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
-  }, [qData]);
+  }, [data]);
 
-  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * qPage.qHeight); }, [offset, qPage.qHeight]);
+  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); }, []);
   const handleSortedChange = useCallback(async (newSorted, column) => {
     setLoading(true);
     // If no sort is set, we need to set a default sort order
     if (column.qSortIndicator === 'N') {
       if (column.qPath.includes('qDimensions')) {
-        await applyPatches([
+        await model.applyPatches([
           {
             qOp: 'add',
             qPath: `${column.qPath}/qDef/qSortCriterias`,
@@ -71,7 +85,7 @@ const QdtTable = ({
         ]);
       }
       if (column.qPath.includes('qMeasures')) {
-        await applyPatches([
+        await model.applyPatches([
           {
             qOp: 'add',
             qPath: `${column.qPath}/qSortBy`,
@@ -80,7 +94,7 @@ const QdtTable = ({
         ]);
       }
     }
-    await applyPatches([
+    await model.applyPatches([
       {
         qOp: 'replace',
         qPath: `${column.qPath}/qDef/qReverseSort`,
@@ -89,17 +103,17 @@ const QdtTable = ({
       {
         qOp: 'replace',
         qPath: '/qHyperCubeDef/qInterColumnSortOrder',
-        qValue: JSON.stringify([...qLayout.qHyperCube.qEffectiveInterColumnSortOrder].sort((a, b) => (a === column.qInterColumnIndex ? -1 : b === column.qInterColumnIndex ? 1 : 0))), //eslint-disable-line
+        qValue: JSON.stringify([...layout.qHyperCube.qEffectiveInterColumnSortOrder].sort((a, b) => (a === column.qInterColumnIndex ? -1 : b === column.qInterColumnIndex ? 1 : 0))), //eslint-disable-line
       },
     ]);
     setPage(0);
-  }, [applyPatches, qLayout]);
+  }, [model, layout]);
 
   return (
     <div>
       <ReactTable
         manual
-        data={qData ? qData.qMatrix : []}
+        data={data ? data.qMatrix : []}
         columns={columns}
         pages={pages}
         page={page}
@@ -107,15 +121,20 @@ const QdtTable = ({
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
         defaultPageSize={qPage.qHeight}
-        minRows={minRows}
+        minRows={options.minRows}
         showPageSizeOptions={false}
         multiSort={false}
         className="-striped"
-        style={style}
+        style={options.style}
         getTdProps={(_, rowInfo, column) => ({
           onClick: (e, handleOriginal) => {
             if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
-              select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+              model.selectHyperCubeValues(
+                '/qHyperCubeDef', 
+                column.qInterColumnIndex, 
+                [rowInfo.original[column.qInterColumnIndex].qElemNumber],
+                true
+              );
             }
             if (handleOriginal) {
               handleOriginal();
@@ -125,25 +144,24 @@ const QdtTable = ({
       />
     </div>
   );
-};
+}
 
 QdtTable.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.array,
-  qPage: PropTypes.object,
-  style: PropTypes.object,
-  minRows: PropTypes.number,
+  layout: PropTypes.object,
+  model: PropTypes.object,
+  page: PropTypes.object,
+  options: PropTypes.object,
 };
 QdtTable.defaultProps = {
-  cols: null,
+  layout: null,
+  model: null,
   qPage: {
     qTop: 0,
     qLeft: 0,
     qWidth: 10,
     qHeight: 20,
   },
-  style: { height: '100%' },
-  minRows: undefined,
+  options: {}
 };
 
 export default QdtTable;
