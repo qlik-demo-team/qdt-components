@@ -1,3 +1,10 @@
+/**
+ * @name QdtTable
+ * @param {object} layout - Qlik object layout
+ * @param {string} model - Qlik object model
+ * @param {options} object - Options
+*/
+
 import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
