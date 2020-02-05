@@ -74,6 +74,7 @@
   },
   "scripts": {
     "start": "webpack --watch",
+    "build": "webpack",
     "lint": "eslint . --ignore-path .gitignore --cache"
   }
 }
