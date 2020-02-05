@@ -1,43 +1,32 @@
-import React from 'react';
+/**
+ * @name QdtKpi
+ * @param {object} layout - Qlik object layout
+ * @param {string} format - Optional format string, based on https://docs.python.org/3/library/string.html#format-specification-mini-language
+*/
+
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import useHyperCube from '../../hooks/useHyperCube';
-import utility from '../../utilities';
+import { format } from 'd3-format';
 import '../../styles/index.scss';
 
-const QdtKpi = ({
-  qDocPromise, cols, qPage, roundNum,
-}) => {
-  const { qData } = useHyperCube({ qDocPromise, cols, qPage });
+const QdtKpi = ({ layout, format: specifier }) => {
+  const value = useMemo(() => format(specifier)(layout.qMatrix[0][0].qText), [layout, specifier]);
   return (
     <>
-      { qData
-        && (
-        <div className="qdt-kpi">
-          { roundNum
-              && utility.RoundNum(qData.qMatrix[0][0].qNum, true)}
-          { !roundNum
-              && qData.qMatrix[0][0].qText}
-        </div>
-        )}
+      <div className='qdt-kpi'>
+        {value}
+      </div>
     </>
   );
 };
 
 QdtKpi.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.array,
-  qPage: PropTypes.object,
-  roundNum: PropTypes.bool,
+  layout: PropTypes.object,
+  format: PropTypes.string,
 };
 QdtKpi.defaultProps = {
-  cols: null,
-  roundNum: false,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 1,
-    qHeight: 1,
-  },
+  layout: null,
+  format: '',
 };
 
 export default QdtKpi;
