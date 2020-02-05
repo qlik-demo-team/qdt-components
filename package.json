@@ -20,6 +20,7 @@
   ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
+    "@material-ui/core": "^4.9.1",
     "@types/qlik-engineapi": "^12.67.2",
     "@types/qlik-visualizationextensions": "^4.0.2",
     "d3": "^5.9.2",
