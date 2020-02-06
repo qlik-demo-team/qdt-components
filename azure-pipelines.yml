@@ -55,34 +55,23 @@ steps:
 
 - script: |
     VER=$(jq -r ".version" < ./qdt-components/package.json)
-    echo $VER
     cd ./qdt-apps
-    # mkdir ./qdt-components/$VER
     git config --global user.email "yianni.ververis@qlik.com"
     git config --global user.name "Yianni Ververis"
-    # git pull origin master
-    # git checkout -b ci
-    # git checkout master
-    # git merge ci 
-    # # git push origin master
     git checkout -b ci
-    ls -la ../
-    ls -la ../npm
     cp -r ../npm ./qdt-components/$VER
     ls -la ./qdt-components/$VER
-    git status
     git add .
     git commit -m "qdt-components $VER"
     git checkout master
     git merge ci
     git branch -d ci
     git push origin
-    git status
   displayName: 'CDN'
 
-# - task: Npm@1
-#   inputs:
-#     command: 'publish'
-#     workingDir: './npm'
-#     publishEndpoint: 'npmjs.com_demo_team'
-#   displayName: 'Npm publish'
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: './npm'
+    publishEndpoint: 'npmjs.com_demo_team'
+  displayName: 'Npm publish'
