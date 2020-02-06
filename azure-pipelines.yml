@@ -19,13 +19,12 @@ resources:
 
 variables:
   JQ_VERSION: 1.5
-  IMAGE: 'ubuntu-latest'
 
 trigger:
 - master
 
 pool:
-  vmImage: $(IMAGE)
+  vmImage: 'ubuntu-latest'
 
 steps:
 - checkout: self
@@ -36,64 +35,45 @@ steps:
   persistCredentials: true
 - checkout: qdt-components-ci
 
-stages:
-  - stage: Build
-    displayName: Build stage
-    jobs:
-      - job: Build
-        displayName: Build
-        pool:
-          vmImage: $(vmImageName)
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
+- script: |
+    ls -la /usr 
+    wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
+    cp /tmp/jq-linux64 /usr/bin/jq && \
+    chmod +x /usr/bin/jq
+  displayName: 'Install JQ'
 
-        steps:
-        - checkout: self
-          persistCredentials: true
-          # clean: true
-        - checkout: qdt-components
-        - checkout: qdt-apps
-          persistCredentials: true
-        - checkout: qdt-components-ci
+- script: |
+    mkdir npm
+    cd ./qdt-components
+    npm install
+    npm audit fix
+    npm run build
+    cd ../
+    cp -r ./qdt-components/dist ./npm
+    cp ./qdt-components/LICENSE ./npm/LICENSE
+    cp ./qdt-components/package.json ./npm/package.json
+    cp ./qdt-components/readme.md ./npm/readme.md
+  displayName: 'Build qdt-components'
 
-        - task: NodeTool@0
-          inputs:
-            versionSpec: '10.x'
-          displayName: 'Install Node.js'
+- script: |
+    VER=$(jq -r ".version" < ./qdt-components/package.json)
+    mkdir ./qdt-apps/qdt-components/$VER
+    git checkout -b ci
+    git pull origin master
+    cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
+    git add .
+    git commit -m "qdt-components $VER"
+    git push origin ci
+  displayName: 'CDN'
 
-        - script: |
-            wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
-            sudo cp /tmp/jq-linux64 /usr/bin/jq && \
-            # chmod +x /usr/bin/jq
-            sudo chmod +x /usr/bin/jq
-          displayName: 'Install JQ'
-
-        - script: |
-            mkdir npm
-            cd ./qdt-components
-            npm install
-            npm audit fix
-            npm run build
-            cd ../
-            cp -r ./qdt-components/dist ./npm
-            cp ./qdt-components/LICENSE ./npm/LICENSE
-            cp ./qdt-components/package.json ./npm/package.json
-            cp ./qdt-components/readme.md ./npm/readme.md
-          displayName: 'Build qdt-components'
-
-        - script: |
-            VER=$(jq -r ".version" < ./qdt-components/package.json)
-            mkdir ./qdt-apps/qdt-components/$VER
-            git checkout -b ci
-            git pull origin master
-            cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
-            git add .
-            git commit -m "qdt-components $VER"
-            git push origin ci
-          displayName: 'CDN'
-
-        - task: Npm@1
-          inputs:
-            command: 'publish'
-            workingDir: './npm'
-            publishEndpoint: 'npmjs.com_demo_team'
-          displayName: 'Npm publish'
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: './npm'
+    publishEndpoint: 'npmjs.com_demo_team'
+  displayName: 'Npm publish'
