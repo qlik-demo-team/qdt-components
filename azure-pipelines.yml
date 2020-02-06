@@ -41,6 +41,9 @@ steps:
     npm run build
     cd ../
     cp -r ./qdt-components/dist ./npm
+    cp ./LICENSE ./npm/LICENSE
+    cp ./package.json ./npm/package.json
+    cp ./readme.md ./npm/readme.md
     ls -la ./npm
   displayName: 'Build qdt-components'
 
