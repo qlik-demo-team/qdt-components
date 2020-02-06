@@ -41,10 +41,11 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    ls -la /usr 
+    sudo mkdir /usr/bin/jq
+    sudo chmod +x /usr/bin/jq
+    ls -la /usr/bin 
     wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
-    cp /tmp/jq-linux64 /usr/bin/jq && \
-    chmod +x /usr/bin/jq
+    sudo cp /tmp/jq-linux64 /usr/bin/jq && \
   displayName: 'Install JQ'
 
 - script: |
