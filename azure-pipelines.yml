@@ -40,7 +40,7 @@ steps:
     npm audit fix
     npm run build
     cd ../
-    cp -R /qdt-components/dist /npm
+    cp -r ./qdt-components/dist ./npm
     ls -la ./npm
   displayName: 'Build qdt-components'
 
