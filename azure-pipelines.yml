@@ -63,7 +63,9 @@ steps:
 
 - script: |
     VER=$(jq -r ".version" < ./qdt-components/package.json)
-    mkdir ./qdt-apps/qdt-components/$VER
+    echo $VER
+    cd ./qdt-apps
+    mkdir ./qdt-components/$VER
     git checkout -b ci
     git pull origin master
     cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
