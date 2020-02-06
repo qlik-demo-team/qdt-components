@@ -40,14 +40,6 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-# - script: |
-#     # sudo mkdir /usr/bin/jq
-#     sudo chmod +x /usr/bin/jq
-#     ls -la /usr/bin 
-#     wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
-#     sudo cp /tmp/jq-linux64 /usr/bin/jq
-#   displayName: 'Install JQ'
-
 - script: |
     mkdir npm
     cd ./qdt-components
@@ -74,14 +66,17 @@ steps:
     # git merge ci 
     # # git push origin master
     git checkout -b ci
-    cp -r ../qdt-components ./qdt-components/$VER
-    git add .
-    git commit -m "qdt-components $VER"
-    git checkout master
-    git merge ci
-    git branch -d ci
-    git push origin
-    git status
+    ls -la ../
+    ls -la ../npm
+    cp -r ../npm ./qdt-components/$VER
+    ls -la ./qdt-components/$VER
+    # git add .
+    # git commit -m "qdt-components $VER"
+    # git checkout master
+    # git merge ci
+    # git branch -d ci
+    # git push origin
+    # git status
   displayName: 'CDN'
 
 # - task: Npm@1
