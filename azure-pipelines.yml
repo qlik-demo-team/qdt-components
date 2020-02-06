@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+resources:
+  repositories:
+  - repository: qdt-components
+    type: github
+    endpoint: github.com_demo_team
+    name: qlik-demo-team/qdt-components
+  - repository: qdt-components-ci
+    type: git
+    name: qdt-components-ci/qdt-components-ci
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  persistCredentials: true
+  # clean: true
+- checkout: qdt-components
+- checkout: qdt-components-ci
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    mkdir npm
+    ls -la
+    cd ./qdt-components
+    # git pull origin master 
+    npm install
+    npm audit fix
+    npm run build
+    cp ./dist ../npm
+    cd ../
+    ls -la
+    ls -la ./npm
+  displayName: 'Build qdt-components'
+
+- script: |
+    ls -la
+    ls -la ./npm
+  displayName: 'Npm publish'
