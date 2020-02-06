@@ -13,7 +13,7 @@ const QdtKpi = ({ layout, format: specifier }) => {
   const value = useMemo(() => format(specifier)(layout.qMatrix[0][0].qText), [layout, specifier]);
   return (
     <>
-      <div className='qdt-kpi'>
+      <div className="qdt-kpi">
         {value}
       </div>
     </>

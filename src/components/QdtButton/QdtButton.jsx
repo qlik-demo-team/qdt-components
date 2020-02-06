@@ -8,7 +8,7 @@
 
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'material-ui';
+import Button from '@material-ui/core/Button';
 import '../../styles/index.scss';
 
 // Sept 2018 BUG. Adds the current www folder in the path
@@ -19,7 +19,9 @@ const urlFix = (url) => {
   return _url;
 };
 
-const QdtButton = ({ app, vis, type, label, options: optionsProp }) => {
+const QdtButton = ({
+  app, vis, type, label, options: optionsProp,
+}) => {
   const defaultOptions = {};
   const options = { ...defaultOptions, ...optionsProp };
 
@@ -54,7 +56,7 @@ const QdtButton = ({ app, vis, type, label, options: optionsProp }) => {
         app.clearAll();
         break;
     }
-  }, [app, vis, type]);
+  }, [type, vis, app, options]);
 
   return (
     <>

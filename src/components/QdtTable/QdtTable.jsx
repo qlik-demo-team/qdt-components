@@ -9,6 +9,7 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
+import merge from 'deepmerge';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import '../../styles/index.scss';
@@ -18,9 +19,10 @@ import '../../styles/index.scss';
 const QdtTable = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     minRows: undefined,
+    pageSize: 10,
     style: { height: '100%' },
   };
-  const options = { ...defaultOptions, ...optionsProp };
+  const options = merge(defaultOptions, optionsProp);
 
   const columns = useMemo(() => (
     layout
@@ -49,9 +51,11 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
       : []
   ), [layout]);
 
+  const [loading, setLoading] = useState(true);
+
   const pages = useMemo(() => (
-    layout && Math.ceil(layout.qHyperCube.qSize.qcy / qPage.qHeight)
-  ), [layout]);
+    layout && Math.ceil(layout.qHyperCube.qSize.qcy / options.pageSize)
+  ), [layout, options.pageSize]);
 
   const [page, setPage] = useState(0);
   useEffect(() => {
@@ -61,25 +65,21 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
   }, [page, pages]);
 
   const [data, setData] = useState(null);
-  useEffect(async () => {
-    if (!layout) return;
-    setLoading(true);
-    const _data = await model.getHyperCubeData(
-      '/qHyperCubeDef', 
-      [{ ...qPage, qTop: (qPage.qTop + qPage.qHeight) * page }]
-    );
-    setData(_data);
-    setLoading(false);
-  }, [layout, page]);
-
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(false);
-  }, [data]);
+    if (!layout) return;
+    (async () => {
+      setLoading(true);
+      const _data = await model.getHyperCubeData(
+        '/qHyperCubeDef',
+        [{ qWidth: layout.qHyperCube.qSize.qcx, qHeight: options.pageSize, qTop: options.pageSize * page }],
+      );
+      setData(_data);
+      setLoading(false);
+    })();
+  }, [layout, model, options.pageSize, page]);
 
   const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); }, []);
   const handleSortedChange = useCallback(async (newSorted, column) => {
-    setLoading(true);
     // If no sort is set, we need to set a default sort order
     if (column.qSortIndicator === 'N') {
       if (column.qPath.includes('qDimensions')) {
@@ -127,7 +127,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
         loading={loading}
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
-        defaultPageSize={qPage.qHeight}
+        defaultPageSize={options.pageSize}
         minRows={options.minRows}
         showPageSizeOptions={false}
         multiSort={false}
@@ -137,10 +137,10 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
           onClick: (e, handleOriginal) => {
             if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
               model.selectHyperCubeValues(
-                '/qHyperCubeDef', 
-                column.qInterColumnIndex, 
+                '/qHyperCubeDef',
+                column.qInterColumnIndex,
                 [rowInfo.original[column.qInterColumnIndex].qElemNumber],
-                true
+                true,
               );
             }
             if (handleOriginal) {
@@ -151,24 +151,17 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
       />
     </div>
   );
-}
+};
 
 QdtTable.propTypes = {
   layout: PropTypes.object,
   model: PropTypes.object,
-  page: PropTypes.object,
   options: PropTypes.object,
 };
 QdtTable.defaultProps = {
   layout: null,
   model: null,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 20,
-  },
-  options: {}
+  options: {},
 };
 
 export default QdtTable;
