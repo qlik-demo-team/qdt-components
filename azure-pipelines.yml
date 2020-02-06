@@ -48,7 +48,9 @@ steps:
     ls -la ./npm/dist/
   displayName: 'Build qdt-components'
 
-- script: |
-    ls -la
-    ls -la ./npm
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: './npm'
+    publishEndpoint: 'npmjs.com_demo_team'
   displayName: 'Npm publish'
