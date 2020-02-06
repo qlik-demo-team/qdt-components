@@ -70,13 +70,14 @@ steps:
     ls -la ../npm
     cp -r ../npm ./qdt-components/$VER
     ls -la ./qdt-components/$VER
-    # git add .
-    # git commit -m "qdt-components $VER"
-    # git checkout master
-    # git merge ci
-    # git branch -d ci
-    # git push origin
-    # git status
+    git status
+    git add .
+    git commit -m "qdt-components $VER"
+    git checkout master
+    git merge ci
+    git branch -d ci
+    git push origin
+    git status
   displayName: 'CDN'
 
 # - task: Npm@1
