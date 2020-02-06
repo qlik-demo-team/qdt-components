@@ -9,9 +9,16 @@ resources:
     type: github
     endpoint: github.com_demo_team
     name: qlik-demo-team/qdt-components
+  - repository: qdt-apps
+    type: github
+    endpoint: github.com_demo_team
+    name: qlikit/qdt-apps
   - repository: qdt-components-ci
     type: git
     name: qdt-components-ci/qdt-components-ci
+
+variables:
+  JQ_VERSION: 1.5
 
 trigger:
 - master
@@ -24,6 +31,8 @@ steps:
   persistCredentials: true
   # clean: true
 - checkout: qdt-components
+- checkout: qdt-apps
+  persistCredentials: true
 - checkout: qdt-components-ci
 
 - task: NodeTool@0
@@ -32,10 +41,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
+    cp /tmp/jq-linux64 /usr/bin/jq && \
+    chmod +x /usr/bin/jq
+  displayName: 'Install JQ'
+
+- script: |
     mkdir npm
-    ls -la
     cd ./qdt-components
-    # git pull origin master 
     npm install
     npm audit fix
     npm run build
@@ -44,9 +57,18 @@ steps:
     cp ./qdt-components/LICENSE ./npm/LICENSE
     cp ./qdt-components/package.json ./npm/package.json
     cp ./qdt-components/readme.md ./npm/readme.md
-    ls -la ./npm
-    ls -la ./npm/dist/
   displayName: 'Build qdt-components'
+
+- script: |
+    VER=$(jq -r ".version" < ./qdt-components/package.json)
+    mkdir ./qdt-apps/qdt-components/$VER
+    git checkout -b ci
+    git pull origin master
+    cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
+    git add .
+    git commit -m "qdt-components $VER"
+    git push origin ci
+  displayName: 'CDN'
 
 - task: Npm@1
   inputs:
