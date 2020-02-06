@@ -23,6 +23,7 @@
     "@material-ui/core": "^4.9.1",
     "@types/qlik-engineapi": "^12.67.2",
     "@types/qlik-visualizationextensions": "^4.0.2",
+    "classnames": "^2.2.6",
     "d3": "^5.9.2",
     "d3-format": "^1.4.3",
     "enigma.js": "^2.4.0",
@@ -38,6 +39,7 @@
     "react-dom": "16.11.0",
     "react-table": "^6.10.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
+    "uuid": "^3.4.0",
     "ws": "^7.0.0"
   },
   "devDependencies": {
