@@ -70,7 +70,7 @@ steps:
     git config --global user.name "Yianni Ververis"
     git checkout -b ci
     git pull origin master
-    cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
+    cp -r ../qdt-components/dist ./qdt-components/$VER
     git add .
     git commit -m "qdt-components $VER"
     git push origin ci
