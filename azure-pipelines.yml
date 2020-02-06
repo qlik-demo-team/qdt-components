@@ -39,9 +39,8 @@ steps:
     npm install
     npm audit fix
     npm run build
-    cp ./dist ../npm
     cd ../
-    ls -la
+    cp -R /qdt-components/dist /npm
     ls -la ./npm
   displayName: 'Build qdt-components'
 
