@@ -66,6 +66,8 @@ steps:
     echo $VER
     cd ./qdt-apps
     mkdir ./qdt-components/$VER
+    git config --global user.email "yianni.ververis@qlik.com"
+    git config --global user.name "Yianni Ververis"
     git checkout -b ci
     git pull origin master
     cp -r ./qdt-components/dist ./qdt-apps/qdt-components/$VER
