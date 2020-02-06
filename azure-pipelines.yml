@@ -40,13 +40,13 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    sudo mkdir /usr/bin/jq
-    sudo chmod +x /usr/bin/jq
-    ls -la /usr/bin 
-    wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
-    sudo cp /tmp/jq-linux64 /usr/bin/jq && \
-  displayName: 'Install JQ'
+# - script: |
+#     # sudo mkdir /usr/bin/jq
+#     sudo chmod +x /usr/bin/jq
+#     ls -la /usr/bin 
+#     wget --no-check-certificate https://github.com/stedolan/jq/releases/download/jq-$(JQ_VERSION)/jq-linux64 -O /tmp/jq-linux64 && \
+#     sudo cp /tmp/jq-linux64 /usr/bin/jq
+#   displayName: 'Install JQ'
 
 - script: |
     mkdir npm
@@ -72,9 +72,9 @@ steps:
     git push origin ci
   displayName: 'CDN'
 
-- task: Npm@1
-  inputs:
-    command: 'publish'
-    workingDir: './npm'
-    publishEndpoint: 'npmjs.com_demo_team'
-  displayName: 'Npm publish'
+# - task: Npm@1
+#   inputs:
+#     command: 'publish'
+#     workingDir: './npm'
+#     publishEndpoint: 'npmjs.com_demo_team'
+#   displayName: 'Npm publish'
