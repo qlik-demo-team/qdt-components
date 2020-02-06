@@ -65,35 +65,22 @@ steps:
     VER=$(jq -r ".version" < ./qdt-components/package.json)
     echo $VER
     cd ./qdt-apps
-    mkdir ./qdt-components/$VER
+    # mkdir ./qdt-components/$VER
     git config --global user.email "yianni.ververis@qlik.com"
     git config --global user.name "Yianni Ververis"
     # git pull origin master
     # git checkout -b ci
-    cp -r ../qdt-components ./qdt-components/$VER
-    # git add .
-    # git commit -m "qdt-components $VER"
     # git checkout master
     # git merge ci 
-    # git branch -d ci
     # # git push origin master
-    ECHO SOURCE BRANCH IS %BUILD_SOURCEBRANCH%
-    IF %BUILD_SOURCEBRANCH% == refs/heads/master (
-      ECHO Building master branch so no merge is needed.
-      EXIT
-    )
-    SET sourceBranch=origin/%BUILD_SOURCEBRANCH:refs/heads/=%
-    ECHO GIT CHECKOUT MASTER
+    git checkout -b ci
+    cp -r ../qdt-components ./qdt-components/$VER
+    git add .
+    git commit -m "qdt-components $VER"
     git checkout master
-    ECHO GIT STATUS
-    git status
-    ECHO GIT MERGE
-    git merge %sourceBranch% -m "Merge to master"
-    ECHO GIT STATUS
-    git status
-    ECHO GIT PUSH
+    git merge ci
+    git branch -d ci
     git push origin
-    ECHO GIT STATUS
     git status
   displayName: 'CDN'
 
