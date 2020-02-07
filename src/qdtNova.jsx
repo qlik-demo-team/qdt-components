@@ -1,21 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  useApp, useLayout, useModel, useElement, useEffect,
-} from '@nebula.js/supernova';
+import React from 'react';  //eslint-disable-line
+import ReactDOM from 'react-dom';  //eslint-disable-line
 
-export default (Component, options) => ((/* env */) => ({
-  qae: {},
+// TODO: Support turning components into extensions
+// TODO: Return an object containing the current app, layout, model, element, and instance of component
+
+export default (supernova) => (Component, options) => ((/* env */) => ({
   component() {
-    const app = useApp();  //eslint-disable-line
-    const layout = useLayout();  //eslint-disable-line
-    const model = useModel();  //eslint-disable-line
-    const element = useElement();  //eslint-disable-line
-    useEffect(() => {  //eslint-disable-line
+    const app = supernova.useApp();
+    const layout = supernova.useLayout();
+    const model = supernova.useModel();
+    const element = supernova.useElement();
+    supernova.useEffect(() => {
       ReactDOM.render(<Component app={app} layout={layout} model={model} options={options} />, element);
-      return (() => {
-        ReactDOM.unmountComponentAtNode(element);
-      });
     }, [app, layout, model, element]);
+    supernova.useEffect(() => () => ReactDOM.unmountComponentAtNode(element), []);
   },
 }));

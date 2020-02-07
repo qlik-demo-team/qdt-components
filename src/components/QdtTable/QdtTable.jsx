@@ -24,6 +24,10 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
   };
   const options = merge(defaultOptions, optionsProp);
 
+  useEffect(() => {
+    console.log('component mounted');
+  }, []);
+
   const columns = useMemo(() => (
     layout
       ? [
@@ -69,11 +73,11 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
     if (!layout) return;
     (async () => {
       setLoading(true);
-      const _data = await model.getHyperCubeData(
+      const dataPages = await model.getHyperCubeData(
         '/qHyperCubeDef',
         [{ qWidth: layout.qHyperCube.qSize.qcx, qHeight: options.pageSize, qTop: options.pageSize * page }],
       );
-      setData(_data);
+      setData(dataPages[0]);
       setLoading(false);
     })();
   }, [layout, model, options.pageSize, page]);
