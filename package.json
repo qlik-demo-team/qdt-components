@@ -21,6 +21,7 @@
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
     "@material-ui/core": "^4.9.1",
+    "@nebula.js/supernova": "0.1.0-alpha.14",
     "@types/qlik-engineapi": "^12.67.2",
     "@types/qlik-visualizationextensions": "^4.0.2",
     "classnames": "^2.2.6",
