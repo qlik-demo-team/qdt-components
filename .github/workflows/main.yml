@@ -23,4 +23,4 @@ jobs:
         # Name of the Azure Pipline to be triggered
         azure-pipeline-name: 'qdt-components-ci'
         # Paste personal access token of the user as value of secret variable:AZURE_DEVOPS_TOKEN
-        azure-devops-token: '${{ secrets.AZURE_DEVOPS }}'
+        azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
