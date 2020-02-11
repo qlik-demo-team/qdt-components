@@ -10,11 +10,13 @@ import '../../styles/index.scss';
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
 const QdtTable = ({
-  qDocPromise, cols, qPage, style, minRows, showPageSizeOptions,
+  qDocPromise, cols, qPage, style, minRows, showPageSizeOptions, disableSelections,
 }) => {
   const {
     qLayout, qData, offset, select, applyPatches, //eslint-disable-line
   } = useHyperCube({ qDocPromise, cols, qPage });
+
+  const [pageSize, setPageSize] = useState(qPage.qHeight);
 
   const columns = useMemo(() => (
     qLayout
@@ -43,7 +45,7 @@ const QdtTable = ({
       : []
   ), [qLayout]);
 
-  const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight), [qLayout, qPage]);
+  const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / pageSize), [qLayout, qPage, pageSize]);
 
   const [page, setPage] = useState(0);
   useEffect(() => {
@@ -56,7 +58,7 @@ const QdtTable = ({
     setLoading(false);
   }, [qData]);
 
-  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * qPage.qHeight); }, [offset, qPage.qHeight]);
+  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * pageSize); }, [offset, pageSize]);
   const handleSortedChange = useCallback(async (newSorted, column) => {
     setLoading(true);
     // If no sort is set, we need to set a default sort order
@@ -94,6 +96,9 @@ const QdtTable = ({
     ]);
     setPage(0);
   }, [applyPatches, qLayout]);
+  const handlePageSizeChange = useCallback((_pageSize) => {  //eslint-disable-line
+    setPageSize(_pageSize);
+  }, [setPageSize]);
 
   return (
     <div>
@@ -106,15 +111,16 @@ const QdtTable = ({
         loading={loading}
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
-        defaultPageSize={qPage.qHeight}
+        defaultPageSize={pageSize}
         minRows={minRows}
         showPageSizeOptions={showPageSizeOptions}
+        onPageSizeChange={handlePageSizeChange}
         multiSort={false}
         className="-striped"
         style={style}
         getTdProps={(_, rowInfo, column) => ({
           onClick: (e, handleOriginal) => {
-            if ((column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+            if (!disableSelections && (column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
               select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
             }
             if (handleOriginal) {
@@ -134,6 +140,7 @@ QdtTable.propTypes = {
   style: PropTypes.object,
   minRows: PropTypes.number,
   showPageSizeOptions: PropTypes.bool,
+  disableSelections: PropTypes.bool,
 };
 QdtTable.defaultProps = {
   cols: null,
@@ -146,6 +153,7 @@ QdtTable.defaultProps = {
   style: { height: '100%' },
   minRows: undefined,
   showPageSizeOptions: false,
+  disableSelections: false,
 };
 
 export default QdtTable;
