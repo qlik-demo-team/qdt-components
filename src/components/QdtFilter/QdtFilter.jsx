@@ -110,7 +110,7 @@ const QdtFilter = ({
             <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} offset={offset} />
           </LuiList>
           {!hideStateCountsBar && totalStateCounts && selections
-            && <StateCountsBar totalStateCounts={totalStateCounts} selections={selections} />}
+            && <StateCountsBar totalStateCounts={totalStateCounts._totalStateCounts} selections={selections} />}
         </LuiDropdown>
         )}
       { qData && qLayout && expanded
