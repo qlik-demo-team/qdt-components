@@ -25,23 +25,24 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   const { current: id } = useRef(uuidv4());
 
-  const selectValue = useMemo(() => layout.qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S'), [layout]);
+  const selectValue = useMemo(() => layout.qListObject.qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S'), [layout]);
   const selectRenderValue = useMemo((selected) => {
+    if (!selected) return;
     if (selected.length === 1) {
       return selected[0][0].qText;
     }
-
-    return `${selected.length} of ${layout.qSize.qcy} selected`;
-  }, [layout.qSize.qcy]);
+    return `${selected.length} of ${layout.qListObject.qSize.qcy} selected`;
+  }, [layout.qListObject.qSize.qcy]);
 
   const handleOpen = useCallback(() => {
-    model.beginSelections();
+    model.beginSelections(['/qListObjectDef']);
   }, [model]);
   const handleClose = useCallback(() => {
     model.endSelections(true);
   }, [model]);
   const handleChange = useCallback((event) => {
-    model.selectListObjectValues('/qListObjectDef', event, false);
+    const qValues = event.target.value.map((v) => v[0].qElemNumber);
+    model.selectListObjectValues('/qListObjectDef', qValues, false);
   }, [model]);
   const handleSearch = useCallback((event) => {
     model.searchListObjectFor('/qListObjectDef', event.target.value);
@@ -50,7 +51,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   return (
     <>
       <FormControl>
-        <InputLabel id={`${id}-label`}>{layout.qDimensionInfo[0].qFallbackTitle}</InputLabel>
+        <InputLabel id={`${id}-label`}>{layout.qListObject.qDimensionInfo.qFallbackTitle}</InputLabel>
         <Select
           labelId={`${id}-label`}
           id={id}
@@ -65,7 +66,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           <MenuItem>
             <Input type="search" onChange={handleSearch} />
           </MenuItem>
-          {layout.qDataPages[0].qMatrix.map((row) => (
+          {layout.qListObject.qDataPages[0].qMatrix.map((row) => (
             <MenuItem
               key={row[0].qElemNumber}
               value={row}
