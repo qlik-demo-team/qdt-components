@@ -10,7 +10,7 @@ import '../../styles/index.scss';
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
 const QdtTable = ({
-  qDocPromise, cols, qPage, style, minRows,
+  qDocPromise, cols, qPage, style, minRows, showPageSizeOptions,
 }) => {
   const {
     qLayout, qData, offset, select, applyPatches, //eslint-disable-line
@@ -108,7 +108,7 @@ const QdtTable = ({
         onSortedChange={handleSortedChange}
         defaultPageSize={qPage.qHeight}
         minRows={minRows}
-        showPageSizeOptions={false}
+        showPageSizeOptions={showPageSizeOptions}
         multiSort={false}
         className="-striped"
         style={style}
@@ -133,6 +133,7 @@ QdtTable.propTypes = {
   qPage: PropTypes.object,
   style: PropTypes.object,
   minRows: PropTypes.number,
+  showPageSizeOptions: PropTypes.bool,
 };
 QdtTable.defaultProps = {
   cols: null,
@@ -144,6 +145,7 @@ QdtTable.defaultProps = {
   },
   style: { height: '100%' },
   minRows: undefined,
+  showPageSizeOptions: false,
 };
 
 export default QdtTable;
