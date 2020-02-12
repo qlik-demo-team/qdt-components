@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Create StateCountsBar (the green line below the dropdown) */
-const StateCountsBar = ({ totalStateCounts, selections }) => {
-  const fillWidth = (selections.length) ? `${(selections.length / totalStateCounts) * 100}%` : '100%';
+const StateCountsBar = ({ qStateCounts, qcy }) => {
+  console.log(qStateCounts, qcy);
+  const fillWidth = `${((qStateCounts.qSelected + qStateCounts.qOption) / qcy) * 100}%`;
   const fillStyle = {
     position: 'absolute', width: fillWidth, height: '100%', backgroundColor: '#52CC52', transition: 'width .6s ease',
   };
@@ -16,8 +17,8 @@ const StateCountsBar = ({ totalStateCounts, selections }) => {
 };
 
 StateCountsBar.propTypes = {
-  totalStateCounts: PropTypes.number.isRequired,
-  selections: PropTypes.array.isRequired,
+  qStateCounts: PropTypes.object.isRequired,
+  qcy: PropTypes.number.isRequired,
 };
 
 export default StateCountsBar;

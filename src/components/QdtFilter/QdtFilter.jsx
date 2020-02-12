@@ -13,7 +13,7 @@
  * DropDown, List or Tabs
 */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   LuiDropdown, LuiList, LuiSearch, LuiTabset,
@@ -30,7 +30,6 @@ const QdtFilter = ({
   qDocPromise, cols, qPage, showStateInDropdown, single, hideStateCountsBar, expanded, expandedHorizontal, expandedHorizontalSense, placeholder,
 }) => {
   const [dropdownOpen, setDropDownOpen] = useState(false);
-  const [totalStateCounts, setTotalStateCounts] = useState(null);
   const [value, setValue] = useState('');
   // let searchListInputValue = '';
 
@@ -77,15 +76,6 @@ const QdtFilter = ({
     if (expandedHorizontal) endSelections(true);
   };
 
-  useEffect(() => {
-    if (qData && qLayout) {
-      const { qListObject: { qDimensionInfo: { qStateCounts } } } = qLayout;
-      const _totalStateCounts = Object.values(qStateCounts).reduce((a, b) => a + b);
-      setTotalStateCounts({ _totalStateCounts });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData, qLayout, selections]);
-
   return (
     <>
       { qData && qLayout && !expanded && !expandedHorizontal
@@ -95,7 +85,7 @@ const QdtFilter = ({
             {!showStateInDropdown && placeholder}
             {(showStateInDropdown && selections && selections.length === 0) && placeholder}
             {(showStateInDropdown && selections && selections.length === 1) && `${placeholder}${placeholder && ':'} ${selections[0][0].qText}`}
-            {(showStateInDropdown && selections && selections.length > 1) && `${placeholder}${placeholder && ':'} ${selections.length} of ${totalStateCounts._totalStateCounts}`}
+            {(showStateInDropdown && selections && selections.length > 1) && `${placeholder}${placeholder && ':'} ${selections.length} of ${qLayout.qListObject.qSize.qcy}`}
           </span>
           <LuiList style={{ width: '15rem' }}>
             <LuiSearch
@@ -109,8 +99,8 @@ const QdtFilter = ({
             />
             <DropdownItemList qData={qData} select={_select} dropdownOpen={dropdownOpen} />
           </LuiList>
-          {!hideStateCountsBar && totalStateCounts && selections
-            && <StateCountsBar totalStateCounts={totalStateCounts._totalStateCounts} selections={selections} />}
+          {!hideStateCountsBar && qLayout
+            && <StateCountsBar qStateCounts={qLayout.qListObject.qDimensionInfo.qStateCounts} qcy={qLayout.qListObject.qSize.qcy} />}
         </LuiDropdown>
         )}
       { qData && qLayout && expanded
@@ -122,7 +112,7 @@ const QdtFilter = ({
             onChange={_searchListObjectFor}
             onKeyPress={_acceptListObjectSearch}
           />
-          <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} />
+          <DropdownItemList qData={qData} select={_select} dropdownOpen={dropdownOpen} />
         </LuiList>
         )}
       { qData && expandedHorizontal
