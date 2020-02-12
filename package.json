@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "2.3.15",
+  "version": "2.4.0",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types/qdt-components.d.ts",
@@ -34,7 +34,7 @@
     "qdt-lui": "^0.1.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "react-table": "^6.10.3",
+    "react-table": "^6.11.5",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "ws": "^7.0.0"
   },

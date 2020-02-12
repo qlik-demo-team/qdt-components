@@ -35,12 +35,11 @@ const QdtFilter = ({
   // let searchListInputValue = '';
 
   const {
-    beginSelections, endSelections, qLayout, qData, offset, selections, select, searchListObjectFor, acceptListObjectSearch,
+    beginSelections, endSelections, qLayout, qData, selections, select, searchListObjectFor, acceptListObjectSearch,
   } = useListObject({ qDocPromise, cols, qPage });
 
   const _searchListObjectFor = (event) => {
     setValue(event.target.value);
-    offset(0);
     searchListObjectFor(event.target.value);
   };
 
@@ -70,9 +69,10 @@ const QdtFilter = ({
 
   /** Make Selections */
   const _select = (event) => {
-    const { qElemNumber, qState } = event.currentTarget.dataset;
-    const toggleSelections = !(((!single && qState === 'S') || (expandedHorizontal) || single));
-    select(Number(qElemNumber), toggleSelections);
+    const { qElemNumber, qState } = event.currentTarget.dataset;  //eslint-disable-line
+    // FKA - This is broken. I don't know what it was for, but it breaks selections in regular filters.
+    // const toggleSelections = !(((!single && qState === 'S') || (expandedHorizontal) || single));
+    select(Number(qElemNumber), true);
     if (single && (!expanded || !ExpandedHorizontalTab)) toggle();
     if (expandedHorizontal) endSelections(true);
   };
@@ -107,7 +107,7 @@ const QdtFilter = ({
               // onKeyPress={handleKeyPress}
               // onGo={showGo ? _acceptListObjectSearch : null}
             />
-            <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} offset={offset} />
+            <DropdownItemList qData={qData} select={_select} />
           </LuiList>
           {!hideStateCountsBar && totalStateCounts && selections
             && <StateCountsBar totalStateCounts={totalStateCounts._totalStateCounts} selections={selections} />}
@@ -122,7 +122,7 @@ const QdtFilter = ({
             onChange={_searchListObjectFor}
             onKeyPress={_acceptListObjectSearch}
           />
-          <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} offset={offset} />
+          <DropdownItemList qData={qData} rowHeight={38} select={_select} qcy={qLayout.qListObject.qSize.qcy} />
         </LuiList>
         )}
       { qData && expandedHorizontal
@@ -160,7 +160,7 @@ QdtFilter.defaultProps = {
     qTop: 0,
     qLeft: 0,
     qWidth: 1,
-    qHeight: 100,
+    qHeight: 10000,
   },
   single: false,
   hideStateCountsBar: false,

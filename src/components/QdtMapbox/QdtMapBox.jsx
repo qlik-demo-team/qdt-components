@@ -17,7 +17,7 @@ const QdtMapBox = ({
 }) => {
   const node = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { qData, qLayout, offset } = useHyperCube({ qPage, ...hyperCubeProps });
+  const { qData, qLayout, changePage } = useHyperCube({ qPage, ...hyperCubeProps });
   const property = hyperCubeProps.cols[3];
   const handleCallback = useCallback(() => getData(qData, qLayout, map), [getData, qData, qLayout]);
 
@@ -194,7 +194,7 @@ const QdtMapBox = ({
       if (currentPage === totalPages) {
         clearInterval(populateDataID);
       } else {
-        offset(currentPage * qPage.qHeight);
+        changePage({ qTop: currentPage * qPage.qHeight });
         currentPage += 1;
       }
     }, getAllDataInterval * 1000);

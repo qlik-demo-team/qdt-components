@@ -1,4 +1,6 @@
-import { useReducer, useEffect } from 'react';
+import {
+  useCallback, useRef, useReducer, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 // import useSequencer from './useSequencer';
 
@@ -13,7 +15,7 @@ const initialState = {
 function reducer(state, action) {
   const {
     payload: {
-      qDoc, qObject, qData, qLayout, selections,
+      qData, qLayout, selections,
     }, type,
   } = action;
   switch (type) {
@@ -21,26 +23,25 @@ function reducer(state, action) {
       return {
         ...state, qData, qLayout, selections,
       };
-    case 'init':
-      return {
-        ...state, qDoc, qObject,
-      };
     default:
       throw new Error();
   }
 }
 
 const useListObject = ({
-  qDocPromise, qPage, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder, autoSortByState,
+  qDocPromise, qPage: qPageProp, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder, autoSortByState,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const {
-    qData, qLayout, qObject, selections,
+    qData, qLayout, selections,
   } = state;
 
+  const qObject = useRef(null);
+  const qPage = useRef(qPageProp);
+
   /** Generate the Definition file */
-  const generateQProp = (currentColumn = 0) => {
+  const generateQProp = useCallback((currentColumn = 0) => {
     const qProp = { qInfo: { qType: 'visualization' } };
     if (qListObjectDef) {
       qProp.qListObjectDef = qListObjectDef;
@@ -50,7 +51,7 @@ const useListObject = ({
         || (typeof col === 'object' && col.qLibraryId && col.qType && col.qType === 'dimension'))
         .map((col) => {
           if (typeof col === 'string') {
-            return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByAscii, qSortByLoadOrder }] } };
+            return { qDef: { qFieldDefs: [col], qSortCriterias: [{ qSortByLoadOrder, qSortByAscii }] } };
           }
           return col;
         });
@@ -64,63 +65,54 @@ const useListObject = ({
       };
     }
     return qProp;
-  };
+  }, [autoSortByState, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder]);
 
-  const getLayout = () => qObject.getLayout();
+  const getLayout = useCallback(() => qObject.current.getLayout(), []);
 
-  const getData = async (qTop) => {
-    const qDataPages = await qObject.getListObjectData('/qListObjectDef', [{ ...qPage, qTop }]);
+  const getData = useCallback(async () => {
+    const qDataPages = await qObject.current.getListObjectData('/qListObjectDef', [qPage.current]);
     return qDataPages[0];
-  };
+  }, []);
 
-  const update = async (qTopPassed = 0) => {
-    // Short-circuit evaluation because one line destructuring on Null values breaks on the browser.
-    const { qDataGenerated } = qData || {};
-    const { qArea } = qDataGenerated || {};
-    const { qTop: qTopGenerated } = qArea || {};
-    const qTop = (qTopPassed) || qTopGenerated;
+  const update = useCallback(async () => {
     const _qLayout = await getLayout();
-    const _qData = await getData(qTop);
+    const _qData = await getData();
     const _selections = _qData.qMatrix.filter((row) => row[0].qState === 'S');
     dispatch({ type: 'update', payload: { qData: _qData, qLayout: _qLayout, selections: _selections } });
-  };
+  }, [getData, getLayout]);
 
-  const offset = (qTop) => update(qTop);
+  const changePage = useCallback((newPage) => {
+    qPage.current = { ...qPage.current, ...newPage };
+    update();
+  }, [update]);
 
-  const beginSelections = async () => {
-    // Make sure we close all other open selections. We usually get that when we have morethan one dropDown in the same page and while one is open, we click on the second one
-    // await qDoc.abortModal(false);
-    await qObject.beginSelections(['/qListObjectDef']);
-  };
+  const beginSelections = useCallback(async () => qObject.current.beginSelections(['/qListObjectDef']), []);
 
-  const endSelections = (qAccept) => qObject.endSelections(qAccept);
+  const endSelections = useCallback((qAccept) => qObject.current.endSelections(qAccept), []);
 
-  const select = (qElemNumber, toggle = true, ignoreLock = false) => qObject.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock);
+  const select = useCallback((qElemNumber, toggle = true, ignoreLock = false) => qObject.current.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock), []);
 
-  const searchListObjectFor = (string) => qObject.searchListObjectFor('/qListObjectDef', string);
+  const searchListObjectFor = useCallback((string) => qObject.current.searchListObjectFor('/qListObjectDef', string), []);
 
-  const acceptListObjectSearch = (ignoreLock = false) => qObject.acceptListObjectSearch('/qListObjectDef', true, ignoreLock);
+  const acceptListObjectSearch = useCallback((ignoreLock = false) => qObject.current.acceptListObjectSearch('/qListObjectDef', true, ignoreLock), []);
 
-  const applyPatches = (patches) => qObject.applyPatches(patches);
+  const applyPatches = useCallback((patches) => qObject.current.applyPatches(patches), []);
 
-  const clearSelections = () => qObject.clearSelections('/qListObjectDef');
+  const clearSelections = useCallback(() => qObject.current.clearSelections('/qListObjectDef'), []);
 
   useEffect(() => {
+    if (qObject.current) return;
     (async () => {
-      const qProp = await generateQProp();
+      const qProp = generateQProp();
       const qDoc = await qDocPromise;
-      const _qObject = await qDoc.createSessionObject(qProp);
-      if (!state.qDoc) dispatch({ type: 'init', payload: { qDoc, qObject: _qObject } });
-      if (state.qDoc && !state.qLayout) {
-        update();
-        qObject.on('changed', () => { update(); });
-      }
+      qObject.current = await qDoc.createSessionObject(qProp);
+      qObject.current.on('changed', () => { update(); });
+      update();
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.qDoc, state.qLayout]);
+  }, [generateQProp, qDocPromise, update]);
 
   return {
-    qLayout, qData, offset, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections, clearSelections,
+    qLayout, qData, changePage, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections, clearSelections,
   };
 };
 

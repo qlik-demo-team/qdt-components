@@ -13,7 +13,7 @@ let pic = null;
 const height = 50;
 
 const QdtPicassoMiniMap = ({
-  qLayout, qData, offset, qRData, type, offsetPicasso, outerWidth, innerWidth,
+  qLayout, qData, changePage, qRData, type, changePagePicasso, outerWidth, innerWidth,
 }) => {
   const [thumbSize, setThumbSize] = useState({
     left: 0,
@@ -46,15 +46,15 @@ const QdtPicassoMiniMap = ({
       // Check if the click is to the left of the current page overlay
       if (pageX < left) {
         const position = qTop - qHeight;
-        await offset(position);
+        await changePage({ qTop: position });
         // calculate();
-        offsetPicasso(position);
+        changePagePicasso({ qTop: position });
       // Check if the click is to the right of the current page overlay
       } else if (pageX > (left + width)) {
         const position = qTop + qHeight;
-        await offset(position);
+        await changePage({ qTop: position });
         // calculate();
-        offsetPicasso(position);
+        changePagePicasso({ qTop: position });
       }
     }
   };
@@ -143,8 +143,8 @@ QdtPicassoMiniMap.propTypes = {
   outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   type: PropTypes.string.isRequired,
-  offset: PropTypes.func.isRequired,
-  offsetPicasso: PropTypes.func.isRequired,
+  changePage: PropTypes.func.isRequired,
+  changePagePicasso: PropTypes.func.isRequired,
 };
 
 export default QdtPicassoMiniMap;

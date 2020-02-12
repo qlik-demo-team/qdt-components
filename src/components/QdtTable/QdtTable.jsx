@@ -13,10 +13,8 @@ const QdtTable = ({
   qDocPromise, cols, qPage, style, minRows, showPageSizeOptions, disableSelections,
 }) => {
   const {
-    qLayout, qData, offset, select, applyPatches, //eslint-disable-line
+    qLayout, qData, changePage, select, applyPatches, //eslint-disable-line
   } = useHyperCube({ qDocPromise, cols, qPage });
-
-  const [pageSize, setPageSize] = useState(qPage.qHeight);
 
   const columns = useMemo(() => (
     qLayout
@@ -45,20 +43,38 @@ const QdtTable = ({
       : []
   ), [qLayout]);
 
-  const pages = useMemo(() => (qLayout && qPage) && Math.ceil(qLayout.qHyperCube.qSize.qcy / pageSize), [qLayout, qPage, pageSize]);
-
-  const [page, setPage] = useState(0);
+  // loading
+  const [loading, setLoading] = useState(true);  //eslint-disable-line
   useEffect(() => {
-    if (page >= pages) {
-      setPage(0);
-    }
-  }, [page, pages]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(false);
+    if (qData) setLoading(false);
   }, [qData]);
 
-  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); setLoading(true); offset(pageIndex * pageSize); }, [offset, pageSize]);
+  // page size
+  const [pageSize, setPageSize] = useState(qPage.qHeight);
+
+  // page
+  const [page, _setPage] = useState(0);
+  const setPage = useCallback((_page) => {
+    setLoading(true);
+    _setPage(_page);
+    changePage({ qTop: _page * pageSize });
+  }, [changePage, pageSize]);
+  window.setPage = setPage;
+
+  // pages
+  const [pages, _setPages] = useState(0);
+  const setPages = useCallback((_pages) => {
+    if (page >= _pages) {
+      setPage(0);
+    }
+    _setPages(_pages);
+  }, [page, setPage]);
+  useEffect(() => {
+    if (!qLayout) return;
+    setPages(Math.ceil(qLayout.qHyperCube.qSize.qcy / pageSize));
+  }, [qLayout, pageSize, setPage, setPages]);
+
+  const handlePageChange = useCallback((pageIndex) => { setPage(pageIndex); }, [setPage]);
   const handleSortedChange = useCallback(async (newSorted, column) => {
     setLoading(true);
     // If no sort is set, we need to set a default sort order
@@ -95,10 +111,11 @@ const QdtTable = ({
       },
     ]);
     setPage(0);
-  }, [applyPatches, qLayout]);
+  }, [applyPatches, qLayout, setPage]);
   const handlePageSizeChange = useCallback((_pageSize) => {  //eslint-disable-line
     setPageSize(_pageSize);
-  }, [setPageSize]);
+    changePage({ qHeight: _pageSize, qTop: page * _pageSize });
+  }, [changePage, page]);
 
   return (
     <div>
@@ -109,6 +126,7 @@ const QdtTable = ({
         pages={pages}
         page={page}
         loading={loading}
+        showPageJump={false}
         onPageChange={handlePageChange}
         onSortedChange={handleSortedChange}
         defaultPageSize={pageSize}

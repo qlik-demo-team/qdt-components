@@ -29,12 +29,12 @@ const QdtPicasso = ({
   const elementNode = useRef(null);
   const [isSelectionBarVisible, setSelectionBarVisible] = useState(false);
   const {
-    beginSelections, endSelections, qLayout, qData, qRData, offset, selections, select,
+    beginSelections, endSelections, qLayout, qData, qRData, changePage, selections, select,
   } = useHyperCube({ ...otherProps });
 
   let _innerHeight = innerHeight;
 
-  const offsetPicasso = (qTop) => offset(qTop);
+  const changePagePicasso = (page) => changePage(page);
 
   const handleResize = () => pic.update();
 
@@ -168,10 +168,10 @@ const QdtPicasso = ({
           qLayout={qLayout}
           qData={qData}
           qRData={qRData}
-          offset={offset}
+          changePage={changePage}
           type={type}
           updatePic={updatePic}
-          offsetPicasso={offsetPicasso}
+          changePagePicasso={changePagePicasso}
           outerWidth={outerWidth}
           innerWidth={innerWidth}
         />

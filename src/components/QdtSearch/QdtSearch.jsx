@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { LuiDropdown, LuiList, LuiSearch } from '../QdtLui';
-import QdtVirtualScroll from '../QdtVirtualScroll/QdtVirtualScroll';
 import useListObject from '../../hooks/useListObject';
 import DropdownItemList from './DropdownItemList';
 import '../../styles/index.scss';
@@ -13,12 +12,11 @@ const QdtSearch = ({
   const [value, setValue] = useState('');
   const node = useRef(null);
   const {
-    beginSelections, endSelections, qLayout, qData, offset, select, searchListObjectFor, acceptListObjectSearch,
+    beginSelections, endSelections, qData, select, searchListObjectFor, acceptListObjectSearch,
   } = useListObject({ qDocPromise, cols, qPage });
 
   const _searchListObjectFor = (event) => {
     setValue(event.target.value);
-    offset(0);
     searchListObjectFor(event.target.value);
   };
 
@@ -84,15 +82,7 @@ const QdtSearch = ({
             onGo={showGo ? _acceptListObjectSearch : null}
           />
           <LuiList style={{ width: '15rem' }}>
-            <QdtVirtualScroll
-              qData={qData}
-              qcy={qLayout.qListObject.qSize.qcy}
-              Component={DropdownItemList}
-              componentProps={{ qData, select: handleSelect }}
-              offset={offset}
-              rowHeight={38}
-              viewportHeight={190}
-            />
+            <DropdownItemList qData={qData} select={handleSelect} />
           </LuiList>
         </LuiDropdown>
         )}
