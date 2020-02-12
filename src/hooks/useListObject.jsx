@@ -1,7 +1,7 @@
 import {
   useCallback, useRef, useReducer, useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
+import merge from 'deepmerge';
 // import useSequencer from './useSequencer';
 
 const initialState = {
@@ -28,9 +28,26 @@ function reducer(state, action) {
   }
 }
 
-const useListObject = ({
-  qDocPromise, qPage: qPageProp, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder, autoSortByState,
-}) => {
+const initialProps = {
+  autoSortByState: 1,
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
+  cols: null,
+  qListObjectDef: null,
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 1,
+    qHeight: 1000,
+  },
+};
+
+const useListObject = (props) => {
+  const {
+    qPage: qPageProp, cols, qListObjectDef, qSortByAscii, qSortByLoadOrder, autoSortByState,
+  } = merge(initialProps, props);
+  const { qDocPromise } = props;
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const {
@@ -101,7 +118,7 @@ const useListObject = ({
   const clearSelections = useCallback(() => qObject.current.clearSelections('/qListObjectDef'), []);
 
   useEffect(() => {
-    if (qObject.current) return;
+    if (!qDocPromise || qObject.current) return;
     (async () => {
       const qProp = generateQProp();
       const qDoc = await qDocPromise;
@@ -114,30 +131,6 @@ const useListObject = ({
   return {
     qLayout, qData, changePage, select, beginSelections, endSelections, searchListObjectFor, acceptListObjectSearch, applyPatches, selections, clearSelections,
   };
-};
-
-useListObject.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.array,
-  qListObjectDef: PropTypes.object,
-  qPage: PropTypes.object,
-  autoSortByState: PropTypes.bool,
-  qSortByAscii: PropTypes.oneOf([1, 0, -1]),
-  qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
-};
-
-useListObject.defaultProps = {
-  autoSortByState: 1,
-  qSortByAscii: 1,
-  qSortByLoadOrder: 1,
-  cols: null,
-  qListObjectDef: null,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 1,
-    qHeight: 100,
-  },
 };
 
 export default useListObject;

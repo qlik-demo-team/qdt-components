@@ -94,8 +94,8 @@ const QdtFilter = ({
           <span>
             {!showStateInDropdown && placeholder}
             {(showStateInDropdown && selections && selections.length === 0) && placeholder}
-            {(showStateInDropdown && selections && selections.length === 1) && `${placeholder}: ${selections[0][0].qText}`}
-            {(showStateInDropdown && selections && selections.length > 1) && `${placeholder}: ${selections.length} of ${totalStateCounts}`}
+            {(showStateInDropdown && selections && selections.length === 1) && `${placeholder}${placeholder && ':'} ${selections[0][0].qText}`}
+            {(showStateInDropdown && selections && selections.length > 1) && `${placeholder}${placeholder && ':'} ${selections.length} of ${totalStateCounts._totalStateCounts}`}
           </span>
           <LuiList style={{ width: '15rem' }}>
             <LuiSearch
@@ -107,7 +107,7 @@ const QdtFilter = ({
               // onKeyPress={handleKeyPress}
               // onGo={showGo ? _acceptListObjectSearch : null}
             />
-            <DropdownItemList qData={qData} select={_select} />
+            <DropdownItemList qData={qData} select={_select} dropdownOpen={dropdownOpen} />
           </LuiList>
           {!hideStateCountsBar && totalStateCounts && selections
             && <StateCountsBar totalStateCounts={totalStateCounts._totalStateCounts} selections={selections} />}

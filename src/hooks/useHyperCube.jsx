@@ -1,7 +1,7 @@
 import {
   useCallback, useRef, useReducer, useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
+import merge from 'deepmerge';
 
 const initialState = {
   qData: null,
@@ -30,9 +30,31 @@ function reducer(state, action) {
   }
 }
 
-const useHyperCube = ({
-  qDocPromise, qPage: qPageProp, cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qInterColumnSortOrder, qSuppressZero, qSortByExpression, qSuppressMissing, qExpression, getQRData,
-}) => {
+const initialProps = {
+  cols: null,
+  qHyperCubeDef: null,
+  qPage: {
+    qTop: 0,
+    qLeft: 0,
+    qWidth: 10,
+    qHeight: 100,
+  },
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
+  qInterColumnSortOrder: [],
+  qSuppressZero: false,
+  qSortByExpression: 0,
+  qSuppressMissing: false,
+  qExpression: null,
+  getQRData: false,
+};
+
+const useHyperCube = (props) => {
+  const {
+    qPage: qPageProp, cols, qHyperCubeDef, qSortByAscii, qSortByLoadOrder, qInterColumnSortOrder, qSuppressZero, qSortByExpression, qSuppressMissing, qExpression, getQRData,
+  } = merge(initialProps, props);
+  const { qDocPromise } = props;
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const {
@@ -152,40 +174,6 @@ const useHyperCube = ({
   return {
     beginSelections, endSelections, qLayout, qData, qRData, changePage, selections, select, applyPatches,
   };
-};
-
-useHyperCube.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.array,
-  qHyperCubeDef: PropTypes.object,
-  qPage: PropTypes.object,
-  qSortByAscii: PropTypes.oneOf([1, 0, -1]),
-  qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
-  qInterColumnSortOrder: PropTypes.array,
-  qSuppressZero: PropTypes.bool,
-  qSortByExpression: PropTypes.oneOf([1, 0, -1]),
-  qSuppressMissing: PropTypes.bool,
-  qExpression: PropTypes.object,
-  getQRData: PropTypes.bool, // Engine breaks on some HyperCubes
-};
-
-useHyperCube.defaultProps = {
-  cols: null,
-  qHyperCubeDef: null,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 100,
-  },
-  qSortByAscii: 1,
-  qSortByLoadOrder: 1,
-  qInterColumnSortOrder: [],
-  qSuppressZero: false,
-  qSortByExpression: 0,
-  qSuppressMissing: false,
-  qExpression: null,
-  getQRData: false,
 };
 
 export default useHyperCube;
