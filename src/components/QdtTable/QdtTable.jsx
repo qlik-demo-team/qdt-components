@@ -22,22 +22,30 @@ const QdtTable = ({
         ...qLayout.qHyperCube.qDimensionInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
           accessor: (d) => d[index].qText,
+          colorIndex: col.qAttrExprInfo.findIndex((attr) => attr.id === 'color'),
           defaultSortDesc: col.qSortIndicator === 'D',
           id: col.qFallbackTitle,
           qInterColumnIndex: index,
           qPath: `/qHyperCubeDef/qDimensions/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
+          // getProps: (state, rowInfo) => {
+          //   console.log(rowInfo);
+          // },
         })),
         ...qLayout.qHyperCube.qMeasureInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
           accessor: (d) => d[index + qLayout.qHyperCube.qDimensionInfo.length].qText,
+          colorIndex: col.qAttrExprInfo.findIndex((attr) => attr.id === 'color'),
           defaultSortDesc: col.qSortIndicator === 'D',
           id: col.qFallbackTitle,
           qInterColumnIndex: index + qLayout.qHyperCube.qDimensionInfo.length,
           qPath: `/qHyperCubeDef/qMeasures/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
+          // getProps: (state, rowInfo) => {
+          //   console.log(rowInfo);
+          // },
         })),
       ]
       : []
@@ -117,6 +125,8 @@ const QdtTable = ({
     changePage({ qHeight: _pageSize, qTop: page * _pageSize });
   }, [changePage, page]);
 
+  console.log(qLayout);
+
   return (
     <div>
       <ReactTable
@@ -136,16 +146,23 @@ const QdtTable = ({
         multiSort={false}
         className="-striped"
         style={style}
-        getTdProps={(_, rowInfo, column) => ({
-          onClick: (e, handleOriginal) => {
-            if (!disableSelections && (column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
-              select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
-            }
-            if (handleOriginal) {
-              handleOriginal();
-            }
-          },
-        })}
+        getTdProps={(_page, rowInfo, column) => {
+          const _style = {};
+          if (column.colorIndex !== -1) {
+            _style.color = rowInfo.original[column.qInterColumnIndex].qAttrExps.qValues[column.colorIndex].qText;
+          }
+          return {
+            style: _style,
+            onClick: (e, handleOriginal) => {
+              if (!disableSelections && (column && rowInfo) && column.qPath.includes('qDimensions') && rowInfo.original[column.qInterColumnIndex].qstate !== 'L') {
+                select(column.qInterColumnIndex, [rowInfo.original[column.qInterColumnIndex].qElemNumber]);
+              }
+              if (handleOriginal) {
+                handleOriginal();
+              }
+            },
+          };
+        }}
       />
     </div>
   );
