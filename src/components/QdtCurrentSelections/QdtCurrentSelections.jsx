@@ -1,43 +1,31 @@
-import React, { useEffect, useState, useRef } from 'react';
+/**
+ * @name QdtCurrentSelections
+ * @param {object} app - Qlik Sense app
+*/
+
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-const QdtCurrentSelections = (props) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const QdtCurrentSelections = ({ app }) => {
   const node = useRef(null);
 
-  const { qAppPromise, width, height } = props;
-
   useEffect(() => {
-    try {
-      (async () => {
-        const qApp = await qAppPromise;
-        setLoading(false);
-        qApp.getObject(node.current, 'CurrentSelections');
-      })();
-    } catch (_error) {
-      setError(_error);
-    }
-  }, [loading, qAppPromise]);
+    app.getObject(node.current, 'CurrentSelections');
+  }, [app]);
 
   return (
     <>
-      { error && error.message }
-      { loading && 'Loading...' }
-      <div style={{ width, height }} ref={node} />
+      <div ref={node} />
     </>
   );
 };
 
 QdtCurrentSelections.propTypes = {
-  qAppPromise: PropTypes.object.isRequired,
-  width: PropTypes.string,
-  height: PropTypes.string,
+  app: PropTypes.object,
 };
 
 QdtCurrentSelections.defaultProps = {
-  width: '100%',
-  height: '100%',
+  app: null,
 };
 
 export default QdtCurrentSelections;

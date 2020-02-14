@@ -15,7 +15,6 @@ module.exports = {
     filename: "[name].js",
     library: 'QdtComponents',
     libraryTarget: 'umd',
-    libraryExport: 'default',
   },
   module: {
     rules: [

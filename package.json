@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "2.5.1",
+  "version": "3.0.0",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types/qdt-components.d.ts",
@@ -20,9 +20,15 @@
   ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
+    "@material-ui/core": "^4.9.1",
+    "@material-ui/icons": "^4.9.1",
+    "@nebula.js/nucleus": "0.1.0-alpha.29",
+    "@nebula.js/supernova": "0.1.0-alpha.29",
     "@types/qlik-engineapi": "^12.67.2",
     "@types/qlik-visualizationextensions": "^4.0.2",
+    "classnames": "^2.2.6",
     "d3": "^5.9.2",
+    "d3-format": "^1.4.3",
     "deepmerge": "^4.2.2",
     "enigma.js": "^2.4.0",
     "hammerjs": "^2.0.8",
@@ -37,6 +43,7 @@
     "react-dom": "16.11.0",
     "react-table": "^6.11.5",
     "uglifyjs-webpack-plugin": "^2.1.2",
+    "uuid": "^3.4.0",
     "ws": "^7.0.0"
   },
   "devDependencies": {
@@ -64,7 +71,7 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "4.2.0",
-    "node-sass": "4.13.0",
+    "node-sass": "^4.13.1",
     "postcss-loader": "3.0.0",
     "precss": "4.0.0",
     "sass-loader": "8.0.0",
