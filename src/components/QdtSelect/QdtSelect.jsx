@@ -27,14 +27,13 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     const sv = layout.qListObject.qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S');
     return (options.multiple) ? sv : sv[0];
   }, [layout.qListObject.qDataPages, options.multiple]);
-  // const selectRenderValue = useMemo((selected) => {
-  //   console.log(556, selected);
-  //   if (!selected) return;
-  //   if (selected.length === 1) {
-  //     return selected[0][0].qText;
-  //   }
-  //   return `${selected.length} of ${layout.qListObject.qSize.qcy} selected`;
-  // }, [layout]);
+  const selectRenderValue = useMemo((selected) => {
+    if (!selected) return;
+    if (selected.length === 1) {
+      return selected[0][0].qText;
+    }
+    return `${selected.length} of ${layout.qListObject.qSize.qcy} selected`;
+  }, [layout]);
 
   const handleOpen = useCallback(() => {
     model.beginSelections(['/qListObjectDef']);
@@ -49,7 +48,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const handleSearch = useCallback((event) => {
     model.searchListObjectFor('/qListObjectDef', event.target.value);
   }, [model]);
-  console.log(559, selectValue, options); // selectRenderValue
+
   return (
     <>
       <FormControl variant="outlined">
@@ -59,7 +58,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           id={id}
           multiple={options.multiple}
           value={selectValue}
-          // renderValue={selectRenderValue}
+          renderValue={selectRenderValue}
           onOpen={handleOpen}
           onClose={handleClose}
           onChange={handleChange}
