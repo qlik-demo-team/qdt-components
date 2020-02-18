@@ -140,7 +140,7 @@ const QdtPicasso = ({
   }, [qData]);
 
   return (
-    <div ref={rootNode} style={{ position: 'relative' }}>
+    <div ref={rootNode} style={{ position: 'relative', width: '100%', height: '100%' }}>
       <div style={{
         position: 'relative',
         width: outerWidth,

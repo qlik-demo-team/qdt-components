@@ -54,6 +54,10 @@ const qApp = async (config) => {
     return new Promise((resolve) => {
       if (utility.globals.qlik) {
         const app = utility.globals.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+        // apply theme set in QSE
+        app.theme.get().then((theme) => {
+          theme.apply();
+        });
         resolve(app);
       } else {
         window.require(['js/qlik'], (q) => {

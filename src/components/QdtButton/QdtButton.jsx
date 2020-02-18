@@ -21,12 +21,7 @@ const QdtButton = (props) => {
   let qApp = null;
 
   // Sept 2018 BUG. Adds the current www folder in the path
-  const urlFix = (url) => {
-    const tempUrl = url.split('/');
-    const sbstrIndex = url.indexOf('tempcontent');
-    const _url = `${tempUrl[0]}//${tempUrl[2]}/${url.substring(sbstrIndex, url.length)}`;
-    return _url;
-  };
+  const urlFix = (url) => url.split(/(?=http.?:\/\/)(.*)(?=http.?:\/\/)/)[2];
 
   const action = async () => {
     switch (type) {
@@ -39,7 +34,7 @@ const QdtButton = (props) => {
         if (qViz) {
           const _options = (options) || { format: 'CSV_T', state: 'P' };
           const url = await qViz.exportData(_options);
-          const _url = urlFix(url);
+          const _url = url.split(/(?=http.?:\/\/)(.*)(?=http.?:\/\/)/)[2];
           window.open(_url, '_blank');
         }
         break;
