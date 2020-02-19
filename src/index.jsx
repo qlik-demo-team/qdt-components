@@ -11,3 +11,6 @@ export { default as QdtTable } from './components/QdtTable/QdtTable';
 export { default as QdtSequencer } from './components/QdtSequencer/QdtSequencer';
 
 export { default as QdtSlider } from './components/QdtSlider/QdtSlider';
+
+export { default as QdtMapBox } from './components/QdtMapbox/QdtMapBox';
+
