@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'deepmerge';
 import mapboxgl from 'mapbox-gl';
-import Theme from '../../styles';
+import Theme from '../../styles'; // @TODO REMOVE
 
 const QdtMapBox = ({ layout, options: optionsProp }) => {
   // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
@@ -22,8 +22,11 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     tooltip: null,
     createLayers: true,
     extraLayers: null,
+    flyTo: null,
+    handleMapCallback: null,
   };
   const options = merge(defaultOptions, optionsProp);
+  if (optionsProp.center) options.center = optionsProp.center; // Deep merges the array and we have center: (4) [-74.5, 40, -140, 50], which breaks mapbox
   const node = useRef(null);
   // const [isLoaded, setIsLoaded] = useState(false);
   const qData = layout.qHyperCube.qDataPages[0];
@@ -195,18 +198,17 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
       if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
+      if (options.handleMapCallback) options.handleMapCallback(map);
       // setIsLoaded(true);
       mapData = [...mapData, ...qData.qMatrix];
     });
   };
 
   useEffect(() => {
-    // if (!isLoaded) {
     if (options.createLayers) createPropertyChilderFromQData();
     mapInit();
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [map]);
 
   return (
     <>

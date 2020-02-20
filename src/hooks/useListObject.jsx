@@ -1,25 +1,24 @@
 // import { useEffect } from 'react';
 import merge from 'deepmerge';
 
-const useHyperCube = ({ app, qHyperCubeDef: qHyperCubeDefProp }) => {
-  const qHyperCubeDefDefault = {
-    qDimensions: [],
-    qMeasures: [],
+const useListObject = ({ app, qListObjectDef: qListObjectDefProp }) => {
+  const qListObjectDefDefault = {
+    qDef: [],
     qInitialDataFetch: [{
       qTop: 0,
       qWidth: 1,
-      qHeight: 100,
+      qHeight: 1000,
     }],
     qInterColumnSortOrder: [],
     qSuppressZero: true,
     qSuppressMissing: true,
   };
-  const qHyperCubeDef = merge(qHyperCubeDefDefault, qHyperCubeDefProp);
+  const qListObjectDef = merge(qListObjectDefDefault, qListObjectDefProp);
   const qProp = {
     qInfo: {
-      qType: 'HyperCube',
+      qType: 'ListObject',
     },
-    qHyperCubeDef,
+    qListObjectDef,
   };
 
   let model = null;
@@ -27,8 +26,8 @@ const useHyperCube = ({ app, qHyperCubeDef: qHyperCubeDefProp }) => {
 
   const getLayout = async () => {
     const qLayout = await model.getLayout();
-    const qDataPages = await model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qWidth: 4, qHeight: 2500 }]);
-    qLayout.qHyperCube.qDataPages = qDataPages;
+    const qDataPages = await model.getListObjectData('/qListObjectDef', [{ qTop: 0, qWidth: 1, qHeight: 1000 }]);
+    qLayout.qListObject.qDataPages = qDataPages;
     return qLayout;
   };
 
@@ -41,4 +40,4 @@ const useHyperCube = ({ app, qHyperCubeDef: qHyperCubeDefProp }) => {
   return init();
 };
 
-export default useHyperCube;
+export default useListObject;

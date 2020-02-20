@@ -1,5 +1,9 @@
 export { default as qdtNova } from './qdtNova';
 
+export { default as qdtEnigma } from './qdtEnigma';
+
+export { default as qdtDoc } from './qdtDoc';
+
 export { default as QdtButton } from './components/QdtButton/QdtButton';
 
 export { default as QdtKpi } from './components/QdtKpi/QdtKpi';
@@ -14,3 +18,10 @@ export { default as QdtSlider } from './components/QdtSlider/QdtSlider';
 
 export { default as QdtMapBox } from './components/QdtMapbox/QdtMapBox';
 
+export { default as QdtThree } from './components/QdtThree/QdtThree';
+
+export { default as useHyperCube } from './hooks/useHyperCube';
+
+export { default as useListObject } from './hooks/useListObject';
+
+export { default as QdtTheme } from './themes/Themes';

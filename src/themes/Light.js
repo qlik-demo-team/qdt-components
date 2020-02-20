@@ -2,12 +2,6 @@ import Colors from './Colors';
 
 const theme = {
   palette: {
-    // primary: {
-    //   light: Colors.EMERALD_LIGHT,
-    //   main: Colors.EMERALD,
-    //   dark: Colors.EMERALD_DARK,
-    //   contrastText: '#fff',
-    // },
     primary: {
       light: Colors.TURQUOISE_LIGHT,
       main: Colors.TURQUOISE,
@@ -42,10 +36,6 @@ const theme = {
   shape: {
     borderRadius: 0,
   },
-  // status: {
-  //   danger: 'orange',
-  // },
-
   overrides: {
     MuiButton: {
       text: {

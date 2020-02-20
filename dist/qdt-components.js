@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -102,7 +102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 if (true) {
-  module.exports = __webpack_require__(33);
+  module.exports = __webpack_require__(36);
 } else {}
 
 
@@ -120,7 +120,7 @@ if (true) {
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(37)();
+  module.exports = __webpack_require__(40)();
 }
 
 
@@ -211,7 +211,7 @@ if (true) {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(34);
+  module.exports = __webpack_require__(37);
 } else {}
 
 
@@ -220,17 +220,8 @@ if (true) {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(50);
+module.exports = __webpack_require__(42);
 
-var iterableToArray = __webpack_require__(51);
-
-var nonIterableSpread = __webpack_require__(52);
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
 
 /***/ }),
 /* 6 */
@@ -374,98 +365,6 @@ module.exports = deepmerge_1;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(47);
-
-var iterableToArrayLimit = __webpack_require__(48);
-
-var nonIterableRest = __webpack_require__(49);
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (true) {
-  module.exports = __webpack_require__(44);
-} else {}
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(39);
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports) {
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -507,7 +406,219 @@ function _asyncToGenerator(fn) {
 module.exports = _asyncToGenerator;
 
 /***/ }),
-/* 14 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(56);
+
+var iterableToArray = __webpack_require__(57);
+
+var nonIterableSpread = __webpack_require__(58);
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(53);
+
+var iterableToArrayLimit = __webpack_require__(54);
+
+var nonIterableRest = __webpack_require__(55);
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(50);
+} else {}
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/***/ }),
+/* 14 */,
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var reactIs = __webpack_require__(10);
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+module.exports = hoistNonReactStatics;
+
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Mapbox GL JS is licensed under the 3-Clause BSD License. Full text of license: https://github.com/mapbox/mapbox-gl-js/blob/v1.6.1/LICENSE.txt */
@@ -552,33 +663,11 @@ return mapboxgl;
 
 
 /***/ }),
-/* 15 */,
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(40);
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(22)(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
-
-/***/ }),
 /* 17 */,
 /* 18 */,
 /* 19 */,
-/* 20 */
+/* 20 */,
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -675,7 +764,29 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(46);
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(24)(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -771,7 +882,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1059,7 +1170,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1069,121 +1180,31 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-var reactIs = __webpack_require__(8);
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
-
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _arrayWithHoles; });
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
 }
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
-}
-
-module.exports = hoistNonReactStatics;
-
 
 /***/ }),
-/* 25 */
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _nonIterableRest; });
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(45);
-var bytesToUuid = __webpack_require__(46);
+var rng = __webpack_require__(51);
+var bytesToUuid = __webpack_require__(52);
 
 function v4(options, buf, offset) {
   var i = buf && offset || 0;
@@ -1214,32 +1235,14 @@ module.exports = v4;
 
 
 /***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _arrayWithHoles; });
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-/***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _nonIterableRest; });
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-
-/***/ }),
-/* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
 /* 32 */,
-/* 33 */
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1252,7 +1255,7 @@ function _nonIterableRest() {
  * LICENSE file in the root directory of this source tree.
  */
 
-var h=__webpack_require__(20),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113;n&&Symbol.for("react.suspense_list");
+var h=__webpack_require__(21),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113;n&&Symbol.for("react.suspense_list");
 var z=n?Symbol.for("react.memo"):60115,aa=n?Symbol.for("react.lazy"):60116;n&&Symbol.for("react.fundamental");n&&Symbol.for("react.responder");n&&Symbol.for("react.scope");var A="function"===typeof Symbol&&Symbol.iterator;
 function B(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var C={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},D={};
 function E(a,b,c){this.props=a;this.context=b;this.refs=D;this.updater=c||C}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error(B(85));this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,c){this.props=a;this.context=b;this.refs=D;this.updater=c||C}var H=G.prototype=new F;
@@ -1271,7 +1274,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,Rea
 
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1287,7 +1290,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,Rea
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(20),q=__webpack_require__(35);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
+var aa=__webpack_require__(0),n=__webpack_require__(21),q=__webpack_require__(38);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
 function da(){if(ba)for(var a in ca){var b=ca[a],c=ba.indexOf(a);if(!(-1<c))throw Error(u(96,a));if(!ea[c]){if(!b.extractEvents)throw Error(u(97,a));ea[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;if(fa.hasOwnProperty(h))throw Error(u(99,h));fa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ha(k[e],g,h);e=!0}else f.registrationName?(ha(f.registrationName,g,h),e=!0):e=!1;if(!e)throw Error(u(98,d,a));}}}}
 function ha(a,b,c){if(ia[a])throw Error(u(100,a));ia[a]=b;ja[a]=b.eventTypes[c].dependencies}var ea=[],fa={},ia={},ja={};function ka(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var la=!1,ma=null,na=!1,oa=null,pa={onError:function(a){la=!0;ma=a}};function qa(a,b,c,d,e,f,g,h,k){la=!1;ma=null;ka.apply(pa,arguments)}
 function ra(a,b,c,d,e,f,g,h,k){qa.apply(this,arguments);if(la){if(la){var l=ma;la=!1;ma=null}else throw Error(u(198));na||(na=!0,oa=l)}}var sa=null,ua=null,va=null;function wa(a,b,c){var d=a.type||"unknown-event";a.currentTarget=va(c);ra(d,b,void 0,a);a.currentTarget=null}function xa(a,b){if(null==b)throw Error(u(30));if(null==a)return b;if(Array.isArray(a)){if(Array.isArray(b))return a.push.apply(a,b),a;a.push(b);return a}return Array.isArray(b)?[a].concat(b):[a,b]}
@@ -1568,19 +1571,19 @@ rendererPackageName:"react-dom"});var Dk={default:Ck},Ek=Dk&&Ck||Dk;module.expor
 
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(36);
+  module.exports = __webpack_require__(39);
 } else {}
 
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1609,7 +1612,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
 
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1622,7 +1625,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
 
 
 
-var ReactPropTypesSecret = __webpack_require__(38);
+var ReactPropTypesSecret = __webpack_require__(41);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -1680,7 +1683,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1699,7 +1702,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2431,20 +2434,3403 @@ try {
 
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(21)(false);
+/**
+ * enigma.js v2.6.3
+ * Copyright (c) 2019 QlikTech International AB
+ * This library is licensed under MIT - See the LICENSE file for full details
+ */
+
+(function (global, factory) {
+   true ? module.exports = factory() :
+  undefined;
+}(this, (function () { 'use strict';
+
+  /**
+   * Utility functions
+   */
+
+  var util = {};
+
+  util.isObject = function isObject(arg) {
+    return typeof arg === 'object' && arg !== null;
+  };
+
+  util.isNumber = function isNumber(arg) {
+    return typeof arg === 'number';
+  };
+
+  util.isUndefined = function isUndefined(arg) {
+    return arg === void 0;
+  };
+
+  util.isFunction = function isFunction(arg){
+    return typeof arg === 'function';
+  };
+
+
+  /**
+   * EventEmitter class
+   */
+
+  function EventEmitter() {
+    EventEmitter.init.call(this);
+  }
+  var nodeEventEmitter = EventEmitter;
+
+  // Backwards-compat with node 0.10.x
+  EventEmitter.EventEmitter = EventEmitter;
+
+  EventEmitter.prototype._events = undefined;
+  EventEmitter.prototype._maxListeners = undefined;
+
+  // By default EventEmitters will print a warning if more than 10 listeners are
+  // added to it. This is a useful default which helps finding memory leaks.
+  EventEmitter.defaultMaxListeners = 10;
+
+  EventEmitter.init = function() {
+    this._events = this._events || {};
+    this._maxListeners = this._maxListeners || undefined;
+  };
+
+  // Obviously not all Emitters should be limited to 10. This function allows
+  // that to be increased. Set to zero for unlimited.
+  EventEmitter.prototype.setMaxListeners = function(n) {
+    if (!util.isNumber(n) || n < 0 || isNaN(n))
+      throw TypeError('n must be a positive number');
+    this._maxListeners = n;
+    return this;
+  };
+
+  EventEmitter.prototype.emit = function(type) {
+    var er, handler, len, args, i, listeners;
+
+    if (!this._events)
+      this._events = {};
+
+    // If there is no 'error' event listener then throw.
+    if (type === 'error' && !this._events.error) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er; // Unhandled 'error' event
+      } else {
+        throw Error('Uncaught, unspecified "error" event.');
+      }
+    }
+
+    handler = this._events[type];
+
+    if (util.isUndefined(handler))
+      return false;
+
+    if (util.isFunction(handler)) {
+      switch (arguments.length) {
+        // fast cases
+        case 1:
+          handler.call(this);
+          break;
+        case 2:
+          handler.call(this, arguments[1]);
+          break;
+        case 3:
+          handler.call(this, arguments[1], arguments[2]);
+          break;
+        // slower
+        default:
+          len = arguments.length;
+          args = new Array(len - 1);
+          for (i = 1; i < len; i++)
+            args[i - 1] = arguments[i];
+          handler.apply(this, args);
+      }
+    } else if (util.isObject(handler)) {
+      len = arguments.length;
+      args = new Array(len - 1);
+      for (i = 1; i < len; i++)
+        args[i - 1] = arguments[i];
+
+      listeners = handler.slice();
+      len = listeners.length;
+      for (i = 0; i < len; i++)
+        listeners[i].apply(this, args);
+    }
+
+    return true;
+  };
+
+  EventEmitter.prototype.addListener = function(type, listener) {
+    var m;
+
+    if (!util.isFunction(listener))
+      throw TypeError('listener must be a function');
+
+    if (!this._events)
+      this._events = {};
+
+    // To avoid recursion in the case that type === "newListener"! Before
+    // adding it to the listeners, first emit "newListener".
+    if (this._events.newListener)
+      this.emit('newListener', type,
+                util.isFunction(listener.listener) ?
+                listener.listener : listener);
+
+    if (!this._events[type])
+      // Optimize the case of one listener. Don't need the extra array object.
+      this._events[type] = listener;
+    else if (util.isObject(this._events[type]))
+      // If we've already got an array, just append.
+      this._events[type].push(listener);
+    else
+      // Adding the second element, need to change to array.
+      this._events[type] = [this._events[type], listener];
+
+    // Check for listener leak
+    if (util.isObject(this._events[type]) && !this._events[type].warned) {
+      var m;
+      if (!util.isUndefined(this._maxListeners)) {
+        m = this._maxListeners;
+      } else {
+        m = EventEmitter.defaultMaxListeners;
+      }
+
+      if (m && m > 0 && this._events[type].length > m) {
+        this._events[type].warned = true;
+
+        if (util.isFunction(console.error)) {
+          console.error('(node) warning: possible EventEmitter memory ' +
+                        'leak detected. %d listeners added. ' +
+                        'Use emitter.setMaxListeners() to increase limit.',
+                        this._events[type].length);
+        }
+        if (util.isFunction(console.trace))
+          console.trace();
+      }
+    }
+
+    return this;
+  };
+
+  EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+  EventEmitter.prototype.once = function(type, listener) {
+    if (!util.isFunction(listener))
+      throw TypeError('listener must be a function');
+
+    var fired = false;
+
+    function g() {
+      this.removeListener(type, g);
+
+      if (!fired) {
+        fired = true;
+        listener.apply(this, arguments);
+      }
+    }
+
+    g.listener = listener;
+    this.on(type, g);
+
+    return this;
+  };
+
+  // emits a 'removeListener' event iff the listener was removed
+  EventEmitter.prototype.removeListener = function(type, listener) {
+    var list, position, length, i;
+
+    if (!util.isFunction(listener))
+      throw TypeError('listener must be a function');
+
+    if (!this._events || !this._events[type])
+      return this;
+
+    list = this._events[type];
+    length = list.length;
+    position = -1;
+
+    if (list === listener ||
+        (util.isFunction(list.listener) && list.listener === listener)) {
+      delete this._events[type];
+      if (this._events.removeListener)
+        this.emit('removeListener', type, listener);
+
+    } else if (util.isObject(list)) {
+      for (i = length; i-- > 0;) {
+        if (list[i] === listener ||
+            (list[i].listener && list[i].listener === listener)) {
+          position = i;
+          break;
+        }
+      }
+
+      if (position < 0)
+        return this;
+
+      if (list.length === 1) {
+        list.length = 0;
+        delete this._events[type];
+      } else {
+        list.splice(position, 1);
+      }
+
+      if (this._events.removeListener)
+        this.emit('removeListener', type, listener);
+    }
+
+    return this;
+  };
+
+  EventEmitter.prototype.removeAllListeners = function(type) {
+    var key, listeners;
+
+    if (!this._events)
+      return this;
+
+    // not listening for removeListener, no need to emit
+    if (!this._events.removeListener) {
+      if (arguments.length === 0)
+        this._events = {};
+      else if (this._events[type])
+        delete this._events[type];
+      return this;
+    }
+
+    // emit removeListener for all listeners on all events
+    if (arguments.length === 0) {
+      for (key in this._events) {
+        if (key === 'removeListener') continue;
+        this.removeAllListeners(key);
+      }
+      this.removeAllListeners('removeListener');
+      this._events = {};
+      return this;
+    }
+
+    listeners = this._events[type];
+
+    if (util.isFunction(listeners)) {
+      this.removeListener(type, listeners);
+    } else if (Array.isArray(listeners)) {
+      // LIFO order
+      while (listeners.length)
+        this.removeListener(type, listeners[listeners.length - 1]);
+    }
+    delete this._events[type];
+
+    return this;
+  };
+
+  EventEmitter.prototype.listeners = function(type) {
+    var ret;
+    if (!this._events || !this._events[type])
+      ret = [];
+    else if (util.isFunction(this._events[type]))
+      ret = [this._events[type]];
+    else
+      ret = this._events[type].slice();
+    return ret;
+  };
+
+  EventEmitter.listenerCount = function(emitter, type) {
+    var ret;
+    if (!emitter._events || !emitter._events[type])
+      ret = 0;
+    else if (util.isFunction(emitter._events[type]))
+      ret = 1;
+    else
+      ret = emitter._events[type].length;
+    return ret;
+  };
+
+  /**
+  * @module EventEmitter
+  * @private
+  */
+
+  var Events = {
+    /**
+    * Function used to add event handling to objects passed in.
+    * @param {Object} obj Object instance that will get event handling.
+    */
+    mixin: function mixin(obj) {
+      Object.keys(nodeEventEmitter.prototype).forEach(function (key) {
+        obj[key] = nodeEventEmitter.prototype[key];
+      });
+      nodeEventEmitter.init(obj);
+    }
+  };
+
+  function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+  function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+  function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  /**
+   * Error containing a custom error code.
+   * @extends Error
+   * @property {number} code The error code as defined by `errorCodes`
+   * @property {boolean} enigmaError=true
+   */
+  var EnigmaError =
+  /*#__PURE__*/
+  function (_Error) {
+    _inherits(EnigmaError, _Error);
+
+    function EnigmaError(name, code) {
+      var _this;
+
+      _classCallCheck(this, EnigmaError);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(EnigmaError).call(this, name));
+      _this.code = code;
+      _this.enigmaError = true;
+      return _this;
+    }
+
+    return EnigmaError;
+  }(_wrapNativeSuper(Error));
+  /**
+   * Create an enigmaError
+   * @param {Number} code A proper error code from `errorCodes`
+   * @param {String} name A message/name of the enigmaError.
+   * @returns {EnigmaError}
+   */
+
+
+  function createEnigmaError(code, name) {
+    return new EnigmaError(name, code);
+  }
+
+  /**
+   * @enum
+   */
+  var errorCodes = {
+    /**
+     * You're trying to send data on a socket that's not created
+     * @type {number}
+     */
+    NOT_CONNECTED: -1,
+
+    /**
+     * The object you're trying to fetch does not exist
+     * @type {number}
+     */
+    OBJECT_NOT_FOUND: -2,
+
+    /**
+     * Unexpected RPC response, expected array of patches
+     * @type {number}
+     */
+    EXPECTED_ARRAY_OF_PATCHES: -3,
+
+    /**
+     * Patchee is not an object we can patch
+     * @type {number}
+     */
+    PATCH_HAS_NO_PARENT: -4,
+
+    /**
+     * This entry is already defined with another key
+     * @type {number}
+     */
+    ENTRY_ALREADY_DEFINED: -5,
+
+    /**
+     * You need to supply a configuration
+     * @type {number}
+     */
+    NO_CONFIG_SUPPLIED: -6,
+
+    /**
+     * There's no promise object available (polyfill required?)
+     * @type {number}
+     */
+    PROMISE_REQUIRED: -7,
+
+    /**
+     * The schema struct type you requested does not exist
+     * @type {number}
+     */
+    SCHEMA_STRUCT_TYPE_NOT_FOUND: -8,
+
+    /**
+     * Can't override this function
+     * @type {number}
+     */
+    SCHEMA_MIXIN_CANT_OVERRIDE_FUNCTION: -9,
+
+    /**
+     * Extend is not allowed for this mixin
+     * @type {number}
+     */
+    SCHEMA_MIXIN_EXTEND_NOT_ALLOWED: -10,
+
+    /**
+     * Session suspended - no interaction allowed
+     * @type {number}
+     */
+    SESSION_SUSPENDED: -11,
+
+    /**
+     * onlyIfAttached supplied, but you got SESSION_CREATED
+     * @type {number}
+     */
+    SESSION_NOT_ATTACHED: -12
+  };
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  var RPC_CLOSE_NORMAL = 1000;
+  var RPC_CLOSE_MANUAL_SUSPEND = 4000;
+  var cacheId = 0;
+  /**
+   * The QIX Engine session object
+   */
+
+  var Session =
+  /*#__PURE__*/
+  function () {
+    /**
+     * Handle all JSON-RPC notification event, 'notification:*. Or handle a specific JSON-RPC
+     * notification event, 'notification:OnConnected'. These events depend on the product you use QIX
+     * Engine from.
+     * @event Session#notification
+     * @type {Object}
+     */
+
+    /**
+    * Handle websocket messages. Generally used in debugging purposes. traffic:* will handle all
+    * websocket messages, traffic:sent will handle outgoing messages and traffic:received will handle
+    * incoming messages.
+    * @event Session#traffic
+    * @type {Object}
+    */
+    function Session(options) {
+      _classCallCheck$1(this, Session);
+
+      var session = this;
+      Object.assign(session, options);
+      this.Promise = this.config.Promise;
+      this.definition = this.config.definition;
+      Events.mixin(session);
+      cacheId += 1;
+      session.id = cacheId;
+      session.rpc.on('socket-error', session.onRpcError.bind(session));
+      session.rpc.on('closed', session.onRpcClosed.bind(session));
+      session.rpc.on('message', session.onRpcMessage.bind(session));
+      session.rpc.on('notification', session.onRpcNotification.bind(session));
+      session.rpc.on('traffic', session.onRpcTraffic.bind(session));
+      session.on('closed', function () {
+        return session.onSessionClosed();
+      });
+    }
+    /**
+    * Event handler for re-triggering error events from RPC.
+    * @private
+    * @emits socket-error
+    * @param {Error} err Webocket error event.
+    */
+
+
+    _createClass(Session, [{
+      key: "onRpcError",
+      value: function onRpcError(err) {
+        if (this.suspendResume.isSuspended) {
+          return;
+        }
+
+        this.emit('socket-error', err);
+      }
+      /**
+      * Event handler for the RPC close event.
+      * @private
+      * @emits Session#suspended
+      * @emits Session#closed
+      * @param {Event} evt WebSocket close event.
+      */
+
+    }, {
+      key: "onRpcClosed",
+      value: function onRpcClosed(evt) {
+        var _this = this;
+
+        /**
+         * Handle suspended state. This event is triggered in two cases (listed below). It is useful
+         * in scenarios where you for example want to block interaction in your application until you
+         * are resumed again. If config.suspendOnClose is true and there was a network disconnect
+         * (socked closed) or if you ran session.suspend().
+         * @event Session#suspended
+         * @type {Object}
+         * @param {Object} evt Event object.
+         * @param {String} evt.initiator String indication what triggered the suspended state. Possible
+         * values network, manual.
+         */
+        if (this.suspendResume.isSuspended) {
+          return;
+        }
+
+        if (evt.code === RPC_CLOSE_NORMAL || evt.code === RPC_CLOSE_MANUAL_SUSPEND) {
+          return;
+        }
+
+        if (this.config.suspendOnClose) {
+          var code = evt.code,
+              reason = evt.reason;
+          this.suspendResume.suspend().then(function () {
+            return _this.emit('suspended', {
+              initiator: 'network',
+              code: code,
+              reason: reason
+            });
+          });
+        } else {
+          this.emit('closed', evt);
+        }
+      }
+      /**
+      * Event handler for the RPC message event.
+      * @private
+      * @param {Object} response JSONRPC response.
+      */
+
+    }, {
+      key: "onRpcMessage",
+      value: function onRpcMessage(response) {
+        var _this2 = this;
+
+        if (this.suspendResume.isSuspended) {
+          return;
+        }
+
+        if (response.change) {
+          response.change.forEach(function (handle) {
+            return _this2.emitHandleChanged(handle);
+          });
+        }
+
+        if (response.close) {
+          response.close.forEach(function (handle) {
+            return _this2.emitHandleClosed(handle);
+          });
+        }
+      }
+      /**
+      * Event handler for the RPC notification event.
+      * @private
+      * @emits Session#notification
+      * @param {Object} response The JSONRPC notification.
+      */
+
+    }, {
+      key: "onRpcNotification",
+      value: function onRpcNotification(response) {
+        this.emit('notification:*', response.method, response.params);
+        this.emit("notification:".concat(response.method), response.params);
+      }
+      /**
+      * Event handler for the RPC traffic event.
+      * @private
+      * @emits Session#traffic
+      * @param {String} dir The traffic direction, sent or received.
+      * @param {Object} data JSONRPC request/response/WebSocket message.
+      * @param {Number} handle The associated handle.
+      */
+
+    }, {
+      key: "onRpcTraffic",
+      value: function onRpcTraffic(dir, data, handle) {
+        this.emit('traffic:*', dir, data);
+        this.emit("traffic:".concat(dir), data);
+        var api = this.apis.getApi(handle);
+
+        if (api) {
+          api.emit('traffic:*', dir, data);
+          api.emit("traffic:".concat(dir), data);
+        }
+      }
+      /**
+      * Event handler for cleaning up API instances when a session has been closed.
+      * @private
+      * @emits API#closed
+      */
+
+    }, {
+      key: "onSessionClosed",
+      value: function onSessionClosed() {
+        this.apis.getApis().forEach(function (entry) {
+          entry.api.emit('closed');
+          entry.api.removeAllListeners();
+        });
+        this.apis.clear();
+      }
+      /**
+       * Function used to get an API for a backend object.
+       * @private
+       * @param {Object} args Arguments used to create object API.
+       * @param {Number} args.handle Handle of the backend object.
+       * @param {String} args.id ID of the backend object.
+       * @param {String} args.type QIX type of the backend object. Can for example
+       *                           be "Doc" or "GenericVariable".
+       * @param {String} args.genericType Custom type of the backend object, if defined in qInfo.
+       * @returns {*} Returns the generated and possibly augmented API.
+       */
+
+    }, {
+      key: "getObjectApi",
+      value: function getObjectApi(args) {
+        var handle = args.handle,
+            id = args.id,
+            type = args.type,
+            genericType = args.genericType;
+        var api = this.apis.getApi(handle);
+
+        if (api) {
+          return api;
+        }
+
+        var factory = this.definition.generate(type);
+        api = factory(this, handle, id, genericType);
+        this.apis.add(handle, api);
+        return api;
+      }
+      /**
+      * Establishes the websocket against the configured URL and returns the Global instance.
+      * @emits Session#opened
+      * @returns {Promise<Object>} Eventually resolved if the connection was successful.
+      */
+
+    }, {
+      key: "open",
+      value: function open() {
+        var _this3 = this;
+
+        /**
+         * Handle opened state. This event is triggered whenever the websocket is connected and ready for
+         * communication.
+         * @event Session#opened
+         * @type {Object}
+         */
+        if (!this.globalPromise) {
+          var args = {
+            handle: -1,
+            id: 'Global',
+            type: 'Global',
+            genericType: 'Global'
+          };
+          this.globalPromise = this.rpc.open().then(function () {
+            return _this3.getObjectApi(args);
+          }).then(function (global) {
+            _this3.emit('opened');
+
+            return global;
+          });
+        }
+
+        return this.globalPromise;
+      }
+      /**
+      * Function used to send data on the RPC socket.
+      * @param {Object} request The request to be sent. (data and some meta info)
+      * @returns {Object} Returns a promise instance.
+      */
+
+    }, {
+      key: "send",
+      value: function send(request) {
+        var _this4 = this;
+
+        if (this.suspendResume.isSuspended) {
+          return this.Promise.reject(createEnigmaError(errorCodes.SESSION_SUSPENDED, 'Session suspended'));
+        }
+
+        request.id = this.rpc.createRequestId();
+        var promise = this.intercept.executeRequests(this, this.Promise.resolve(request)).then(function (augmentedRequest) {
+          var data = _objectSpread({}, _this4.config.protocol, {}, augmentedRequest); // the outKey value is used by multiple-out interceptor, at some point
+          // we need to refactor that implementation and figure out how to transport
+          // this value without hijacking the JSONRPC request object:
+
+
+          delete data.outKey;
+
+          var response = _this4.rpc.send(data);
+
+          augmentedRequest.retry = function () {
+            return _this4.send(request);
+          };
+
+          return _this4.intercept.executeResponses(_this4, response, augmentedRequest);
+        });
+        Session.addToPromiseChain(promise, 'requestId', request.id);
+        return promise;
+      }
+      /**
+      * Suspends the enigma.js session by closing the websocket and rejecting all method calls
+      * until is has been resumed again.
+      * @emits Session#suspended
+      * @param {Number} [code=4000] - The reason code for suspending the connection.
+      * @param {String} [reason=""] - The human readable string describing
+      * why the connection is suspended.
+      * @returns {Promise<Object>} Eventually resolved when the websocket has been closed.
+      */
+
+    }, {
+      key: "suspend",
+      value: function suspend() {
+        var _this5 = this;
+
+        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 4000;
+        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        return this.suspendResume.suspend(code, reason).then(function () {
+          return _this5.emit('suspended', {
+            initiator: 'manual',
+            code: code,
+            reason: reason
+          });
+        });
+      }
+      /**
+      * Resumes a previously suspended enigma.js session by re-creating the websocket and,
+      * if possible, re-open the document as well as refreshing the internal cashes. If successful,
+      * changed events will be triggered on all generated APIs, and on the ones it was unable to
+      * restore, the closed event will be triggered.
+      * @emits Session#resumed
+      * @param {Boolean} onlyIfAttached If true, resume only if the session was re-attached properly.
+      * @returns {Promise<Object>} Eventually resolved when the websocket (and potentially the
+      * previously opened document, and generated APIs) has been restored, rejected when it fails any
+      * of those steps, or when onlyIfAttached is true and a new session was created.
+      */
+
+    }, {
+      key: "resume",
+      value: function resume(onlyIfAttached) {
+        var _this6 = this;
+
+        /**
+         * Handle resumed state. This event is triggered when the session was properly resumed. It is
+         * useful in scenarios where you for example can close blocking modal dialogs and allow the user
+         * to interact with your application again.
+         * @event Session#resumed
+         * @type {Object}
+         */
+        return this.suspendResume.resume(onlyIfAttached).then(function (value) {
+          _this6.emit('resumed');
+
+          return value;
+        });
+      }
+      /**
+      * Closes the websocket and cleans up internal caches, also triggers the closed event
+      * on all generated APIs. Note that you have to manually invoke this when you want to
+      * close a session and config.suspendOnClose is true.
+      * @emits Session#closed
+      * @param {Number} [code=1000] - The reason code for closing the connection.
+      * @param {String} [reason=""] - The human readable string describing why the connection is closed.
+      * @returns {Promise<Object>} Eventually resolved when the websocket has been closed.
+      */
+
+    }, {
+      key: "close",
+      value: function close() {
+        var _this7 = this;
+
+        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
+        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+        /**
+         * Handle closed state. This event is triggered when the underlying websocket is closed and
+         * config.suspendOnClose is false.
+         * @event Session#closed
+         * @type {Object}
+         */
+        this.globalPromise = undefined;
+        return this.rpc.close(code, reason).then(function (evt) {
+          return _this7.emit('closed', evt);
+        });
+      }
+      /**
+      * Given a handle, this function will emit the 'changed' event on the
+      * corresponding API instance.
+      * @private
+      * @param {Number} handle The handle of the API instance.
+      * @emits API#changed
+      */
+
+    }, {
+      key: "emitHandleChanged",
+      value: function emitHandleChanged(handle) {
+        var api = this.apis.getApi(handle);
+
+        if (api) {
+          api.emit('changed');
+        }
+      }
+      /**
+      * Given a handle, this function will emit the 'closed' event on the
+      * corresponding API instance.
+      * @private
+      * @param {Number} handle The handle of the API instance.
+      * @emits API#closed
+      */
+
+    }, {
+      key: "emitHandleClosed",
+      value: function emitHandleClosed(handle) {
+        var api = this.apis.getApi(handle);
+
+        if (api) {
+          api.emit('closed');
+          api.removeAllListeners();
+        }
+      }
+      /**
+      * Function used to add info on the promise chain.
+      * @private
+      * @param {Promise<Object>} promise The promise to add info on.
+      * @param {String} name The property to add info on.
+      * @param {Any} value The info to add.
+      */
+
+    }], [{
+      key: "addToPromiseChain",
+      value: function addToPromiseChain(promise, name, value) {
+        promise[name] = value;
+        var then = promise.then;
+
+        promise.then = function patchedThen() {
+          for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+            params[_key] = arguments[_key];
+          }
+
+          var chain = then.apply(this, params);
+          Session.addToPromiseChain(chain, name, value);
+          return chain;
+        };
+      }
+    }]);
+
+    return Session;
+  }();
+
+  function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+  /**
+  * Key-value cache
+  * @private
+  */
+
+  var KeyValueCache =
+  /*#__PURE__*/
+  function () {
+    function KeyValueCache() {
+      _classCallCheck$2(this, KeyValueCache);
+
+      this.entries = {};
+    }
+    /**
+    * Adds an entry.
+    * @private
+    * @function KeyValueCache#add
+    * @param {String} key The key representing an entry.
+    * @param {*} entry The entry to be added.
+    */
+
+
+    _createClass$1(KeyValueCache, [{
+      key: "add",
+      value: function add(key, entry) {
+        key += '';
+
+        if (typeof this.entries[key] !== 'undefined') {
+          throw createEnigmaError(errorCodes.ENTRY_ALREADY_DEFINED, "Entry already defined with key ".concat(key));
+        }
+
+        this.entries[key] = entry;
+      }
+      /**
+      * Sets an entry.
+      * @private
+      * @function KeyValueCache#set
+      * @param {String} key The key representing an entry.
+      * @param {*} entry The entry.
+      */
+
+    }, {
+      key: "set",
+      value: function set(key, entry) {
+        key += '';
+        this.entries[key] = entry;
+      }
+      /**
+      * Removes an entry.
+      * @private
+      * @function KeyValueCache#remove
+      * @param {String} key The key representing an entry.
+      */
+
+    }, {
+      key: "remove",
+      value: function remove(key) {
+        delete this.entries[key];
+      }
+      /**
+      * Gets an entry.
+      * @private
+      * @function KeyValueCache#get
+      * @param {String} key The key representing an entry.
+      * @returns {*} The entry for the key.
+      */
+
+    }, {
+      key: "get",
+      value: function get(key) {
+        return this.entries[key];
+      }
+      /**
+      * Gets a list of all entries.
+      * @private
+      * @function KeyValueCache#getAll
+      * @returns {Array} The list of entries including its `key` and `value` properties.
+      */
+
+    }, {
+      key: "getAll",
+      value: function getAll() {
+        var _this = this;
+
+        return Object.keys(this.entries).map(function (key) {
+          return {
+            key: key,
+            value: _this.entries[key]
+          };
+        });
+      }
+      /**
+      * Gets a key for an entry.
+      * @private
+      * @function KeyValueCache#getKey
+      * @param {*} entry The entry to locate the key for.
+      * @returns {String} The key representing an entry.
+      */
+
+    }, {
+      key: "getKey",
+      value: function getKey(entry) {
+        var _this2 = this;
+
+        return Object.keys(this.entries).filter(function (key) {
+          return _this2.entries[key] === entry;
+        })[0];
+      }
+      /**
+      * Clears the cache of all entries.
+      * @private
+      * @function KeyValueCache#clear
+      */
+
+    }, {
+      key: "clear",
+      value: function clear() {
+        this.entries = {};
+      }
+    }]);
+
+    return KeyValueCache;
+  }();
+
+  function _classCallCheck$3(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$2(Constructor.prototype, protoProps); if (staticProps) _defineProperties$2(Constructor, staticProps); return Constructor; }
+
+  function _typeof$1(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+  var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+  /**
+  * Returns the camelCase counterpart of a symbol.
+  * @private
+  * @param {String} symbol The symbol.
+  * @return the camelCase counterpart.
+  */
+
+  function toCamelCase(symbol) {
+    return symbol.substring(0, 1).toLowerCase() + symbol.substring(1);
+  }
+  /**
+   * A facade function that allows parameters to be passed either by name
+   * (through an object), or by position (through an array).
+   * @private
+   * @param {Function} base The function that is being overriden. Will be
+   *                        called with parameters in array-form.
+   * @param {Object} defaults Parameter list and it's default values.
+   * @param {*} params The parameters.
+   */
+
+
+  function namedParamFacade(base, defaults) {
+    for (var _len = arguments.length, params = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      params[_key - 2] = arguments[_key];
+    }
+
+    if (params.length === 1 && _typeof$1(params[0]) === 'object' && !Array.isArray(params[0])) {
+      var valid = Object.keys(params[0]).every(function (key) {
+        return hasOwnProperty$1.call(defaults, key);
+      });
+
+      if (valid) {
+        params = Object.keys(defaults).map(function (key) {
+          return params[0][key] || defaults[key];
+        });
+      }
+    }
+
+    return base.apply(this, params);
+  }
+  /**
+  * Qix schema definition.
+  * @private
+  */
+
+
+  var Schema =
+  /*#__PURE__*/
+  function () {
+    /**
+    * Create a new schema instance.
+    * @private
+    * @param {Configuration} config The configuration for QIX.
+    */
+    function Schema(config) {
+      _classCallCheck$3(this, Schema);
+
+      this.config = config;
+      this.Promise = config.Promise;
+      this.schema = config.schema;
+      this.mixins = new KeyValueCache();
+      this.types = new KeyValueCache();
+    }
+
+    _createClass$2(Schema, [{
+      key: "registerMixin",
+      value: function registerMixin(_ref) {
+        var _this = this;
+
+        var types = _ref.types,
+            type = _ref.type,
+            extend = _ref.extend,
+            override = _ref.override,
+            init = _ref.init;
+
+        if (!Array.isArray(types)) {
+          types = [types];
+        } // to support a single type
+
+
+        if (type) {
+          types.push(type);
+        }
+
+        var cached = {
+          extend: extend,
+          override: override,
+          init: init
+        };
+        types.forEach(function (typeKey) {
+          var entryList = _this.mixins.get(typeKey);
+
+          if (entryList) {
+            entryList.push(cached);
+          } else {
+            _this.mixins.add(typeKey, [cached]);
+          }
+        });
+      }
+      /**
+      * Function used to generate a type definition.
+      * @private
+      * @param {String} type The type.
+      * @returns {{create: Function, def: Object}} Returns an object with a definition
+      *          of the type and a create factory.
+      */
+
+    }, {
+      key: "generate",
+      value: function generate(type) {
+        var entry = this.types.get(type);
+
+        if (entry) {
+          return entry;
+        }
+
+        if (!this.schema.structs[type]) {
+          throw createEnigmaError(errorCodes.SCHEMA_STRUCT_TYPE_NOT_FOUND, "".concat(type, " not found"));
+        }
+
+        var factory = this.generateApi(type, this.schema.structs[type]);
+        this.types.add(type, factory);
+        return factory;
+      }
+      /**
+      * Function used to generate an API definition for a given type.
+      * @private
+      * @param {String} type The type to generate.
+      * @param {Object} schema The schema describing the type.
+      * @returns {{create: (function(session:Object, handle:Number, id:String,
+      *          customKey:String)), def: Object}} Returns the API definition.
+      */
+
+    }, {
+      key: "generateApi",
+      value: function generateApi(type, schema) {
+        var api = Object.create({});
+        this.generateDefaultApi(api, schema); // Generate default
+
+        this.mixinType(type, api); // Mixin default type
+
+        this.mixinNamedParamFacade(api, schema); // Mixin named parameter support
+
+        return function create(session, handle, id, customKey) {
+          var _this2 = this;
+
+          var instance = Object.create(api);
+          Events.mixin(instance); // Always mixin event-emitter per instance
+
+          Object.defineProperties(instance, {
+            session: {
+              enumerable: true,
+              value: session
+            },
+            handle: {
+              enumerable: true,
+              value: handle,
+              writable: true
+            },
+            id: {
+              enumerable: true,
+              value: id
+            },
+            type: {
+              enumerable: true,
+              value: type
+            },
+            genericType: {
+              enumerable: true,
+              value: customKey
+            }
+          });
+          var mixinList = this.mixins.get(type) || [];
+
+          if (customKey !== type) {
+            this.mixinType(customKey, instance); // Mixin custom types
+
+            mixinList = mixinList.concat(this.mixins.get(customKey) || []);
+          }
+
+          mixinList.forEach(function (mixin) {
+            if (typeof mixin.init === 'function') {
+              mixin.init({
+                config: _this2.config,
+                api: instance
+              });
+            }
+          });
+          return instance;
+        }.bind(this);
+      }
+      /**
+      * Function used to generate the methods with the right handlers to the object
+      * API that is being generated.
+      * @private
+      * @param {Object} api The object API that is currently being generated.
+      * @param {Object} schema The API definition.
+      */
+
+    }, {
+      key: "generateDefaultApi",
+      value: function generateDefaultApi(api, schema) {
+        Object.keys(schema).forEach(function (method) {
+          var out = schema[method].Out;
+          var outKey = out.length === 1 ? out[0].Name : -1;
+          var fnName = toCamelCase(method);
+
+          api[fnName] = function generatedMethod() {
+            for (var _len2 = arguments.length, params = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+              params[_key2] = arguments[_key2];
+            }
+
+            return this.session.send({
+              handle: this.handle,
+              method: method,
+              params: params,
+              outKey: outKey
+            });
+          };
+        });
+      }
+      /**
+      * Function used to add mixin methods to a specified API.
+      * @private
+      * @param {String} type Used to specify which mixin should be woven in.
+      * @param {Object} api The object that will be woven.
+      */
+
+    }, {
+      key: "mixinType",
+      value: function mixinType(type, api) {
+        var mixinList = this.mixins.get(type);
+
+        if (mixinList) {
+          mixinList.forEach(function (_ref2) {
+            var _ref2$extend = _ref2.extend,
+                extend = _ref2$extend === void 0 ? {} : _ref2$extend,
+                _ref2$override = _ref2.override,
+                override = _ref2$override === void 0 ? {} : _ref2$override;
+            Object.keys(override).forEach(function (key) {
+              if (typeof api[key] === 'function' && typeof override[key] === 'function') {
+                var baseFn = api[key];
+
+                api[key] = function wrappedFn() {
+                  for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+                    args[_key3] = arguments[_key3];
+                  }
+
+                  return override[key].apply(this, [baseFn.bind(this)].concat(args));
+                };
+              } else {
+                throw createEnigmaError(errorCodes.SCHEMA_MIXIN_CANT_OVERRIDE_FUNCTION, "No function to override. Type: ".concat(type, " function: ").concat(key));
+              }
+            });
+            Object.keys(extend).forEach(function (key) {
+              // handle overrides
+              if (typeof api[key] === 'function' && typeof extend[key] === 'function') {
+                throw createEnigmaError(errorCodes.SCHEMA_MIXIN_EXTEND_NOT_ALLOWED, "Extend is not allowed for this mixin. Type: ".concat(type, " function: ").concat(key));
+              } else {
+                api[key] = extend[key];
+              }
+            });
+          });
+        }
+      }
+      /**
+      * Function used to mixin the named parameter facade.
+      * @private
+      * @param {Object} api The object API that is currently being generated.
+      * @param {Object} schema The API definition.
+      */
+
+    }, {
+      key: "mixinNamedParamFacade",
+      value: function mixinNamedParamFacade(api, schema) {
+        Object.keys(schema).forEach(function (key) {
+          var fnName = toCamelCase(key);
+          var base = api[fnName];
+          var defaults = schema[key].In.reduce(function (result, item) {
+            result[item.Name] = item.DefaultValue;
+            return result;
+          }, {});
+
+          api[fnName] = function namedParamWrapper() {
+            for (var _len4 = arguments.length, params = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+              params[_key4] = arguments[_key4];
+            }
+
+            return namedParamFacade.apply(this, [base, defaults].concat(params));
+          };
+        });
+      }
+    }]);
+
+    return Schema;
+  }();
+
+  function _classCallCheck$4(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$3(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$3(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$3(Constructor.prototype, protoProps); if (staticProps) _defineProperties$3(Constructor, staticProps); return Constructor; }
+  /**
+   * Helper class for handling RPC calls
+   * @private
+   */
+
+  var RPCResolver =
+  /*#__PURE__*/
+  function () {
+    function RPCResolver(id, handle, resolve, reject) {
+      _classCallCheck$4(this, RPCResolver);
+
+      Events.mixin(this);
+      this.id = id;
+      this.handle = handle;
+      this.resolve = resolve;
+      this.reject = reject;
+    }
+
+    _createClass$3(RPCResolver, [{
+      key: "resolveWith",
+      value: function resolveWith(data) {
+        this.resolve(data);
+        this.emit('resolved', this.id);
+      }
+    }, {
+      key: "rejectWith",
+      value: function rejectWith(err) {
+        this.reject(err);
+        this.emit('rejected', this.id);
+      }
+    }]);
+
+    return RPCResolver;
+  }();
+
+  function _classCallCheck$5(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$4(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$4(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$4(Constructor.prototype, protoProps); if (staticProps) _defineProperties$4(Constructor, staticProps); return Constructor; }
+  /**
+  * This class handles remote procedure calls on a web socket.
+  * @private
+  */
+
+  var RPC =
+  /*#__PURE__*/
+  function () {
+    /**
+    * Create a new RPC instance.
+    * @private
+    * @param {Object} options The configuration options for this class.
+    * @param {Function} options.Promise The promise constructor to use.
+    * @param {String} options.url The complete websocket URL used to connect.
+    * @param {Function} options.createSocket The function callback to create a WebSocket.
+    */
+    function RPC(options) {
+      _classCallCheck$5(this, RPC);
+
+      Object.assign(this, options);
+      Events.mixin(this);
+      this.resolvers = {};
+      this.requestId = 0;
+      this.openedPromise = undefined;
+    }
+    /**
+    * Opens a connection to the configured endpoint.
+    * @private
+    * @param {Boolean} force - ignores all previous and outstanding open calls if set to true.
+    * @returns {Object} A promise instance.
+    */
+
+
+    _createClass$4(RPC, [{
+      key: "open",
+      value: function open() {
+        var _this = this;
+
+        var force = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+        if (!force && this.openedPromise) {
+          return this.openedPromise;
+        }
+
+        try {
+          this.socket = this.createSocket(this.url);
+        } catch (err) {
+          return this.Promise.reject(err);
+        }
+
+        this.socket.onopen = this.onOpen.bind(this);
+        this.socket.onclose = this.onClose.bind(this);
+        this.socket.onerror = this.onError.bind(this);
+        this.socket.onmessage = this.onMessage.bind(this);
+        this.openedPromise = new this.Promise(function (resolve, reject) {
+          return _this.registerResolver('opened', null, resolve, reject);
+        });
+        this.closedPromise = new this.Promise(function (resolve, reject) {
+          return _this.registerResolver('closed', null, resolve, reject);
+        });
+        return this.openedPromise;
+      }
+      /**
+      * Resolves the open promise when a connection is successfully established.
+      * @private
+      */
+
+    }, {
+      key: "onOpen",
+      value: function onOpen() {
+        var _this2 = this;
+
+        this.resolvers.opened.resolveWith(function () {
+          return _this2.closedPromise;
+        });
+      }
+      /**
+      * Resolves the close promise when a connection is closed.
+      * @private
+      * @param {Object} event - The event describing close.
+      */
+
+    }, {
+      key: "onClose",
+      value: function onClose(event) {
+        this.emit('closed', event);
+
+        if (this.resolvers && this.resolvers.closed) {
+          this.resolvers.closed.resolveWith(event);
+        }
+
+        this.rejectAllOutstandingResolvers({
+          code: -1,
+          message: 'Socket closed'
+        });
+      }
+      /**
+      * Closes a connection.
+      * @private
+      * @param {Number} [code=1000] - The reason code for closing the connection.
+      * @param {String} [reason=""] - The human readable string describing why the connection is closed.
+      * @returns {Object} Returns a promise instance.
+      */
+
+    }, {
+      key: "close",
+      value: function close() {
+        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
+        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+        if (this.socket) {
+          this.socket.close(code, reason);
+          this.socket = null;
+        }
+
+        return this.closedPromise;
+      }
+      /**
+      * Emits an error event and rejects the open promise if an error is raised on the connection.
+      * @private
+      * @param {Object} event - The event describing the error.
+      */
+
+    }, {
+      key: "onError",
+      value: function onError(event) {
+        if (this.resolvers.opened) {
+          this.resolvers.opened.rejectWith(event);
+        } else {
+          // only emit errors after the initial open promise has been resolved,
+          // this makes it possible to catch early websocket errors as well
+          // as run-time ones:
+          this.emit('socket-error', event);
+        }
+
+        this.rejectAllOutstandingResolvers({
+          code: -1,
+          message: 'Socket error'
+        });
+      }
+      /**
+      * Parses the onMessage event on the connection and resolve the promise for the request.
+      * @private
+      * @param {Object} event - The event describing the message.
+      */
+
+    }, {
+      key: "onMessage",
+      value: function onMessage(event) {
+        var data = JSON.parse(event.data);
+        var resolver = this.resolvers[data.id] || {};
+        this.emit('traffic', 'received', data, resolver.handle);
+
+        if (typeof data.id !== 'undefined') {
+          this.emit('message', data);
+          this.resolvers[data.id].resolveWith(data);
+        } else {
+          this.emit(data.params ? 'notification' : 'message', data);
+        }
+      }
+      /**
+      * Rejects all outstanding resolvers.
+      * @private
+      * @param {Object} reason - The reject reason.
+      */
+
+    }, {
+      key: "rejectAllOutstandingResolvers",
+      value: function rejectAllOutstandingResolvers(reason) {
+        var _this3 = this;
+
+        Object.keys(this.resolvers).forEach(function (id) {
+          if (id === 'opened' || id === 'closed') {
+            return; // "opened" and "closed" should not be handled here
+          }
+
+          var resolver = _this3.resolvers[id];
+          resolver.rejectWith(reason);
+        });
+      }
+      /**
+      * Unregisters a resolver.
+      * @private
+      * @param {Number|String} id - The ID to unregister the resolver with.
+      */
+
+    }, {
+      key: "unregisterResolver",
+      value: function unregisterResolver(id) {
+        var resolver = this.resolvers[id];
+        resolver.removeAllListeners();
+        delete this.resolvers[id];
+      }
+      /**
+      * Registers a resolver.
+      * @private
+      * @param {Number|String} id - The ID to register the resolver with.
+      * @param {Number} handle - The associated handle.
+      * @returns {Function} The promise executor function.
+      */
+
+    }, {
+      key: "registerResolver",
+      value: function registerResolver(id, handle, resolve, reject) {
+        var _this4 = this;
+
+        var resolver = new RPCResolver(id, handle, resolve, reject);
+        this.resolvers[id] = resolver;
+        resolver.on('resolved', function (resolvedId) {
+          return _this4.unregisterResolver(resolvedId);
+        });
+        resolver.on('rejected', function (rejectedId) {
+          return _this4.unregisterResolver(rejectedId);
+        });
+      }
+      /**
+      * Sends data on the socket.
+      * @private
+      * @param {Object} data - The data to send.
+      * @returns {Object} A promise instance.
+      */
+
+    }, {
+      key: "send",
+      value: function send(data) {
+        var _this5 = this;
+
+        if (!this.socket || this.socket.readyState !== this.socket.OPEN) {
+          var error = createEnigmaError(errorCodes.NOT_CONNECTED, 'Not connected');
+          return this.Promise.reject(error);
+        }
+
+        if (!data.id) {
+          data.id = this.createRequestId();
+        }
+
+        data.jsonrpc = '2.0';
+        return new this.Promise(function (resolve, reject) {
+          _this5.socket.send(JSON.stringify(data));
+
+          _this5.emit('traffic', 'sent', data, data.handle);
+
+          return _this5.registerResolver(data.id, data.handle, resolve, reject);
+        });
+      }
+    }, {
+      key: "createRequestId",
+      value: function createRequestId() {
+        this.requestId += 1;
+        return this.requestId;
+      }
+    }]);
+
+    return RPC;
+  }();
+
+  function _classCallCheck$6(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$5(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$5(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$5(Constructor.prototype, protoProps); if (staticProps) _defineProperties$5(Constructor, staticProps); return Constructor; }
+  var ON_ATTACHED_TIMEOUT_MS = 5000;
+  var RPC_CLOSE_MANUAL_SUSPEND$1 = 4000;
+
+  var SuspendResume =
+  /*#__PURE__*/
+  function () {
+    /**
+    * Creates a new SuspendResume instance.
+    * @private
+    * @param {Object} options The configuration option for this class.
+    * @param {Promise<Object>} options.Promise The promise constructor to use.
+    * @param {RPC} options.rpc The RPC instance to use when communicating towards Engine.
+    * @param {ApiCache} options.apis The ApiCache instance to use.
+    */
+    function SuspendResume(options) {
+      var _this = this;
+
+      _classCallCheck$6(this, SuspendResume);
+
+      Object.assign(this, options);
+      this.isSuspended = false;
+      this.rpc.on('traffic', function (dir, data) {
+        if (dir === 'sent' && data.method === 'OpenDoc') {
+          _this.openDocParams = data.params;
+        }
+      });
+    }
+    /**
+    * Function used to restore the rpc connection.
+    * @private
+    * @param {Boolean} onlyIfAttached - if true, the returned promise will resolve
+    *                                   only if the session can be re-attached.
+    * @returns {Object} Returns a promise instance.
+    */
+
+
+    _createClass$5(SuspendResume, [{
+      key: "restoreRpcConnection",
+      value: function restoreRpcConnection(onlyIfAttached) {
+        var _this2 = this;
+
+        return this.reopen(ON_ATTACHED_TIMEOUT_MS).then(function (sessionState) {
+          if (sessionState === 'SESSION_CREATED' && onlyIfAttached) {
+            return _this2.Promise.reject(createEnigmaError(errorCodes.SESSION_NOT_ATTACHED, 'Not attached'));
+          }
+
+          return _this2.Promise.resolve();
+        });
+      }
+      /**
+      * Function used to restore the global API.
+      * @private
+      * @param {Object} changed - A list where the restored APIs will be added.
+      * @returns {Object} Returns a promise instance.
+      */
+
+    }, {
+      key: "restoreGlobal",
+      value: function restoreGlobal(changed) {
+        var global = this.apis.getApisByType('Global').pop();
+        changed.push(global.api);
+        return this.Promise.resolve();
+      }
+      /**
+      * Function used to restore the doc API.
+      * @private
+      * @param {String} sessionState - The state of the session, attached or created.
+      * @param {Array} closed - A list where the closed of APIs APIs will be added.
+      * @param {Object} changed - A list where the restored APIs will be added.
+      * @returns {Object} Returns a promise instance.
+      */
+
+    }, {
+      key: "restoreDoc",
+      value: function restoreDoc(closed, changed) {
+        var _this3 = this;
+
+        var doc = this.apis.getApisByType('Doc').pop();
+
+        if (!doc) {
+          return this.Promise.resolve();
+        }
+
+        return this.rpc.send({
+          method: 'GetActiveDoc',
+          handle: -1,
+          params: []
+        }).then(function (response) {
+          if (response.error && _this3.openDocParams) {
+            return _this3.rpc.send({
+              method: 'OpenDoc',
+              handle: -1,
+              params: _this3.openDocParams
+            });
+          }
+
+          return response;
+        }).then(function (response) {
+          if (response.error) {
+            closed.push(doc.api);
+            return _this3.Promise.resolve();
+          }
+
+          var handle = response.result.qReturn.qHandle;
+          doc.api.handle = handle;
+          changed.push(doc.api);
+          return _this3.Promise.resolve(doc.api);
+        });
+      }
+      /**
+      * Function used to restore the APIs on the doc.
+      * @private
+      * @param {Object} doc - The doc API on which the APIs we want to restore exist.
+      * @param {Array} closed - A list where the closed of APIs APIs will be added.
+      * @param {Object} changed - A list where the restored APIs will be added.
+      * @returns {Object} Returns a promise instance.
+      */
+
+    }, {
+      key: "restoreDocObjects",
+      value: function restoreDocObjects(doc, closed, changed) {
+        var _this4 = this;
+
+        var tasks = [];
+        var apis = this.apis.getApis().map(function (entry) {
+          return entry.api;
+        }).filter(function (api) {
+          return api.type !== 'Global' && api.type !== 'Doc';
+        });
+
+        if (!doc) {
+          apis.forEach(function (api) {
+            return closed.push(api);
+          });
+          return this.Promise.resolve();
+        }
+
+        apis.forEach(function (api) {
+          var method = SuspendResume.buildGetMethodName(api.type);
+
+          if (!method) {
+            closed.push(api);
+          } else {
+            var request = _this4.rpc.send({
+              method: method,
+              handle: doc.handle,
+              params: [api.id]
+            }).then(function (response) {
+              if (response.error || !response.result.qReturn.qHandle) {
+                closed.push(api);
+              } else {
+                api.handle = response.result.qReturn.qHandle;
+                changed.push(api);
+              }
+            });
+
+            tasks.push(request);
+          }
+        });
+        return this.Promise.all(tasks);
+      }
+      /**
+      * Set the instance as suspended.
+      * @private
+      * @param {Number} [code=4000] - The reason code for suspending the connection.
+      * @param {String} [reason=""] - The human readable string describing
+      * why the connection is suspended.
+      */
+
+    }, {
+      key: "suspend",
+      value: function suspend() {
+        var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : RPC_CLOSE_MANUAL_SUSPEND$1;
+        var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        this.isSuspended = true;
+        return this.rpc.close(code, reason);
+      }
+      /**
+      * Resumes a previously suspended RPC connection, and refreshes the API cache.
+      *                                APIs unabled to be restored has their 'closed'
+      *                                event triggered, otherwise 'changed'.
+      * @private
+      * @emits API#changed
+      * @emits APIfunction@#closed
+      * @param {Boolean} onlyIfAttached if true, resume only if the session was re-attached.
+      * @returns {Promise<Object>} Eventually resolved if the RPC connection was successfully resumed,
+      *                    otherwise rejected.
+      */
+
+    }, {
+      key: "resume",
+      value: function resume(onlyIfAttached) {
+        var _this5 = this;
+
+        var changed = [];
+        var closed = [];
+        return this.restoreRpcConnection(onlyIfAttached).then(function () {
+          return _this5.restoreGlobal(changed);
+        }).then(function () {
+          return _this5.restoreDoc(closed, changed);
+        }).then(function (doc) {
+          return _this5.restoreDocObjects(doc, closed, changed);
+        }).then(function () {
+          _this5.isSuspended = false;
+
+          _this5.apis.clear();
+
+          closed.forEach(function (api) {
+            api.emit('closed');
+            api.removeAllListeners();
+          });
+          changed.forEach(function (api) {
+            _this5.apis.add(api.handle, api);
+
+            if (api.type !== 'Global') {
+              api.emit('changed');
+            }
+          });
+        })["catch"](function (err) {
+          return _this5.rpc.close().then(function () {
+            return _this5.Promise.reject(err);
+          });
+        });
+      }
+      /**
+      * Reopens the connection and waits for the OnConnected notification.
+      * @private
+      * @param {Number} timeout - The time to wait for the OnConnected notification.
+      * @returns {Object} A promise containing the session state (SESSION_CREATED or SESSION_ATTACHED).
+      */
+
+    }, {
+      key: "reopen",
+      value: function reopen(timeout) {
+        var _this6 = this;
+
+        var timer;
+        var notificationResolve;
+        var notificationReceived = false;
+        var notificationPromise = new this.Promise(function (resolve) {
+          notificationResolve = resolve;
+        });
+
+        var waitForNotification = function waitForNotification() {
+          if (!notificationReceived) {
+            timer = setTimeout(function () {
+              return notificationResolve('SESSION_CREATED');
+            }, timeout);
+          }
+
+          return notificationPromise;
+        };
+
+        var onNotification = function onNotification(data) {
+          if (data.method !== 'OnConnected') return;
+          clearTimeout(timer);
+          notificationResolve(data.params.qSessionState);
+          notificationReceived = true;
+        };
+
+        this.rpc.on('notification', onNotification);
+        return this.rpc.open(true).then(waitForNotification).then(function (state) {
+          _this6.rpc.removeListener('notification', onNotification);
+
+          return state;
+        })["catch"](function (err) {
+          _this6.rpc.removeListener('notification', onNotification);
+
+          return _this6.Promise.reject(err);
+        });
+      }
+      /**
+      * Function used to build the get method names for Doc APIs.
+      * @private
+      * @param {String} type - The API type.
+      * @returns {String} Returns the get method name, or undefined if the type cannot be restored.
+      */
+
+    }], [{
+      key: "buildGetMethodName",
+      value: function buildGetMethodName(type) {
+        if (type === 'Field' || type === 'Variable') {
+          return null;
+        }
+
+        if (type === 'GenericVariable') {
+          return 'GetVariableById';
+        }
+
+        return type.replace('Generic', 'Get');
+      }
+    }]);
+
+    return SuspendResume;
+  }();
+
+  var SUCCESS_KEY = 'qSuccess';
+  function deltaRequestInterceptor(session, request) {
+    var delta = session.config.protocol.delta && request.outKey !== -1 && request.outKey !== SUCCESS_KEY;
+
+    if (delta) {
+      request.delta = delta;
+    }
+
+    return request;
+  }
+
+  /**
+  * Response interceptor for generating APIs. Handles the quirks of engine not
+  * returning an error when an object is missing.
+  * @private
+  * @param {Session} session - The session the intercept is being executed on.
+  * @param {Object} request - The JSON-RPC request.
+  * @param {Object} response - The response.
+  * @returns {Object} - Returns the generated API
+  */
+
+  function apiResponseInterceptor(session, request, response) {
+    if (response.qHandle && response.qType) {
+      return session.getObjectApi({
+        handle: response.qHandle,
+        type: response.qType,
+        id: response.qGenericId,
+        genericType: response.qGenericType
+      });
+    }
+
+    if (response.qHandle === null && response.qType === null) {
+      var error = createEnigmaError(errorCodes.OBJECT_NOT_FOUND, 'Object not found');
+      return session.config.Promise.reject(error);
+    }
+
+    return response;
+  }
+
+  var hasOwn = Object.prototype.hasOwnProperty;
+  var toStr = Object.prototype.toString;
+  var defineProperty = Object.defineProperty;
+  var gOPD = Object.getOwnPropertyDescriptor;
+
+  var isArray = function isArray(arr) {
+  	if (typeof Array.isArray === 'function') {
+  		return Array.isArray(arr);
+  	}
+
+  	return toStr.call(arr) === '[object Array]';
+  };
+
+  var isPlainObject = function isPlainObject(obj) {
+  	if (!obj || toStr.call(obj) !== '[object Object]') {
+  		return false;
+  	}
+
+  	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+  	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+  	// Not own constructor property must be Object
+  	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+  		return false;
+  	}
+
+  	// Own properties are enumerated firstly, so to speed up,
+  	// if last one is own, then all properties are own.
+  	var key;
+  	for (key in obj) { /**/ }
+
+  	return typeof key === 'undefined' || hasOwn.call(obj, key);
+  };
+
+  // If name is '__proto__', and Object.defineProperty is available, define __proto__ as an own property on target
+  var setProperty = function setProperty(target, options) {
+  	if (defineProperty && options.name === '__proto__') {
+  		defineProperty(target, options.name, {
+  			enumerable: true,
+  			configurable: true,
+  			value: options.newValue,
+  			writable: true
+  		});
+  	} else {
+  		target[options.name] = options.newValue;
+  	}
+  };
+
+  // Return undefined instead of __proto__ if '__proto__' is not an own property
+  var getProperty = function getProperty(obj, name) {
+  	if (name === '__proto__') {
+  		if (!hasOwn.call(obj, name)) {
+  			return void 0;
+  		} else if (gOPD) {
+  			// In early versions of node, obj['__proto__'] is buggy when obj has
+  			// __proto__ as an own property. Object.getOwnPropertyDescriptor() works.
+  			return gOPD(obj, name).value;
+  		}
+  	}
+
+  	return obj[name];
+  };
+
+  var extend = function extend() {
+  	var options, name, src, copy, copyIsArray, clone;
+  	var target = arguments[0];
+  	var i = 1;
+  	var length = arguments.length;
+  	var deep = false;
+
+  	// Handle a deep copy situation
+  	if (typeof target === 'boolean') {
+  		deep = target;
+  		target = arguments[1] || {};
+  		// skip the boolean and the target
+  		i = 2;
+  	}
+  	if (target == null || (typeof target !== 'object' && typeof target !== 'function')) {
+  		target = {};
+  	}
+
+  	for (; i < length; ++i) {
+  		options = arguments[i];
+  		// Only deal with non-null/undefined values
+  		if (options != null) {
+  			// Extend the base object
+  			for (name in options) {
+  				src = getProperty(target, name);
+  				copy = getProperty(options, name);
+
+  				// Prevent never-ending loop
+  				if (target !== copy) {
+  					// Recurse if we're merging plain objects or arrays
+  					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+  						if (copyIsArray) {
+  							copyIsArray = false;
+  							clone = src && isArray(src) ? src : [];
+  						} else {
+  							clone = src && isPlainObject(src) ? src : {};
+  						}
+
+  						// Never move original objects, clone them
+  						setProperty(target, { name: name, newValue: extend(deep, clone, copy) });
+
+  					// Don't bring in undefined values
+  					} else if (typeof copy !== 'undefined') {
+  						setProperty(target, { name: name, newValue: copy });
+  					}
+  				}
+  			}
+  		}
+  	}
+
+  	// Return the modified object
+  	return target;
+  };
+
+  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+  function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+  function _typeof$2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
+  var extend$1 = extend.bind(null, true);
+  var JSONPatch = {};
+  var isArray$1 = Array.isArray;
+
+  function isObject(v) {
+    return v != null && !Array.isArray(v) && _typeof$2(v) === 'object';
+  }
+
+  function isUndef(v) {
+    return typeof v === 'undefined';
+  }
+
+  function isFunction(v) {
+    return typeof v === 'function';
+  }
+  /**
+  * Generate an exact duplicate (with no references) of a specific value.
+  *
+  * @private
+  * @param {Object} The value to duplicate
+  * @returns {Object} a unique, duplicated value
+  */
+
+
+  function generateValue(val) {
+    if (val) {
+      return extend$1({}, {
+        val: val
+      }).val;
+    }
+
+    return val;
+  }
+  /**
+  * An additional type checker used to determine if the property is of internal
+  * use or not a type that can be translated into JSON (like functions).
+  *
+  * @private
+  * @param {Object} obj The object which has the property to check
+  * @param {String} The property name to check
+  * @returns {Boolean} Whether the property is deemed special or not
+  */
+
+
+  function isSpecialProperty(obj, key) {
+    return isFunction(obj[key]) || key.substring(0, 2) === '$$' || key.substring(0, 1) === '_';
+  }
+  /**
+  * Finds the parent object from a JSON-Pointer ("/foo/bar/baz" = "bar" is "baz" parent),
+  * also creates the object structure needed.
+  *
+  * @private
+  * @param {Object} data The root object to traverse through
+  * @param {String} The JSON-Pointer string to use when traversing
+  * @returns {Object} The parent object
+  */
+
+
+  function getParent(data, str) {
+    var seperator = '/';
+    var parts = str.substring(1).split(seperator).slice(0, -1);
+    var numPart;
+    parts.forEach(function (part, i) {
+      if (i === parts.length) {
+        return;
+      }
+
+      numPart = +part;
+      var newPart = !isNaN(numPart) ? [] : {};
+      data[numPart || part] = isUndef(data[numPart || part]) ? newPart : data[part];
+      data = data[numPart || part];
+    });
+    return data;
+  }
+  /**
+  * Cleans an object of all its properties, unless they're deemed special or
+  * cannot be removed by configuration.
+  *
+  * @private
+  * @param {Object} obj The object to clean
+  */
+
+
+  function emptyObject(obj) {
+    Object.keys(obj).forEach(function (key) {
+      var config = Object.getOwnPropertyDescriptor(obj, key);
+
+      if (config.configurable && !isSpecialProperty(obj, key)) {
+        delete obj[key];
+      }
+    });
+  }
+  /**
+  * Compare an object with another, could be object, array, number, string, bool.
+  * @private
+  * @param {Object} a The first object to compare
+  * @param {Object} a The second object to compare
+  * @returns {Boolean} Whether the objects are identical
+  */
+
+
+  function compare(a, b) {
+    var isIdentical = true;
+
+    if (isObject(a) && isObject(b)) {
+      if (Object.keys(a).length !== Object.keys(b).length) {
+        return false;
+      }
+
+      Object.keys(a).forEach(function (key) {
+        if (!compare(a[key], b[key])) {
+          isIdentical = false;
+        }
+      });
+      return isIdentical;
+    }
+
+    if (isArray$1(a) && isArray$1(b)) {
+      if (a.length !== b.length) {
+        return false;
+      }
+
+      for (var i = 0, l = a.length; i < l; i += 1) {
+        if (!compare(a[i], b[i])) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    return a === b;
+  }
+  /**
+  * Generates patches by comparing two arrays.
+  *
+  * @private
+  * @param {Array} oldA The old (original) array, which will be patched
+  * @param {Array} newA The new array, which will be used to compare against
+  * @returns {Array} An array of patches (if any)
+  */
+
+
+  function patchArray(original, newA, basePath) {
+    var patches = [];
+    var oldA = original.slice();
+    var tmpIdx = -1;
+
+    function findIndex(a, id, idx) {
+      if (a[idx] && isUndef(a[idx].qInfo)) {
+        return null;
+      }
+
+      if (a[idx] && a[idx].qInfo.qId === id) {
+        // shortcut if identical
+        return idx;
+      }
+
+      for (var ii = 0, ll = a.length; ii < ll; ii += 1) {
+        if (a[ii] && a[ii].qInfo.qId === id) {
+          return ii;
+        }
+      }
+
+      return -1;
+    }
+
+    if (compare(newA, oldA)) {
+      // array is unchanged
+      return patches;
+    }
+
+    if (!isUndef(newA[0]) && isUndef(newA[0].qInfo)) {
+      // we cannot create patches without unique identifiers, replace array...
+      patches.push({
+        op: 'replace',
+        path: basePath,
+        value: newA
+      });
+      return patches;
+    }
+
+    for (var i = oldA.length - 1; i >= 0; i -= 1) {
+      tmpIdx = findIndex(newA, oldA[i].qInfo && oldA[i].qInfo.qId, i);
+
+      if (tmpIdx === -1) {
+        patches.push({
+          op: 'remove',
+          path: "".concat(basePath, "/").concat(i)
+        });
+        oldA.splice(i, 1);
+      } else {
+        patches = patches.concat(JSONPatch.generate(oldA[i], newA[tmpIdx], "".concat(basePath, "/").concat(i)));
+      }
+    }
+
+    for (var _i = 0, l = newA.length; _i < l; _i += 1) {
+      tmpIdx = findIndex(oldA, newA[_i].qInfo && newA[_i].qInfo.qId);
+
+      if (tmpIdx === -1) {
+        patches.push({
+          op: 'add',
+          path: "".concat(basePath, "/").concat(_i),
+          value: newA[_i]
+        });
+        oldA.splice(_i, 0, newA[_i]);
+      } else if (tmpIdx !== _i) {
+        patches.push({
+          op: 'move',
+          path: "".concat(basePath, "/").concat(_i),
+          from: "".concat(basePath, "/").concat(tmpIdx)
+        });
+        oldA.splice(_i, 0, oldA.splice(tmpIdx, 1)[0]);
+      }
+    }
+
+    return patches;
+  }
+  /**
+  * Generate an array of JSON-Patch:es following the JSON-Patch Specification Draft.
+  *
+  * See [specification draft](http://tools.ietf.org/html/draft-ietf-appsawg-json-patch-10)
+  *
+  * Does NOT currently generate patches for arrays (will replace them)
+  * @private
+  * @param {Object} original The object to patch to
+  * @param {Object} newData The object to patch from
+  * @param {String} [basePath] The base path to use when generating the paths for
+  *                            the patches (normally not used)
+  * @returns {Array} An array of patches
+  */
+
+
+  JSONPatch.generate = function generate(original, newData, basePath) {
+    basePath = basePath || '';
+    var patches = [];
+    Object.keys(newData).forEach(function (key) {
+      var val = generateValue(newData[key]);
+      var oldVal = original[key];
+      var tmpPath = "".concat(basePath, "/").concat(key);
+
+      if (compare(val, oldVal) || isSpecialProperty(newData, key)) {
+        return;
+      }
+
+      if (isUndef(oldVal)) {
+        // property does not previously exist
+        patches.push({
+          op: 'add',
+          path: tmpPath,
+          value: val
+        });
+      } else if (isObject(val) && isObject(oldVal)) {
+        // we need to generate sub-patches for this, since it already exist
+        patches = patches.concat(JSONPatch.generate(oldVal, val, tmpPath));
+      } else if (isArray$1(val) && isArray$1(oldVal)) {
+        patches = patches.concat(patchArray(oldVal, val, tmpPath));
+      } else {
+        // it's a simple property (bool, string, number)
+        patches.push({
+          op: 'replace',
+          path: "".concat(basePath, "/").concat(key),
+          value: val
+        });
+      }
+    });
+    Object.keys(original).forEach(function (key) {
+      if (isUndef(newData[key]) && !isSpecialProperty(original, key)) {
+        // this property does not exist anymore
+        patches.push({
+          op: 'remove',
+          path: "".concat(basePath, "/").concat(key)
+        });
+      }
+    });
+    return patches;
+  };
+  /**
+  * Apply a list of patches to an object.
+  * @private
+  * @param {Object} original The object to patch
+  * @param {Array} patches The list of patches to apply
+  */
+
+
+  JSONPatch.apply = function apply(original, patches) {
+    patches.forEach(function (patch) {
+      var parent = getParent(original, patch.path);
+      var key = patch.path.split('/').splice(-1)[0];
+      var target = key && isNaN(+key) ? parent[key] : parent[+key] || parent;
+      var from = patch.from ? patch.from.split('/').splice(-1)[0] : null;
+
+      if (patch.path === '/') {
+        parent = null;
+        target = original;
+      }
+
+      if (patch.op === 'add' || patch.op === 'replace') {
+        if (isArray$1(parent)) {
+          // trust indexes from patches, so don't replace the index if it's an add
+          if (key === '-') {
+            key = parent.length;
+          }
+
+          parent.splice(+key, patch.op === 'add' ? 0 : 1, patch.value);
+        } else if (isArray$1(target) && isArray$1(patch.value)) {
+          var _target;
+
+          var newValues = patch.value.slice(); // keep array reference if possible...
+
+          target.length = 0;
+
+          (_target = target).push.apply(_target, _toConsumableArray(newValues));
+        } else if (isObject(target) && isObject(patch.value)) {
+          // keep object reference if possible...
+          emptyObject(target);
+          extend$1(target, patch.value);
+        } else if (!parent) {
+          throw createEnigmaError(errorCodes.PATCH_HAS_NO_PARENT, 'Patchee is not an object we can patch');
+        } else {
+          // simple value
+          parent[key] = patch.value;
+        }
+      } else if (patch.op === 'move') {
+        var oldParent = getParent(original, patch.from);
+
+        if (isArray$1(parent)) {
+          parent.splice(+key, 0, oldParent.splice(+from, 1)[0]);
+        } else {
+          parent[key] = oldParent[from];
+          delete oldParent[from];
+        }
+      } else if (patch.op === 'remove') {
+        if (isArray$1(parent)) {
+          parent.splice(+key, 1);
+        } else {
+          delete parent[key];
+        }
+      }
+    });
+  };
+  /**
+  * Deep clone an object.
+  * @private
+  * @param {Object} obj The object to clone
+  * @returns {Object} A new object identical to the `obj`
+  */
+
+
+  JSONPatch.clone = function clone(obj) {
+    return extend$1({}, obj);
+  };
+  /**
+  * Creates a JSON-patch.
+  * @private
+  * @param {String} op The operation of the patch. Available values: "add", "remove", "move"
+  * @param {Object} [val] The value to set the `path` to. If `op` is `move`, `val`
+  *                       is the "from JSON-path" path
+  * @param {String} path The JSON-path for the property to change (e.g. "/qHyperCubeDef/columnOrder")
+  * @returns {Object} A patch following the JSON-patch specification
+  */
+
+
+  JSONPatch.createPatch = function createPatch(op, val, path) {
+    var patch = {
+      op: op.toLowerCase(),
+      path: path
+    };
+
+    if (patch.op === 'move') {
+      patch.from = val;
+    } else if (typeof val !== 'undefined') {
+      patch.value = val;
+    }
+
+    return patch;
+  };
+  /**
+  * Apply the differences of two objects (keeping references if possible).
+  * Identical to running `JSONPatch.apply(original, JSONPatch.generate(original, newData));`
+  * @private
+  * @param {Object} original The object to update/patch
+  * @param {Object} newData the object to diff against
+  *
+  * @example
+  * var obj1 = { foo: [1,2,3], bar: { baz: true, qux: 1 } };
+  * var obj2 = { foo: [4,5,6], bar: { baz: false } };
+  * JSONPatch.updateObject(obj1, obj2);
+  * // => { foo: [4,5,6], bar: { baz: false } };
+  */
+
+
+  JSONPatch.updateObject = function updateObject(original, newData) {
+    if (!Object.keys(original).length) {
+      extend$1(original, newData);
+      return;
+    }
+
+    JSONPatch.apply(original, JSONPatch.generate(original, newData));
+  };
+
+  function _typeof$3(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
+  var sessions = {};
+  /**
+  * Function to make sure we release handle caches when they are closed.
+  * @private
+  * @param {Session} session The session instance to listen on.
+  */
+
+  var bindSession = function bindSession(session) {
+    if (!sessions[session.id]) {
+      var cache = {};
+      sessions[session.id] = cache;
+      session.on('traffic:received', function (data) {
+        return data.close && data.close.forEach(function (handle) {
+          return delete cache[handle];
+        });
+      });
+      session.on('closed', function () {
+        return delete sessions[session.id];
+      });
+    }
+  };
+  /**
+  * Simple function that ensures the session events has been bound, and returns
+  * either an existing key-value cache or creates one for the specified handle.
+  * @private
+  * @param {Session} session The session that owns the handle.
+  * @param {Number} handle The object handle to retrieve the cache for.
+  * @returns {KeyValueCache} The cache instance.
+  */
+
+
+  var getHandleCache = function getHandleCache(session, handle) {
+    bindSession(session);
+    var cache = sessions[session.id];
+
+    if (!cache[handle]) {
+      cache[handle] = new KeyValueCache();
+    }
+
+    return cache[handle];
+  };
+  /**
+  * Function used to apply a list of patches and return the patched value.
+  * @private
+  * @param {Session} session The session.
+  * @param {Number} handle The object handle.
+  * @param {String} cacheId The cacheId.
+  * @param {Array} patches The patches.
+  * @returns {Object} Returns the patched value.
+  */
+
+
+  var patchValue = function patchValue(session, handle, cacheId, patches) {
+    var cache = getHandleCache(session, handle);
+    var entry = cache.get(cacheId);
+
+    if (typeof entry === 'undefined') {
+      entry = Array.isArray(patches[0].value) ? [] : {};
+    }
+
+    if (patches.length) {
+      if (patches[0].path === '/' && _typeof$3(patches[0].value) !== 'object') {
+        // 'plain' values on root path is not supported (no object reference),
+        // so we simply store the value directly:
+        entry = patches[0].value;
+      } else {
+        JSONPatch.apply(entry, patches);
+      }
+
+      cache.set(cacheId, entry);
+    }
+
+    return entry;
+  };
+  /**
+  * Process delta interceptor.
+  * @private
+  * @param {Session} session The session the intercept is being executed on.
+  * @param {Object} request The JSON-RPC request.
+  * @param {Object} response The response.
+  * @returns {Object} Returns the patched response
+  */
+
+
+  function deltaResponseInterceptor(session, request, response) {
+    var delta = response.delta,
+        result = response.result;
+
+    if (delta) {
+      // when delta is on the response data is expected to be an array of patches:
+      Object.keys(result).forEach(function (key) {
+        if (!Array.isArray(result[key])) {
+          throw createEnigmaError(errorCodes.EXPECTED_ARRAY_OF_PATCHES, 'Unexpected RPC response, expected array of patches');
+        }
+
+        result[key] = patchValue(session, request.handle, "".concat(request.method, "-").concat(key), result[key]);
+      }); // return a cloned response object to avoid patched object references:
+
+      return JSON.parse(JSON.stringify(response));
+    }
+
+    return response;
+  } // export object reference for testing purposes:
+
+  deltaResponseInterceptor.sessions = sessions;
+
+  /**
+  * Process error interceptor.
+  * @private
+  * @param {Session} session - The session the intercept is being executed on.
+  * @param {Object} request - The JSON-RPC request.
+  * @param {Object} response - The response.
+  * @returns {Object} - Returns the defined error for an error, else the response.
+  */
+  function errorResponseInterceptor(session, request, response) {
+    if (typeof response.error !== 'undefined') {
+      var data = response.error;
+      var error = new Error(data.message);
+      error.code = data.code;
+      error.parameter = data.parameter;
+      return session.config.Promise.reject(error);
+    }
+
+    return response;
+  }
+
+  var RETURN_KEY = 'qReturn';
+  /**
+  * Picks out the result "out" parameter based on the QIX method+schema, with
+  * some specific handling for some methods that breaks the predictable protocol.
+  * @private
+  * @param {Session} session - The session the intercept is being executed on.
+  * @param {Object} request - The JSON-RPC request.
+  * @param {Object} response - The response.
+  * @returns {Object} - Returns the result property on the response
+  */
+
+  function outParamResponseInterceptor(session, request, response) {
+    if (request.method === 'CreateSessionApp' || request.method === 'CreateSessionAppFromApp') {
+      // this method returns multiple out params that we need
+      // to normalize before processing the response further:
+      response[RETURN_KEY].qGenericId = response.qSessionAppId || response[RETURN_KEY].qGenericId;
+    } else if (request.method === 'GetInteract') {
+      // this method returns a qReturn value when it should only return
+      // meta.outKey:
+      delete response[RETURN_KEY];
+    }
+
+    if (hasOwnProperty.call(response, RETURN_KEY)) {
+      return response[RETURN_KEY];
+    }
+
+    if (request.outKey !== -1) {
+      return response[request.outKey];
+    }
+
+    return response;
+  }
+
+  /**
+  * Process result interceptor.
+  * @private
+  * @param {Session} session - The session the intercept is being executed on.
+  * @param {Object} request - The JSON-RPC request.
+  * @param {Object} response - The response.
+  * @returns {Object} - Returns the result property on the response
+  */
+  function resultResponseInterceptor(session, request, response) {
+    return response.result;
+  }
+
+  function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _nonIterableSpread$1(); }
+
+  function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+  function _iterableToArray$1(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+  function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+  function _classCallCheck$7(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$6(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$6(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$6(Constructor.prototype, protoProps); if (staticProps) _defineProperties$6(Constructor, staticProps); return Constructor; }
+  /**
+   * Interceptors is a concept similar to mixins, but run on a lower level. The interceptor concept
+   * can augment either the requests (i.e. before sent to QIX Engine), or the responses (i.e. after
+   * QIX Engine has sent a response). The interceptor promises runs in parallel to the regular
+   * promises used in enigma.js, which means that it can be really useful when you want to normalize
+   * behaviors in your application.
+   * @interface Interceptor
+   */
+
+  /**
+    * @class InterceptorRequest
+    * @implements {Interceptor}
+    */
+
+  /**
+   * @class InterceptorResponse
+   * @implements {Interceptor}
+   */
+
+  /**
+   * This method is invoked when a request is about to be sent to QIX Engine.
+   * @function InterceptorRequest#onFulfilled
+   * @param {Session} session The session executing the interceptor.
+   * @param {Object} request The JSON-RPC request that will be sent.
+   */
+
+  /**
+   * This method is invoked when a previous interceptor has rejected the
+   * promise, use this to handle for example errors before they are sent into mixins.
+   * @function InterceptorResponse#onRejected
+   * @param {Session} session The session executing the interceptor. You may use .retry() to retry
+   * sending it to QIX Engine.
+   * @param {Object} request The JSON-RPC request resulting in this error.
+   * @param {Object} error Whatever the previous interceptor is rejected with.
+   */
+
+  /**
+   * This method is invoked when a promise has been successfully resolved,
+   * use this to modify the result or reject the promise chain before it is sent
+   * to mixins.
+   * @function InterceptorResponse#onFulfilled
+   * @param {Session} session The session executing the interceptor.
+   * @param {Object} request The JSON-RPC request resulting in this response.
+   * @param {Object} result Whatever the previous interceptor is resolved with.
+   */
+
+  var Intercept =
+  /*#__PURE__*/
+  function () {
+    /**
+    * Create a new Intercept instance.
+    * @private
+    * @param {Object} options The configuration options for this class.
+    * @param {Promise<Object>} options.Promise The promise constructor to use.
+    * @param {ApiCache} options.apis The ApiCache instance to use.
+    * @param {Array<Object>} [options.request] The additional request interceptors to use.
+    * @param {Array<Object>} [options.response] The additional response interceptors to use.
+    */
+    function Intercept(options) {
+      _classCallCheck$7(this, Intercept);
+
+      Object.assign(this, options);
+      this.request = [{
+        onFulfilled: deltaRequestInterceptor
+      }].concat(_toConsumableArray$1(this.request || []));
+      this.response = [{
+        onFulfilled: errorResponseInterceptor
+      }, {
+        onFulfilled: deltaResponseInterceptor
+      }, {
+        onFulfilled: resultResponseInterceptor
+      }, {
+        onFulfilled: outParamResponseInterceptor
+      }].concat(_toConsumableArray$1(this.response || []), [{
+        onFulfilled: apiResponseInterceptor
+      }]);
+    }
+    /**
+    * Execute the request interceptor queue, each interceptor will get the result from
+    * the previous interceptor.
+    * @private
+    * @param {Session} session The session instance to execute against.
+    * @param {Promise<Object>} promise The promise to chain on to.
+    * @returns {Promise<Object>}
+    */
+
+
+    _createClass$6(Intercept, [{
+      key: "executeRequests",
+      value: function executeRequests(session, promise) {
+        var _this = this;
+
+        return this.request.reduce(function (interception, interceptor) {
+          var intercept = interceptor.onFulfilled && interceptor.onFulfilled.bind(_this, session);
+          return interception.then(intercept);
+        }, promise);
+      }
+      /**
+      * Execute the response interceptor queue, each interceptor will get the result from
+      * the previous interceptor.
+      * @private
+      * @param {Session} session The session instance to execute against.
+      * @param {Promise<Object>} promise The promise to chain on to.
+      * @param {Object} request The JSONRPC request object for the intercepted response.
+      * @returns {Promise<Object>}
+      */
+
+    }, {
+      key: "executeResponses",
+      value: function executeResponses(session, promise, request) {
+        var _this2 = this;
+
+        return this.response.reduce(function (interception, interceptor) {
+          return interception.then(interceptor.onFulfilled && interceptor.onFulfilled.bind(_this2, session, request), interceptor.onRejected && interceptor.onRejected.bind(_this2, session, request));
+        }, promise);
+      }
+    }]);
+
+    return Intercept;
+  }();
+
+  function _typeof$4(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$4 = function _typeof(obj) { return typeof obj; }; } else { _typeof$4 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$4(obj); }
+
+  function _classCallCheck$8(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$7(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$7(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$7(Constructor.prototype, protoProps); if (staticProps) _defineProperties$7(Constructor, staticProps); return Constructor; }
+
+  function _possibleConstructorReturn$1(self, call) { if (call && (_typeof$4(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$1(self); }
+
+  function _assertThisInitialized$1(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf$1(object); if (object === null) break; } return object; }
+
+  function _getPrototypeOf$1(o) { _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf$1(o); }
+
+  function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf$1(subClass, superClass); }
+
+  function _setPrototypeOf$1(o, p) { _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf$1(o, p); }
+  /**
+  * API cache for instances of QIX types, e.g. GenericObject.
+  * @private
+  * @extends KeyValueCache
+  */
+
+  var ApiCache =
+  /*#__PURE__*/
+  function (_KeyValueCache) {
+    _inherits$1(ApiCache, _KeyValueCache);
+
+    function ApiCache() {
+      _classCallCheck$8(this, ApiCache);
+
+      return _possibleConstructorReturn$1(this, _getPrototypeOf$1(ApiCache).apply(this, arguments));
+    }
+
+    _createClass$7(ApiCache, [{
+      key: "add",
+
+      /**
+      * Adds an API.
+      * @private
+      * @function ApiCache#add
+      * @param {Number} handle - The handle for the API.
+      * @param {*} api - The API.
+      * @returns {{api: *}} The entry.
+      */
+      value: function add(handle, api) {
+        var _this = this;
+
+        var entry = {
+          api: api
+        };
+
+        _get(_getPrototypeOf$1(ApiCache.prototype), "add", this).call(this, handle.toString(), entry);
+
+        api.on('closed', function () {
+          return _this.remove(handle);
+        });
+        return entry;
+      }
+      /**
+      * Gets an API.
+      * @private
+      * @function ApiCache#getApi
+      * @param {Number} handle - The handle for the API.
+      * @returns {*} The API for the handle.
+      */
+
+    }, {
+      key: "getApi",
+      value: function getApi(handle) {
+        var entry = typeof handle !== 'undefined' ? this.get(handle.toString()) : undefined;
+        return entry && entry.api;
+      }
+      /**
+      * Gets a list of APIs.
+      * @private
+      * @function ApiCache#getApis
+      * @returns {Array} The list of entries including `handle` and `api` properties for each entry.
+      */
+
+    }, {
+      key: "getApis",
+      value: function getApis() {
+        return _get(_getPrototypeOf$1(ApiCache.prototype), "getAll", this).call(this).map(function (entry) {
+          return {
+            handle: entry.key,
+            api: entry.value.api
+          };
+        });
+      }
+      /**
+      * Gets a list of APIs with a given type.
+      * @private
+      * @function ApiCache#getApisByType
+      * @param {String} type - The type of APIs to get.
+      * @returns {Array} The list of entries including `handle` and `api` properties for each entry.
+      */
+
+    }, {
+      key: "getApisByType",
+      value: function getApisByType(type) {
+        return this.getApis().filter(function (entry) {
+          return entry.api.type === type;
+        });
+      }
+    }]);
+
+    return ApiCache;
+  }(KeyValueCache);
+
+  function _classCallCheck$9(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties$8(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass$8(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$8(Constructor.prototype, protoProps); if (staticProps) _defineProperties$8(Constructor, staticProps); return Constructor; }
+  /**
+   * The enigma.js configuration object.
+   * @interface Configuration
+   * @property {Object} schema Object containing the specification for the API to generate.
+   * Corresponds to a specific version of the QIX Engine API.
+   * @property {String} url String containing a proper websocker URL to QIX Engine.
+   * @property {Function} [createSocket] A function to use when instantiating the WebSocket,
+   * mandatory for Node.js.
+   * @property {Object} [Promise] ES6-compatible Promise library.
+   * @property {Boolean} [suspendOnClose=false] Set to true if the session should be suspended
+   * instead of closed when the websocket is closed.
+   * @property {Array<Mixin>} [mixins=[]] Mixins to extend/augment the QIX Engine API. Mixins
+   * are applied in the array order.
+   * @property {Array} [requestInterceptors=[]] Interceptors for augmenting requests before they
+   * are sent to QIX Engine. Interceptors are applied in the array order.
+   * @property {Array} [responseInterceptors=[]] Interceptors for augmenting responses before they
+   * are passed into mixins and end-users. Interceptors are applied in the array order.
+   * @property {Object} [protocol={}] An object containing additional JSON-RPC request parameters.
+   * @property {Boolean} [protocol.delta=true] Set to false to disable the use of the
+   * bandwidth-reducing delta protocol.
+   */
+
+  /**
+   * Mixin object to extend/augment the QIX Engine API
+   * @interface Mixin
+   * @property {String|Array<String>} types String or array of strings containing the API-types that
+   * will be mixed in.
+   * @property {Object} [extend] Object literal containing the methods that will be extended on the
+   * specified API.
+   * @property {Object} [override] Object literal containing the methods to override existing methods.
+   * @property {Function} [init] Init function that, if defined, will run when an API is instantiated.
+   * It runs with Promise and API object as parameters
+   */
+
+  /**
+   * The API for generated APIs depends on the QIX Engine schema you pass into your Configuration,
+   * and on what QIX struct the API has.
+   * @interface API
+   * @property {String} id Contains the unique identifier for this API.
+   * @property {String} type Contains the schema class name for this API.
+   * @property {String} genericType Corresponds to the qInfo.qType property on the generic object's
+   * properties object.
+   * @property {Session} session Contains a reference to the session that this API belongs to.
+   * @property {Number} handle Contains the handle QIX Engine assigned to the API. Used interally in
+   * enigma.js for caches and JSON-RPC requests.
+   */
+
+  /**
+   * Handle changes on the API. The changed event is triggered whenever enigma.js or QIX Engine has
+   * identified potential changes on the underlying properties or hypercubes and you should re-fetch
+   * your data.
+   * @event API#changed
+   * @type {Object}
+   */
+
+  /**
+   * Handle closed API. The closed event is triggered whenever QIX Engine considers an API closed.
+   * It usually means that it no longer exist in the QIX Engine document or session.
+   * @event API#closed
+   * @type {Object}
+   */
+
+  /**
+   * Handle JSON-RPC requests/responses for this API. Generally used in debugging purposes.
+   * traffic:* will handle all websocket messages, traffic:sent will handle outgoing messages
+   * and traffic:received will handle incoming messages.
+   * @event API#traffic
+   * @type {Object}
+   */
+
+  /**
+  * Qix service.
+  */
+
+  var Qix =
+  /*#__PURE__*/
+  function () {
+    function Qix() {
+      _classCallCheck$9(this, Qix);
+    }
+
+    _createClass$8(Qix, null, [{
+      key: "getSession",
+
+      /**
+      * Function used to get a session.
+      * @private
+      * @param {Configuration} config The configuration object for this session.
+      * @returns {Session} Returns a session instance.
+      */
+      value: function getSession(config) {
+        var createSocket = config.createSocket,
+            Promise = config.Promise,
+            requestInterceptors = config.requestInterceptors,
+            responseInterceptors = config.responseInterceptors,
+            url = config.url;
+        var apis = new ApiCache();
+        var intercept = new Intercept({
+          apis: apis,
+          Promise: Promise,
+          request: requestInterceptors,
+          response: responseInterceptors
+        });
+        var rpc = new RPC({
+          createSocket: createSocket,
+          Promise: Promise,
+          url: url
+        });
+        var suspendResume = new SuspendResume({
+          apis: apis,
+          Promise: Promise,
+          rpc: rpc
+        });
+        var session = new Session({
+          apis: apis,
+          config: config,
+          intercept: intercept,
+          rpc: rpc,
+          suspendResume: suspendResume
+        });
+        return session;
+      }
+      /**
+      * Function used to create a QIX session.
+      * @param {Configuration} config The configuration object for the QIX session.
+      * @returns {Session} Returns a new QIX session.
+      */
+
+    }, {
+      key: "create",
+      value: function create(config) {
+        Qix.configureDefaults(config);
+        config.mixins.forEach(function (mixin) {
+          config.definition.registerMixin(mixin);
+        });
+        return Qix.getSession(config);
+      }
+      /**
+      * Function used to configure defaults.
+      * @private
+      * @param {Configuration} config The configuration object for how to connect
+      *                               and retrieve end QIX APIs.
+      */
+
+    }, {
+      key: "configureDefaults",
+      value: function configureDefaults(config) {
+        if (!config) {
+          throw createEnigmaError(errorCodes.NO_CONFIG_SUPPLIED, 'You need to supply a configuration.');
+        } // eslint-disable-next-line no-restricted-globals
+
+
+        if (!config.Promise && typeof Promise === 'undefined') {
+          throw createEnigmaError(errorCodes.PROMISE_REQUIRED, 'Your environment has no Promise implementation. You must provide a Promise implementation in the config.');
+        }
+
+        if (typeof config.createSocket !== 'function' && typeof WebSocket === 'function') {
+          // eslint-disable-next-line no-undef
+          config.createSocket = function (url) {
+            return new WebSocket(url);
+          };
+        }
+
+        if (typeof config.suspendOnClose === 'undefined') {
+          config.suspendOnClose = false;
+        }
+
+        config.protocol = config.protocol || {};
+        config.protocol.delta = typeof config.protocol.delta !== 'undefined' ? config.protocol.delta : true; // eslint-disable-next-line no-restricted-globals
+
+        config.Promise = config.Promise || Promise;
+        config.mixins = config.mixins || [];
+        config.definition = config.definition || new Schema(config);
+      }
+    }]);
+
+    return Qix;
+  }();
+
+  return Qix;
+
+})));
+//# sourceMappingURL=enigma.js.map
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"structs\":{\"Field\":{\"GetCardinal\":{\"In\":[],\"Out\":[]},\"GetAndMode\":{\"In\":[],\"Out\":[]},\"SelectValues\":{\"In\":[{\"Name\":\"qFieldValues\",\"DefaultValue\":[{\"qText\":\"\",\"qIsNumeric\":false,\"qNumber\":0}]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Select\":{\"In\":[{\"Name\":\"qMatch\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qExcludedValuesMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[]},\"ToggleSelect\":{\"In\":[{\"Name\":\"qMatch\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qExcludedValuesMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[]},\"ClearAllButThis\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectPossible\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectExcluded\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"SelectAll\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Lock\":{\"In\":[],\"Out\":[]},\"Unlock\":{\"In\":[],\"Out\":[]},\"GetNxProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProperties\"}]},\"SetNxProperties\":{\"In\":[{\"Name\":\"qProperties\",\"DefaultValue\":{\"qOneAndOnlyOne\":false}}],\"Out\":[]},\"SetAndMode\":{\"In\":[{\"Name\":\"qAndMode\",\"DefaultValue\":false}],\"Out\":[]},\"SelectAlternative\":{\"In\":[{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"LowLevelSelect\":{\"In\":[{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"Clear\":{\"In\":[],\"Out\":[]}},\"Variable\":{\"GetContent\":{\"In\":[],\"Out\":[{\"Name\":\"qContent\"}]},\"GetRawContent\":{\"In\":[],\"Out\":[]},\"SetContent\":{\"In\":[{\"Name\":\"qContent\",\"DefaultValue\":\"\"},{\"Name\":\"qUpdateMRU\",\"DefaultValue\":false}],\"Out\":[]},\"ForceContent\":{\"In\":[{\"Name\":\"qs\",\"DefaultValue\":\"\"},{\"Name\":\"qd\",\"DefaultValue\":0}],\"Out\":[]},\"GetNxProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProperties\"}]},\"SetNxProperties\":{\"In\":[{\"Name\":\"qProperties\",\"DefaultValue\":{\"qName\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qUsePredefListedValues\":false,\"qPreDefinedList\":[\"\"]}}],\"Out\":[]}},\"GenericObject\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"GetListObjectData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeReducedData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qZoomFactor\",\"DefaultValue\":0},{\"Name\":\"qReductionMode\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubePivotData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeStackData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qMaxNbrCells\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"GetHyperCubeContinuousData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qOptions\",\"DefaultValue\":{\"qStart\":0,\"qEnd\":0,\"qNbrPoints\":0,\"qMaxNbrTicks\":0,\"qMaxNumberLines\":0}},{\"Name\":\"qReverseSort\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qDataPages\"},{\"Name\":\"qAxisData\"}]},\"GetHyperCubeTreeData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qNodeOptions\",\"DefaultValue\":{\"qMaxNbrOfNodes\":0,\"qTreeNodes\":[{\"qArea\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qAllValues\":false}],\"qTreeLevels\":{\"qLeft\":0,\"qDepth\":0}},\"Optional\":true}],\"Out\":[{\"Name\":\"qNodes\"}]},\"GetHyperCubeBinnedData\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qPages\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qViewport\",\"DefaultValue\":{\"qWidth\":0,\"qHeight\":0,\"qZoomLevel\":0}},{\"Name\":\"qDataRanges\",\"DefaultValue\":[{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0}]},{\"Name\":\"qMaxNbrCells\",\"DefaultValue\":0},{\"Name\":\"qQueryLevel\",\"DefaultValue\":0},{\"Name\":\"qBinningMethod\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDataPages\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]},{\"Name\":\"qSoftPatch\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"ClearSoftPatches\":{\"In\":[],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetEffectiveProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"SetFullPropertyTree\":{\"In\":[{\"Name\":\"qPropEntry\",\"DefaultValue\":{\"qProperty\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}},\"qChildren\":[],\"qEmbeddedSnapshotRef\":null}}],\"Out\":[]},\"GetFullPropertyTree\":{\"In\":[],\"Out\":[{\"Name\":\"qPropEntry\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"ClearSelections\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"ExportData\":{\"In\":[{\"Name\":\"qFileType\",\"DefaultValue\":0},{\"Name\":\"qPath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qFileName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qExportState\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qUrl\"},{\"Name\":\"qWarnings\"}]},\"SelectListObjectValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectPossible\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectExcluded\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectAlternative\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectAll\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectListObjectContinuousRange\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SearchListObjectFor\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qMatch\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"AbortListObjectSearch\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[]},\"AcceptListObjectSearch\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qToggleMode\",\"DefaultValue\":false},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"ExpandLeft\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"ExpandTop\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"CollapseLeft\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"CollapseTop\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRow\",\"DefaultValue\":0},{\"Name\":\"qCol\",\"DefaultValue\":0},{\"Name\":\"qAll\",\"DefaultValue\":false}],\"Out\":[]},\"DrillUp\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qDimNo\",\"DefaultValue\":0},{\"Name\":\"qNbrSteps\",\"DefaultValue\":0}],\"Out\":[]},\"Lock\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"Unlock\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qColIndices\",\"DefaultValue\":[0],\"Optional\":true}],\"Out\":[]},\"SelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qDimNo\",\"DefaultValue\":0},{\"Name\":\"qValues\",\"DefaultValue\":[0]},{\"Name\":\"qToggleMode\",\"DefaultValue\":false}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectHyperCubeCells\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRowIndices\",\"DefaultValue\":[0]},{\"Name\":\"qColIndices\",\"DefaultValue\":[0]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectPivotCells\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSelections\",\"DefaultValue\":[{\"qType\":0,\"qCol\":0,\"qRow\":0}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"RangeSelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qMeasureIx\":0}]},{\"Name\":\"qColumnsToSelect\",\"DefaultValue\":[0],\"Optional\":true},{\"Name\":\"qOrMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"MultiRangeSelectHyperCubeValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRanges\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qMeasureIx\":0}],\"qColumnsToSelect\":[0]}]},{\"Name\":\"qOrMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"MultiRangeSelectTreeDataValues\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRanges\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qMeasureIx\":0,\"qDimensionIx\":0}]}]},{\"Name\":\"qOrMode\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDeselectOnlyOneSelected\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"SelectHyperCubeContinuousRange\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"},{\"Name\":\"qRanges\",\"DefaultValue\":[{\"qRange\":{\"qMin\":0,\"qMax\":0,\"qMinInclEq\":false,\"qMaxInclEq\":false},\"qDimIx\":0}]},{\"Name\":\"qSoftLock\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetChild\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetChildInfos\":{\"In\":[],\"Out\":[{\"Name\":\"qInfos\"}]},\"CreateChild\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}},{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyChild\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"},{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"DestroyAllChildren\":{\"In\":[{\"Name\":\"qPropForThis\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[]},\"SetChildArrayOrder\":{\"In\":[{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"CopyFrom\":{\"In\":[{\"Name\":\"qFromId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"BeginSelections\":{\"In\":[{\"Name\":\"qPaths\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"EndSelections\":{\"In\":[{\"Name\":\"qAccept\",\"DefaultValue\":false}],\"Out\":[]},\"ResetMadeSelections\":{\"In\":[],\"Out\":[]},\"EmbedSnapshotObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetSnapshotObject\":{\"In\":[],\"Out\":[]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"Approve\":{\"In\":[],\"Out\":[]},\"UnApprove\":{\"In\":[],\"Out\":[]}},\"GenericDimension\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qDim\":{\"qGrouping\":0,\"qFieldDefs\":[\"\"],\"qFieldLabels\":[\"\"],\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetDimension\":{\"In\":[],\"Out\":[{\"Name\":\"qDim\"}]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"Approve\":{\"In\":[],\"Out\":[]},\"UnApprove\":{\"In\":[],\"Out\":[]}},\"GenericBookmark\":{\"GetFieldValues\":{\"In\":[{\"Name\":\"qField\",\"DefaultValue\":\"\"},{\"Name\":\"qGetExcludedValues\",\"DefaultValue\":false},{\"Name\":\"qDataPage\",\"DefaultValue\":{\"qStartIndex\":0,\"qEndIndex\":0}}],\"Out\":[{\"Name\":\"qFieldValues\"}]},\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"Apply\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"Approve\":{\"In\":[],\"Out\":[]},\"UnApprove\":{\"In\":[],\"Out\":[]}},\"GenericVariable\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"SetStringValue\":{\"In\":[{\"Name\":\"qVal\",\"DefaultValue\":\"\"}],\"Out\":[]},\"SetNumValue\":{\"In\":[{\"Name\":\"qVal\",\"DefaultValue\":0}],\"Out\":[]},\"SetDualValue\":{\"In\":[{\"Name\":\"qText\",\"DefaultValue\":\"\"},{\"Name\":\"qNum\",\"DefaultValue\":0}],\"Out\":[]}},\"GenericMeasure\":{\"GetLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"ApplyPatches\":{\"In\":[{\"Name\":\"qPatches\",\"DefaultValue\":[{\"qOp\":0,\"qPath\":\"\",\"qValue\":\"\"}]}],\"Out\":[]},\"SetProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMeasure\":{\"qLabel\":\"\",\"qDef\":\"\",\"qGrouping\":0,\"qExpressions\":[\"\"],\"qActiveExpression\":0,\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[]},\"GetProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetInfo\":{\"In\":[],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetMeasure\":{\"In\":[],\"Out\":[{\"Name\":\"qMeasure\"}]},\"GetLinkedObjects\":{\"In\":[],\"Out\":[{\"Name\":\"qItems\"}]},\"Publish\":{\"In\":[],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"Approve\":{\"In\":[],\"Out\":[]},\"UnApprove\":{\"In\":[],\"Out\":[]}},\"Doc\":{\"GetField\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"},{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"GetFieldDescription\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetLooselyCoupledVector\":{\"In\":[],\"Out\":[{\"Name\":\"qv\"}]},\"SetLooselyCoupledVector\":{\"In\":[{\"Name\":\"qv\",\"DefaultValue\":[0]}],\"Out\":[]},\"Evaluate\":{\"In\":[{\"Name\":\"qExpression\",\"DefaultValue\":\"\"}],\"Out\":[]},\"EvaluateEx\":{\"In\":[{\"Name\":\"qExpression\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qValue\"}]},\"ClearAll\":{\"In\":[{\"Name\":\"qLockedAlso\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"LockAll\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"UnlockAll\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"Back\":{\"In\":[],\"Out\":[]},\"Forward\":{\"In\":[],\"Out\":[]},\"CreateVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"RemoveVariable\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetLocaleInfo\":{\"In\":[],\"Out\":[]},\"GetTablesAndKeys\":{\"In\":[{\"Name\":\"qWindowSize\",\"DefaultValue\":{\"qcx\":0,\"qcy\":0}},{\"Name\":\"qNullSize\",\"DefaultValue\":{\"qcx\":0,\"qcy\":0}},{\"Name\":\"qCellHeight\",\"DefaultValue\":0},{\"Name\":\"qSyntheticMode\",\"DefaultValue\":false},{\"Name\":\"qIncludeSysVars\",\"DefaultValue\":false}],\"Out\":[{\"Name\":\"qtr\"},{\"Name\":\"qk\"}]},\"GetViewDlgSaveInfo\":{\"In\":[],\"Out\":[]},\"SetViewDlgSaveInfo\":{\"In\":[{\"Name\":\"qInfo\",\"DefaultValue\":{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCtlInfo\":{\"qInternalView\":{\"qTables\":[{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCaption\":\"\"}],\"qBroomPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qTable\":\"\",\"qFields\":[\"\"]}],\"qConnectionPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qFields\":[\"\"]}],\"qZoomFactor\":0},\"qSourceView\":{\"qTables\":[{\"qPos\":{\"qLeft\":0,\"qTop\":0,\"qWidth\":0,\"qHeight\":0},\"qCaption\":\"\"}],\"qBroomPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qTable\":\"\",\"qFields\":[\"\"]}],\"qConnectionPoints\":[{\"qPos\":{\"qx\":0,\"qy\":0},\"qFields\":[\"\"]}],\"qZoomFactor\":0}},\"qMode\":0}}],\"Out\":[]},\"GetEmptyScript\":{\"In\":[{\"Name\":\"qLocalizedMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"DoReload\":{\"In\":[{\"Name\":\"qMode\",\"DefaultValue\":0,\"Optional\":true},{\"Name\":\"qPartial\",\"DefaultValue\":false,\"Optional\":true},{\"Name\":\"qDebug\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"GetScriptBreakpoints\":{\"In\":[],\"Out\":[{\"Name\":\"qBreakpoints\"}]},\"SetScriptBreakpoints\":{\"In\":[{\"Name\":\"qBreakpoints\",\"DefaultValue\":[{\"qbufferName\":\"\",\"qlineIx\":0,\"qEnabled\":false}]}],\"Out\":[]},\"GetScript\":{\"In\":[],\"Out\":[{\"Name\":\"qScript\"}]},\"GetTextMacros\":{\"In\":[],\"Out\":[{\"Name\":\"qMacros\"}]},\"SetFetchLimit\":{\"In\":[{\"Name\":\"qLimit\",\"DefaultValue\":0}],\"Out\":[]},\"DoSave\":{\"In\":[{\"Name\":\"qFileName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"GetTableData\":{\"In\":[{\"Name\":\"qOffset\",\"DefaultValue\":0},{\"Name\":\"qRows\",\"DefaultValue\":0},{\"Name\":\"qSyntheticMode\",\"DefaultValue\":false},{\"Name\":\"qTableName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qData\"}]},\"GetAppLayout\":{\"In\":[],\"Out\":[{\"Name\":\"qLayout\"}]},\"SetAppProperties\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qTitle\":\"\",\"qLastReloadTime\":\"\",\"qMigrationHash\":\"\",\"qSavedInProductVersion\":\"\",\"qThumbnail\":{\"qUrl\":\"\"}}}],\"Out\":[]},\"GetAppProperties\":{\"In\":[],\"Out\":[{\"Name\":\"qProp\"}]},\"GetLineage\":{\"In\":[],\"Out\":[{\"Name\":\"qLineage\"}]},\"CreateSessionObject\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[]},\"DestroySessionObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CreateObject\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qExtendsId\":\"\",\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetObjects\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qTypes\":[\"\"],\"qIncludeSessionObjects\":false,\"qData\":{}}}],\"Out\":[{\"Name\":\"qList\"}]},\"GetBookmarks\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qTypes\":[\"\"],\"qData\":{}}}],\"Out\":[{\"Name\":\"qList\"}]},\"CloneObject\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qDraftId\"}]},\"CommitDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"DestroyDraft\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"},{\"Name\":\"qSourceId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Undo\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"Redo\":{\"In\":[],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ClearUndoBuffer\":{\"In\":[],\"Out\":[]},\"CreateDimension\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qDim\":{\"qGrouping\":0,\"qFieldDefs\":[\"\"],\"qFieldLabels\":[\"\"],\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CloneDimension\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateMeasure\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMeasure\":{\"qLabel\":\"\",\"qDef\":\"\",\"qGrouping\":0,\"qExpressions\":[\"\"],\"qActiveExpression\":0,\"qLabelExpression\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CloneMeasure\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"CreateSessionVariable\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[]},\"DestroySessionVariable\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CreateVariableEx\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{},\"qName\":\"\",\"qComment\":\"\",\"qNumberPresentation\":{\"qType\":0,\"qnDec\":0,\"qUseThou\":0,\"qFmt\":\"\",\"qDec\":\"\",\"qThou\":\"\"},\"qIncludeInBookmark\":false,\"qDefinition\":\"\"}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyVariableById\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"DestroyVariableByName\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetVariableById\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetVariableByName\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"MigrateVariables\":{\"In\":[],\"Out\":[]},\"MigrateDerivedFields\":{\"In\":[],\"Out\":[]},\"CheckExpression\":{\"In\":[{\"Name\":\"qExpr\",\"DefaultValue\":\"\"},{\"Name\":\"qLabels\",\"DefaultValue\":[\"\"],\"Optional\":true}],\"Out\":[{\"Name\":\"qErrorMsg\"},{\"Name\":\"qBadFieldNames\"},{\"Name\":\"qDangerousFieldNames\"}]},\"CheckNumberOrExpression\":{\"In\":[{\"Name\":\"qExpr\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qErrorMsg\"},{\"Name\":\"qBadFieldNames\"}]},\"AddAlternateState\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"RemoveAlternateState\":{\"In\":[{\"Name\":\"qStateName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CreateBookmark\":{\"In\":[{\"Name\":\"qProp\",\"DefaultValue\":{\"qInfo\":{\"qId\":\"\",\"qType\":\"\"},\"qMetaDef\":{}}}],\"Out\":[{\"Name\":\"qInfo\"}]},\"DestroyBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"ApplyBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"CloneBookmark\":{\"In\":[{\"Name\":\"qId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qCloneId\"}]},\"AddFieldFromExpression\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"},{\"Name\":\"qExpr\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"GetFieldOnTheFlyByName\":{\"In\":[{\"Name\":\"qReadableName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qName\"}]},\"GetAllInfos\":{\"In\":[],\"Out\":[{\"Name\":\"qInfos\"}]},\"Resume\":{\"In\":[],\"Out\":[]},\"AbortModal\":{\"In\":[{\"Name\":\"qAccept\",\"DefaultValue\":false}],\"Out\":[]},\"Publish\":{\"In\":[{\"Name\":\"qStreamId\",\"DefaultValue\":\"\"},{\"Name\":\"qName\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[]},\"UnPublish\":{\"In\":[],\"Out\":[]},\"GetMatchingFields\":{\"In\":[{\"Name\":\"qTags\",\"DefaultValue\":[\"\"]},{\"Name\":\"qMatchingFieldMode\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qFieldNames\"}]},\"FindMatchingFields\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"},{\"Name\":\"qTags\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qFieldNames\"}]},\"Scramble\":{\"In\":[{\"Name\":\"qFieldName\",\"DefaultValue\":\"\"}],\"Out\":[]},\"SaveObjects\":{\"In\":[],\"Out\":[]},\"GetAssociationScores\":{\"In\":[{\"Name\":\"qTable1\",\"DefaultValue\":\"\"},{\"Name\":\"qTable2\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qScore\"}]},\"GetMediaList\":{\"In\":[],\"Out\":[{\"Name\":\"qList\"}]},\"GetContentLibraries\":{\"In\":[],\"Out\":[{\"Name\":\"qList\"}]},\"GetLibraryContent\":{\"In\":[{\"Name\":\"qName\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qList\"}]},\"DoReloadEx\":{\"In\":[{\"Name\":\"qParams\",\"DefaultValue\":{\"qMode\":0,\"qPartial\":false,\"qDebug\":false},\"Optional\":true}],\"Out\":[{\"Name\":\"qResult\"}]},\"BackCount\":{\"In\":[],\"Out\":[]},\"ForwardCount\":{\"In\":[],\"Out\":[]},\"ExportReducedData\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qBookmarkId\":\"\",\"qExpires\":0},\"Optional\":true}],\"Out\":[{\"Name\":\"qDownloadInfo\"}]},\"SetScript\":{\"In\":[{\"Name\":\"qScript\",\"DefaultValue\":\"\"}],\"Out\":[]},\"CheckScriptSyntax\":{\"In\":[],\"Out\":[{\"Name\":\"qErrors\"}]},\"GetFavoriteVariables\":{\"In\":[],\"Out\":[{\"Name\":\"qNames\"}]},\"SetFavoriteVariables\":{\"In\":[{\"Name\":\"qNames\",\"DefaultValue\":[\"\"]}],\"Out\":[]},\"GetIncludeFileContent\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qContent\"}]},\"CreateConnection\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[{\"Name\":\"qConnectionId\"}]},\"ModifyConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}},{\"Name\":\"qOverrideCredentials\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"DeleteConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"GetConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qConnection\"}]},\"GetConnections\":{\"In\":[],\"Out\":[{\"Name\":\"qConnections\"}]},\"GetDatabaseInfo\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qInfo\"}]},\"GetDatabases\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qDatabases\"}]},\"GetDatabaseOwners\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qOwners\"}]},\"GetDatabaseTables\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qTables\"}]},\"GetDatabaseTableFields\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFields\"}]},\"GetDatabaseTablePreview\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qDatabase\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qOwner\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qTable\",\"DefaultValue\":\"\"},{\"Name\":\"qConditions\",\"DefaultValue\":{\"qType\":0,\"qWherePredicate\":\"\"},\"Optional\":true}],\"Out\":[{\"Name\":\"qPreview\"},{\"Name\":\"qRowCount\"}]},\"GetFolderItemsForConnection\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qFolderItems\"}]},\"GuessFileType\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qDataFormat\"}]},\"GetFileTables\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}}],\"Out\":[{\"Name\":\"qTables\"}]},\"GetFileTableFields\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFields\"},{\"Name\":\"qFormatSpec\"}]},\"GetFileTablePreview\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}},{\"Name\":\"qTable\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qPreview\"},{\"Name\":\"qFormatSpec\"}]},\"GetFileTablesEx\":{\"In\":[{\"Name\":\"qConnectionId\",\"DefaultValue\":\"\"},{\"Name\":\"qRelativePath\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qDataFormat\",\"DefaultValue\":{\"qType\":0,\"qLabel\":\"\",\"qQuote\":\"\",\"qComment\":\"\",\"qDelimiter\":{\"qName\":\"\",\"qScriptCode\":\"\",\"qNumber\":0,\"qIsMultiple\":false},\"qCodePage\":0,\"qHeaderSize\":0,\"qRecordSize\":0,\"qTabSize\":0,\"qIgnoreEOF\":false,\"qFixedWidthDelimiters\":\"\"}}],\"Out\":[{\"Name\":\"qTables\"}]},\"SendGenericCommandToCustomConnector\":{\"In\":[{\"Name\":\"qProvider\",\"DefaultValue\":\"\"},{\"Name\":\"qCommand\",\"DefaultValue\":\"\"},{\"Name\":\"qMethod\",\"DefaultValue\":\"\"},{\"Name\":\"qParameters\",\"DefaultValue\":[\"\"]},{\"Name\":\"qAppendConnection\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchSuggest\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchAssociations\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResults\"}]},\"SelectAssociations\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qMatchIx\",\"DefaultValue\":0},{\"Name\":\"qSoftLock\",\"DefaultValue\":null,\"Optional\":true}],\"Out\":[]},\"SearchResults\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qSearchFields\":[\"\"],\"qContext\":0,\"qCharEncoding\":0,\"qAttributes\":[\"\"]}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResult\"}]},\"SearchObjects\":{\"In\":[{\"Name\":\"qOptions\",\"DefaultValue\":{\"qAttributes\":[\"\"],\"qCharEncoding\":0}},{\"Name\":\"qTerms\",\"DefaultValue\":[\"\"]},{\"Name\":\"qPage\",\"DefaultValue\":{\"qOffset\":0,\"qCount\":0,\"qMaxNbrFieldMatches\":0,\"qGroupOptions\":[{\"qGroupType\":0,\"qOffset\":0,\"qCount\":0}],\"qGroupItemOptions\":[{\"qGroupItemType\":0,\"qOffset\":0,\"qCount\":0}]}}],\"Out\":[{\"Name\":\"qResult\"}]},\"GetScriptEx\":{\"In\":[],\"Out\":[{\"Name\":\"qScript\"}]}},\"Global\":{\"AbortRequest\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[]},\"AbortAll\":{\"In\":[],\"Out\":[]},\"GetProgress\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qProgressData\"}]},\"QvVersion\":{\"In\":[],\"Out\":[]},\"OSVersion\":{\"In\":[],\"Out\":[]},\"OSName\":{\"In\":[],\"Out\":[]},\"QTProduct\":{\"In\":[],\"Out\":[]},\"GetDocList\":{\"In\":[],\"Out\":[{\"Name\":\"qDocList\"}]},\"GetInteract\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qDef\"}]},\"InteractDone\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0},{\"Name\":\"qDef\",\"DefaultValue\":{\"qType\":0,\"qTitle\":\"\",\"qMsg\":\"\",\"qButtons\":0,\"qLine\":\"\",\"qOldLineNr\":0,\"qNewLineNr\":0,\"qPath\":\"\",\"qHidden\":false,\"qResult\":0,\"qInput\":\"\"}}],\"Out\":[]},\"GetAuthenticatedUser\":{\"In\":[],\"Out\":[]},\"CreateDocEx\":{\"In\":[{\"Name\":\"qDocName\",\"DefaultValue\":\"\"},{\"Name\":\"qUserName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qPassword\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qSerial\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qLocalizedScriptMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qDocId\"}]},\"GetActiveDoc\":{\"In\":[],\"Out\":[]},\"AllowCreateApp\":{\"In\":[],\"Out\":[]},\"CreateApp\":{\"In\":[{\"Name\":\"qAppName\",\"DefaultValue\":\"\"},{\"Name\":\"qLocalizedScriptMainSection\",\"DefaultValue\":\"\",\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"},{\"Name\":\"qAppId\"}]},\"DeleteApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"IsDesktopMode\":{\"In\":[],\"Out\":[]},\"GetConfiguration\":{\"In\":[],\"Out\":[{\"Name\":\"qConfig\"}]},\"CancelRequest\":{\"In\":[{\"Name\":\"qRequestId\",\"DefaultValue\":0}],\"Out\":[]},\"ShutdownProcess\":{\"In\":[],\"Out\":[]},\"ReloadExtensionList\":{\"In\":[],\"Out\":[]},\"ReplaceAppFromID\":{\"In\":[{\"Name\":\"qTargetAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppID\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ReplaceAppFromPath\":{\"In\":[{\"Name\":\"qTargetAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcPath\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]},{\"Name\":\"qNoData\",\"DefaultValue\":false}],\"Out\":[]},\"CopyApp\":{\"In\":[{\"Name\":\"qTargetAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ImportApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcPath\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"ImportAppEx\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcPath\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]},{\"Name\":\"qExcludeConnections\",\"DefaultValue\":false}],\"Out\":[]},\"ExportApp\":{\"In\":[{\"Name\":\"qTargetPath\",\"DefaultValue\":\"\"},{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qIds\",\"DefaultValue\":[\"\"]},{\"Name\":\"qNoData\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qSuccess\"}]},\"PublishApp\":{\"In\":[{\"Name\":\"qAppId\",\"DefaultValue\":\"\"},{\"Name\":\"qName\",\"DefaultValue\":\"\"},{\"Name\":\"qStreamId\",\"DefaultValue\":\"\"}],\"Out\":[]},\"IsPersonalMode\":{\"In\":[],\"Out\":[]},\"GetUniqueID\":{\"In\":[],\"Out\":[{\"Name\":\"qUniqueID\"}]},\"OpenDoc\":{\"In\":[{\"Name\":\"qDocName\",\"DefaultValue\":\"\"},{\"Name\":\"qUserName\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qPassword\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qSerial\",\"DefaultValue\":\"\",\"Optional\":true},{\"Name\":\"qNoData\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[]},\"CreateSessionApp\":{\"In\":[],\"Out\":[{\"Name\":\"qSessionAppId\"}]},\"CreateSessionAppFromApp\":{\"In\":[{\"Name\":\"qSrcAppId\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qSessionAppId\"}]},\"ProductVersion\":{\"In\":[],\"Out\":[]},\"GetAppEntry\":{\"In\":[{\"Name\":\"qAppID\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qEntry\"}]},\"ConfigureReload\":{\"In\":[{\"Name\":\"qCancelOnScriptError\",\"DefaultValue\":false},{\"Name\":\"qUseErrorData\",\"DefaultValue\":false},{\"Name\":\"qInteractOnError\",\"DefaultValue\":false}],\"Out\":[]},\"CancelReload\":{\"In\":[],\"Out\":[]},\"GetBNF\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfDefs\"}]},\"GetFunctions\":{\"In\":[{\"Name\":\"qGroup\",\"DefaultValue\":0,\"Optional\":true}],\"Out\":[{\"Name\":\"qFunctions\"}]},\"GetOdbcDsns\":{\"In\":[],\"Out\":[{\"Name\":\"qOdbcDsns\"}]},\"GetOleDbProviders\":{\"In\":[],\"Out\":[{\"Name\":\"qOleDbProviders\"}]},\"GetDatabasesFromConnectionString\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[{\"Name\":\"qDatabases\"}]},\"IsValidConnectionString\":{\"In\":[{\"Name\":\"qConnection\",\"DefaultValue\":{\"qId\":\"\",\"qName\":\"\",\"qConnectionString\":\"\",\"qType\":\"\",\"qUserName\":\"\",\"qPassword\":\"\",\"qModifiedDate\":\"\",\"qMeta\":{\"qName\":\"\"},\"qLogOn\":0}}],\"Out\":[]},\"GetDefaultAppFolder\":{\"In\":[],\"Out\":[{\"Name\":\"qPath\"}]},\"GetMyDocumentsFolder\":{\"In\":[],\"Out\":[{\"Name\":\"qFolder\"}]},\"GetLogicalDriveStrings\":{\"In\":[],\"Out\":[{\"Name\":\"qDrives\"}]},\"GetFolderItemsForPath\":{\"In\":[{\"Name\":\"qPath\",\"DefaultValue\":\"\"}],\"Out\":[{\"Name\":\"qFolderItems\"}]},\"GetSupportedCodePages\":{\"In\":[],\"Out\":[{\"Name\":\"qCodePages\"}]},\"GetCustomConnectors\":{\"In\":[{\"Name\":\"qReloadList\",\"DefaultValue\":false,\"Optional\":true}],\"Out\":[{\"Name\":\"qConnectors\"}]},\"GetStreamList\":{\"In\":[],\"Out\":[{\"Name\":\"qStreamList\"}]},\"EngineVersion\":{\"In\":[],\"Out\":[{\"Name\":\"qVersion\"}]},\"GetBaseBNF\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfDefs\"},{\"Name\":\"qBnfHash\"}]},\"GetBaseBNFHash\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfHash\"}]},\"GetBaseBNFString\":{\"In\":[{\"Name\":\"qBnfType\",\"DefaultValue\":0}],\"Out\":[{\"Name\":\"qBnfStr\"},{\"Name\":\"qBnfHash\"}]}}},\"enums\":{\"LocalizedMessageCode\":{\"LOCMSG_SCRIPTEDITOR_EMPTY_MESSAGE\":0,\"LOCMSG_SCRIPTEDITOR_PROGRESS_SAVING_STARTED\":1,\"LOCMSG_SCRIPTEDITOR_PROGRESS_BYTES_LEFT\":2,\"LOCMSG_SCRIPTEDITOR_PROGRESS_STORING_TABLES\":3,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWS_SO_FAR\":4,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTED\":5,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECTING_TO\":6,\"LOCMSG_SCRIPTEDITOR_PROGRESS_CONNECT_FAILED\":7,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_ROWISH\":8,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_COLUMNAR\":9,\"LOCMSG_SCRIPTEDITOR_ERROR\":10,\"LOCMSG_SCRIPTEDITOR_DONE\":11,\"LOCMSG_SCRIPTEDITOR_LOAD_EXTERNAL_DATA\":12,\"LOCMSG_SCRIPTEDITOR_PROGRESS_OLD_QVD_ISLOADING\":13,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_LOADING\":14,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVD_BUFFERED\":15,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_PREPARING\":16,\"LOCMSG_SCRIPTEDITOR_PROGRESS_QVC_APPENDING\":17,\"LOCMSG_SCRIPTEDITOR_REMOVE_SYNTHETIC\":18,\"LOCMSG_SCRIPTEDITOR_PENDING_LINKEDTABLE_FETCHING\":19,\"LOCMSG_SCRIPTEDITOR_RELOAD\":20,\"LOCMSG_SCRIPTEDITOR_LINES_FETCHED\":21,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_START\":22,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FIELD\":23,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_SUCCESS\":24,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_FAILURE\":25,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_STARTABORT\":26,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_ENDABORT\":27,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_TIMEOUT\":28,\"LOCMSG_SCRIPTEDITOR_SEARCHINDEX_OUTOFMEMORY\":29},\"LocalizedErrorCode\":{\"LOCERR_INTERNAL_ERROR\":-128,\"LOCERR_GENERIC_UNKNOWN\":-1,\"LOCERR_GENERIC_OK\":0,\"LOCERR_GENERIC_NOT_SET\":1,\"LOCERR_GENERIC_NOT_FOUND\":2,\"LOCERR_GENERIC_ALREADY_EXISTS\":3,\"LOCERR_GENERIC_INVALID_PATH\":4,\"LOCERR_GENERIC_ACCESS_DENIED\":5,\"LOCERR_GENERIC_OUT_OF_MEMORY\":6,\"LOCERR_GENERIC_NOT_INITIALIZED\":7,\"LOCERR_GENERIC_INVALID_PARAMETERS\":8,\"LOCERR_GENERIC_EMPTY_PARAMETERS\":9,\"LOCERR_GENERIC_INTERNAL_ERROR\":10,\"LOCERR_GENERIC_CORRUPT_DATA\":11,\"LOCERR_GENERIC_MEMORY_INCONSISTENCY\":12,\"LOCERR_GENERIC_INVISIBLE_OWNER_ABORT\":13,\"LOCERR_GENERIC_PROHIBIT_VALIDATE\":14,\"LOCERR_GENERIC_ABORTED\":15,\"LOCERR_GENERIC_CONNECTION_LOST\":16,\"LOCERR_GENERIC_UNSUPPORTED_IN_PRODUCT_VERSION\":17,\"LOCERR_GENERIC_REST_CONNECTION_FAILURE\":18,\"LOCERR_GENERIC_MEMORY_LIMIT_REACHED\":19,\"LOCERR_HTTP_400\":400,\"LOCERR_HTTP_401\":401,\"LOCERR_HTTP_402\":402,\"LOCERR_HTTP_403\":403,\"LOCERR_HTTP_404\":404,\"LOCERR_HTTP_405\":405,\"LOCERR_HTTP_406\":406,\"LOCERR_HTTP_407\":407,\"LOCERR_HTTP_408\":408,\"LOCERR_HTTP_409\":409,\"LOCERR_HTTP_410\":410,\"LOCERR_HTTP_411\":411,\"LOCERR_HTTP_412\":412,\"LOCERR_HTTP_413\":413,\"LOCERR_HTTP_414\":414,\"LOCERR_HTTP_415\":415,\"LOCERR_HTTP_416\":416,\"LOCERR_HTTP_417\":417,\"LOCERR_HTTP_422\":422,\"LOCERR_HTTP_429\":429,\"LOCERR_HTTP_500\":500,\"LOCERR_HTTP_501\":501,\"LOCERR_HTTP_502\":502,\"LOCERR_HTTP_503\":503,\"LOCERR_HTTP_504\":504,\"LOCERR_HTTP_505\":505,\"LOCERR_HTTP_509\":509,\"LOCERR_HTTP_COULD_NOT_RESOLVE_HOST\":700,\"LOCERR_APP_ALREADY_EXISTS\":1000,\"LOCERR_APP_INVALID_NAME\":1001,\"LOCERR_APP_ALREADY_OPEN\":1002,\"LOCERR_APP_NOT_FOUND\":1003,\"LOCERR_APP_IMPORT_FAILED\":1004,\"LOCERR_APP_SAVE_FAILED\":1005,\"LOCERR_APP_CREATE_FAILED\":1006,\"LOCERR_APP_INVALID\":1007,\"LOCERR_APP_CONNECT_FAILED\":1008,\"LOCERR_APP_ALREADY_OPEN_IN_DIFFERENT_MODE\":1009,\"LOCERR_APP_MIGRATION_COULD_NOT_CONTACT_MIGRATION_SERVICE\":1010,\"LOCERR_APP_MIGRATION_COULD_NOT_START_MIGRATION\":1011,\"LOCERR_APP_MIGRATION_FAILURE\":1012,\"LOCERR_APP_SCRIPT_MISSING\":1013,\"LOCERR_APP_EXPORT_FAILED\":1014,\"LOCERR_CONNECTION_ALREADY_EXISTS\":2000,\"LOCERR_CONNECTION_NOT_FOUND\":2001,\"LOCERR_CONNECTION_FAILED_TO_LOAD\":2002,\"LOCERR_CONNECTION_FAILED_TO_IMPORT\":2003,\"LOCERR_CONNECTION_NAME_IS_INVALID\":2004,\"LOCERR_CONNECTOR_NO_FILE_STREAMING_SUPPORT\":2300,\"LOCERR_CONNECTOR_FILESIZE_EXCEEDED_BUFFER_SIZE\":2301,\"LOCERR_FILE_ACCESS_DENIED\":3000,\"LOCERR_FILE_NAME_INVALID\":3001,\"LOCERR_FILE_CORRUPT\":3002,\"LOCERR_FILE_NOT_FOUND\":3003,\"LOCERR_FILE_FORMAT_UNSUPPORTED\":3004,\"LOCERR_FILE_OPENED_IN_UNSUPPORTED_MODE\":3005,\"LOCERR_FILE_TABLE_NOT_FOUND\":3006,\"LOCERR_USER_ACCESS_DENIED\":4000,\"LOCERR_USER_IMPERSONATION_FAILED\":4001,\"LOCERR_SERVER_OUT_OF_SESSION_AND_USER_CALS\":5000,\"LOCERR_SERVER_OUT_OF_SESSION_CALS\":5001,\"LOCERR_SERVER_OUT_OF_USAGE_CALS\":5002,\"LOCERR_SERVER_OUT_OF_CALS\":5003,\"LOCERR_SERVER_OUT_OF_NAMED_CALS\":5004,\"LOCERR_SERVER_OFF_DUTY\":5005,\"LOCERR_SERVER_BUSY\":5006,\"LOCERR_SERVER_LICENSE_EXPIRED\":5007,\"LOCERR_SERVER_AJAX_DISABLED\":5008,\"LOCERR_HC_INVALID_OBJECT\":6000,\"LOCERR_HC_RESULT_TOO_LARGE\":6001,\"LOCERR_HC_INVALID_OBJECT_STATE\":6002,\"LOCERR_HC_MODAL_OBJECT_ERROR\":6003,\"LOCERR_CALC_INVALID_DEF\":7000,\"LOCERR_CALC_NOT_IN_LIB\":7001,\"LOCERR_CALC_HEAP_ERROR\":7002,\"LOCERR_CALC_TOO_LARGE\":7003,\"LOCERR_CALC_TIMEOUT\":7004,\"LOCERR_CALC_EVAL_CONDITION_FAILED\":7005,\"LOCERR_CALC_MIXED_LINKED_AGGREGATION\":7006,\"LOCERR_CALC_MISSING_LINKED\":7007,\"LOCERR_CALC_INVALID_COL_SORT\":7008,\"LOCERR_CALC_PAGES_TOO_LARGE\":7009,\"LOCERR_CALC_SEMANTIC_FIELD_NOT_ALLOWED\":7010,\"LOCERR_CALC_VALIDATION_STATE_INVALID\":7011,\"LOCERR_CALC_PIVOT_DIMENSIONS_ALREADY_EXISTS\":7012,\"LOCERR_CALC_MISSING_LINKED_FIELD\":7013,\"LOCERR_CALC_NOT_CALCULATED\":7014,\"LOCERR_LAYOUT_EXTENDS_INVALID_ID\":8000,\"LOCERR_LAYOUT_LINKED_OBJECT_NOT_FOUND\":8001,\"LOCERR_LAYOUT_LINKED_OBJECT_INVALID\":8002,\"LOCERR_PERSISTENCE_WRITE_FAILED\":9000,\"LOCERR_PERSISTENCE_READ_FAILED\":9001,\"LOCERR_PERSISTENCE_DELETE_FAILED\":9002,\"LOCERR_PERSISTENCE_NOT_FOUND\":9003,\"LOCERR_PERSISTENCE_UNSUPPORTED_VERSION\":9004,\"LOCERR_PERSISTENCE_MIGRATION_FAILED_READ_ONLY\":9005,\"LOCERR_PERSISTENCE_MIGRATION_CANCELLED\":9006,\"LOCERR_PERSISTENCE_MIGRATION_BACKUP_FAILED\":9007,\"LOCERR_PERSISTENCE_DISK_FULL\":9008,\"LOCERR_PERSISTENCE_NOT_SUPPORTED_FOR_SESSION_APP\":9009,\"LOCERR_PERSISTENCE_SYNC_SET_CHUNK_INVALID_PARAMETERS\":9510,\"LOCERR_PERSISTENCE_SYNC_GET_CHUNK_INVALID_PARAMETERS\":9511,\"LOCERR_SCRIPT_DATASOURCE_ACCESS_DENIED\":10000,\"LOCERR_RELOAD_IN_PROGRESS\":11000,\"LOCERR_RELOAD_TABLE_X_NOT_FOUND\":11001,\"LOCERR_RELOAD_UNKNOWN_STATEMENT\":11002,\"LOCERR_RELOAD_EXPECTED_SOMETHING_FOUND_UNKNOWN\":11003,\"LOCERR_RELOAD_EXPECTED_NOTHING_FOUND_UNKNOWN\":11004,\"LOCERR_RELOAD_EXPECTED_ONE_OF_1_TOKENS_FOUND_UNKNOWN\":11005,\"LOCERR_RELOAD_EXPECTED_ONE_OF_2_TOKENS_FOUND_UNKNOWN\":11006,\"LOCERR_RELOAD_EXPECTED_ONE_OF_3_TOKENS_FOUND_UNKNOWN\":11007,\"LOCERR_RELOAD_EXPECTED_ONE_OF_4_TOKENS_FOUND_UNKNOWN\":11008,\"LOCERR_RELOAD_EXPECTED_ONE_OF_5_TOKENS_FOUND_UNKNOWN\":11009,\"LOCERR_RELOAD_EXPECTED_ONE_OF_6_TOKENS_FOUND_UNKNOWN\":11010,\"LOCERR_RELOAD_EXPECTED_ONE_OF_7_TOKENS_FOUND_UNKNOWN\":11011,\"LOCERR_RELOAD_EXPECTED_ONE_OF_8_OR_MORE_TOKENS_FOUND_UNKNOWN\":11012,\"LOCERR_RELOAD_FIELD_X_NOT_FOUND\":11013,\"LOCERR_RELOAD_MAPPING_TABLE_X_NOT_FOUND\":11014,\"LOCERR_RELOAD_LIB_CONNECTION_X_NOT_FOUND\":11015,\"LOCERR_RELOAD_NAME_ALREADY_TAKEN\":11016,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_DIF\":11017,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_BIFF\":11018,\"LOCERR_RELOAD_WRONG_FILE_FORMAT_ENCRYPTED\":11019,\"LOCERR_RELOAD_OPEN_FILE_ERROR\":11020,\"LOCERR_RELOAD_AUTO_GENERATE_COUNT\":11021,\"LOCERR_RELOAD_PE_ILLEGAL_PREFIX_COMB\":11022,\"LOCERR_RELOAD_MATCHING_CONTROL_STATEMENT_ERROR\":11023,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_NOT_FOUND\":11024,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_INVALID\":11025,\"LOCERR_RELOAD_MATCHING_LIBPATH_X_OUTSIDE\":11026,\"LOCERR_RELOAD_NO_QUALIFIED_PATH_FOR_FILE\":11027,\"LOCERR_RELOAD_MODE_STATEMENT_ONLY_FOR_LIB_PATHS\":11028,\"LOCERR_RELOAD_INCONSISTENT_USE_OF_SEMANTIC_FIELDS\":11029,\"LOCERR_RELOAD_NO_OPEN_DATABASE\":11030,\"LOCERR_RELOAD_AGGREGATION_REQUIRED_BY_GROUP_BY\":11031,\"LOCERR_RELOAD_CONNECT_MUST_USE_LIB_PREFIX_IN_THIS_MODE\":11032,\"LOCERR_RELOAD_ODBC_CONNECT_FAILED\":11033,\"LOCERR_RELOAD_OLEDB_CONNECT_FAILED\":11034,\"LOCERR_RELOAD_CUSTOM_CONNECT_FAILED\":11035,\"LOCERR_RELOAD_ODBC_READ_FAILED\":11036,\"LOCERR_RELOAD_OLEDB_READ_FAILED\":11037,\"LOCERR_RELOAD_CUSTOM_READ_FAILED\":11038,\"LOCERR_RELOAD_BINARY_LOAD_PROHIBITED\":11039,\"LOCERR_RELOAD_CONNECTOR_START_FAILED\":11040,\"LOCERR_RELOAD_CONNECTOR_NOT_RESPONDING\":11041,\"LOCERR_RELOAD_CONNECTOR_REPLY_ERROR\":11042,\"LOCERR_RELOAD_CONNECTOR_CONNECT_ERROR\":11043,\"LOCERR_RELOAD_CONNECTOR_NOT_FOUND_ERROR\":11044,\"LOCERR_RELOAD_INPUT_FIELD_WITH_DUPLICATE_KEYS\":11045,\"LOCERR_RELOAD_CONCATENATE_LOAD_NO_PREVIOUS_TABLE\":11046,\"LOCERR_PERSONAL_NEW_VERSION_AVAILABLE\":12000,\"LOCERR_PERSONAL_VERSION_EXPIRED\":12001,\"LOCERR_PERSONAL_SECTION_ACCESS_DETECTED\":12002,\"LOCERR_PERSONAL_APP_DELETION_FAILED\":12003,\"LOCERR_USER_AUTHENTICATION_FAILURE\":12004,\"LOCERR_EXPORT_OUT_OF_MEMORY\":13000,\"LOCERR_EXPORT_NO_DATA\":13001,\"LOCERR_SYNC_INVALID_OFFSET\":14000,\"LOCERR_SEARCH_TIMEOUT\":15000,\"LOCERR_DIRECT_DISCOVERY_LINKED_EXPRESSION_FAIL\":16000,\"LOCERR_DIRECT_DISCOVERY_ROWCOUNT_OVERFLOW\":16001,\"LOCERR_DIRECT_DISCOVERY_EMPTY_RESULT\":16002,\"LOCERR_DIRECT_DISCOVERY_DB_CONNECTION_FAILED\":16003,\"LOCERR_DIRECT_DISCOVERY_MEASURE_NOT_ALLOWED\":16004,\"LOCERR_DIRECT_DISCOVERY_DETAIL_NOT_ALLOWED\":16005,\"LOCERR_DIRECT_DISCOVERY_NOT_SYNTH_CIRCULAR_ALLOWED\":16006,\"LOCERR_DIRECT_DISCOVERY_ONLY_ONE_DD_TABLE_ALLOWED\":16007,\"LOCERR_DIRECT_DISCOVERY_DB_AUTHORIZATION_FAILED\":16008,\"LOCERR_SMART_LOAD_TABLE_NOT_FOUND\":17000,\"LOCERR_SMART_LOAD_TABLE_DUPLICATED\":17001,\"LOCERR_VARIABLE_NO_NAME\":18000,\"LOCERR_VARIABLE_DUPLICATE_NAME\":18001,\"LOCERR_VARIABLE_INCONSISTENCY\":18002,\"LOCERR_MEDIA_LIBRARY_LIST_FAILED\":19000,\"LOCERR_MEDIA_LIBRARY_CONTENT_FAILED\":19001,\"LOCERR_MEDIA_BUNDLING_FAILED\":19002,\"LOCERR_MEDIA_UNBUNDLING_FAILED\":19003,\"LOCERR_MEDIA_LIBRARY_NOT_FOUND\":19004,\"LOCERR_FEATURE_DISABLED\":20000,\"LOCERR_JSON_RPC_INVALID_REQUEST\":-32600,\"LOCERR_JSON_RPC_METHOD_NOT_FOUND\":-32601,\"LOCERR_JSON_RPC_INVALID_PARAMETERS\":-32602,\"LOCERR_JSON_RPC_INTERNAL_ERROR\":-32603,\"LOCERR_JSON_RPC_PARSE_ERROR\":-32700,\"LOCERR_MQ_SOCKET_CONNECT_FAILURE\":33000,\"LOCERR_MQ_SOCKET_OPEN_FAILURE\":33001,\"LOCERR_MQ_PROTOCOL_NO_RESPONE\":33002,\"LOCERR_MQ_PROTOCOL_LIBRARY_EXCEPTION\":33003,\"LOCERR_MQ_PROTOCOL_CONNECTION_CLOSED\":33004,\"LOCERR_MQ_PROTOCOL_CHANNEL_CLOSED\":33005,\"LOCERR_MQ_PROTOCOL_UNKNOWN_ERROR\":33006,\"LOCERR_MQ_PROTOCOL_INVALID_STATUS\":33007,\"LOCERR_EXTENGINE_GRPC_STATUS_OK\":22000,\"LOCERR_EXTENGINE_GRPC_STATUS_CANCELLED\":22001,\"LOCERR_EXTENGINE_GRPC_STATUS_UNKNOWN\":22002,\"LOCERR_EXTENGINE_GRPC_STATUS_INVALID_ARGUMENT\":22003,\"LOCERR_EXTENGINE_GRPC_STATUS_DEADLINE_EXCEEDED\":22004,\"LOCERR_EXTENGINE_GRPC_STATUS_NOT_FOUND\":22005,\"LOCERR_EXTENGINE_GRPC_STATUS_ALREADY_EXISTS\":22006,\"LOCERR_EXTENGINE_GRPC_STATUS_PERMISSION_DENIED\":22007,\"LOCERR_EXTENGINE_GRPC_STATUS_RESOURCE_EXHAUSTED\":22008,\"LOCERR_EXTENGINE_GRPC_STATUS_FAILED_PRECONDITION\":22009,\"LOCERR_EXTENGINE_GRPC_STATUS_ABORTED\":22010,\"LOCERR_EXTENGINE_GRPC_STATUS_OUT_OF_RANGE\":22011,\"LOCERR_EXTENGINE_GRPC_STATUS_UNIMPLEMENTED\":22012,\"LOCERR_EXTENGINE_GRPC_STATUS_INTERNAL\":22013,\"LOCERR_EXTENGINE_GRPC_STATUS_UNAVAILABLE\":22014,\"LOCERR_EXTENGINE_GRPC_STATUS_DATA_LOSS\":22015,\"LOCERR_EXTENGINE_GRPC_STATUS_UNAUTHENTICATED\":22016,\"LOCERR_LXW_INVALID_OBJ\":23001,\"LOCERR_LXW_INVALID_FILE\":23002,\"LOCERR_LXW_INVALID_SHEET\":23003,\"LOCERR_LXW_INVALID_EXPORT_RANGE\":23004,\"LOCERR_LXW_ERROR\":23005,\"LOCERR_LXW_ERROR_MEMORY_MALLOC_FAILED\":23006,\"LOCERR_LXW_ERROR_CREATING_XLSX_FILE\":23007,\"LOCERR_LXW_ERROR_CREATING_TMPFILE\":23008,\"LOCERR_LXW_ERROR_ZIP_FILE_OPERATION\":23009,\"LOCERR_LXW_ERROR_ZIP_FILE_ADD\":23010,\"LOCERR_LXW_ERROR_ZIP_CLOSE\":23011,\"LOCERR_LXW_ERROR_NULL_PARAMETER_IGNORED\":23012,\"LOCERR_LXW_ERROR_MAX_STRING_LENGTH_EXCEEDED\":23013,\"LOCERR_LXW_ERROR_255_STRING_LENGTH_EXCEEDED\":23014,\"LOCERR_LXW_ERROR_SHARED_STRING_INDEX_NOT_FOUND\":23015,\"LOCERR_LXW_ERROR_WORKSHEET_INDEX_OUT_OF_RANGE\":23016,\"LOCERR_LXW_ERROR_WORKSHEET_MAX_NUMBER_URLS_EXCEEDED\":23017,\"LOCERR_CURL_UNSUPPORTED_PROTOCOL\":30000,\"LOCERR_CURL_COULDNT_RESOLVE_PROXY\":30001,\"LOCERR_CURL_COULDNT_CONNECT\":30002,\"LOCERR_CURL_REMOTE_ACCESS_DENIED\":30003,\"LOCERR_CURL_FTP_ACCEPT_FAILED\":30004,\"LOCERR_CURL_FTP_ACCEPT_TIMEOUT\":30005,\"LOCERR_CURL_FTP_CANT_GET_HOST\":30006,\"LOCERR_CURL_PARTIAL_FILE\":30007,\"LOCERR_CURL_QUOTE_ERROR\":30008,\"LOCERR_CURL_WRITE_ERROR\":30009,\"LOCERR_CURL_UPLOAD_FAILED\":30010,\"LOCERR_CURL_OUT_OF_MEMORY\":30011,\"LOCERR_CURL_OPERATION_TIMEDOUT\":30012,\"LOCERR_CURL_FTP_COULDNT_USE_REST\":30013,\"LOCERR_CURL_HTTP_POST_ERROR\":30014,\"LOCERR_CURL_SSL_CONNECT_ERROR\":30015,\"LOCERR_CURL_FILE_COULDNT_READ_FILE\":30016,\"LOCERR_CURL_LDAP_CANNOT_BIND\":30017,\"LOCERR_CURL_LDAP_SEARCH_FAILED\":30018,\"LOCERR_CURL_TOO_MANY_REDIRECTS\":30019,\"LOCERR_CURL_PEER_FAILED_VERIFICATION\":30020,\"LOCERR_CURL_GOT_NOTHING\":30021,\"LOCERR_CURL_SSL_ENGINE_NOTFOUND\":30022,\"LOCERR_CURL_SSL_ENGINE_SETFAILED\":30023,\"LOCERR_CURL_SSL_CERTPROBLEM\":30024,\"LOCERR_CURL_SSL_CIPHER\":30025,\"LOCERR_CURL_SSL_CACERT\":30026,\"LOCERR_CURL_BAD_CONTENT_ENCODING\":30027,\"LOCERR_CURL_LDAP_INVALID_URL\":30028,\"LOCERR_CURL_USE_SSL_FAILED\":30029,\"LOCERR_CURL_SSL_ENGINE_INITFAILED\":30030,\"LOCERR_CURL_LOGIN_DENIED\":30031,\"LOCERR_CURL_TFTP_NOTFOUND\":30032,\"LOCERR_CURL_TFTP_ILLEGAL\":30033,\"LOCERR_CURL_SSH\":30034},\"LocalizedWarningCode\":{\"LOCWARN_PERSONAL_RELOAD_REQUIRED\":0,\"LOCWARN_PERSONAL_VERSION_EXPIRES_SOON\":1,\"LOCWARN_EXPORT_DATA_TRUNCATED\":1000,\"LOCWARN_COULD_NOT_OPEN_ALL_OBJECTS\":2000},\"GrpType\":{\"GRP_NX_NONE\":0,\"GRP_NX_HIEARCHY\":1,\"GRP_NX_COLLECTION\":2},\"ExportFileType\":{\"EXPORT_CSV_C\":0,\"EXPORT_CSV_T\":1,\"EXPORT_OOXML\":2},\"ExportState\":{\"EXPORT_POSSIBLE\":0,\"EXPORT_ALL\":1},\"DimCellType\":{\"NX_DIM_CELL_VALUE\":0,\"NX_DIM_CELL_EMPTY\":1,\"NX_DIM_CELL_NORMAL\":2,\"NX_DIM_CELL_TOTAL\":3,\"NX_DIM_CELL_OTHER\":4,\"NX_DIM_CELL_AGGR\":5,\"NX_DIM_CELL_PSEUDO\":6,\"NX_DIM_CELL_ROOT\":7,\"NX_DIM_CELL_NULL\":8,\"NX_DIM_CELL_GENERATED\":9},\"StackElemType\":{\"NX_STACK_CELL_NORMAL\":0,\"NX_STACK_CELL_TOTAL\":1,\"NX_STACK_CELL_OTHER\":2,\"NX_STACK_CELL_SUM\":3,\"NX_STACK_CELL_VALUE\":4,\"NX_STACK_CELL_PSEUDO\":5},\"SortIndicatorType\":{\"NX_SORT_INDICATE_NONE\":0,\"NX_SORT_INDICATE_ASC\":1,\"NX_SORT_INDICATE_DESC\":2},\"DimensionType\":{\"NX_DIMENSION_TYPE_DISCRETE\":0,\"NX_DIMENSION_TYPE_NUMERIC\":1,\"NX_DIMENSION_TYPE_TIME\":2},\"FieldSelectionMode\":{\"SELECTION_MODE_NORMAL\":0,\"SELECTION_MODE_AND\":1,\"SELECTION_MODE_NOT\":2},\"FrequencyMode\":{\"NX_FREQUENCY_NONE\":0,\"NX_FREQUENCY_VALUE\":1,\"NX_FREQUENCY_PERCENT\":2,\"NX_FREQUENCY_RELATIVE\":3},\"DataReductionMode\":{\"DATA_REDUCTION_NONE\":0,\"DATA_REDUCTION_ONEDIM\":1,\"DATA_REDUCTION_SCATTERED\":2,\"DATA_REDUCTION_CLUSTERED\":3,\"DATA_REDUCTION_STACKED\":4},\"HypercubeMode\":{\"DATA_MODE_STRAIGHT\":0,\"DATA_MODE_PIVOT\":1,\"DATA_MODE_PIVOT_STACK\":2,\"DATA_MODE_TREE\":3},\"PatchOperationType\":{\"Add\":0,\"Remove\":1,\"Replace\":2},\"SelectionCellType\":{\"NX_CELL_DATA\":0,\"NX_CELL_TOP\":1,\"NX_CELL_LEFT\":2},\"MatchingFieldMode\":{\"MATCHINGFIELDMODE_MATCH_ALL\":0,\"MATCHINGFIELDMODE_MATCH_ONE\":1},\"SessionState\":{\"SESSION_CREATED\":0,\"SESSION_ATTACHED\":1,\"SESSION_ERROR_NO_LICENSE\":2,\"SESSION_ERROR_LICENSE_RENEW\":3},\"ReloadState\":{\"RELOAD_PAUSED\":0,\"RELOAD_STARTED\":1,\"RELOAD_ABORTED\":2},\"QrsChangeType\":{\"QRS_CHANGE_UNDEFINED\":0,\"QRS_CHANGE_ADD\":1,\"QRS_CHANGE_UPDATE\":2,\"QRS_CHANGE_DELETE\":3},\"ExtEngineDataType\":{\"NX_EXT_DATATYPE_STRING\":0,\"NX_EXT_DATATYPE_DOUBLE\":1,\"NX_EXT_DATATYPE_BOTH\":2},\"ExtEngineFunctionType\":{\"NX_EXT_FUNCTIONTYPE_SCALAR\":0,\"NX_EXT_FUNCTIONTYPE_AGGR\":1,\"NX_EXT_FUNCTIONTYPE_TENSOR\":2},\"ExtEngineMsgType\":{\"NX_EXT_MSGTYPE_FUNCTION_CALL\":1,\"NX_EXT_MSGTYPE_SCRIPT_CALL\":2,\"NX_EXT_MSGTYPE_RETURN_VALUE\":3,\"NX_EXT_MSGTYPE_RETURN_MULTIPLE\":4,\"NX_EXT_MSGTYPE_RETURN_ERROR\":5}},\"version\":\"12.170.2\"}");
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * enigma.js v2.6.3
+ * Copyright (c) 2019 QlikTech International AB
+ * This library is licensed under MIT - See the LICENSE file for full details
+ */
+
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	undefined;
+}(this, (function () { 'use strict';
+
+	function createCommonjsModule(fn, module) {
+		return module = { exports: {} }, fn(module, module.exports), module.exports;
+	}
+
+	// Copyright Joyent, Inc. and other Node contributors.
+
+	// If obj.hasOwnProperty has been overridden, then calling
+	// obj.hasOwnProperty(prop) will break.
+	// See: https://github.com/joyent/node/issues/1707
+	function hasOwnProperty(obj, prop) {
+	  return Object.prototype.hasOwnProperty.call(obj, prop);
+	}
+
+	var decode = function(qs, sep, eq, options) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  var obj = {};
+
+	  if (typeof qs !== 'string' || qs.length === 0) {
+	    return obj;
+	  }
+
+	  var regexp = /\+/g;
+	  qs = qs.split(sep);
+
+	  var maxKeys = 1000;
+	  if (options && typeof options.maxKeys === 'number') {
+	    maxKeys = options.maxKeys;
+	  }
+
+	  var len = qs.length;
+	  // maxKeys <= 0 means that we should not limit keys count
+	  if (maxKeys > 0 && len > maxKeys) {
+	    len = maxKeys;
+	  }
+
+	  for (var i = 0; i < len; ++i) {
+	    var x = qs[i].replace(regexp, '%20'),
+	        idx = x.indexOf(eq),
+	        kstr, vstr, k, v;
+
+	    if (idx >= 0) {
+	      kstr = x.substr(0, idx);
+	      vstr = x.substr(idx + 1);
+	    } else {
+	      kstr = x;
+	      vstr = '';
+	    }
+
+	    k = decodeURIComponent(kstr);
+	    v = decodeURIComponent(vstr);
+
+	    if (!hasOwnProperty(obj, k)) {
+	      obj[k] = v;
+	    } else if (Array.isArray(obj[k])) {
+	      obj[k].push(v);
+	    } else {
+	      obj[k] = [obj[k], v];
+	    }
+	  }
+
+	  return obj;
+	};
+
+	// Copyright Joyent, Inc. and other Node contributors.
+
+	var stringifyPrimitive = function(v) {
+	  switch (typeof v) {
+	    case 'string':
+	      return v;
+
+	    case 'boolean':
+	      return v ? 'true' : 'false';
+
+	    case 'number':
+	      return isFinite(v) ? v : '';
+
+	    default:
+	      return '';
+	  }
+	};
+
+	var encode = function(obj, sep, eq, name) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  if (obj === null) {
+	    obj = undefined;
+	  }
+
+	  if (typeof obj === 'object') {
+	    return Object.keys(obj).map(function(k) {
+	      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
+	      if (Array.isArray(obj[k])) {
+	        return obj[k].map(function(v) {
+	          return ks + encodeURIComponent(stringifyPrimitive(v));
+	        }).join(sep);
+	      } else {
+	        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
+	      }
+	    }).join(sep);
+
+	  }
+
+	  if (!name) return '';
+	  return encodeURIComponent(stringifyPrimitive(name)) + eq +
+	         encodeURIComponent(stringifyPrimitive(obj));
+	};
+
+	var querystring = createCommonjsModule(function (module, exports) {
+
+	exports.decode = exports.parse = decode;
+	exports.encode = exports.stringify = encode;
+	});
+	var querystring_1 = querystring.decode;
+	var querystring_2 = querystring.parse;
+	var querystring_3 = querystring.encode;
+	var querystring_4 = querystring.stringify;
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+	/**
+	* The Qlik Sense configuration object.
+	* @typedef {Object} SenseConfiguration
+	* @property {String} [appId] The app id. If omitted, only the global object is returned.
+	*                            Otherwise both global and app object are returned.
+	* @property {Boolean} [noData=false] Whether to open the app without data.
+	* @property {Boolean} [secure=true] Set to false if an unsecure WebSocket should be used.
+	* @property {String} [host] Host address.
+	* @property {Number} [port] Port to connect to.
+	* @property {String} [prefix="/"] The absolute base path to use when connecting.
+	*                             Used for proxy prefixes.
+	* @property {String} [subpath=""] The subpath.
+	* @property {String} [route=""] Used to instruct Proxy to route to the correct receiver.
+	* @property {String} [identity=""] Identity to use.
+	* @property {Object} [urlParams={}] Used to add parameters to the WebSocket URL.
+	* @property {Number} [ttl] A value in seconds that QIX Engine should keep the session
+	*                             alive after socket disconnect (only works if QIX Engine supports it).
+	*/
+
+	function replaceLeadingAndTrailingSlashes(str) {
+	  return str.replace(/(^[/]+)|([/]+$)/g, '');
+	}
+
+	var SenseUtilities =
+	/*#__PURE__*/
+	function () {
+	  function SenseUtilities() {
+	    _classCallCheck(this, SenseUtilities);
+	  }
+
+	  _createClass(SenseUtilities, null, [{
+	    key: "configureDefaults",
+
+	    /**
+	    * Ensures that the configuration has defaults set.
+	    *
+	    * @private
+	    * @param {SenseConfiguration} senseConfig The configuration to ensure defaults on.
+	    */
+	    value: function configureDefaults(senseConfig) {
+	      if (!senseConfig.host) {
+	        senseConfig.host = 'localhost';
+	      }
+
+	      if (typeof senseConfig.secure === 'undefined') {
+	        senseConfig.secure = true;
+	      }
+
+	      if (!senseConfig.appId && !senseConfig.route) {
+	        senseConfig.route = 'app/engineData';
+	      }
+
+	      if (typeof senseConfig.noData === 'undefined') {
+	        senseConfig.noData = false;
+	      }
+	    }
+	    /**
+	    * Function used to build an URL.
+	    * @param {SenseConfiguration} urlConfig - The URL configuration object.
+	    * @returns {String} Returns the websocket URL.
+	    */
+
+	  }, {
+	    key: "buildUrl",
+	    value: function buildUrl(urlConfig) {
+	      SenseUtilities.configureDefaults(urlConfig);
+	      var secure = urlConfig.secure,
+	          host = urlConfig.host,
+	          port = urlConfig.port,
+	          prefix = urlConfig.prefix,
+	          subpath = urlConfig.subpath,
+	          route = urlConfig.route,
+	          identity = urlConfig.identity,
+	          urlParams = urlConfig.urlParams,
+	          ttl = urlConfig.ttl,
+	          appId = urlConfig.appId;
+	      var url = '';
+	      url += "".concat(secure ? 'wss' : 'ws', "://");
+	      url += host || 'localhost';
+
+	      if (port) {
+	        url += ":".concat(port);
+	      }
+
+	      if (prefix) {
+	        url += "/".concat(replaceLeadingAndTrailingSlashes(prefix));
+	      }
+
+	      if (subpath) {
+	        url += "/".concat(replaceLeadingAndTrailingSlashes(subpath));
+	      }
+
+	      if (route) {
+	        url += "/".concat(replaceLeadingAndTrailingSlashes(route));
+	      } else if (appId) {
+	        url += "/app/".concat(encodeURIComponent(appId));
+	      }
+
+	      if (identity) {
+	        url += "/identity/".concat(encodeURIComponent(identity));
+	      }
+
+	      if (ttl) {
+	        url += "/ttl/".concat(ttl);
+	      }
+
+	      if (urlParams) {
+	        url += "?".concat(querystring.stringify(urlParams));
+	      }
+
+	      return url;
+	    }
+	  }]);
+
+	  return SenseUtilities;
+	}();
+
+	return SenseUtilities;
+
+})));
+//# sourceMappingURL=sense-utilities.js.map
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(23)(false);
 // Imports
-var getUrl = __webpack_require__(41);
-var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(42));
-var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(43));
+var getUrl = __webpack_require__(47);
+var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(48));
+var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(49));
 // Module
 exports.push([module.i, "@font-face{font-family:\"LUI icons\";src:url(" + ___CSS_LOADER_URL___0___ + ") format(\"woff\"),url(" + ___CSS_LOADER_URL___1___ + ") format(\"truetype\")}.lui-select{border-color:#ced4da !important}.qdt-filter-state-counts-bar{position:relative;height:0.25rem;background-color:#dee2e6;border-left:1px solid #dee2e6;border-right:1px solid #dee2e6}.O{color:#212529 !important}.S{color:#f8f9fa !important;background-color:#009845 !important}.A{color:#212529 !important;background-color:#dddddd !important}.X{color:#f8f9fa !important;background-color:#A9A9A9 !important}.XS{color:#f8f9fa !important;background-color:#A9A9A9 !important}.lui-list .lui-list__item{display:block;cursor:pointer}.lui-list .lui-list__item:after{min-height:10px !important}.lui-list .lui-list__item.S,.lui-list .lui-list__item.A,.lui-list .lui-list__item.X,.lui-list .lui-list__item.XS{border-bottom:1px solid #fff}.fixed-table{table-layout:fixed}th{position:relative;cursor:pointer}th,td{overflow:hidden}th.active:after{position:absolute;top:calc(50% - 0.125rem);margin-left:0.5rem;content:\"\";width:0;height:0;border-left:0.5rem solid transparent;border-right:0.5rem solid transparent;border-top:0.5rem solid #666}.lui-select{border-radius:0 !important}.lui-tab.lui-active,.lui-tab:focus,.lui-tab.lui-focused{border-bottom:2px solid #52CC52}.qtd-button{display:inline-block;cursor:pointer}.qtd-table-header{width:100%;width:calc(100% - 18px);width:-moz-calc(100% - 18px);width:-webkit-calc(100% - 18px)}.qtd-table-body{width:100%}.qtd-table-body tr:nth-child(even){background:#e9ecef}.qdt-selection-toolbar ul{padding:0;font-size:13px}.qdt-selection-toolbar ul li{display:inline-block;padding-right:5px}.qdt-selection-toolbar ul li .dropdown-item{font-size:13px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:25px}.qdt-selection-toolbar ul li lui-button{border:1px solid #ced4da;padding:5px 10px;cursor:pointer;position:relative;display:inline-block}.qdt-selection-toolbar ul li .btn-secondary{color:#212529 !important;background-color:#FFFFFF !important;font-size:13px;border:0;padding:5px 10px}.qdt-selection-toolbar ul li .btn-secondary:focus{box-shadow:0}.qdt-selection-toolbar ul li .clear-all{padding-left:15px}.qdt-selection-toolbar .lui-icon{font-size:13px;padding-left:2px}.qdt-selection-toolbar .lui-icon--remove{color:#dc3545;cursor:pointer}.qdt-selection-toolbar .lui-icon--remove:hover{color:#fd7e14}.qdt-selection-toolbar .lui-icon--remove.pull-right{position:absolute;right:0;padding-right:5px}.qtd-chart .qdt-chart-header{height:30px}.qtd-chart .qdt-chart-header .qdt-chart-selection{text-align:right}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button{border:0;padding:0;margin-left:5px}.qtd-chart .qdt-chart-header .qdt-chart-selection .lui-button .lui-icon--remove{color:#F37777}.qtd-chart .qdt-chart-svg{position:relative}.qtd-chart .qdt-chart-svg rect:hover{fill:#77b62a !important}.qtd-chart .qdt-chart-svg circle,.qtd-chart .qdt-chart-svg rect,.qtd-chart .qdt-chart-svg path{cursor:pointer}.qtd-chart::-webkit-scrollbar{width:10px;height:10px}.qtd-chart::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);border-radius:5px}.qtd-chart::-webkit-scrollbar-thumb{background-color:darkgrey;outline:1px solid slategrey;border-radius:5px}.qdt-tooltip{position:relative;background:#000000;border:1px solid #d1d1d1;color:white;padding:15px;display:none;z-index:9999999}.qdt-tooltip:after,.qdt-tooltip:before{top:100%;left:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.qdt-tooltip:after{border-color:rgba(0,0,0,0);border-top-color:#000000;border-width:10px;margin-left:-10px}.qdt-tooltip:before{border-color:rgba(209,209,209,0);border-top-color:#d1d1d1;border-width:11px;margin-left:-11px}.qtd-preloader-bg{background-color:black}.qtd-preloader .qtd-preloader-ball1{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:50px;height:50px;margin:0 auto;-moz-animation:spin .5s infinite linear;-webkit-animation:spin .5s infinite linear}.qtd-preloader .qtd-preloader-ball2{background-color:rgba(0,0,0,0);border:5px solid rgba(0,183,229,0.9);opacity:.9;border-top:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);border-radius:50px;width:30px;height:30px;margin:0 auto;position:relative;top:-50px;-moz-animation:spinoff .5s infinite linear;-webkit-animation:spinoff .5s infinite linear}.qtd-preloader .qtd-preloader-dots:after{content:' .';animation:dots 500ms steps(5, end) infinite}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(360deg)}}@-moz-keyframes spinoff{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(-360deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@-webkit-keyframes spinoff{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(-360deg)}}@keyframes dots{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:white;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 white,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 white, .5em 0 0 white}}.lui-search{border:1px solid #dee2e6}.lui-search .lui-list.lui-list__item{text-align:left}button:focus{outline:0 !important}.lui-icon-rotate-180{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg)}\n", ""]);
 
 
 /***/ }),
-/* 41 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2474,19 +5860,19 @@ module.exports = function (url, needQuotes) {
 };
 
 /***/ }),
-/* 42 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "lui-icons.woff";
 
 /***/ }),
-/* 43 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "lui-icons.ttf";
 
 /***/ }),
-/* 44 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2508,7 +5894,7 @@ exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===
 
 
 /***/ }),
-/* 45 */
+/* 51 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -2548,7 +5934,7 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 46 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /**
@@ -2580,7 +5966,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 47 */
+/* 53 */
 /***/ (function(module, exports) {
 
 function _arrayWithHoles(arr) {
@@ -2590,7 +5976,7 @@ function _arrayWithHoles(arr) {
 module.exports = _arrayWithHoles;
 
 /***/ }),
-/* 48 */
+/* 54 */
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
@@ -2626,7 +6012,7 @@ function _iterableToArrayLimit(arr, i) {
 module.exports = _iterableToArrayLimit;
 
 /***/ }),
-/* 49 */
+/* 55 */
 /***/ (function(module, exports) {
 
 function _nonIterableRest() {
@@ -2636,7 +6022,7 @@ function _nonIterableRest() {
 module.exports = _nonIterableRest;
 
 /***/ }),
-/* 50 */
+/* 56 */
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -2652,7 +6038,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 51 */
+/* 57 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -2662,7 +6048,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 52 */
+/* 58 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -2672,10 +6058,10 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 53 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(54);
+var content = __webpack_require__(60);
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
@@ -2686,7 +6072,7 @@ var options = {}
 options.insert = "head";
 options.singleton = false;
 
-var update = __webpack_require__(22)(content, options);
+var update = __webpack_require__(24)(content, options);
 
 if (content.locals) {
   module.exports = content.locals;
@@ -2694,16 +6080,16 @@ if (content.locals) {
 
 
 /***/ }),
-/* 54 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(21)(false);
+exports = module.exports = __webpack_require__(23)(false);
 // Module
 exports.push([module.i, ".ReactTable{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;border:1px solid rgba(0,0,0,0.1)}.ReactTable *{box-sizing:border-box}.ReactTable .rt-table{-webkit-box-flex:1;-ms-flex:auto 1;flex:auto 1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;width:100%;border-collapse:collapse;overflow:auto}.ReactTable .rt-thead{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.ReactTable .rt-thead.-headerGroups{background:rgba(0,0,0,0.03);border-bottom:1px solid rgba(0,0,0,0.05)}.ReactTable .rt-thead.-filters{border-bottom:1px solid rgba(0,0,0,0.05)}.ReactTable .rt-thead.-filters input,.ReactTable .rt-thead.-filters select{border:1px solid rgba(0,0,0,0.1);background:#fff;padding:5px 7px;font-size:inherit;border-radius:3px;font-weight:normal;outline-width:0}.ReactTable .rt-thead.-filters .rt-th{border-right:1px solid rgba(0,0,0,0.02)}.ReactTable .rt-thead.-header{box-shadow:0 2px 15px 0 rgba(0,0,0,0.15)}.ReactTable .rt-thead .rt-tr{text-align:center}.ReactTable .rt-thead .rt-th,.ReactTable .rt-thead .rt-td{padding:5px 5px;line-height:normal;position:relative;border-right:1px solid rgba(0,0,0,0.05);transition:box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);box-shadow:inset 0 0 0 0 transparent}.ReactTable .rt-thead .rt-th.-sort-asc,.ReactTable .rt-thead .rt-td.-sort-asc{box-shadow:inset 0 3px 0 0 rgba(0,0,0,0.6)}.ReactTable .rt-thead .rt-th.-sort-desc,.ReactTable .rt-thead .rt-td.-sort-desc{box-shadow:inset 0 -3px 0 0 rgba(0,0,0,0.6)}.ReactTable .rt-thead .rt-th.-cursor-pointer,.ReactTable .rt-thead .rt-td.-cursor-pointer{cursor:pointer}.ReactTable .rt-thead .rt-th:last-child,.ReactTable .rt-thead .rt-td:last-child{border-right:0}.ReactTable .rt-thead .rt-th:focus{outline-width:0}.ReactTable .rt-thead .rt-resizable-header{overflow:visible}.ReactTable .rt-thead .rt-resizable-header:last-child{overflow:hidden}.ReactTable .rt-thead .rt-resizable-header-content{overflow:hidden;text-overflow:ellipsis}.ReactTable .rt-thead .rt-header-pivot{border-right-color:#f7f7f7}.ReactTable .rt-thead .rt-header-pivot:after,.ReactTable .rt-thead .rt-header-pivot:before{left:100%;top:50%;border:solid transparent;content:\" \";height:0;width:0;position:absolute;pointer-events:none}.ReactTable .rt-thead .rt-header-pivot:after{border-color:rgba(255,255,255,0);border-left-color:#fff;border-width:8px;margin-top:-8px}.ReactTable .rt-thead .rt-header-pivot:before{border-color:rgba(102,102,102,0);border-left-color:#f7f7f7;border-width:10px;margin-top:-10px}.ReactTable .rt-tbody{-webkit-box-flex:99999;-ms-flex:99999 1 auto;flex:99999 1 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;overflow:auto}.ReactTable .rt-tbody .rt-tr-group{border-bottom:solid 1px rgba(0,0,0,0.05)}.ReactTable .rt-tbody .rt-tr-group:last-child{border-bottom:0}.ReactTable .rt-tbody .rt-td{border-right:1px solid rgba(0,0,0,0.02)}.ReactTable .rt-tbody .rt-td:last-child{border-right:0}.ReactTable .rt-tbody .rt-expandable{cursor:pointer;text-overflow:clip}.ReactTable .rt-tr-group{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch}.ReactTable .rt-tr{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.ReactTable .rt-th,.ReactTable .rt-td{-webkit-box-flex:1;-ms-flex:1 0 0px;flex:1 0 0;white-space:nowrap;text-overflow:ellipsis;padding:7px 5px;overflow:hidden;transition:.3s ease;transition-property:width,min-width,padding,opacity}.ReactTable .rt-th.-hidden,.ReactTable .rt-td.-hidden{width:0 !important;min-width:0 !important;padding:0 !important;border:0 !important;opacity:0 !important}.ReactTable .rt-expander{display:inline-block;position:relative;margin:0;color:transparent;margin:0 10px}.ReactTable .rt-expander:after{content:'';position:absolute;width:0;height:0;top:50%;left:50%;-webkit-transform:translate(-50%, -50%) rotate(-90deg);transform:translate(-50%, -50%) rotate(-90deg);border-left:5.04px solid transparent;border-right:5.04px solid transparent;border-top:7px solid rgba(0,0,0,0.8);transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);cursor:pointer}.ReactTable .rt-expander.-open:after{-webkit-transform:translate(-50%, -50%) rotate(0);transform:translate(-50%, -50%) rotate(0)}.ReactTable .rt-resizer{display:inline-block;position:absolute;width:36px;top:0;bottom:0;right:-18px;cursor:col-resize;z-index:10}.ReactTable .rt-tfoot{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;box-shadow:0 0 15px 0 rgba(0,0,0,0.15)}.ReactTable .rt-tfoot .rt-td{border-right:1px solid rgba(0,0,0,0.05)}.ReactTable .rt-tfoot .rt-td:last-child{border-right:0}.ReactTable.-striped .rt-tr.-odd{background:rgba(0,0,0,0.03)}.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover{background:rgba(0,0,0,0.05)}.ReactTable .-pagination{z-index:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:3px;box-shadow:0 0 15px 0 rgba(0,0,0,0.1);border-top:2px solid rgba(0,0,0,0.1)}.ReactTable .-pagination input,.ReactTable .-pagination select{border:1px solid rgba(0,0,0,0.1);background:#fff;padding:5px 7px;font-size:inherit;border-radius:3px;font-weight:normal;outline-width:0}.ReactTable .-pagination .-btn{-webkit-appearance:none;-moz-appearance:none;appearance:none;display:block;width:100%;height:100%;border:0;border-radius:3px;padding:6px;font-size:1em;color:rgba(0,0,0,0.6);background:rgba(0,0,0,0.1);transition:all .1s ease;cursor:pointer;outline-width:0}.ReactTable .-pagination .-btn[disabled]{opacity:.5;cursor:default}.ReactTable .-pagination .-btn:not([disabled]):hover{background:rgba(0,0,0,0.3);color:#fff}.ReactTable .-pagination .-previous,.ReactTable .-pagination .-next{-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center}.ReactTable .-pagination .-center{-webkit-box-flex:1.5;-ms-flex:1.5;flex:1.5;text-align:center;margin-bottom:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-pack:distribute;justify-content:space-around}.ReactTable .-pagination .-pageInfo{display:inline-block;margin:3px 10px;white-space:nowrap}.ReactTable .-pagination .-pageJump{display:inline-block}.ReactTable .-pagination .-pageJump input{width:70px;text-align:center}.ReactTable .-pagination .-pageSizeOptions{margin:3px 10px}.ReactTable .rt-noData{display:block;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);background:rgba(255,255,255,0.8);transition:all .3s ease;z-index:1;pointer-events:none;padding:20px;color:rgba(0,0,0,0.5)}.ReactTable .-loading{display:block;position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(255,255,255,0.8);transition:all .3s ease;z-index:-1;opacity:0;pointer-events:none}.ReactTable .-loading>div{position:absolute;display:block;text-align:center;width:100%;top:50%;left:0;font-size:15px;color:rgba(0,0,0,0.6);-webkit-transform:translateY(-52%);transform:translateY(-52%);transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)}.ReactTable .-loading.-active{opacity:1;z-index:2;pointer-events:all}.ReactTable .-loading.-active>div{-webkit-transform:translateY(50%);transform:translateY(50%)}.ReactTable .rt-resizing .rt-th,.ReactTable .rt-resizing .rt-td{transition:none !important;cursor:col-resize;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}\n", ""]);
 
 
 /***/ }),
-/* 55 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2786,7 +6172,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(12);
+var esm_typeof = __webpack_require__(11);
 
 // CONCATENATED MODULE: ./node_modules/@material-ui/utils/esm/deepmerge.js
 
@@ -3984,12 +7370,6 @@ var Colors = {
 
 var Light_theme = {
   palette: {
-    // primary: {
-    //   light: Colors.EMERALD_LIGHT,
-    //   main: Colors.EMERALD,
-    //   dark: Colors.EMERALD_DARK,
-    //   contrastText: '#fff',
-    // },
     primary: {
       light: themes_Colors.TURQUOISE_LIGHT,
       main: themes_Colors.TURQUOISE,
@@ -4025,9 +7405,6 @@ var Light_theme = {
   shape: {
     borderRadius: 0
   },
-  // status: {
-  //   danger: 'orange',
-  // },
   overrides: {
     MuiButton: {
       text: {
@@ -4094,49 +7471,123 @@ var Light_theme = {
 };
 /* harmony default export */ var Light = (Light_theme);
 // CONCATENATED MODULE: ./src/themes/Dark.js
+// https://material-ui.com/customization/default-theme/
+
 var Dark_theme = {
   palette: {
+    common: {
+      black: '#000',
+      white: '#fff'
+    },
+    type: 'dark',
     primary: {
-      light: '#009845',
-      main: '#009845',
-      dark: '#009845',
+      light: themes_Colors.SLATE_LIGHT,
+      main: themes_Colors.SLATE,
+      dark: themes_Colors.SLATE_DARK,
       contrastText: '#fff'
     },
     secondary: {
-      light: '#870064',
-      main: '#870064',
-      dark: '#870064',
+      light: themes_Colors.WINE_LIGHT,
+      main: themes_Colors.WINE,
+      dark: themes_Colors.WINE_DARK,
+      contrastText: '#fff'
+    },
+    error: {
+      light: '#e57373',
+      main: '#f44336',
+      dark: '#d32f2f',
+      contrastText: '#fff'
+    },
+    warning: {
+      light: '#ffb74d',
+      main: '#ff9800',
+      dark: '#f57c00',
+      contrastText: 'rgba(0, 0, 0, 0.87)'
+    },
+    info: {
+      light: '#64b5f6',
+      main: '#2196f3',
+      dark: '#1976d2',
       contrastText: '#fff'
     },
     success: {
-      light: '#009845',
-      main: '#009845',
-      dark: '#009845',
-      contrastText: '#fff'
+      light: '#81c784',
+      main: '#4caf50',
+      dark: '#388e3c',
+      contrastText: 'rgba(0, 0, 0, 0.87)'
     },
-    info: {
-      // SAPPHIRE
-      light: '#005CB9',
-      main: '#005CB9',
-      dark: '#005CB9',
-      contrastText: '#fff'
+    contrastThreshold: 3,
+    tonalOffset: 0.2,
+    text: {
+      primary: '#fff',
+      secondary: 'rgba(255, 255, 255, 0.7)',
+      disabled: 'rgba(255, 255, 255, 0.5)',
+      hint: 'rgba(255, 255, 255, 0.5)',
+      icon: 'rgba(255, 255, 255, 0.5)'
+    },
+    divider: 'rgba(255, 255, 255, 0.12)',
+    background: {
+      paper: '#424242',
+      "default": '#303030'
+    },
+    action: {
+      active: '#fff',
+      hover: 'rgba(255, 255, 255, 0.08)',
+      hoverOpacity: 0.08,
+      selected: 'rgba(255, 255, 255, 0.16)',
+      selectedOpacity: 0.16,
+      disabled: 'rgba(255, 255, 255, 0.3)',
+      disabledBackground: 'rgba(255, 255, 255, 0.12)'
     }
   },
+  shadows: ['none', '0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)', '0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)', '0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)', '0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)', '0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)', '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)', '0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)', '0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)', '0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)', '0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)', '0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)', '0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)', '0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)', '0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)', '0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)', '0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)', '0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)', '0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)', '0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)', '0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)', '0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)', '0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)', '0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)', '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)'],
   shape: {
     borderRadius: 0
   },
-  // status: {
-  //   danger: 'orange',
-  // },
   overrides: {
-    // Style sheet name ⚛️
     MuiButton: {
-      // Name of the rule
       text: {
-        // Some CSS
         borderRadius: 3,
         borderColor: '#FFFFFF',
         border: 5
+      }
+    },
+    MuiSlider: {
+      root: {
+        height: 8
+      },
+      thumb: {
+        height: 24,
+        width: 'auto',
+        padding: 5,
+        borderRadius: 0,
+        // backgroundColor: 'currentColor',
+        backgroundColor: '#fff',
+        border: '2px solid currentColor',
+        marginTop: -10,
+        marginLeft: -12,
+        '&:focus,&:hover,&$active': {
+          boxShadow: 'inherit'
+        },
+        '& .bar': {
+          height: 10,
+          width: 1,
+          opacity: 0.5,
+          marginLeft: 1,
+          marginRight: 1
+        }
+      },
+      active: {},
+      valueLabel: {
+        left: 'calc(-50% + 4px)'
+      },
+      track: {
+        height: 5,
+        borderRadius: 0
+      },
+      rail: {
+        height: 5,
+        borderRadius: 0
       }
     }
   }
@@ -4146,7 +7597,12 @@ var Dark_theme = {
 
 
 
-
+var QdtThemes = {
+  Light: Light,
+  Dark: Dark,
+  Colors: themes_Colors
+};
+/* harmony default export */ var Themes = (QdtThemes); // export { Light, Dark, Colors };
 // CONCATENATED MODULE: ./src/qdtNova.jsx
  //eslint-disable-line
 
@@ -4167,11 +7623,11 @@ var Dark_theme = {
             var layout = supernova.useLayout();
             var model = supernova.useModel();
             var element = supernova.useElement();
-            var theme = styles_createMuiTheme(Light);
+            var theme = options.theme ? styles_createMuiTheme(options.theme) : styles_createMuiTheme(Themes.Light);
             supernova.useEffect(function () {
               react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
                 theme: theme
-              }, react_default.a.createElement(Component, {
+              }, theme.palette.type, react_default.a.createElement(Component, {
                 app: app,
                 layout: layout,
                 model: model,
@@ -4190,15 +7646,120 @@ var Dark_theme = {
   };
 });
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(9);
+var regenerator = __webpack_require__(5);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(13);
+var asyncToGenerator = __webpack_require__(7);
 var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
 
+// CONCATENATED MODULE: ./src/qdtEnigma.js
+
+
+
+var enigma = __webpack_require__(43);
+
+var schema = __webpack_require__(44);
+
+var SenseUtilities = __webpack_require__(45);
+
+var MAX_RETRIES = 3;
+var responseInterceptors = [{
+  // We only want to handle failed responses from QIX Engine:
+  onRejected: function retryAbortedError(sessionReference, request, error) {
+    // We only want to handle aborted QIX errors:
+    if (error.code === schema.enums.LocalizedErrorCode.LOCERR_GENERIC_ABORTED) {
+      // We keep track of how many consecutive times we have tried to do this call:
+      request.tries = (request.tries || 0) + 1; // We do not want to get stuck in an infinite loop here if something has gone
+      // awry, so we only retry until we have reached MAX_RETRIES:
+
+      if (request.tries <= MAX_RETRIES) {
+        return request.retry();
+      }
+    } // If it was not an aborted QIX call, or if we reached MAX_RETRIES, we let the error
+    // trickle down to potential other interceptors, and finally down to resolving/rejecting
+    // the initial promise that the user got when invoking the QIX method:
+
+
+    return this.Promise.reject(error);
+  }
+}];
+
+var qdtEnigma =
+/*#__PURE__*/
+function () {
+  var _ref = asyncToGenerator_default()(
+  /*#__PURE__*/
+  regenerator_default.a.mark(function _callee(config) {
+    var myConfig, url, session, global;
+    return regenerator_default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            myConfig = config; // Make it work for Qlik Core scaling https://github.com/qlik-oss/core-scaling
+            // qlikcore/engine:12.248.0
+
+            if (myConfig.core) {
+              myConfig.subpath = myConfig.prefix ? "".concat(myConfig.prefix, "/app") : 'app';
+              myConfig.route = "doc/".concat(myConfig.appId);
+            }
+
+            url = SenseUtilities.buildUrl(myConfig);
+            session = enigma.create({
+              schema: schema,
+              url: url,
+              responseInterceptors: responseInterceptors
+            });
+            _context.next = 6;
+            return session.open();
+
+          case 6:
+            global = _context.sent;
+
+            if (!myConfig.core) {
+              _context.next = 9;
+              break;
+            }
+
+            return _context.abrupt("return", global.getActiveDoc());
+
+          case 9:
+            return _context.abrupt("return", global.openDoc(myConfig.appId));
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function qdtEnigma(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+/* harmony default export */ var src_qdtEnigma = (qdtEnigma);
+// CONCATENATED MODULE: ./src/qdtDoc.jsx
+
+
+
+
+/* harmony default export */ var qdtDoc = (function (element, layout, model) {
+  return function (Component, options) {
+    var theme = options.theme ? styles_createMuiTheme(options.theme) : styles_createMuiTheme(Themes.Light);
+    console.log(221, element, layout, model, Component, options);
+    react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
+      theme: theme
+    }, react_default.a.createElement(Component, {
+      layout: layout,
+      model: model,
+      options: options
+    })), element);
+  };
+});
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(10);
+var defineProperty = __webpack_require__(12);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // CONCATENATED MODULE: ./node_modules/clsx/dist/clsx.m.js
@@ -4241,7 +7802,7 @@ function toVal(mix) {
 });
 
 // EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(24);
+var hoist_non_react_statics_cjs = __webpack_require__(15);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
 // CONCATENATED MODULE: ./node_modules/is-in-browser/dist/module.js
@@ -4296,7 +7857,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(11);
+var assertThisInitialized = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./node_modules/jss/dist/jss.esm.js
 
@@ -7308,7 +10869,7 @@ function _arrayWithoutHoles(arr) {
   }
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-var iterableToArray = __webpack_require__(23);
+var iterableToArray = __webpack_require__(25);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
@@ -10062,7 +13623,7 @@ var Button_Button = react_default.a.forwardRef(function Button(props, ref) {
   name: 'MuiButton'
 })(Button_Button));
 // EXTERNAL MODULE: ./src/styles/index.scss
-var src_styles = __webpack_require__(16);
+var src_styles = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./src/components/QdtButton/QdtButton.jsx
 
@@ -10217,353 +13778,289 @@ QdtButton_QdtButton.defaultProps = {
   options: {}
 };
 /* harmony default export */ var components_QdtButton_QdtButton = (QdtButton_QdtButton);
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatDecimal.js
-// Computes the decimal coefficient and exponent of the specified number x with
-// significant digits p, where x is positive and p is in [1, 21] or undefined.
-// For example, formatDecimal(1.23) returns ["123", 0].
-/* harmony default export */ var formatDecimal = (function(x, p) {
-  if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, ±Infinity
-  var i, coefficient = x.slice(0, i);
+// EXTERNAL MODULE: ./node_modules/deepmerge/dist/cjs.js
+var cjs = __webpack_require__(6);
+var cjs_default = /*#__PURE__*/__webpack_require__.n(cjs);
 
-  // The string returned by toExponential either has the form \d\.\d+e[-+]\d+
-  // (e.g., 1.2e+3) or the form \de[-+]\d+ (e.g., 1e+3).
-  return [
-    coefficient.length > 1 ? coefficient[0] + coefficient.slice(2) : coefficient,
-    +x.slice(i + 1)
-  ];
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/exponent.js
+// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 
 
-/* harmony default export */ var src_exponent = (function(x) {
-  return x = formatDecimal(Math.abs(x)), x ? x[1] : NaN;
-});
+// A grid component using the following libs as inspiration.
+//
+// For the implementation:
+// - https://getbootstrap.com/docs/4.3/layout/grid/
+// - https://github.com/kristoferjoseph/flexboxgrid/blob/master/src/css/flexboxgrid.css
+// - https://github.com/roylee0704/react-flexbox-grid
+// - https://material.angularjs.org/latest/layout/introduction
+//
+// Follow this flexbox Guide to better understand the underlying model:
+// - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatGroup.js
-/* harmony default export */ var formatGroup = (function(grouping, thousands) {
-  return function(value, width) {
-    var i = value.length,
-        t = [],
-        j = 0,
-        g = grouping[0],
-        length = 0;
 
-    while (i > 0 && g > 0) {
-      if (length + g + 1 > width) g = Math.max(1, width - length);
-      t.push(value.substring(i -= g, i + g));
-      if ((length += g + 1) > width) break;
-      g = grouping[j = (j + 1) % grouping.length];
+
+
+
+var SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var GRID_SIZES = ['auto', true, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+function generateGrid(globalStyles, theme, breakpoint) {
+  var styles = {};
+  GRID_SIZES.forEach(function (size) {
+    var key = "grid-".concat(breakpoint, "-").concat(size);
+
+    if (size === true) {
+      // For the auto layouting
+      styles[key] = {
+        flexBasis: 0,
+        flexGrow: 1,
+        maxWidth: '100%'
+      };
+      return;
     }
 
-    return t.reverse().join(thousands);
-  };
-});
+    if (size === 'auto') {
+      styles[key] = {
+        flexBasis: 'auto',
+        flexGrow: 0,
+        maxWidth: 'none'
+      };
+      return;
+    } // Keep 7 significant numbers.
 
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatNumerals.js
-/* harmony default export */ var formatNumerals = (function(numerals) {
-  return function(value) {
-    return value.replace(/[0-9]/g, function(i) {
-      return numerals[+i];
-    });
-  };
-});
 
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatSpecifier.js
-// [[fill]align][sign][symbol][0][width][,][.precision][~][type]
-var re = /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i;
+    var width = "".concat(Math.round(size / 12 * 10e7) / 10e5, "%"); // Close to the bootstrap implementation:
+    // https://github.com/twbs/bootstrap/blob/8fccaa2439e97ec72a4b7dc42ccc1f649790adb0/scss/mixins/_grid.scss#L41
 
-function formatSpecifier(specifier) {
-  if (!(match = re.exec(specifier))) throw new Error("invalid format: " + specifier);
-  var match;
-  return new FormatSpecifier({
-    fill: match[1],
-    align: match[2],
-    sign: match[3],
-    symbol: match[4],
-    zero: match[5],
-    width: match[6],
-    comma: match[7],
-    precision: match[8] && match[8].slice(1),
-    trim: match[9],
-    type: match[10]
+    styles[key] = {
+      flexBasis: width,
+      flexGrow: 0,
+      maxWidth: width
+    };
+  }); // No need for a media query for the first size.
+
+  if (breakpoint === 'xs') {
+    _extends(globalStyles, styles);
+  } else {
+    globalStyles[theme.breakpoints.up(breakpoint)] = styles;
+  }
+}
+
+function getOffset(val) {
+  var div = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  var parse = parseFloat(val);
+  return "".concat(parse / div).concat(String(val).replace(String(parse), '') || 'px');
+}
+
+function generateGutter(theme, breakpoint) {
+  var styles = {};
+  SPACINGS.forEach(function (spacing) {
+    var themeSpacing = theme.spacing(spacing);
+
+    if (themeSpacing === 0) {
+      return;
+    }
+
+    styles["spacing-".concat(breakpoint, "-").concat(spacing)] = {
+      margin: "-".concat(getOffset(themeSpacing, 2)),
+      width: "calc(100% + ".concat(getOffset(themeSpacing), ")"),
+      '& > $item': {
+        padding: getOffset(themeSpacing, 2)
+      }
+    };
   });
-}
+  return styles;
+} // Default CSS values
+// flex: '0 1 auto',
+// flexDirection: 'row',
+// alignItems: 'flex-start',
+// flexWrap: 'nowrap',
+// justifyContent: 'flex-start',
 
-formatSpecifier.prototype = FormatSpecifier.prototype; // instanceof
 
-function FormatSpecifier(specifier) {
-  this.fill = specifier.fill === undefined ? " " : specifier.fill + "";
-  this.align = specifier.align === undefined ? ">" : specifier.align + "";
-  this.sign = specifier.sign === undefined ? "-" : specifier.sign + "";
-  this.symbol = specifier.symbol === undefined ? "" : specifier.symbol + "";
-  this.zero = !!specifier.zero;
-  this.width = specifier.width === undefined ? undefined : +specifier.width;
-  this.comma = !!specifier.comma;
-  this.precision = specifier.precision === undefined ? undefined : +specifier.precision;
-  this.trim = !!specifier.trim;
-  this.type = specifier.type === undefined ? "" : specifier.type + "";
-}
+var Grid_styles = function styles(theme) {
+  return _extends({
+    /* Styles applied to the root element */
+    root: {},
 
-FormatSpecifier.prototype.toString = function() {
-  return this.fill
-      + this.align
-      + this.sign
-      + this.symbol
-      + (this.zero ? "0" : "")
-      + (this.width === undefined ? "" : Math.max(1, this.width | 0))
-      + (this.comma ? "," : "")
-      + (this.precision === undefined ? "" : "." + Math.max(0, this.precision | 0))
-      + (this.trim ? "~" : "")
-      + this.type;
+    /* Styles applied to the root element if `container={true}`. */
+    container: {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: '100%'
+    },
+
+    /* Styles applied to the root element if `item={true}`. */
+    item: {
+      boxSizing: 'border-box',
+      margin: '0' // For instance, it's useful when used with a `figure` element.
+
+    },
+
+    /* Styles applied to the root element if `zeroMinWidth={true}`. */
+    zeroMinWidth: {
+      minWidth: 0
+    },
+
+    /* Styles applied to the root element if `direction="column"`. */
+    'direction-xs-column': {
+      flexDirection: 'column'
+    },
+
+    /* Styles applied to the root element if `direction="column-reverse"`. */
+    'direction-xs-column-reverse': {
+      flexDirection: 'column-reverse'
+    },
+
+    /* Styles applied to the root element if `direction="rwo-reverse"`. */
+    'direction-xs-row-reverse': {
+      flexDirection: 'row-reverse'
+    },
+
+    /* Styles applied to the root element if `wrap="nowrap"`. */
+    'wrap-xs-nowrap': {
+      flexWrap: 'nowrap'
+    },
+
+    /* Styles applied to the root element if `wrap="reverse"`. */
+    'wrap-xs-wrap-reverse': {
+      flexWrap: 'wrap-reverse'
+    },
+
+    /* Styles applied to the root element if `alignItems="center"`. */
+    'align-items-xs-center': {
+      alignItems: 'center'
+    },
+
+    /* Styles applied to the root element if `alignItems="flex-start"`. */
+    'align-items-xs-flex-start': {
+      alignItems: 'flex-start'
+    },
+
+    /* Styles applied to the root element if `alignItems="flex-end"`. */
+    'align-items-xs-flex-end': {
+      alignItems: 'flex-end'
+    },
+
+    /* Styles applied to the root element if `alignItems="baseline"`. */
+    'align-items-xs-baseline': {
+      alignItems: 'baseline'
+    },
+
+    /* Styles applied to the root element if `alignContent="center"`. */
+    'align-content-xs-center': {
+      alignContent: 'center'
+    },
+
+    /* Styles applied to the root element if `alignContent="flex-start"`. */
+    'align-content-xs-flex-start': {
+      alignContent: 'flex-start'
+    },
+
+    /* Styles applied to the root element if `alignContent="flex-end"`. */
+    'align-content-xs-flex-end': {
+      alignContent: 'flex-end'
+    },
+
+    /* Styles applied to the root element if `alignContent="space-between"`. */
+    'align-content-xs-space-between': {
+      alignContent: 'space-between'
+    },
+
+    /* Styles applied to the root element if `alignContent="space-around"`. */
+    'align-content-xs-space-around': {
+      alignContent: 'space-around'
+    },
+
+    /* Styles applied to the root element if `justify="center"`. */
+    'justify-xs-center': {
+      justifyContent: 'center'
+    },
+
+    /* Styles applied to the root element if `justify="flex-end"`. */
+    'justify-xs-flex-end': {
+      justifyContent: 'flex-end'
+    },
+
+    /* Styles applied to the root element if `justify="space-between"`. */
+    'justify-xs-space-between': {
+      justifyContent: 'space-between'
+    },
+
+    /* Styles applied to the root element if `justify="space-around"`. */
+    'justify-xs-space-around': {
+      justifyContent: 'space-around'
+    },
+
+    /* Styles applied to the root element if `justify="space-evenly"`. */
+    'justify-xs-space-evenly': {
+      justifyContent: 'space-evenly'
+    }
+  }, generateGutter(theme, 'xs'), {}, theme.breakpoints.keys.reduce(function (accumulator, key) {
+    // Use side effect over immutability for better performance.
+    generateGrid(accumulator, theme, key);
+    return accumulator;
+  }, {}));
 };
+var Grid_Grid = react_default.a.forwardRef(function Grid(props, ref) {
+  var _props$alignContent = props.alignContent,
+      alignContent = _props$alignContent === void 0 ? 'stretch' : _props$alignContent,
+      _props$alignItems = props.alignItems,
+      alignItems = _props$alignItems === void 0 ? 'stretch' : _props$alignItems,
+      classes = props.classes,
+      classNameProp = props.className,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$container = props.container,
+      container = _props$container === void 0 ? false : _props$container,
+      _props$direction = props.direction,
+      direction = _props$direction === void 0 ? 'row' : _props$direction,
+      _props$item = props.item,
+      item = _props$item === void 0 ? false : _props$item,
+      _props$justify = props.justify,
+      justify = _props$justify === void 0 ? 'flex-start' : _props$justify,
+      _props$lg = props.lg,
+      lg = _props$lg === void 0 ? false : _props$lg,
+      _props$md = props.md,
+      md = _props$md === void 0 ? false : _props$md,
+      _props$sm = props.sm,
+      sm = _props$sm === void 0 ? false : _props$sm,
+      _props$spacing = props.spacing,
+      spacing = _props$spacing === void 0 ? 0 : _props$spacing,
+      _props$wrap = props.wrap,
+      wrap = _props$wrap === void 0 ? 'wrap' : _props$wrap,
+      _props$xl = props.xl,
+      xl = _props$xl === void 0 ? false : _props$xl,
+      _props$xs = props.xs,
+      xs = _props$xs === void 0 ? false : _props$xs,
+      _props$zeroMinWidth = props.zeroMinWidth,
+      zeroMinWidth = _props$zeroMinWidth === void 0 ? false : _props$zeroMinWidth,
+      other = _objectWithoutProperties(props, ["alignContent", "alignItems", "classes", "className", "component", "container", "direction", "item", "justify", "lg", "md", "sm", "spacing", "wrap", "xl", "xs", "zeroMinWidth"]);
 
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatTrim.js
-// Trims insignificant zeros, e.g., replaces 1.2000k with 1.2k.
-/* harmony default export */ var formatTrim = (function(s) {
-  out: for (var n = s.length, i = 1, i0 = -1, i1; i < n; ++i) {
-    switch (s[i]) {
-      case ".": i0 = i1 = i; break;
-      case "0": if (i0 === 0) i0 = i; i1 = i; break;
-      default: if (!+s[i]) break out; if (i0 > 0) i0 = 0; break;
-    }
-  }
-  return i0 > 0 ? s.slice(0, i0) + s.slice(i1 + 1) : s;
+  var className = clsx_m(classes.root, classNameProp, container && [classes.container, spacing !== 0 && classes["spacing-xs-".concat(String(spacing))]], item && classes.item, zeroMinWidth && classes.zeroMinWidth, direction !== 'row' && classes["direction-xs-".concat(String(direction))], wrap !== 'wrap' && classes["wrap-xs-".concat(String(wrap))], alignItems !== 'stretch' && classes["align-items-xs-".concat(String(alignItems))], alignContent !== 'stretch' && classes["align-content-xs-".concat(String(alignContent))], justify !== 'flex-start' && classes["justify-xs-".concat(String(justify))], xs !== false && classes["grid-xs-".concat(String(xs))], sm !== false && classes["grid-sm-".concat(String(sm))], md !== false && classes["grid-md-".concat(String(md))], lg !== false && classes["grid-lg-".concat(String(lg))], xl !== false && classes["grid-xl-".concat(String(xl))]);
+  return react_default.a.createElement(Component, _extends({
+    className: className,
+    ref: ref
+  }, other));
 });
+ false ? undefined : void 0;
+var StyledGrid = styles_withStyles(Grid_styles, {
+  name: 'MuiGrid'
+})(Grid_Grid);
 
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatPrefixAuto.js
+if (false) { var requireProp; }
 
-
-var prefixExponent;
-
-/* harmony default export */ var formatPrefixAuto = (function(x, p) {
-  var d = formatDecimal(x, p);
-  if (!d) return x + "";
-  var coefficient = d[0],
-      exponent = d[1],
-      i = exponent - (prefixExponent = Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) + 1,
-      n = coefficient.length;
-  return i === n ? coefficient
-      : i > n ? coefficient + new Array(i - n + 1).join("0")
-      : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i)
-      : "0." + new Array(1 - i).join("0") + formatDecimal(x, Math.max(0, p + i - 1))[0]; // less than 1y!
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatRounded.js
-
-
-/* harmony default export */ var formatRounded = (function(x, p) {
-  var d = formatDecimal(x, p);
-  if (!d) return x + "";
-  var coefficient = d[0],
-      exponent = d[1];
-  return exponent < 0 ? "0." + new Array(-exponent).join("0") + coefficient
-      : coefficient.length > exponent + 1 ? coefficient.slice(0, exponent + 1) + "." + coefficient.slice(exponent + 1)
-      : coefficient + new Array(exponent - coefficient.length + 2).join("0");
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/formatTypes.js
-
-
-
-/* harmony default export */ var formatTypes = ({
-  "%": function(x, p) { return (x * 100).toFixed(p); },
-  "b": function(x) { return Math.round(x).toString(2); },
-  "c": function(x) { return x + ""; },
-  "d": function(x) { return Math.round(x).toString(10); },
-  "e": function(x, p) { return x.toExponential(p); },
-  "f": function(x, p) { return x.toFixed(p); },
-  "g": function(x, p) { return x.toPrecision(p); },
-  "o": function(x) { return Math.round(x).toString(8); },
-  "p": function(x, p) { return formatRounded(x * 100, p); },
-  "r": formatRounded,
-  "s": formatPrefixAuto,
-  "X": function(x) { return Math.round(x).toString(16).toUpperCase(); },
-  "x": function(x) { return Math.round(x).toString(16); }
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/identity.js
-/* harmony default export */ var identity = (function(x) {
-  return x;
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/locale.js
-
-
-
-
-
-
-
-
-
-var locale_map = Array.prototype.map,
-    prefixes = ["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"];
-
-/* harmony default export */ var src_locale = (function(locale) {
-  var group = locale.grouping === undefined || locale.thousands === undefined ? identity : formatGroup(locale_map.call(locale.grouping, Number), locale.thousands + ""),
-      currencyPrefix = locale.currency === undefined ? "" : locale.currency[0] + "",
-      currencySuffix = locale.currency === undefined ? "" : locale.currency[1] + "",
-      decimal = locale.decimal === undefined ? "." : locale.decimal + "",
-      numerals = locale.numerals === undefined ? identity : formatNumerals(locale_map.call(locale.numerals, String)),
-      percent = locale.percent === undefined ? "%" : locale.percent + "",
-      minus = locale.minus === undefined ? "-" : locale.minus + "",
-      nan = locale.nan === undefined ? "NaN" : locale.nan + "";
-
-  function newFormat(specifier) {
-    specifier = formatSpecifier(specifier);
-
-    var fill = specifier.fill,
-        align = specifier.align,
-        sign = specifier.sign,
-        symbol = specifier.symbol,
-        zero = specifier.zero,
-        width = specifier.width,
-        comma = specifier.comma,
-        precision = specifier.precision,
-        trim = specifier.trim,
-        type = specifier.type;
-
-    // The "n" type is an alias for ",g".
-    if (type === "n") comma = true, type = "g";
-
-    // The "" type, and any invalid type, is an alias for ".12~g".
-    else if (!formatTypes[type]) precision === undefined && (precision = 12), trim = true, type = "g";
-
-    // If zero fill is specified, padding goes after sign and before digits.
-    if (zero || (fill === "0" && align === "=")) zero = true, fill = "0", align = "=";
-
-    // Compute the prefix and suffix.
-    // For SI-prefix, the suffix is lazily computed.
-    var prefix = symbol === "$" ? currencyPrefix : symbol === "#" && /[boxX]/.test(type) ? "0" + type.toLowerCase() : "",
-        suffix = symbol === "$" ? currencySuffix : /[%p]/.test(type) ? percent : "";
-
-    // What format function should we use?
-    // Is this an integer type?
-    // Can this type generate exponential notation?
-    var formatType = formatTypes[type],
-        maybeSuffix = /[defgprs%]/.test(type);
-
-    // Set the default precision if not specified,
-    // or clamp the specified precision to the supported range.
-    // For significant precision, it must be in [1, 21].
-    // For fixed precision, it must be in [0, 20].
-    precision = precision === undefined ? 6
-        : /[gprs]/.test(type) ? Math.max(1, Math.min(21, precision))
-        : Math.max(0, Math.min(20, precision));
-
-    function format(value) {
-      var valuePrefix = prefix,
-          valueSuffix = suffix,
-          i, n, c;
-
-      if (type === "c") {
-        valueSuffix = formatType(value) + valueSuffix;
-        value = "";
-      } else {
-        value = +value;
-
-        // Perform the initial formatting.
-        var valueNegative = value < 0;
-        value = isNaN(value) ? nan : formatType(Math.abs(value), precision);
-
-        // Trim insignificant zeros.
-        if (trim) value = formatTrim(value);
-
-        // If a negative value rounds to zero during formatting, treat as positive.
-        if (valueNegative && +value === 0) valueNegative = false;
-
-        // Compute the prefix and suffix.
-        valuePrefix = (valueNegative ? (sign === "(" ? sign : minus) : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
-
-        valueSuffix = (type === "s" ? prefixes[8 + prefixExponent / 3] : "") + valueSuffix + (valueNegative && sign === "(" ? ")" : "");
-
-        // Break the formatted value into the integer “value” part that can be
-        // grouped, and fractional or exponential “suffix” part that is not.
-        if (maybeSuffix) {
-          i = -1, n = value.length;
-          while (++i < n) {
-            if (c = value.charCodeAt(i), 48 > c || c > 57) {
-              valueSuffix = (c === 46 ? decimal + value.slice(i + 1) : value.slice(i)) + valueSuffix;
-              value = value.slice(0, i);
-              break;
-            }
-          }
-        }
-      }
-
-      // If the fill character is not "0", grouping is applied before padding.
-      if (comma && !zero) value = group(value, Infinity);
-
-      // Compute the padding.
-      var length = valuePrefix.length + value.length + valueSuffix.length,
-          padding = length < width ? new Array(width - length + 1).join(fill) : "";
-
-      // If the fill character is "0", grouping is applied after padding.
-      if (comma && zero) value = group(padding + value, padding.length ? width - valueSuffix.length : Infinity), padding = "";
-
-      // Reconstruct the final output based on the desired alignment.
-      switch (align) {
-        case "<": value = valuePrefix + value + valueSuffix + padding; break;
-        case "=": value = valuePrefix + padding + value + valueSuffix; break;
-        case "^": value = padding.slice(0, length = padding.length >> 1) + valuePrefix + value + valueSuffix + padding.slice(length); break;
-        default: value = padding + valuePrefix + value + valueSuffix; break;
-      }
-
-      return numerals(value);
-    }
-
-    format.toString = function() {
-      return specifier + "";
-    };
-
-    return format;
-  }
-
-  function formatPrefix(specifier, value) {
-    var f = newFormat((specifier = formatSpecifier(specifier), specifier.type = "f", specifier)),
-        e = Math.max(-8, Math.min(8, Math.floor(src_exponent(value) / 3))) * 3,
-        k = Math.pow(10, -e),
-        prefix = prefixes[8 + e / 3];
-    return function(value) {
-      return f(k * value) + prefix;
-    };
-  }
-
-  return {
-    format: newFormat,
-    formatPrefix: formatPrefix
-  };
-});
-
-// CONCATENATED MODULE: ./node_modules/d3-format/src/defaultLocale.js
-
-
-var defaultLocale_locale;
-var defaultLocale_format;
-var defaultLocale_formatPrefix;
-
-defaultLocale({
-  decimal: ".",
-  thousands: ",",
-  grouping: [3],
-  currency: ["$", ""],
-  minus: "-"
-});
-
-function defaultLocale(definition) {
-  defaultLocale_locale = src_locale(definition);
-  defaultLocale_format = defaultLocale_locale.format;
-  defaultLocale_formatPrefix = defaultLocale_locale.formatPrefix;
-  return defaultLocale_locale;
-}
-
+/* harmony default export */ var esm_Grid_Grid = (StyledGrid);
 // CONCATENATED MODULE: ./src/components/QdtKpi/QdtKpi.jsx
 /**
  * @name QdtKpi
  * @param {object} layout - Qlik object layout
- * @param {string} format - Optional format string, based on https://docs.python.org/3/library/string.html#format-specification-mini-language
+ * @param {object} options - Options
+ * @param {string} options.variant - 'contained' OR 'outlined'
+ * @param {string} options.color - 'primary' OR 'secondary'
+ * @param {string} options.fontSize - Any font size value, ie '4rem', '10px', 24 etc
 */
+
 
 
 
@@ -10571,28 +14068,49 @@ function defaultLocale(definition) {
 
 var QdtKpi_QdtKpi = function QdtKpi(_ref) {
   var layout = _ref.layout,
-      specifier = _ref.format;
+      optionsProp = _ref.options;
+  var defaultOptions = {
+    variant: 'contained',
+    color: 'primary',
+    fontSize: '4rem'
+  };
+  var options = cjs_default()(defaultOptions, optionsProp);
+  var variant = options.variant,
+      color = options.color,
+      fontSize = options.fontSize;
+  var KPIGrid = styles_withStyles(function (theme) {
+    return {
+      root: {
+        color: variant === 'contained' ? theme.palette[color].contrastText : theme.palette[color].main,
+        backgroundColor: variant === 'contained' ? theme.palette[color].main : false,
+        border: '1px solid',
+        borderColor: theme.palette[color].light,
+        fontSize: fontSize,
+        height: '100%'
+      }
+    };
+  })(esm_Grid_Grid);
   var value = Object(react["useMemo"])(function () {
-    return defaultLocale_format(specifier)(layout.qMatrix[0][0].qText);
-  }, [layout, specifier]);
-  return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
+    return layout.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+  }, [layout]);
+  return react_default.a.createElement(KPIGrid, {
+    container: true,
+    direction: "row",
+    justify: "center",
+    alignItems: "center",
     className: "qdt-kpi"
-  }, value));
+  }, value);
 };
 
 QdtKpi_QdtKpi.propTypes = {
   layout: prop_types_default.a.object,
-  format: prop_types_default.a.string
+  options: prop_types_default.a.object
 };
 QdtKpi_QdtKpi.defaultProps = {
   layout: null,
-  format: ''
+  options: {}
 };
 /* harmony default export */ var components_QdtKpi_QdtKpi = (QdtKpi_QdtKpi);
-// EXTERNAL MODULE: ./node_modules/deepmerge/dist/cjs.js
-var cjs = __webpack_require__(6);
-var cjs_default = /*#__PURE__*/__webpack_require__.n(cjs);
-
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(2);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
@@ -11136,7 +14654,7 @@ function _slicedToArray(arr, i) {
   return Object(arrayWithHoles["a" /* default */])(arr) || _iterableToArrayLimit(arr, i) || Object(nonIterableRest["a" /* default */])();
 }
 // EXTERNAL MODULE: ./node_modules/react-is/index.js
-var react_is = __webpack_require__(8);
+var react_is = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/utils/debounce.js
 // Corresponds to 10 frames at 60 Hz.
@@ -12035,7 +15553,7 @@ var Modal_Modal = react_default.a.forwardRef(function Modal(inProps, ref) {
  false ? undefined : void 0;
 /* harmony default export */ var esm_Modal_Modal = (Modal_Modal);
 // CONCATENATED MODULE: ./node_modules/react-transition-group/esm/config.js
-/* harmony default export */ var config = ({
+/* harmony default export */ var esm_config = ({
   disabled: false
 });
 // CONCATENATED MODULE: ./node_modules/react-transition-group/esm/Transition.js
@@ -12289,7 +15807,7 @@ function (_React$Component) {
     var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
     // if we are mounting and running this it means appear _must_ be set
 
-    if (!mounting && !enter || config.disabled) {
+    if (!mounting && !enter || esm_config.disabled) {
       this.safeSetState({
         status: ENTERED
       }, function () {
@@ -12320,7 +15838,7 @@ function (_React$Component) {
     var exit = this.props.exit;
     var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
 
-    if (!exit || config.disabled) {
+    if (!exit || esm_config.disabled) {
       this.safeSetState({
         status: EXITED
       }, function () {
@@ -16056,7 +19574,7 @@ var LinearProgress_LinearProgress = react_default.a.forwardRef(function LinearPr
   name: 'MuiLinearProgress'
 })(LinearProgress_LinearProgress));
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
-var v4 = __webpack_require__(25);
+var v4 = __webpack_require__(28);
 var v4_default = /*#__PURE__*/__webpack_require__.n(v4);
 
 // CONCATENATED MODULE: ./src/components/QdtSelect/QdtSelect.jsx
@@ -16159,11 +19677,11 @@ QdtSelect_QdtSelect.defaultProps = {
 };
 /* harmony default export */ var components_QdtSelect_QdtSelect = (QdtSelect_QdtSelect);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
-var slicedToArray = __webpack_require__(7);
+var slicedToArray = __webpack_require__(9);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/toConsumableArray.js
-var toConsumableArray = __webpack_require__(5);
+var toConsumableArray = __webpack_require__(8);
 var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
 
 // CONCATENATED MODULE: ./node_modules/react-table/es/utils.js
@@ -18874,7 +22392,7 @@ es_ReactTable.defaultProps = es_defaultProps;
 /* harmony default export */ var es = (es_ReactTable);
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC5qcyJdLCJuYW1lcyI6WyJSZWFjdCIsIkNvbXBvbmVudCIsImNsYXNzbmFtZXMiLCJfIiwiTGlmZWN5Y2xlIiwiTWV0aG9kcyIsImRlZmF1bHRQcm9wcyIsInByb3BUeXBlcyIsIlJlYWN0VGFibGVEZWZhdWx0cyIsIlJlYWN0VGFibGUiLCJwcm9wcyIsImdldFJlc29sdmVkU3RhdGUiLCJiaW5kIiwiZ2V0RGF0YU1vZGVsIiwiZ2V0U29ydGVkRGF0YSIsImZpcmVGZXRjaERhdGEiLCJnZXRQcm9wT3JTdGF0ZSIsImdldFN0YXRlT3JQcm9wIiwiZmlsdGVyRGF0YSIsInNvcnREYXRhIiwiZ2V0TWluUm93cyIsIm9uUGFnZUNoYW5nZSIsIm9uUGFnZVNpemVDaGFuZ2UiLCJzb3J0Q29sdW1uIiwiZmlsdGVyQ29sdW1uIiwicmVzaXplQ29sdW1uU3RhcnQiLCJyZXNpemVDb2x1bW5FbmQiLCJyZXNpemVDb2x1bW5Nb3ZpbmciLCJyZXNvbHZlZFN0YXRlIiwiY2hpbGRyZW4iLCJjbGFzc05hbWUiLCJzdHlsZSIsImdldFByb3BzIiwiZ2V0VGFibGVQcm9wcyIsImdldFRoZWFkR3JvdXBQcm9wcyIsImdldFRoZWFkR3JvdXBUclByb3BzIiwiZ2V0VGhlYWRHcm91cFRoUHJvcHMiLCJnZXRUaGVhZFByb3BzIiwiZ2V0VGhlYWRUclByb3BzIiwiZ2V0VGhlYWRUaFByb3BzIiwiZ2V0VGhlYWRGaWx0ZXJQcm9wcyIsImdldFRoZWFkRmlsdGVyVHJQcm9wcyIsImdldFRoZWFkRmlsdGVyVGhQcm9wcyIsImdldFRib2R5UHJvcHMiLCJnZXRUckdyb3VwUHJvcHMiLCJnZXRUclByb3BzIiwiZ2V0VGRQcm9wcyIsImdldFRmb290UHJvcHMiLCJnZXRUZm9vdFRyUHJvcHMiLCJnZXRUZm9vdFRkUHJvcHMiLCJnZXRQYWdpbmF0aW9uUHJvcHMiLCJnZXRMb2FkaW5nUHJvcHMiLCJnZXROb0RhdGFQcm9wcyIsImdldFJlc2l6ZXJQcm9wcyIsInNob3dQYWdpbmF0aW9uIiwic2hvd1BhZ2luYXRpb25Ub3AiLCJzaG93UGFnaW5hdGlvbkJvdHRvbSIsIm1hbnVhbCIsImxvYWRpbmdUZXh0Iiwibm9EYXRhVGV4dCIsInNvcnRhYmxlIiwibXVsdGlTb3J0IiwicmVzaXphYmxlIiwiZmlsdGVyYWJsZSIsInBpdm90SURLZXkiLCJwaXZvdFZhbEtleSIsInBpdm90QnkiLCJzdWJSb3dzS2V5IiwiYWdncmVnYXRlZEtleSIsIm9yaWdpbmFsS2V5IiwiaW5kZXhLZXkiLCJncm91cGVkQnlQaXZvdEtleSIsImxvYWRpbmciLCJwYWdlU2l6ZSIsInBhZ2UiLCJzb3J0ZWQiLCJmaWx0ZXJlZCIsInJlc2l6ZWQiLCJleHBhbmRlZCIsInBhZ2VzIiwib25FeHBhbmRlZENoYW5nZSIsIlRhYmxlQ29tcG9uZW50IiwiVGhlYWRDb21wb25lbnQiLCJUYm9keUNvbXBvbmVudCIsIlRyR3JvdXBDb21wb25lbnQiLCJUckNvbXBvbmVudCIsIlRoQ29tcG9uZW50IiwiVGRDb21wb25lbnQiLCJUZm9vdENvbXBvbmVudCIsIlBhZ2luYXRpb25Db21wb25lbnQiLCJMb2FkaW5nQ29tcG9uZW50IiwiU3ViQ29tcG9uZW50IiwiTm9EYXRhQ29tcG9uZW50IiwiUmVzaXplckNvbXBvbmVudCIsIkV4cGFuZGVyQ29tcG9uZW50IiwiUGl2b3RWYWx1ZUNvbXBvbmVudCIsIlBpdm90Q29tcG9uZW50IiwiQWdncmVnYXRlZENvbXBvbmVudCIsIkZpbHRlckNvbXBvbmVudCIsIlBhZFJvd0NvbXBvbmVudCIsInJlc29sdmVkRGF0YSIsImFsbFZpc2libGVDb2x1bW5zIiwiaGVhZGVyR3JvdXBzIiwiaGFzSGVhZGVyR3JvdXBzIiwic29ydGVkRGF0YSIsImN1cnJlbnRseVJlc2l6aW5nIiwic3RhcnRSb3ciLCJlbmRSb3ciLCJwYWdlUm93cyIsInNsaWNlIiwibWluUm93cyIsInBhZFJvd3MiLCJyYW5nZSIsIk1hdGgiLCJtYXgiLCJsZW5ndGgiLCJoYXNDb2x1bW5Gb290ZXIiLCJzb21lIiwiZCIsIkZvb3RlciIsImhhc0ZpbHRlcnMiLCJyZWN1cnNlUm93c1ZpZXdJbmRleCIsInJvd3MiLCJwYXRoIiwiaW5kZXgiLCJtYXAiLCJyb3ciLCJpIiwicm93V2l0aFZpZXdJbmRleCIsIl92aWV3SW5kZXgiLCJuZXdQYXRoIiwiY29uY2F0IiwiZ2V0IiwiY2FuUHJldmlvdXMiLCJjYW5OZXh0Iiwicm93TWluV2lkdGgiLCJzdW0iLCJyZXNpemVkQ29sdW1uIiwiZmluZCIsIngiLCJpZCIsImdldEZpcnN0RGVmaW5lZCIsInZhbHVlIiwid2lkdGgiLCJtaW5XaWR0aCIsInJvd0luZGV4IiwiZmluYWxTdGF0ZSIsInJvb3RQcm9wcyIsInNwbGl0UHJvcHMiLCJ1bmRlZmluZWQiLCJ0YWJsZVByb3BzIiwidEJvZHlQcm9wcyIsImxvYWRpbmdQcm9wcyIsIm5vRGF0YVByb3BzIiwibWFrZUhlYWRlckdyb3VwIiwiY29sdW1uIiwicmVzaXplZFZhbHVlIiwiY29sIiwiZmxleCIsImNvbHVtbnMiLCJtYXhXaWR0aCIsInRoZWFkR3JvdXBUaFByb3BzIiwiY29sdW1uSGVhZGVyUHJvcHMiLCJnZXRIZWFkZXJQcm9wcyIsImNsYXNzZXMiLCJoZWFkZXJDbGFzc05hbWUiLCJzdHlsZXMiLCJoZWFkZXJTdHlsZSIsInJlc3QiLCJmbGV4U3R5bGVzIiwiYXNQeCIsIm5vcm1hbGl6ZUNvbXBvbmVudCIsIkhlYWRlciIsImRhdGEiLCJtYWtlSGVhZGVyR3JvdXBzIiwidGhlYWRHcm91cFByb3BzIiwidGhlYWRHcm91cFRyUHJvcHMiLCJtYWtlSGVhZGVyIiwicmVzaXplZENvbCIsInNvcnQiLCJzaG93IiwidGhlYWRUaFByb3BzIiwiaXNSZXNpemFibGUiLCJyZXNpemVyIiwiZSIsImlzU29ydGFibGUiLCJkZXNjIiwiaW5jbHVkZXMiLCJzaGlmdEtleSIsIm1ha2VIZWFkZXJzIiwidGhlYWRQcm9wcyIsInRoZWFkVHJQcm9wcyIsIm1ha2VGaWx0ZXIiLCJ0aGVhZEZpbHRlclRoUHJvcHMiLCJmaWx0ZXIiLCJSZXNvbHZlZEZpbHRlckNvbXBvbmVudCIsIkZpbHRlciIsImlzRmlsdGVyYWJsZSIsIm9uQ2hhbmdlIiwibWFrZUZpbHRlcnMiLCJ0aGVhZEZpbHRlclByb3BzIiwidGhlYWRGaWx0ZXJUclByb3BzIiwibWFrZVBhZ2VSb3ciLCJyb3dJbmZvIiwib3JpZ2luYWwiLCJ2aWV3SW5kZXgiLCJsZXZlbCIsIm5lc3RpbmdQYXRoIiwiYWdncmVnYXRlZCIsImdyb3VwZWRCeVBpdm90Iiwic3ViUm93cyIsImlzRXhwYW5kZWQiLCJ0ckdyb3VwUHJvcHMiLCJ0clByb3BzIiwiam9pbiIsImkyIiwidGRQcm9wcyIsImNvbHVtblByb3BzIiwiY2VsbEluZm8iLCJwaXZvdGVkIiwiZXhwYW5kZXIiLCJ1c2VPbkV4cGFuZGVyQ2xpY2siLCJpc0JyYW5jaCIsImlzUHJldmlldyIsIm9uRXhwYW5kZXJDbGljayIsIm5ld0V4cGFuZGVkIiwiY2xvbmUiLCJzZXQiLCJzZXRTdGF0ZVdpdGhEYXRhIiwicmVzb2x2ZWRDZWxsIiwiQ2VsbCIsIlJlc29sdmVkQWdncmVnYXRlZENvbXBvbmVudCIsIkFnZ3JlZ2F0ZWQiLCJhZ2dyZWdhdGUiLCJSZXNvbHZlZEV4cGFuZGVyQ29tcG9uZW50IiwiRXhwYW5kZXIiLCJSZXNvbHZlZFBpdm90VmFsdWVDb21wb25lbnQiLCJQaXZvdFZhbHVlIiwiRGVmYXVsdFJlc29sdmVkUGl2b3RDb21wb25lbnQiLCJSZXNvbHZlZFBpdm90Q29tcG9uZW50IiwiUGl2b3QiLCJleHBhbmRhYmxlIiwiaW5kZXhPZiIsInJlc29sdmVkT25FeHBhbmRlckNsaWNrIiwiaW50ZXJhY3Rpb25Qcm9wcyIsIm9uQ2xpY2siLCJtYWtlUGFkQ29sdW1uIiwibWFrZVBhZFJvdyIsIm1ha2VDb2x1bW5Gb290ZXIiLCJ0Rm9vdFRkUHJvcHMiLCJjb2x1bW5Gb290ZXJQcm9wcyIsImdldEZvb3RlclByb3BzIiwibWFrZUNvbHVtbkZvb3RlcnMiLCJ0Rm9vdFByb3BzIiwidEZvb3RUclByb3BzIiwibWFrZVBhZ2luYXRpb24i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OlsiaW1wb3J0IFJlYWN0LCB7IENvbXBvbmVudCB9IGZyb20gJ3JlYWN0J1xuaW1wb3J0IGNsYXNzbmFtZXMgZnJvbSAnY2xhc3NuYW1lcydcbi8vXG5pbXBvcnQgXyBmcm9tICcuL3V0aWxzJ1xuaW1wb3J0IExpZmVjeWNsZSBmcm9tICcuL2xpZmVjeWNsZSdcbmltcG9ydCBNZXRob2RzIGZyb20gJy4vbWV0aG9kcydcbmltcG9ydCBkZWZhdWx0UHJvcHMgZnJvbSAnLi9kZWZhdWx0UHJvcHMnXG5pbXBvcnQgcHJvcFR5cGVzIGZyb20gJy4vcHJvcFR5cGVzJ1xuXG5leHBvcnQgY29uc3QgUmVhY3RUYWJsZURlZmF1bHRzID0gZGVmYXVsdFByb3BzXG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFJlYWN0VGFibGUgZXh0ZW5kcyBNZXRob2RzKExpZmVjeWNsZShDb21wb25lbnQpKSB7XG4gIHN0YXRpYyBwcm9wVHlwZXMgPSBwcm9wVHlwZXNcbiAgc3RhdGljIGRlZmF1bHRQcm9wcyA9IGRlZmF1bHRQcm9wc1xuXG4gIGNvbnN0cnVjdG9yIChwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKVxuXG4gICAgdGhpcy5nZXRSZXNvbHZlZFN0YXRlID0gdGhpcy5nZXRSZXNvbHZlZFN0YXRlLmJpbmQodGhpcylcbiAgICB0aGlzLmdldERhdGFNb2RlbCA9IHRoaXMuZ2V0RGF0YU1vZGVsLmJpbmQodGhpcylcbiAgICB0aGlzLmdldFNvcnRlZERhdGEgPSB0aGlzLmdldFNvcnRlZERhdGEuYmluZCh0aGlzKVxuICAgIHRoaXMuZmlyZUZldGNoRGF0YSA9IHRoaXMuZmlyZUZldGNoRGF0YS5iaW5kKHRoaXMpXG4gICAgdGhpcy5nZXRQcm9wT3JTdGF0ZSA9IHRoaXMuZ2V0UHJvcE9yU3RhdGUuYmluZCh0aGlzKVxuICAgIHRoaXMuZ2V0U3RhdGVPclByb3AgPSB0aGlzLmdldFN0YXRlT3JQcm9wLmJpbmQodGhpcylcbiAgICB0aGlzLmZpbHRlckRhdGEgPSB0aGlzLmZpbHRlckRhdGEuYmluZCh0aGlzKVxuICAgIHRoaXMuc29ydERhdGEgPSB0aGlzLnNvcnREYXRhLmJpbmQodGhpcylcbiAgICB0aGlzLmdldE1pblJvd3MgPSB0aGlzLmdldE1pblJvd3MuYmluZCh0aGlzKVxuICAgIHRoaXMub25QYWdlQ2hhbmdlID0gdGhpcy5vblBhZ2VDaGFuZ2UuYmluZCh0aGlzKVxuICAgIHRoaXMub25QYWdlU2l6ZUNoYW5nZSA9IHRoaXMub25QYWdlU2l6ZUNoYW5nZS5iaW5kKHRoaXMpXG4gICAgdGhpcy5zb3J0Q29sdW1uID0gdGhpcy5zb3J0Q29sdW1uLmJpbmQodGhpcylcbiAgICB0aGlzLmZpbHRlckNvbHVtbiA9IHRoaXMuZmlsdGVyQ29sdW1uLmJpbmQodGhpcylcbiAgICB0aGlzLnJlc2l6ZUNvbHVtblN0YXJ0ID0gdGhpcy5yZXNpemVDb2x1bW5TdGFydC5iaW5kKHRoaXMpXG4gICAgdGhpcy5yZXNpemVDb2x1bW5FbmQgPSB0aGlzLnJlc2l6ZUNvbHVtbkVuZC5iaW5kKHRoaXMpXG4gICAgdGhpcy5yZXNpemVDb2x1bW5Nb3ZpbmcgPSB0aGlzLnJlc2l6ZUNvbHVtbk1vdmluZy5iaW5kKHRoaXMpXG4gIH1cblxuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHJlc29sdmVkU3RhdGUgPSB0aGlzLmdldFJlc29sdmVkU3RhdGUoKVxuICAgIGNvbnN0IHtcbiAgICAgIGNoaWxkcmVuLFxuICAgICAgY2xhc3NOYW1lLFxuICAgICAgc3R5bGUsXG4gICAgICBnZXRQcm9wcyxcbiAgICAgIGdldFRhYmxlUHJvcHMsXG4gICAgICBnZXRUaGVhZEdyb3VwUHJvcHMsXG4gICAgICBnZXRUaGVhZEdyb3VwVHJQcm9wcyxcbiAgICAgIGdldFRoZWFkR3JvdXBUaFByb3BzLFxuICAgICAgZ2V0VGhlYWRQcm9wcyxcbiAgICAgIGdldFRoZWFkVHJQcm9wcyxcbiAgICAgIGdldFRoZWFkVGhQcm9wcyxcbiAgICAgIGdldFRoZWFkRmlsdGVyUHJvcHMsXG4gICAgICBnZXRUaGVhZEZpbHRlclRyUHJvcHMsXG4gICAgICBnZXRUaGVhZEZpbHRlclRoUHJvcHMsXG4gICAgICBnZXRUYm9keVByb3BzLFxuICAgICAgZ2V0VHJHcm91cFByb3BzLFxuICAgICAgZ2V0VHJQcm9wcyxcbiAgICAgIGdldFRkUHJvcHMsXG4gICAgICBnZXRUZm9vdFByb3BzLFxuICAgICAgZ2V0VGZvb3RUclByb3BzLFxuICAgICAgZ2V0VGZvb3RUZFByb3BzLFxuICAgICAgZ2V0UGFnaW5hdGlvblByb3BzLFxuICAgICAgZ2V0TG9hZGluZ1Byb3BzLFxuICAgICAgZ2V0Tm9EYXRhUHJvcHMsXG4gICAgICBnZXRSZXNpemVyUHJvcHMsXG4gICAgICBzaG93UGFnaW5hdGlvbixcbiAgICAgIHNob3dQYWdpbmF0aW9uVG9wLFxuICAgICAgc2hvd1BhZ2luYXRpb25Cb3R0b20sXG4gICAgICBtYW51YWwsXG4gICAgICBsb2FkaW5nVGV4dCxcbiAgICAgIG5vRGF0YVRleHQsXG4gICAgICBzb3J0YWJsZSxcbiAgICAgIG11bHRpU29ydCxcbiAgICAgIHJlc2l6YWJsZSxcbiAgICAgIGZpbHRlcmFibGUsXG4gICAgICAvLyBQaXZvdGluZyBTdGF0ZVxuICAgICAgcGl2b3RJREtleSxcbiAgICAgIHBpdm90VmFsS2V5LFxuICAgICAgcGl2b3RCeSxcbiAgICAgIHN1YlJvd3NLZXksXG4gICAgICBhZ2dyZWdhdGVkS2V5LFxuICAgICAgb3JpZ2luYWxLZXksXG4gICAgICBpbmRleEtleSxcbiAgICAgIGdyb3VwZWRCeVBpdm90S2V5LFxuICAgICAgLy8gU3RhdGVcbiAgICAgIGxvYWRpbmcsXG4gICAgICBwYWdlU2l6ZSxcbiAgICAgIHBhZ2UsXG4gICAgICBzb3J0ZWQsXG4gICAgICBmaWx0ZXJlZCxcbiAgICAgIHJlc2l6ZWQsXG4gICAgICBleHBhbmRlZCxcbiAgICAgIHBhZ2VzLFxuICAgICAgb25FeHBhbmRlZENoYW5nZSxcbiAgICAgIC8vIENvbXBvbmVudHNcbiAgICAgIFRhYmxlQ29tcG9uZW50LFxuICAgICAgVGhlYWRDb21wb25lbnQsXG4gICAgICBUYm9keUNvbXBvbmVudCxcbiAgICAgIFRyR3JvdXBDb21wb25lbnQsXG4gICAgICBUckNvbXBvbmVudCxcbiAgICAgIFRoQ29tcG9uZW50LFxuICAgICAgVGRDb21wb25lbnQsXG4gICAgICBUZm9vdENvbXBvbmVudCxcbiAgICAgIFBhZ2luYXRpb25Db21wb25lbnQsXG4gICAgICBMb2FkaW5nQ29tcG9uZW50LFxuICAgICAgU3ViQ29tcG9uZW50LFxuICAgICAgTm9EYXRhQ29tcG9uZW50LFxuICAgICAgUmVzaXplckNvbXBvbmVudCxcbiAgICAgIEV4cGFuZGVyQ29tcG9uZW50LFxuICAgICAgUGl2b3RWYWx1ZUNvbXBvbmVudCxcbiAgICAgIFBpdm90Q29tcG9uZW50LFxuICAgICAgQWdncmVnYXRlZENvbXBvbmVudCxcbiAgICAgIEZpbHRlckNvbXBvbmVudCxcbiAgICAgIFBhZFJvd0NvbXBvbmVudCxcbiAgICAgIC8vIERhdGEgbW9kZWxcbiAgICAgIHJlc29sdmVkRGF0YSxcbiAgICAgIGFsbFZpc2libGVDb2x1bW5zLFxuICAgICAgaGVhZGVyR3JvdXBzLFxuICAgICAgaGFzSGVhZGVyR3JvdXBzLFxuICAgICAgLy8gU29ydGVkIERhdGFcbiAgICAgIHNvcnRlZERhdGEsXG4gICAgICBjdXJyZW50bHlSZXNpemluZyxcbiAgICB9ID0gcmVzb2x2ZWRTdGF0ZVxuXG4gICAgLy8gUGFnaW5hdGlvblxuICAgIGNvbnN0IHN0YXJ0Um93ID0gcGFnZVNpemUgKiBwYWdlXG4gICAgY29uc3QgZW5kUm93ID0gc3RhcnRSb3cgKyBwYWdlU2l6ZVxuICAgIGxldCBwYWdlUm93cyA9IG1hbnVhbCA/IHJlc29sdmVkRGF0YSA6IHNvcnRlZERhdGEuc2xpY2Uoc3RhcnRSb3csIGVuZFJvdylcbiAgICBjb25zdCBtaW5Sb3dzID0gdGhpcy5nZXRNaW5Sb3dzKClcbiAgICBjb25zdCBwYWRSb3dzID0gXy5yYW5nZShNYXRoLm1heChtaW5Sb3dzIC0gcGFnZVJvd3MubGVuZ3RoLCAwKSlcblxuICAgIGNvbnN0IGhhc0NvbHVtbkZvb3RlciA9IGFsbFZpc2libGVDb2x1bW5zLnNvbWUoZCA9PiBkLkZvb3RlcilcbiAgICBjb25zdCBoYXNGaWx0ZXJzID0gZmlsdGVyYWJsZSB8fCBhbGxWaXNpYmxlQ29sdW1ucy5zb21lKGQgPT4gZC5maWx0ZXJhYmxlKVxuXG4gICAgY29uc3QgcmVjdXJzZVJvd3NWaWV3SW5kZXggPSAocm93cywgcGF0aCA9IFtdLCBpbmRleCA9IC0xKSA9PiBbXG4gICAgICByb3dzLm1hcCgocm93LCBpKSA9PiB7XG4gICAgICAgIGluZGV4ICs9IDFcbiAgICAgICAgY29uc3Qgcm93V2l0aFZpZXdJbmRleCA9IHtcbiAgICAgICAgICAuLi5yb3csXG4gICAgICAgICAgX3ZpZXdJbmRleDogaW5kZXgsXG4gICAgICAgIH1cbiAgICAgICAgY29uc3QgbmV3UGF0aCA9IHBhdGguY29uY2F0KFtpXSlcbiAgICAgICAgaWYgKHJvd1dpdGhWaWV3SW5kZXhbc3ViUm93c0tleV0gJiYgXy5nZXQoZXhwYW5kZWQsIG5ld1BhdGgpKSB7XG4gICAgICAgICAgW3Jvd1dpdGhWaWV3SW5kZXhbc3ViUm93c0tleV0sIGluZGV4XSA9IHJlY3Vyc2VSb3dzVmlld0luZGV4KFxuICAgICAgICAgICAgcm93V2l0aFZpZXdJbmRleFtzdWJSb3dzS2V5XSxcbiAgICAgICAgICAgIG5ld1BhdGgsXG4gICAgICAgICAgICBpbmRleFxuICAgICAgICAgIClcbiAgICAgICAgfVxuICAgICAgICByZXR1cm4gcm93V2l0aFZpZXdJbmRleFxuICAgICAgfSksXG4gICAgICBpbmRleCxcbiAgICBdO1xuICAgIFtwYWdlUm93c10gPSByZWN1cnNlUm93c1ZpZXdJbmRleChwYWdlUm93cylcblxuICAgIGNvbnN0IGNhblByZXZpb3VzID0gcGFnZSA+IDBcbiAgICBjb25zdCBjYW5OZXh0ID0gcGFnZSArIDEgPCBwYWdlc1xuXG4gICAgY29uc3Qgcm93TWluV2lkdGggPSBfLnN1bShcbiAgICAgIGFsbFZpc2libGVDb2x1bW5zLm1hcChkID0+IHtcbiAgICAgICAgY29uc3QgcmVzaXplZENvbHVtbiA9IHJlc2l6ZWQuZmluZCh4ID0+IHguaWQgPT09IGQuaWQpIHx8IHt9XG4gICAgICAgIHJldHVybiBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sdW1uLnZhbHVlLCBkLndpZHRoLCBkLm1pbldpZHRoKVxuICAgICAgfSlcbiAgICApXG5cbiAgICBsZXQgcm93SW5kZXggPSAtMVxuXG4gICAgY29uc3QgZmluYWxTdGF0ZSA9IHtcbiAgICAgIC4uLnJlc29sdmVkU3RhdGUsXG4gICAgICBzdGFydFJvdyxcbiAgICAgIGVuZFJvdyxcbiAgICAgIHBhZ2VSb3dzLFxuICAgICAgbWluUm93cyxcbiAgICAgIHBhZFJvd3MsXG4gICAgICBoYXNDb2x1bW5Gb290ZXIsXG4gICAgICBjYW5QcmV2aW91cyxcbiAgICAgIGNhbk5leHQsXG4gICAgICByb3dNaW5XaWR0aCxcbiAgICB9XG5cbiAgICBjb25zdCByb290UHJvcHMgPSBfLnNwbGl0UHJvcHMoZ2V0UHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpKVxuICAgIGNvbnN0IHRhYmxlUHJvcHMgPSBfLnNwbGl0UHJvcHMoZ2V0VGFibGVQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcykpXG4gICAgY29uc3QgdEJvZHlQcm9wcyA9IF8uc3BsaXRQcm9wcyhnZXRUYm9keVByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgdW5kZWZpbmVkLCB0aGlzKSlcbiAgICBjb25zdCBsb2FkaW5nUHJvcHMgPSBnZXRMb2FkaW5nUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgY29uc3Qgbm9EYXRhUHJvcHMgPSBnZXROb0RhdGFQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcylcblxuICAgIC8vIFZpc3VhbCBDb21wb25lbnRzXG5cbiAgICBjb25zdCBtYWtlSGVhZGVyR3JvdXAgPSAoY29sdW1uLCBpKSA9PiB7XG4gICAgICBjb25zdCByZXNpemVkVmFsdWUgPSBjb2wgPT4gKHJlc2l6ZWQuZmluZCh4ID0+IHguaWQgPT09IGNvbC5pZCkgfHwge30pLnZhbHVlXG4gICAgICBjb25zdCBmbGV4ID0gXy5zdW0oXG4gICAgICAgIGNvbHVtbi5jb2x1bW5zLm1hcChjb2wgPT4gKGNvbC53aWR0aCB8fCByZXNpemVkVmFsdWUoY29sKSA/IDAgOiBjb2wubWluV2lkdGgpKVxuICAgICAgKVxuICAgICAgY29uc3Qgd2lkdGggPSBfLnN1bShcbiAgICAgICAgY29sdW1uLmNvbHVtbnMubWFwKGNvbCA9PiBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkVmFsdWUoY29sKSwgY29sLndpZHRoLCBjb2wubWluV2lkdGgpKVxuICAgICAgKVxuICAgICAgY29uc3QgbWF4V2lkdGggPSBfLnN1bShcbiAgICAgICAgY29sdW1uLmNvbHVtbnMubWFwKGNvbCA9PiBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkVmFsdWUoY29sKSwgY29sLndpZHRoLCBjb2wubWF4V2lkdGgpKVxuICAgICAgKVxuXG4gICAgICBjb25zdCB0aGVhZEdyb3VwVGhQcm9wcyA9IF8uc3BsaXRQcm9wcyhcbiAgICAgICAgZ2V0VGhlYWRHcm91cFRoUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCBjb2x1bW4sIHRoaXMpXG4gICAgICApXG4gICAgICBjb25zdCBjb2x1bW5IZWFkZXJQcm9wcyA9IF8uc3BsaXRQcm9wcyhcbiAgICAgICAgY29sdW1uLmdldEhlYWRlclByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgY29sdW1uLCB0aGlzKVxuICAgICAgKVxuXG4gICAgICBjb25zdCBjbGFzc2VzID0gW1xuICAgICAgICBjb2x1bW4uaGVhZGVyQ2xhc3NOYW1lLFxuICAgICAgICB0aGVhZEdyb3VwVGhQcm9wcy5jbGFzc05hbWUsXG4gICAgICAgIGNvbHVtbkhlYWRlclByb3BzLmNsYXNzTmFtZSxcbiAgICAgIF1cblxuICAgICAgY29uc3Qgc3R5bGVzID0ge1xuICAgICAgICAuLi5jb2x1bW4uaGVhZGVyU3R5bGUsXG4gICAgICAgIC4uLnRoZWFkR3JvdXBUaFByb3BzLnN0eWxlLFxuICAgICAgICAuLi5jb2x1bW5IZWFkZXJQcm9wcy5zdHlsZSxcbiAgICAgIH1cblxuICAgICAgY29uc3QgcmVzdCA9IHtcbiAgICAgICAgLi4udGhlYWRHcm91cFRoUHJvcHMucmVzdCxcbiAgICAgICAgLi4uY29sdW1uSGVhZGVyUHJvcHMucmVzdCxcbiAgICAgIH1cblxuICAgICAgY29uc3QgZmxleFN0eWxlcyA9IHtcbiAgICAgICAgZmxleDogYCR7ZmxleH0gMCBhdXRvYCxcbiAgICAgICAgd2lkdGg6IF8uYXNQeCh3aWR0aCksXG4gICAgICAgIG1heFdpZHRoOiBfLmFzUHgobWF4V2lkdGgpLFxuICAgICAgfVxuXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGhDb21wb25lbnRcbiAgICAgICAgICBrZXk9e2Ake2l9LSR7Y29sdW1uLmlkfWB9XG4gICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKGNsYXNzZXMpfVxuICAgICAgICAgIHN0eWxlPXt7XG4gICAgICAgICAgICAuLi5zdHlsZXMsXG4gICAgICAgICAgICAuLi5mbGV4U3R5bGVzLFxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLnJlc3R9XG4gICAgICAgID5cbiAgICAgICAgICB7Xy5ub3JtYWxpemVDb21wb25lbnQoY29sdW1uLkhlYWRlciwge1xuICAgICAgICAgICAgZGF0YTogc29ydGVkRGF0YSxcbiAgICAgICAgICAgIGNvbHVtbixcbiAgICAgICAgICB9KX1cbiAgICAgICAgPC9UaENvbXBvbmVudD5cbiAgICAgIClcbiAgICB9XG5cbiAgICBjb25zdCBtYWtlSGVhZGVyR3JvdXBzID0gKCkgPT4ge1xuICAgICAgY29uc3QgdGhlYWRHcm91cFByb3BzID0gXy5zcGxpdFByb3BzKFxuICAgICAgICBnZXRUaGVhZEdyb3VwUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgICApXG4gICAgICBjb25zdCB0aGVhZEdyb3VwVHJQcm9wcyA9IF8uc3BsaXRQcm9wcyhcbiAgICAgICAgZ2V0VGhlYWRHcm91cFRyUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgICApXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGhlYWRDb21wb25lbnRcbiAgICAgICAgICBjbGFzc05hbWU9e2NsYXNzbmFtZXMoJy1oZWFkZXJHcm91cHMnLCB0aGVhZEdyb3VwUHJvcHMuY2xhc3NOYW1lKX1cbiAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgLi4udGhlYWRHcm91cFByb3BzLnN0eWxlLFxuICAgICAgICAgICAgbWluV2lkdGg6IGAke3Jvd01pbldpZHRofXB4YCxcbiAgICAgICAgICB9fVxuICAgICAgICAgIHsuLi50aGVhZEdyb3VwUHJvcHMucmVzdH1cbiAgICAgICAgPlxuICAgICAgICAgIDxUckNvbXBvbmVudFxuICAgICAgICAgICAgY2xhc3NOYW1lPXt0aGVhZEdyb3VwVHJQcm9wcy5jbGFzc05hbWV9XG4gICAgICAgICAgICBzdHlsZT17dGhlYWRHcm91cFRyUHJvcHMuc3R5bGV9XG4gICAgICAgICAgICB7Li4udGhlYWRHcm91cFRyUHJvcHMucmVzdH1cbiAgICAgICAgICA+XG4gICAgICAgICAgICB7aGVhZGVyR3JvdXBzLm1hcChtYWtlSGVhZGVyR3JvdXApfVxuICAgICAgICAgIDwvVHJDb21wb25lbnQ+XG4gICAgICAgIDwvVGhlYWRDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZUhlYWRlciA9IChjb2x1bW4sIGkpID0+IHtcbiAgICAgIGNvbnN0IHJlc2l6ZWRDb2wgPSByZXNpemVkLmZpbmQoeCA9PiB4LmlkID09PSBjb2x1bW4uaWQpIHx8IHt9XG4gICAgICBjb25zdCBzb3J0ID0gc29ydGVkLmZpbmQoZCA9PiBkLmlkID09PSBjb2x1bW4uaWQpXG4gICAgICBjb25zdCBzaG93ID0gdHlwZW9mIGNvbHVtbi5zaG93ID09PSAnZnVuY3Rpb24nID8gY29sdW1uLnNob3coKSA6IGNvbHVtbi5zaG93XG4gICAgICBjb25zdCB3aWR0aCA9IF8uZ2V0Rmlyc3REZWZpbmVkKHJlc2l6ZWRDb2wudmFsdWUsIGNvbHVtbi53aWR0aCwgY29sdW1uLm1pbldpZHRoKVxuICAgICAgY29uc3QgbWF4V2lkdGggPSBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sLnZhbHVlLCBjb2x1bW4ud2lkdGgsIGNvbHVtbi5tYXhXaWR0aClcbiAgICAgIGNvbnN0IHRoZWFkVGhQcm9wcyA9IF8uc3BsaXRQcm9wcyhnZXRUaGVhZFRoUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCBjb2x1bW4sIHRoaXMpKVxuICAgICAgY29uc3QgY29sdW1uSGVhZGVyUHJvcHMgPSBfLnNwbGl0UHJvcHMoXG4gICAgICAgIGNvbHVtbi5nZXRIZWFkZXJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIGNvbHVtbiwgdGhpcylcbiAgICAgIClcblxuICAgICAgY29uc3QgY2xhc3NlcyA9IFtjb2x1bW4uaGVhZGVyQ2xhc3NOYW1lLCB0aGVhZFRoUHJvcHMuY2xhc3NOYW1lLCBjb2x1bW5IZWFkZXJQcm9wcy5jbGFzc05hbWVdXG5cbiAgICAgIGNvbnN0IHN0eWxlcyA9IHtcbiAgICAgICAgLi4uY29sdW1uLmhlYWRlclN0eWxlLFxuICAgICAgICAuLi50aGVhZFRoUHJvcHMuc3R5bGUsXG4gICAgICAgIC4uLmNvbHVtbkhlYWRlclByb3BzLnN0eWxlLFxuICAgICAgfVxuXG4gICAgICBjb25zdCByZXN0ID0ge1xuICAgICAgICAuLi50aGVhZFRoUHJvcHMucmVzdCxcbiAgICAgICAgLi4uY29sdW1uSGVhZGVyUHJvcHMucmVzdCxcbiAgICAgIH1cblxuICAgICAgY29uc3QgaXNSZXNpemFibGUgPSBfLmdldEZpcnN0RGVmaW5lZChjb2x1bW4ucmVzaXphYmxlLCByZXNpemFibGUsIGZhbHNlKVxuICAgICAgY29uc3QgcmVzaXplciA9IGlzUmVzaXphYmxlID8gKFxuICAgICAgICA8UmVzaXplckNvbXBvbmVudFxuICAgICAgICAgIG9uTW91c2VEb3duPXtlID0+IHRoaXMucmVzaXplQ29sdW1uU3RhcnQoZSwgY29sdW1uLCBmYWxzZSl9XG4gICAgICAgICAgb25Ub3VjaFN0YXJ0PXtlID0+IHRoaXMucmVzaXplQ29sdW1uU3RhcnQoZSwgY29sdW1uLCB0cnVlKX1cbiAgICAgICAgICB7Li4uZ2V0UmVzaXplclByb3BzKCdmaW5hbFN0YXRlJywgdW5kZWZpbmVkLCBjb2x1bW4sIHRoaXMpfVxuICAgICAgICAvPlxuICAgICAgKSA6IG51bGxcblxuICAgICAgY29uc3QgaXNTb3J0YWJsZSA9IF8uZ2V0Rmlyc3REZWZpbmVkKGNvbHVtbi5zb3J0YWJsZSwgc29ydGFibGUsIGZhbHNlKVxuXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGhDb21wb25lbnRcbiAgICAgICAgICBrZXk9e2Ake2l9LSR7Y29sdW1uLmlkfWB9XG4gICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKFxuICAgICAgICAgICAgY2xhc3NlcyxcbiAgICAgICAgICAgIGlzUmVzaXphYmxlICYmICdydC1yZXNpemFibGUtaGVhZGVyJyxcbiAgICAgICAgICAgIHNvcnQgPyAoc29ydC5kZXNjID8gJy1zb3J0LWRlc2MnIDogJy1zb3J0LWFzYycpIDogJycsXG4gICAgICAgICAgICBpc1NvcnRhYmxlICYmICctY3Vyc29yLXBvaW50ZXInLFxuICAgICAgICAgICAgIXNob3cgJiYgJy1oaWRkZW4nLFxuICAgICAgICAgICAgcGl2b3RCeSAmJiBwaXZvdEJ5LnNsaWNlKDAsIC0xKS5pbmNsdWRlcyhjb2x1bW4uaWQpICYmICdydC1oZWFkZXItcGl2b3QnXG4gICAgICAgICAgKX1cbiAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgLi4uc3R5bGVzLFxuICAgICAgICAgICAgZmxleDogYCR7d2lkdGh9IDAgYXV0b2AsXG4gICAgICAgICAgICB3aWR0aDogXy5hc1B4KHdpZHRoKSxcbiAgICAgICAgICAgIG1heFdpZHRoOiBfLmFzUHgobWF4V2lkdGgpLFxuICAgICAgICAgIH19XG4gICAgICAgICAgdG9nZ2xlU29ydD17ZSA9PiB7XG4gICAgICAgICAgICBpZiAoaXNTb3J0YWJsZSkgdGhpcy5zb3J0Q29sdW1uKGNvbHVtbiwgbXVsdGlTb3J0ID8gZS5zaGlmdEtleSA6IGZhbHNlKVxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLnJlc3R9XG4gICAgICAgID5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17Y2xhc3NuYW1lcyhpc1Jlc2l6YWJsZSAmJiAncnQtcmVzaXphYmxlLWhlYWRlci1jb250ZW50Jyl9PlxuICAgICAgICAgICAge18ubm9ybWFsaXplQ29tcG9uZW50KGNvbHVtbi5IZWFkZXIsIHtcbiAgICAgICAgICAgICAgZGF0YTogc29ydGVkRGF0YSxcbiAgICAgICAgICAgICAgY29sdW1uLFxuICAgICAgICAgICAgfSl9XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAge3Jlc2l6ZXJ9XG4gICAgICAgIDwvVGhDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZUhlYWRlcnMgPSAoKSA9PiB7XG4gICAgICBjb25zdCB0aGVhZFByb3BzID0gXy5zcGxpdFByb3BzKGdldFRoZWFkUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpKVxuICAgICAgY29uc3QgdGhlYWRUclByb3BzID0gXy5zcGxpdFByb3BzKGdldFRoZWFkVHJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcykpXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGhlYWRDb21wb25lbnRcbiAgICAgICAgICBjbGFzc05hbWU9e2NsYXNzbmFtZXMoJy1oZWFkZXInLCB0aGVhZFByb3BzLmNsYXNzTmFtZSl9XG4gICAgICAgICAgc3R5bGU9e3tcbiAgICAgICAgICAgIC4uLnRoZWFkUHJvcHMuc3R5bGUsXG4gICAgICAgICAgICBtaW5XaWR0aDogYCR7cm93TWluV2lkdGh9cHhgLFxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLnRoZWFkUHJvcHMucmVzdH1cbiAgICAgICAgPlxuICAgICAgICAgIDxUckNvbXBvbmVudFxuICAgICAgICAgICAgY2xhc3NOYW1lPXt0aGVhZFRyUHJvcHMuY2xhc3NOYW1lfVxuICAgICAgICAgICAgc3R5bGU9e3RoZWFkVHJQcm9wcy5zdHlsZX1cbiAgICAgICAgICAgIHsuLi50aGVhZFRyUHJvcHMucmVzdH1cbiAgICAgICAgICA+XG4gICAgICAgICAgICB7YWxsVmlzaWJsZUNvbHVtbnMubWFwKG1ha2VIZWFkZXIpfVxuICAgICAgICAgIDwvVHJDb21wb25lbnQ+XG4gICAgICAgIDwvVGhlYWRDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZUZpbHRlciA9IChjb2x1bW4sIGkpID0+IHtcbiAgICAgIGNvbnN0IHJlc2l6ZWRDb2wgPSByZXNpemVkLmZpbmQoeCA9PiB4LmlkID09PSBjb2x1bW4uaWQpIHx8IHt9XG4gICAgICBjb25zdCB3aWR0aCA9IF8uZ2V0Rmlyc3REZWZpbmVkKHJlc2l6ZWRDb2wudmFsdWUsIGNvbHVtbi53aWR0aCwgY29sdW1uLm1pbldpZHRoKVxuICAgICAgY29uc3QgbWF4V2lkdGggPSBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sLnZhbHVlLCBjb2x1bW4ud2lkdGgsIGNvbHVtbi5tYXhXaWR0aClcbiAgICAgIGNvbnN0IHRoZWFkRmlsdGVyVGhQcm9wcyA9IF8uc3BsaXRQcm9wcyhcbiAgICAgICAgZ2V0VGhlYWRGaWx0ZXJUaFByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgY29sdW1uLCB0aGlzKVxuICAgICAgKVxuICAgICAgY29uc3QgY29sdW1uSGVhZGVyUHJvcHMgPSBfLnNwbGl0UHJvcHMoXG4gICAgICAgIGNvbHVtbi5nZXRIZWFkZXJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIGNvbHVtbiwgdGhpcylcbiAgICAgIClcblxuICAgICAgY29uc3QgY2xhc3NlcyA9IFtcbiAgICAgICAgY29sdW1uLmhlYWRlckNsYXNzTmFtZSxcbiAgICAgICAgdGhlYWRGaWx0ZXJUaFByb3BzLmNsYXNzTmFtZSxcbiAgICAgICAgY29sdW1uSGVhZGVyUHJvcHMuY2xhc3NOYW1lLFxuICAgICAgXVxuXG4gICAgICBjb25zdCBzdHlsZXMgPSB7XG4gICAgICAgIC4uLmNvbHVtbi5oZWFkZXJTdHlsZSxcbiAgICAgICAgLi4udGhlYWRGaWx0ZXJUaFByb3BzLnN0eWxlLFxuICAgICAgICAuLi5jb2x1bW5IZWFkZXJQcm9wcy5zdHlsZSxcbiAgICAgIH1cblxuICAgICAgY29uc3QgcmVzdCA9IHtcbiAgICAgICAgLi4udGhlYWRGaWx0ZXJUaFByb3BzLnJlc3QsXG4gICAgICAgIC4uLmNvbHVtbkhlYWRlclByb3BzLnJlc3QsXG4gICAgICB9XG5cbiAgICAgIGNvbnN0IGZpbHRlciA9IGZpbHRlcmVkLmZpbmQoZmlsdGVyID0+IGZpbHRlci5pZCA9PT0gY29sdW1uLmlkKVxuXG4gICAgICBjb25zdCBSZXNvbHZlZEZpbHRlckNvbXBvbmVudCA9IGNvbHVtbi5GaWx0ZXIgfHwgRmlsdGVyQ29tcG9uZW50XG5cbiAgICAgIGNvbnN0IGlzRmlsdGVyYWJsZSA9IF8uZ2V0Rmlyc3REZWZpbmVkKGNvbHVtbi5maWx0ZXJhYmxlLCBmaWx0ZXJhYmxlLCBmYWxzZSlcblxuICAgICAgcmV0dXJuIChcbiAgICAgICAgPFRoQ29tcG9uZW50XG4gICAgICAgICAga2V5PXtgJHtpfS0ke2NvbHVtbi5pZH1gfVxuICAgICAgICAgIGNsYXNzTmFtZT17Y2xhc3NuYW1lcyhjbGFzc2VzKX1cbiAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgLi4uc3R5bGVzLFxuICAgICAgICAgICAgZmxleDogYCR7d2lkdGh9IDAgYXV0b2AsXG4gICAgICAgICAgICB3aWR0aDogXy5hc1B4KHdpZHRoKSxcbiAgICAgICAgICAgIG1heFdpZHRoOiBfLmFzUHgobWF4V2lkdGgpLFxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLnJlc3R9XG4gICAgICAgID5cbiAgICAgICAgICB7aXNGaWx0ZXJhYmxlXG4gICAgICAgICAgICA/IF8ubm9ybWFsaXplQ29tcG9uZW50KFxuICAgICAgICAgICAgICAgIFJlc29sdmVkRmlsdGVyQ29tcG9uZW50LFxuICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgIGNvbHVtbixcbiAgICAgICAgICAgICAgICAgIGZpbHRlcixcbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlOiB2YWx1ZSA9PiB0aGlzLmZpbHRlckNvbHVtbihjb2x1bW4sIHZhbHVlKSxcbiAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgIGRlZmF1bHRQcm9wcy5jb2x1bW4uRmlsdGVyXG4gICAgICAgICAgICAgIClcbiAgICAgICAgICAgIDogbnVsbH1cbiAgICAgICAgPC9UaENvbXBvbmVudD5cbiAgICAgIClcbiAgICB9XG5cbiAgICBjb25zdCBtYWtlRmlsdGVycyA9ICgpID0+IHtcbiAgICAgIGNvbnN0IHRoZWFkRmlsdGVyUHJvcHMgPSBfLnNwbGl0UHJvcHMoXG4gICAgICAgIGdldFRoZWFkRmlsdGVyUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgICApXG4gICAgICBjb25zdCB0aGVhZEZpbHRlclRyUHJvcHMgPSBfLnNwbGl0UHJvcHMoXG4gICAgICAgIGdldFRoZWFkRmlsdGVyVHJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcylcbiAgICAgIClcbiAgICAgIHJldHVybiAoXG4gICAgICAgIDxUaGVhZENvbXBvbmVudFxuICAgICAgICAgIGNsYXNzTmFtZT17Y2xhc3NuYW1lcygnLWZpbHRlcnMnLCB0aGVhZEZpbHRlclByb3BzLmNsYXNzTmFtZSl9XG4gICAgICAgICAgc3R5bGU9e3tcbiAgICAgICAgICAgIC4uLnRoZWFkRmlsdGVyUHJvcHMuc3R5bGUsXG4gICAgICAgICAgICBtaW5XaWR0aDogYCR7cm93TWluV2lkdGh9cHhgLFxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLnRoZWFkRmlsdGVyUHJvcHMucmVzdH1cbiAgICAgICAgPlxuICAgICAgICAgIDxUckNvbXBvbmVudFxuICAgICAgICAgICAgY2xhc3NOYW1lPXt0aGVhZEZpbHRlclRyUHJvcHMuY2xhc3NOYW1lfVxuICAgICAgICAgICAgc3R5bGU9e3RoZWFkRmlsdGVyVHJQcm9wcy5zdHlsZX1cbiAgICAgICAgICAgIHsuLi50aGVhZEZpbHRlclRyUHJvcHMucmVzdH1cbiAgICAgICAgICA+XG4gICAgICAgICAgICB7YWxsVmlzaWJsZUNvbHVtbnMubWFwKG1ha2VGaWx0ZXIpfVxuICAgICAgICAgIDwvVHJDb21wb25lbnQ+XG4gICAgICAgIDwvVGhlYWRDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZVBhZ2VSb3cgPSAocm93LCBpLCBwYXRoID0gW10pID0+IHtcbiAgICAgIGNvbnN0IHJvd0luZm8gPSB7XG4gICAgICAgIG9yaWdpbmFsOiByb3dbb3JpZ2luYWxLZXldLFxuICAgICAgICByb3csXG4gICAgICAgIGluZGV4OiByb3dbaW5kZXhLZXldLFxuICAgICAgICB2aWV3SW5kZXg6IChyb3dJbmRleCArPSAxKSxcbiAgICAgICAgcGFnZVNpemUsXG4gICAgICAgIHBhZ2UsXG4gICAgICAgIGxldmVsOiBwYXRoLmxlbmd0aCxcbiAgICAgICAgbmVzdGluZ1BhdGg6IHBhdGguY29uY2F0KFtpXSksXG4gICAgICAgIGFnZ3JlZ2F0ZWQ6IHJvd1thZ2dyZWdhdGVkS2V5XSxcbiAgICAgICAgZ3JvdXBlZEJ5UGl2b3Q6IHJvd1tncm91cGVkQnlQaXZvdEtleV0sXG4gICAgICAgIHN1YlJvd3M6IHJvd1tzdWJSb3dzS2V5XSxcbiAgICAgIH1cbiAgICAgIGNvbnN0IGlzRXhwYW5kZWQgPSBfLmdldChleHBhbmRlZCwgcm93SW5mby5uZXN0aW5nUGF0aClcbiAgICAgIGNvbnN0IHRyR3JvdXBQcm9wcyA9IGdldFRyR3JvdXBQcm9wcyhmaW5hbFN0YXRlLCByb3dJbmZvLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgICBjb25zdCB0clByb3BzID0gXy5zcGxpdFByb3BzKGdldFRyUHJvcHMoZmluYWxTdGF0ZSwgcm93SW5mbywgdW5kZWZpbmVkLCB0aGlzKSlcbiAgICAgIHJldHVybiAoXG4gICAgICAgIDxUckdyb3VwQ29tcG9uZW50IGtleT17cm93SW5mby5uZXN0aW5nUGF0aC5qb2luKCdfJyl9IHsuLi50ckdyb3VwUHJvcHN9PlxuICAgICAgICAgIDxUckNvbXBvbmVudFxuICAgICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKHRyUHJvcHMuY2xhc3NOYW1lLCByb3cuX3ZpZXdJbmRleCAlIDIgPyAnLWV2ZW4nIDogJy1vZGQnKX1cbiAgICAgICAgICAgIHN0eWxlPXt0clByb3BzLnN0eWxlfVxuICAgICAgICAgICAgey4uLnRyUHJvcHMucmVzdH1cbiAgICAgICAgICA+XG4gICAgICAgICAgICB7YWxsVmlzaWJsZUNvbHVtbnMubWFwKChjb2x1bW4sIGkyKSA9PiB7XG4gICAgICAgICAgICAgIGNvbnN0IHJlc2l6ZWRDb2wgPSByZXNpemVkLmZpbmQoeCA9PiB4LmlkID09PSBjb2x1bW4uaWQpIHx8IHt9XG4gICAgICAgICAgICAgIGNvbnN0IHNob3cgPSB0eXBlb2YgY29sdW1uLnNob3cgPT09ICdmdW5jdGlvbicgPyBjb2x1bW4uc2hvdygpIDogY29sdW1uLnNob3dcbiAgICAgICAgICAgICAgY29uc3Qgd2lkdGggPSBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sLnZhbHVlLCBjb2x1bW4ud2lkdGgsIGNvbHVtbi5taW5XaWR0aClcbiAgICAgICAgICAgICAgY29uc3QgbWF4V2lkdGggPSBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sLnZhbHVlLCBjb2x1bW4ud2lkdGgsIGNvbHVtbi5tYXhXaWR0aClcbiAgICAgICAgICAgICAgY29uc3QgdGRQcm9wcyA9IF8uc3BsaXRQcm9wcyhnZXRUZFByb3BzKGZpbmFsU3RhdGUsIHJvd0luZm8sIGNvbHVtbiwgdGhpcykpXG4gICAgICAgICAgICAgIGNvbnN0IGNvbHVtblByb3BzID0gXy5zcGxpdFByb3BzKGNvbHVtbi5nZXRQcm9wcyhmaW5hbFN0YXRlLCByb3dJbmZvLCBjb2x1bW4sIHRoaXMpKVxuXG4gICAgICAgICAgICAgIGNvbnN0IGNsYXNzZXMgPSBbdGRQcm9wcy5jbGFzc05hbWUsIGNvbHVtbi5jbGFzc05hbWUsIGNvbHVtblByb3BzLmNsYXNzTmFtZV1cblxuICAgICAgICAgICAgICBjb25zdCBzdHlsZXMgPSB7XG4gICAgICAgICAgICAgICAgLi4udGRQcm9wcy5zdHlsZSxcbiAgICAgICAgICAgICAgICAuLi5jb2x1bW4uc3R5bGUsXG4gICAgICAgICAgICAgICAgLi4uY29sdW1uUHJvcHMuc3R5bGUsXG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICBjb25zdCBjZWxsSW5mbyA9IHtcbiAgICAgICAgICAgICAgICAuLi5yb3dJbmZvLFxuICAgICAgICAgICAgICAgIGlzRXhwYW5kZWQsXG4gICAgICAgICAgICAgICAgY29sdW1uOiB7IC4uLmNvbHVtbiB9LFxuICAgICAgICAgICAgICAgIHZhbHVlOiByb3dJbmZvLnJvd1tjb2x1bW4uaWRdLFxuICAgICAgICAgICAgICAgIHBpdm90ZWQ6IGNvbHVtbi5waXZvdGVkLFxuICAgICAgICAgICAgICAgIGV4cGFuZGVyOiBjb2x1bW4uZXhwYW5kZXIsXG4gICAgICAgICAgICAgICAgcmVzaXplZCxcbiAgICAgICAgICAgICAgICBzaG93LFxuICAgICAgICAgICAgICAgIHdpZHRoLFxuICAgICAgICAgICAgICAgIG1heFdpZHRoLFxuICAgICAgICAgICAgICAgIHRkUHJvcHMsXG4gICAgICAgICAgICAgICAgY29sdW1uUHJvcHMsXG4gICAgICAgICAgICAgICAgY2xhc3NlcyxcbiAgICAgICAgICAgICAgICBzdHlsZXMsXG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICBjb25zdCB2YWx1ZSA9IGNlbGxJbmZvLnZhbHVlXG5cbiAgICAgICAgICAgICAgbGV0IHVzZU9uRXhwYW5kZXJDbGlja1xuICAgICAgICAgICAgICBsZXQgaXNCcmFuY2hcbiAgICAgICAgICAgICAgbGV0IGlzUHJldmlld1xuXG4gICAgICAgICAgICAgIGNvbnN0IG9uRXhwYW5kZXJDbGljayA9IGUgPT4ge1xuICAgICAgICAgICAgICAgIGxldCBuZXdFeHBhbmRlZCA9IF8uY2xvbmUoZXhwYW5kZWQpXG4gICAgICAgICAgICAgICAgaWYgKGlzRXhwYW5kZWQpIHtcbiAgICAgICAgICAgICAgICAgIG5ld0V4cGFuZGVkID0gXy5zZXQobmV3RXhwYW5kZWQsIGNlbGxJbmZvLm5lc3RpbmdQYXRoLCBmYWxzZSlcbiAgICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICAgbmV3RXhwYW5kZWQgPSBfLnNldChuZXdFeHBhbmRlZCwgY2VsbEluZm8ubmVzdGluZ1BhdGgsIHt9KVxuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIHJldHVybiB0aGlzLnNldFN0YXRlV2l0aERhdGEoXG4gICAgICAgICAgICAgICAgICB7XG4gICAgICAgICAgICAgICAgICAgIGV4cGFuZGVkOiBuZXdFeHBhbmRlZCxcbiAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgICAoKSA9PlxuICAgICAgICAgICAgICAgICAgICBvbkV4cGFuZGVkQ2hhbmdlICYmXG4gICAgICAgICAgICAgICAgICAgIG9uRXhwYW5kZWRDaGFuZ2UobmV3RXhwYW5kZWQsIGNlbGxJbmZvLm5lc3RpbmdQYXRoLCBlLCBjZWxsSW5mbylcbiAgICAgICAgICAgICAgICApXG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAvLyBEZWZhdWx0IHRvIGEgc3RhbmRhcmQgY2VsbFxuICAgICAgICAgICAgICBsZXQgcmVzb2x2ZWRDZWxsID0gXy5ub3JtYWxpemVDb21wb25lbnQoY29sdW1uLkNlbGwsIGNlbGxJbmZvLCB2YWx1ZSlcblxuICAgICAgICAgICAgICAvLyBSZXNvbHZlIFJlbmRlcmVyc1xuICAgICAgICAgICAgICBjb25zdCBSZXNvbHZlZEFnZ3JlZ2F0ZWRDb21wb25lbnQgPVxuICAgICAgICAgICAgICAgIGNvbHVtbi5BZ2dyZWdhdGVkIHx8ICghY29sdW1uLmFnZ3JlZ2F0ZSA/IEFnZ3JlZ2F0ZWRDb21wb25lbnQgOiBjb2x1bW4uQ2VsbClcbiAgICAgICAgICAgICAgY29uc3QgUmVzb2x2ZWRFeHBhbmRlckNvbXBvbmVudCA9IGNvbHVtbi5FeHBhbmRlciB8fCBFeHBhbmRlckNvbXBvbmVudFxuICAgICAgICAgICAgICBjb25zdCBSZXNvbHZlZFBpdm90VmFsdWVDb21wb25lbnQgPSBjb2x1bW4uUGl2b3RWYWx1ZSB8fCBQaXZvdFZhbHVlQ29tcG9uZW50XG4gICAgICAgICAgICAgIGNvbnN0IERlZmF1bHRSZXNvbHZlZFBpdm90Q29tcG9uZW50ID1cbiAgICAgICAgICAgICAgICBQaXZvdENvbXBvbmVudCB8fFxuICAgICAgICAgICAgICAgIChwcm9wcyA9PiAoXG4gICAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgICA8UmVzb2x2ZWRFeHBhbmRlckNvbXBvbmVudCB7Li4ucHJvcHN9IC8+XG4gICAgICAgICAgICAgICAgICAgIDxSZXNvbHZlZFBpdm90VmFsdWVDb21wb25lbnQgey4uLnByb3BzfSAvPlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgKSlcbiAgICAgICAgICAgICAgY29uc3QgUmVzb2x2ZWRQaXZvdENvbXBvbmVudCA9IGNvbHVtbi5QaXZvdCB8fCBEZWZhdWx0UmVzb2x2ZWRQaXZvdENvbXBvbmVudFxuXG4gICAgICAgICAgICAgIC8vIElzIHRoaXMgY2VsbCBleHBhbmRhYmxlP1xuICAgICAgICAgICAgICBpZiAoY2VsbEluZm8ucGl2b3RlZCB8fCBjZWxsSW5mby5leHBhbmRlcikge1xuICAgICAgICAgICAgICAgIC8vIE1ha2UgaXQgZXhwYW5kYWJsZSBieSBkZWZ1YWx0XG4gICAgICAgICAgICAgICAgY2VsbEluZm8uZXhwYW5kYWJsZSA9IHRydWVcbiAgICAgICAgICAgICAgICB1c2VPbkV4cGFuZGVyQ2xpY2sgPSB0cnVlXG4gICAgICAgICAgICAgICAgLy8gSWYgcGl2b3RlZCwgaGFzIG5vIHN1YlJvd3MsIGFuZCBkb2VzIG5vdCBoYXZlIGEgc3ViQ29tcG9uZW50LFxuICAgICAgICAgICAgICAgIC8vIGRvIG5vdCBtYWtlIGV4cGFuZGFibGVcbiAgICAgICAgICAgICAgICBpZiAoY2VsbEluZm8ucGl2b3RlZCAmJiAhY2VsbEluZm8uc3ViUm93cyAmJiAhU3ViQ29tcG9uZW50KSB7XG4gICAgICAgICAgICAgICAgICBjZWxsSW5mby5leHBhbmRhYmxlID0gZmFsc2VcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICBpZiAoY2VsbEluZm8ucGl2b3RlZCkge1xuICAgICAgICAgICAgICAgIC8vIElzIHRoaXMgY29sdW1uIGEgYnJhbmNoP1xuICAgICAgICAgICAgICAgIGlzQnJhbmNoID0gcm93SW5mby5yb3dbcGl2b3RJREtleV0gPT09IGNvbHVtbi5pZCAmJiBjZWxsSW5mby5zdWJSb3dzXG4gICAgICAgICAgICAgICAgLy8gU2hvdWxkIHRoaXMgY29sdW1uIGJlIGJsYW5rP1xuICAgICAgICAgICAgICAgIGlzUHJldmlldyA9XG4gICAgICAgICAgICAgICAgICBwaXZvdEJ5LmluZGV4T2YoY29sdW1uLmlkKSA+IHBpdm90QnkuaW5kZXhPZihyb3dJbmZvLnJvd1twaXZvdElES2V5XSkgJiZcbiAgICAgICAgICAgICAgICAgIGNlbGxJbmZvLnN1YlJvd3NcbiAgICAgICAgICAgICAgICAvLyBQaXZvdCBDZWxsIFJlbmRlciBPdmVycmlkZVxuICAgICAgICAgICAgICAgIGlmIChpc0JyYW5jaCkge1xuICAgICAgICAgICAgICAgICAgLy8gaXNQaXZvdFxuICAgICAgICAgICAgICAgICAgcmVzb2x2ZWRDZWxsID0gXy5ub3JtYWxpemVDb21wb25lbnQoXG4gICAgICAgICAgICAgICAgICAgIFJlc29sdmVkUGl2b3RDb21wb25lbnQsXG4gICAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgICAuLi5jZWxsSW5mbyxcbiAgICAgICAgICAgICAgICAgICAgICB2YWx1ZTogcm93W3Bpdm90VmFsS2V5XSxcbiAgICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICAgICAgcm93W3Bpdm90VmFsS2V5XVxuICAgICAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgICAgIH0gZWxzZSBpZiAoaXNQcmV2aWV3KSB7XG4gICAgICAgICAgICAgICAgICAvLyBTaG93IHRoZSBwaXZvdCBwcmV2aWV3XG4gICAgICAgICAgICAgICAgICByZXNvbHZlZENlbGwgPSBfLm5vcm1hbGl6ZUNvbXBvbmVudChSZXNvbHZlZEFnZ3JlZ2F0ZWRDb21wb25lbnQsIGNlbGxJbmZvLCB2YWx1ZSlcbiAgICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICAgcmVzb2x2ZWRDZWxsID0gbnVsbFxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgfSBlbHNlIGlmIChjZWxsSW5mby5hZ2dyZWdhdGVkKSB7XG4gICAgICAgICAgICAgICAgcmVzb2x2ZWRDZWxsID0gXy5ub3JtYWxpemVDb21wb25lbnQoUmVzb2x2ZWRBZ2dyZWdhdGVkQ29tcG9uZW50LCBjZWxsSW5mbywgdmFsdWUpXG4gICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICBpZiAoY2VsbEluZm8uZXhwYW5kZXIpIHtcbiAgICAgICAgICAgICAgICByZXNvbHZlZENlbGwgPSBfLm5vcm1hbGl6ZUNvbXBvbmVudChcbiAgICAgICAgICAgICAgICAgIFJlc29sdmVkRXhwYW5kZXJDb21wb25lbnQsXG4gICAgICAgICAgICAgICAgICBjZWxsSW5mbyxcbiAgICAgICAgICAgICAgICAgIHJvd1twaXZvdFZhbEtleV1cbiAgICAgICAgICAgICAgICApXG4gICAgICAgICAgICAgICAgaWYgKHBpdm90QnkpIHtcbiAgICAgICAgICAgICAgICAgIGlmIChjZWxsSW5mby5ncm91cGVkQnlQaXZvdCkge1xuICAgICAgICAgICAgICAgICAgICByZXNvbHZlZENlbGwgPSBudWxsXG4gICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICBpZiAoIWNlbGxJbmZvLnN1YlJvd3MgJiYgIVN1YkNvbXBvbmVudCkge1xuICAgICAgICAgICAgICAgICAgICByZXNvbHZlZENlbGwgPSBudWxsXG4gICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgY29uc3QgcmVzb2x2ZWRPbkV4cGFuZGVyQ2xpY2sgPSB1c2VPbkV4cGFuZGVyQ2xpY2sgPyBvbkV4cGFuZGVyQ2xpY2sgOiAoKSA9PiB7fVxuXG4gICAgICAgICAgICAgIC8vIElmIHRoZXJlIGFyZSBtdWx0aXBsZSBvbkNsaWNrIGV2ZW50cywgbWFrZSBzdXJlIHRoZXkgZG9uJ3RcbiAgICAgICAgICAgICAgLy8gb3ZlcnJpZGUgZWFjaG90aGVyLiBUaGlzIHNob3VsZCBtYXliZSBiZSBleHBhbmRlZCB0byBoYW5kbGUgYWxsXG4gICAgICAgICAgICAgIC8vIGZ1bmN0aW9uIGF0dHJpYnV0ZXNcbiAgICAgICAgICAgICAgY29uc3QgaW50ZXJhY3Rpb25Qcm9wcyA9IHtcbiAgICAgICAgICAgICAgICBvbkNsaWNrOiByZXNvbHZlZE9uRXhwYW5kZXJDbGljayxcbiAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgIGlmICh0ZFByb3BzLnJlc3Qub25DbGljaykge1xuICAgICAgICAgICAgICAgIGludGVyYWN0aW9uUHJvcHMub25DbGljayA9IGUgPT4ge1xuICAgICAgICAgICAgICAgICAgdGRQcm9wcy5yZXN0Lm9uQ2xpY2soZSwgKCkgPT4gcmVzb2x2ZWRPbkV4cGFuZGVyQ2xpY2soZSkpXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgaWYgKGNvbHVtblByb3BzLnJlc3Qub25DbGljaykge1xuICAgICAgICAgICAgICAgIGludGVyYWN0aW9uUHJvcHMub25DbGljayA9IGUgPT4ge1xuICAgICAgICAgICAgICAgICAgY29sdW1uUHJvcHMucmVzdC5vbkNsaWNrKGUsICgpID0+IHJlc29sdmVkT25FeHBhbmRlckNsaWNrKGUpKVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgIC8vIFJldHVybiB0aGUgY2VsbFxuICAgICAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgICAgIDxUZENvbXBvbmVudFxuICAgICAgICAgICAgICAgICAgLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIHJlYWN0L25vLWFycmF5LWluZGV4LWtleVxuICAgICAgICAgICAgICAgICAga2V5PXtgJHtpMn0tJHtjb2x1bW4uaWR9YH1cbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17Y2xhc3NuYW1lcyhcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NlcyxcbiAgICAgICAgICAgICAgICAgICAgIWNlbGxJbmZvLmV4cGFuZGFibGUgJiYgIXNob3cgJiYgJ2hpZGRlbicsXG4gICAgICAgICAgICAgICAgICAgIGNlbGxJbmZvLmV4cGFuZGFibGUgJiYgJ3J0LWV4cGFuZGFibGUnLFxuICAgICAgICAgICAgICAgICAgICAoaXNCcmFuY2ggfHwgaXNQcmV2aWV3KSAmJiAncnQtcGl2b3QnXG4gICAgICAgICAgICAgICAgICApfVxuICAgICAgICAgICAgICAgICAgc3R5bGU9e3tcbiAgICAgICAgICAgICAgICAgICAgLi4uc3R5bGVzLFxuICAgICAgICAgICAgICAgICAgICBmbGV4OiBgJHt3aWR0aH0gMCBhdXRvYCxcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IF8uYXNQeCh3aWR0aCksXG4gICAgICAgICAgICAgICAgICAgIG1heFdpZHRoOiBfLmFzUHgobWF4V2lkdGgpLFxuICAgICAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgICAgIHsuLi50ZFByb3BzLnJlc3R9XG4gICAgICAgICAgICAgICAgICB7Li4uY29sdW1uUHJvcHMucmVzdH1cbiAgICAgICAgICAgICAgICAgIHsuLi5pbnRlcmFjdGlvblByb3BzfVxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgIHtyZXNvbHZlZENlbGx9XG4gICAgICAgICAgICAgICAgPC9UZENvbXBvbmVudD5cbiAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgfSl9XG4gICAgICAgICAgPC9UckNvbXBvbmVudD5cbiAgICAgICAgICB7cm93SW5mby5zdWJSb3dzICYmXG4gICAgICAgICAgICBpc0V4cGFuZGVkICYmXG4gICAgICAgICAgICByb3dJbmZvLnN1YlJvd3MubWFwKChkLCBpKSA9PiBtYWtlUGFnZVJvdyhkLCBpLCByb3dJbmZvLm5lc3RpbmdQYXRoKSl9XG4gICAgICAgICAge1N1YkNvbXBvbmVudCAmJlxuICAgICAgICAgICAgIXJvd0luZm8uc3ViUm93cyAmJlxuICAgICAgICAgICAgaXNFeHBhbmRlZCAmJlxuICAgICAgICAgICAgU3ViQ29tcG9uZW50KHJvd0luZm8sICgpID0+IHtcbiAgICAgICAgICAgICAgY29uc3QgbmV3RXhwYW5kZWQgPSBfLmNsb25lKGV4cGFuZGVkKVxuXG4gICAgICAgICAgICAgIF8uc2V0KG5ld0V4cGFuZGVkLCByb3dJbmZvLm5lc3RpbmdQYXRoLCBmYWxzZSlcbiAgICAgICAgICAgIH0pfVxuICAgICAgICA8L1RyR3JvdXBDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZVBhZENvbHVtbiA9IChjb2x1bW4sIGkpID0+IHtcbiAgICAgIGNvbnN0IHJlc2l6ZWRDb2wgPSByZXNpemVkLmZpbmQoeCA9PiB4LmlkID09PSBjb2x1bW4uaWQpIHx8IHt9XG4gICAgICBjb25zdCBzaG93ID0gdHlwZW9mIGNvbHVtbi5zaG93ID09PSAnZnVuY3Rpb24nID8gY29sdW1uLnNob3coKSA6IGNvbHVtbi5zaG93XG4gICAgICBjb25zdCB3aWR0aCA9IF8uZ2V0Rmlyc3REZWZpbmVkKHJlc2l6ZWRDb2wudmFsdWUsIGNvbHVtbi53aWR0aCwgY29sdW1uLm1pbldpZHRoKVxuICAgICAgY29uc3QgZmxleCA9IHdpZHRoXG4gICAgICBjb25zdCBtYXhXaWR0aCA9IF8uZ2V0Rmlyc3REZWZpbmVkKHJlc2l6ZWRDb2wudmFsdWUsIGNvbHVtbi53aWR0aCwgY29sdW1uLm1heFdpZHRoKVxuICAgICAgY29uc3QgdGRQcm9wcyA9IF8uc3BsaXRQcm9wcyhnZXRUZFByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgY29sdW1uLCB0aGlzKSlcbiAgICAgIGNvbnN0IGNvbHVtblByb3BzID0gXy5zcGxpdFByb3BzKGNvbHVtbi5nZXRQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIGNvbHVtbiwgdGhpcykpXG5cbiAgICAgIGNvbnN0IGNsYXNzZXMgPSBbdGRQcm9wcy5jbGFzc05hbWUsIGNvbHVtbi5jbGFzc05hbWUsIGNvbHVtblByb3BzLmNsYXNzTmFtZV1cblxuICAgICAgY29uc3Qgc3R5bGVzID0ge1xuICAgICAgICAuLi50ZFByb3BzLnN0eWxlLFxuICAgICAgICAuLi5jb2x1bW4uc3R5bGUsXG4gICAgICAgIC4uLmNvbHVtblByb3BzLnN0eWxlLFxuICAgICAgfVxuXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGRDb21wb25lbnRcbiAgICAgICAgICBrZXk9e2Ake2l9LSR7Y29sdW1uLmlkfWB9XG4gICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKGNsYXNzZXMsICFzaG93ICYmICdoaWRkZW4nKX1cbiAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgLi4uc3R5bGVzLFxuICAgICAgICAgICAgZmxleDogYCR7ZmxleH0gMCBhdXRvYCxcbiAgICAgICAgICAgIHdpZHRoOiBfLmFzUHgod2lkdGgpLFxuICAgICAgICAgICAgbWF4V2lkdGg6IF8uYXNQeChtYXhXaWR0aCksXG4gICAgICAgICAgfX1cbiAgICAgICAgICB7Li4udGRQcm9wcy5yZXN0fVxuICAgICAgICA+XG4gICAgICAgICAge18ubm9ybWFsaXplQ29tcG9uZW50KFBhZFJvd0NvbXBvbmVudCl9XG4gICAgICAgIDwvVGRDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZVBhZFJvdyA9IChyb3csIGkpID0+IHtcbiAgICAgIGNvbnN0IHRyR3JvdXBQcm9wcyA9IGdldFRyR3JvdXBQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcylcbiAgICAgIGNvbnN0IHRyUHJvcHMgPSBfLnNwbGl0UHJvcHMoZ2V0VHJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcykpXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VHJHcm91cENvbXBvbmVudCBrZXk9e2BwYWQtJHtpfWB9IHsuLi50ckdyb3VwUHJvcHN9PlxuICAgICAgICAgIDxUckNvbXBvbmVudFxuICAgICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKFxuICAgICAgICAgICAgICAnLXBhZFJvdycsXG4gICAgICAgICAgICAgIChwYWdlUm93cy5sZW5ndGggKyBpKSAlIDIgPyAnLWV2ZW4nIDogJy1vZGQnLFxuICAgICAgICAgICAgICB0clByb3BzLmNsYXNzTmFtZVxuICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIHN0eWxlPXt0clByb3BzLnN0eWxlIHx8IHt9fVxuICAgICAgICAgID5cbiAgICAgICAgICAgIHthbGxWaXNpYmxlQ29sdW1ucy5tYXAobWFrZVBhZENvbHVtbil9XG4gICAgICAgICAgPC9UckNvbXBvbmVudD5cbiAgICAgICAgPC9Uckdyb3VwQ29tcG9uZW50PlxuICAgICAgKVxuICAgIH1cblxuICAgIGNvbnN0IG1ha2VDb2x1bW5Gb290ZXIgPSAoY29sdW1uLCBpKSA9PiB7XG4gICAgICBjb25zdCByZXNpemVkQ29sID0gcmVzaXplZC5maW5kKHggPT4geC5pZCA9PT0gY29sdW1uLmlkKSB8fCB7fVxuICAgICAgY29uc3Qgc2hvdyA9IHR5cGVvZiBjb2x1bW4uc2hvdyA9PT0gJ2Z1bmN0aW9uJyA/IGNvbHVtbi5zaG93KCkgOiBjb2x1bW4uc2hvd1xuICAgICAgY29uc3Qgd2lkdGggPSBfLmdldEZpcnN0RGVmaW5lZChyZXNpemVkQ29sLnZhbHVlLCBjb2x1bW4ud2lkdGgsIGNvbHVtbi5taW5XaWR0aClcbiAgICAgIGNvbnN0IG1heFdpZHRoID0gXy5nZXRGaXJzdERlZmluZWQocmVzaXplZENvbC52YWx1ZSwgY29sdW1uLndpZHRoLCBjb2x1bW4ubWF4V2lkdGgpXG4gICAgICBjb25zdCB0Rm9vdFRkUHJvcHMgPSBfLnNwbGl0UHJvcHMoZ2V0VGZvb3RUZFByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgY29sdW1uLCB0aGlzKSlcbiAgICAgIGNvbnN0IGNvbHVtblByb3BzID0gXy5zcGxpdFByb3BzKGNvbHVtbi5nZXRQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIGNvbHVtbiwgdGhpcykpXG4gICAgICBjb25zdCBjb2x1bW5Gb290ZXJQcm9wcyA9IF8uc3BsaXRQcm9wcyhcbiAgICAgICAgY29sdW1uLmdldEZvb3RlclByb3BzKGZpbmFsU3RhdGUsIHVuZGVmaW5lZCwgY29sdW1uLCB0aGlzKVxuICAgICAgKVxuXG4gICAgICBjb25zdCBjbGFzc2VzID0gW1xuICAgICAgICB0Rm9vdFRkUHJvcHMuY2xhc3NOYW1lLFxuICAgICAgICBjb2x1bW4uY2xhc3NOYW1lLFxuICAgICAgICBjb2x1bW5Qcm9wcy5jbGFzc05hbWUsXG4gICAgICAgIGNvbHVtbkZvb3RlclByb3BzLmNsYXNzTmFtZSxcbiAgICAgIF1cblxuICAgICAgY29uc3Qgc3R5bGVzID0ge1xuICAgICAgICAuLi50Rm9vdFRkUHJvcHMuc3R5bGUsXG4gICAgICAgIC4uLmNvbHVtbi5zdHlsZSxcbiAgICAgICAgLi4uY29sdW1uUHJvcHMuc3R5bGUsXG4gICAgICAgIC4uLmNvbHVtbkZvb3RlclByb3BzLnN0eWxlLFxuICAgICAgfVxuXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGRDb21wb25lbnRcbiAgICAgICAgICBrZXk9e2Ake2l9LSR7Y29sdW1uLmlkfWB9XG4gICAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKGNsYXNzZXMsICFzaG93ICYmICdoaWRkZW4nKX1cbiAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgLi4uc3R5bGVzLFxuICAgICAgICAgICAgZmxleDogYCR7d2lkdGh9IDAgYXV0b2AsXG4gICAgICAgICAgICB3aWR0aDogXy5hc1B4KHdpZHRoKSxcbiAgICAgICAgICAgIG1heFdpZHRoOiBfLmFzUHgobWF4V2lkdGgpLFxuICAgICAgICAgIH19XG4gICAgICAgICAgey4uLmNvbHVtblByb3BzLnJlc3R9XG4gICAgICAgICAgey4uLnRGb290VGRQcm9wcy5yZXN0fVxuICAgICAgICAgIHsuLi5jb2x1bW5Gb290ZXJQcm9wcy5yZXN0fVxuICAgICAgICA+XG4gICAgICAgICAge18ubm9ybWFsaXplQ29tcG9uZW50KGNvbHVtbi5Gb290ZXIsIHtcbiAgICAgICAgICAgIGRhdGE6IHNvcnRlZERhdGEsXG4gICAgICAgICAgICBjb2x1bW4sXG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvVGRDb21wb25lbnQ+XG4gICAgICApXG4gICAgfVxuXG4gICAgY29uc3QgbWFrZUNvbHVtbkZvb3RlcnMgPSAoKSA9PiB7XG4gICAgICBjb25zdCB0Rm9vdFByb3BzID0gXy5zcGxpdFByb3BzKGdldFRmb290UHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpKVxuICAgICAgY29uc3QgdEZvb3RUclByb3BzID0gXy5zcGxpdFByb3BzKGdldFRmb290VHJQcm9wcyhmaW5hbFN0YXRlLCB1bmRlZmluZWQsIHVuZGVmaW5lZCwgdGhpcykpXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8VGZvb3RDb21wb25lbnRcbiAgICAgICAgICBjbGFzc05hbWU9e3RGb290UHJvcHMuY2xhc3NOYW1lfVxuICAgICAgICAgIHN0eWxlPXt7XG4gICAgICAgICAgICAuLi50Rm9vdFByb3BzLnN0eWxlLFxuICAgICAgICAgICAgbWluV2lkdGg6IGAke3Jvd01pbldpZHRofXB4YCxcbiAgICAgICAgICB9fVxuICAgICAgICAgIHsuLi50Rm9vdFByb3BzLnJlc3R9XG4gICAgICAgID5cbiAgICAgICAgICA8VHJDb21wb25lbnRcbiAgICAgICAgICAgIGNsYXNzTmFtZT17Y2xhc3NuYW1lcyh0Rm9vdFRyUHJvcHMuY2xhc3NOYW1lKX1cbiAgICAgICAgICAgIHN0eWxlPXt0Rm9vdFRyUHJvcHMuc3R5bGV9XG4gICAgICAgICAgICB7Li4udEZvb3RUclByb3BzLnJlc3R9XG4gICAgICAgICAgPlxuICAgICAgICAgICAge2FsbFZpc2libGVDb2x1bW5zLm1hcChtYWtlQ29sdW1uRm9vdGVyKX1cbiAgICAgICAgICA8L1RyQ29tcG9uZW50PlxuICAgICAgICA8L1Rmb290Q29tcG9uZW50PlxuICAgICAgKVxuICAgIH1cblxuICAgIGNvbnN0IG1ha2VQYWdpbmF0aW9uID0gaXNUb3AgPT4ge1xuICAgICAgY29uc3QgcGFnaW5hdGlvblByb3BzID0gXy5zcGxpdFByb3BzKFxuICAgICAgICBnZXRQYWdpbmF0aW9uUHJvcHMoZmluYWxTdGF0ZSwgdW5kZWZpbmVkLCB1bmRlZmluZWQsIHRoaXMpXG4gICAgICApXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8UGFnaW5hdGlvbkNvbXBvbmVudFxuICAgICAgICAgIHsuLi5yZXNvbHZlZFN0YXRlfVxuICAgICAgICAgIHBhZ2VzPXtwYWdlc31cbiAgICAgICAgICBjYW5QcmV2aW91cz17Y2FuUHJldmlvdXN9XG4gICAgICAgICAgY2FuTmV4dD17Y2FuTmV4dH1cbiAgICAgICAgICBvblBhZ2VDaGFuZ2U9e3RoaXMub25QYWdlQ2hhbmdlfVxuICAgICAgICAgIG9uUGFnZVNpemVDaGFuZ2U9e3RoaXMub25QYWdlU2l6ZUNoYW5nZX1cbiAgICAgICAgICBjbGFzc05hbWU9e3BhZ2luYXRpb25Qcm9wcy5jbGFzc05hbWV9XG4gICAgICAgICAgc3R5bGU9e3BhZ2luYXRpb25Qcm9wcy5zdHlsZX1cbiAgICAgICAgICBpc1RvcD17aXNUb3B9XG4gICAgICAgICAgey4uLnBhZ2luYXRpb25Qcm9wcy5yZXN0fVxuICAgICAgICAvPlxuICAgICAgKVxuICAgIH1cblxuICAgIGNvbnN0IG1ha2VUYWJsZSA9ICgpID0+IChcbiAgICAgIDxkaXZcbiAgICAgICAgY2xhc3NOYW1lPXtjbGFzc25hbWVzKCdSZWFjdFRhYmxlJywgY2xhc3NOYW1lLCByb290UHJvcHMuY2xhc3NOYW1lKX1cbiAgICAgICAgc3R5bGU9e3tcbiAgICAgICAgICAuLi5zdHlsZSxcbiAgICAgICAgICAuLi5yb290UHJvcHMuc3R5bGUsXG4gICAgICAgIH19XG4gICAgICAgIHsuLi5yb290UHJvcHMucmVzdH1cbiAgICAgID5cbiAgICAgICAge3Nob3dQYWdpbmF0aW9uICYmIHNob3dQYWdpbmF0aW9uVG9wID8gKFxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicGFnaW5hdGlvbi10b3BcIj57bWFrZVBhZ2luYXRpb24odHJ1ZSl9PC9kaXY+XG4gICAgICAgICkgOiBudWxsfVxuICAgICAgICA8VGFibGVDb21wb25lbnRcbiAgICAgICAgICBjbGFzc05hbWU9e2NsYXNzbmFtZXModGFibGVQcm9wcy5jbGFzc05hbWUsIGN1cnJlbnRseVJlc2l6aW5nID8gJ3J0LXJlc2l6aW5nJyA6ICcnKX1cbiAgICAgICAgICBzdHlsZT17dGFibGVQcm9wcy5zdHlsZX1cbiAgICAgICAgICB7Li4udGFibGVQcm9wcy5yZXN0fVxuICAgICAgICA+XG4gICAgICAgICAge2hhc0hlYWRlckdyb3VwcyA/IG1ha2VIZWFkZXJHcm91cHMoKSA6IG51bGx9XG4gICAgICAgICAge21ha2VIZWFkZXJzKCl9XG4gICAgICAgICAge2hhc0ZpbHRlcnMgPyBtYWtlRmlsdGVycygpIDogbnVsbH1cbiAgICAgICAgICA8VGJvZHlDb21wb25lbnRcbiAgICAgICAgICAgIGNsYXNzTmFtZT17Y2xhc3NuYW1lcyh0Qm9keVByb3BzLmNsYXNzTmFtZSl9XG4gICAgICAgICAgICBzdHlsZT17e1xuICAgICAgICAgICAgICAuLi50Qm9keVByb3BzLnN0eWxlLFxuICAgICAgICAgICAgICBtaW5XaWR0aDogYCR7cm93TWluV2lkdGh9cHhgLFxuICAgICAgICAgICAgfX1cbiAgICAgICAgICAgIHsuLi50Qm9keVByb3BzLnJlc3R9XG4gICAgICAgICAgPlxuICAgICAgICAgICAge3BhZ2VSb3dzLm1hcCgoZCwgaSkgPT4gbWFrZVBhZ2VSb3coZCwgaSkpfVxuICAgICAgICAgICAge3BhZFJvd3MubWFwKG1ha2VQYWRSb3cpfVxuICAgICAgICAgIDwvVGJvZHlDb21wb25lbnQ+XG4gICAgICAgICAge2hhc0NvbHVtbkZvb3RlciA/IG1ha2VDb2x1bW5Gb290ZXJzKCkgOiBudWxsfVxuICAgICAgICA8L1RhYmxlQ29tcG9uZW50PlxuICAgICAgICB7c2hvd1BhZ2luYXRpb24gJiYgc2hvd1BhZ2luYXRpb25Cb3R0b20gPyAoXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwYWdpbmF0aW9uLWJvdHRvbVwiPnttYWtlUGFnaW5hdGlvbihmYWxzZSl9PC9kaXY+XG4gICAgICAgICkgOiBudWxsfVxuICAgICAgICB7IXBhZ2VSb3dzLmxlbmd0aCAmJiAoXG4gICAgICAgICAgPE5vRGF0YUNvbXBvbmVudCB7Li4ubm9EYXRhUHJvcHN9PntfLm5vcm1hbGl6ZUNvbXBvbmVudChub0RhdGFUZXh0KX08L05vRGF0YUNvbXBvbmVudD5cbiAgICAgICAgKX1cbiAgICAgICAgPExvYWRpbmdDb21wb25lbnQgbG9hZGluZz17bG9hZGluZ30gbG9hZGluZ1RleHQ9e2xvYWRpbmdUZXh0fSB7Li4ubG9hZGluZ1Byb3BzfSAvPlxuICAgICAgPC9kaXY+XG4gICAgKVxuXG4gICAgLy8gY2hpbGRQcm9wcyBhcmUgb3B0aW9uYWxseSBwYXNzZWQgdG8gYSBmdW5jdGlvbi1hcy1hLWNoaWxkXG4gICAgcmV0dXJuIGNoaWxkcmVuID8gY2hpbGRyZW4oZmluYWxTdGF0ZSwgbWFrZVRhYmxlLCB0aGlzKSA6IG1ha2VUYWJsZSgpXG4gIH1cbn1cbiJdfQ==
 // EXTERNAL MODULE: ./node_modules/react-table/react-table.css
-var react_table = __webpack_require__(53);
+var react_table = __webpack_require__(59);
 
 // CONCATENATED MODULE: ./src/components/QdtTable/QdtTable.jsx
 
@@ -20575,7 +24093,7 @@ QdtSlider_QdtSlider.defaultProps = {
 };
 /* harmony default export */ var components_QdtSlider_QdtSlider = (QdtSlider_QdtSlider);
 // EXTERNAL MODULE: ./node_modules/mapbox-gl/dist/mapbox-gl.js
-var mapbox_gl = __webpack_require__(14);
+var mapbox_gl = __webpack_require__(16);
 var mapbox_gl_default = /*#__PURE__*/__webpack_require__.n(mapbox_gl);
 
 // CONCATENATED MODULE: ./src/styles/index.js
@@ -20624,7 +24142,7 @@ function QdtMapBox_objectSpread(target) { for (var i = 1; i < arguments.length; 
 
 
 
-
+ // @TODO REMOVE
 
 var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
   var layout = _ref.layout,
@@ -20646,9 +24164,13 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
     // @TODO - Dock options left, top, bottom or none
     tooltip: null,
     createLayers: true,
-    extraLayers: null
+    extraLayers: null,
+    flyTo: null,
+    handleMapCallback: null
   };
   var options = cjs_default()(defaultOptions, optionsProp);
+  if (optionsProp.center) options.center = optionsProp.center; // Deep merges the array and we have center: (4) [-74.5, 40, -140, 50], which breaks mapbox
+
   var node = Object(react["useRef"])(null); // const [isLoaded, setIsLoaded] = useState(false);
 
   var qData = layout.qHyperCube.qDataPages[0];
@@ -20824,18 +24346,17 @@ var QdtMapBox_QdtMapBox = function QdtMapBox(_ref) {
 
     map.on('load', function () {
       if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
-      // setIsLoaded(true);
+
+      if (options.handleMapCallback) options.handleMapCallback(map); // setIsLoaded(true);
 
       mapData = [].concat(toConsumableArray_default()(mapData), toConsumableArray_default()(qData.qMatrix));
     });
   };
 
   Object(react["useEffect"])(function () {
-    // if (!isLoaded) {
     if (options.createLayers) createPropertyChilderFromQData();
-    mapInit(); // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    mapInit(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]);
   return react_default.a.createElement(react_default.a.Fragment, null, react_default.a.createElement("div", {
     style: {
       display: 'block',
@@ -20922,8 +24443,237 @@ QdtThree_QdtThree.defaultProps = {
   options: {}
 };
 /* harmony default export */ var components_QdtThree_QdtThree = (QdtThree_QdtThree);
+// CONCATENATED MODULE: ./src/hooks/useHyperCube.jsx
+
+
+// import { useEffect } from 'react';
+
+
+var useHyperCube_useHyperCube = function useHyperCube(_ref) {
+  var app = _ref.app,
+      qHyperCubeDefProp = _ref.qHyperCubeDef;
+  var qHyperCubeDefDefault = {
+    qDimensions: [],
+    qMeasures: [],
+    qInitialDataFetch: [{
+      qTop: 0,
+      qWidth: 1,
+      qHeight: 100
+    }],
+    qInterColumnSortOrder: [],
+    qSuppressZero: true,
+    qSuppressMissing: true
+  };
+  var qHyperCubeDef = cjs_default()(qHyperCubeDefDefault, qHyperCubeDefProp);
+  var qProp = {
+    qInfo: {
+      qType: 'HyperCube'
+    },
+    qHyperCubeDef: qHyperCubeDef
+  };
+  var model = null;
+  var layout = null;
+
+  var getLayout =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee() {
+      var qLayout, qDataPages;
+      return regenerator_default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return model.getLayout();
+
+            case 2:
+              qLayout = _context.sent;
+              _context.next = 5;
+              return model.getHyperCubeData('/qHyperCubeDef', [{
+                qTop: 0,
+                qWidth: 4,
+                qHeight: 2500
+              }]);
+
+            case 5:
+              qDataPages = _context.sent;
+              qLayout.qHyperCube.qDataPages = qDataPages;
+              return _context.abrupt("return", qLayout);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getLayout() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var init =
+  /*#__PURE__*/
+  function () {
+    var _ref3 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee2() {
+      return regenerator_default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return app.createSessionObject(qProp);
+
+            case 2:
+              model = _context2.sent;
+              _context2.next = 5;
+              return getLayout();
+
+            case 5:
+              layout = _context2.sent;
+              return _context2.abrupt("return", {
+                layout: layout,
+                model: model
+              });
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function init() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  return init();
+};
+
+/* harmony default export */ var hooks_useHyperCube = (useHyperCube_useHyperCube);
+// CONCATENATED MODULE: ./src/hooks/useListObject.jsx
+
+
+// import { useEffect } from 'react';
+
+
+var useListObject_useListObject = function useListObject(_ref) {
+  var app = _ref.app,
+      qListObjectDefProp = _ref.qListObjectDef;
+  var qListObjectDefDefault = {
+    qDef: [],
+    qInitialDataFetch: [{
+      qTop: 0,
+      qWidth: 1,
+      qHeight: 1000
+    }],
+    qInterColumnSortOrder: [],
+    qSuppressZero: true,
+    qSuppressMissing: true
+  };
+  var qListObjectDef = cjs_default()(qListObjectDefDefault, qListObjectDefProp);
+  var qProp = {
+    qInfo: {
+      qType: 'ListObject'
+    },
+    qListObjectDef: qListObjectDef
+  };
+  var model = null;
+  var layout = null;
+
+  var getLayout =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee() {
+      var qLayout, qDataPages;
+      return regenerator_default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return model.getLayout();
+
+            case 2:
+              qLayout = _context.sent;
+              _context.next = 5;
+              return model.getListObjectData('/qListObjectDef', [{
+                qTop: 0,
+                qWidth: 1,
+                qHeight: 1000
+              }]);
+
+            case 5:
+              qDataPages = _context.sent;
+              qLayout.qListObject.qDataPages = qDataPages;
+              return _context.abrupt("return", qLayout);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getLayout() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var init =
+  /*#__PURE__*/
+  function () {
+    var _ref3 = asyncToGenerator_default()(
+    /*#__PURE__*/
+    regenerator_default.a.mark(function _callee2() {
+      return regenerator_default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return app.createSessionObject(qProp);
+
+            case 2:
+              model = _context2.sent;
+              _context2.next = 5;
+              return getLayout();
+
+            case 5:
+              layout = _context2.sent;
+              return _context2.abrupt("return", {
+                layout: layout,
+                model: model
+              });
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function init() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  return init();
+};
+
+/* harmony default export */ var hooks_useListObject = (useListObject_useListObject);
 // CONCATENATED MODULE: ./src/index.jsx
 /* concated harmony reexport qdtNova */__webpack_require__.d(__webpack_exports__, "qdtNova", function() { return qdtNova; });
+/* concated harmony reexport qdtEnigma */__webpack_require__.d(__webpack_exports__, "qdtEnigma", function() { return src_qdtEnigma; });
+/* concated harmony reexport qdtDoc */__webpack_require__.d(__webpack_exports__, "qdtDoc", function() { return qdtDoc; });
 /* concated harmony reexport QdtButton */__webpack_require__.d(__webpack_exports__, "QdtButton", function() { return components_QdtButton_QdtButton; });
 /* concated harmony reexport QdtKpi */__webpack_require__.d(__webpack_exports__, "QdtKpi", function() { return components_QdtKpi_QdtKpi; });
 /* concated harmony reexport QdtSelect */__webpack_require__.d(__webpack_exports__, "QdtSelect", function() { return components_QdtSelect_QdtSelect; });
@@ -20932,6 +24682,14 @@ QdtThree_QdtThree.defaultProps = {
 /* concated harmony reexport QdtSlider */__webpack_require__.d(__webpack_exports__, "QdtSlider", function() { return components_QdtSlider_QdtSlider; });
 /* concated harmony reexport QdtMapBox */__webpack_require__.d(__webpack_exports__, "QdtMapBox", function() { return QdtMapbox_QdtMapBox; });
 /* concated harmony reexport QdtThree */__webpack_require__.d(__webpack_exports__, "QdtThree", function() { return components_QdtThree_QdtThree; });
+/* concated harmony reexport useHyperCube */__webpack_require__.d(__webpack_exports__, "useHyperCube", function() { return hooks_useHyperCube; });
+/* concated harmony reexport useListObject */__webpack_require__.d(__webpack_exports__, "useListObject", function() { return hooks_useListObject; });
+/* concated harmony reexport QdtTheme */__webpack_require__.d(__webpack_exports__, "QdtTheme", function() { return Themes; });
+
+
+
+
+
 
 
 
