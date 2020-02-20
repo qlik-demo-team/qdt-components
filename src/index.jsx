@@ -8,6 +8,10 @@ export { default as QdtButton } from './components/QdtButton/QdtButton';
 
 export { default as QdtKpi } from './components/QdtKpi/QdtKpi';
 
+export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';
+
+export { default as usePicassoSettings } from './components/QdtPicasso/settings';
+
 export { default as QdtSelect } from './components/QdtSelect/QdtSelect';
 
 export { default as QdtTable } from './components/QdtTable/QdtTable';
