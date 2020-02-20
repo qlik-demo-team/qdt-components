@@ -13,6 +13,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: "[name].js",
+    // `chunkFilename` provides a template for naming code-split bundles (optional)
+    chunkFilename: '[name].bundle.js',
     library: 'QdtComponents',
     libraryTarget: 'umd',
   },

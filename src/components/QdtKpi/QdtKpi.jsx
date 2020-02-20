@@ -1,32 +1,54 @@
 /**
  * @name QdtKpi
  * @param {object} layout - Qlik object layout
- * @param {string} format - Optional format string, based on https://docs.python.org/3/library/string.html#format-specification-mini-language
+ * @param {object} options - Options
+ * @param {string} options.variant - 'contained' OR 'outlined'
+ * @param {string} options.color - 'primary' OR 'secondary'
+ * @param {string} options.fontSize - Any font size value, ie '4rem', '10px', 24 etc
 */
 
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'd3-format';
-import '../../styles/index.scss';
+import merge from 'deepmerge';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 
-const QdtKpi = ({ layout, format: specifier }) => {
-  const value = useMemo(() => format(specifier)(layout.qMatrix[0][0].qText), [layout, specifier]);
+const QdtKpi = ({ layout, options: optionsProp }) => {
+  const defaultOptions = {
+    variant: 'contained',
+    color: 'primary',
+    fontSize: '4rem',
+  };
+  const options = merge(defaultOptions, optionsProp);
+  const { variant, color, fontSize } = options;
+
+  const KPIGrid = withStyles((theme) => ({
+    root: {
+      color: (variant === 'contained') ? theme.palette[color].contrastText : theme.palette[color].main,
+      backgroundColor: (variant === 'contained') ? theme.palette[color].main : false,
+      border: '1px solid',
+      borderColor: theme.palette[color].light,
+      fontSize,
+      height: '100%',
+    },
+  }))(Grid);
+
+  const value = useMemo(() => layout.qHyperCube.qDataPages[0].qMatrix[0][0].qText, [layout]);
+
   return (
-    <>
-      <div className="qdt-kpi">
-        {value}
-      </div>
-    </>
+    <KPIGrid container direction="row" justify="center" alignItems="center" className="qdt-kpi">{value}</KPIGrid>
   );
 };
 
 QdtKpi.propTypes = {
   layout: PropTypes.object,
-  format: PropTypes.string,
+  options: PropTypes.object,
 };
+
 QdtKpi.defaultProps = {
   layout: null,
-  format: '',
+  options: {},
 };
+
 
 export default QdtKpi;
