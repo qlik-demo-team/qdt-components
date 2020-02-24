@@ -24,8 +24,10 @@ export { default as QdtMapBox } from './components/QdtMapbox/QdtMapBox';
 
 export { default as QdtThree } from './components/QdtThree/QdtThree';
 
+export { default as QdtTheme } from './themes/Themes';
+
 export { default as useHyperCube } from './hooks/useHyperCube';
 
 export { default as useListObject } from './hooks/useListObject';
 
-export { default as QdtTheme } from './themes/Themes';
+export { default as useThree } from './hooks/useThree';

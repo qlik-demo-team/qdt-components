@@ -9,7 +9,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import '../../styles/index.scss';
+// import '../../styles/index.scss';
 
 // Sept 2018 BUG. Adds the current www folder in the path
 const urlFix = (url) => {

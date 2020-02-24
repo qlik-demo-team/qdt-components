@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import merge from 'deepmerge';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import '../../styles/index.scss';
+// import '../../styles/index.scss';
 
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 

@@ -2,15 +2,19 @@
 //   useCallback, useRef, useReducer, useEffect,
 // } from 'react';
 import merge from 'deepmerge';
+// import { Scene } from 'three';
+import { TweenMax } from 'gsap';
+import { Scene } from '../../node_modules/three/build/three';
 
-const useThree = ({ layout }) => {
+const useThree = ({ layout, options: optionsProp }) => {
   const defaultOptions = {
   };
-  const options = merge(defaultOptions, optionsProp);
-  console.log(layout, options);
+  const options = (optionsProp) ? merge(defaultOptions, optionsProp) : defaultOptions;
+  const scene = new Scene();
+  console.log(layout, options, scene, TweenMax);
 
   return {
-    layout, options
+    layout, options,
   };
 };
 

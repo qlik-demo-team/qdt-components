@@ -77,11 +77,13 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         include: /\.min\.js$/,
+        cache: true,
+        parallel: true,
         uglifyOptions: {
           warnings: true,
           parse: {},
           compress: false,
-          mangle: true, // Note `mangle.properties` is `false` by default.
+          mangle: false, // Note `mangle.properties` is `false` by default.
           output: null,
           toplevel: false,
           nameCache: null,

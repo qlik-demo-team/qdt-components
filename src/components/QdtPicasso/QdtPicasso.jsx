@@ -8,8 +8,8 @@ import { easeCubic } from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
 // import { domPointLabel, domPointImage } from './picasso/components';
-import '../../styles/index.scss';
-import './style.scss';
+// import '../../styles/index.scss';
+// import './style.scss';
 
 // picasso.component('domPointLabel', domPointLabel);
 // picasso.component('domPointImage', domPointImage);
