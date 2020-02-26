@@ -11,7 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
+import merge from '../../utils/merge';
 
 const QdtThree = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {

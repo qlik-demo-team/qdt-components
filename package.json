@@ -32,6 +32,7 @@
     "d3-format": "^1.4.3",
     "d3-interpolate": "^1.4.0",
     "d3-timer": "^1.0.10",
+    "deep-equal": "^2.0.1",
     "deepmerge": "^4.2.2",
     "enigma.js": "^2.4.0",
     "gsap": "^3.2.0",

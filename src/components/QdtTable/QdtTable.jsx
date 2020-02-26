@@ -9,8 +9,8 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import ReactTable from 'react-table';
+import merge from '../../utils/merge';
 import 'react-table/react-table.css';
 // import '../../styles/index.scss';
 
@@ -23,10 +23,6 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
     style: { height: '100%' },
   };
   const options = merge(defaultOptions, optionsProp);
-
-  useEffect(() => {
-    console.log('component mounted');
-  }, []);
 
   const columns = useMemo(() => (
     layout

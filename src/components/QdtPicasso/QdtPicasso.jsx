@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
 import { easeCubic } from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
+import merge from '../../utils/merge';
 // import { domPointLabel, domPointImage } from './picasso/components';
 // import '../../styles/index.scss';
 // import './style.scss';

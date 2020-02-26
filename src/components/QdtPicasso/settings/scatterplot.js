@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import merge from '../../../utils/merge';
 import {
   axis, tooltip, legend, point, domPointLabel, range,
 } from './components';

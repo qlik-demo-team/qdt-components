@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import merge from '../../../utils/merge';
 import { Light as defaultTheme } from '../../../themes/Themes';
 
 const setting = ({ theme: themeProp }) => {
