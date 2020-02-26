@@ -6,7 +6,7 @@ import { Light as defaultTheme } from './themes/Themes'; //eslint-disable-line
 import QdtComponent from './components/QdtComponent/QdtComponent';
 
 export default ({
-  element, theme: themeProp, component: Component, options, app, properties,
+  element, theme: themeProp, component: Component, options, app, properties, loading: LoadingComponent,
 }) => {
   const theme = (themeProp) ? createMuiTheme(themeProp) : createMuiTheme(defaultTheme);
   ReactDOM.unmountComponentAtNode(element);
@@ -18,6 +18,7 @@ export default ({
         options={options}
         app={app}
         properties={properties}
+        LoadingComponent={LoadingComponent}
       />
     </ThemeProvider>,
     element,
@@ -41,10 +42,22 @@ export default ({
       element,
     );
   };
+  const clear = () => {
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <QdtComponent
+          Component={() => null}
+          options={{}}
+        />
+      </ThemeProvider>,
+      element,
+    );
+  };
   const destroy = () => {
     ReactDOM.unmountComponentAtNode(element);
   };
   return {
-    element, theme, update, destroy,
+    element, theme, update, clear, destroy,
   };
 };

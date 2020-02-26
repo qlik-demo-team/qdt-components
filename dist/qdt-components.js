@@ -21146,15 +21146,18 @@ var QdtComponent_QdtComponent = function QdtComponent(_ref) {
   var Component = _ref.Component,
       options = _ref.options,
       app = _ref.app,
-      properties = _ref.properties;
+      properties = _ref.properties,
+      LoadingComponent = _ref.LoadingComponent;
   var ComponentRef = Object(react["useRef"])(Component);
   var optionsRef = Object(react["useRef"])(options);
   var appRef = Object(react["useRef"])(app);
   var propertiesRef = Object(react["useRef"])(properties);
+  var LoadingComponentRef = Object(react["useRef"])(LoadingComponent);
   ComponentRef.current = Component || ComponentRef.current;
   optionsRef.current = options || optionsRef.current;
   appRef.current = app || appRef.current;
   propertiesRef.current = properties || propertiesRef.current;
+  LoadingComponentRef.current = LoadingComponent || LoadingComponentRef.current;
 
   var _useSessionObject = hooks_useSessionObject({
     app: appRef.current,
@@ -21163,7 +21166,7 @@ var QdtComponent_QdtComponent = function QdtComponent(_ref) {
       model = _useSessionObject.model,
       layout = _useSessionObject.layout;
 
-  return react_default.a.createElement(react_default.a.Fragment, null, (!model || !layout) && react_default.a.createElement("div", null, "Loading..."), model && layout && react_default.a.createElement(ComponentRef.current, {
+  return react_default.a.createElement(react_default.a.Fragment, null, (!model || !layout) && !LoadingComponentRef.current && react_default.a.createElement("div", null, "Loading..."), (!model || !layout) && LoadingComponentRef.current && react_default.a.createElement(LoadingComponentRef.current, null), model && layout && react_default.a.createElement(ComponentRef.current, {
     model: model,
     layout: layout,
     options: optionsRef.current
@@ -21174,11 +21177,13 @@ QdtComponent_QdtComponent.propTypes = {
   Component: prop_types_default.a.func.isRequired,
   options: prop_types_default.a.object,
   app: prop_types_default.a.object.isRequired,
-  properties: prop_types_default.a.object
+  properties: prop_types_default.a.object,
+  LoadingComponent: prop_types_default.a.func
 };
 QdtComponent_QdtComponent.defaultProps = {
   options: {},
-  properties: {}
+  properties: {},
+  LoadingComponent: null
 };
 /* harmony default export */ var components_QdtComponent_QdtComponent = (QdtComponent_QdtComponent);
 // CONCATENATED MODULE: ./src/qdtCompose.jsx
@@ -21199,7 +21204,8 @@ QdtComponent_QdtComponent.defaultProps = {
       Component = _ref.component,
       options = _ref.options,
       app = _ref.app,
-      properties = _ref.properties;
+      properties = _ref.properties,
+      LoadingComponent = _ref.loading;
   var theme = themeProp ? styles_createMuiTheme(themeProp) : styles_createMuiTheme(Light);
   react_dom_default.a.unmountComponentAtNode(element);
   react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
@@ -21208,7 +21214,8 @@ QdtComponent_QdtComponent.defaultProps = {
     Component: Component,
     options: options,
     app: app,
-    properties: properties
+    properties: properties,
+    LoadingComponent: LoadingComponent
   })), element);
 
   var update = function update(_ref2) {
@@ -21226,6 +21233,17 @@ QdtComponent_QdtComponent.defaultProps = {
     })), element);
   };
 
+  var clear = function clear() {
+    react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
+      theme: theme
+    }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(components_QdtComponent_QdtComponent, {
+      Component: function Component() {
+        return null;
+      },
+      options: {}
+    })), element);
+  };
+
   var destroy = function destroy() {
     react_dom_default.a.unmountComponentAtNode(element);
   };
@@ -21234,6 +21252,7 @@ QdtComponent_QdtComponent.defaultProps = {
     element: element,
     theme: theme,
     update: update,
+    clear: clear,
     destroy: destroy
   };
 });
