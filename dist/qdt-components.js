@@ -21141,13 +21141,15 @@ var useSessionObject_useSessionObject = function useSessionObject(_ref) {
 
 
 
-
-var QdtComponent_QdtComponent = function QdtComponent(_ref) {
+var QdtComponent = react_default.a.forwardRef(function (_ref, _ref2) {
   var Component = _ref.Component,
       options = _ref.options,
       app = _ref.app,
       properties = _ref.properties,
       LoadingComponent = _ref.LoadingComponent;
+  var componentRef = _ref2.componentRef,
+      modelRef = _ref2.modelRef,
+      layoutRef = _ref2.layoutRef;
   var ComponentRef = Object(react["useRef"])(Component);
   var optionsRef = Object(react["useRef"])(options);
   var appRef = Object(react["useRef"])(app);
@@ -21166,26 +21168,30 @@ var QdtComponent_QdtComponent = function QdtComponent(_ref) {
       model = _useSessionObject.model,
       layout = _useSessionObject.layout;
 
+  modelRef.current = model; //eslint-disable-line
+
+  layoutRef.current = layout; //eslint-disable-line
+
   return react_default.a.createElement(react_default.a.Fragment, null, (!model || !layout) && !LoadingComponentRef.current && react_default.a.createElement("div", null, "Loading..."), (!model || !layout) && LoadingComponentRef.current && react_default.a.createElement(LoadingComponentRef.current, null), model && layout && react_default.a.createElement(ComponentRef.current, {
+    ref: componentRef,
     model: model,
     layout: layout,
     options: optionsRef.current
   }));
-};
-
-QdtComponent_QdtComponent.propTypes = {
+});
+QdtComponent.propTypes = {
   Component: prop_types_default.a.func.isRequired,
   options: prop_types_default.a.object,
   app: prop_types_default.a.object.isRequired,
   properties: prop_types_default.a.object,
   LoadingComponent: prop_types_default.a.func
 };
-QdtComponent_QdtComponent.defaultProps = {
+QdtComponent.defaultProps = {
   options: {},
   properties: {},
   LoadingComponent: null
 };
-/* harmony default export */ var components_QdtComponent_QdtComponent = (QdtComponent_QdtComponent);
+/* harmony default export */ var QdtComponent_QdtComponent = (QdtComponent);
 // CONCATENATED MODULE: ./src/qdtCompose.jsx
  //eslint-disable-line
 
@@ -21206,16 +21212,22 @@ QdtComponent_QdtComponent.defaultProps = {
       app = _ref.app,
       properties = _ref.properties,
       LoadingComponent = _ref.loading;
+  var ref = {
+    componentRef: react_default.a.createRef(),
+    modelRef: react_default.a.createRef(),
+    layoutRef: react_default.a.createRef()
+  };
   var theme = themeProp ? styles_createMuiTheme(themeProp) : styles_createMuiTheme(Light);
   react_dom_default.a.unmountComponentAtNode(element);
   react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
     theme: theme
-  }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(components_QdtComponent_QdtComponent, {
+  }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(QdtComponent_QdtComponent, {
     Component: Component,
     options: options,
     app: app,
     properties: properties,
-    LoadingComponent: LoadingComponent
+    LoadingComponent: LoadingComponent,
+    ref: ref
   })), element);
 
   var update = function update(_ref2) {
@@ -21225,22 +21237,24 @@ QdtComponent_QdtComponent.defaultProps = {
         updatedProperties = _ref2.properties;
     react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
       theme: theme
-    }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(components_QdtComponent_QdtComponent, {
+    }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(QdtComponent_QdtComponent, {
       Component: updatedComponent,
       options: updatedOptions,
       app: updatedApp,
-      properties: updatedProperties
+      properties: updatedProperties,
+      ref: ref
     })), element);
   };
 
   var clear = function clear() {
     react_dom_default.a.render(react_default.a.createElement(ThemeProvider_ThemeProvider, {
       theme: theme
-    }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(components_QdtComponent_QdtComponent, {
+    }, react_default.a.createElement(CssBaseline_CssBaseline, null), react_default.a.createElement(QdtComponent_QdtComponent, {
       Component: function Component() {
         return null;
       },
-      options: {}
+      options: {},
+      ref: ref
     })), element);
   };
 
@@ -21248,12 +21262,16 @@ QdtComponent_QdtComponent.defaultProps = {
     react_dom_default.a.unmountComponentAtNode(element);
   };
 
+  console.log(ref.modelRef, ref.layoutRef);
   return {
     element: element,
     theme: theme,
     update: update,
     clear: clear,
-    destroy: destroy
+    destroy: destroy,
+    componentRef: ref.componentRef,
+    modelRef: ref.modelRef,
+    layoutRef: ref.layoutRef
   };
 });
 // CONCATENATED MODULE: ./node_modules/clsx/dist/clsx.m.js
@@ -70116,10 +70134,11 @@ var react_table = __webpack_require__(95);
  // import '../../styles/index.scss';
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
-var QdtTable_QdtTable = function QdtTable(_ref) {
+var QdtTable = react_default.a.forwardRef(function (_ref, ref) {
   var layout = _ref.layout,
       model = _ref.model,
       optionsProp = _ref.options;
+  //eslint-disable-line
   var defaultOptions = {
     minRows: undefined,
     pageSize: 10,
@@ -70292,7 +70311,9 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
       return _ref3.apply(this, arguments);
     };
   }(), [model, layout]);
-  return react_default.a.createElement("div", null, react_default.a.createElement(es, {
+  return react_default.a.createElement("div", {
+    ref: ref
+  }, react_default.a.createElement(es, {
     manual: true,
     data: data ? data.qMatrix : [],
     columns: columns,
@@ -70321,19 +70342,18 @@ var QdtTable_QdtTable = function QdtTable(_ref) {
       };
     }
   }));
-};
-
-QdtTable_QdtTable.propTypes = {
+});
+QdtTable.propTypes = {
   layout: prop_types_default.a.object,
   model: prop_types_default.a.object,
   options: prop_types_default.a.object
 };
-QdtTable_QdtTable.defaultProps = {
+QdtTable.defaultProps = {
   layout: null,
   model: null,
   options: {}
 };
-/* harmony default export */ var components_QdtTable_QdtTable = (QdtTable_QdtTable);
+/* harmony default export */ var QdtTable_QdtTable = (QdtTable);
 // CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/ButtonGroup/ButtonGroup.js
 
 
@@ -72144,7 +72164,7 @@ QdtThree_QdtThree.defaultProps = {
 /* concated harmony reexport QdtPicasso */__webpack_require__.d(__webpack_exports__, "QdtPicasso", function() { return components_QdtPicasso_QdtPicasso; });
 /* concated harmony reexport usePicassoSettings */__webpack_require__.d(__webpack_exports__, "usePicassoSettings", function() { return settings; });
 /* concated harmony reexport QdtSelect */__webpack_require__.d(__webpack_exports__, "QdtSelect", function() { return components_QdtSelect_QdtSelect; });
-/* concated harmony reexport QdtTable */__webpack_require__.d(__webpack_exports__, "QdtTable", function() { return components_QdtTable_QdtTable; });
+/* concated harmony reexport QdtTable */__webpack_require__.d(__webpack_exports__, "QdtTable", function() { return QdtTable_QdtTable; });
 /* concated harmony reexport QdtSequencer */__webpack_require__.d(__webpack_exports__, "QdtSequencer", function() { return components_QdtSequencer_QdtSequencer; });
 /* concated harmony reexport QdtSlider */__webpack_require__.d(__webpack_exports__, "QdtSlider", function() { return components_QdtSlider_QdtSlider; });
 /* concated harmony reexport QdtMapBox */__webpack_require__.d(__webpack_exports__, "QdtMapBox", function() { return QdtMapbox_QdtMapBox; });
