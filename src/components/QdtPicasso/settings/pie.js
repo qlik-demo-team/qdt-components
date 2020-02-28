@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import merge from '../../../utils/merge';
 import {
   legend, tooltip, pie, labels,
 } from './components';

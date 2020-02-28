@@ -11,11 +11,11 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import { Button, ButtonGroup } from '@material-ui/core';
 import {
   PlayArrow, SkipPrevious, SkipNext, Pause, Stop,
 } from '@material-ui/icons';
+import merge from '../../utils/merge';
 
 const QdtSequencer = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {

@@ -2,7 +2,7 @@ export { default as qdtNova } from './qdtNova';
 
 export { default as qdtEnigma } from './qdtEnigma';
 
-export { default as qdtDoc } from './qdtDoc';
+export { default as qdtCompose } from './qdtCompose';
 
 export { default as QdtButton } from './components/QdtButton/QdtButton';
 
@@ -26,8 +26,12 @@ export { default as QdtThree } from './components/QdtThree/QdtThree';
 
 export { default as QdtTheme } from './themes/Themes';
 
-export { default as useHyperCube } from './hooks/useHyperCube';
+export { default as useSessionObject } from './hooks/useSessionObject';
 
+<<<<<<< HEAD
 export { default as useListObject } from './hooks/useListObject';
 
 export { default as useThree } from './hooks/useThree/useThree';
+=======
+// export { default as useThree } from './hooks/useThree';
+>>>>>>> 8ed166ff07e871f94964adc0f2e7762e5f5f37b9

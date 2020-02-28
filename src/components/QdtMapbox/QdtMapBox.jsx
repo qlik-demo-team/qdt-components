@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import mapboxgl from 'mapbox-gl';
+import merge from '../../utils/merge';
 import Theme from '../../styles'; // @TODO REMOVE
 
 const QdtMapBox = ({ layout, options: optionsProp }) => {

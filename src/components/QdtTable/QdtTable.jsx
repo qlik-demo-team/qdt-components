@@ -9,24 +9,20 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import ReactTable from 'react-table';
+import merge from '../../utils/merge';
 import 'react-table/react-table.css';
 // import '../../styles/index.scss';
 
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
-const QdtTable = ({ layout, model, options: optionsProp }) => {
+const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref) => {  //eslint-disable-line
   const defaultOptions = {
     minRows: undefined,
     pageSize: 10,
     style: { height: '100%' },
   };
   const options = merge(defaultOptions, optionsProp);
-
-  useEffect(() => {
-    console.log('component mounted');
-  }, []);
 
   const columns = useMemo(() => (
     layout
@@ -121,7 +117,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
   }, [model, layout]);
 
   return (
-    <div>
+    <div ref={ref}>
       <ReactTable
         manual
         data={data ? data.qMatrix : []}
@@ -155,7 +151,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
       />
     </div>
   );
-};
+});
 
 QdtTable.propTypes = {
   layout: PropTypes.object,

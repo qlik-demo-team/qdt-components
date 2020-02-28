@@ -11,8 +11,8 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import { Slider } from '@material-ui/core';
+import merge from '../../utils/merge';
 
 const QdtSlider = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {

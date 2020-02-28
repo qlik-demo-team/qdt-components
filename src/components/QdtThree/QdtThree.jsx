@@ -11,8 +11,12 @@
 
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import merge from 'deepmerge';
 // import useThree from '../../hooks/useThree/useThree';
+=======
+import merge from '../../utils/merge';
+>>>>>>> 8ed166ff07e871f94964adc0f2e7762e5f5f37b9
 
 const QdtThree = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {

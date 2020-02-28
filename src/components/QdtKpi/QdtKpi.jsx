@@ -9,9 +9,9 @@
 
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+import merge from '../../utils/merge';
 
 const QdtKpi = ({ layout, options: optionsProp }) => {
   const defaultOptions = {

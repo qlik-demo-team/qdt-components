@@ -1,5 +1,5 @@
 import picasso from 'picasso.js';
-import merge from 'deepmerge';
+import merge from '../../../utils/merge';
 import {
   axis, box, tooltip, range, labels,
 } from './components';
