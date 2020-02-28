@@ -16,7 +16,7 @@ import 'react-table/react-table.css';
 
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
-const QdtTable = ({ layout, model, options: optionsProp }) => {
+const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref) => {  //eslint-disable-line
   const defaultOptions = {
     minRows: undefined,
     pageSize: 10,
@@ -117,7 +117,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
   }, [model, layout]);
 
   return (
-    <div>
+    <div ref={ref}>
       <ReactTable
         manual
         data={data ? data.qMatrix : []}
@@ -151,7 +151,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
       />
     </div>
   );
-};
+});
 
 QdtTable.propTypes = {
   layout: PropTypes.object,

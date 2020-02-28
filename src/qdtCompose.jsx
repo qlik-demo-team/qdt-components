@@ -8,6 +8,7 @@ import QdtComponent from './components/QdtComponent/QdtComponent';
 export default ({
   element, theme: themeProp, component: Component, options, app, properties, loading: LoadingComponent,
 }) => {
+  const ref = { componentRef: React.createRef(), modelRef: React.createRef(), layoutRef: React.createRef() };
   const theme = (themeProp) ? createMuiTheme(themeProp) : createMuiTheme(defaultTheme);
   ReactDOM.unmountComponentAtNode(element);
   ReactDOM.render(
@@ -19,6 +20,7 @@ export default ({
         app={app}
         properties={properties}
         LoadingComponent={LoadingComponent}
+        ref={ref}
       />
     </ThemeProvider>,
     element,
@@ -28,15 +30,18 @@ export default ({
     options: updatedOptions,
     app: updatedApp,
     properties: updatedProperties,
+    loading: updatedLoadingComponent,
   }) => {
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <QdtComponent
-          Component={updatedComponent}
-          options={updatedOptions}
-          app={updatedApp}
-          properties={updatedProperties}
+          Component={updatedComponent || Component}
+          options={updatedOptions || options}
+          app={updatedApp || app}
+          properties={updatedProperties || properties}
+          LoadingComponent={updatedLoadingComponent || LoadingComponent}
+          ref={ref}
         />
       </ThemeProvider>,
       element,
@@ -49,6 +54,10 @@ export default ({
         <QdtComponent
           Component={() => null}
           options={{}}
+          app={app}
+          properties={properties}
+          LoadingComponent={LoadingComponent}
+          ref={ref}
         />
       </ThemeProvider>,
       element,
@@ -58,6 +67,6 @@ export default ({
     ReactDOM.unmountComponentAtNode(element);
   };
   return {
-    element, theme, update, clear, destroy,
+    element, theme, update, clear, destroy, componentRef: ref.componentRef, modelRef: ref.modelRef, layoutRef: ref.layoutRef,
   };
 };

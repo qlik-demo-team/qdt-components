@@ -1,29 +1,23 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import useSessionObject from '../../hooks/useSessionObject';
 
-const QdtComponent = ({
+const QdtComponent = React.forwardRef(({
   Component, options, app, properties, LoadingComponent,
-}) => {
-  const ComponentRef = useRef(Component);
-  const optionsRef = useRef(options);
-  const appRef = useRef(app);
-  const propertiesRef = useRef(properties);
-  const LoadingComponentRef = useRef(LoadingComponent);
-  ComponentRef.current = Component || ComponentRef.current;
-  optionsRef.current = options || optionsRef.current;
-  appRef.current = app || appRef.current;
-  propertiesRef.current = properties || propertiesRef.current;
-  LoadingComponentRef.current = LoadingComponent || LoadingComponentRef.current;
-  const { model, layout } = useSessionObject({ app: appRef.current, properties: propertiesRef.current });
+}, { componentRef, modelRef, layoutRef }) => {
+  const { model, layout } = useSessionObject({ app, properties });
+  modelRef.current = model;  //eslint-disable-line
+  layoutRef.current = layout;  //eslint-disable-line
   return (
     <>
-      {((!model || !layout) && !LoadingComponentRef.current) && <div>Loading...</div>}
-      {((!model || !layout) && LoadingComponentRef.current) && <LoadingComponentRef.current />}
-      {(model && layout) && <ComponentRef.current app={app} model={model} layout={layout} options={optionsRef.current} />}
+      {((!model || !layout) && !LoadingComponent) && <div>Loading...</div>}
+      {((!model || !layout) && LoadingComponent) && <LoadingComponent />}
+      {(model && layout) && (
+        <Component ref={componentRef} app={app} model={model} layout={layout} options={options} />
+      )}
     </>
   );
-};
+});
 
 QdtComponent.propTypes = {
   Component: PropTypes.func.isRequired,
