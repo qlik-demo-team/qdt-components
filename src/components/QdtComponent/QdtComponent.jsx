@@ -20,7 +20,7 @@ const QdtComponent = ({
     <>
       {((!model || !layout) && !LoadingComponentRef.current) && <div>Loading...</div>}
       {((!model || !layout) && LoadingComponentRef.current) && <LoadingComponentRef.current />}
-      {(model && layout) && <ComponentRef.current model={model} layout={layout} options={optionsRef.current} />}
+      {(model && layout) && <ComponentRef.current app={app} model={model} layout={layout} options={optionsRef.current} />}
     </>
   );
 };
