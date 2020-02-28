@@ -13,7 +13,7 @@ const QdtComponent = React.forwardRef(({
       {((!model || !layout) && !LoadingComponent) && <div>Loading...</div>}
       {((!model || !layout) && LoadingComponent) && <LoadingComponent />}
       {(model && layout) && (
-        <Component ref={componentRef} model={model} layout={layout} options={options} />
+        <Component ref={componentRef} app={app} model={model} layout={layout} options={options} />
       )}
     </>
   );
