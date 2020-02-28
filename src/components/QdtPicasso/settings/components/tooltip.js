@@ -13,7 +13,6 @@ const component = {
     // Create the data model
     extract: ({ node }) => { // resources
       const { data, key } = node;
-      // console.log(data, key);
       // const formatterFn = resources.formatter({ type: 'd3-number', format: '.2s' });
       // const dataProps = Object.keys(node.data)
       //   .filter((key) => key !== 'value'

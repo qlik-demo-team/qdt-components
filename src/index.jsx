@@ -30,4 +30,4 @@ export { default as useHyperCube } from './hooks/useHyperCube';
 
 export { default as useListObject } from './hooks/useListObject';
 
-export { default as useThree } from './hooks/useThree';
+export { default as useThree } from './hooks/useThree/useThree';

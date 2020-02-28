@@ -30,7 +30,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   const node = useRef(null);
   // const [isLoaded, setIsLoaded] = useState(false);
   const qData = layout.qHyperCube.qDataPages[0];
-  const property = layout.qHyperCube.qDimensionInfo[3].qFallbackTitle;
+  const property = (options.createLayers) ? layout.qHyperCube.qDimensionInfo[3].qFallbackTitle : null;
   let mapData = [];
   let map = null;
   let GeoJSON = null;
@@ -198,7 +198,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     // After Map is loaded, update GeoJSON & save Map object before continuing
     map.on('load', () => {
       if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
-      if (options.handleMapCallback) options.handleMapCallback(map);
+      if (options.handleMapCallback) options.handleMapCallback(map, mapboxgl);
       // setIsLoaded(true);
       mapData = [...mapData, ...qData.qMatrix];
     });

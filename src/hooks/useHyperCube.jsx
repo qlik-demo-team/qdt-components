@@ -6,15 +6,20 @@ const useHyperCube = ({ app, qHyperCubeDef: qHyperCubeDefProp }) => {
     qDimensions: [],
     qMeasures: [],
     qInitialDataFetch: [{
-      qTop: 0,
       qWidth: 1,
-      qHeight: 100,
+      qHeight: 10000,
     }],
     qInterColumnSortOrder: [],
     qSuppressZero: true,
     qSuppressMissing: true,
   };
   const qHyperCubeDef = merge(qHyperCubeDefDefault, qHyperCubeDefProp);
+  if (qHyperCubeDefProp.qInitialDataFetch) qHyperCubeDef.qInitialDataFetch = qHyperCubeDefProp.qInitialDataFetch;
+  // const qPage = {
+  //   qTop: 0,
+  //   qWidth: qHyperCubeDef.qInitialDataFetch[0].qWidth,
+  //   qHeight: qHyperCubeDef.qInitialDataFetch[0].qHeight,
+  // };
   const qProp = {
     qInfo: {
       qType: 'HyperCube',
@@ -27,8 +32,8 @@ const useHyperCube = ({ app, qHyperCubeDef: qHyperCubeDefProp }) => {
 
   const getLayout = async () => {
     const qLayout = await model.getLayout();
-    const qDataPages = await model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qWidth: 4, qHeight: 2500 }]);
-    qLayout.qHyperCube.qDataPages = qDataPages;
+    // const qDataPages = await model.getHyperCubeData('/qHyperCubeDef', [qPage]);
+    // qLayout.qHyperCube.qDataPages = qDataPages;
     return qLayout;
   };
 

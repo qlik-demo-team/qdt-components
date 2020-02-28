@@ -9,20 +9,38 @@
  * Loop through a dimension and make selections.
 */
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'deepmerge';
+// import useThree from '../../hooks/useThree/useThree';
 
 const QdtThree = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
   };
   const options = merge(defaultOptions, optionsProp);
-  console.log(layout, model, options);
+  const node = useRef(null);
+  // const { createGroundPlane } = useThree({ layout, options: { canvas: node.current } });
+  console.log('QdtThree', model, options);
+
+  useEffect(() => {
+    // let createGroundPlane;
+    if (node) {
+      // const { createGroundPlane } = useThree({ layout, options: { domElement: node.current } });  // eslint-disable-line
+      // createGroundPlane();
+      // finalRender();
+    }
+    console.log('QdtThree mounted');
+    // createGroundPlane();
+  }, [layout, node]);
 
   return (
-    <div>
-      THREE
-    </div>
+    <div
+      ref={node}
+      className="qdt-three"
+      style={{
+        width: '100%', height: '100%', minWidth: '100%', minHeight: '100%',
+      }}
+    />
   );
 };
 
