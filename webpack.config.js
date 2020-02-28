@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -21,8 +21,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx|map)$/,
+        // exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/react-jsx-parser')
+        ],
         use: [
           'babel-loader',
           {
@@ -73,24 +77,24 @@ module.exports = {
     //   'react-dom': path.join(__dirname, '/node_modules/react-dom'),
     // }
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        include: /\.min\.js$/,
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          warnings: true,
-          parse: {},
-          compress: false,
-          mangle: false, // Note `mangle.properties` is `false` by default.
-          output: null,
-          toplevel: false,
-          nameCache: null,
-          ie8: false,
-          keep_fnames: false,
-        },
-      }),
-    ],
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       include: /\.min\.js$/,
+  //       cache: true,
+  //       parallel: true,
+  //       uglifyOptions: {
+  //         warnings: true,
+  //         parse: {},
+  //         compress: false,
+  //         mangle: false, // Note `mangle.properties` is `false` by default.
+  //         output: null,
+  //         toplevel: false,
+  //         nameCache: null,
+  //         ie8: false,
+  //         keep_fnames: false,
+  //       },
+  //     }),
+  //   ],
+  // },
 };
