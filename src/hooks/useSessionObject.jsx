@@ -62,7 +62,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
   }, [app]); // eslint-disable-line
 
   if (model.current && !equal(staleProperties.current, properties)) {
-    setLayout(null);
+    // setLayout(null);
     (async () => {
       await model.current.setProperties(qProp.current);
     })();
