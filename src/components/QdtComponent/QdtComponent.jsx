@@ -10,9 +10,9 @@ const QdtComponent = React.forwardRef(({
   layoutRef.current = layout;  //eslint-disable-line
   return (
     <>
-      {((!model || !layout) && !LoadingComponent) && <div>Loading...</div>}
-      {((!model || !layout) && LoadingComponent) && <LoadingComponent />}
-      {(model && layout) && (
+      {(!layout && !LoadingComponent) && <div>Loading...</div>}
+      {(!layout && LoadingComponent) && <LoadingComponent />}
+      {layout && (
         <Component ref={componentRef} app={app} model={model} layout={layout} options={options} />
       )}
     </>

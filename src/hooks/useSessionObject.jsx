@@ -52,8 +52,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
         const _layout = await model.current.getLayout();
         setLayout(_layout);
       });
-      const _layout = await model.current.getLayout();
-      setLayout(_layout);
+      model.current.setProperties(qProp.current);
     })();
     return () => {
       (async () => {
