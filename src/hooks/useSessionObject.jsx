@@ -62,17 +62,13 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
     };
   }, [app]);
 
-  useEffect(() => {
-    if (!model.current) return;
-    if (!equal(staleProperties.current, properties)) {
-      (async () => {
-        await model.current.setProperties(qProp.current);
-        const _layout = await model.current.getLayout();
-        setLayout(_layout);
-      })();
-    }
-    staleProperties.current = properties;
-  });
+  if (model.current && !equal(staleProperties.current, properties)) {
+    setLayout(null);
+    (async () => {
+      await model.current.setProperties(qProp.current);
+    })();
+  }
+  staleProperties.current = properties;
 
   return { model: model.current, layout };
 };

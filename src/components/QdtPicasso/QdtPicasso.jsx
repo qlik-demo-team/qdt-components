@@ -81,7 +81,6 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
   const resize = useCallback(() => { pic.current.update(); }, [pic]);
 
   useEffect(() => {
-    console.log(elementNode.current, pic.current);
     if (!pic.current) create();
     if (pic.current) update();
   }, [create, update, layout]);

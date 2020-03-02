@@ -15,8 +15,9 @@ import gantt from './gantt';
 import merimekko from './merimekko';
 import pointDistribution from './pointDistribution';
 import pyramid from './pyramid';
+import lineArea from './lineArea';
 
-export default ({ theme }) => ({
+export default ({ theme = {} } = {}) => ({
   horizontalBarchart: horizontalBarchart({ theme }),
   verticalBarchart: verticalBarchart({ theme }),
   scatterplot: scatterplot({ theme }),
@@ -34,4 +35,5 @@ export default ({ theme }) => ({
   merimekko: merimekko({ theme }),
   pointDistribution: pointDistribution({ theme }),
   pyramid: pyramid({ theme }),
+  lineArea: lineArea({ theme }),
 });
