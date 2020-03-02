@@ -30,6 +30,7 @@ const defaultListObjectDef = {
 
 const useSessionObject = ({ app, properties: propertiesProp }) => {
   const properties = { ...propertiesProp };
+  properties.qInfo = { qType: 'qdt' };
   if (properties.qHyperCubeDef) {
     properties.qHyperCubeDef = merge(defaultHyperCubeDef, properties.qHyperCubeDef);
   }
@@ -38,12 +39,8 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
   }
 
   const staleProperties = useRef();
-  const qProp = useRef({
-    qInfo: {
-      qType: 'qdt',
-    },
-  });
-  qProp.current = merge(qProp.current, properties);
+  const qProp = useRef();
+  qProp.current = properties;
 
   const model = useRef(null);
   const [layout, setLayout] = useState(null);

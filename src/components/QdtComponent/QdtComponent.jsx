@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import useSessionObject from '../../hooks/useSessionObject';
 
@@ -20,9 +20,11 @@ const QdtComponent = React.forwardRef(({
   layoutRef.current = layout;  //eslint-disable-line
   return (
     <>
-      {((!model || !layout) && !LoadingComponentRef.current) && <div>Loading...</div>}
-      {((!model || !layout) && LoadingComponentRef.current) && <LoadingComponentRef.current />}
-      {(model && layout) && <ComponentRef.current ref={componentRef} model={model} layout={layout} options={optionsRef.current} />}
+      {((!model || !layout) && !LoadingComponent) && <div>Loading...</div>}
+      {((!model || !layout) && LoadingComponent) && <LoadingComponent />}
+      {(model && layout) && (
+        <Component ref={componentRef} app={app} model={model} layout={layout} options={options} />
+      )}
     </>
   );
 });
