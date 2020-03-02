@@ -25,15 +25,15 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const { current: id } = useRef(uuidv4());
 
   const selectValue = useMemo(() => {
-    const sv = layout.qListObject.qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S');
+    const sv = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
     return (options.multiple) ? sv : sv[0];
-  }, [layout.qListObject.qDataPages, options.multiple]);
+  }, [layout.qListObject, options.multiple]);
   const selectRenderValue = useMemo((selected) => {
     if (!selected) return;
     if (selected.length === 1) {
       return selected[0][0].qText;
     }
-    return `${selected.length} of ${layout.qListObject.qSize.qcy} selected`;
+    return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
   }, [layout]);
 
   const handleOpen = useCallback(() => {
@@ -53,7 +53,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   return (
     <>
       <FormControl variant="outlined">
-        <InputLabel id={`${id}-label`}>{layout.qListObject.qDimensionInfo.qFallbackTitle}</InputLabel>
+        <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
         <Select
           labelId={`${id}-label`}
           id={id}
@@ -68,7 +68,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           <MenuItem>
             <Input type="search" onChange={handleSearch} />
           </MenuItem>
-          {layout.qListObject.qDataPages[0].qMatrix.map((row) => (
+          {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem
               key={row[0].qElemNumber}
               value={row}
