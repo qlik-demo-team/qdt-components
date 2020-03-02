@@ -19,6 +19,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
   };
+  console.log(441, layout);
   const options = merge(defaultOptions, optionsProp);
 
   const { current: id } = useRef(uuidv4());

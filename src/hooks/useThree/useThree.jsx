@@ -1,6 +1,7 @@
-import React, {
+import {
 // useCallback, // useRef, useReducer,
-  useEffect,
+// useEffect,
+// useState,
 } from 'react';
 // import merge from 'deepmerge';
 // import { Scene } from 'three';
@@ -10,27 +11,20 @@ import {
 } from 'three/build/three';
 
 const useThree = ({ layout, options }) => {
-  console.log('useThree');
-  console.log(331, layout);
-  const [state, setState] = React.useState({
-    scene: null,
-    camera: null,
-    renderer: null,
-  });
-  console.log(332, state);
   // const defaultOptions = {
   //   canvas: null,
   //   context: null,
   // };
   // const options = (optionsProp) ? merge(defaultOptions, optionsProp) : defaultOptions;
-  // let scene;
-  // let camera;
+  let scene;
+  // const [scene, setScene] = useState(null);
+  let camera;
+  let renderer;
   // let renderer;
   // const maxBarΝumberFromData = 0;
-  const maxNumberOfBars = layout.qHyperCube.qSize.qcy;
+  let maxNumberOfBars = 0;
 
   const minimizeBars = () => {
-    const { scene } = state;
     for (let index = 0; index <= maxNumberOfBars; index += 1) {
       const bar = scene.getObjectByName(`bar-${index}`, true);
       TweenMax.to(bar.scale, 1, { y: 1 }); // 0 creates errors
@@ -40,7 +34,6 @@ const useThree = ({ layout, options }) => {
   };
 
   const raiseBars = () => {
-    const { scene } = state;
     for (let index = 0; index <= maxNumberOfBars; index += 1) {
       const bar = scene.getObjectByName(`bar-${index}`, true);
       TweenMax.to(bar.scale, 2, { y: bar.userData.y }); // 0 creates errors
@@ -50,6 +43,7 @@ const useThree = ({ layout, options }) => {
   };
 
   // Create Bars
+  // const createBar = (posx, posz, posy, width, height, depth, order, maxBarΝumberFromData) => new Promise((resolve) => {
   const createBar = ({
     posx = 0,
     posz = 0,
@@ -59,8 +53,7 @@ const useThree = ({ layout, options }) => {
     depth = 4,
     order = 1,
     maxBarΝumberFromData = 10,
-  }) => {
-    const { scene } = state;
+  }) => new Promise((resolve) => {
     const max = 3000;
     const ratio = Number(posy) / Number(maxBarΝumberFromData); // ) / 100) * max;
     const y = max * ratio;
@@ -76,11 +69,12 @@ const useThree = ({ layout, options }) => {
     // Animate
     TweenMax.to(bar.scale, 1, { y, delay: order * 0.1 + 1 });
     TweenMax.to(bar.position, 1, { y: y / 2, delay: order * 0.1 + 1 });
-  };
+    maxNumberOfBars = order;
+    resolve(true);
+  });
 
   // create two three.js lights to illuminate the model
   const createLights = () => {
-    const { scene } = state;
     const directionalLight = new DirectionalLight(0xffffff);
     directionalLight.position.set(-90, 200, 130).normalize();
     scene.add(directionalLight);
@@ -90,14 +84,32 @@ const useThree = ({ layout, options }) => {
   };
 
   const finalRender = () => {
-    const { scene, camera, renderer } = state;
+    console.log('renderer');
+    if (!renderer) {
+      console.log('renderer-init', scene);
+      if (options.domElement) {
+        console.log('createScene');
+        renderer = new WebGLRenderer();
+        renderer.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
+        options.domElement.appendChild(renderer.domElement);
+        // call the render function
+        // renderer.render(scene, camera);
+      } else {
+        // use the Mapbox GL JS map canvas for three.js
+        renderer = new WebGLRenderer({
+          canvas: options.canvas,
+          context: options.context,
+          antialias: true,
+        });
+        renderer.autoClear = false;
+      }
+    }
     renderer.state.reset();
     renderer.render(scene, camera);
   };
 
   // Create Ground Plane
   const createGroundPlane = () => {
-    const { scene, camera } = state;
     // renderer.setClearColor(new Color(0xEEEEEE, 1.0));
     // renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.shadowMapEnabled = true;
@@ -168,36 +180,16 @@ const useThree = ({ layout, options }) => {
     finalRender();
   };
 
-  const createScene = () => {  // eslint-disable-line
-    const scene = new Scene();
+    const createScene = () => {  // eslint-disable-line
+    scene = new Scene();
     // setScene(new Scene());
     // camera = new Camera();
-    const camera = (options.domElement) ? new PerspectiveCamera(45, options.domElement.getBoundingClientRect().width / options.domElement.getBoundingClientRect().height, 0.1, 1000) : new Camera();
-    // createLights();
-    let renderer;
-
-    if (options.domElement) {
-      console.log('createScene');
-      renderer = new WebGLRenderer();
-      renderer.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
-      options.domElement.appendChild(renderer.domElement);
-      // call the render function
-      // renderer.render(scene, camera);
-    } else {
-      // use the Mapbox GL JS map canvas for three.js
-      renderer = new WebGLRenderer({
-        canvas: options.canvas,
-        context: options.context,
-        antialias: true,
-      });
-      renderer.autoClear = false;
-    }
-    setState({ scene, camera, renderer });
+    camera = (options.domElement) ? new PerspectiveCamera(45, options.domElement.getBoundingClientRect().width / options.domElement.getBoundingClientRect().height, 0.1, 1000) : new Camera();
+    createLights();
   };
 
   // For mapbox
   const renderScene = (mapboxgl, matrix) => {
-    const { camera } = state;
     // parameters to ensure the model is georeferenced correctly on the map
     const modelOrigin = [-97.531708, 39.305878];
     const modelAltitude = 0;
@@ -216,8 +208,8 @@ const useThree = ({ layout, options }) => {
       rotateY: modelRotate[1],
       rotateZ: modelRotate[2],
       /* Since our 3D model is in real world meters, a scale transform needs to be
-    * applied since the CustomLayerInterface expects units in MercatorCoordinates.
-    */
+      * applied since the CustomLayerInterface expects units in MercatorCoordinates.
+      */
       scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
     };
 
@@ -260,21 +252,18 @@ const useThree = ({ layout, options }) => {
   //   layout.qHyperCube.qDataPages[0].qMatrix.forEach((row) => {
   //     maxBarΝumberFromData = (maxBarΝumberFromData < row[1].qNum) ? row[1].qNum : maxBarΝumberFromData;
   //   });
-  // if (options.canvas || options.domElement) createScene();
+  // console.log(771, options);
+  if (options.canvas || options.domElement) createScene();
 
-  useEffect(() => {
-    console.log('useEffect');
-    const { scene } = state;
-    console.log(332, scene);
-    if (!scene) createScene();
-    if (scene) createLights();
-  }, [createLights, createScene, state]);
+  // useEffect(() => {
+  //   if (options.canvas) createScene();
+  // }, [createScene, options.canvas]);
   // };
 
   // init();
 
   return {
-    scene: state.scene, layout, createBar, minimizeBars, raiseBars, renderScene, createGroundPlane, finalRender,
+    scene, layout, createBar, minimizeBars, raiseBars, renderScene, createGroundPlane, finalRender,
   };
 };
 

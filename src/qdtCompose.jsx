@@ -35,10 +35,10 @@ export default ({
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <QdtComponent
-          Component={updatedComponent}
-          options={updatedOptions}
-          app={updatedApp}
-          properties={updatedProperties}
+          Component={(updatedComponent) || Component}
+          options={(updatedOptions) || options}
+          app={(updatedApp) || app}
+          properties={(updatedProperties) || properties}
           ref={ref}
         />
       </ThemeProvider>,
@@ -61,7 +61,7 @@ export default ({
   const destroy = () => {
     ReactDOM.unmountComponentAtNode(element);
   };
-  console.log(ref.modelRef, ref.layoutRef);
+
   return {
     element, theme, update, clear, destroy, componentRef: ref.componentRef, modelRef: ref.modelRef, layoutRef: ref.layoutRef,
   };

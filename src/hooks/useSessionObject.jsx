@@ -63,7 +63,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
         app.destroySessionObject(model.current.id);
       })();
     };
-  }, [app]);
+  }, [app]); // eslint-disable-line
 
   useEffect(() => {
     if (!model.current) return;
@@ -75,7 +75,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
       })();
     }
     staleProperties.current = properties;
-  });
+  }, [properties, qProp.current]);  // eslint-disable-line
 
   return { model: model.current, layout };
 };
