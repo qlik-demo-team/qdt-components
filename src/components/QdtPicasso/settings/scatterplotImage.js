@@ -1,5 +1,5 @@
-import merge from '../../../utils/merge';
-import { Light as defaultTheme } from '../../../themes/Themes';
+import { Light as defaultTheme } from 'themes';
+import merge from 'utils/merge';
 
 const setting = ({ theme: themeProp }) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line

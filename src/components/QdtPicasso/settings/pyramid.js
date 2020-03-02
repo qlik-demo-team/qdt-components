@@ -1,10 +1,10 @@
 import picasso from 'picasso.js';
-import merge from '../../../utils/merge';
+import { Light as defaultTheme } from 'themes';
+import merge from 'utils/merge';
 import {
   axis, box, tooltip, range, labels,
 } from './components';
 import { itooltip, pan } from './interactions';
-import { Light as defaultTheme } from '../../../themes/Themes';
 
 picasso.formatter.remove('abs');
 picasso.formatter('abs', () => {

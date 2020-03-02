@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';  // eslint-disable-line
 import equal from 'deep-equal';
-import merge from '../utils/merge';
+import merge from 'utils/merge';
 
 const defaultHyperCubeDef = {
   qDimensions: [],

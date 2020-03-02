@@ -4,6 +4,12 @@ export { default as qdtEnigma } from './qdtEnigma';
 
 export { default as qdtCompose } from './qdtCompose';
 
+export { default as QdtTheme } from './themes';
+
+export { default as useSessionObject } from './hooks/useSessionObject';
+
+export { default as useThree } from './hooks/useThree/useThree';
+
 export { default as QdtButton } from './components/QdtButton/QdtButton';
 
 export { default as QdtKpi } from './components/QdtKpi/QdtKpi';
@@ -23,9 +29,3 @@ export { default as QdtSlider } from './components/QdtSlider/QdtSlider';
 export { default as QdtMapBox } from './components/QdtMapbox/QdtMapBox';
 
 export { default as QdtThree } from './components/QdtThree/QdtThree';
-
-export { default as QdtTheme } from './themes/Themes';
-
-export { default as useSessionObject } from './hooks/useSessionObject';
-
-export { default as useThree } from './hooks/useThree/useThree';

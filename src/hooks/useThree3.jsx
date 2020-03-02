@@ -3,7 +3,7 @@ import {
   useState,
   useEffect,
 } from 'react';
-// import merge from 'deepmerge';
+// import merge from 'utils/merge';
 // import { Scene } from 'three';
 import { TweenMax } from 'gsap';
 

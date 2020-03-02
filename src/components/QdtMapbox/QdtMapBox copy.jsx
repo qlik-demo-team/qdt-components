@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'deepmerge';
+import merge from 'utils/merge';
 import mapboxgl from 'mapbox-gl';
 import Theme from '../../styles'; // @TODO REMOVE
 

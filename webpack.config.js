@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -67,11 +68,15 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    // Conflict with libraries like qdt-lui that use the same version of React
-    // alias: {
-    //   'react': path.join(__dirname, './node_modules/react'),
-    //   'react-dom': path.join(__dirname, '/node_modules/react-dom'),
-    // }
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
+      themes: path.resolve(__dirname, 'src/themes/'),
+      utils: path.resolve(__dirname, 'src/utils/'),
+    },
+    plugins: [
+      new DirectoryNamedWebpackPlugin(),
+    ]
   },
   optimization: {
     minimizer: [

@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import merge from '../../utils/merge';
+import merge from 'utils/merge';
 import 'react-table/react-table.css';
 // import '../../styles/index.scss';
 

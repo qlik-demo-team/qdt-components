@@ -12,7 +12,7 @@ import {
   FormControl, InputLabel, Select, MenuItem, Input, LinearProgress,
 } from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
-import merge from '../../utils/merge';
+import merge from 'utils/merge';
 // import '../../styles/index.scss';
 
 const QdtSelect = ({ layout, model, options: optionsProp }) => {

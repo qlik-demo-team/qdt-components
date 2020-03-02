@@ -1,9 +1,9 @@
-import merge from '../../../utils/merge';
+import { Light as defaultTheme } from 'themes';
+import merge from 'utils/merge';
 import {
   axis, tooltip, legend, point, domPointLabel, range,
 } from './components';
 import { itooltip, pan, ilegend } from './interactions';
-import { Light as defaultTheme } from '../../../themes/Themes';
 
 const component = ({ theme: themeProp }) => {
   const theme = merge(defaultTheme, themeProp);
