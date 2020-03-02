@@ -66,10 +66,6 @@ export default ({
   const destroy = () => {
     ReactDOM.unmountComponentAtNode(element);
   };
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ae780d2f146477eb1cc861e1391db70bda161c0
   return {
     element, theme, update, clear, destroy, componentRef: ref.componentRef, modelRef: ref.modelRef, layoutRef: ref.layoutRef,
   };
