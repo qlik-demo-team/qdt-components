@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'deepmerge';
 import mapboxgl from 'mapbox-gl';
@@ -28,11 +28,11 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   const options = merge(defaultOptions, optionsProp);
   if (optionsProp.center) options.center = optionsProp.center; // Deep merges the array and we have center: (4) [-74.5, 40, -140, 50], which breaks mapbox
   const node = useRef(null);
-  const [map, setMap] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
   const qData = layout.qHyperCube.qDataPages[0];
   const property = (options.createLayers) ? layout.qHyperCube.qDimensionInfo[3].qFallbackTitle : null;
   let mapData = [];
+  let map = null;
   let GeoJSON = null;
   let propertyChildren = null;
   let propertyChildrenWithColors = null;
@@ -187,7 +187,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
 
   const mapInit = () => {
     mapboxgl.accessToken = options.accessToken;
-    const _map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: node.current, // container id
       style: options.style, // stylesheet location
       center: options.center, // starting position [lng, lat]
@@ -195,27 +195,20 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
       pitch: options.pitch, // Camera Angle
       bearing: options.bearing, // Compass Direction
     });
-    setMap(_map);
+    // After Map is loaded, update GeoJSON & save Map object before continuing
+    map.on('load', () => {
+      if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
+      if (options.handleMapCallback) options.handleMapCallback(map, mapboxgl);
+      // setIsLoaded(true);
+      mapData = [...mapData, ...qData.qMatrix];
+    });
   };
 
   useEffect(() => {
     if (options.createLayers) createPropertyChilderFromQData();
-    if (!map) mapInit();
-    if (map) {
-      // After Map is loaded, update GeoJSON & save Map object before continuing
-      map.on('load', () => {
-        if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
-        // if (options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
-        setIsLoaded(true);
-        mapData = [...mapData, ...qData.qMatrix];
-      });
-    }
+    mapInit();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
-
-  useEffect(() => {
-    if (isLoaded && map && layout && options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
-  }, [map, isLoaded, layout]); // eslint-disable-line
 
   return (
     <>

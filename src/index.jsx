@@ -28,4 +28,4 @@ export { default as QdtTheme } from './themes/Themes';
 
 export { default as useSessionObject } from './hooks/useSessionObject';
 
-// export { default as useThree } from './hooks/useThree';
+export { default as useThree } from './hooks/useThree/useThree';

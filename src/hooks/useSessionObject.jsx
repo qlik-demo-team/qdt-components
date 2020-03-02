@@ -60,7 +60,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
         app.destroySessionObject(model.current.id);
       })();
     };
-  }, [app]);
+  }, [app]); // eslint-disable-line
 
   if (model.current && !equal(staleProperties.current, properties)) {
     setLayout(null);
