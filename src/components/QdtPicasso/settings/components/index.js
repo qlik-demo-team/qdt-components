@@ -1,25 +1,11 @@
-import domPointLabel from './domPointLabel';
-import axis from './axis';
-import legend from './legend';
-import point from './point';
-import box from './box';
-import labels from './labels';
-import tooltip from './tooltip';
-import range from './range';
-import pie from './pie';
-import line from './line';
-import grid from './grid';
-
-export {
-  domPointLabel,
-  axis,
-  legend,
-  point,
-  box,
-  labels,
-  tooltip,
-  range,
-  pie,
-  line,
-  grid,
-};
+export { default as axis } from './axis';
+export { default as box } from './box';
+export { default as domPointLabel } from './domPointLabel';
+export { default as grid } from './grid';
+export { default as labels } from './labels';
+export { default as legend } from './legend';
+export { default as line } from './line';
+export { default as pie } from './pie';
+export { default as point } from './point';
+export { default as range } from './range';
+export { default as tooltip } from './tooltip';

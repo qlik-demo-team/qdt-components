@@ -75,7 +75,7 @@ module.exports = {
       utils: path.resolve(__dirname, 'src/utils/'),
     },
     plugins: [
-      new DirectoryNamedWebpackPlugin(),
+      new DirectoryNamedWebpackPlugin({ exclude: /node_modules/ }),
     ]
   },
   optimization: {

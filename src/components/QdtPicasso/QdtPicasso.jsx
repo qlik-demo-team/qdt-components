@@ -7,7 +7,7 @@ import * as d3Ease from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
 import equal from 'deep-equal';
-import merge from 'utils/merge';
+import merge from '../../utils/merge';
 
 picasso.use(picassoHammer);
 picasso.use(picassoQ);

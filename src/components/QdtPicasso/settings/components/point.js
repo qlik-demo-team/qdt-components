@@ -1,24 +1,21 @@
-const component = function component({
-  key = 'point',
-  displayOrder = 1,
-  field = 'qDimensionInfo/0',
-  x = { field: 'qDimensionInfo/0' },
-  y = { field: 'qMeasureInfo/0' },
-  size = 0.5,
-  strokeWidth = 2,
-  stroke = '#fff',
-  fill = { scale: 'c' },
-} = {}) {
-  const comp = {
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
+
+const point = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
+  const defaultProperties = {
     type: 'point',
-    key,
-    displayOrder,
+    key: 'point',
+    displayOrder: 1,
     data: {
       extract: {
-        field,
+        field: { field: 'qDimensionInfo/0' },
         props: {
-          x,
-          y,
+          x: { field: 'qDimensionInfo/0' },
+          y: { field: 'qMeasureInfo/0' },
           num: { field: 'qMeasureInfo/0' },
         },
       },
@@ -27,11 +24,11 @@ const component = function component({
       x: { scale: 'x' },
       y: { scale: 'y' },
       shape: 'circle',
-      size,
-      strokeWidth,
-      stroke,
+      size: 0.5,
+      strokeWidth: 2,
+      stroke: '#FFFFFF',
       opacity: 0.8,
-      fill,
+      fill: { scale: 'c' },
     },
     brush: {
       trigger: [{
@@ -51,8 +48,8 @@ const component = function component({
       }],
     },
   };
-
-  return comp;
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
 };
 
-export default component;
+export default point;

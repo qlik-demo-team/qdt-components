@@ -1,0 +1,284 @@
+import { format } from 'd3-format';
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
+import axis from './components/axis';
+import box from './components/box';
+import grid from './components/grid';
+import labels from './components/labels';
+import range from './components/range';
+import tooltip from './components/tooltip';
+import rangePan from './interactions/rangePan';
+import tooltipHover from './interactions/tooltipHover';
+
+const barchart = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
+  orientation = 'vertical',
+  type = 'standard',
+  xAxis: xAxisProp = {},
+  yAxis: yAxisProp = {},
+  grid: gridProp = {},
+  box: boxProp = {},
+  labels: labelsProp = {},
+  range: rangeProp = {},
+  tooltip: tooltipProp = {},
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);
+  const majorScale = (orientation === 'vertical' && 'x') || (orientation === 'horizontal' && 'y') || null;
+  const minorScale = (orientation === 'vertical' && 'y') || (orientation === 'horizontal' && 'x') || null;
+  const defaultProperties = {
+    scales: {
+      [majorScale]: { data: { extract: { field: 'qDimensionInfo/0' } }, padding: 0.2 },
+      [minorScale]: { data: { field: 'qMeasureInfo/0' }, include: [0], invert: orientation === 'vertical' },
+    },
+    components: [],
+    interactions: [],
+  };
+  if (type === 'standard') {
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) {
+      defaultProperties.components.push(
+        merge(
+          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
+          gridProp,
+        ),
+      );
+    }
+    if (boxProp) {
+      defaultProperties.components.push(
+        merge(
+          box({ orientation }),
+          boxProp,
+        ),
+      );
+    }
+    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.interactions.push(rangePan({ scale: majorScale }));
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
+  if (type === 'stacked') {
+    defaultProperties.collections = [{
+      key: 'stacked',
+      data: {
+        extract: {
+          field: 'qDimensionInfo/0',
+          props: {
+            series: { field: 'qDimensionInfo/1' },
+            end: { field: 'qMeasureInfo/0' },
+          },
+        },
+        stack: {
+          stackKey: (d) => d.value,
+          value: (d) => d.end.value,
+        },
+      },
+    }];
+    defaultProperties.scales[minorScale].data = { collection: { key: 'stacked' } };
+    defaultProperties.scales.color = {
+      data: { extract: { field: 'qDimensionInfo/1' } },
+      range: Object.values(theme.palette).map((color) => { console.log(color); return color.main; }),
+      type: 'color',
+    };
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) {
+      defaultProperties.components.push(
+        merge(
+          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
+          gridProp,
+        ),
+      );
+    }
+    if (boxProp) {
+      defaultProperties.components.push(
+        merge(
+          box({
+            orientation,
+            properties: {
+              data: { collection: 'stacked' },
+              settings: {
+                box: { fill: { scale: 'color', ref: 'series' } },
+              },
+            },
+          }),
+          boxProp,
+        ),
+      );
+    }
+    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.interactions.push(rangePan({ scale: majorScale }));
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
+  if (type === 'group') { /* define group barchart */ }
+  if (type === 'butterfly') {
+    defaultProperties.scales[majorScale].min = ({ data }) => -Math.max(...data.fields.map((f) => f.max())) * 1.2;
+    defaultProperties.scales[minorScale] = {
+      data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] }, expand: 0.2,
+    };
+    defaultProperties.scales.color = {
+      data: { extract: { field: 'qMeasureInfo/1' } },
+      range: [theme.palette.primary.main, theme.palette.secondary.main],
+      type: 'color',
+    };
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) {
+      defaultProperties.components.push(
+        merge(
+          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
+          gridProp,
+        ),
+      );
+    }
+    if (boxProp) {
+      defaultProperties.components.push(
+        merge(
+          box({ orientation }),
+          boxProp,
+        ),
+      );
+    }
+    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.interactions.push(rangePan({ scale: majorScale }));
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
+  if (type === 'rank') {
+    defaultProperties.scales[majorScale].data.extract.props = {
+      rank: { field: 'qMeasureInfo/1' },
+    };
+    defaultProperties.scales[majorScale].data.sort = (a, b) => a.rank.value - b.rank.value;
+    defaultProperties.scales[minorScale].expand = 0.2;
+    defaultProperties.scales.color = {
+      data: { extract: { field: 'qMeasureInfo/1' } },
+      range: [theme.palette.primary.main, theme.palette.secondary.main],
+      type: 'color',
+    };
+    if (gridProp) {
+      defaultProperties.components.push(
+        merge(
+          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
+          gridProp,
+        ),
+      );
+    }
+    defaultProperties.components.push(
+      box({
+        orientation,
+        properties: {
+          data: {
+            extract: {
+              props: { rank: { field: 'qMeasureInfo/1' } },
+            },
+          },
+          settings: {
+            major: {
+              fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
+            },
+            box: {
+              fill: { scale: 'c', fn: (d) => d.scale(d.datum.rank.value) },
+              width: 0.1,
+            },
+          },
+        },
+      }),
+    );
+    defaultProperties.components.push(
+      box({
+        orientation,
+        properties: {
+          key: 'end-bars',
+          data: {
+            extract: {
+              props: {
+                start: { field: 'qMeasureInfo/0' },
+                end: { field: 'qMeasureInfo/0' },
+                rank: { field: 'qMeasureInfo/1' },
+              },
+            },
+          },
+          settings: {
+            major: {
+              fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
+            },
+            box: {
+              fill: { scale: 'c', fn: (d) => d.scale(d.datum.rank.value) },
+              width: 0.6,
+              minHeightPx: 3,
+            },
+          },
+        },
+      }),
+    );
+    defaultProperties.components.push(
+      box({
+        orientation,
+        properties: {
+          key: 'label-bars',
+          data: {
+            extract: {
+              props: { rank: { field: 'qMeasureInfo/1' } },
+            },
+          },
+          settings: {
+            major: {
+              fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
+            },
+            box: {
+              opacity: 0,
+              width: 1,
+            },
+          },
+        },
+      }),
+    );
+    const valueLabels = labels({
+      orientation,
+      component: 'label-bars',
+      labels: [{
+        placements: [{ position: 'outside', fill: '#666' }],
+        label: (node) => format('$.2s')(node.data.end.value),
+      }],
+    });
+    valueLabels.settings.sources[0].strategy.settings.padding = {
+      top: 0, right: 0, bottom: 0, left: 5,
+    };
+    defaultProperties.components.push(valueLabels);
+    const axisLabels = labels({
+      orientation,
+      component: 'label-bars',
+      labels: [{
+        placements: [{ position: 'opposite', fill: '#666' }],
+        label: (node) => node.data.label,
+      }],
+    });
+    axisLabels.settings.sources[0].strategy.settings.fontSize = 10;
+    axisLabels.settings.sources[0].strategy.settings.padding = {
+      top: 0, right: 2, bottom: 0, left: 0,
+    };
+    defaultProperties.components.push(axisLabels);
+  }
+  if (type === 'merimekko') { /* define merimekko */ }
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
+};
+
+export default barchart;
