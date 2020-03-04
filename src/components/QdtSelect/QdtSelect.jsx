@@ -13,13 +13,11 @@ import {
 } from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
-// import '../../styles/index.scss';
 
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
   };
-  console.log(441, layout);
   const options = merge(defaultOptions, optionsProp);
 
   const { current: id } = useRef(uuidv4());
@@ -53,7 +51,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   return (
     <>
-      <FormControl variant="outlined">
+      <FormControl variant="outlined" style={{ width: '100%' }}>
         <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
         <Select
           labelId={`${id}-label`}

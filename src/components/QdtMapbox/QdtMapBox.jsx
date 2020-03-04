@@ -27,7 +27,6 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     interactive: true,
   };
   const options = merge(defaultOptions, optionsProp);
-  console.log('QdtMapBox', options);
   if (optionsProp.center) options.center = optionsProp.center; // Deep merges the array and we have center: (4) [-74.5, 40, -140, 50], which breaks mapbox
   const node = useRef(null);
   const [map, setMap] = useState(null);
