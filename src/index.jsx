@@ -28,4 +28,6 @@ export { default as QdtThree } from './components/QdtThree/QdtThree';
 
 export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';
 
-export { default as useBarchartSettings } from './components/QdtPicasso/settings/barchart';
+export { default as useBarChartSettings } from './components/QdtPicasso/settings/barChart';
+
+export { default as useLineChartSettings } from './components/QdtPicasso/settings/lineChart';

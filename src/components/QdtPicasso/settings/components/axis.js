@@ -6,13 +6,14 @@ const axis = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
   scale = 'x',
+  formatter = null,
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
     type: 'axis',
-    key: 'x-axis',
-    scale: 'x',
-    dock: 'bottom',
+    key: `${scale}-axis`,
+    scale,
+    dock: (scale === 'x' && 'bottom') || (scale === 'y' && 'left') || null,
     settings: {
       labels: {
         show: true,
@@ -33,11 +34,7 @@ const axis = ({
       align: 'auto',
     },
   };
-  if (scale === 'y') {
-    defaultProperties.key = 'y-axis';
-    defaultProperties.scale = 'y';
-    defaultProperties.dock = 'left';
-  }
+  if (formatter) defaultProperties.formatter = formatter;
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
 };

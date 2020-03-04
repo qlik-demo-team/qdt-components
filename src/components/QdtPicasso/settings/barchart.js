@@ -9,8 +9,9 @@ import range from './components/range';
 import tooltip from './components/tooltip';
 import rangePan from './interactions/rangePan';
 import tooltipHover from './interactions/tooltipHover';
+import './utils/formatters';
 
-const barchart = ({
+const barChart = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
   orientation = 'vertical',
@@ -124,16 +125,16 @@ const barchart = ({
   }
   if (type === 'group') { /* define group barchart */ }
   if (type === 'butterfly') {
-    defaultProperties.scales[majorScale].min = ({ data }) => -Math.max(...data.fields.map((f) => f.max())) * 1.2;
     defaultProperties.scales[minorScale] = {
-      data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] }, expand: 0.2,
+      data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] },
+      expand: 0.1,
+      min: ({ data }) => -Math.max(...data.fields.map((f) => f.max())) * 1.1,
     };
     defaultProperties.scales.color = {
-      data: { extract: { field: 'qMeasureInfo/1' } },
       range: [theme.palette.primary.main, theme.palette.secondary.main],
       type: 'color',
     };
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x', formatter: { type: 'abs' } }), xAxisProp));
     if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
     if (gridProp) {
       defaultProperties.components.push(
@@ -146,7 +147,46 @@ const barchart = ({
     if (boxProp) {
       defaultProperties.components.push(
         merge(
-          box({ orientation }),
+          box({
+            orientation,
+            properties: {
+              settings: {
+                minor: {
+                  start: (d) => d.resources.scale(minorScale)(0),
+                  end: (d) => d.resources.scale(minorScale)(d.datum.end.value * -1),
+                },
+                box: {
+                  fill: (d) => d.resources.scale('color')(0),
+                },
+              },
+            },
+          }),
+          boxProp,
+        ),
+      );
+      defaultProperties.components.push(
+        merge(
+          box({
+            orientation,
+            properties: {
+              data: {
+                extract: {
+                  props: {
+                    end: { field: 'qMeasureInfo/1' },
+                  },
+                },
+              },
+              settings: {
+                minor: {
+                  start: (d) => d.resources.scale(minorScale)(0),
+                  end: (d) => d.resources.scale(minorScale)(d.datum.end.value),
+                },
+                box: {
+                  fill: (d) => d.resources.scale('color')(1),
+                },
+              },
+            },
+          }),
           boxProp,
         ),
       );
@@ -276,9 +316,9 @@ const barchart = ({
     };
     defaultProperties.components.push(axisLabels);
   }
-  if (type === 'merimekko') { /* define merimekko */ }
+  if (type === 'mekko') { /* define merimekko */ }
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
 };
 
-export default barchart;
+export default barChart;
