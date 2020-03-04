@@ -4,7 +4,8 @@ import { Light as defaultTheme } from 'themes';
 const lineArea = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
-  showArea = false,
+  showLine = true,
+  showArea = true,
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
@@ -30,6 +31,7 @@ const lineArea = ({
         curve: 'linear',
         show: true,
         line: {
+          show: showLine,
           opacity: 1,
           stroke: theme.palette.primary.main,
           strokeWidth: 2,
