@@ -15,7 +15,7 @@ import { Button, ButtonGroup } from '@material-ui/core';
 import {
   PlayArrow, SkipPrevious, SkipNext, Pause, Stop,
 } from '@material-ui/icons';
-import merge from '../../utils/merge';
+import merge from 'utils/merge';
 
 const QdtSequencer = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {

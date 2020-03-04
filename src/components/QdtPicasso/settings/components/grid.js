@@ -1,15 +1,19 @@
 // https://picassojs.com/docs/component-grid-line.html
-const component = function component({
-  y = 'y',
-  x = 'x',
-} = {}) {
-  const comp = {
-    type: 'grid-line',
-    x: (x) ? { scale: x } : null,
-    y: (y) ? { scale: y } : null,
-  };
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
 
-  return comp;
+const grid = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
+  x = true,
+  y = true,
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
+  const defaultProperties = { type: 'grid-line' };
+  if (x) { defaultProperties.x = { scale: 'x' }; }
+  if (y) { defaultProperties.y = { scale: 'y' }; }
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
 };
 
-export default component;
+export default grid;

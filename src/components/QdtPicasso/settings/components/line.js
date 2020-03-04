@@ -1,33 +1,29 @@
-const component = function component({
-  key = 'line',
-  displayOrder = 1,
-  field = 'qDimensionInfo/0',
-  strokeWidth = 2,
-  stroke = '#4477AA',
-  fill = '#4477AA',
-  y = { field: 'qMeasureInfo/0' },
-  y0 = '', // For the rangeArea chart. null breaks!!
-  minor = { scale: 'y', ref: 'y' },
-  area = false,
-} = {}) {
-  const comp = {
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
+
+const line = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
+  const defaultProperties = {
     type: 'line',
-    key,
-    displayOrder,
+    key: 'line',
+    displayOrder: 1,
     data: {
       extract: {
-        field,
+        field: 'qDimensionInfo/0',
         props: {
-          y,
-          y0,
+          y: { field: 'qMeasureInfo/0' },
+          y0: '',
         },
       },
     },
     settings: {
       coordinates: {
         major: { scale: 'x' },
-        minor,
-        minor0: (y0) ? { scale: 'y', ref: 'y0' } : null,
+        minor: { scale: 'y', ref: 'y' },
+        minor0: { scale: 'y', ref: 'y0' },
       },
       orientation: 'horizontal',
       layers: {
@@ -35,19 +31,19 @@ const component = function component({
         show: true,
         line: {
           opacity: 1,
-          stroke,
-          strokeWidth,
+          stroke: theme.primary,
+          strokeWidth: 2,
         },
         area: {
-          show: area,
-          fill,
+          show: false,
+          fill: theme.primary,
           opacity: 0.8,
         },
       },
     },
   };
-
-  return comp;
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
 };
 
-export default component;
+export default line;

@@ -2,7 +2,7 @@ import React from 'react';  //eslint-disable-line
 import ReactDOM from 'react-dom'; //eslint-disable-line
 import { CssBaseline } from '@material-ui/core'; //eslint-disable-line
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'; //eslint-disable-line
-import { Light as defaultTheme } from './themes/Themes'; //eslint-disable-line
+import { Light as defaultTheme } from 'themes';
 import QdtComponent from './components/QdtComponent/QdtComponent';
 
 export default ({

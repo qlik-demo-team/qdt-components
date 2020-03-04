@@ -1,44 +1,43 @@
-const labels = function labels({
-  key = 'labels',
-  component = 'bar',
-  selector = 'rect',
-  displayOrder = 2,
-  direction = 'down',
-  fontSize = 12,
+import { format } from 'd3-format';
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
+
+const labels = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
   type = 'bar',
-  insideFill = '#FFFFFF',
-  outsideFill = '#666666',
-  dock = null,
-  justify = (direction === 'down') ? 0 : 1,
-} = {}) {
-  const comp = {
+  component = 'bars',
+  orientation = 'vertical',
+  labels: labelsProp = null,
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
+  const defaultProperties = {
     type: 'labels',
-    key,
-    displayOrder,
-    dock,
+    displayOrder: 2,
     settings: {
       sources: [{
         component,
-        selector,
+        selector: type === 'bar' ? 'rect' : 'path',
         strategy: {
           type,
           settings: {
-            direction,
+            direction: ({ data }) => (
+              (type === 'bar' && orientation === 'vertical' && (data && data.end.value > data.start.value ? 'up' : 'down'))
+              || (type === 'bar' && orientation === 'horizontal' && (data && data.end.value > data.start.value ? 'right' : 'left'))
+              || (type === 'rows' && (data && data.end.value > data.start.value ? 'right' : 'left'))
+              || (type === 'slice' && 'rotated')
+            ),
             align: 0.5,
             justify: 0,
-            fontSize,
-            labels: [{
-              label({ data }) {
-                let myLabel = '';
-                if (data && component === 'bar') myLabel = (data.end.label) ? data.end.label : data.end.value; // Stacked barchar has only value
-                if (data && component === 'pie') myLabel = `${data.label}: ${data.num.label}`;
-                if (data && (component === 'line')) myLabel = data.label;
-                if (data && (component === 'bar-labels')) myLabel = `${data.label} (${Math.round(data.metric.value)}%)`; // Mekko
-                return myLabel;
-              },
+            fontSize: 9,
+            labels: labelsProp || [{
+              label: ({ data }) => (
+                (type === 'bar' && format('.2s')(data.end.value))
+                || (type === 'slice' && `${format('.2s')(data.num.label)}`)
+              ),
               placements: [
-                { position: 'inside', fill: insideFill, justify },
-                { position: 'outside', fill: outsideFill },
+                { position: 'inside', fill: '#FFFFFF', justify: 1 },
+                { position: 'outside', fill: '#666666', justify: 0 },
               ],
             }],
           },
@@ -46,24 +45,8 @@ const labels = function labels({
       }],
     },
   };
-
-  if (type === 'rows') { // merimekko
-    comp.settings.sources[0].strategy.settings = {
-      fill: '#FFFFFF',
-      labels: [
-        {
-          label: (d) => (d.data ? `${d.data.label} (${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%)` : ''),
-          // label: (d) => (d.data ? d.data.series.label : ''),
-        // }, {
-        //   label: (d) => (d.data ? `${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%` : ''),
-        }, {
-          label: (d) => (d.data ? (d.data.metric.value).toFixed(0) : ''),
-        },
-      ],
-    };
-  }
-
-  return comp;
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
 };
 
 export default labels;

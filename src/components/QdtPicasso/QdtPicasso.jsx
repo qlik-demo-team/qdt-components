@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
-import { easeCubic } from 'd3-ease';
+import * as d3Ease from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
+import equal from 'deep-equal';
 import merge from '../../utils/merge';
-// import { domPointLabel, domPointImage } from './picasso/components';
-// import '../../styles/index.scss';
-// import './style.scss';
 
-// picasso.component('domPointLabel', domPointLabel);
-// picasso.component('domPointImage', domPointImage);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
@@ -20,6 +16,10 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
   const defaultOptions = {
     prio: 'canvas',
     settings: {},
+    transition: {
+      duration: 1000,
+      easing: 'easeCubic',
+    },
   };
   const options = merge(defaultOptions, optionsProp);
 
@@ -59,8 +59,8 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
   const update = useCallback(() => {
     if (transition.current) { stopTransition(); }
 
-    const duration = 1500;
-    const ease = easeCubic;
+    const { duration } = options.transition;
+    const ease = d3Ease[options.transition.easing];
     transition.current = timer((elapsed) => {
       const t = Math.min(1, ease(elapsed / duration));
       const tweenLayout = interpolate(staleLayout.current, layout)(t);
@@ -76,13 +76,13 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
         stopTransition();
       }
     });
-  }, [layout, options.settings, stopTransition]);
+  }, [layout, options.settings, options.transition, stopTransition]);
 
   const resize = useCallback(() => { pic.current.update(); }, [pic]);
 
   useEffect(() => {
     if (!pic.current) create();
-    if (pic.current) update();
+    if (pic.current && !equal(staleLayout.current, layout)) update();
   }, [create, update, layout]);
 
   useEffect(() => {

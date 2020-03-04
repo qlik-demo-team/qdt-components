@@ -29,6 +29,7 @@
 		"jsx-a11y/control-has-associated-label": 0
 	},
   "settings": {
+		"import/resolver": "webpack",
     "react": {
       "version": "detect"
     }

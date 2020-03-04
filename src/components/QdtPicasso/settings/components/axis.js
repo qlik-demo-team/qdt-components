@@ -1,44 +1,42 @@
 // https://picassojs.com/docs/component-axis.html
-const component = function component({
+import merge from 'utils/merge';
+import { Light as defaultTheme } from 'themes';
+
+const axis = ({
+  theme: themeProp = {},
+  properties: propertiesProp = {},
   scale = 'x',
-  format,
   formatter = null,
-} = {}) {
-  const comp = {
+} = {}) => {
+  const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
+  const defaultProperties = {
     type: 'axis',
     key: `${scale}-axis`,
     scale,
-    dock: (scale === 'x') ? 'bottom' : 'left',
-    format,
-    // formatter,
+    dock: (scale === 'x' && 'bottom') || (scale === 'y' && 'left') || null,
     settings: {
       labels: {
         show: true,
         mode: 'auto',
         align: 0.5,
-        // invert: true,
         justify: 0,
       },
       ticks: {
-        show: true, // Toggle ticks on/off // Optional
-        margin: 0, // Space in pixels between the ticks and the line. // Optional
-        tickSize: 4, // Size of the ticks in pixels. // Optional
+        show: true,
+        margin: 0,
+        tickSize: 4,
       },
       line: {
-        show: true, // Toggle line on/off // Optional
+        show: true,
       },
-      paddingStart: 0, // Optional
-      /* Padding in direction perpendicular to the axis */
-      paddingEnd: 10, // Optional
-      /* Set the anchoring point of the axis. Avaialable options are `auto/left/right/bottom/top`. In `auto` the axis determines the best option. The options are restricted based on the axis orientation, a vertical axis may only anchor on `left` or `right` */
-      align: 'auto', // Optional
-    //   align: 'left', // auto
+      paddingStart: 0,
+      paddingEnd: 10,
+      align: 'auto',
     },
   };
-
-  if (formatter) comp.formatter = formatter;
-
-  return comp;
+  if (formatter) defaultProperties.formatter = formatter;
+  const properties = merge(defaultProperties, propertiesProp);
+  return properties;
 };
 
-export default component;
+export default axis;
