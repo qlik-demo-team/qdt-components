@@ -1,9 +1,10 @@
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
 
-const line = ({
+const lineArea = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
+  showArea = false,
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
@@ -15,7 +16,6 @@ const line = ({
         field: 'qDimensionInfo/0',
         props: {
           y: { field: 'qMeasureInfo/0' },
-          y0: '',
         },
       },
     },
@@ -23,7 +23,7 @@ const line = ({
       coordinates: {
         major: { scale: 'x' },
         minor: { scale: 'y', ref: 'y' },
-        minor0: { scale: 'y', ref: 'y0' },
+        minor0: { scale: 'y', fn: (d) => d.scale(0) },
       },
       orientation: 'horizontal',
       layers: {
@@ -31,12 +31,12 @@ const line = ({
         show: true,
         line: {
           opacity: 1,
-          stroke: theme.primary,
+          stroke: theme.palette.primary.main,
           strokeWidth: 2,
         },
         area: {
-          show: false,
-          fill: theme.primary,
+          show: showArea,
+          fill: theme.palette.primary.main,
           opacity: 0.8,
         },
       },
@@ -46,4 +46,4 @@ const line = ({
   return properties;
 };
 
-export default line;
+export default lineArea;
