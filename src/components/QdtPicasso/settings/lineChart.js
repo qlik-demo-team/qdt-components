@@ -13,6 +13,7 @@ import tooltipHover from './interactions/tooltipHover';
 const lineChart = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
+  type = 'standard',
   showArea = false,
   xAxis: xAxisProp = {},
   yAxis: yAxisProp = {},
@@ -31,18 +32,63 @@ const lineChart = ({
     components: [],
     interactions: [],
   };
-  if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-  if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
-  if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
-  if (lineAreaProp) defaultProperties.components.push(merge(lineArea({ showArea }), lineAreaProp));
-  if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
-  if (rangeProp) {
-    defaultProperties.components.push(merge(range(), rangeProp));
-    defaultProperties.interactions.push(rangePan());
+  if (type === 'standard') {
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
+    if (lineAreaProp) defaultProperties.components.push(merge(lineArea({ showArea }), lineAreaProp));
+    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.interactions.push(rangePan());
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
   }
-  if (tooltipProp) {
-    defaultProperties.components.push(merge(tooltip(), tooltipProp));
-    defaultProperties.interactions.push(tooltipHover());
+  if (type === 'multi') {
+    defaultProperties.scales.color = {
+      data: { extract: { field: 'qDimensionInfo/1' } },
+      range: Object.values(theme.palette).map((color) => color.main),
+      type: 'color',
+    };
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
+    if (lineAreaProp) defaultProperties.components.push(
+      merge(
+        lineArea({ 
+          showArea,
+          properties: {
+            data: {
+              extract: {
+                props: { series: { field: 'qDimensionInfo/1' } }
+              }
+            },
+            settings: {
+              coordinates: {
+                layerId: { ref: 'series' }
+              },
+              layers: {
+                line: { stroke: { scale: 'color', ref: 'series' }},
+                area: { fill: { scale: 'color', ref: 'series' }}
+              }
+            }
+          }
+        }), 
+        lineAreaProp
+      )
+    );
+    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.interactions.push(rangePan());
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
   }
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
