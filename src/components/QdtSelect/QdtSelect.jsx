@@ -37,6 +37,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   }, [layout]);
 
   const handleOpen = useCallback(() => {
+    console.log('open');
     model.beginSelections(['/qListObjectDef']);
   }, [model]);
   const handleClose = useCallback(() => {
