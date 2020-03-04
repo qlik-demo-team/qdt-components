@@ -100,6 +100,17 @@ const theme = {
         borderRadius: 0,
       },
     },
+    MuiList: {
+      padding: {
+        paddingTop: 0,
+        paddingBottom: 0,
+      },
+    },
+    MuiListItem: {
+      root: {
+        borderBottom: `1px solid ${Colors.GREY_85}`,
+      },
+    },
   },
 };
 
