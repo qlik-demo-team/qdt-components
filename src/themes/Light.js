@@ -54,10 +54,21 @@ const theme = {
     },
     MuiMenuItem: {
       root: {
-        '&$selected': {
+        borderBottom: `1px solid ${Colors.GREY_80}`,
+        '&.selected': {
           backgroundColor: Colors.QLIK_GREEN,
           color: '#FFF',
+          borderBottom: `1px solid ${Colors.GREY_100}`,
           '&:hover': {
+            backgroundColor: Colors.QLIK_GREEN,
+          },
+        },
+        '&.excluded': {
+          backgroundColor: Colors.GREY_80,
+          color: '#000',
+          borderBottom: `1px solid ${Colors.GREY_100}`,
+          '&:hover': {
+            color: '#FFF',
             backgroundColor: Colors.QLIK_GREEN,
           },
         },

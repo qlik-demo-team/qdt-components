@@ -35,7 +35,6 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   }, [layout]);
 
   const handleOpen = useCallback(() => {
-    console.log('open');
     model.beginSelections(['/qListObjectDef']);
   }, [model]);
   const handleClose = useCallback(() => {
@@ -71,9 +70,9 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
             <MenuItem
               key={row[0].qElemNumber}
               value={row}
-              className={classnames('item', {
-                'styles.selected': row[0].qState === 'S',
-                'styles.excluded': row[0].qState === 'X',
+              className={classnames({
+                selected: row[0].qState === 'S',
+                excluded: row[0].qState === 'X',
               })}
             >
               {row[0].qText}

@@ -9,7 +9,7 @@ import React, { useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-  List, ListItem, ListItemText, Input, ListItemIcon, Paper,
+  MenuList, MenuItem, Input, ListItemIcon, Paper, FormControl,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import uuidv4 from 'uuid/v4';
@@ -23,42 +23,40 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   const { current: id } = useRef(uuidv4());
 
-  const handleChange = useCallback((event) => {
-    console.log(event.target);
-    const qValues = event.target.value.map((v) => ((options.multiple) ? v[0].qElemNumber : v.qElemNumber));
-    model.selectListObjectValues('/qListObjectDef', qValues, false);
+  const handleSelect = useCallback((qElemNumber) => {
+    const toggle = !(options.multiple);
+    model.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle);
   }, [model, options.multiple]);
   const handleSearch = useCallback((event) => {
     model.searchListObjectFor('/qListObjectDef', event.target.value);
   }, [model]);
 
   return (
-    <>
+    <FormControl variant="outlined" style={{ width: '100%' }}>
       <Paper>
-        <List component="nav" className="qdt-list">
-          <ListItem>
+        <MenuList component="nav" className="qdt-list" button>
+          <MenuItem>
             <ListItemIcon>
               <SearchIcon />
             </ListItemIcon>
             <Input type="search" onChange={handleSearch} id={`${id}-label`} disableUnderline />
-          </ListItem>
+          </MenuItem>
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
-            <ListItem
+            <MenuItem
               key={row[0].qElemNumber}
-              className={classnames('item', {
-                'styles.selected': row[0].qState === 'S',
-                'styles.excluded': row[0].qState === 'X',
+              className={classnames({
+                selected: row[0].qState === 'S',
+                excluded: row[0].qState === 'X',
               })}
-              value={row}
-              onClick={handleChange}
+              onClick={() => handleSelect(row[0].qElemNumber)}
               button
             >
-              <ListItemText primary={row[0].qText} value={row} />
-            </ListItem>
+              {row[0].qText}
+            </MenuItem>
           ))}
-        </List>
+        </MenuList>
       </Paper>
-    </>
+    </FormControl>
   );
 };
 
