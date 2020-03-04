@@ -11,7 +11,7 @@ import rangePan from './interactions/rangePan';
 import tooltipHover from './interactions/tooltipHover';
 import './utils/formatters';
 
-const barChart = ({
+const BarChart = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
   orientation = 'vertical',
@@ -321,4 +321,4 @@ const barChart = ({
   return properties;
 };
 
-export default barChart;
+export default BarChart;

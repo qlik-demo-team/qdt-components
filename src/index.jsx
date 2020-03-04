@@ -4,7 +4,7 @@ export { default as qdtEnigma } from './qdtEnigma';
 
 export { default as qdtCompose } from './qdtCompose';
 
-export { default as QdtTheme } from './themes';
+export { default as QdtTheme } from './themes/Themes';
 
 export { default as useSessionObject } from './hooks/useSessionObject';
 
@@ -28,6 +28,6 @@ export { default as QdtThree } from './components/QdtThree/QdtThree';
 
 export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';
 
-export { default as useBarChartSettings } from './components/QdtPicasso/settings/barChart';
+export { default as useBarChartSettings } from './components/QdtPicasso/settings/Barchart';
 
 export { default as useLineChartSettings } from './components/QdtPicasso/settings/lineChart';
