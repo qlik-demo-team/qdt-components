@@ -35,6 +35,7 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
   }, [layout]);
 
   const create = useCallback(() => {
+    if (!layout.qHyperCube) return;
     pic.current = picasso({
       renderer: { prio: [options.prio] },
     }).chart({
