@@ -9,10 +9,11 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress,
+  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress, ListItemText, ListItemIcon,
 } from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
+import CheckIcon from '@material-ui/icons/Check';
 
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
@@ -75,7 +76,13 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
                 excluded: row[0].qState === 'X',
               })}
             >
-              {row[0].qText}
+              <ListItemText primary={row[0].qText} />
+              {row[0].qState === 'S'
+                && (
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                )}
             </MenuItem>
           ))}
         </Select>

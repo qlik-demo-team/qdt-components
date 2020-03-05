@@ -9,9 +9,10 @@ import React, { useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-  MenuList, MenuItem, Input, ListItemIcon, Paper, FormControl,
+  MenuList, MenuItem, Input, ListItemIcon, Paper, FormControl, ListItemText,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import CheckIcon from '@material-ui/icons/Check';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
 
@@ -21,7 +22,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     height: 400,
   };
   const options = merge(defaultOptions, optionsProp);
-  console.log(options);
+
   const { current: id } = useRef(uuidv4());
 
   const handleSelect = useCallback((qElemNumber) => {
@@ -50,9 +51,14 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
                 excluded: row[0].qState === 'X',
               })}
               onClick={() => handleSelect(row[0].qElemNumber)}
-              button
             >
-              {row[0].qText}
+              <ListItemText primary={row[0].qText} />
+              {row[0].qState === 'S'
+                && (
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                )}
             </MenuItem>
           ))}
         </MenuList>

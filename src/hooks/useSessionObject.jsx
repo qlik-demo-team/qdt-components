@@ -11,18 +11,26 @@ const defaultHyperCubeDef = {
     qWidth: 10,
     qHeight: 1000,
   }],
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
   qInterColumnSortOrder: [],
   qSuppressZero: true,
   qSuppressMissing: true,
 };
 
 const defaultListObjectDef = {
-  qDef: [],
+  qDef: {
+    qSortCriterias: [{
+      qSortByState: 0,
+    }],
+  },
   qInitialDataFetch: [{
     qTop: 0,
     qWidth: 1,
     qHeight: 10000,
   }],
+  qSortByAscii: 1,
+  qSortByLoadOrder: 1,
   qInterColumnSortOrder: [],
   qSuppressZero: true,
   qSuppressMissing: true,
