@@ -18,9 +18,10 @@ import merge from 'utils/merge';
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
+    height: 400,
   };
   const options = merge(defaultOptions, optionsProp);
-
+  console.log(options);
   const { current: id } = useRef(uuidv4());
 
   const handleSelect = useCallback((qElemNumber) => {
@@ -34,7 +35,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   return (
     <FormControl variant="outlined" style={{ width: '100%' }}>
       <Paper>
-        <MenuList component="nav" className="qdt-list" button>
+        <MenuList component="nav" className="qdt-list" style={{ height: options.height, overflow: 'auto' }}>
           <MenuItem>
             <ListItemIcon>
               <SearchIcon />
