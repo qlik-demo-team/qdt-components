@@ -8,6 +8,7 @@ const QdtComponent = React.forwardRef(({
   const { model, layout } = useSessionObject({ app, properties });
   modelRef.current = model;  //eslint-disable-line
   layoutRef.current = layout;  //eslint-disable-line
+  console.log(componentRef);
   return (
     <>
       {(!layout && !LoadingComponent) && <div>Loading...</div>}

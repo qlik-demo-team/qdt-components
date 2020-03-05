@@ -9,17 +9,17 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress,
+  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress, ListItemText, ListItemIcon,
 } from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
-// import '../../styles/index.scss';
+import SearchIcon from '@material-ui/icons/Search';
+import CheckIcon from '@material-ui/icons/Check';
 
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
   };
-  console.log(441, layout);
   const options = merge(defaultOptions, optionsProp);
 
   const { current: id } = useRef(uuidv4());
@@ -52,7 +52,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   return (
     <>
-      <FormControl variant="outlined">
+      <FormControl variant="outlined" style={{ width: '100%' }}>
         <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
         <Select
           labelId={`${id}-label`}
@@ -66,18 +66,27 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           input={<Input />}
         >
           <MenuItem>
-            <Input type="search" onChange={handleSearch} />
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <Input type="search" onChange={handleSearch} disableUnderline />
           </MenuItem>
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem
               key={row[0].qElemNumber}
               value={row}
-              className={classnames('item', {
-                'styles.selected': row[0].qState === 'S',
-                'styles.excluded': row[0].qState === 'X',
+              className={classnames({
+                selected: row[0].qState === 'S',
+                excluded: row[0].qState === 'X',
               })}
             >
-              {row[0].qText}
+              <ListItemText primary={row[0].qText} />
+              {row[0].qState === 'S'
+                && (
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                )}
             </MenuItem>
           ))}
         </Select>

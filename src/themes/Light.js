@@ -44,20 +44,41 @@ const theme = {
         border: 5,
       },
     },
-    MuiSelect: {
-      root: {
-      },
-    },
-    MuiInputBase: {
-      root: {
+    MuiListItemText: {
+      primary: {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        display: 'block',
+        fontSize: 12,
       },
     },
     MuiMenuItem: {
       root: {
-        '&$selected': {
+        borderBottom: `1px solid ${Colors.GREY_80}`,
+        fontSize: 12,
+        '&.selected': {
           backgroundColor: Colors.QLIK_GREEN,
           color: '#FFF',
+          borderBottom: `1px solid ${Colors.GREY_100}`,
           '&:hover': {
+            backgroundColor: Colors.QLIK_GREEN,
+          },
+          '& .MuiListItemIcon-root': {
+            minWidth: 10,
+            '& .MuiSvgIcon-root': {
+              fill: '#FFF',
+              width: '0.5em',
+              height: '0.5em',
+            },
+          },
+        },
+        '&.excluded': {
+          backgroundColor: Colors.GREY_80,
+          color: '#000',
+          borderBottom: `1px solid ${Colors.GREY_100}`,
+          '&:hover': {
+            color: '#FFF',
             backgroundColor: Colors.QLIK_GREEN,
           },
         },
@@ -98,6 +119,17 @@ const theme = {
       rail: {
         height: 5,
         borderRadius: 0,
+      },
+    },
+    MuiList: {
+      padding: {
+        paddingTop: 0,
+        paddingBottom: 0,
+      },
+    },
+    MuiListItem: {
+      root: {
+        borderBottom: `1px solid ${Colors.GREY_85}`,
       },
     },
   },

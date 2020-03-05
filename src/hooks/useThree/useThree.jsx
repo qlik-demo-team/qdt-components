@@ -84,11 +84,8 @@ const useThree = ({ layout, options }) => {
   };
 
   const finalRender = () => {
-    console.log('renderer');
     if (!renderer) {
-      console.log('renderer-init', scene);
       if (options.domElement) {
-        console.log('createScene');
         renderer = new WebGLRenderer();
         renderer.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
         options.domElement.appendChild(renderer.domElement);
@@ -172,11 +169,6 @@ const useThree = ({ layout, options }) => {
     spotLight.castShadow = true;
     scene.add(spotLight);
 
-    // renderer2.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
-    // options.domElement.appendChild(renderer2.domElement);
-
-    // call the render function
-    // renderer2.render(scene2, camera2);
     finalRender();
   };
 
@@ -247,20 +239,7 @@ const useThree = ({ layout, options }) => {
     camera.projectionMatrix = m.multiply(l);
   };
 
-
-  // const init = () => {
-  //   layout.qHyperCube.qDataPages[0].qMatrix.forEach((row) => {
-  //     maxBarΝumberFromData = (maxBarΝumberFromData < row[1].qNum) ? row[1].qNum : maxBarΝumberFromData;
-  //   });
-  // console.log(771, options);
   if (options.canvas || options.domElement) createScene();
-
-  // useEffect(() => {
-  //   if (options.canvas) createScene();
-  // }, [createScene, options.canvas]);
-  // };
-
-  // init();
 
   return {
     scene, layout, createBar, minimizeBars, raiseBars, renderScene, createGroundPlane, finalRender,
