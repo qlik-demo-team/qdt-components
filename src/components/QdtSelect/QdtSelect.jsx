@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
+import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
@@ -65,7 +66,10 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           input={<Input />}
         >
           <MenuItem>
-            <Input type="search" onChange={handleSearch} />
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <Input type="search" onChange={handleSearch} disableUnderline />
           </MenuItem>
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem
