@@ -6,10 +6,18 @@ import { Light as defaultTheme } from 'themes';
 import QdtComponent from './components/QdtComponent/QdtComponent';
 
 export default ({
-  element, theme: themeProp, component: Component, options, app, properties, loading: LoadingComponent,
+  element, theme: themeProp,
+  component: componentProp, options: optionsProp,
+  app: appProp, properties: propertiesProp,
+  loading: loadingProp,
 }) => {
+  let theme = (themeProp) ? createMuiTheme(themeProp) : createMuiTheme(defaultTheme);
+  let Component = componentProp;
+  let options = optionsProp;
+  let app = appProp;
+  let properties = propertiesProp;
+  let LoadingComponent = loadingProp;
   const ref = { componentRef: React.createRef(), modelRef: React.createRef(), layoutRef: React.createRef() };
-  const theme = (themeProp) ? createMuiTheme(themeProp) : createMuiTheme(defaultTheme);
   ReactDOM.unmountComponentAtNode(element);
   ReactDOM.render(
     <ThemeProvider theme={theme}>
@@ -26,21 +34,28 @@ export default ({
     element,
   );
   const update = ({
-    component: updatedComponent,
-    options: updatedOptions,
-    app: updatedApp,
-    properties: updatedProperties,
-    loading: updatedLoadingComponent,
+    theme: updatedThemeProp,
+    component: updatedComponentProp,
+    options: updatedOptionsProp,
+    app: updatedAppProp,
+    properties: updatedPropertiesProp,
+    loading: updatedLoadingProp,
   }) => {
+    theme = (updatedThemeProp) ? createMuiTheme(updatedThemeProp) : createMuiTheme(defaultTheme);
+    Component = updatedComponentProp || Component;
+    options = updatedOptionsProp || options;
+    app = updatedAppProp || app;
+    properties = updatedPropertiesProp || properties;
+    LoadingComponent = updatedLoadingProp || LoadingComponent;
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <QdtComponent
-          Component={updatedComponent || Component}
-          options={updatedOptions || options}
-          app={updatedApp || app}
-          properties={updatedProperties || properties}
-          LoadingComponent={updatedLoadingComponent || LoadingComponent}
+          Component={Component}
+          options={options}
+          app={app}
+          properties={properties}
+          LoadingComponent={LoadingComponent}
           ref={ref}
         />
       </ThemeProvider>,
