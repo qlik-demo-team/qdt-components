@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import Theme from '../../styles'; // @TODO REMOVE
 
 const QdtMapBox = ({ layout, options: optionsProp }) => {
+  console.log('QdtMapbox', layout);
   // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
   const defaultOptions = {
     accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',

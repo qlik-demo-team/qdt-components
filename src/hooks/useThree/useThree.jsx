@@ -1,16 +1,15 @@
-import {
-// useCallback, // useRef, useReducer,
-// useEffect,
-// useState,
-} from 'react';
+// import React from 'react';   // eslint-disable-line
 // import merge from 'utils/merge';
 // import { Scene } from 'three';
 import { TweenMax } from 'gsap';
 import {
   Scene, DirectionalLight, BoxGeometry, Mesh, MeshLambertMaterial, WebGLRenderer, Matrix4, Vector3, PlaneGeometry, SphereGeometry, SpotLight, PerspectiveCamera, Camera, // Color,
 } from 'three/build/three';
+// import { useTheme as suseTheme } from '@material-ui/core/styles';
 
 const useThree = ({ layout, options }) => {
+  console.log('useThree');
+  // const theme = suseTheme(); // React min error
   // const defaultOptions = {
   //   canvas: null,
   //   context: null,
@@ -53,13 +52,14 @@ const useThree = ({ layout, options }) => {
     depth = 4,
     order = 1,
     maxBarΝumberFromData = 10,
+    color = 0xfffff,
   }) => new Promise((resolve) => {
     const max = 3000;
     const ratio = Number(posy) / Number(maxBarΝumberFromData); // ) / 100) * max;
     const y = max * ratio;
     const _posy = 1;
     const geometry = new BoxGeometry(width, height, depth, 1, 1, 1);
-    const material = new MeshLambertMaterial({ color: 0xfffff, transparent: true });
+    const material = new MeshLambertMaterial({ color, transparent: true });
     const bar = new Mesh(geometry, material);
     bar.position.set(posx, _posy, posz);
     bar.name = `bar-${order}`;
