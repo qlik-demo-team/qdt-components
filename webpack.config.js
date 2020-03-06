@@ -71,7 +71,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
-      themes: path.resolve(__dirname, 'src/themes/Themes'),
+      themes: path.resolve(__dirname, 'src/themes/'),
       utils: path.resolve(__dirname, 'src/utils/'),
     },
     plugins: [

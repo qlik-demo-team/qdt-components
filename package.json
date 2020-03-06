@@ -47,6 +47,7 @@
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-table": "^6.11.5",
+    "resize-observer-polyfill": "^1.5.1",
     "three": "^0.113.2",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "uuid": "^3.4.0",

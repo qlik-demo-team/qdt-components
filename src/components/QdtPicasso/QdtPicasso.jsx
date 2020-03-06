@@ -6,13 +6,14 @@ import picassoQ from 'picasso-plugin-q';
 import * as d3Ease from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
+import ResizeObserver from 'resize-observer-polyfill';
 import equal from 'deep-equal';
 import merge from '../../utils/merge';
 
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
-const QdtPicasso = ({ model, layout, options: optionsProp }) => {
+const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, ref) => {
   const defaultOptions = {
     prio: 'canvas',
     settings: {},
@@ -27,6 +28,8 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
   const pic = useRef(null);
   const transition = useRef(null);
   const staleLayout = useRef(layout);
+
+  ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
 
   const stopTransition = useCallback(() => {
     transition.current.stop();
@@ -79,24 +82,22 @@ const QdtPicasso = ({ model, layout, options: optionsProp }) => {
     });
   }, [layout, options.settings, options.transition, stopTransition]);
 
-  const resize = useCallback(() => { pic.current.update(); }, [pic]);
-
   useEffect(() => {
     if (!pic.current) create();
     if (pic.current && !equal(staleLayout.current, layout)) update();
   }, [create, update, layout]);
 
   useEffect(() => {
-    window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-  }, [resize]);
+    const ro = new ResizeObserver(() => {
+      pic.current.update();
+    });
+    ro.observe(elementNode.current);
+  }, []);
 
   return (
     <div ref={elementNode} style={{ width: '100%', height: '100%' }} />
   );
-};
+});
 
 QdtPicasso.propTypes = {
   layout: PropTypes.object,
