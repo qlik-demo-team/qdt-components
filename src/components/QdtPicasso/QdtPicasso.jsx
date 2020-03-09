@@ -21,6 +21,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       duration: 1000,
       easing: 'easeCubic',
     },
+    width: '100%',
+    height: '100%',
   };
   const options = merge(defaultOptions, optionsProp);
 
@@ -85,7 +87,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   useEffect(() => {
     if (!pic.current) create();
     if (pic.current && !equal(staleLayout.current, layout)) update();
-  }, [create, update, layout]);
+    ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
+  }, [create, update, layout, ref]);
 
   useEffect(() => {
     const ro = new ResizeObserver(() => {
@@ -95,7 +98,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   }, []);
 
   return (
-    <div ref={elementNode} style={{ width: '100%', height: '100%' }} />
+    <div ref={elementNode} style={{ width: options.width, height: options.height }} />
   );
 });
 
