@@ -30,6 +30,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   const pic = useRef(null);
   const transition = useRef(null);
   const staleLayout = useRef(layout);
+  const staleOptions = useRef(options);
 
   ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
 
@@ -37,7 +38,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     transition.current.stop();
     transition.current = null;
     staleLayout.current = layout;
-  }, [layout]);
+    staleOptions.current = options;
+  }, [layout, options]);
 
   const create = useCallback(() => {
     if (!layout.qHyperCube) return;
@@ -60,7 +62,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       model.selectHyperCubeValues('/qHyperCubeDef', qValues, false);
     });
     staleLayout.current = layout;
-  }, [layout, model, options.prio, options.settings]);
+    staleOptions.current = options;
+  }, [layout, model, options]);
 
   const update = useCallback(() => {
     if (transition.current) { stopTransition(); }
@@ -86,9 +89,9 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   useEffect(() => {
     if (!pic.current) create();
-    if (pic.current && !equal(staleLayout.current, layout)) update();
+    if (pic.current && (!equal(staleLayout.current, layout) || !equal(staleOptions.current, options))) update();
     ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
-  }, [create, update, layout, ref]);
+  }, [create, update, layout, options, ref]);
 
   useEffect(() => {
     const ro = new ResizeObserver(() => {

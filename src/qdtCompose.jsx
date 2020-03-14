@@ -70,7 +70,7 @@ export default ({
           Component={() => null}
           options={{}}
           app={app}
-          properties={properties}
+          properties={{}}
           LoadingComponent={LoadingComponent}
           ref={ref}
         />
