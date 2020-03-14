@@ -95,7 +95,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   useEffect(() => {
     const ro = new ResizeObserver(() => {
-      pic.current.update();
+      if (pic.current) pic.current.update();
     });
     ro.observe(elementNode.current);
   }, []);
