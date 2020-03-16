@@ -5,14 +5,16 @@
  * @param {options} object - Options
 */
 
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, {
+  useCallback, useRef, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {
-  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress, ListItemText, ListItemIcon,
-} from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
+import {
+  FormControl, InputLabel, Select, MenuItem, Input, ListItemIcon, ListItemText,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
@@ -21,121 +23,39 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     multiple: false,
   };
   const options = merge(defaultOptions, optionsProp);
+  console.log(111);
 
   const { current: id } = useRef(uuidv4());
+  // const [age, setAge] = useState([{ qText: 'yiannis' }]);
+  const [age, setAge] = useState('yiannis');
 
-  // const selectValue = useMemo(() => layout.qListObject.qDataPages[0].qMatrix.filter((row) => row[0].qState === 'S'), [layout]);
-  // const selectRenderValue = useMemo((selected) => {
-  //   console.log(331, selected, selectValue);
-  //   if (!selectValue) return;
-  //   console.log((332));
-  //   if (selectValue.length === 1) {
-  //     console.log((333));
-  //     return selectValue[0][0].qText;
-  //   }
-  //   console.log((334));
-  //   return `${selectValue.length} of ${layout.qListObject.qSize.qcy} selected`;
-  // }, [layout, selectValue]);
-
-  const selectedValue = useMemo(() => {
-    const selected = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-    console.log(331, selected);
-    if (!options.multiple) {
-      console.log(332);
-      if (selected.length) console.log(333, selected[0][0].qText);
-      console.log(334);
-      if (selected.length) return [selected[0][0].qText];
-      console.log(335);
-      return '';
-    }
-    console.log(341);
-    return selected;
-  }, [layout.qListObject, options.multiple]);
-
-  // const selectRenderValue = useMemo((selected) => {
-  //   // const selected2 = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-  //   console.log(332, selected);
-  //   if (!selected) return;
-  //   console.log(333);
-  //   if (selected.length === 1) {
-  //     console.log(334, selected);
-  //     return selected[0][0].qText;
-  //   }
-  //   console.log(335);
-  //   return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  // }, [layout]);
-
-  // const selectRenderValue = useMemo((selected) => {
-  //   const selected = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-  //   console.log(332, selected);
-  //   if (!selected.length) return;
-  //   if (selected.length === 1) {
-  //     return selected[0][0].qText;
-  //   }
-  //   return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  // }, [layout]);
-
-  // const selectedValue = useMemo(() => {
-  //   const selected = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-  //   console.log(331, selected);
-  //   if (selected.length === 1) return selected[0][0].qText;
-  //   if (selected.length > 1 && selected.length < 3) return selected.map((value) => value[0].qText).join(',');
-  //   return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  //   // return (options.multiple) ? sv : sv[0];
-  // }, [layout.qListObject]);
-
-  // const selectRenderValue = useMemo((selected) => {
-  //   console.log(332, selected);
-  //   if (!selected) return;
-  //   if (selected.length === 1) {
-  //     return selected[0][0].qText;
-  //   }
-  //   return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  // }, [layout]);
-
-  // const selectRenderValue = useMemo(() => {
-  //   const selected = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-  //   console.log(332, selected);
-  //   if (!selected.length) return;
-  //   if (selected.length === 1) return selected[0][0].qText;
-  //   return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  // }, [layout]);
-
-
-  const selectedPercentage = useMemo(() => {
-    const sv = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-    return (sv.length) ? (sv.length / layout.qListObject?.qSize?.qcy) * 100 : 100;
-  }, [layout]);
-
-  const handleOpen = useCallback(() => {
-    model.beginSelections(['/qListObjectDef']);
-  }, [model]);
-  const handleClose = useCallback(() => {
-    model.endSelections(true);
-  }, [model]);
-  const handleChange = useCallback((event) => {
+  const handleChange = (event) => {
     const qValues = event.target.value.map((v) => ((options.multiple) ? v[0].qElemNumber : v.qElemNumber));
-    model.selectListObjectValues('/qListObjectDef', qValues, false);
-  }, [model, options.multiple]);
+    // model.selectListObjectValues('/qListObjectDef', qValues, false);
+    console.log(113, event.target.value, qValues);
+    // setAge(event.target.value);
+    setAge(`yianni-${qValues[0]}`);
+  };
   const handleSearch = useCallback((event) => {
+    console.log(118, event);
     model.searchListObjectFor('/qListObjectDef', event.target.value);
   }, [model]);
 
+  useEffect(() => {
+    console.log(115, layout);
+  }, [layout]);
+
   return (
     <>
-      <FormControl variant="outlined" style={{ width: '100%' }}>
-        <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
+      {console.log(119, age)}
+      <FormControl>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
           labelId={`${id}-label`}
           id={id}
           multiple={options.multiple}
-          // value={(options.multiple) ? [] : ''}
-          value={selectedValue}
-          // renderValue={selectRenderValue}
-          onOpen={handleOpen}
-          onClose={handleClose}
+          value={age}
           onChange={handleChange}
-          input={<Input />}
         >
           <MenuItem>
             <ListItemIcon>
@@ -154,15 +74,14 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
             >
               <ListItemText primary={row[0].qText} />
               {row[0].qState === 'S'
-                && (
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                )}
+              && (
+              <ListItemIcon>
+                <CheckIcon />
+              </ListItemIcon>
+              )}
             </MenuItem>
           ))}
         </Select>
-        <LinearProgress variant="determinate" value={selectedPercentage} />
       </FormControl>
     </>
   );

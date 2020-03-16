@@ -5,7 +5,6 @@ import mapboxgl from 'mapbox-gl';
 import Theme from '../../styles'; // @TODO REMOVE
 
 const QdtMapBox = ({ layout, options: optionsProp }) => {
-  console.log('QdtMapbox', layout);
   // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
   const defaultOptions = {
     accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',
@@ -32,7 +31,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   const node = useRef(null);
   const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const qData = layout.qHyperCube.qDataPages[0];
+  const qData = (layout.qHyperCube?.qDataPages[0]) ? layout.qHyperCube.qDataPages[0] : null;
   const property = (options.createLayers) ? layout.qHyperCube.qDimensionInfo[3].qFallbackTitle : null;
   let mapData = [];
   let GeoJSON = null;
@@ -201,7 +200,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   };
 
   useEffect(() => {
-    if (options.createLayers) createPropertyChilderFromQData();
+    if (qData && options.createLayers) createPropertyChilderFromQData();
     if (!map) mapInit();
     if (map) {
       // After Map is loaded, update GeoJSON & save Map object before continuing
@@ -209,7 +208,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
         if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
         // if (options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
         setIsLoaded(true);
-        mapData = [...mapData, ...qData.qMatrix];
+        if (qData) mapData = [...mapData, ...qData.qMatrix];
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

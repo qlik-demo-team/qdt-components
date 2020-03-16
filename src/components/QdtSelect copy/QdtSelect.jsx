@@ -32,7 +32,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
       return selected[0][0].qText;
     }
     return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  }, [layout]);
+  }, [layout]); 
 
   const handleOpen = useCallback(() => {
     console.log('open');
