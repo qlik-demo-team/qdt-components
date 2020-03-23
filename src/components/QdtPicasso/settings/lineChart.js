@@ -90,6 +90,67 @@ const lineChart = ({
       defaultProperties.interactions.push(tooltipHover());
     }
   }
+  if (type === 'stacked') {
+    defaultProperties.collections = [{
+      key: 'stacked',
+      data: {
+        extract: {
+          field: 'qDimensionInfo/0',
+          props: {
+            series: { field: 'qDimensionInfo/1' },
+            end: { field: 'qMeasureInfo/0' },
+          },
+        },
+        stack: {
+          stackKey: (d) => d.value,
+          value: (d) => d.end.value,
+        },
+      },
+    }];
+    defaultProperties.scales.y.data = { collection: { key: 'stacked' } };
+    defaultProperties.scales.color = {
+      data: { extract: { field: 'qDimensionInfo/1' } },
+      range: Object.values(theme.palette).map((color) => color.main),
+      type: 'color',
+    };
+    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
+    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
+    if (lineAreaProp) defaultProperties.components.push(
+      merge(
+        lineArea({ 
+          showArea,
+          properties: {
+            data: { collection: 'stacked' },
+            // settings: {
+            //   box: { fill: { scale: 'color', ref: 'series' } },
+            // },
+            settings: {
+              coordinates: {
+                minor: { scale: 'y', ref: 'end' },
+                minor0: { scale: 'y', ref: 'start' },
+                layerId: { ref: 'series' },
+              },
+              layers: {
+                line: { stroke: { scale: 'color', ref: 'series' }},
+                area: { fill: { scale: 'color', ref: 'series' }}
+              }
+            }
+          }
+        }), 
+        lineAreaProp
+      )
+    );
+    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (rangeProp) {
+      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.interactions.push(rangePan());
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
 };

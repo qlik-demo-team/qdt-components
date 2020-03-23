@@ -5,16 +5,14 @@
  * @param {options} object - Options
 */
 
-import React, {
-  useCallback, useRef, useState, useEffect,
-} from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import {
+  FormControl, InputLabel, Select, MenuItem, Input, LinearProgress, ListItemText, ListItemIcon,
+} from '@material-ui/core';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
-import {
-  FormControl, InputLabel, Select, MenuItem, Input, ListItemIcon, ListItemText,
-} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 
@@ -23,39 +21,49 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     multiple: false,
   };
   const options = merge(defaultOptions, optionsProp);
-  console.log(111);
 
   const { current: id } = useRef(uuidv4());
-  // const [age, setAge] = useState([{ qText: 'yiannis' }]);
-  const [age, setAge] = useState('yiannis');
 
-  const handleChange = (event) => {
+  const selectValue = useMemo(() => {
+    const sv = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
+    return (options.multiple) ? sv : sv[0];
+  }, [layout.qListObject, options.multiple]);
+  const selectRenderValue = useMemo((selected) => {
+    if (!selected) return;
+    if (selected.length === 1) {
+      return selected[0][0].qText;
+    }
+    return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
+  }, [layout]);
+
+  const handleOpen = useCallback(() => {
+    model.beginSelections(['/qListObjectDef']);
+  }, [model]);
+  const handleClose = useCallback(() => {
+    model.endSelections(true);
+  }, [model]);
+  const handleChange = useCallback((event) => {
     const qValues = event.target.value.map((v) => ((options.multiple) ? v[0].qElemNumber : v.qElemNumber));
-    // model.selectListObjectValues('/qListObjectDef', qValues, false);
-    console.log(113, event.target.value, qValues);
-    // setAge(event.target.value);
-    setAge(`yianni-${qValues[0]}`);
-  };
+    model.selectListObjectValues('/qListObjectDef', qValues, false);
+  }, [model, options.multiple]);
   const handleSearch = useCallback((event) => {
-    console.log(118, event);
     model.searchListObjectFor('/qListObjectDef', event.target.value);
   }, [model]);
 
-  useEffect(() => {
-    console.log(115, layout);
-  }, [layout]);
-
   return (
     <>
-      {console.log(119, age)}
-      <FormControl>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <FormControl variant="outlined" style={{ width: '100%' }}>
+        <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
         <Select
           labelId={`${id}-label`}
           id={id}
           multiple={options.multiple}
-          value={age}
+          value={selectValue}
+          renderValue={selectRenderValue}
+          onOpen={handleOpen}
+          onClose={handleClose}
           onChange={handleChange}
+          input={<Input />}
         >
           <MenuItem>
             <ListItemIcon>
@@ -74,15 +82,34 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
             >
               <ListItemText primary={row[0].qText} />
               {row[0].qState === 'S'
-              && (
-              <ListItemIcon>
-                <CheckIcon />
-              </ListItemIcon>
-              )}
+                && (
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                )}
             </MenuItem>
           ))}
         </Select>
+        <LinearProgress variant="determinate" value={80} />
       </FormControl>
+
+      {/* <FormControl variant="outlined">
+        <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          // value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+        <LinearProgress variant="determinate" value={80} />
+      </FormControl> */}
     </>
   );
 };

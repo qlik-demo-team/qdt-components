@@ -31,8 +31,9 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   const node = useRef(null);
   const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const qData = (layout.qHyperCube?.qDataPages[0]) ? layout.qHyperCube.qDataPages[0] : null;
-  const property = (options.createLayers) ? layout.qHyperCube.qDimensionInfo[3].qFallbackTitle : null;
+  const qData = layout.qHyperCube?.qDataPages[0];
+  const qMatrix = qData ? qData.qMatrix : [];
+  const property = (options.createLayers) ? layout.qHyperCube?.qDimensionInfo[3]?.qFallbackTitle : null;
   let mapData = [];
   let GeoJSON = null;
   let propertyChildren = null;
@@ -61,7 +62,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   }
 
   const createPropertyChilderFromQData = () => {
-    propertyChildren = [...new Set(qData.qMatrix.map((array) => array[3].qText))];
+    propertyChildren = [...new Set(qMatrix.map((array) => array[3].qText))];
     propertyChildrenWithColors = propertyChildren.reduce((r, e, i) => r.push(e, Theme.palette[i]) && r, []);
   };
 
@@ -75,7 +76,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
       features: [],
     };
 
-    qData.qMatrix.map((array) => {
+    qMatrix.map((array) => {
       if (typeof array[1].qNum !== 'number' || typeof array[2].qNum !== 'number') return false;
       const obj = {
         id: Number(array[0].qNum),
@@ -167,7 +168,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   // ==========================================================================
   // Updates the map to display the appropriate layer
   const updateLayers = () => {
-    const nextChunk = qData.qMatrix.map((array) => {
+    const nextChunk = qMatrix.map((array) => {
       const obj = {
         id: Number(array[0].qNum),
         lat: Number(array[1].qNum),
@@ -190,11 +191,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     mapboxgl.accessToken = options.accessToken;
     const _map = new mapboxgl.Map({
       container: node.current, // container id
-      style: options.style, // stylesheet location
-      center: options.center, // starting position [lng, lat]
-      zoom: options.zoom, // starting zoom
-      pitch: options.pitch, // Camera Angle
-      bearing: options.bearing, // Compass Direction
+      ...options,
     });
     setMap(_map);
   };
@@ -208,7 +205,7 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
         if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
         // if (options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
         setIsLoaded(true);
-        if (qData) mapData = [...mapData, ...qData.qMatrix];
+        mapData = [...mapData, ...qMatrix];
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
