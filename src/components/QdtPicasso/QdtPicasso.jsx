@@ -43,6 +43,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   const create = useCallback(() => {
     if (!layout.qHyperCube) return;
+
     pic.current = picasso({
       renderer: { prio: [options.prio] },
     }).chart({
@@ -67,6 +68,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   const update = useCallback(() => {
     if (transition.current) { stopTransition(); }
+    if (!layout.qHyperCube) return;
 
     const { duration } = options.transition;
     const ease = d3Ease[options.transition.easing];
