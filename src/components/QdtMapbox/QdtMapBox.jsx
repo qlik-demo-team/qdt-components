@@ -16,8 +16,8 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     circleRadius: 5,
     width: '100%',
     height: '100%',
-    minWidth: 'auto',
-    minHeight: 'auto',
+    // minWidth: 'auto',
+    // minHeight: 'auto',
     legend: true, // @TODO - Dock options left, top, bottom or none
     tooltip: null,
     createLayers: true,
@@ -191,17 +191,13 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
     mapboxgl.accessToken = options.accessToken;
     const _map = new mapboxgl.Map({
       container: node.current, // container id
-      style: options.style, // stylesheet location
-      center: options.center, // starting position [lng, lat]
-      zoom: options.zoom, // starting zoom
-      pitch: options.pitch, // Camera Angle
-      bearing: options.bearing, // Compass Direction
+      ...options,
     });
     setMap(_map);
   };
 
   useEffect(() => {
-    if (options.createLayers) createPropertyChilderFromQData();
+    if (qData && options.createLayers) createPropertyChilderFromQData();
     if (!map) mapInit();
     if (map) {
       // After Map is loaded, update GeoJSON & save Map object before continuing
@@ -221,14 +217,12 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
 
   return (
     <>
-      <div style={{ display: 'block', position: 'relative' }}>
-        <div
-          ref={node}
-          style={{
-            width: options.width, height: options.height - 50, minWidth: options.minWidth, minHeight: options.minHeight,
-          }}
-        />
-      </div>
+      <div
+        ref={node}
+        style={{
+          width: options.width, height: options.height,
+        }}
+      />
       <div style={{
         display: 'block', position: 'relative', height: 20, padding: 2, fontSize: 11,
       }}

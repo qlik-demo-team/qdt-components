@@ -45,7 +45,6 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
   if (properties.qListObjectDef) {
     properties.qListObjectDef = merge(defaultListObjectDef, properties.qListObjectDef);
   }
-
   const staleProperties = useRef();
   const qProp = useRef();
   qProp.current = properties;
@@ -68,6 +67,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
       })();
     };
   }, [app]); // eslint-disable-line
+
 
   if (model.current && !equal(staleProperties.current, properties)) {
     // setLayout(null);

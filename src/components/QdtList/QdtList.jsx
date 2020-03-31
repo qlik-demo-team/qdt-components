@@ -16,7 +16,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import uuidv4 from 'uuid/v4';
 import merge from 'utils/merge';
 
-const QdtSelect = ({ layout, model, options: optionsProp }) => {
+const QdtList = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
     height: 400,
@@ -67,15 +67,15 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   );
 };
 
-QdtSelect.propTypes = {
+QdtList.propTypes = {
   layout: PropTypes.object,
   model: PropTypes.object,
   options: PropTypes.object,
 };
-QdtSelect.defaultProps = {
+QdtList.defaultProps = {
   layout: null,
   model: null,
   options: {},
 };
 
-export default QdtSelect;
+export default QdtList;
