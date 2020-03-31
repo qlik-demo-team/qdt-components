@@ -27,7 +27,7 @@ const lineChart = ({
   const defaultProperties = {
     scales: {
       x: { data: { extract: { field: 'qDimensionInfo/0' } } },
-      y: { data: { field: 'qMeasureInfo/0' }, invert: true },
+      y: { data: { field: 'qMeasureInfo/0' }, include: [0], invert: true },
     },
     components: [],
     interactions: [],
