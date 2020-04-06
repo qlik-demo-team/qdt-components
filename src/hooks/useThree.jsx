@@ -1,36 +1,26 @@
-import React, {
-// useCallback, // useRef, useReducer,
-  useEffect,
-} from 'react';
-// import merge from 'utils/merge';
-// import { Scene } from 'three';
 import { TweenMax } from 'gsap';
 import {
-  Scene, DirectionalLight, BoxGeometry, Mesh, MeshLambertMaterial, WebGLRenderer, Matrix4, Vector3, PlaneGeometry, SphereGeometry, SpotLight, PerspectiveCamera, Camera, // Color,
+  Scene, DirectionalLight, BoxGeometry, Mesh, MeshLambertMaterial, WebGLRenderer, Matrix4, Vector3, PlaneGeometry, SphereGeometry, SpotLight, PerspectiveCamera, CameraHelper,
 } from 'three/build/three';
 
 const useThree = ({ layout, options }) => {
-  console.log('useThree');
-  console.log(331, layout);
-  const [state, setState] = React.useState({
-    scene: null,
-    camera: null,
-    renderer: null,
-  });
-  console.log(332, state);
-  // const defaultOptions = {
-  //   canvas: null,
-  //   context: null,
-  // };
-  // const options = (optionsProp) ? merge(defaultOptions, optionsProp) : defaultOptions;
-  // let scene;
-  // let camera;
-  // let renderer;
-  // const maxBarΝumberFromData = 0;
-  const maxNumberOfBars = layout.qHyperCube.qSize.qcy;
+  const scene = new Scene();
+  let renderer;
+  let maxNumberOfBars = 0;
+  const showCameraHelper = 0;
+  let mapWidth = window.innerWidth;
+  let mapHeight = window.innerHeight;
+  if (options.domElement) {
+    mapWidth = options.domElement.getBoundingClientRect().width;
+    mapHeight = options.domElement.getBoundingClientRect().height;
+  } else if (options.canvas) {
+    mapWidth = options.canvas.width;
+    mapHeight = options.canvas.height;
+  }
+  const camera = new PerspectiveCamera(45, mapWidth / mapHeight, 0.1, 1000);
+  camera.name = 'camera';
 
   const minimizeBars = () => {
-    const { scene } = state;
     for (let index = 0; index <= maxNumberOfBars; index += 1) {
       const bar = scene.getObjectByName(`bar-${index}`, true);
       TweenMax.to(bar.scale, 1, { y: 1 }); // 0 creates errors
@@ -40,7 +30,6 @@ const useThree = ({ layout, options }) => {
   };
 
   const raiseBars = () => {
-    const { scene } = state;
     for (let index = 0; index <= maxNumberOfBars; index += 1) {
       const bar = scene.getObjectByName(`bar-${index}`, true);
       TweenMax.to(bar.scale, 2, { y: bar.userData.y }); // 0 creates errors
@@ -59,14 +48,14 @@ const useThree = ({ layout, options }) => {
     depth = 4,
     order = 1,
     maxBarΝumberFromData = 10,
-  }) => {
-    const { scene } = state;
+    color = 0xfffff,
+  }) => new Promise((resolve) => {
     const max = 3000;
     const ratio = Number(posy) / Number(maxBarΝumberFromData); // ) / 100) * max;
     const y = max * ratio;
     const _posy = 1;
     const geometry = new BoxGeometry(width, height, depth, 1, 1, 1);
-    const material = new MeshLambertMaterial({ color: 0xfffff, transparent: true });
+    const material = new MeshLambertMaterial({ color, transparent: true });
     const bar = new Mesh(geometry, material);
     bar.position.set(posx, _posy, posz);
     bar.name = `bar-${order}`;
@@ -76,28 +65,65 @@ const useThree = ({ layout, options }) => {
     // Animate
     TweenMax.to(bar.scale, 1, { y, delay: order * 0.1 + 1 });
     TweenMax.to(bar.position, 1, { y: y / 2, delay: order * 0.1 + 1 });
-  };
+    maxNumberOfBars = order;
+    resolve(true);
+  });
 
   // create two three.js lights to illuminate the model
   const createLights = () => {
-    const { scene } = state;
     const directionalLight = new DirectionalLight(0xffffff);
     directionalLight.position.set(-90, 200, 130).normalize();
+    directionalLight.name = 'light-1';
     scene.add(directionalLight);
     const directionalLight2 = new DirectionalLight(0xffffff, 0.3);
     directionalLight2.position.set(90, 20, -100).normalize();
+    directionalLight2.name = 'light-2';
     scene.add(directionalLight2);
+    if (showCameraHelper) {
+      const helper = new CameraHelper(camera);
+      scene.add(helper);
+    }
+  };
+
+  const handleWindowResize = () => {
+    mapWidth = window.innerWidth;
+    mapHeight = window.innerHeight;
+    if (options.domElement) {
+      mapWidth = options.domElement.getBoundingClientRect().width;
+      mapHeight = options.domElement.getBoundingClientRect().height;
+    } else if (options.canvas) {
+      mapWidth = options.canvas.width;
+      mapHeight = options.canvas.height;
+    }
+    camera.aspect = mapWidth / mapHeight;
+    renderer.setSize(mapWidth, mapHeight);
   };
 
   const finalRender = () => {
-    const { scene, camera, renderer } = state;
+    if (!renderer) {
+      if (options.domElement) {
+        renderer = new WebGLRenderer();
+        renderer.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
+        options.domElement.appendChild(renderer.domElement);
+      } else {
+        // use the Mapbox GL JS map canvas for three.js
+        renderer = new WebGLRenderer({
+          canvas: options.canvas,
+          context: options.context,
+          antialias: true,
+        });
+        renderer.autoClear = false;
+      }
+    }
+
+    window.addEventListener('resize', handleWindowResize, false);
     renderer.state.reset();
+    // call the render function
     renderer.render(scene, camera);
   };
 
   // Create Ground Plane
   const createGroundPlane = () => {
-    const { scene, camera } = state;
     // renderer.setClearColor(new Color(0xEEEEEE, 1.0));
     // renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.shadowMapEnabled = true;
@@ -160,44 +186,15 @@ const useThree = ({ layout, options }) => {
     spotLight.castShadow = true;
     scene.add(spotLight);
 
-    // renderer2.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
-    // options.domElement.appendChild(renderer2.domElement);
-
-    // call the render function
-    // renderer2.render(scene2, camera2);
     finalRender();
   };
 
   const createScene = () => {  // eslint-disable-line
-    const scene = new Scene();
-    // setScene(new Scene());
-    // camera = new Camera();
-    const camera = (options.domElement) ? new PerspectiveCamera(45, options.domElement.getBoundingClientRect().width / options.domElement.getBoundingClientRect().height, 0.1, 1000) : new Camera();
-    // createLights();
-    let renderer;
-
-    if (options.domElement) {
-      console.log('createScene');
-      renderer = new WebGLRenderer();
-      renderer.setSize(options.domElement.getBoundingClientRect().width, options.domElement.getBoundingClientRect().height);
-      options.domElement.appendChild(renderer.domElement);
-      // call the render function
-      // renderer.render(scene, camera);
-    } else {
-      // use the Mapbox GL JS map canvas for three.js
-      renderer = new WebGLRenderer({
-        canvas: options.canvas,
-        context: options.context,
-        antialias: true,
-      });
-      renderer.autoClear = false;
-    }
-    setState({ scene, camera, renderer });
+    createLights();
   };
 
   // For mapbox
   const renderScene = (mapboxgl, matrix) => {
-    const { camera } = state;
     // parameters to ensure the model is georeferenced correctly on the map
     const modelOrigin = [-97.531708, 39.305878];
     const modelAltitude = 0;
@@ -216,8 +213,8 @@ const useThree = ({ layout, options }) => {
       rotateY: modelRotate[1],
       rotateZ: modelRotate[2],
       /* Since our 3D model is in real world meters, a scale transform needs to be
-    * applied since the CustomLayerInterface expects units in MercatorCoordinates.
-    */
+      * applied since the CustomLayerInterface expects units in MercatorCoordinates.
+      */
       scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
     };
 
@@ -255,26 +252,10 @@ const useThree = ({ layout, options }) => {
     camera.projectionMatrix = m.multiply(l);
   };
 
-
-  // const init = () => {
-  //   layout.qHyperCube.qDataPages[0].qMatrix.forEach((row) => {
-  //     maxBarΝumberFromData = (maxBarΝumberFromData < row[1].qNum) ? row[1].qNum : maxBarΝumberFromData;
-  //   });
-  // if (options.canvas || options.domElement) createScene();
-
-  useEffect(() => {
-    console.log('useEffect');
-    const { scene } = state;
-    console.log(332, scene);
-    if (!scene) createScene();
-    if (scene) createLights();
-  }, [createLights, createScene, state]);
-  // };
-
-  // init();
+  if (options.canvas || options.domElement) createScene();
 
   return {
-    scene: state.scene, layout, createBar, minimizeBars, raiseBars, renderScene, createGroundPlane, finalRender,
+    scene, layout, createBar, minimizeBars, raiseBars, renderScene, createGroundPlane, finalRender,
   };
 };
 

@@ -6,7 +6,7 @@ export { default as qdtCompose } from './qdtCompose';
 
 export { default as QdtTheme } from 'themes';
 
-export { default as useThree } from './hooks/useThree/useThree';
+export { default as useThree } from './hooks/useThree';
 
 export { default as QdtButton } from './components/QdtButton/QdtButton';
 

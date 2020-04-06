@@ -4,7 +4,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import useThree from '../../hooks/useThree/useThree';
+import useThree from '../../hooks/useThree';
 
 const QdtThree = ({ layout }) => {
   const node = useRef(null);
