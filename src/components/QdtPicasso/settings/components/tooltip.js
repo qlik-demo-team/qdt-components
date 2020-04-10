@@ -1,9 +1,11 @@
+import { format } from 'd3-format';
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
 
 const tooltip = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
+  format: formatSpec = '.2s',
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
@@ -24,7 +26,7 @@ const tooltip = ({
           case 'point2':
             html = h('div.qdt-tooltip-header', {}, [
               h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-              h('div.qdt-tooltip-header-measure', {}, `${data[0].data.y.label}`),
+              h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.y.label)}`),
               // h('div.qdt-tooltip-header-measure', {}, `${(data[0].data.group) ? data[0].data.group.label : data[0].data.y.label}`),
             ]);
             break;
@@ -32,7 +34,7 @@ const tooltip = ({
           case 'pie':
             html = h('div.qdt-tooltip-header', {}, [
               h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-              h('div.qdt-tooltip-header-measure', {}, `${data[0].data.num.label}`),
+              h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.num.label)}`),
             ]);
             break;
           // Barcharts, Gauge
@@ -41,12 +43,12 @@ const tooltip = ({
             if (data[0].data.series) { // Stacked
               html = h('div.qdt-tooltip-header', {}, [
                 h('div.qdt-tooltip-header-title', { align: 'center', style: { 'border-bottom': '1px solid rgba(255,255,255,0.2)', 'padding-bottom': '5px', display: 'block' } }, `${data[0].data.label}`),
-                h('div.qdt-tooltip-header-measure', { align: 'center', style: { 'padding-top': '5px' } }, `${data[0].data.series.label}: ${data[0].data.end.value}`),
+                h('div.qdt-tooltip-header-measure', { align: 'center', style: { 'padding-top': '5px' } }, `${format(formatSpec)(data[0].data.series.label)}: ${format(formatSpec)(data[0].data.end.value)}`),
               ]);
             } else {
               html = h('div.qdt-tooltip-header', {}, [
                 h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-                h('div.qdt-tooltip-header-measure', {}, `${data[0].data.end.label}`),
+                h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.end.label)}`),
               ]);
             }
             break;
