@@ -41,7 +41,7 @@ const qdtEnigma = async (config) => {
     return global.getActiveDoc();
   }
   session.on('closed', () => {
-    console.error(999, 'session closed');
+    console.error('session closed');
     ConnectionLostModal();
   });
 

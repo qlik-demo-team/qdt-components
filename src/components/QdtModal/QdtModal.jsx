@@ -1,14 +1,13 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { useStyles } from './QdtModalStyles';
 
 /* className={classes.paper} */
-const QdtModal = ({ open, handleClose }) => {
+const QdtModal = ({
+  open, header, body, footer, handleClose,
+}) => {
   const classes = useStyles();
-
-  const refresh = () => window.location.reload();
 
   return (
     <div>
@@ -19,15 +18,21 @@ const QdtModal = ({ open, handleClose }) => {
         aria-describedby="QdtModal"
       >
         <div className={classes.paper}>
+          {header && (
           <div className={classes.header}>
-            An error occurred
+            { header }
           </div>
+          ) }
+          { body && (
           <div className={classes.body}>
-            Connection lost. Make sure that Qlik Sense is running properly. If your session has timed out due to inactivity, refresh to continue working.
+            { body }
           </div>
+          ) }
+          { footer && (
           <div className={classes.footer}>
-            <Button variant="contained" onClick={refresh}>Refresh</Button>
+            { footer }
           </div>
+          ) }
         </div>
       </Modal>
     </div>
@@ -37,9 +42,15 @@ const QdtModal = ({ open, handleClose }) => {
 QdtModal.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func,
+  header: PropTypes.string,
+  body: PropTypes.string,
+  footer: PropTypes.string,
 };
 QdtModal.defaultProps = {
   handleClose: null,
+  header: null,
+  body: null,
+  footer: null,
 };
 
 export default QdtModal;
