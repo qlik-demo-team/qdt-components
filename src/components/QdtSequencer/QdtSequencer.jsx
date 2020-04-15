@@ -2,14 +2,15 @@
  * @name QdtSequencer
  * @param {array} cols - Dimension for the data to cycle through
  * @param {number} delay [5] - Loop through the results in given seconds.
- * @param {bool} selectRow [false] - If we want each cycled row to be selected.
  * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles play.
  * @param {bool} navigation [true] - If we want to show / hide the navigation and use only key strokes
  * @description
  * Loop through a dimension and make selections.
 */
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState, useCallback, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup } from '@material-ui/core';
 import {
@@ -22,15 +23,17 @@ const QdtSequencer = ({ layout, model, options: optionsProp }) => {
     variant: 'outlined',
     color: 'primary',
     size: 'small',
-    selectRow: true,
     toggleSelections: false,
     delay: 5,
+    defaultRow: -1,
   };
   const options = merge(defaultOptions, optionsProp);
 
+  const qMatrix = layout?.qListObject?.qDataPages[0]?.qMatrix || [];
+
   // const [init, setInit] = useState(false);
   const [play, setPlay] = useState(false);
-  const [currentRowIndex, setCurrentRowIndex] = useState(0);
+  const currentRowIndex = useRef(options.defaultRow);
   const handleStartSequencer = () => setPlay(true);
   const handleStopSequencer = () => setPlay(false);
 
@@ -39,38 +42,54 @@ const QdtSequencer = ({ layout, model, options: optionsProp }) => {
   const clearSelections = useCallback(() => model.clearSelections('/qListObjectDef'), [model]);
 
   const handleMoveNextSequencer = () => {
-    if (currentRowIndex < layout.qListObject.qDataPages[0].qMatrix.length - 1) {
-      if (!play && options.selectRow && layout.qListObject.qDataPages[0].qMatrix[currentRowIndex]) select(layout.qListObject.qDataPages[0].qMatrix[currentRowIndex + 1][0].qElemNumber, options.toggleSelections, true);
-      if (layout.qListObject.qDataPages[0].qMatrix && currentRowIndex < layout.qListObject.qDataPages[0].qMatrix.length) setCurrentRowIndex(currentRowIndex + 1);
+    if (!play && qMatrix[currentRowIndex.current + 1]) {
+      select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current += 1;
     }
   };
 
   const handleMovePreviousSequencer = () => {
-    if (currentRowIndex > 0) {
-      if (!play && options.selectRow && layout.qListObject.qDataPages[0].qMatrix[currentRowIndex]) select(layout.qListObject.qDataPages[0].qMatrix[currentRowIndex - 1][0].qElemNumber, options.toggleSelections, true);
-      if (layout.qListObject.qDataPages[0].qMatrix && currentRowIndex > 0) setCurrentRowIndex(currentRowIndex - 1);
+    if (!play && qMatrix[currentRowIndex.current - 1]) {
+      select(qMatrix[currentRowIndex.current - 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current -= 1;
     }
   };
 
-  const handleReloadSequencer = () => {
-    setCurrentRowIndex(0);
-    if (options.selectRow) clearSelections();
-  };
+  const handleReloadSequencer = useCallback(() => {
+    if (options.defaultRow !== -1) {
+      select(qMatrix[options.defaultRow][0].qElemNumber, options.toggleSelections, true);
+    } else {
+      clearSelections();
+    }
+    currentRowIndex.current = options.defaultRow;
+  });
 
   useEffect(() => {
-    if (play) setTimeout(() => setCurrentRowIndex(currentRowIndex + 1), options.delay * 1000);
-    if (play && options.selectRow && layout.qListObject.qDataPages[0].qMatrix[currentRowIndex]) select(layout.qListObject.qDataPages[0].qMatrix[currentRowIndex][0].qElemNumber, options.toggleSelections, true);
-    if (play && currentRowIndex === layout.qListObject.qDataPages[0].qMatrix.length - 1) setPlay(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [play, currentRowIndex]);
+    if (options.defaultRow !== -1 && qMatrix.length && !qMatrix.filter((row) => row[0].qState === 'S').length) {
+      handleReloadSequencer();
+    }
+  }, [handleReloadSequencer, options.defaultRow, qMatrix]);
+
+  useEffect(() => {
+    if (play && qMatrix.length) {
+      if (qMatrix[currentRowIndex.current + 1]) {
+        setTimeout(() => {
+          select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
+          currentRowIndex.current += 1;
+        }, options.delay * 1000);
+      } else {
+        setPlay(false);
+      }
+    }
+  }, [play, qMatrix, options, select]);
 
   return (
     <ButtonGroup size={options.size} variant={options.variant} color={options.color} aria-label="qdt-sequencer">
-      <Button onClick={handleMovePreviousSequencer} disabled={currentRowIndex === 0}><SkipPrevious /></Button>
+      <Button onClick={handleMovePreviousSequencer} disabled={currentRowIndex.current === 0}><SkipPrevious /></Button>
       <Button onClick={handleStartSequencer} disabled={play}><PlayArrow /></Button>
       <Button onClick={handleStopSequencer} disabled={!play}><Pause /></Button>
-      <Button onClick={handleReloadSequencer} disabled={play || currentRowIndex === 0}><Stop /></Button>
-      <Button onClick={handleMoveNextSequencer} disabled={currentRowIndex < layout.qListObject.qDataPages[0].qMatrix.length}><SkipNext /></Button>
+      <Button onClick={handleReloadSequencer} disabled={play || currentRowIndex.current === 0}><Stop /></Button>
+      <Button onClick={handleMoveNextSequencer} disabled={currentRowIndex.current < qMatrix.length}><SkipNext /></Button>
     </ButtonGroup>
   );
 };
