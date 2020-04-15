@@ -1,3 +1,5 @@
+import ConnectionLostModal from './utils/ConnectionLost';
+
 const enigma = require('enigma.js');
 const schema = require('enigma.js/schemas/12.170.2.json');
 const SenseUtilities = require('enigma.js/sense-utilities');
@@ -38,6 +40,10 @@ const qdtEnigma = async (config) => {
   if (myConfig.core) {
     return global.getActiveDoc();
   }
+  session.on('closed', () => {
+    console.error('session closed');
+    ConnectionLostModal();
+  });
 
   return global.openDoc(myConfig.appId);
 };
