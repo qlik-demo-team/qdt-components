@@ -69,7 +69,6 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   const update = useCallback(() => {
     if (transition.current) { stopTransition(); }
     if (!layout.qHyperCube) return;
-
     const { duration } = options.transition;
     const ease = d3Ease[options.transition.easing];
     transition.current = timer((elapsed) => {
@@ -91,7 +90,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   useEffect(() => {
     if (!pic.current) create();
-    if (pic.current && (!equal(staleLayout.current, layout) || !equal(staleOptions.current, options))) update();
+    if (pic.current && (!equal(staleLayout.current, layout) || JSON.stringify(staleOptions.current) !== JSON.stringify(options))) update();
     ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
   }, [create, update, layout, options, ref]);
 

@@ -206,7 +206,7 @@ const BarChart = ({
       rank: { field: 'qMeasureInfo/1' },
     };
     defaultProperties.scales[majorScale].data.sort = (a, b) => a.rank.value - b.rank.value;
-    defaultProperties.scales[minorScale].expand = 0.2;
+    defaultProperties.scales[minorScale].expand = 0.5;
     defaultProperties.scales.color = {
       data: { extract: { field: 'qMeasureInfo/1' } },
       range: [theme.palette.primary.main, theme.palette.secondary.main],
@@ -298,8 +298,9 @@ const BarChart = ({
         label: (node) => format('$.2s')(node.data.end.value),
       }],
     });
+    valueLabels.settings.sources[0].strategy.settings.fontSize = 12;
     valueLabels.settings.sources[0].strategy.settings.padding = {
-      top: 0, right: 0, bottom: 0, left: 5,
+      top: 0, right: 0, bottom: 0, left: 6,
     };
     defaultProperties.components.push(valueLabels);
     const axisLabels = labels({
@@ -310,9 +311,9 @@ const BarChart = ({
         label: (node) => node.data.label,
       }],
     });
-    axisLabels.settings.sources[0].strategy.settings.fontSize = 10;
+    axisLabels.settings.sources[0].strategy.settings.fontSize = 14;
     axisLabels.settings.sources[0].strategy.settings.padding = {
-      top: 0, right: 2, bottom: 0, left: 0,
+      top: 0, right: 8, bottom: 0, left: 0,
     };
     defaultProperties.components.push(axisLabels);
   }
