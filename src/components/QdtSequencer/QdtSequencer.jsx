@@ -2,14 +2,14 @@
  * @name QdtSequencer
  * @param {array} cols - Dimension for the data to cycle through
  * @param {number} delay [5] - Loop through the results in given seconds.
- * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles play.
+ * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles playing.
  * @param {bool} navigation [true] - If we want to show / hide the navigation and use only key strokes
  * @description
  * Loop through a dimension and make selections.
 */
 
 import React, {
-  useState, useCallback, useEffect, useRef,
+  useState, useCallback, useEffect, useRef, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup } from '@material-ui/core';
@@ -29,67 +29,78 @@ const QdtSequencer = ({ layout, model, options: optionsProp }) => {
   };
   const options = merge(defaultOptions, optionsProp);
 
-  const qMatrix = layout?.qListObject?.qDataPages[0]?.qMatrix || [];
+  const qMatrix = useMemo(() => layout?.qListObject?.qDataPages[0]?.qMatrix || [], [layout]);
 
-  // const [init, setInit] = useState(false);
-  const [play, setPlay] = useState(false);
+  const initialized = useRef(false);
+  const playTimeout = useRef(null);
   const currentRowIndex = useRef(options.defaultRow);
-  const handleStartSequencer = () => setPlay(true);
-  const handleStopSequencer = () => setPlay(false);
+  const [playing, setplaying] = useState(false);
 
   const select = useCallback((qElemNumber, toggle = true, ignoreLock = false) => model.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock), [model]);
-
   const clearSelections = useCallback(() => model.clearSelections('/qListObjectDef'), [model]);
 
-  const handleMoveNextSequencer = () => {
-    if (!play && qMatrix[currentRowIndex.current + 1]) {
-      select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
-      currentRowIndex.current += 1;
-    }
-  };
-
-  const handleMovePreviousSequencer = () => {
-    if (!play && qMatrix[currentRowIndex.current - 1]) {
-      select(qMatrix[currentRowIndex.current - 1][0].qElemNumber, options.toggleSelections, true);
-      currentRowIndex.current -= 1;
-    }
-  };
-
-  const handleReloadSequencer = useCallback(() => {
+  const reset = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    currentRowIndex.current = options.defaultRow;
     if (options.defaultRow !== -1) {
       select(qMatrix[options.defaultRow][0].qElemNumber, options.toggleSelections, true);
     } else {
       clearSelections();
     }
-    currentRowIndex.current = options.defaultRow;
-  });
+  }, [options.defaultRow, options.toggleSelections, select, qMatrix, clearSelections]);
 
-  useEffect(() => {
-    if (options.defaultRow !== -1 && qMatrix.length && !qMatrix.filter((row) => row[0].qState === 'S').length) {
-      handleReloadSequencer();
+  const previous = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current - 1]) {
+      await select(qMatrix[currentRowIndex.current - 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current -= 1;
     }
-  }, [handleReloadSequencer, options.defaultRow, qMatrix]);
+  }, [qMatrix, options.toggleSelections, select]);
 
-  useEffect(() => {
-    if (play && qMatrix.length) {
-      if (qMatrix[currentRowIndex.current + 1]) {
-        setTimeout(() => {
-          select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
-          currentRowIndex.current += 1;
-        }, options.delay * 1000);
-      } else {
-        setPlay(false);
-      }
+  const next = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current + 1]) {
+      await select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current += 1;
     }
-  }, [play, qMatrix, options, select]);
+  }, [qMatrix, options.toggleSelections, select]);
+
+  const play = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current + 1]) {
+      setplaying(true);
+      await next();
+      playTimeout.current = setTimeout(() => {
+        play();
+      }, options.delay * 1000);
+    } else {
+      setplaying(false);
+    }
+  }, [qMatrix, next, options.delay]);
+
+  const pause = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    setplaying(false);
+  }, []);
+
+  const stop = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    setplaying(false);
+    reset();
+  }, [reset]);
+
+  // if not initialized after qMatrix has data, reset
+  useEffect(() => {
+    if (qMatrix.length && !initialized.current) {
+      reset();
+      initialized.current = true;
+    }
+  }, [qMatrix, reset, select]);
 
   return (
     <ButtonGroup size={options.size} variant={options.variant} color={options.color} aria-label="qdt-sequencer">
-      <Button onClick={handleMovePreviousSequencer} disabled={currentRowIndex.current === 0}><SkipPrevious /></Button>
-      <Button onClick={handleStartSequencer} disabled={play}><PlayArrow /></Button>
-      <Button onClick={handleStopSequencer} disabled={!play}><Pause /></Button>
-      <Button onClick={handleReloadSequencer} disabled={play || currentRowIndex.current === 0}><Stop /></Button>
-      <Button onClick={handleMoveNextSequencer} disabled={currentRowIndex.current < qMatrix.length}><SkipNext /></Button>
+      <Button onClick={previous} disabled={currentRowIndex.current === options.defaultRow}><SkipPrevious /></Button>
+      <Button onClick={play} disabled={playing}><PlayArrow /></Button>
+      <Button onClick={pause} disabled={!playing}><Pause /></Button>
+      <Button onClick={stop} disabled={currentRowIndex.current === options.defaultRow}><Stop /></Button>
+      <Button onClick={next} disabled={currentRowIndex.current >= qMatrix.length}><SkipNext /></Button>
     </ButtonGroup>
   );
 };
