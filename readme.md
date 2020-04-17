@@ -6,6 +6,14 @@
 
 Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple HTML (Vanilla JavaScript), Angular6, React 16, and Vue 2
 
+## Style Guide
+
+- components have the signature ({ model, layout, options }) => ()
+- don't fuck with qdtCompose or QdtComponent
+- picasso settings should be fucntions that receive theme, properties, and the minimum set of parameters
+- components and interactions in picasso settings should have a parameter and be added with push so they can be conditionally included
+- components (i.e. bar, line, etc) should have the most simple api possible, and any parameters should be reusuable. if you need something for a specific type (merrimeko, rank, stacked, butterfly barcharts for examplie), that should be in the settings file, not in the bar component.
+- right now there's only a barchart setting. please leave this be for now. linechart is coming soon. the rest will be ported and eventually exported.
 
 ### Installation
 `npm install --save qdt-components`

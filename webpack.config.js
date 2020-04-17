@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -13,14 +14,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: "[name].js",
+    // `chunkFilename` provides a template for naming code-split bundles (optional)
+    chunkFilename: '[name].bundle.js',
     library: 'QdtComponents',
     libraryTarget: 'umd',
-    libraryExport: 'default',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|map)$/,
         exclude: /node_modules/,
         use: [
           'babel-loader',
@@ -66,21 +68,27 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    // Conflict with libraries like qdt-lui that use the same version of React
-    // alias: {
-    //   'react': path.join(__dirname, './node_modules/react'),
-    //   'react-dom': path.join(__dirname, '/node_modules/react-dom'),
-    // }
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
+      themes: path.resolve(__dirname, 'src/themes/'),
+      utils: path.resolve(__dirname, 'src/utils/'),
+    },
+    plugins: [
+      new DirectoryNamedWebpackPlugin({ exclude: /node_modules/ }),
+    ]
   },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
         include: /\.min\.js$/,
+        cache: true,
+        parallel: true,
         uglifyOptions: {
           warnings: true,
           parse: {},
           compress: false,
-          mangle: true, // Note `mangle.properties` is `false` by default.
+          mangle: false, // Note `mangle.properties` is `false` by default.
           output: null,
           toplevel: false,
           nameCache: null,
