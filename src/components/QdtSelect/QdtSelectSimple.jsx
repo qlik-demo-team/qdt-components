@@ -37,9 +37,8 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   const handleChange = useCallback((event) => {
     console.log(event.target.value);
-    const qValues = (options.multiple) ? event.target.value.map((v) => v[0].qElemNumber) : [event.target.value];
-    model.selectListObjectValues('/qListObjectDef', qValues, false);
-  }, [model, options.multiple]);
+    model.selectListObjectValues('/qListObjectDef', [event.target.value], false);
+  }, [model]);
 
   return (
     <>
@@ -53,7 +52,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           onOpen={handleOpen}
           onClose={handleClose}
           onChange={handleChange}
-          input={<Input />}
+          input={<Input disableUnderline />}
         >
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem

@@ -29,13 +29,12 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     return (options.multiple) ? sv : sv[0];
   }, [layout.qListObject, options.multiple]);
   const selectRenderValue = useMemo((selected) => {
-    console.log(555, selected, selectValue);
     if (!selected) return;
     if (selected.length === 1) {
       return selected[0][0].qText;
     }
     return `${selected.length} of ${layout.qListObject?.qSize?.qcy} selected`;
-  }, [layout, selectValue]);
+  }, [layout]);
 
   const handleOpen = useCallback(() => {
     model.beginSelections(['/qListObjectDef']);
@@ -44,7 +43,6 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     model.endSelections(true);
   }, [model]);
   const handleChange = useCallback((event) => {
-    console.log(event.target.value);
     const qValues = (options.multiple) ? event.target.value.map((v) => v[0].qElemNumber) : [event.target.value];
     model.selectListObjectValues('/qListObjectDef', qValues, false);
   }, [model, options.multiple]);

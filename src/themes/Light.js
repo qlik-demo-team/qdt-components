@@ -122,6 +122,10 @@ const theme = {
       },
     },
     MuiList: {
+      root: {
+        maxHeight: 310,
+        overflowY: 'scroll',
+      },
       padding: {
         paddingTop: 0,
         paddingBottom: 0,
