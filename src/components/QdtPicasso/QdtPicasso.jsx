@@ -29,6 +29,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   const elementNode = useRef(null);
   const pic = useRef(null);
   const transition = useRef(null);
+  const tweenLayout = useRef(null);
   const staleLayout = useRef(layout);
   const staleOptions = useRef(options);
 
@@ -67,18 +68,21 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   }, [layout, model, options]);
 
   const update = useCallback(() => {
-    if (transition.current) { stopTransition(); }
+    if (transition.current) {
+      stopTransition();
+      staleLayout.current = tweenLayout.current;
+    }
     if (!layout.qHyperCube) return;
     const { duration } = options.transition;
     const ease = d3Ease[options.transition.easing];
     transition.current = timer((elapsed) => {
       const t = Math.min(1, ease(elapsed / duration));
-      const tweenLayout = interpolate(staleLayout.current, layout)(t);
+      tweenLayout.current = interpolate(staleLayout.current, layout)(t);
       pic.current.update({
         data: [{
           type: 'q',
           key: 'qHyperCube',
-          data: tweenLayout.qHyperCube,
+          data: tweenLayout.current.qHyperCube,
         }],
         settings: options.settings,
       });
