@@ -84,7 +84,7 @@ const BarChart = ({
     defaultProperties.scales[minorScale].data = { collection: { key: 'stacked' } };
     defaultProperties.scales.color = {
       data: { extract: { field: 'qDimensionInfo/1' } },
-      range: Object.values(theme.palette).map((color) => color.main),
+      range: Object.values(theme.palette).filter((c) => c.main).map((color) => color.main),
       type: 'color',
     };
     if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
