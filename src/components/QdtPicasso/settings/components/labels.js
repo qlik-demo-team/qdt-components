@@ -8,6 +8,7 @@ const labels = ({
   type = 'bar',
   component = 'bars',
   orientation = 'vertical',
+  format: formatSpec = '.2s',
   labels: labelsProp = null,
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
@@ -32,8 +33,8 @@ const labels = ({
             fontSize: 9,
             labels: labelsProp || [{
               label: ({ data }) => (
-                (type === 'bar' && format('.2s')(data.end.value))
-                || (type === 'slice' && `${format('.2s')(data.num.label)}`)
+                (type === 'bar' && format(formatSpec)(data.end.value))
+                || (type === 'slice' && `${format(formatSpec)(data.num.label)}`)
               ),
               placements: [
                 { position: 'inside', fill: '#FFFFFF', justify: 1 },

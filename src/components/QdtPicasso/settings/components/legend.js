@@ -14,7 +14,7 @@ const legend = ({
     scale: 'c',
     settings: {
       layout: {
-        size: 1,
+        size: 4,
         direction: 'ltr',
         scrollOffset: 0,
       },
