@@ -33,17 +33,17 @@ const lineChart = ({
     interactions: [],
   };
   if (type === 'standard') {
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
-    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
-    if (lineAreaProp) defaultProperties.components.push(merge(lineArea({ showArea }), lineAreaProp));
-    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
+    if (gridProp) defaultProperties.components.push(grid(merge({ x: false, y: true }, gridProp)));
+    if (lineAreaProp) defaultProperties.components.push(lineArea(merge({ showArea }, lineAreaProp)));
+    if (pointProp) defaultProperties.components.push(point(merge({}, pointProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.components.push(range(merge({}, rangeProp)));
       defaultProperties.interactions.push(rangePan());
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }
@@ -53,12 +53,12 @@ const lineChart = ({
       range: Object.values(theme.palette).map((color) => color.main),
       type: 'color',
     };
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
-    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
+    if (gridProp) defaultProperties.components.push(grid(merge({ x: false, y: true }, gridProp)));
     if (lineAreaProp) defaultProperties.components.push(
-      merge(
-        lineArea({ 
+      lineArea(
+        merge({ 
           showArea,
           properties: {
             data: {
@@ -76,17 +76,17 @@ const lineChart = ({
               }
             }
           }
-        }), 
-        lineAreaProp
+        }, 
+        lineAreaProp)
       )
     );
-    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (pointProp) defaultProperties.components.push(point(merge({}, pointProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.components.push(range(merge({}, rangeProp)));
       defaultProperties.interactions.push(rangePan());
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }
@@ -113,18 +113,15 @@ const lineChart = ({
       range: Object.values(theme.palette).map((color) => color.main),
       type: 'color',
     };
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
-    if (gridProp) defaultProperties.components.push(merge(grid({ x: false, y: true }), gridProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
+    if (gridProp) defaultProperties.components.push(grid(merge({ x: false, y: true }, gridProp)));
     if (lineAreaProp) defaultProperties.components.push(
-      merge(
-        lineArea({ 
+      lineArea(
+        merge({ 
           showArea,
           properties: {
             data: { collection: 'stacked' },
-            // settings: {
-            //   box: { fill: { scale: 'color', ref: 'series' } },
-            // },
             settings: {
               coordinates: {
                 minor: { scale: 'y', ref: 'end' },
@@ -137,17 +134,17 @@ const lineChart = ({
               }
             }
           }
-        }), 
-        lineAreaProp
+        }, 
+        lineAreaProp)
       )
     );
-    if (pointProp) defaultProperties.components.push(merge(point(), pointProp));
+    if (pointProp) defaultProperties.components.push(point(merge({}, pointProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range(), rangeProp));
+      defaultProperties.components.push(range(merge({}, rangeProp)));
       defaultProperties.interactions.push(rangePan());
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }

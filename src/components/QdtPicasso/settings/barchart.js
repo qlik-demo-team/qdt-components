@@ -1,15 +1,13 @@
 import { format } from 'd3-format';
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
-// import axis from './components/axis';
-// import box from './components/box';
-// import grid from './components/grid';
-// import labels from './components/labels';
-// import range from './components/range';
-// import tooltip from './components/tooltip';
-import {
-  axis, box, grid, labels, range, tooltip,
-} from './components';
+import axis from './components/axis';
+import box from './components/box';
+import grid from './components/grid';
+import labels from './components/labels';
+import legend from './components/legend';
+import range from './components/range';
+import tooltip from './components/tooltip';
 import rangePan from './interactions/rangePan';
 import tooltipHover from './interactions/tooltipHover';
 import './utils/formatters';
@@ -24,6 +22,7 @@ const BarChart = ({
   grid: gridProp = {},
   box: boxProp = {},
   labels: labelsProp = {},
+  legend: legendProp = {},
   range: rangeProp = {},
   tooltip: tooltipProp = {},
 } = {}) => {
@@ -39,31 +38,29 @@ const BarChart = ({
     interactions: [],
   };
   if (type === 'standard') {
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
     if (gridProp) {
       defaultProperties.components.push(
-        merge(
-          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
-          gridProp,
+        grid(
+          merge({ x: orientation === 'horizontal', y: orientation === 'vertical' }, gridProp),
         ),
       );
     }
     if (boxProp) {
       defaultProperties.components.push(
-        merge(
-          box({ orientation }),
-          boxProp,
+        box(
+          merge({ orientation }, boxProp),
         ),
       );
     }
-    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (labelsProp) defaultProperties.components.push(labels(merge({ orientation }, labelsProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.components.push(range(merge({ scale: majorScale }, rangeProp)));
       defaultProperties.interactions.push(rangePan({ scale: majorScale }));
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }
@@ -73,8 +70,9 @@ const BarChart = ({
       data: {
         extract: {
           field: 'qDimensionInfo/0',
+          value: (d) => Math.floor(d.qElemNumber),
           props: {
-            series: { field: 'qDimensionInfo/1' },
+            series: { field: 'qDimensionInfo/1', value: (d) => d.qText },
             end: { field: 'qMeasureInfo/0' },
           },
         },
@@ -84,26 +82,36 @@ const BarChart = ({
         },
       },
     }];
+    defaultProperties.scales[majorScale].data = {
+      extract: {
+        field: 'qDimensionInfo/0',
+        value: (d) => Math.floor(d.qElemNumber),
+      },
+    };
     defaultProperties.scales[minorScale].data = { collection: { key: 'stacked' } };
     defaultProperties.scales.color = {
-      data: { extract: { field: 'qDimensionInfo/1' } },
-      range: Object.values(theme.palette).filter((c) => c.main).map((color) => color.main),
+      data: {
+        extract: {
+          field: 'qDimensionInfo/1',
+          value: (d) => d.qText,
+        },
+      },
+      range: Object.values(theme.palette).map((color) => color.main),
       type: 'color',
     };
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x' }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
     if (gridProp) {
       defaultProperties.components.push(
-        merge(
-          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
-          gridProp,
+        grid(
+          merge({ x: orientation === 'horizontal', y: orientation === 'vertical' }, gridProp),
         ),
       );
     }
     if (boxProp) {
       defaultProperties.components.push(
-        merge(
-          box({
+        box(
+          merge({
             orientation,
             properties: {
               data: { collection: 'stacked' },
@@ -111,18 +119,19 @@ const BarChart = ({
                 box: { fill: { scale: 'color', ref: 'series' }, strokeWidth: 0 },
               },
             },
-          }),
-          boxProp,
+          },
+          boxProp),
         ),
       );
     }
-    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (labelsProp) defaultProperties.components.push(labels(merge({ orientation }, labelsProp)));
+    if (legendProp) defaultProperties.components.push(legend(merge({ properties: { scale: 'color' } }, legendProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.components.push(range(merge({ scale: majorScale }, rangeProp)));
       defaultProperties.interactions.push(rangePan({ scale: majorScale }));
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }
@@ -137,20 +146,19 @@ const BarChart = ({
       range: [theme.palette.primary.main, theme.palette.secondary.main],
       type: 'color',
     };
-    if (xAxisProp) defaultProperties.components.push(merge(axis({ scale: 'x', formatter: { type: 'abs' } }), xAxisProp));
-    if (yAxisProp) defaultProperties.components.push(merge(axis({ scale: 'y' }), yAxisProp));
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x', formatter: { type: 'abs' } }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
     if (gridProp) {
       defaultProperties.components.push(
-        merge(
-          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
-          gridProp,
+        grid(
+          merge({ x: orientation === 'horizontal', y: orientation === 'vertical' }, gridProp),
         ),
       );
     }
     if (boxProp) {
       defaultProperties.components.push(
-        merge(
-          box({
+        box(
+          merge({
             orientation,
             properties: {
               settings: {
@@ -163,13 +171,13 @@ const BarChart = ({
                 },
               },
             },
-          }),
-          boxProp,
+          },
+          boxProp),
         ),
       );
       defaultProperties.components.push(
-        merge(
-          box({
+        box(
+          merge({
             orientation,
             properties: {
               data: {
@@ -189,18 +197,18 @@ const BarChart = ({
                 },
               },
             },
-          }),
-          boxProp,
+          },
+          boxProp),
         ),
       );
     }
-    if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (labelsProp) defaultProperties.components.push(labels(merge({ orientation }, labelsProp)));
     if (rangeProp) {
-      defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
+      defaultProperties.components.push(range(merge({ scale: majorScale }, rangeProp)));
       defaultProperties.interactions.push(rangePan({ scale: majorScale }));
     }
     if (tooltipProp) {
-      defaultProperties.components.push(merge(tooltip(), tooltipProp));
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
       defaultProperties.interactions.push(tooltipHover());
     }
   }
@@ -217,9 +225,8 @@ const BarChart = ({
     };
     if (gridProp) {
       defaultProperties.components.push(
-        merge(
-          grid({ x: orientation === 'horizontal', y: orientation === 'vertical' }),
-          gridProp,
+        grid(
+          merge({ x: orientation === 'horizontal', y: orientation === 'vertical' }, gridProp),
         ),
       );
     }
