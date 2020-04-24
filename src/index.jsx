@@ -32,8 +32,6 @@ export { default as QdtThree } from './components/QdtThree/QdtThree';
 
 export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';
 
-// export { default as QdtPicassoComponents } from './components/QdtPicasso/settings/components';
-
 export { default as useSessionObject } from './hooks/useSessionObject';
 
 export { default as useBarChartSettings } from './components/QdtPicasso/settings/barchart';

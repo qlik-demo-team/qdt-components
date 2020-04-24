@@ -41,8 +41,8 @@ const QdtMapBox = ({ layout, model, options: optionsProp }) => {
   let propertyChildren = null;
   let propertyChildrenWithColors = null;
 
-  const handleSelection = useCallback((value) => {
-    model.selectHyperCubeValues('/qHyperCubeDef', 0, [value], true);
+  const handleSelection = useCallback((value, toggle = true) => {
+    model.selectHyperCubeValues('/qHyperCubeDef', 0, [value], toggle);
   }, [model]);
 
   function buildFeatureSimplified(obj) {

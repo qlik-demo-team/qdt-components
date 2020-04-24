@@ -108,7 +108,7 @@ const BarChart = ({
             properties: {
               data: { collection: 'stacked' },
               settings: {
-                box: { fill: { scale: 'color', ref: 'series' } },
+                box: { fill: { scale: 'color', ref: 'series' }, strokeWidth: 0 },
               },
             },
           }),
