@@ -1,7 +1,6 @@
 import { format } from 'd3-format';
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
-<<<<<<< HEAD
 import axis from './components/axis';
 import box from './components/box';
 import grid from './components/grid';
@@ -9,17 +8,6 @@ import labels from './components/labels';
 import legend from './components/legend';
 import range from './components/range';
 import tooltip from './components/tooltip';
-=======
-// import axis from './components/axis';
-// import box from './components/box';
-// import grid from './components/grid';
-// import labels from './components/labels';
-// import range from './components/range';
-// import tooltip from './components/tooltip';
-import {
-  axis, box, grid, labels, range, tooltip,
-} from './components';
->>>>>>> c5a3f494f7f8bd6cea604c0be5d33bee9c88c305
 import rangePan from './interactions/rangePan';
 import tooltipHover from './interactions/tooltipHover';
 import './utils/formatters';
