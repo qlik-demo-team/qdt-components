@@ -5,6 +5,7 @@ import axis from './components/axis';
 import box from './components/box';
 import grid from './components/grid';
 import labels from './components/labels';
+import legend from './components/legend';
 import range from './components/range';
 import tooltip from './components/tooltip';
 import rangePan from './interactions/rangePan';
@@ -21,6 +22,7 @@ const BarChart = ({
   grid: gridProp = {},
   box: boxProp = {},
   labels: labelsProp = {},
+  legend: legendProp = {},
   range: rangeProp = {},
   tooltip: tooltipProp = {},
 } = {}) => {
@@ -70,8 +72,9 @@ const BarChart = ({
       data: {
         extract: {
           field: 'qDimensionInfo/0',
+          value: (d) => Math.floor(d.qElemNumber),
           props: {
-            series: { field: 'qDimensionInfo/1' },
+            series: { field: 'qDimensionInfo/1', value: (d) => d.qText },
             end: { field: 'qMeasureInfo/0' },
           },
         },
@@ -81,9 +84,20 @@ const BarChart = ({
         },
       },
     }];
+    defaultProperties.scales[majorScale].data = {
+      extract: {
+        field: 'qDimensionInfo/0',
+        value: (d) => Math.floor(d.qElemNumber),
+      },
+    };
     defaultProperties.scales[minorScale].data = { collection: { key: 'stacked' } };
     defaultProperties.scales.color = {
-      data: { extract: { field: 'qDimensionInfo/1' } },
+      data: {
+        extract: {
+          field: 'qDimensionInfo/1',
+          value: (d) => d.qText,
+        },
+      },
       range: Object.values(theme.palette).map((color) => color.main),
       type: 'color',
     };
@@ -114,6 +128,7 @@ const BarChart = ({
       );
     }
     if (labelsProp) defaultProperties.components.push(merge(labels({ orientation }), labelsProp));
+    if (legendProp) defaultProperties.components.push(merge(legend({ properties: { scale: 'color' } }), legendProp));
     if (rangeProp) {
       defaultProperties.components.push(merge(range({ scale: majorScale }), rangeProp));
       defaultProperties.interactions.push(rangePan({ scale: majorScale }));
