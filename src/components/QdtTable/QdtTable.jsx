@@ -30,12 +30,16 @@ const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref)
         ...layout.qHyperCube.qDimensionInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
           accessor: (d) => d[index].qText,
+          colorIndex: col.qAttrExprInfo.findIndex((attr) => attr.id === 'color'),
           defaultSortDesc: col.qSortIndicator === 'D',
           id: col.qFallbackTitle,
           qInterColumnIndex: index,
           qPath: `/qHyperCubeDef/qDimensions/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
+          // getProps: (state, rowInfo) => {
+          //   console.log(rowInfo);
+          // },
         })),
         ...layout.qHyperCube.qMeasureInfo.map((col, index) => ({
           Header: col.qFallbackTitle,
@@ -46,6 +50,9 @@ const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref)
           qPath: `/qHyperCubeDef/qMeasures/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
+          // getProps: (state, rowInfo) => {
+          //   console.log(rowInfo);
+          // },
         })),
       ]
       : []

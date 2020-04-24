@@ -1,6 +1,8 @@
+import { createMuiTheme } from '@material-ui/core/styles';
 import Colors from './Colors';
 
-const theme = {
+// const theme = {
+const theme = createMuiTheme({
   palette: {
     primary: {
       light: Colors.TURQUOISE_LIGHT,
@@ -122,6 +124,10 @@ const theme = {
       },
     },
     MuiList: {
+      root: {
+        maxHeight: 310,
+        overflowY: 'scroll',
+      },
       padding: {
         paddingTop: 0,
         paddingBottom: 0,
@@ -133,6 +139,6 @@ const theme = {
       },
     },
   },
-};
+});
 
 export default theme;

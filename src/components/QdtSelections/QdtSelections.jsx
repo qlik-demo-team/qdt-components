@@ -8,29 +8,30 @@
 */
 import React, { useEffect } from 'react'; //
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 // import { withStyles } from '@material-ui/core/styles'; // useTheme makeStyles
 import {
-  Grid, Button, ButtonGroup, IconButton, Typography, LinearProgress, Popper, Fade, Paper, MenuList, MenuItem, Input, ListItemIcon, ListItemText,
+  Grid, Button, ButtonGroup, IconButton, Typography, LinearProgress, // Popper, Fade, Paper, MenuList, MenuItem, Input, ListItemIcon, ListItemText,
 } from '@material-ui/core';
 import { BorderClear, Cancel } from '@material-ui/icons';
-import SearchIcon from '@material-ui/icons/Search';
-import CheckIcon from '@material-ui/icons/Check';
+// import SearchIcon from '@material-ui/icons/Search';
+// import CheckIcon from '@material-ui/icons/Check';
 // import useSessionObject from '../../hooks/useSessionObject';
 import useStyles from './QdtSelectionsStyles';
+import QdtSelectionsPopper from './QdtSelectionsPopper';
 
-const qMatrix = [
-  { qText: 'Some long, long, very long, very very very long text', qState: 'S', qElemNumber: 1 },
-  { qText: 2019, qState: 'O', qElemNumber: 2 },
-  { qText: 2018, qState: 'S', qElemNumber: 3 },
-  { qText: 2017, qState: 'X', qElemNumber: 4 },
-  { qText: 2016, qState: 'O', qElemNumber: 5 },
-  { qText: 2015, qState: 'O', qElemNumber: 6 },
-  { qText: 2014, qState: 'O', qElemNumber: 7 },
-  { qText: 2013, qState: 'O', qElemNumber: 8 },
-  { qText: 2012, qState: 'O', qElemNumber: 9 },
-  { qText: 2011, qState: 'O', qElemNumber: 10 },
-];
+// const qMatrix = [
+//   { qText: 'Some long, long, very long, very very very long text', qState: 'S', qElemNumber: 1 },
+//   { qText: 2019, qState: 'O', qElemNumber: 2 },
+//   { qText: 2018, qState: 'S', qElemNumber: 3 },
+//   { qText: 2017, qState: 'X', qElemNumber: 4 },
+//   { qText: 2016, qState: 'O', qElemNumber: 5 },
+//   { qText: 2015, qState: 'O', qElemNumber: 6 },
+//   { qText: 2014, qState: 'O', qElemNumber: 7 },
+//   { qText: 2013, qState: 'O', qElemNumber: 8 },
+//   { qText: 2012, qState: 'O', qElemNumber: 9 },
+//   { qText: 2011, qState: 'O', qElemNumber: 10 },
+// ];
 
 // const selectionModels = [];
 
@@ -41,6 +42,7 @@ const QdtSelections = ({ layout, app }) => {
   const classes = useStyles();
   // console.log(layout);
   const { qSelections } = layout.qSelectionObject;
+  console.log(qSelections);
   // const { model: sessionModel, layout: sessionLayout } = useSessionObject({ app, properties });
 
   const handleClick = (event) => {
@@ -125,7 +127,12 @@ const QdtSelections = ({ layout, app }) => {
         </Grid>
       </div>
       <div />
-      <Popper
+      <QdtSelectionsPopper
+        open={open}
+        anchorEl={elementsRef.current[currentElementIndex - 1]}
+        popperEl={popperEl}
+      />
+      {/* <Popper
         open={open}
         placement="bottom"
         // anchorEl={anchorEl}
@@ -181,7 +188,7 @@ const QdtSelections = ({ layout, app }) => {
             </Paper>
           </Fade>
         )}
-      </Popper>
+      </Popper> */}
     </>
   );
 };

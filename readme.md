@@ -51,10 +51,10 @@ Click below to see how you can use qdt-components
 |[![QdtPicasso](docs/components/QdtPicasso/assets/picassoCustomGroupBarchart.png)](docs/components/QdtPicasso/)| [![QdtSearch](docs/assets/search.png)](docs/components/QdtSearch.md)  | [![QtdMapBox](docs/assets/picassoMapbox.png)](docs/components/QdtMapBox.md) |[![QdtTable](docs/assets/table.png)](docs/components/QdtTable.md) |
 |Engine API|Engine API|Engine API|Engine API|
 
-| [QdtSequencer](docs/components/QdtSequencer.md)| | | |
+| [QdtSequencer](docs/components/QdtSequencer.md)|[QdtKpi](docs/components/QdtKpi.md)| | |
 | :----:| :----: | :----: | :----: |
-| [![QdtSequencer](docs/assets/sequencer.png)](docs/components/QdtSequencer.md) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) |
-| Engine API | | | |
+| [![QdtSequencer](docs/assets/sequencer.png)](docs/components/QdtSequencer.md) | [![QdtKpi](docs/assets/kpi.png)](docs/components/QdtKpi.md) | ![](docs/assets/spacer.png) | ![](docs/assets/spacer.png) |
+|Engine API|Engine API| | |
 
 ---
 

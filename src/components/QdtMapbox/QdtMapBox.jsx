@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect, useRef, useState, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import merge from 'utils/merge';
 import mapboxgl from 'mapbox-gl';
 import Theme from '../../styles'; // @TODO REMOVE
 
-const QdtMapBox = ({ layout, options: optionsProp }) => {
+const QdtMapBox = ({ layout, model, options: optionsProp }) => {
   // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
   const defaultOptions = {
     accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',
@@ -38,6 +40,10 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   let GeoJSON = null;
   let propertyChildren = null;
   let propertyChildrenWithColors = null;
+
+  const handleSelection = useCallback((value, toggle = true) => {
+    model.selectHyperCubeValues('/qHyperCubeDef', 0, [value], toggle);
+  }, [model]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -212,7 +218,11 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
   }, [map]);
 
   useEffect(() => {
-    if (isLoaded && map && layout && options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
+    if (isLoaded && map && layout && options.handleMapCallback) {
+      options.handleMapCallback({
+        map, mapboxgl, layout, handleSelection,
+      });
+    }
   }, [map, isLoaded, layout]); // eslint-disable-line
 
   return (
@@ -245,13 +255,13 @@ const QdtMapBox = ({ layout, options: optionsProp }) => {
 
 QdtMapBox.propTypes = {
   layout: PropTypes.object,
-  // model: PropTypes.object,
+  model: PropTypes.object,
   options: PropTypes.object,
 };
 
 QdtMapBox.defaultProps = {
   layout: null,
-  // model: null,
+  model: null,
   options: {},
 };
 

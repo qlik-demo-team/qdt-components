@@ -14,6 +14,8 @@ export { default as QdtKpi } from './components/QdtKpi/QdtKpi';
 
 export { default as QdtSelect } from './components/QdtSelect/QdtSelect';
 
+export { default as QdtSelectSimple } from './components/QdtSelect/QdtSelectSimple';
+
 export { default as QdtList } from './components/QdtList/QdtList';
 
 export { default as QdtTable } from './components/QdtTable/QdtTable';
