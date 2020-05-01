@@ -1,9 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
-  },
-  paper: {
+  modalContainer: {
     position: 'absolute',
     width: '90%',
     maxWidth: 500,
@@ -16,16 +14,17 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },
-  header: {
+  modalHeader: {
     padding: 15,
     fontSize: '1.1em',
     fontWeight: 900,
     backgroundColor: theme.palette.grey[100],
+    width: '100%',
   },
-  body: {
+  modalBody: {
     padding: 15,
   },
-  footer: {
+  modalFooter: {
     padding: 15,
     borderTop: `1px solid ${theme.palette.grey[300]}`,
     backgroundColor: theme.palette.grey[100],

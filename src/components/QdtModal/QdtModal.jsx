@@ -17,19 +17,19 @@ const QdtModal = ({
         aria-labelledby="QdtModal"
         aria-describedby="QdtModal"
       >
-        <div className={classes.paper}>
+        <div className={classes.useStyles}>
           {header && (
-          <div className={classes.header}>
+          <div className={classes.modalHeader}>
             { header }
           </div>
           ) }
           { body && (
-          <div className={classes.body}>
+          <div className={classes.modalBody}>
             { body }
           </div>
           ) }
           { footer && (
-          <div className={classes.footer}>
+          <div className={classes.modalFooter}>
             { footer }
           </div>
           ) }
