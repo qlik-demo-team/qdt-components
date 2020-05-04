@@ -17,7 +17,7 @@ const QdtModal = ({
         aria-labelledby="QdtModal"
         aria-describedby="QdtModal"
       >
-        <div className={classes.useStyles}>
+        <div className={classes.modalContainer}>
           {header && (
           <div className={classes.modalHeader}>
             { header }
