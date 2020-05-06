@@ -247,40 +247,41 @@ const BarChart = ({
               fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
             },
             box: {
-              fill: { scale: 'c', fn: (d) => d.scale(d.datum.rank.value) },
-              width: 0.1,
+              fill: { scale: 'color', fn: (d) => d.scale(d.datum.rank.value) },
+              strokeWidth: 0,
+              width: 0.25,
             },
           },
         },
       }),
     );
-    defaultProperties.components.push(
-      box({
-        orientation,
-        properties: {
-          key: 'end-bars',
-          data: {
-            extract: {
-              props: {
-                start: { field: 'qMeasureInfo/0' },
-                end: { field: 'qMeasureInfo/0' },
-                rank: { field: 'qMeasureInfo/1' },
-              },
-            },
-          },
-          settings: {
-            major: {
-              fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
-            },
-            box: {
-              fill: { scale: 'c', fn: (d) => d.scale(d.datum.rank.value) },
-              width: 0.6,
-              minHeightPx: 3,
-            },
-          },
-        },
-      }),
-    );
+    // defaultProperties.components.push(
+    //   box({
+    //     orientation,
+    //     properties: {
+    //       key: 'end-bars',
+    //       data: {
+    //         extract: {
+    //           props: {
+    //             start: { field: 'qMeasureInfo/0' },
+    //             end: { field: 'qMeasureInfo/0' },
+    //             rank: { field: 'qMeasureInfo/1' },
+    //           },
+    //         },
+    //       },
+    //       settings: {
+    //         major: {
+    //           fn: (d) => (d.datum.rank.value * d.scale.step()) - (d.scale.paddingOuter() * d.scale.bandwidth()) - (0.5 * d.scale.bandwidth()),
+    //         },
+    //         box: {
+    //           fill: { scale: 'c', fn: (d) => d.scale(d.datum.rank.value) },
+    //           width: 0.6,
+    //           minHeightPx: 3,
+    //         },
+    //       },
+    //     },
+    //   }),
+    // );
     defaultProperties.components.push(
       box({
         orientation,
@@ -308,7 +309,7 @@ const BarChart = ({
       component: 'label-bars',
       labels: [{
         placements: [{ position: 'outside', fill: '#666' }],
-        label: (node) => format('$.2s')(node.data.end.value),
+        label: (node) => format('$.3s')(node.data.end.value).replace(/G/, 'B'),
       }],
     });
     valueLabels.settings.sources[0].strategy.settings.fontSize = 12;
