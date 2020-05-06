@@ -70,7 +70,7 @@ const BarChart = ({
       data: {
         extract: {
           field: 'qDimensionInfo/0',
-          value: (d) => Math.round(d.qElemNumber),
+          value: (d) => d.qText,
           props: {
             series: { field: 'qDimensionInfo/1', value: (d) => d.qText },
             end: { field: 'qMeasureInfo/0' },
@@ -85,7 +85,7 @@ const BarChart = ({
     defaultProperties.scales[majorScale].data = {
       extract: {
         field: 'qDimensionInfo/0',
-        value: (d) => Math.round(d.qElemNumber),
+        value: (d) => d.qText,
       },
     };
     defaultProperties.scales[minorScale].data = { collection: { key: 'stacked' } };
@@ -116,7 +116,10 @@ const BarChart = ({
             properties: {
               data: { collection: 'stacked' },
               settings: {
-                box: { fill: { scale: 'color', ref: 'series' }, strokeWidth: 0 },
+                box: {
+                  fill: { scale: 'color', ref: 'series' },
+                  strokeWidth: 0,
+                },
               },
             },
           },
