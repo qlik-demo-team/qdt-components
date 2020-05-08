@@ -9,6 +9,7 @@ const MAX_RETRIES = 3;
 const responseInterceptors = [{
   // We only want to handle failed responses from QIX Engine:
   onRejected: function retryAbortedError(sessionReference, request, error) {
+    console.log('Request: Rejected', error);
     // We only want to handle aborted QIX errors:
     if (error.code === schema.enums.LocalizedErrorCode.LOCERR_GENERIC_ABORTED) {
       // We keep track of how many consecutive times we have tried to do this call:
@@ -40,9 +41,12 @@ const qdtEnigma = async (config) => {
   if (myConfig.core) {
     return global.getActiveDoc();
   }
+
   session.on('closed', () => {
     console.error('Session ended.');
-    ConnectionLostModal();
+    let refreshUrl = window.location.origin;
+    if (myConfig.identity) refreshUrl += `?identity=${myConfig.identity}`;
+    ConnectionLostModal({ refreshUrl });
   });
 
   return global.openDoc(myConfig.appId);
