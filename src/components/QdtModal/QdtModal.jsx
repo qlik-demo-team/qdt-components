@@ -1,13 +1,14 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import PropTypes from 'prop-types';
-import { useStyles } from './QdtModalStyles';
+import { useTheme } from '@material-ui/core/styles';
+import styles from './QdtModalStyles';
 
-/* className={classes.paper} */
 const QdtModal = ({
   open, header, body, footer, handleClose,
 }) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const style = styles(theme);
 
   return (
     <div>
@@ -17,19 +18,19 @@ const QdtModal = ({
         aria-labelledby="QdtModal"
         aria-describedby="QdtModal"
       >
-        <div className={classes.modalContainer}>
+        <div style={style.modalContainer}>
           {header && (
-          <div className={classes.modalHeader}>
+          <div style={style.modalHeader}>
             { header }
           </div>
           ) }
           { body && (
-          <div className={classes.modalBody}>
+          <div style={style.modalBody}>
             { body }
           </div>
           ) }
           { footer && (
-          <div className={classes.modalFooter}>
+          <div style={style.modalFooter}>
             { footer }
           </div>
           ) }
@@ -46,6 +47,7 @@ QdtModal.propTypes = {
   body: PropTypes.string,
   footer: PropTypes.string,
 };
+
 QdtModal.defaultProps = {
   handleClose: null,
   header: null,

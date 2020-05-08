@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
   modalContainer: {
     position: 'absolute',
     width: '90%',
@@ -19,19 +17,23 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.1em',
     fontWeight: 900,
     backgroundColor: theme.palette.grey[100],
-    width: '100%',
+    // width: '100%',
+    width: 'auto',
+    position: 'relative',
   },
   modalBody: {
     padding: 15,
+    width: 'auto',
+    position: 'relative',
   },
   modalFooter: {
     padding: 15,
     borderTop: `1px solid ${theme.palette.grey[300]}`,
     backgroundColor: theme.palette.grey[100],
     textAlign: 'right',
+    position: 'relative',
+    width: 'auto',
   },
-}));
+});
 
-const styles = {};
-
-export { useStyles, styles };
+export default styles;
