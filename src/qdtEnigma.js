@@ -28,24 +28,36 @@ const responseInterceptors = [{
 
 const qdtEnigma = async (config) => {
   const myConfig = config;
+  const {
+    identity, timeoutMessage, core, suspendOnClose,
+  } = myConfig;
   // Make it work for Qlik Core scaling https://github.com/qlik-oss/core-scaling
   // qlikcore/engine:12.248.0
-  if (myConfig.core) {
+  if (core) {
     myConfig.subpath = (myConfig.prefix) ? `${myConfig.prefix}/app` : 'app';
     myConfig.route = `doc/${myConfig.appId}`;
   }
   const url = SenseUtilities.buildUrl(myConfig);
-  const session = enigma.create({ schema, url, responseInterceptors });
+  const session = enigma.create({
+    schema, url, responseInterceptors, suspendOnClose,
+  });
   const global = await session.open();
-  if (myConfig.core) {
+  if (core) {
     return global.getActiveDoc();
   }
 
   session.on('closed', () => {
     console.error('Session ended.');
     let refreshUrl = window.location.origin;
-    if (myConfig.identity) refreshUrl += `?identity=${myConfig.identity}`;
-    ConnectionLostModal({ refreshUrl });
+    if (identity) refreshUrl += `?identity=${myConfig.identity}`;
+    ConnectionLostModal({ refreshUrl, timeoutMessage });
+  });
+
+  session.on('suspended', () => {
+    console.error('Session suspended.');
+    let refreshUrl = window.location.origin;
+    if (identity) refreshUrl += `?identity=${myConfig.identity}`;
+    ConnectionLostModal({ refreshUrl, timeoutMessage });
   });
 
   return global.openDoc(myConfig.appId);
