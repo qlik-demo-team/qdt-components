@@ -58,7 +58,7 @@ const useSessionObject = ({ app, properties: propertiesProp, onLayoutChange }) =
       model.current.on('changed', async () => {
         const _layout = await model.current.getLayout();
         setLayout(_layout);
-        if (onLayoutChange) onLayoutChange({ _layout });
+        if (onLayoutChange) onLayoutChange({ layout: _layout });
       });
       model.current.setProperties(qProp.current);
     })();
