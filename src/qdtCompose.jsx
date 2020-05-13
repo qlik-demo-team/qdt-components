@@ -10,6 +10,7 @@ export default ({
   component: componentProp, options: optionsProp,
   app: appProp, properties: propertiesProp,
   loading: loadingProp,
+  onLayoutChange: onLayoutChangeProp,
 }) => {
   let theme = (themeProp) ? createMuiTheme(themeProp) : createMuiTheme(defaultTheme);
   let Component = componentProp;
@@ -17,6 +18,7 @@ export default ({
   let app = appProp;
   let properties = propertiesProp;
   let LoadingComponent = loadingProp;
+  let onLayoutChange = onLayoutChangeProp;
   const ref = { componentRef: React.createRef(), modelRef: React.createRef(), layoutRef: React.createRef() };
   ReactDOM.unmountComponentAtNode(element);
   ReactDOM.render(
@@ -28,6 +30,7 @@ export default ({
         app={app}
         properties={properties}
         LoadingComponent={LoadingComponent}
+        onLayoutChange={onLayoutChange}
         ref={ref}
       />
     </ThemeProvider>,
@@ -40,6 +43,7 @@ export default ({
     app: updatedAppProp,
     properties: updatedPropertiesProp,
     loading: updatedLoadingProp,
+    onLayoutChange: updatedOnLayoutChangeProp,
   }) => {
     theme = (updatedThemeProp) ? createMuiTheme(updatedThemeProp) : createMuiTheme(defaultTheme);
     Component = updatedComponentProp || Component;
@@ -47,6 +51,7 @@ export default ({
     app = updatedAppProp || app;
     properties = updatedPropertiesProp || properties;
     LoadingComponent = updatedLoadingProp || LoadingComponent;
+    onLayoutChange = updatedOnLayoutChangeProp || onLayoutChange;
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -56,6 +61,7 @@ export default ({
           app={app}
           properties={properties}
           LoadingComponent={LoadingComponent}
+          onLayoutChange={onLayoutChange}
           ref={ref}
         />
       </ThemeProvider>,
@@ -72,6 +78,7 @@ export default ({
           app={app}
           properties={{}}
           LoadingComponent={LoadingComponent}
+          onLayoutChange={null}
           ref={ref}
         />
       </ThemeProvider>,

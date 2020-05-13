@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import useSessionObject from '../../hooks/useSessionObject';
 
 const QdtComponent = React.forwardRef(({
-  Component, options, app, properties, LoadingComponent,
+  Component, options, app, properties, LoadingComponent, onLayoutChange,
 }, { componentRef, modelRef, layoutRef }) => {
-  const { model, layout } = useSessionObject({ app, properties });
+  const { model, layout } = useSessionObject({ app, properties, onLayoutChange });
   modelRef.current = model;  //eslint-disable-line
   layoutRef.current = layout;  //eslint-disable-line
   return (
@@ -25,11 +25,13 @@ QdtComponent.propTypes = {
   app: PropTypes.object.isRequired,
   properties: PropTypes.object,
   LoadingComponent: PropTypes.func,
+  onLayoutChange: PropTypes.func,
 };
 QdtComponent.defaultProps = {
   options: {},
   properties: {},
   LoadingComponent: null,
+  onLayoutChange: null,
 };
 
 export default QdtComponent;

@@ -105,12 +105,6 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     ro.observe(elementNode.current);
   }, []);
 
-  useEffect(() => {
-    if (layout && options.handlePicassoCallback) {
-      options.handlePicassoCallback({ layout });
-    }
-  }, [layout, options]);
-
   return (
     <div ref={elementNode} style={{ width: options.width, height: options.height }} />
   );

@@ -36,7 +36,7 @@ const defaultListObjectDef = {
   qSuppressMissing: true,
 };
 
-const useSessionObject = ({ app, properties: propertiesProp }) => {
+const useSessionObject = ({ app, properties: propertiesProp, onLayoutChange }) => {
   const properties = { ...propertiesProp };
   properties.qInfo = { qType: 'qdt' };
   if (properties.qHyperCubeDef) {
@@ -58,6 +58,7 @@ const useSessionObject = ({ app, properties: propertiesProp }) => {
       model.current.on('changed', async () => {
         const _layout = await model.current.getLayout();
         setLayout(_layout);
+        if (onLayoutChange) onLayoutChange({ _layout });
       });
       model.current.setProperties(qProp.current);
     })();
