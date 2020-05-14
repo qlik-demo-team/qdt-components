@@ -1,5 +1,4 @@
 // https://picassojs.com/docs/component-axis.html
-// import { format } from 'd3-format';
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
 
@@ -22,8 +21,6 @@ const axis = ({
         align: 0.5,
         justify: 0,
       },
-      // label: (node) => format('$.3s')(node.data.end.value).replace(/G/, 'B'),
-      // labels: (node) => console.log(node),
       ticks: {
         show: true,
         margin: 0,
@@ -36,10 +33,7 @@ const axis = ({
       paddingEnd: 10,
       align: 'auto',
     },
-    formatter: {
-      format: '.2s',
-    },
-    // formatter: format('.2s').replace(/G/, 'B'),
+    formatter: 'formatterGtoB',
   };
   if (formatter) defaultProperties.formatter = formatter;
   const properties = merge(defaultProperties, propertiesProp);

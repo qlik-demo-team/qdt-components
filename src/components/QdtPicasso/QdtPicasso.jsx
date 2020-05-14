@@ -6,6 +6,7 @@ import picassoQ from 'picasso-plugin-q';
 import * as d3Ease from 'd3-ease';
 import { timer } from 'd3-timer';
 import { interpolate } from 'd3-interpolate';
+import { format } from 'd3-format';
 import ResizeObserver from 'resize-observer-polyfill';
 import equal from 'deep-equal';
 import merge from '../../utils/merge';
@@ -13,10 +14,20 @@ import merge from '../../utils/merge';
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
+// Custom formatter to change G to B (US Billions)
+const formatterGtoB = () => (value) => format('.1s')(value).replace(/G/, 'B'); // .1s for no decimal on Billions
+picasso.formatter('formatterGtoB', formatterGtoB);
+
 const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, ref) => {
   const defaultOptions = {
     prio: 'canvas',
-    settings: {},
+    settings: {
+      formatters: {
+        formatterGtoB: {
+          type: 'formatterGtoB',
+        },
+      },
+    },
     transition: {
       duration: 1000,
       easing: 'easeCubic',

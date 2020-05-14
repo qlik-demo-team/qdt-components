@@ -80,6 +80,7 @@ const tooltip = ({
         transition: 'opacity 150ms ease-in',
       },
     },
+    // formatter: 'formatterGtoB',
   };
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
