@@ -51,6 +51,10 @@ const useSessionObject = ({ app, properties: propertiesProp, onLayoutChange }) =
 
   const model = useRef(null);
   const [layout, setLayout] = useState(null);
+  const onLayoutChangeRef = useRef(onLayoutChange);
+  useEffect(() => {
+    onLayoutChangeRef.current = onLayoutChange;
+  }, [onLayoutChange]);
 
   useEffect(() => {
     (async () => {
@@ -58,7 +62,9 @@ const useSessionObject = ({ app, properties: propertiesProp, onLayoutChange }) =
       model.current.on('changed', async () => {
         const _layout = await model.current.getLayout();
         setLayout(_layout);
-        if (onLayoutChange) onLayoutChange({ layout: _layout });
+        if (onLayoutChangeRef.current) {
+          onLayoutChangeRef.current({ layout: _layout });
+        }
       });
       model.current.setProperties(qProp.current);
     })();
