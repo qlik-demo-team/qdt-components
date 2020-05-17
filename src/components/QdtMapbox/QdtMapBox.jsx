@@ -44,6 +44,7 @@ const QdtMapBox = ({ layout, model, options: optionsProp }) => {
   const handleSelection = useCallback((value, toggle = true) => {
     model.selectHyperCubeValues('/qHyperCubeDef', 0, [value], toggle);
   }, [model]);
+  const handleClearSelections = useCallback(() => model.clearSelections('/qHyperCubeDef'), [model]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -220,7 +221,7 @@ const QdtMapBox = ({ layout, model, options: optionsProp }) => {
   useEffect(() => {
     if (isLoaded && map && layout && options.handleMapCallback) {
       options.handleMapCallback({
-        map, mapboxgl, layout, handleSelection,
+        map, mapboxgl, layout, handleSelection, handleClearSelections,
       });
     }
   }, [map, isLoaded, layout]); // eslint-disable-line
