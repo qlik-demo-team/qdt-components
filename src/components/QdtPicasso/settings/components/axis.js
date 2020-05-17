@@ -33,6 +33,7 @@ const axis = ({
       paddingEnd: 10,
       align: 'auto',
     },
+    formatter: 'formatterGtoB',
   };
   if (formatter) defaultProperties.formatter = formatter;
   const properties = merge(defaultProperties, propertiesProp);

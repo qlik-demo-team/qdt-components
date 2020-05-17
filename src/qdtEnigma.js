@@ -29,7 +29,7 @@ const responseInterceptors = [{
 const qdtEnigma = async (config) => {
   const myConfig = config;
   const {
-    identity, timeoutMessage, core, suspendOnClose,
+    timeoutMessage, core, suspendOnClose, // identity,
   } = myConfig;
   // Make it work for Qlik Core scaling https://github.com/qlik-oss/core-scaling
   // qlikcore/engine:12.248.0
@@ -48,15 +48,15 @@ const qdtEnigma = async (config) => {
 
   session.on('closed', () => {
     console.error('Session ended.');
-    let refreshUrl = window.location.origin;
-    if (identity) refreshUrl += `?identity=${myConfig.identity}`;
+    const refreshUrl = window.location.origin;
+    // if (identity) refreshUrl += `?identity=${myConfig.identity}`;
     ConnectionLostModal({ refreshUrl, timeoutMessage });
   });
 
   session.on('suspended', () => {
     console.error('Session suspended.');
-    let refreshUrl = window.location.origin;
-    if (identity) refreshUrl += `?identity=${myConfig.identity}`;
+    const refreshUrl = window.location.origin;
+    // if (identity) refreshUrl += `?identity=${myConfig.identity}`;
     ConnectionLostModal({ refreshUrl, timeoutMessage });
   });
 

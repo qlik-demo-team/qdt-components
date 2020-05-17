@@ -26,8 +26,7 @@ const tooltip = ({
           case 'point2':
             html = h('div.qdt-tooltip-header', {}, [
               h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-              h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.y.label)}`),
-              // h('div.qdt-tooltip-header-measure', {}, `${(data[0].data.group) ? data[0].data.group.label : data[0].data.y.label}`),
+              h('div.qdt-tooltip-header-measure', {}, `${format('.2s')(data[0].data.y.label).replace(/G/, 'B')}`),
             ]);
             break;
           // Pie
@@ -81,6 +80,7 @@ const tooltip = ({
         transition: 'opacity 150ms ease-in',
       },
     },
+    // formatter: 'formatterGtoB',
   };
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
