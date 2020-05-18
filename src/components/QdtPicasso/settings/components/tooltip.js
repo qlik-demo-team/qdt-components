@@ -47,7 +47,7 @@ const tooltip = ({
             } else {
               html = h('div.qdt-tooltip-header', {}, [
                 h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-                h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.end.label)}`),
+                h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.end.label).replace(/G/, 'B')}`),
               ]);
             }
             break;
