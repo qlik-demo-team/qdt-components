@@ -2,6 +2,8 @@ export { default as qdtNova } from './qdtNova';
 
 export { default as qdtEnigma } from './qdtEnigma';
 
+export { default as qdtCapabilityApp } from './qdtCapabilityApp';
+
 export { default as qdtCompose } from './qdtCompose';
 
 export { default as QdtTheme } from 'themes';
@@ -33,6 +35,8 @@ export { default as QdtThree } from './components/QdtThree/QdtThree';
 export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';
 
 export { default as QdtPicassoComponents } from './components/QdtPicasso/settings/components';
+
+export { default as QdtViz } from './components/QdtViz/QdtViz';
 
 export { default as useSessionObject } from './hooks/useSessionObject';
 

@@ -1,7 +1,12 @@
-import utility from './utilities';
+// import utility from './utilities';
 
 // let qlik;
 // let { qlik } = utility.qlobals;
+const globals = {
+  qlik: null,
+  resize: null,
+};
+
 let capabilityApisPromise;
 
 const loadCapabilityApis = async (config) => {
@@ -52,8 +57,8 @@ const qApp = async (config) => {
       },
     });
     return new Promise((resolve) => {
-      if (utility.globals.qlik) {
-        const app = utility.globals.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
+      if (globals.qlik) {
+        const app = globals.qlik.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
         // apply theme set in QSE
         app.theme.get().then((theme) => {
           theme.apply();
@@ -61,8 +66,8 @@ const qApp = async (config) => {
         resolve(app);
       } else {
         window.require(['js/qlik'], (q) => {
-          utility.globals.qlik = q;
-          utility.globals.resize = () => {
+          globals.qlik = q;
+          globals.resize = () => {
             q.resize();
           };
           const app = q.openApp(config.appId, { ...config, isSecure: config.secure, prefix });
