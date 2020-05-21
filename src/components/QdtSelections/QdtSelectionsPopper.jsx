@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
@@ -7,33 +7,59 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import CheckIcon from '@material-ui/icons/Check';
 import useStyles from './QdtSelectionsStyles';
+import useSessionObject from '../../hooks/useSessionObject';
 
-const qMatrix = [
-  { qText: 'Some long, long, very long, very very very long text', qState: 'S', qElemNumber: 1 },
-  { qText: 2019, qState: 'O', qElemNumber: 2 },
-  { qText: 2018, qState: 'S', qElemNumber: 3 },
-  { qText: 2017, qState: 'X', qElemNumber: 4 },
-  { qText: 2016, qState: 'O', qElemNumber: 5 },
-  { qText: 2015, qState: 'O', qElemNumber: 6 },
-  { qText: 2014, qState: 'O', qElemNumber: 7 },
-  { qText: 2013, qState: 'O', qElemNumber: 8 },
-  { qText: 2012, qState: 'O', qElemNumber: 9 },
-  { qText: 2011, qState: 'O', qElemNumber: 10 },
-];
-
-const QdtSelectionsPopper = ({ open, anchorEl, popperEl }) => {
+const QdtSelectionsPopper = ({
+  open, anchorEl, qField, app, setCurrentElementIndex,
+}) => {
   const classes = useStyles();
-  // const popperEl = React.useRef(null);
+  const popperEl = React.useRef(null);
+  const { layout, model } = useSessionObject({
+    app,
+    properties: {
+      qListObjectDef: {
+        qDef: {
+          qFieldDefs: [qField],
+        },
+        qInitialDataFetch: [{
+          qWidth: 1,
+          qHeight: 1000,
+        }],
+      },
+    },
+  });
+
+  const handleSelect = useCallback((qElemNumber) => {
+    model.selectListObjectValues('/qListObjectDef', [qElemNumber], true, true);
+  }, [model]);
+
+  const handleSearch = useCallback((event) => {
+    model.searchListObjectFor('/qListObjectDef', event.target.value);
+  }, [model]);
+
+  const handleClick = (event) => {
+    if (popperEl.current && !popperEl.current.contains(event.target)) {
+      setCurrentElementIndex(null);
+    }
+  };
+
+  useEffect(() => {
+    if (open && model) model.beginSelections(['/qListObjectDef']);
+    if (!open && model) model.endSelections(true);
+  }, [open, model]);
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [handleClick]);
 
   return (
     <Popper
       open={open}
       placement="bottom"
-      // anchorEl={anchorEl}
       anchorEl={anchorEl}
       transition
       ref={popperEl}
-      // onClose={handleClose}
       className={classes.popper}
       modifiers={{
         flip: {
@@ -45,7 +71,6 @@ const QdtSelectionsPopper = ({ open, anchorEl, popperEl }) => {
         },
         arrow: {
           enabled: true,
-          // element: anchorEl,
         },
       }}
     >
@@ -57,20 +82,21 @@ const QdtSelectionsPopper = ({ open, anchorEl, popperEl }) => {
                 <ListItemIcon>
                   <SearchIcon />
                 </ListItemIcon>
-                <Input type="search" disableUnderline />
+                <Input type="search" onChange={handleSearch} disableUnderline />
               </MenuItem>
-              { qMatrix.map((row) => (
+              { layout.qListObject.qDataPages.length && layout.qListObject.qDataPages[0].qMatrix.map((row) => (
                 <MenuItem
-                  key={row.qElemNumber}
-                  value={row}
+                  key={row[0].qElemNumber}
+                  value={row[0]}
                   className={classnames({
-                    selected: row.qState === 'S',
-                    excluded: row.qState === 'X',
+                    selected: row[0].qState === 'S',
+                    excluded: row[0].qState === 'X',
                   })}
+                  onClick={() => handleSelect(row[0].qElemNumber)}
                   button
                 >
-                  <ListItemText primary={row.qText} />
-                  {row.qState === 'S'
+                  <ListItemText primary={row[0].qText} />
+                  {row[0].qState === 'S'
                     && (
                     <ListItemIcon>
                       <CheckIcon />
@@ -89,7 +115,12 @@ const QdtSelectionsPopper = ({ open, anchorEl, popperEl }) => {
 QdtSelectionsPopper.propTypes = {
   open: PropTypes.bool.isRequired,
   anchorEl: PropTypes.object.isRequired,
-  popperEl: PropTypes.object.isRequired,
+  app: PropTypes.object.isRequired,
+  qField: PropTypes.string,
+  setCurrentElementIndex: PropTypes.func.isRequired,
+};
+QdtSelectionsPopper.defaultProps = {
+  qField: null,
 };
 
 export default QdtSelectionsPopper;
