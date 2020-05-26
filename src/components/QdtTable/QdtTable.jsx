@@ -6,7 +6,7 @@
 */
 
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useState, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
@@ -16,18 +16,19 @@ import 'react-table/react-table.css';
 
 // TODO - set qColumnOrder in useHyperCube so it can be used here.
 
-const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref) => {  //eslint-disable-line
+const QdtTable = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     minRows: undefined,
     pageSize: 10,
     style: { height: '100%' },
   };
   const options = merge(defaultOptions, optionsProp);
-
+  const ref = useRef(null);
+  console.log(layout);
   const columns = useMemo(() => (
     layout
       ? [
-        ...layout.qHyperCube.qDimensionInfo.map((col, index) => ({
+        ...layout.qHyperCube?.qDimensionInfo?.map((col, index) => ({
           Header: col.qFallbackTitle,
           accessor: (d) => d[index].qText,
           colorIndex: col.qAttrExprInfo.findIndex((attr) => attr.id === 'color'),
@@ -41,12 +42,12 @@ const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref)
           //   console.log(rowInfo);
           // },
         })),
-        ...layout.qHyperCube.qMeasureInfo.map((col, index) => ({
+        ...layout.qHyperCube?.qMeasureInfo?.map((col, index) => ({
           Header: col.qFallbackTitle,
-          accessor: (d) => d[index + layout.qHyperCube.qDimensionInfo.length].qText,
+          accessor: (d) => d[index + layout.qHyperCube?.qDimensionInfo?.length].qText,
           defaultSortDesc: col.qSortIndicator === 'D',
           id: col.qFallbackTitle,
-          qInterColumnIndex: index + layout.qHyperCube.qDimensionInfo.length,
+          qInterColumnIndex: index + layout.qHyperCube?.qDimensionInfo?.length,
           qPath: `/qHyperCubeDef/qMeasures/${index}`,
           qSortIndicator: col.qSortIndicator,
           qReverseSort: col.qReverseSort,
@@ -78,7 +79,7 @@ const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref)
       setLoading(true);
       const dataPages = await model.getHyperCubeData(
         '/qHyperCubeDef',
-        [{ qWidth: layout.qHyperCube.qSize.qcx, qHeight: options.pageSize, qTop: options.pageSize * page }],
+        [{ qWidth: layout.qHyperCube?.qSize.qcx, qHeight: options.pageSize, qTop: options.pageSize * page }],
       );
       setData(dataPages[0]);
       setLoading(false);
@@ -158,7 +159,7 @@ const QdtTable = React.forwardRef(({ layout, model, options: optionsProp }, ref)
       />
     </div>
   );
-});
+};
 
 QdtTable.propTypes = {
   layout: PropTypes.object,

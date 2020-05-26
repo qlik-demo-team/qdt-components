@@ -37,7 +37,7 @@ const QdtViz = ({ app, options: optionsProp }) => {
     }
     // const qVizPromise = (options.id) ? app.visualization.get(options.id) : app.visualization.create(options.type, options.cols, options.options); // eslint-disable-line max-len
     const _qViz = await qVizPromise;
-    if (options.id !== 'CurrentSelections') _qViz.setOptions(options);
+    if (options.id && options.id !== 'CurrentSelections') _qViz.setOptions(options);
     await setQViz(_qViz);
   };
 
