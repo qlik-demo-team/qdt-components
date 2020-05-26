@@ -26,9 +26,18 @@ const QdtViz = ({ app, options: optionsProp }) => {
   const [qViz, setQViz] = useState(null);
 
   const create = async () => {
-    const qVizPromise = (options.id) ? app.visualization.get(options.id) : app.visualization.create(options.type, options.cols, options.options); // eslint-disable-line max-len
+    let qVizPromise;
+    if (options.id && options.id === 'CurrentSelections') {
+      qVizPromise = app.getObject(elementRef.current, 'CurrentSelections');
+      options.height = 50;
+    } else if (options.id) {
+      qVizPromise = app.visualization.get(options.id);
+    } else {
+      qVizPromise = app.visualization.create(options.type, options.cols, options.options);
+    }
+    // const qVizPromise = (options.id) ? app.visualization.get(options.id) : app.visualization.create(options.type, options.cols, options.options); // eslint-disable-line max-len
     const _qViz = await qVizPromise;
-    _qViz.setOptions(options);
+    if (options.id !== 'CurrentSelections') _qViz.setOptions(options);
     await setQViz(_qViz);
   };
 
@@ -47,14 +56,14 @@ const QdtViz = ({ app, options: optionsProp }) => {
   useEffect(() => {
     (async () => {
       if (!qViz) await create();
-      if (qViz) show();
+      if (qViz && options.id !== 'CurrentSelections') show();
       window.addEventListener('resize', resize);
     })();
     return () => {
       if (qViz) close();
       window.removeEventListener('resize', resize);
     };
-  }, [close, create, qViz, resize, show]);
+  }, [close, create, options.id, qViz, resize, show]);
 
   return (
     <div ref={elementRef} style={{ height: options.height }} />
