@@ -18,6 +18,7 @@ const QdtKpi = ({ layout, options: optionsProp }) => {
     variant: 'contained',
     color: 'primary',
     fontSize: '4rem',
+    custom: null,
   };
   const options = merge(defaultOptions, optionsProp);
   const { variant, color, fontSize } = options;
@@ -30,13 +31,17 @@ const QdtKpi = ({ layout, options: optionsProp }) => {
       borderColor: theme.palette[color].light,
       fontSize,
       height: '100%',
+      padding: 50,
     },
   }))(Grid);
 
   const value = useMemo(() => layout.qHyperCube.qDataPages[0].qMatrix[0][0].qText, [layout]);
 
   return (
-    <KPIGrid container direction="row" justify="center" alignItems="center" className="qdt-kpi">{value}</KPIGrid>
+    <>
+      {!options.custom && <KPIGrid container direction="row" justify="center" alignItems="center" className="qdt-kpi">{value}</KPIGrid>}
+      {options.custom && <Grid container direction="row" justify="center" alignItems="center" className="qdt-kpi" style={options.custom}>{value}</Grid>}
+    </>
   );
 };
 
