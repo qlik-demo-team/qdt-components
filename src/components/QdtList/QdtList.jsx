@@ -29,6 +29,7 @@ const QdtList = ({ layout, model, options: optionsProp }) => {
     const toggle = !(options.multiple);
     model.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle);
   }, [model, options.multiple]);
+
   const handleSearch = useCallback((event) => {
     model.searchListObjectFor('/qListObjectDef', event.target.value);
   }, [model]);

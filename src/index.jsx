@@ -30,6 +30,8 @@ export { default as QdtMapBox } from './components/QdtMapbox/QdtMapBox';
 
 export { default as QdtSelections } from './components/QdtSelections/QdtSelections';
 
+export { default as QdtSearch } from './components/QdtSearch/QdtSearch';
+
 export { default as QdtThree } from './components/QdtThree/QdtThree';
 
 export { default as QdtPicasso } from './components/QdtPicasso/QdtPicasso';

@@ -6,18 +6,19 @@
  * @param {string} options.color - 'primary' OR 'secondary'
  * @param {string} options.fontSize - Any font size value, ie '4rem', '10px', 24 etc
 */
-import React from 'react'; //
+import React, { useState, useRef } from 'react'; //
 import PropTypes from 'prop-types';
 import {
   Grid, Button, ButtonGroup, IconButton, Typography, LinearProgress,
 } from '@material-ui/core';
 import { BorderClear, Cancel } from '@material-ui/icons';
 import useStyles from './QdtSelectionsStyles';
-import QdtSelectionsPopper from './QdtSelectionsPopper';
+import QdtPopperContents from './QdtPopperContents';
+import QdtPopper from '../QdtPopper/QdtPopper';
 
 const QdtSelections = ({ layout, app }) => {
-  const elementsRef = React.useRef([]);
-  const [currentElementIndex, setCurrentElementIndex] = React.useState(null);
+  const elementsRef = useRef([]);
+  const [currentElementIndex, setCurrentElementIndex] = useState(null);
   const classes = useStyles();
   const { qSelections } = layout.qSelectionObject;
 
@@ -54,7 +55,6 @@ const QdtSelections = ({ layout, app }) => {
 
   return (
     <>
-      <h3>QdtSelections</h3>
       <div className="qdt-selections">
         <Grid
           container
@@ -100,13 +100,26 @@ const QdtSelections = ({ layout, app }) => {
       </div>
       <div />
       {qSelections && qSelections.map((row, index) => (
-        <QdtSelectionsPopper
+        // <QdtSelectionsPopper
+        //   key={row.qField}
+        //   open={currentElementIndex - 1 === index}
+        //   anchorEl={elementsRef.current[currentElementIndex - 1]}
+        //   qField={row.qField}
+        //   app={app}
+        //   setCurrentElementIndex={setCurrentElementIndex}
+        // />
+        <QdtPopper
           key={row.qField}
           open={currentElementIndex - 1 === index}
           anchorEl={elementsRef.current[currentElementIndex - 1]}
-          qField={row.qField}
-          app={app}
-          setCurrentElementIndex={setCurrentElementIndex}
+          contents={(
+            <QdtPopperContents
+              open={currentElementIndex - 1 === index}
+              qField={row.qField}
+              app={app}
+            />
+          )}
+          onCallback={() => setCurrentElementIndex(null)}
         />
       ))}
     </>

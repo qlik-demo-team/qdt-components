@@ -24,7 +24,7 @@ const QdtTable = ({ layout, model, options: optionsProp }) => {
   };
   const options = merge(defaultOptions, optionsProp);
   const ref = useRef(null);
-  console.log(layout);
+
   const columns = useMemo(() => (
     layout
       ? [
