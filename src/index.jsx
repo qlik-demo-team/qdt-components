@@ -45,3 +45,5 @@ export { default as useSessionObject } from './hooks/useSessionObject';
 export { default as useBarChartSettings } from './components/QdtPicasso/settings/barchart';
 
 export { default as useLineChartSettings } from './components/QdtPicasso/settings/lineChart';
+
+export { default as usePieChartSettings } from './components/QdtPicasso/settings/piechart';

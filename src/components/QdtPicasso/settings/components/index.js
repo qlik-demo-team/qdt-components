@@ -19,7 +19,8 @@ import grid from './grid';
 import labels from './labels';
 import range from './range';
 import tooltip from './tooltip';
+import legend from './legend';
 
 export default {
-  axis, box, point, lineArea, grid, labels, range, tooltip,
+  axis, box, point, lineArea, grid, labels, range, tooltip, legend,
 };
