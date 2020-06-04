@@ -4,7 +4,7 @@ import pie from './components/pie';
 import labels from './components/labels';
 import tooltipHover from './interactions/tooltipHover';
 
-const setting = () => ({
+const pieChart = () => ({
   scales: {
     c: { data: { extract: { field: 'qDimensionInfo/0' } }, type: 'color' },
   },
@@ -19,4 +19,4 @@ const setting = () => ({
   interactions: [tooltipHover()],
 });
 
-export default setting;
+export default pieChart;

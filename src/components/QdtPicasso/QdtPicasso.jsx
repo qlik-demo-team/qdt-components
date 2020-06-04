@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
@@ -10,7 +12,10 @@ import { format } from 'd3-format';
 import ResizeObserver from 'resize-observer-polyfill';
 import equal from 'deep-equal';
 import merge from '../../utils/merge';
+import QdtSelectionModal from '../QdtModal/QdtSelectionModal';
+import domPointLabel from './components/domPointLabel';
 
+picasso.component('domPointLabel', domPointLabel);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
@@ -43,6 +48,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   const tweenLayout = useRef(null);
   const staleLayout = useRef(layout);
   const staleOptions = useRef(options);
+  const [selectionModalOpen, setSelectionModalOpen] = useState(false);
 
   ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
 
@@ -55,7 +61,6 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
 
   const create = useCallback(() => {
     if (!layout.qHyperCube) return;
-
     pic.current = picasso({
       renderer: { prio: [options.prio] },
     }).chart({
@@ -69,10 +74,11 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     });
     pic.current.brush('select').on('start', () => {
       model.beginSelections(['/qHyperCubeDef']);
+      setSelectionModalOpen(true);
     });
     pic.current.brush('select').on('update', (added, removed) => {
       const qValues = [...added, ...removed].map((v) => v.values[0]);
-      model.selectHyperCubeValues('/qHyperCubeDef', qValues, false);
+      model.selectHyperCubeValues('/qHyperCubeDef', 0, qValues, true);
     });
     staleLayout.current = layout;
     staleOptions.current = options;
@@ -103,11 +109,23 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     });
   }, [layout, options.settings, options.transition, stopTransition]);
 
+  const handleCancelSelections = () => {
+    pic.current.brush('select').end();
+    model.endSelections(false);
+    setSelectionModalOpen(false);
+  };
+
+  const handleConfirmSelections = () => {
+    pic.current.brush('select').end();
+    model.endSelections(true);
+    setSelectionModalOpen(false);
+  };
+
   useEffect(() => {
     if (!pic.current) create();
-    if (pic.current && (!equal(staleLayout.current, layout) || JSON.stringify(staleOptions.current) !== JSON.stringify(options))) update();
+    if (pic.current && !selectionModalOpen && (!equal(staleLayout.current, layout) || JSON.stringify(staleOptions.current) !== JSON.stringify(options))) update();
     ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
-  }, [create, update, layout, options, ref]);
+  }, [create, update, layout, options, ref, selectionModalOpen]);
 
   useEffect(() => {
     const ro = new ResizeObserver(() => {
@@ -117,7 +135,10 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   }, []);
 
   return (
-    <div ref={elementNode} style={{ width: options.width, height: options.height }} />
+    <div style={{ width: options.width, height: options.height }}>
+      <div ref={elementNode} style={{ width: options.width, height: options.height, border: (selectionModalOpen) ? '1px solid #CCCCCC' : 0 }} />
+      <QdtSelectionModal style={{ width: options.width }} isOpen={selectionModalOpen} onCancelSelections={handleCancelSelections} onConfirmSelections={handleConfirmSelections} />
+    </div>
   );
 });
 

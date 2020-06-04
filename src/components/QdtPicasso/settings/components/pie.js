@@ -30,12 +30,12 @@ const pie = ({
     brush: {
       trigger: [{
         on: 'tap',
-        action: 'toggle',
+        // action: 'toggle',
         contexts: ['select'],
-        data: ['qDimension'],
-        propagation: 'stop',
-        globalPropagation: 'stop',
-        touchRadius: 24,
+        // data: ['qDimension'],
+        // propagation: 'stop',
+        // globalPropagation: 'stop',
+        // touchRadius: 24,
       }],
       consume: [{
         context: 'select',
@@ -44,7 +44,7 @@ const pie = ({
             opacity: 1,
           },
           inactive: {
-            opacity: 0.5,
+            opacity: 0.4,
           },
         },
       }],
