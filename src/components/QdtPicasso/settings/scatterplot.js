@@ -13,6 +13,12 @@ import legendClick from './interactions/legendClick';
 const ScatterPlot = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
+  point: pointProp = {},
+  pointImage: pointImageProp = null,
+  labels: labelsProp = {},
+  legend: legendProp = {},
+  tooltip: tooltipProp = {},
+  range: rangeProp = {},
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
@@ -28,7 +34,13 @@ const ScatterPlot = ({
     components: [
       axis(),
       axis({ scale: 'y' }),
-      point({
+    ],
+    interactions: [],
+  };
+
+  defaultProperties.components.push(
+    point(
+      merge({
         properties: {
           displayOrder: 3,
           data: {
@@ -44,23 +56,74 @@ const ScatterPlot = ({
             fill: { scale: 'c', ref: 'group' },
           },
         },
-      }),
-      domPointLabel({
-        properties: {
-          displayOrder: 4,
-        },
-      }),
-      legend({
-        properties: {
-          displayOrder: 5,
-        },
-      }),
-      tooltip(),
-      range(),
-      range({ scale: 'y' }),
-    ],
-    interactions: [tooltipHover(), rangePan(), rangePan({ scale: 'y' }), legendClick()],
-  };
+      }, pointProp),
+    ),
+  );
+
+  if (pointImageProp) {
+    defaultProperties.components.push(
+      point(
+        merge({
+          properties: {
+            type: 'domPointImage',
+            key: 'point2',
+            displayOrder: 4,
+            data: {
+              extract: {
+                props: {
+                  x: { field: 'qMeasureInfo/1' },
+                  group: { field: 'qDimensionInfo/0' },
+                },
+              },
+            },
+            settings: {
+              image: 'https://webapps.qlik.com/qdt-components/plain-html/emoji_smiley.png',
+              width: 32,
+              height: 32,
+            },
+          },
+        }, pointImageProp),
+      ),
+    );
+  }
+
+  if (labelsProp) {
+    defaultProperties.components.push(
+      domPointLabel(
+        merge({
+          properties: {
+            displayOrder: 5,
+          },
+        }, labelsProp),
+      ),
+    );
+  }
+
+  if (legendProp) {
+    defaultProperties.components.push(
+      legend(
+        merge({
+          properties: {
+            displayOrder: 6,
+          },
+        }, legendProp),
+      ),
+    );
+    defaultProperties.interactions.push(legendClick());
+  }
+
+  if (tooltipProp) {
+    defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
+    defaultProperties.interactions.push(tooltipHover());
+  }
+
+  if (rangeProp) {
+    defaultProperties.components.push(range());
+    defaultProperties.components.push(range({ scale: 'y' }));
+    defaultProperties.interactions.push(rangePan());
+    defaultProperties.interactions.push(rangePan({ scale: 'y' }));
+  }
+
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
 };

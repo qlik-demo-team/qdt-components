@@ -14,8 +14,10 @@ import equal from 'deep-equal';
 import merge from '../../utils/merge';
 import QdtSelectionModal from '../QdtModal/QdtSelectionModal';
 import domPointLabel from './components/domPointLabel';
+import domPointImage from './components/domPointImage';
 
 picasso.component('domPointLabel', domPointLabel);
+picasso.component('domPointImage', domPointImage);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 

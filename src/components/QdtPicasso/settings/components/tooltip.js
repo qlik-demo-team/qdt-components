@@ -15,8 +15,8 @@ const tooltip = ({
     settings: {
       filter: (nodes) => nodes.filter((node) => ['bars', 'range', 'point', 'point2', 'pie', 'rects'].includes(node.key)),
       extract: ({ node }) => {
-        const { data, key } = node;
-        return { data, key };
+        const { data, key, attrs } = node;
+        return { data, key, attrs };
       },
       content: ({ h, data }) => {
         let html = '';
