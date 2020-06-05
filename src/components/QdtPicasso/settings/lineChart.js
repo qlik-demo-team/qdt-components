@@ -26,8 +26,8 @@ const lineChart = ({
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
     scales: {
-      x: { data: { extract: { field: 'qDimensionInfo/0' } } },
-      y: { data: { field: 'qMeasureInfo/0' }, include: [0], invert: true },
+      x: { data: { extract: { field: 'qDimensionInfo/0' } }, expand: 0.01 },
+      y: { data: { field: 'qMeasureInfo/0' }, include: [0], invert: true, expand: 0.015 },
     },
     components: [],
     interactions: [],
@@ -80,7 +80,10 @@ const lineChart = ({
         lineAreaProp)
       )
     );
-    if (pointProp) defaultProperties.components.push(point(merge({}, pointProp)));
+    if (pointProp) {
+      defaultProperties.components.push(point(merge({}, pointProp)));
+      defaultProperties.scales.x
+    }
     if (rangeProp) {
       defaultProperties.components.push(range(merge({}, rangeProp)));
       defaultProperties.interactions.push(rangePan());

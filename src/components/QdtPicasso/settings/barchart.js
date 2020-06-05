@@ -70,10 +70,11 @@ const BarChart = ({
       data: {
         extract: {
           field: 'qDimensionInfo/0',
-          value: (d) => d.qText,
+          value: (d) => d.qText, // qElemNumber
           props: {
             series: { field: 'qDimensionInfo/1', value: (d) => d.qText },
             end: { field: 'qMeasureInfo/0' },
+            qElemNumber: { value: (d) => d.qElemNumber },
           },
         },
         stack: {
@@ -120,6 +121,13 @@ const BarChart = ({
                   fill: { scale: 'color', ref: 'series' },
                   strokeWidth: 0,
                 },
+              },
+              brush: {
+                trigger: [{
+                  on: 'tap',
+                  contexts: ['select'],
+                  data: ['qElemNumber'],
+                }],
               },
             },
           },
