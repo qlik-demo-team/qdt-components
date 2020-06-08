@@ -146,6 +146,11 @@ const BarChart = ({
       defaultProperties.interactions.push(tooltipHover());
     }
   }
+
+  if (type === 'gauge') {
+    console.log(defaultProperties);
+  }
+
   if (type === 'group') { /* define group barchart */ }
   if (type === 'butterfly') {
     defaultProperties.scales[minorScale] = {

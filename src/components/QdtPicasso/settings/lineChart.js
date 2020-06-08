@@ -151,7 +151,93 @@ const lineChart = ({
       defaultProperties.interactions.push(tooltipHover());
     }
   }
+  if (type === 'rangeArea') {
+    defaultProperties.scales.y.data = { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] };
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
+    if (gridProp) defaultProperties.components.push(grid(merge({ x: false, y: true }, gridProp)));
+    defaultProperties.components.push(lineArea({ 
+      showArea: true,
+      properties: {
+        data: {
+          extract: {
+            props: {
+              y0: { field: 'qMeasureInfo/0' }, 
+              y: { field: 'qMeasureInfo/1' }, 
+            }
+          }
+        },
+        settings: {
+          coordinates: {
+            minor0: { scale: 'y', ref: 'y0' }
+          }
+        }
+      }
+     }));
+    //  defaultProperties.components.push(point({
+    //   properties: {
+    //     data: {
+    //       extract: {
+    //         props: {
+    //           y: { field: 'qMeasureInfo/1' },
+    //           num: { field: 'qMeasureInfo/1' },
+    //         },
+    //       },
+    //     },
+    //   },
+    // }));
+    defaultProperties.components.push(lineArea({
+      showArea: false,
+      properties: {
+        key: 'line2',
+        data: {
+          extract: {
+            props: {
+              y: { field: 'qMeasureInfo/0' },
+            },
+          },
+        },
+        settings: {
+          paddingStart: 10,
+          layers: {
+            area: {
+              show: false,
+            },
+            line: {
+              stroke: theme.palette.secondary.main,
+            },
+          },
+        },
+      },
+    }));
+    // defaultProperties.components.push(point({
+    //   properties: {
+    //     key: 'point2',
+    //     data: {
+    //       extract: {
+    //         props: {
+    //           y: { field: 'qMeasureInfo/0' },
+    //           num: { field: 'qMeasureInfo/0' },
+    //         },
+    //       },
+    //     },
+    //     settings: {
+    //       fill: theme.palette.secondary.main,
+    //       stroke: theme.palette.secondary.main,
+    //     },
+    //   },
+    // }));
+    if (rangeProp) {
+      defaultProperties.components.push(range(merge({}, rangeProp)));
+      defaultProperties.interactions.push(rangePan());
+    }
+    if (tooltipProp) {
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
   const properties = merge(defaultProperties, propertiesProp);
+  console.log(properties)
   return properties;
 };
 
