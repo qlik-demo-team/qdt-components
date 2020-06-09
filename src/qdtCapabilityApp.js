@@ -48,6 +48,7 @@ const qApp = async (config) => {
       paths: {
         qlik: `${(config.secure ? 'https://' : 'http://') + config.host + (config.port ? `:${config.port}` : '') + prefix}resources/js/qlik`,
       },
+      webIntegrationId: config.webIntegrationId,
       config: {
         text: {
           useXhr() {

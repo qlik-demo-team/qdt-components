@@ -237,7 +237,7 @@ const lineChart = ({
     }
   }
   const properties = merge(defaultProperties, propertiesProp);
-  console.log(properties)
+  
   return properties;
 };
 
