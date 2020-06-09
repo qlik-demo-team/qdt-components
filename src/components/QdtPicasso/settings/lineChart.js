@@ -169,23 +169,23 @@ const lineChart = ({
         },
         settings: {
           coordinates: {
-            minor0: { scale: 'y', ref: 'y0' }
+            minor0: { scale: 'y', ref: 'y0', fn: null }
           }
         }
       }
      }));
-    //  defaultProperties.components.push(point({
-    //   properties: {
-    //     data: {
-    //       extract: {
-    //         props: {
-    //           y: { field: 'qMeasureInfo/1' },
-    //           num: { field: 'qMeasureInfo/1' },
-    //         },
-    //       },
-    //     },
-    //   },
-    // }));
+     defaultProperties.components.push(point({
+      properties: {
+        data: {
+          extract: {
+            props: {
+              y: { field: 'qMeasureInfo/1' },
+              num: { field: 'qMeasureInfo/1' },
+            },
+          },
+        },
+      },
+    }));
     defaultProperties.components.push(lineArea({
       showArea: false,
       properties: {
@@ -210,23 +210,23 @@ const lineChart = ({
         },
       },
     }));
-    // defaultProperties.components.push(point({
-    //   properties: {
-    //     key: 'point2',
-    //     data: {
-    //       extract: {
-    //         props: {
-    //           y: { field: 'qMeasureInfo/0' },
-    //           num: { field: 'qMeasureInfo/0' },
-    //         },
-    //       },
-    //     },
-    //     settings: {
-    //       fill: theme.palette.secondary.main,
-    //       stroke: theme.palette.secondary.main,
-    //     },
-    //   },
-    // }));
+    defaultProperties.components.push(point({
+      properties: {
+        key: 'point2',
+        data: {
+          extract: {
+            props: {
+              y: { field: 'qMeasureInfo/0' },
+              num: { field: 'qMeasureInfo/0' },
+            },
+          },
+        },
+        settings: {
+          fill: theme.palette.secondary.main,
+          stroke: theme.palette.secondary.main,
+        },
+      },
+    }));
     if (rangeProp) {
       defaultProperties.components.push(range(merge({}, rangeProp)));
       defaultProperties.interactions.push(rangePan());
@@ -237,7 +237,7 @@ const lineChart = ({
     }
   }
   const properties = merge(defaultProperties, propertiesProp);
-  
+  console.log(properties)
   return properties;
 };
 
