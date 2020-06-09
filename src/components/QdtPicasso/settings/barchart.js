@@ -148,10 +148,94 @@ const BarChart = ({
   }
 
   if (type === 'gauge') {
-    console.log(defaultProperties);
+    // @TODO
   }
 
-  if (type === 'group') { /* define group barchart */ }
+  if (type === 'grouped') {
+    const measures = 2; // @TODO based on layout.qHyperCube.qSize.qcx
+    defaultProperties.scales.y.data = { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] }; // , include: [0], invert: orientation === 'vertical'
+    if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+    if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
+    if (gridProp) {
+      defaultProperties.components.push(
+        grid(
+          merge({ x: orientation === 'horizontal', y: orientation === 'vertical' }, gridProp),
+        ),
+      );
+    }
+    defaultProperties.components.push(
+      box(
+        merge({
+          orientation,
+          properties: {
+            key: 'bar1',
+            displayOrder: 1,
+            data: {
+              extract: {
+                props: {
+                  end: { field: 'qMeasureInfo/0' },
+                },
+              },
+            },
+            settings: {
+              minor: { scale: 'y', ref: 'y' },
+              major: {
+                fn(d) {
+                  if (d.scale.bandwidth) {
+                    return d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1));
+                  }
+                  return d.scale(d.datum.value);
+                },
+              },
+              box: {
+                width: 1 / measures,
+              },
+            },
+          },
+        }, boxProp),
+      ),
+    );
+    defaultProperties.components.push(
+      box(
+        merge({
+          orientation,
+          properties: {
+            key: 'bar2',
+            displayOrder: 2,
+            data: {
+              extract: {
+                props: {
+                  end: { field: 'qMeasureInfo/1' },
+                },
+              },
+            },
+            settings: {
+              major: {
+                fn(d) {
+                  if (d.scale.bandwidth) {
+                    const pos = d.scale(d.datum.value) + (d.scale.bandwidth() / (measures + 1));
+                    return pos * 2 - (0.08 * d.scale.bandwidth());
+                  }
+                  return d.scale(d.datum.value);
+                },
+              },
+              box: {
+                fill: theme.palette.secondary.main,
+                stroke: theme.palette.secondary.light,
+                width: 1 / measures,
+              },
+            },
+          },
+        }, boxProp),
+      ),
+    );
+    if (labelsProp) defaultProperties.components.push(labels(merge({ orientation }, labelsProp)));
+    if (tooltipProp) {
+      defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
+      defaultProperties.interactions.push(tooltipHover());
+    }
+  }
+
   if (type === 'butterfly') {
     defaultProperties.scales[minorScale] = {
       data: { fields: ['qMeasureInfo/0', 'qMeasureInfo/1'] },
