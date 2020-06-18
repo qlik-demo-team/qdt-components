@@ -24,9 +24,10 @@ const tooltip = ({
           // line, dots
           case 'point':
           case 'point2':
+            console.log(data[0].data);
             html = h('div.qdt-tooltip-header', {}, [
               h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
-              h('div.qdt-tooltip-header-measure', {}, `${format('.2s')(data[0].data.y.label).replace(/G/, 'B')}`),
+              h('div.qdt-tooltip-header-measure', {}, `${(data[0].data.y.label.includes('G')) ? format('.2s')(data[0].data.y.label).replace(/G/, 'B') : data[0].data.y.label}`),
             ]);
             break;
           // Pie
