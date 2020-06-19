@@ -10,6 +10,13 @@ const styles = {
     top: -40,
     // right: 0,
     width: '100%',
+    textAlign: 'right',
+    padding: 5,
+  },
+  rootOpen: {
+    position: 'absolute',
+    top: -40,
+    width: '100%',
     borderTop: '1px solid #CCCCCC',
     borderLeft: '1px solid #CCCCCC',
     borderRight: '1px solid #CCCCCC',
@@ -36,7 +43,7 @@ const styles = {
 const QdtSelectionModal = ({
   isOpen, onCancelSelections, onConfirmSelections,
 }) => (
-  <div style={styles.root}>
+  <div style={(isOpen) ? styles.rootOpen : styles.root}>
     { isOpen
         && (
         <div>
