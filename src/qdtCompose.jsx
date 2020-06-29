@@ -4,11 +4,17 @@ import { CssBaseline } from '@material-ui/core'; //eslint-disable-line
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'; //eslint-disable-line
 import { Light as defaultTheme } from 'themes';
 import QdtComponent from './components/QdtComponent/QdtComponent';
+import QdtExtension from './components/QdtExtension/QdtExtension';
 
 export default ({
-  element, theme: themeProp,
-  component: componentProp, options: optionsProp,
-  app: appProp, properties: propertiesProp,
+  element,
+  theme: themeProp,
+  component: componentProp,
+  options: optionsProp,
+  app: appProp,
+  model: modelProp,
+  layout: layoutProp,
+  properties: propertiesProp,
   loading: loadingProp,
   onLayoutChange: onLayoutChangeProp,
 }) => {
@@ -16,26 +22,45 @@ export default ({
   let Component = componentProp;
   let options = optionsProp;
   let app = appProp;
+  const model = modelProp;
+  const layout = layoutProp;
   let properties = propertiesProp;
   let LoadingComponent = loadingProp;
   let onLayoutChange = onLayoutChangeProp;
   const ref = { componentRef: React.createRef(), modelRef: React.createRef(), layoutRef: React.createRef() };
   ReactDOM.unmountComponentAtNode(element);
-  ReactDOM.render(
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <QdtComponent
-        Component={Component}
-        options={options}
-        app={app}
-        properties={properties}
-        LoadingComponent={LoadingComponent}
-        onLayoutChange={onLayoutChange}
-        ref={ref}
-      />
-    </ThemeProvider>,
-    element,
-  );
+  if (!app && model && layout) {
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <QdtExtension
+          Component={Component}
+          options={options}
+          model={model}
+          layout={layout}
+          LoadingComponent={LoadingComponent}
+          ref={ref}
+        />
+      </ThemeProvider>,
+      element,
+    );
+  } else {
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <QdtComponent
+          Component={Component}
+          options={options}
+          app={app}
+          properties={properties}
+          LoadingComponent={LoadingComponent}
+          onLayoutChange={onLayoutChange}
+          ref={ref}
+        />
+      </ThemeProvider>,
+      element,
+    );
+  }
   const update = ({
     theme: updatedThemeProp,
     component: updatedComponentProp,
