@@ -92,6 +92,7 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack",
+    "build:beta": "npm build && npm publish --tag beta",
     "lint": "eslint . --ignore-path .gitignore --cache"
   }
 }
