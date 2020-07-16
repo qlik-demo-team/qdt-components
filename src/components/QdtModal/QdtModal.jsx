@@ -45,7 +45,7 @@ QdtModal.propTypes = {
   handleClose: PropTypes.func,
   header: PropTypes.string,
   body: PropTypes.string,
-  footer: PropTypes.string,
+  footer: PropTypes.element,
 };
 
 QdtModal.defaultProps = {

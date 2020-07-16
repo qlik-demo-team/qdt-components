@@ -1,3 +1,17 @@
+/**
+ * @param {object} element
+ * @param {object} theme
+ * @param {object} component
+ * @param {object} options
+ * @param {object} app
+ * @param {object} model
+ * @param {object} layout
+ * @param {object} properties
+ * @param {object} loading
+ * @param {object} onLayoutChange
+ * @return {object}
+ */
+
 import React from 'react';  //eslint-disable-line
 import ReactDOM from 'react-dom'; //eslint-disable-line
 import { CssBaseline } from '@material-ui/core'; //eslint-disable-line

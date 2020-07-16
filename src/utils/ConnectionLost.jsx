@@ -1,7 +1,7 @@
 import React from 'react';  //eslint-disable-line
 import ReactDOM from 'react-dom'; //eslint-disable-line
 import Button from '@material-ui/core/Button';
-import ErrorModal from '../components/QdtModal';
+import ErrorModal from '../components/QdtModal/QdtModal';
 
 export default ({ refreshUrl, timeoutMessage }) => {
   const element = document.createElement('div');

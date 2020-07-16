@@ -5,7 +5,9 @@
  * @param {options} object - Options
 */
 
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, {
+  useCallback, useMemo, useRef, // useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
@@ -19,14 +21,21 @@ import CheckIcon from '@material-ui/icons/Check';
 const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     multiple: false,
+    showLabel: true,
+    showSearch: true,
+    placeholder: null,
   };
   const options = merge(defaultOptions, optionsProp);
 
   const { current: id } = useRef(uuidv4());
 
   const selectValue = useMemo(() => {
-    const sv = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
-    return (options.multiple) ? sv : sv[0];
+    let sv = layout.qListObject?.qDataPages[0]?.qMatrix.filter((row) => row[0].qState === 'S') || [];
+    if (!options.multiple) {
+      sv = (sv.length && sv[0].length) ? sv[0][0] : sv[0];
+    }
+    return sv;
+    // return (options.multiple) ? sv : sv[0];
   }, [layout.qListObject, options.multiple]);
   const selectRenderValue = useMemo((selected) => {
     if (!selected) return;
@@ -52,8 +61,8 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
 
   return (
     <>
-      <FormControl variant="outlined" style={{ width: '100%' }}>
-        <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>
+      <FormControl variant="outlined" style={{ width: '100%' }} className="QdtSelect">
+        { options.showLabel && <InputLabel id={`${id}-label`}>{layout.qListObject?.qDimensionInfo?.qFallbackTitle}</InputLabel>}
         <Select
           labelId={`${id}-label`}
           id={id}
@@ -65,12 +74,14 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           onChange={handleChange}
           input={<Input />}
         >
+          {options.showSearch && (
           <MenuItem>
             <ListItemIcon>
               <SearchIcon />
             </ListItemIcon>
             <Input type="search" onChange={handleSearch} disableUnderline />
           </MenuItem>
+          )}
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem
               key={row[0].qElemNumber}

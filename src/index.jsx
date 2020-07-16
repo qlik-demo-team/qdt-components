@@ -1,4 +1,4 @@
-export { default as qdtNova } from './qdtNova';
+// export { default as qdtNova } from './qdtNova';
 
 export { default as qdtEnigma } from './qdtEnigma';
 
