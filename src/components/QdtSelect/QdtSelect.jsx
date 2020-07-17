@@ -3,6 +3,7 @@
  * @param {object} layout - Qlik object layout
  * @param {string} model - Qlik object model
  * @param {options} object - Options
+ * @param {options.clearSelections} text - Adds a custom row with given text, to clear selections
 */
 
 import React, {
@@ -24,6 +25,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     showLabel: true,
     showSearch: true,
     placeholder: null,
+    clearSelectionsRow: null,
   };
   const options = merge(defaultOptions, optionsProp);
 
@@ -52,8 +54,12 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
     model.endSelections(true);
   }, [model]);
   const handleChange = useCallback((event) => {
-    const qValues = (options.multiple) ? event.target.value.map((v) => v[0].qElemNumber) : [event.target.value];
-    model.selectListObjectValues('/qListObjectDef', qValues, false);
+    if (event.target.value === 'clearSelections') {
+      model.clearSelections('/qListObjectDef');
+    } else {
+      const qValues = (options.multiple) ? event.target.value.map((v) => v[0].qElemNumber) : [event.target.value];
+      model.selectListObjectValues('/qListObjectDef', qValues, false);
+    }
   }, [model, options.multiple]);
   const handleSearch = useCallback((event) => {
     model.searchListObjectFor('/qListObjectDef', event.target.value);
@@ -75,12 +81,17 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           input={<Input />}
         >
           {options.showSearch && (
-          <MenuItem>
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <Input type="search" onChange={handleSearch} disableUnderline />
-          </MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+              <Input type="search" onChange={handleSearch} disableUnderline />
+            </MenuItem>
+          )}
+          {options.clearSelectionsRow && (
+            <MenuItem value="clearSelections">
+              <ListItemText primary={options.clearSelectionsRow} />
+            </MenuItem>
           )}
           {layout.qListObject?.qDataPages[0]?.qMatrix.map((row) => (
             <MenuItem
