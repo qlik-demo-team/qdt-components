@@ -21,6 +21,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
   const defaultOptions = {
     // multiple: false,
     showLabel: true,
+    showProgress: true,
     clearSelectionsRow: null,
   };
   const options = merge(defaultOptions, optionsProp);
@@ -74,7 +75,10 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
           onOpen={handleOpen}
           onClose={handleClose}
           onChange={handleChange}
-          input={<Input />}
+          inputProps={{
+            disableUnderline: !(options.showProgress),
+          }}
+          input={<Input disableUnderline={!(options.showProgress)} />}
         >
           {options.clearSelectionsRow && (
             <MenuItem value="clearSelections" key={0}>
@@ -94,7 +98,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
             </MenuItem>
           ))}
         </Select>
-        <LinearProgress variant="determinate" value={80} />
+        {options.showProgress && <LinearProgress variant="determinate" value={80} /> }
       </FormControl>
 
     </>
