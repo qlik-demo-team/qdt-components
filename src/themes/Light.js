@@ -34,6 +34,7 @@ const theme = createMuiTheme({
       dark: Colors.AQUAMARINE,
       contrastText: '#fff',
     },
+    range: [Colors.TANZANITE, Colors.SLATE, Colors.TURQUOISE, Colors.AQUAMARINE, Colors.WINE, Colors.AMETHYST, Colors.STONE, Colors.SAPPHIRE, Colors.EMERALD, Colors.RUBY, Colors.CORAL],
   },
   shape: {
     borderRadius: 0,

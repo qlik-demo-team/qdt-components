@@ -49,3 +49,5 @@ export { default as useLineChartSettings } from './components/QdtPicasso/setting
 export { default as usePieChartSettings } from './components/QdtPicasso/settings/pieChart';
 
 export { default as useScatterPlotSettings } from './components/QdtPicasso/settings/scatterPlot';
+
+export { default as useMerimekkoSettings } from './components/QdtPicasso/settings/merimekko';

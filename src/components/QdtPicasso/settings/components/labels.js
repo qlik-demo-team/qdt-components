@@ -33,6 +33,7 @@ const labels = ({
             fontSize: 9,
             labels: labelsProp || [{
               label: ({ data }) => {
+                console.log(data);
                 if (type === 'bar') {
                   if (data.series) {
                     return format(formatSpec)(data.end.value - data.start.value);
