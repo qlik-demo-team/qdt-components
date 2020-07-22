@@ -136,6 +136,13 @@ const theme = createMuiTheme({
     MuiListItem: {
       root: {
         borderBottom: `1px solid ${Colors.GREY_85}`,
+        '&$selected': {
+          backgroundColor: Colors.QLIK_GREEN,
+          color: '#FFFFFF',
+          '&:hover': {
+            backgroundColor: Colors.QLIK_GREEN,
+          },
+        },
       },
     },
   },

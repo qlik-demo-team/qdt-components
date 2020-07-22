@@ -48,8 +48,7 @@ const qdtEnigma = async (config) => {
 
   session.on('closed', () => {
     console.error('Session ended.');
-    const refreshUrl = window.location.origin;
-    // if (identity) refreshUrl += `?identity=${myConfig.identity}`;
+    const refreshUrl = window.location;
     ConnectionLostModal({ refreshUrl, timeoutMessage });
   });
 
