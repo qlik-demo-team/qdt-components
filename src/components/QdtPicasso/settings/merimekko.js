@@ -2,7 +2,6 @@ import { Light as defaultTheme } from 'themes';
 import merge from 'utils/merge';
 import axis from './components/axis';
 import box from './components/box';
-import legend from './components/legend';
 import labels from './components/labels';
 import tooltip from './components/tooltip';
 import range from './components/range';
@@ -191,9 +190,8 @@ const MerimekkoChart = ({
           displayOrder: 6,
         },
       }),
-      legend,
       range(),
-      tooltip,
+      tooltip(),
     ],
     interactions: [tooltipHover(), rangePan()],
     // interactions: [],

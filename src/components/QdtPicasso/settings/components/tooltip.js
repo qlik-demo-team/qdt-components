@@ -37,9 +37,10 @@ const tooltip = ({
             ]);
             break;
           // Barcharts, Gauge
+          case 'rects':
           case 'bars':
           default:
-            if (data[0].data.series) { // Stacked
+            if (data[0].data.series) { // Stacked && Merimekko
               html = h('div.qdt-tooltip-header', {}, [
                 h('div.qdt-tooltip-header-title', { align: 'center', style: { 'border-bottom': '1px solid rgba(255,255,255,0.2)', 'padding-bottom': '5px', display: 'block' } }, `${data[0].data.series.label}`),
                 h('div.qdt-tooltip-header-measure', { align: 'center', style: { 'padding-top': '5px' } }, `${data[0].data.label}: ${format(formatSpec)(data[0].data.end.value - data[0].data.start.value)}`),
