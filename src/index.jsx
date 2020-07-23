@@ -51,3 +51,5 @@ export { default as usePieChartSettings } from './components/QdtPicasso/settings
 export { default as useScatterPlotSettings } from './components/QdtPicasso/settings/scatterPlot';
 
 export { default as useMerimekkoSettings } from './components/QdtPicasso/settings/merimekko';
+
+export { default as useTreemapSettings } from './components/QdtPicasso/settings/treemap';

@@ -13,7 +13,7 @@ const tooltip = ({
     type: 'tooltip',
     displayOrder: 10,
     settings: {
-      filter: (nodes) => nodes.filter((node) => ['bars', 'range', 'point', 'point2', 'pie', 'rects'].includes(node.key)),
+      filter: (nodes) => nodes.filter((node) => ['bars', 'range', 'point', 'point2', 'pie', 'rects', 'treemap'].includes(node.key)),
       extract: ({ node }) => {
         const { data, key, attrs } = node;
         return { data, key, attrs };
@@ -34,6 +34,18 @@ const tooltip = ({
             html = h('div.qdt-tooltip-header', {}, [
               h('div.qdt-tooltip-header-title', {}, `${data[0].data.label}: `),
               h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.num.label)}`),
+            ]);
+            break;
+          // Treemap
+          case 'treemap':
+            html = h('div.qdt-tooltip-header', {}, [
+              h('div', {
+                align: 'center',
+                style: {
+                  fontWeight: 'bold', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: 5, display: 'block',
+                },
+              }, `${data[0].data.parentLabel}`),
+              h('div', { align: 'center', style: { paddingTop: 5 } }, `${data[0].data.label}: ${data[0].data.value}`),
             ]);
             break;
           // Barcharts, Gauge

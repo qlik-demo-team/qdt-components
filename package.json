@@ -33,6 +33,7 @@
     "d3": "^5.9.2",
     "d3-ease": "^1.0.6",
     "d3-format": "^1.4.3",
+    "d3-hierarchy": "^1.1.9",
     "d3-interpolate": "^1.4.0",
     "d3-timer": "^1.0.10",
     "deep-equal": "^2.0.1",

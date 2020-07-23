@@ -194,7 +194,6 @@ const MerimekkoChart = ({
       tooltip(),
     ],
     interactions: [tooltipHover(), rangePan()],
-    // interactions: [],
   };
 };
 
