@@ -34,6 +34,7 @@ const theme = createMuiTheme({
       dark: Colors.AQUAMARINE,
       contrastText: '#fff',
     },
+    range: [Colors.TANZANITE, Colors.SLATE, Colors.TURQUOISE, Colors.AQUAMARINE, Colors.WINE, Colors.AMETHYST, Colors.STONE, Colors.SAPPHIRE, Colors.EMERALD, Colors.RUBY, Colors.CORAL],
   },
   shape: {
     borderRadius: 0,
@@ -136,6 +137,13 @@ const theme = createMuiTheme({
     MuiListItem: {
       root: {
         borderBottom: `1px solid ${Colors.GREY_85}`,
+        '&$selected': {
+          backgroundColor: Colors.QLIK_GREEN,
+          color: '#FFFFFF',
+          '&:hover': {
+            backgroundColor: Colors.QLIK_GREEN,
+          },
+        },
       },
     },
   },

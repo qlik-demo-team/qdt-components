@@ -1,6 +1,6 @@
 {
   "name": "qdt-components",
-  "version": "3.0.0-beta.7",
+  "version": "3.0.0-beta.11",
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types2/qdt-components.d.ts",
@@ -14,9 +14,12 @@
     "qlik",
     "sense",
     "capability api",
+    "engine api",
     "react-component",
     "angular-components",
-    "react"
+    "react",
+    "enigma.js",
+    "picasso.js"
   ],
   "homepage": "https://github.com/qlik-demo-team/",
   "dependencies": {
@@ -30,6 +33,7 @@
     "d3": "^5.9.2",
     "d3-ease": "^1.0.6",
     "d3-format": "^1.4.3",
+    "d3-hierarchy": "^1.1.9",
     "d3-interpolate": "^1.4.0",
     "d3-timer": "^1.0.10",
     "deep-equal": "^2.0.1",

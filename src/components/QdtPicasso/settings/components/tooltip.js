@@ -13,7 +13,7 @@ const tooltip = ({
     type: 'tooltip',
     displayOrder: 10,
     settings: {
-      filter: (nodes) => nodes.filter((node) => ['bars', 'range', 'point', 'point2', 'pie', 'rects'].includes(node.key)),
+      filter: (nodes) => nodes.filter((node) => ['bars', 'range', 'point', 'point2', 'pie', 'rects', 'treemap'].includes(node.key)),
       extract: ({ node }) => {
         const { data, key, attrs } = node;
         return { data, key, attrs };
@@ -36,10 +36,23 @@ const tooltip = ({
               h('div.qdt-tooltip-header-measure', {}, `${format(formatSpec)(data[0].data.num.label)}`),
             ]);
             break;
+          // Treemap
+          case 'treemap':
+            html = h('div.qdt-tooltip-header', {}, [
+              h('div', {
+                align: 'center',
+                style: {
+                  fontWeight: 'bold', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: 5, display: 'block',
+                },
+              }, `${data[0].data.parentLabel}`),
+              h('div', { align: 'center', style: { paddingTop: 5 } }, `${data[0].data.label}: ${data[0].data.value}`),
+            ]);
+            break;
           // Barcharts, Gauge
+          case 'rects':
           case 'bars':
           default:
-            if (data[0].data.series) { // Stacked
+            if (data[0].data.series) { // Stacked && Merimekko
               html = h('div.qdt-tooltip-header', {}, [
                 h('div.qdt-tooltip-header-title', { align: 'center', style: { 'border-bottom': '1px solid rgba(255,255,255,0.2)', 'padding-bottom': '5px', display: 'block' } }, `${data[0].data.series.label}`),
                 h('div.qdt-tooltip-header-measure', { align: 'center', style: { 'padding-top': '5px' } }, `${data[0].data.label}: ${format(formatSpec)(data[0].data.end.value - data[0].data.start.value)}`),

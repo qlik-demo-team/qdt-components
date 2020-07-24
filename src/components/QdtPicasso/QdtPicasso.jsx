@@ -15,9 +15,11 @@ import merge from '../../utils/merge';
 import QdtSelectionModal from '../QdtModal/QdtSelectionModal';
 import domPointLabel from './components/domPointLabel';
 import domPointImage from './components/domPointImage';
+import treemap from './components/treemap';
 
 picasso.component('domPointLabel', domPointLabel);
 picasso.component('domPointImage', domPointImage);
+picasso.component('treemap', treemap);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 

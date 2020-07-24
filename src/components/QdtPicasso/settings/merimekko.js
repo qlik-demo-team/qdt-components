@@ -1,19 +1,16 @@
 import { Light as defaultTheme } from 'themes';
 import merge from 'utils/merge';
-import {
-  axis,
-  box,
-  legend,
-  labels,
-  tooltip,
-  range,
-} from './components';
-import {
-  itooltip,
-  pan,
-} from './interactions';
+import axis from './components/axis';
+import box from './components/box';
+import labels from './components/labels';
+import tooltip from './components/tooltip';
+import range from './components/range';
+import rangePan from './interactions/rangePan';
+import tooltipHover from './interactions/tooltipHover';
 
-const setting = ({ theme: themeProp }) => {
+const MerimekkoChart = ({
+  theme: themeProp = {},
+} = {}) => {
   const theme = merge(defaultTheme, themeProp);
   return {
     collections: [{
@@ -50,7 +47,6 @@ const setting = ({ theme: themeProp }) => {
         stack: {
           stackKey: () => -1,
           value: (d) => d.end.value,
-          // value: (d) => d.series.value,
           offset: 'expand',
         },
       },
@@ -68,7 +64,8 @@ const setting = ({ theme: themeProp }) => {
       },
       c: {
         data: { extract: { field: 'qDimensionInfo/1' } },
-        range: theme.palette,
+        // range: Object.values(theme.palette).map((color) => color.main),
+        range: theme.range,
         type: 'color',
       },
     },
@@ -88,23 +85,116 @@ const setting = ({ theme: themeProp }) => {
         },
       }),
       box({
-        key: 'rects', collection: 'stacked', type: 'merimekko', fill: { scale: 'c' },
+        properties: {
+          key: 'rects',
+          data: { collection: 'stacked' },
+          displayOrder: 1,
+          settings: {
+            major: {
+              binStart: {
+                scale: 'x',
+                fn: (b) => {
+                  const ss = b.resources.scale('b');
+                  return b.resources.scale('x')(ss.datum(b.datum.series.value).start.value);
+                },
+              },
+              binEnd: {
+                fn: (b) => {
+                  const ss = b.resources.scale('b');
+                  return b.resources.scale('x')(ss.datum(b.datum.series.value).end.value);
+                },
+              },
+              ref: 'series',
+            },
+            minor: { scale: 'y', ref: 'end' },
+            box: {
+              fill: { scale: 'c' },
+            },
+            brush: {
+              trigger: [
+                { data: ['series'] },
+              ],
+            },
+          },
+        },
       }),
       box({
-        key: 'bar-labels', collection: 'span', type: 'merimekko', fill: 'rgba(100, 0, 0, 0.0)', strokeWidth: 0, displayOrder: 2,
+        properties: {
+          key: 'bar-labels',
+          data: { collection: 'span' },
+          displayOrder: 2,
+          dock: 'top',
+          preferredSize: () => 24,
+          settings: {
+            major: {
+              binStart: {
+                scale: 'x',
+                fn: (b) => {
+                  const ss = b.resources.scale('b');
+                  return b.resources.scale('x')(ss.datum(b.datum.series.value).start.value);
+                },
+              },
+              binEnd: {
+                fn: (b) => {
+                  const ss = b.resources.scale('b');
+                  return b.resources.scale('x')(ss.datum(b.datum.series.value).end.value);
+                },
+              },
+            },
+            minor: { start: 0, end: 1 },
+            box: {
+              fill: 'rgba(100, 0, 0, 0.0)',
+              strokeWidth: 0,
+            },
+            brush: {
+              trigger: [
+                { data: ['series'] },
+              ],
+            },
+          },
+        },
       }),
       labels({
-        key: 'bar-labels-ts', dock: '@bar-labels', component: 'bar-labels', fontSize: 10, displayOrder: 3, insideFill: '#000', justify: 0.5, direction: 'right',
+        component: 'bar-labels',
+        orientation: 'horizontal',
+        labels: [{
+          label({ data }) {
+            return `${data.label} (${Math.round(data.metric.value)}%)`;
+          },
+          placements: [
+            { position: 'inside', fill: '#000', justify: 0.5 },
+            { position: 'outside', fill: '#666666', justify: 0 },
+          ],
+        }],
+        properties: {
+          key: 'bar-labels-ts',
+          dock: '@bar-labels',
+          displayOrder: 5,
+        },
       }),
       labels({
-        dock: '@rects', component: 'rects', type: 'rows', displayOrder: 4,
+        component: 'rects',
+        orientation: 'horizontal',
+        // type: 'rows',
+        labels: [{
+          label({ data }) {
+            return `${data.label} (${Math.round(data.metric.value)}%)`;
+          },
+          placements: [
+            { position: 'inside', fill: '#FFFFFF', justify: 0.5 },
+          ],
+        }],
+        properties: {
+          key: 'bar-labels-rects',
+          dock: '@rects',
+          displayOrder: 6,
+        },
       }),
-      legend,
       range(),
-      tooltip,
+      tooltip(),
     ],
-    interactions: [itooltip, pan()],
+    interactions: [tooltipHover(), rangePan()],
   };
 };
 
-export default setting;
+export default MerimekkoChart;
