@@ -45,7 +45,7 @@
     "mapbox-gl": "^1.10.0",
     "picasso-plugin-hammer": "^0.27.0",
     "picasso-plugin-q": "^0.27.0",
-    "picasso.js": "^0.27.0",
+    "picasso.js": "^0.32.1",
     "prop-types": "15.7.2",
     "qdt-lui": "^0.1.1",
     "react": "16.11.0",

@@ -5,6 +5,7 @@ const leafNodes = (nodes) => nodes.reduce((ary, node) => {
     ary.push(...leafNodes(node.children));
     return ary;
   }
+
   ary.push(node);
   return ary;
 }, []);
@@ -28,7 +29,17 @@ export default {
 
     const nodes = leafNodes(root.children);
 
-    return nodes.map((node) => ({
+    // Create Category nnodes for labels
+    // const parentLabelHeight = 15;
+    // const parents = root.children.filter((d) => d.children).map((node) => ({
+    //   data: node.data, x0: node.x0, x1: node.x1, y0: node.y1 - parentLabelHeight, y1: node.y1,
+    // }));
+
+    // // console.log(root);
+    // console.log(parents);
+    // // console.log(nodes);
+
+    const _nodes = nodes.map((node) => ({
       type: 'rect',
       x: node.x0,
       y: node.y0,
@@ -40,5 +51,7 @@ export default {
       _stroke: 'white',
       _strokeWidth: 1,
     }));
+
+    return _nodes;
   },
 };
