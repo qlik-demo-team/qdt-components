@@ -64,9 +64,7 @@ const Treemap = ({
           trigger: [{
             on: 'tap',
             contexts: ['select'],
-            // contexts: ['selectDrillDown'],
             data: ['series'],
-            // data: ['series', 'qDimension1'],
           }],
           consume: [{
             context: 'select',
@@ -77,25 +75,16 @@ const Treemap = ({
                 opacity: 1,
                 strokeWidth: 1,
                 stroke: '#FFFFFF',
-                cursor: 'pointer',
               },
               inactive: {
                 opacity: 0.5,
                 strokeWidth: 1,
                 stroke: '#FFFFFF',
-                cursor: 'pointer',
               },
             },
           }],
         },
       },
-      // {
-      //   key: 'treemapCategories',
-      //   type: 'treemapCategories',
-      //   scale: 'c',
-      //   data: { collection: { key: 'span' } },
-      //   displayOrder: 2,
-      // },
       labels({
         displayOrder: 3,
         properties: {
@@ -129,9 +118,7 @@ const Treemap = ({
             trigger: [{
               on: 'tap',
               contexts: ['select'],
-              // contexts: ['selectDrillDown'],
               data: ['series'],
-              // data: ['series', 'qDimension1'],
             }],
             consume: [{
               context: 'select',
@@ -148,44 +135,6 @@ const Treemap = ({
           },
         },
       }),
-      // labels({
-      //   displayOrder: 4,
-      //   properties: {
-      //     settings: {
-      //       sources: [
-      //         {
-      //           component: 'treemapCategories',
-      //           selector: 'rect',
-      //           strategy: {
-      //             type: 'rows',
-      //             settings: {
-      //               fontSize: 14,
-      //               // fill: ({ data }) => '#333', // select a color contrasting the containing shape
-      //               fill: () => '#000000', // select a color contrasting the containing shape
-      //               background: { fill: 'red' },
-      //               // padding: 0,
-      //               // padding: {
-      //               //   top: 1, bottom: 1, left: 5, right: 5,
-      //               // },
-      //               justify: 0,
-      //               align: 0,
-      //               labels: [
-      //                 {
-      //                   fontSize: 12,
-      //                   label({ data }) {
-      //                     console.log(data);
-      //                     // rectangel dimension label
-      //                     return data ? data.label : '';
-      //                   },
-      //                 },
-      //               ],
-      //             },
-      //           },
-      //         },
-      //       ],
-      //     },
-      //   },
-      // }),
       range(),
       tooltip(),
     ],
