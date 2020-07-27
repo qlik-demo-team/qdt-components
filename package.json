@@ -4,7 +4,7 @@
   "description": "Qlik Demo Team Components",
   "main": "dist/qdt-components.js",
   "types": "./types2/qdt-components.d.ts",
-  "author": "The Demo Team"2
+  "author": "The Demo Team",
   "license": "MIT",
   "repository": {
     "type": "git",
