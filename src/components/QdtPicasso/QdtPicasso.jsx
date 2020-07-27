@@ -16,12 +16,10 @@ import QdtSelectionModal from '../QdtModal/QdtSelectionModal';
 import domPointLabel from './components/domPointLabel';
 import domPointImage from './components/domPointImage';
 import treemap from './components/treemap';
-import treemapCategories from './components/treemapCategories';
 
 picasso.component('domPointLabel', domPointLabel);
 picasso.component('domPointImage', domPointImage);
 picasso.component('treemap', treemap);
-picasso.component('treemapCategories', treemapCategories);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
@@ -83,29 +81,15 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       setSelectionModalOpen(true);
     });
     pic.current.brush('select').on('update', (added, removed) => {
-      console.log(31, added, removed);
       const qDimNo = 0;
       let qValues = [];
       // If there are more than one dimensions, ie Treemap
       if (added.length > 1 || removed.length > 1) {
-        console.log(321);
         if (added.length) qValues.push(added[0].values[0]);
         if (removed.length) qValues.push(removed[0].values[0]);
       } else {
-        qValues = [...added, ...removed].map((v) => {
-          console.log(322, v);
-          return v.values[0];
-        });
+        qValues = [...added, ...removed].map((v) => v.values[0]);
       }
-      console.log(33, qValues);
-      model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
-    });
-    pic.current.brush('selectDrillDown').on('update', (added, removed) => {
-      const qDimNo = 0;
-      const qValues = [];
-      if (added.length) qValues.push(added[0].values[0]);
-      if (removed.length) qValues.push(removed[0].values[0]);
-      console.log(41, qValues);
       model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
     });
     staleLayout.current = layout;
