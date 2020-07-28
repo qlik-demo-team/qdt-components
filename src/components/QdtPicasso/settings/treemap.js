@@ -11,8 +11,9 @@ import tooltipHover from './interactions/tooltipHover';
 const Treemap = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
+  tooltip: tooltipProp = {},
 } = {}) => {
-  const theme = merge(defaultTheme, themeProp);
+  const theme = merge(defaultTheme, themeProp); // eslint-disable-line
   const defaultProperties = {
     collections: [{
       key: 'span',
@@ -25,17 +26,16 @@ const Treemap = ({
             return datum.qValues.length ? datum.qValues[0].qNum : 0;
           },
           props: {
-            series: { field: 'qDimensionInfo/0' },
-            color: {
-              field: 'qDimensionInfo/0',
-            },
+            series: { field: 'qMeasureInfo/0', value: (d) => d.qText },
+            color: { field: 'qMeasureInfo/1' },
+            select: { field: 'qDimensionInfo/0' },
           },
         },
       },
     }],
     scales: {
       c: {
-        data: { extract: { field: 'qDimensionInfo/0' } },
+        data: { extract: { field: 'qMeasureInfo/1' } },
         range: theme.range,
         type: 'color',
       },
@@ -64,12 +64,11 @@ const Treemap = ({
           trigger: [{
             on: 'tap',
             contexts: ['select'],
-            data: ['series'],
+            data: ['select'],
           }],
           consume: [{
             context: 'select',
-            // context: 'selectDrillDown',
-            data: ['series'],
+            data: ['select'],
             style: {
               active: {
                 opacity: 1,
@@ -88,7 +87,6 @@ const Treemap = ({
       labels({
         displayOrder: 3,
         properties: {
-
           settings: {
             sources: [
               {
@@ -97,14 +95,14 @@ const Treemap = ({
                 strategy: {
                   type: 'rows',
                   settings: {
-                    fontSize: 16,
+                    fontSize: 14,
                     fill: ({ data }) => ((data && data.depth === 1) ? '#000000' : '#FFFFFF'), // select a color contrasting the containing shape
                     // padding: 30,
                     justify: 0,
                     align: 0,
                     labels: [
                       {
-                        fontSize: 12,
+                        fontSize: 10,
                         padding: 10,
                         label: ({ data }) => (data ? data.label : ''),
                       },
@@ -118,11 +116,11 @@ const Treemap = ({
             trigger: [{
               on: 'tap',
               contexts: ['select'],
-              data: ['series'],
+              data: ['select'],
             }],
             consume: [{
               context: 'select',
-              data: ['series'],
+              data: ['select'],
               style: {
                 active: {
                   opacity: 1,
@@ -136,10 +134,13 @@ const Treemap = ({
         },
       }),
       range(),
-      tooltip(),
     ],
-    interactions: [tooltipHover(), rangePan()],
+    interactions: [rangePan()],
   };
+  if (tooltipProp) {
+    defaultProperties.components.push(tooltip(merge({}, tooltipProp)));
+    defaultProperties.interactions.push(tooltipHover());
+  }
   const properties = merge(defaultProperties, propertiesProp);
   return properties;
 };
