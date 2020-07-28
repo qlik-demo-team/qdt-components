@@ -81,8 +81,16 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       setSelectionModalOpen(true);
     });
     pic.current.brush('select').on('update', (added, removed) => {
-      const qValues = [...added, ...removed].map((v) => v.values[0]);
-      model.selectHyperCubeValues('/qHyperCubeDef', 0, qValues, true);
+      const qDimNo = 0;
+      let qValues = [];
+      // If there are more than one dimensions, ie Treemap
+      if (added.length > 1 || removed.length > 1) {
+        if (added.length) qValues.push(added[0].values[0]);
+        if (removed.length) qValues.push(removed[0].values[0]);
+      } else {
+        qValues = [...added, ...removed].map((v) => v.values[0]);
+      }
+      model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
     });
     staleLayout.current = layout;
     staleOptions.current = options;
