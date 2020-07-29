@@ -43,6 +43,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     },
     width: '100%',
     height: '100%',
+    showSelectionModal: true,
   };
   const options = merge(defaultOptions, optionsProp);
 
@@ -77,8 +78,10 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       settings: options.settings,
     });
     pic.current.brush('select').on('start', () => {
-      model.beginSelections(['/qHyperCubeDef']);
-      setSelectionModalOpen(true);
+      if (options.showSelectionModal) {
+        model.beginSelections(['/qHyperCubeDef']);
+        setSelectionModalOpen(true);
+      }
     });
     pic.current.brush('select').on('update', (added, removed) => {
       const qDimNo = 0;
@@ -149,7 +152,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   return (
     <div style={{ width: options.width, height: options.height }}>
       <div ref={elementNode} style={{ width: options.width, height: options.height, border: (selectionModalOpen) ? '1px solid #CCCCCC' : 0 }} />
-      <QdtSelectionModal style={{ width: options.width }} isOpen={selectionModalOpen} onCancelSelections={handleCancelSelections} onConfirmSelections={handleConfirmSelections} />
+      { options.showSelectionModal
+        && <QdtSelectionModal style={{ width: options.width }} isOpen={selectionModalOpen} onCancelSelections={handleCancelSelections} onConfirmSelections={handleConfirmSelections} />}
     </div>
   );
 });
