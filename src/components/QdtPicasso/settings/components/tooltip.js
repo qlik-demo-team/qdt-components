@@ -38,6 +38,7 @@ const tooltip = ({
             break;
           // Treemap
           case 'treemap':
+            // If its a main category, then it does not have a value so only show the label
             html = h('div.qdt-tooltip-header', {}, [
               h('div', {
                 align: 'center',
@@ -45,7 +46,8 @@ const tooltip = ({
                   fontWeight: 'bold', borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: 5, display: 'block',
                 },
               }, `${data[0].data.parentLabel}`),
-              h('div', { align: 'center', style: { paddingTop: 5 } }, `${data[0].data.label}: ${data[0].data.value}`),
+              // Show only if its not a main category
+              h('div', { align: 'center', style: { paddingTop: 5 } }, `${data[0].data.label} ${(data[0].data.depth === 1) ? '' : `: ${data[0].data.series.value}`}`),
             ]);
             break;
           // Barcharts, Gauge
