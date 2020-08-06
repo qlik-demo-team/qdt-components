@@ -2,6 +2,8 @@ import { format } from 'd3-format';
 import merge from 'utils/merge';
 import { Light as defaultTheme } from 'themes';
 
+// https://github.com/snabbdom/snabbdom
+
 const tooltip = ({
   theme: themeProp = {},
   properties: propertiesProp = {},
