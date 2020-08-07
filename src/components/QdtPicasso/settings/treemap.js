@@ -103,7 +103,7 @@ const Treemap = ({
                     labels: [
                       {
                         fontSize: 10,
-                        padding: 10,
+                        padding: (window.innerWidth < 600) ? 0 : 10, // mobile xs breakpoint
                         label: ({ data }) => (data ? data.label : ''),
                       },
                     ],
