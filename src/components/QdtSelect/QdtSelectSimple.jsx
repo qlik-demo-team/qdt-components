@@ -68,6 +68,7 @@ const QdtSelect = ({ layout, model, options: optionsProp }) => {
         inputProps={{
           disableUnderline: !(options.showProgress),
         }}
+        MenuProps={options.MenuProps}
         input={<Input disableUnderline={!(options.showProgress)} />}
       >
         {options.clearSelectionsRow && (
