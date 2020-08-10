@@ -19,7 +19,8 @@ export default {
   },
   render({ data }) {
     const { width, height } = this.chart.element.getBoundingClientRect();
-    const parentLabelHeight = 28;
+    const parentLabelHeight = (window.innerWidth < 600) ? 18 : 28; // mobile xs breakpoint
+    // const parentLabelHeight = 28; // mobile xs breakpoint
 
     const dataset = data.root
       .sum((d) => d.value)

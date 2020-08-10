@@ -93,7 +93,8 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
       } else {
         qValues = [...added, ...removed].map((v) => v.values[0]);
       }
-      model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
+      // Avoid multiple selections by the transition update() function below
+      if (!transition.current) model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
     });
     staleLayout.current = layout;
     staleOptions.current = options;

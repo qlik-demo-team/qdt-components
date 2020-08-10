@@ -19,6 +19,8 @@ const ScatterPlot = ({
   legend: legendProp = {},
   tooltip: tooltipProp = {},
   range: rangeProp = {},
+  xAxis: xAxisProp = {},
+  yAxis: yAxisProp = {},
 } = {}) => {
   const theme = merge(defaultTheme, themeProp);  //eslint-disable-line
   const defaultProperties = {
@@ -31,12 +33,12 @@ const ScatterPlot = ({
         type: 'color',
       },
     },
-    components: [
-      axis(),
-      axis({ scale: 'y' }),
-    ],
+    components: [],
     interactions: [],
   };
+
+  if (xAxisProp) defaultProperties.components.push(axis(merge({ scale: 'x' }, xAxisProp)));
+  if (yAxisProp) defaultProperties.components.push(axis(merge({ scale: 'y' }, yAxisProp)));
 
   defaultProperties.components.push(
     point(
