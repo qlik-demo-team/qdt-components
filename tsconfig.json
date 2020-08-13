@@ -22,7 +22,6 @@
     // "moduleResolution": "node",
     // "esModuleInterop": true,
     // "checkJs": true,
-
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",

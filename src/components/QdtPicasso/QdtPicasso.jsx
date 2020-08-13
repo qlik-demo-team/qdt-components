@@ -43,6 +43,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
     },
     width: '100%',
     height: '100%',
+    position: 'relative',
     showSelectionModal: true,
   };
   const options = merge(defaultOptions, optionsProp);
@@ -151,7 +152,7 @@ const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, re
   }, []);
 
   return (
-    <div style={{ width: options.width, height: options.height }}>
+    <div style={{ width: options.width, height: options.height, position: options.position }}>
       <div ref={elementNode} style={{ width: options.width, height: options.height, border: (selectionModalOpen) ? '1px solid #CCCCCC' : 0 }} />
       { options.showSelectionModal
         && <QdtSelectionModal style={{ width: options.width }} isOpen={selectionModalOpen} onCancelSelections={handleCancelSelections} onConfirmSelections={handleConfirmSelections} />}
