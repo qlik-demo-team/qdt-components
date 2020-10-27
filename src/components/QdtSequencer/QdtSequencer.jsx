@@ -2,141 +2,118 @@
  * @name QdtSequencer
  * @param {array} cols - Dimension for the data to cycle through
  * @param {number} delay [5] - Loop through the results in given seconds.
- * @param {bool} selectRow [false] - If we want each cycled row to be selected.
- * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles play.
+ * @param {number} keyCode [null] - If we want to control the sequencer with a key stroke. Toggles playing.
  * @param {bool} navigation [true] - If we want to show / hide the navigation and use only key strokes
  * @description
  * Loop through a dimension and make selections.
 */
 
-import React, { useRef, useEffect } from 'react';
+import React, {
+  useState, useCallback, useEffect, useRef, useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
-import useListObject from '../../hooks/useListObject';
-import useSequencer from '../../hooks/useSequencer';
-import '../../styles/index.scss';
+import { Button, ButtonGroup } from '@material-ui/core';
+import {
+  PlayArrow, SkipPrevious, SkipNext, Pause, Stop,
+} from '@material-ui/icons';
+import merge from 'utils/merge';
 
-const QdtSequencer = ({
-  qDocPromise, cols, qPage, delay, selectRow, keyCode, navigation, toggleSelections, wheel,
-}) => {
-  const {
-    qLayout, qData, select, clearSelections,
-  } = useListObject({ qDocPromise, cols, qPage });
-  const {
-    currentRowIndex, play, startSequencer, stopSequencer, reloadSequencer, moveNextSequencer, movePreviousSequencer,
-  } = useSequencer({
-    qLayout, qData, delay, select, selectRow, toggleSelections, clearSelections,
-  });
-  const ref = useRef(null);
-
-  const style = {
-    bar: { border: '1px solid rgba(0,0,0,0.1)', padding: '3px', textAlign: 'center' },
-    start: (!play) ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
-    stop: (play) ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
-    restart: (!play && currentRowIndex >= 1) ? 'lui-fade-button lui-active' : 'lui-fade-button lui-disabled',
-    next: (!qData || currentRowIndex === qData.qMatrix.length) ? 'lui-fade-button lui-disabled' : 'lui-fade-button lui-active',
-    previous: (currentRowIndex === 0) ? 'lui-fade-button lui-disabled' : 'lui-fade-button lui-active',
+const QdtSequencer = ({ layout, model, options: optionsProp }) => {
+  const defaultOptions = {
+    variant: 'outlined',
+    color: 'primary',
+    size: 'small',
+    toggleSelections: false,
+    delay: 5,
+    defaultRow: -1,
   };
+  const options = merge(defaultOptions, optionsProp);
 
-  const checkKey = (event) => {
-    if (event.keyCode === keyCode) {
-      if (!play) {
-        startSequencer();
-      } else {
-        stopSequencer();
-      }
-    }
-  };
+  const qMatrix = useMemo(() => layout?.qListObject?.qDataPages[0]?.qMatrix || [], [layout]);
 
-  const wheelNavigation = (event) => {
-    event.preventDefault(); /* Chrome, Safari, Firefox */
-    // event.returnValue = false; /* IE7, IE8 */
-    if (event.wheelDeltaY > 0) {
-      moveNextSequencer();
+  const initialized = useRef(false);
+  const playTimeout = useRef(null);
+  const currentRowIndex = useRef(options.defaultRow);
+  const [playing, setplaying] = useState(false);
+
+  const select = useCallback((qElemNumber, toggle = true, ignoreLock = false) => model.selectListObjectValues('/qListObjectDef', [qElemNumber], toggle, ignoreLock), [model]);
+  const clearSelections = useCallback(() => model.clearSelections('/qListObjectDef'), [model]);
+
+  const reset = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    currentRowIndex.current = options.defaultRow;
+    if (options.defaultRow !== -1) {
+      select(qMatrix[options.defaultRow][0].qElemNumber, options.toggleSelections, true);
     } else {
-      movePreviousSequencer();
+      clearSelections();
     }
-    return false;
-  };
+  }, [options.defaultRow, options.toggleSelections, select, qMatrix, clearSelections]);
 
-  useEffect(() => {
-    const node = ref.current;
-    if (node) {
-      if (keyCode) node.addEventListener('keydown', checkKey, true);
-      if (wheel) node.addEventListener('wheel', wheelNavigation, { passive: false });
-      return () => {
-        if (keyCode) node.removeEventListener('keydown', checkKey, true);
-        if (wheel) node.removeEventListener('wheel', wheelNavigation, { passive: false });
-      };
+  const previous = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current - 1]) {
+      await select(qMatrix[currentRowIndex.current - 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current -= 1;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checkKey, play, wheel, ref]);
+  }, [qMatrix, options.toggleSelections, select]);
+
+  const next = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current + 1]) {
+      await select(qMatrix[currentRowIndex.current + 1][0].qElemNumber, options.toggleSelections, true);
+      currentRowIndex.current += 1;
+    }
+  }, [qMatrix, options.toggleSelections, select]);
+
+  const play = useCallback(async () => {
+    if (qMatrix[currentRowIndex.current + 1]) {
+      setplaying(true);
+      await next();
+      playTimeout.current = setTimeout(() => {
+        play();
+      }, options.delay * 1000);
+    } else {
+      setplaying(false);
+    }
+  }, [qMatrix, next, options.delay]);
+
+  const pause = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    setplaying(false);
+  }, []);
+
+  const stop = useCallback(() => {
+    if (playTimeout.current) clearTimeout(playTimeout.current);
+    setplaying(false);
+    reset();
+  }, [reset]);
+
+  // if not initialized after qMatrix has data, reset
+  useEffect(() => {
+    if (qMatrix.length && !initialized.current) {
+      reset();
+      initialized.current = true;
+    }
+  }, [qMatrix, reset, select]);
 
   return (
-    <>
-      { navigation
-      && (
-        <div style={style.bar} ref={ref}>
-          <>
-            <button className={style.previous} type="button" onClick={movePreviousSequencer}>
-              <span className="lui-fade-button__icon lui-icon lui-icon--step-in lui-icon-rotate-180" />
-            </button>
-            <button className={style.start} type="button" onClick={startSequencer}>
-              <span className="lui-fade-button__icon lui-icon lui-icon--triangle-right" />
-            </button>
-            <button className={style.stop} type="button" onClick={stopSequencer}>
-              <span className="lui-fade-button__icon lui-icon lui-icon--pause" />
-            </button>
-            <button className={style.restart} type="button" onClick={reloadSequencer}>
-              <span className="lui-fade-button__icon lui-icon lui-icon--stop" />
-            </button>
-            <button className={style.next} type="button" onClick={moveNextSequencer}>
-              <span className="lui-fade-button__icon lui-icon lui-icon--step-in" />
-            </button>
-          </>
-          {qData && qLayout && qData.qMatrix && qData.qMatrix[currentRowIndex] && qData.qMatrix[currentRowIndex][0] && qData.qMatrix[currentRowIndex][0].qText
-            && (
-              <div>
-                {qLayout.qListObject.qDimensionInfo.qFallbackTitle}
-                {': '}
-                {qData.qMatrix[currentRowIndex][0].qText}
-                {' ('}
-                {currentRowIndex + 1}
-                {' of '}
-                {qData.qMatrix.length}
-                {')'}
-              </div>
-            )}
-        </div>
-      )}
-    </>
+    <ButtonGroup size={options.size} variant={options.variant} color={options.color} aria-label="qdt-sequencer">
+      <Button onClick={previous} disabled={currentRowIndex.current === options.defaultRow}><SkipPrevious /></Button>
+      <Button onClick={play} disabled={playing}><PlayArrow /></Button>
+      <Button onClick={pause} disabled={!playing}><Pause /></Button>
+      <Button onClick={stop} disabled={currentRowIndex.current === options.defaultRow}><Stop /></Button>
+      <Button onClick={next} disabled={currentRowIndex.current >= qMatrix.length}><SkipNext /></Button>
+    </ButtonGroup>
   );
 };
 
 QdtSequencer.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.isRequired,
-  qPage: PropTypes.object,
-  delay: PropTypes.number,
-  selectRow: PropTypes.bool,
-  navigation: PropTypes.bool,
-  keyCode: PropTypes.number,
-  toggleSelections: PropTypes.bool,
-  wheel: PropTypes.bool,
+  layout: PropTypes.object,
+  model: PropTypes.object,
+  options: PropTypes.object,
 };
-
 QdtSequencer.defaultProps = {
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 1,
-    qHeight: 100,
-  },
-  delay: 5,
-  selectRow: true,
-  navigation: true,
-  keyCode: null,
-  toggleSelections: false,
-  wheel: false,
+  layout: null,
+  model: null,
+  options: {},
 };
 
 export default QdtSequencer;

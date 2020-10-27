@@ -1,259 +1,174 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import picasso from 'picasso.js';
 import picassoHammer from 'picasso-plugin-hammer';
 import picassoQ from 'picasso-plugin-q';
-import useHyperCube from '../../hooks/useHyperCube';
-import { domPointLabel, domPointImage } from './picasso/components';
-import preconfiguredSettings from './picasso/settings';
-import QdtPicassoMiniMap from './QdtPicassoMiniMap';
-import LuiSelectionModal from '../QdtLui/LuiSelectionModal';
-import '../../styles/index.scss';
-import './style.scss';
-
-
-let _settings = null;
-let pic = null;
-let maxWidth = '100%';
-let maxHeight = '100%';
+import * as d3Ease from 'd3-ease';
+import { timer } from 'd3-timer';
+import { interpolate } from 'd3-interpolate';
+import { format } from 'd3-format';
+import ResizeObserver from 'resize-observer-polyfill';
+import equal from 'deep-equal';
+import merge from '../../utils/merge';
+import QdtSelectionModal from '../QdtModal/QdtSelectionModal';
+import domPointLabel from './components/domPointLabel';
+import domPointImage from './components/domPointImage';
+import treemap from './components/treemap';
 
 picasso.component('domPointLabel', domPointLabel);
 picasso.component('domPointImage', domPointImage);
+picasso.component('treemap', treemap);
 picasso.use(picassoHammer);
 picasso.use(picassoQ);
 
-const QdtPicasso = ({
-  settings, type, prio, options, innerHeight, outerWidth, innerWidth, outerHeight, afterConfirmSelections, miniMapVisible, ...otherProps
-}) => {
-  const rootNode = useRef(null);
-  const elementNode = useRef(null);
-  const [isSelectionBarVisible, setSelectionBarVisible] = useState(false);
-  const {
-    beginSelections, endSelections, qLayout, qData, qRData, changePage, selections, select,
-  } = useHyperCube({ ...otherProps });
+// Custom formatter to change G to B (US Billions)
+const formatterGtoB = () => (value) => format('.1s')(value).replace(/G/, 'B'); // .1s for no decimal on Billions
+picasso.formatter('formatterGtoB', formatterGtoB);
 
-  let _innerHeight = innerHeight;
-
-  const changePagePicasso = (page) => changePage(page);
-
-  const handleResize = () => pic.update();
-
-  const cancelSelections = () => {
-    const { brush } = pic;
-    brush('select').end();
-    endSelections(false);
-    setSelectionBarVisible(false);
+const QdtPicasso = React.forwardRef(({ model, layout, options: optionsProp }, ref) => {
+  const defaultOptions = {
+    prio: 'canvas',
+    settings: {
+      formatters: {
+        formatterGtoB: {
+          type: 'formatterGtoB',
+        },
+      },
+    },
+    transition: {
+      duration: 1000,
+      easing: 'easeCubic',
+    },
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    showSelectionModal: true,
   };
+  const options = merge(defaultOptions, optionsProp);
 
-  const createPic = async () => {
-    if (type === 'horizontalBarchart' && options.bar && options.bar.height && innerHeight === '100%') {
-      maxHeight = qData.qMatrix.length * options.bar.height;
-      _innerHeight = maxHeight;
-    }
-    if (type === 'verticalBarchart') {
-      maxWidth = qData.qMatrix.length * 50;
-      _innerHeight = outerHeight - 50; // Add the  mini map
-    }
-    _settings = type ? preconfiguredSettings[type] : settings;
-    const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-      _settings.components[2].settings.box.fill = options.bar.fill;
-    }
-    if (type === 'verticalGauge' && options.min) {
-      _settings.scales.y.min = options.min;
-      _settings.components[1].start = options.min;
-      _settings.components[2].start = options.min;
-    }
-    if (type === 'verticalGauge' && options.max) {
-      _settings.scales.y.max = options.max;
-      _settings.components[1].end = options.max;
-    }
-    pic = picasso({ renderer: { prio: [prio] } }).chart({
+  const elementNode = useRef(null);
+  const pic = useRef(null);
+  const transition = useRef(null);
+  const tweenLayout = useRef(null);
+  const staleLayout = useRef(layout);
+  const staleOptions = useRef(options);
+  const [selectionModalOpen, setSelectionModalOpen] = useState(false);
+
+  ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
+
+  const stopTransition = useCallback(() => {
+    transition.current.stop();
+    transition.current = null;
+    staleLayout.current = layout;
+    staleOptions.current = options;
+  }, [layout, options]);
+
+  const create = useCallback(() => {
+    if (!layout.qHyperCube) return;
+    pic.current = picasso({
+      renderer: { prio: [options.prio] },
+    }).chart({
       element: elementNode.current,
       data: [{
         type: 'q',
         key: 'qHyperCube',
-        data: data.qHyperCube,
+        data: layout.qHyperCube,
       }],
-      settings: _settings,
+      settings: options.settings,
     });
-    pic.brush('select').on('start', () => {
-      beginSelections();
-      // select(0, [], false);
-      setSelectionBarVisible(true);
+    pic.current.brush('select').on('start', () => {
+      if (options.showSelectionModal) {
+        model.beginSelections(['/qHyperCubeDef']);
+        setSelectionModalOpen(true);
+      }
     });
-    pic.brush('select').on('update', (added, removed) => {
-      if (!selections && !added) return;
-      const _selections = [...added, ...removed].map((v) => v.values[0]);
-      select(0, _selections);
+    pic.current.brush('select').on('update', (added, removed) => {
+      const qDimNo = 0;
+      let qValues = [];
+      // If there are more than one dimensions, ie Treemap
+      if (added.length > 1 || removed.length > 1) {
+        if (added.length) qValues.push(added[0].values[0]);
+        if (removed.length) qValues.push(removed[0].values[0]);
+      } else {
+        qValues = [...added, ...removed].map((v) => v.values[0]);
+      }
+      // Avoid multiple selections by the transition update() function below
+      if (!transition.current) model.selectHyperCubeValues('/qHyperCubeDef', qDimNo, qValues, true);
     });
+    staleLayout.current = layout;
+    staleOptions.current = options;
+  }, [layout, model, options]);
+
+  const update = useCallback(() => {
+    if (transition.current) {
+      stopTransition();
+      staleLayout.current = tweenLayout.current;
+    }
+    if (!layout.qHyperCube) return;
+    const { duration } = options.transition;
+    const ease = d3Ease[options.transition.easing];
+    transition.current = timer((elapsed) => {
+      const t = Math.min(1, ease(elapsed / duration));
+      tweenLayout.current = interpolate(staleLayout.current, layout)(t);
+      pic.current.update({
+        data: [{
+          type: 'q',
+          key: 'qHyperCube',
+          data: tweenLayout.current.qHyperCube,
+        }],
+        settings: options.settings,
+      });
+      if (t === 1) {
+        stopTransition();
+      }
+    });
+  }, [layout, options.settings, options.transition, stopTransition]);
+
+  const handleCancelSelections = () => {
+    pic.current.brush('select').end();
+    model.endSelections(false);
+    setSelectionModalOpen(false);
   };
 
-  const updatePic = () => {
-    const data = { ...qLayout, qHyperCube: { ...qLayout.qHyperCube, qDataPages: [qData] } };
-    if (type === 'horizontalBarchart' && options.bar && options.bar.fill) {
-      _settings.components[2].settings.box.fill = options.bar.fill;
-    }
-    if (type === 'verticalGauge' && options.min) {
-      _settings.scales.y.min = options.min;
-      _settings.components[1].start = options.min;
-      _settings.components[2].start = options.min;
-    }
-    if (type === 'verticalGauge' && options.max) {
-      _settings.scales.y.max = options.max;
-      _settings.components[1].end = options.max;
-    }
-    pic.update({
-      data: [{
-        type: 'q',
-        key: 'qHyperCube',
-        data: data.qHyperCube,
-      }],
-      settings: _settings,
-    });
-  };
-
-  const confirmSelections = async () => {
-    const { brush } = pic;
-    brush('select').end();
-    await endSelections(true);
-    if (afterConfirmSelections) { afterConfirmSelections(); }
-    setSelectionBarVisible(false);
-  };
-
-  const handleOutsideClick = (event) => {
-    if (isSelectionBarVisible) {
-      const outsideClick = !rootNode.current.contains(event.target);
-      if (outsideClick && selections) confirmSelections();
-    }
+  const handleConfirmSelections = () => {
+    pic.current.brush('select').end();
+    model.endSelections(true);
+    setSelectionModalOpen(false);
   };
 
   useEffect(() => {
-    if (qData && !isSelectionBarVisible) createPic();
-    window.addEventListener('click', handleOutsideClick);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('click', handleOutsideClick);
-      window.removeEventListener('resize', handleResize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData]);
+    if (!pic.current) create();
+    if (pic.current && !selectionModalOpen && (!equal(staleLayout.current, layout) || JSON.stringify(staleOptions.current) !== JSON.stringify(options))) update();
+    ref.current = { node: elementNode.current, pic: pic.current };  //eslint-disable-line
+  }, [create, update, layout, options, ref, selectionModalOpen]);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(() => {
+      if (pic.current) pic.current.update();
+    });
+    ro.observe(elementNode.current);
+  }, []);
 
   return (
-    <div ref={rootNode} style={{ position: 'relative', width: '100%', height: '100%' }}>
-      <div style={{
-        position: 'relative',
-        width: outerWidth,
-        height: outerHeight,
-        overflow: 'auto',
-        paddingRight: 10,
-        border: (isSelectionBarVisible) ? '1px solid #CCCCCC' : 'none',
-        overflowX: (isSelectionBarVisible) ? 'hidden' : 'auto',
-        overflowY: (isSelectionBarVisible) ? 'hidden' : 'auto',
-      }}
-      >
-        <div
-          ref={elementNode}
-          style={{
-            width: innerWidth,
-            height: _innerHeight,
-            maxWidth,
-            maxHeight,
-          }}
-        />
-      </div>
-      { type === 'verticalBarchart' && miniMapVisible
-        && (
-        <QdtPicassoMiniMap
-          qLayout={qLayout}
-          qData={qData}
-          qRData={qRData}
-          changePage={changePage}
-          type={type}
-          updatePic={updatePic}
-          changePagePicasso={changePagePicasso}
-          outerWidth={outerWidth}
-          innerWidth={innerWidth}
-        />
-        )}
-      <LuiSelectionModal
-        isOpen={isSelectionBarVisible}
-        cancelSelections={cancelSelections}
-        confirmSelections={confirmSelections}
-      />
+    <div style={{ width: options.width, height: options.height, position: options.position }}>
+      <div ref={elementNode} style={{ width: options.width, height: options.height, border: (selectionModalOpen) ? '1px solid #CCCCCC' : 0 }} />
+      { options.showSelectionModal
+        && <QdtSelectionModal style={{ width: options.width }} isOpen={selectionModalOpen} onCancelSelections={handleCancelSelections} onConfirmSelections={handleConfirmSelections} />}
     </div>
   );
-};
+});
 
 QdtPicasso.propTypes = {
-  type: PropTypes.oneOf([
-    'comboLineBarchart',
-    'horizontalBarchart',
-    'lineChart',
-    'multiLineChart',
-    'pie',
-    'piechart',
-    'scatterplot',
-    'verticalBarchart',
-    'verticalGroupBarchart',
-    'stackedBarchart',
-    'verticalGauge',
-    'verticalRangeGauge',
-    'rangeArea',
-    'gantt',
-    'merimekko',
-    'pointDistribution',
-    'pyramid',
-  ]),
-  settings: PropTypes.object,
+  layout: PropTypes.object,
+  model: PropTypes.object,
   options: PropTypes.object,
-  outerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  outerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  innerWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  innerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  afterConfirmSelections: PropTypes.func,
-  prio: PropTypes.oneOf(['canvas', 'svg']),
-  // useHyperCube Props
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.isRequired,
-  qPage: PropTypes.object,
-  qSortByAscii: PropTypes.oneOf([1, 0, -1]),
-  qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
-  qInterColumnSortOrder: PropTypes.array,
-  qSuppressZero: PropTypes.bool,
-  qSortByExpression: PropTypes.oneOf([1, 0, -1]),
-  qSuppressMissing: PropTypes.bool,
-  qExpression: PropTypes.object,
-  getQRData: PropTypes.bool,
-  miniMapVisible: PropTypes.bool,
 };
-
 QdtPicasso.defaultProps = {
-  type: null,
-  settings: {},
+  layout: null,
+  model: null,
   options: {},
-  outerWidth: '100%',
-  outerHeight: '100%',
-  innerWidth: '100%',
-  innerHeight: '100%',
-  afterConfirmSelections: null,
-  prio: 'canvas',
-  // useHyperCube Props
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 1000,
-  },
-  qSortByAscii: 1,
-  qSortByLoadOrder: 1,
-  qInterColumnSortOrder: [],
-  qSuppressZero: false,
-  qSortByExpression: 0,
-  qSuppressMissing: false,
-  qExpression: null,
-  getQRData: true,
-  miniMapVisible: false,
 };
 
 export default QdtPicasso;

@@ -1,0 +1,23 @@
+
+{
+  "compilerOptions": {
+    "target": "es5", // "esnext", es6
+    "module": "esnext", //"esnext", commonjs
+    "moduleResolution": "node",
+    "lib": ["es6", "dom"], // es2017
+    "declaration": true,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "outFile": "./types/qdt-components2.d.ts",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "jsx": "react" // use typescript to transpile jsx to js
+  },
+  "include": [
+    "src/index.jsx",
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "outDir": "./types2/",        // path to output directory
+    // "sourceMap": true,          // allow sourcemap support
+    // "strictNullChecks": true,   // enable strict null checks as a best practice
+    // "module": "commonjs",            // specifiy module code generation
+    "jsx": "react",             // use typescript to transpile jsx to js
+    // "target": "es5",            // specify ECMAScript target version
+    // "allowJs": true,             // allow a partial TypeScript and JavaScript codebase 
+    // "declaration": true,
+    // "lib": [ "es2015", "dom" ],
+    // "noEmit": true,
+    // // "declarationDir": "types2",
+    // // "listFiles": true,
+    // // "outFile": "qdt-components2",
+    // // "rootDir": "./src",
+
+    // "noImplicitAny": true,
+    // "noImplicitReturns": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "moduleResolution": "node",
+    // "esModuleInterop": true,
+    // "checkJs": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    // "types": ["node"],
+    "esModuleInterop": true
+  },
+  "include": [
+      "src/components/QdtButton/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

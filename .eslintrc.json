@@ -26,9 +26,12 @@
 		"no-console": ["warn", { "allow": ["info"] }],
 		"react/destructuring-assignment": [2],
 		"react/jsx-props-no-spreading": 1,
-		"jsx-a11y/control-has-associated-label": 0
+		"jsx-a11y/control-has-associated-label": 0,
+		"import/no-unresolved": 0,
+		"no-mixed-operators": 0
 	},
   "settings": {
+		"import/resolver": "webpack",
     "react": {
       "version": "detect"
     }

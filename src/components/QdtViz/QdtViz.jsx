@@ -1,33 +1,48 @@
-import React, { useEffect, useState, useRef } from 'react';
+/**
+ * @name QdtViz
+ * @param {object} app - Qlik Capability Api App
+ * @param {options} object - Options
+ * https://help.qlik.com/en-US/sense-developer/April2020/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
+*/
+
+import React, { useRef, useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Preloader from '../../utilities/Preloader';
-import QdtButton from '../QdtButton/QdtButton';
+import merge from 'utils/merge';
 
+const QdtViz = ({ app, options: optionsProp }) => {
+  const defaultOptions = {
+    multiple: false,
+    noSelections: false,
+    noInteraction: false,
+    type: 'barchart',
+    cols: [],
+    options: {},
+    height: 400,
+  };
+  const options = merge(defaultOptions, optionsProp);
 
-const QdtViz = ({
-  qAppPromise, id, type, cols, options, noSelections, noInteraction, width, height, minWidth, minHeight, exportData, exportDataTitle, exportDataOptions, exportImg, exportImgTitle, exportImgOptions, exportPdf, exportPdfTitle, exportPdfOptions,
-}) => {
-  // const [loading, setLoading] = useState(true);
+  const elementRef = useRef(null);
   const [qViz, setQViz] = useState(null);
-  const [error, setError] = useState(null);
-  const node = useRef(null);
-
-  let qVizPromise = null;
-  // let qViz = null;
-
-  const btnStyle = { display: 'inline-block', paddingRight: 20, paddingTop: 15 };
 
   const create = async () => {
-    const qApp = await qAppPromise;
-    qVizPromise = id ? qApp.visualization.get(id) : qApp.visualization.create(type, cols, options); // eslint-disable-line max-len
+    let qVizPromise;
+    if (options.id && options.id === 'CurrentSelections') {
+      qVizPromise = app.getObject(elementRef.current, 'CurrentSelections');
+      options.height = 50;
+    } else if (options.id) {
+      qVizPromise = app.visualization.get(options.id);
+    } else {
+      qVizPromise = app.visualization.create(options.type, options.cols, options.options);
+    }
+    // const qVizPromise = (options.id) ? app.visualization.get(options.id) : app.visualization.create(options.type, options.cols, options.options); // eslint-disable-line max-len
     const _qViz = await qVizPromise;
-    _qViz.setOptions(options);
-    // await setLoading(false);
+    if (options.id && options.id !== 'CurrentSelections') _qViz.setOptions(options);
     await setQViz(_qViz);
   };
 
   const show = () => {
-    qViz.show(node.current, { noSelections, noInteraction });
+    qViz.show(elementRef.current, { noSelections: options.noSelections, noInteraction: options.noInteraction });
   };
 
   const close = () => {
@@ -39,100 +54,42 @@ const QdtViz = ({
   };
 
   useEffect(() => {
-    try {
-      (async () => {
-        if (!qViz) await create();
-        if (qViz) show();
-        window.addEventListener('resize', resize);
-      })();
-    } catch (_error) {
-      setError(_error);
-    }
+    (async () => {
+      if (!qViz) await create();
+      if (qViz && options.id !== 'CurrentSelections') show();
+      window.addEventListener('resize', resize);
+    })();
     return () => {
       if (qViz) close();
       window.removeEventListener('resize', resize);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qViz]);
+  }, [close, create, options.id, qViz, resize, show]);
 
   return (
-    <>
-      { error && <div>{error.message}</div> }
-      { !qViz && <Preloader width={width} height={height} paddingTop={(parseInt(height, 0)) ? (height / 2) - 10 : 0} /> }
-      { !error && qViz
-        && (
-          <>
-            <div
-              ref={node}
-              style={{
-                width, height, minWidth, minHeight,
-              }}
-            />
-            {exportData && (
-            <div style={btnStyle}>
-              <QdtButton type="exportData" qViz={qViz} title={exportDataTitle} options={exportDataOptions} />
-            </div>
-            )}
-            {exportImg && (
-            <div style={btnStyle}>
-              <QdtButton type="exportImg" qViz={qViz} title={exportImgTitle} options={exportImgOptions} />
-            </div>
-            )}
-            {exportPdf
-          && (
-            <div style={btnStyle}>
-              <QdtButton type="exportPdf" qViz={qViz} title={exportPdfTitle} options={exportPdfOptions} />
-            </div>
-          )}
-          </>
-        )}
-    </>
+    <div ref={elementRef} style={{ height: options.height }} />
   );
 };
 
 QdtViz.propTypes = {
-  qAppPromise: PropTypes.object.isRequired,
-  id: PropTypes.string,
-  type: PropTypes.oneOf([null, 'barchart', 'boxplot', 'combochart', 'distributionplot', 'gauge', 'histogram', 'kpi', 'linechart', 'piechart', 'pivot-table', 'scatterplot', 'table', 'treemap', 'extension']),
-  cols: PropTypes.array,
+  app: PropTypes.object,
   options: PropTypes.object,
-  noSelections: PropTypes.bool,
-  noInteraction: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  minWidth: PropTypes.string,
-  minHeight: PropTypes.string,
-  exportData: PropTypes.bool,
-  exportDataTitle: PropTypes.string,
-  exportDataOptions: PropTypes.object,
-  exportImg: PropTypes.bool,
-  exportImgTitle: PropTypes.string,
-  exportImgOptions: PropTypes.object,
-  exportPdf: PropTypes.bool,
-  exportPdfTitle: PropTypes.string,
-  exportPdfOptions: PropTypes.object,
 };
 
 QdtViz.defaultProps = {
-  id: null,
-  type: null,
-  cols: [],
+  app: null,
   options: {},
-  noSelections: false,
-  noInteraction: false,
-  width: '100%',
-  height: '100%',
-  minWidth: 'auto',
-  minHeight: 'auto',
-  exportData: false,
-  exportDataTitle: 'Export Data',
-  exportDataOptions: { format: 'CSV_T', state: 'P' },
-  exportImg: false,
-  exportImgTitle: 'Export Image',
-  exportImgOptions: { width: 300, height: 400, format: 'JPG' },
-  exportPdf: false,
-  exportPdfTitle: 'Export Pdf',
-  exportPdfOptions: { documentSize: 'a4', orientation: 'landscape', aspectRatio: 2 },
 };
 
-export default QdtViz;
+
+export default ({ element, app, options }) => {
+  ReactDOM.unmountComponentAtNode(element);
+  ReactDOM.render(
+    <QdtViz
+      app={app}
+      options={options}
+    />,
+    element,
+  );
+};
+
+// export default QdtSelect;

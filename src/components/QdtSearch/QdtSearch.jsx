@@ -1,125 +1,78 @@
-import React, { useState, useRef } from 'react';
+/**
+ * @name QdtSearch
+ * @param {object} layout - Qlik object layout
+ * @param {string} model - Qlik object model
+ * @param {options} object - Options
+*/
+
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { LuiDropdown, LuiList, LuiSearch } from '../QdtLui';
-import useListObject from '../../hooks/useListObject';
-import DropdownItemList from './DropdownItemList';
-import '../../styles/index.scss';
+import { Input, ListItemIcon } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import merge from 'utils/merge';
+import QdtPopperContents from './QdtPopperContents';
+import QdtPopper from '../QdtPopper/QdtPopper';
+import styles from './QdtSearchStyles';
 
-const QdtSearch = ({
-  qDocPromise, cols, qPage, ignoreLock, single, afterSelect, inverse, placeholder, tooltipDock, tooltipContent, showGo,
-}) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [value, setValue] = useState('');
-  const node = useRef(null);
-  const {
-    beginSelections, endSelections, qData, select, searchListObjectFor, acceptListObjectSearch,
-  } = useListObject({ qDocPromise, cols, qPage });
+const QdtSearch = ({ layout, model, options: optionsProp }) => {
+  const defaultOptions = {
+    multiple: false,
+    height: 400,
+  };
+  const options = merge(defaultOptions, optionsProp);
 
-  const _searchListObjectFor = (event) => {
-    setValue(event.target.value);
-    searchListObjectFor(event.target.value);
+  const inputRef = useRef(null);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [inputValue, setInputValue] = useState('');
+
+  const open = Boolean(anchorEl);
+
+  const handleSearch = (event) => {
+    model.searchListObjectFor('/qListObjectDef', event.target.value);
+    setInputValue(event.target.value);
   };
 
-  const clear = () => {
-    setValue('');
-    _searchListObjectFor('');
-  };
+  const handleClick = (event) => setAnchorEl(anchorEl ? null : event.currentTarget);
 
-  const toggle = (event) => {
-    const outsideClick = (event) ? !node.current.contains(event.target) : true;
-    if (outsideClick || !dropdownOpen) {
-      setDropdownOpen(!dropdownOpen, () => {
-        if (!dropdownOpen) {
-          beginSelections();
-        }
-        if (dropdownOpen) {
-          endSelections(true);
-          clear();
-        }
-      });
-    }
-  };
-
-  const _select = async (qElemNumber, qState) => {
-    if (qState === 'S') {
-      await select(Number(qElemNumber), true, ignoreLock);
-    } else {
-      await select(Number(qElemNumber), !single, ignoreLock);
-      if (single) toggle();
-    }
-    if (afterSelect) { afterSelect(); }
-  };
-
-  const handleSelect = (event) => {
-    const { qElemNumber, qState } = event.currentTarget.dataset;
-    _select(qElemNumber, qState);
-  };
-
-  const _acceptListObjectSearch = () => {
-    if (!single) acceptListObjectSearch(ignoreLock);
-    if (single) _select(qData.qMatrix[0][0].qElemNumber, qData.qMatrix[0][0].qState);
-    setValue('');
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.charCode === 13) _acceptListObjectSearch();
+  const handleClose = (qText) => {
+    setAnchorEl(null);
+    setInputValue(qText);
   };
 
   return (
-    <div ref={node}>
-      { qData
-        && (
-        <LuiDropdown isOpen={dropdownOpen} toggle={toggle} select={false}>
-          <LuiSearch
-            value={value}
-            clear={clear}
-            inverse={!!(inverse)}
-            placeholder={placeholder}
-            tooltipDock={tooltipDock}
-            tooltipContent={tooltipContent}
-            onChange={_searchListObjectFor}
-            onKeyPress={handleKeyPress}
-            onGo={showGo ? _acceptListObjectSearch : null}
+    <form noValidate autoComplete="off" style={styles.alignMiddle}>
+      <ListItemIcon>
+        <SearchIcon />
+      </ListItemIcon>
+      <Input type="search" onChange={handleSearch} value={inputValue} onClick={handleClick} disableUnderline ref={inputRef} />
+      <QdtPopper
+        open={open}
+        anchorEl={anchorEl}
+        contents={(
+          <QdtPopperContents
+            open={open}
+            layout={layout}
+            model={model}
+            options={options}
+            handleClose={handleClose}
           />
-          <LuiList style={{ width: '15rem' }}>
-            <DropdownItemList qData={qData} select={handleSelect} />
-          </LuiList>
-        </LuiDropdown>
-        )}
-    </div>
+          )}
+        onCallback={handleClose}
+      />
+    </form>
   );
 };
 
 QdtSearch.propTypes = {
-  qDocPromise: PropTypes.object.isRequired,
-  cols: PropTypes.array,
-  qPage: PropTypes.object,
-  single: PropTypes.bool,
-  inverse: PropTypes.bool,
-  placeholder: PropTypes.string,
-  tooltipDock: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  tooltipContent: PropTypes.string,
-  ignoreLock: PropTypes.bool,
-  showGo: PropTypes.bool,
-  afterSelect: PropTypes.func,
+  layout: PropTypes.object,
+  model: PropTypes.object,
+  options: PropTypes.object,
 };
-
 QdtSearch.defaultProps = {
-  cols: null,
-  single: false,
-  inverse: false,
-  placeholder: 'Search',
-  tooltipDock: 'top',
-  tooltipContent: null,
-  ignoreLock: false,
-  showGo: false,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 1,
-    qHeight: 100,
-  },
-  afterSelect: null,
+  layout: null,
+  model: null,
+  options: {},
 };
 
 export default QdtSearch;

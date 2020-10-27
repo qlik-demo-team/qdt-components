@@ -4,8 +4,14 @@
 
 # Qdt Components
 
-Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple HTML (Vanilla JavaScript), Angular6, React 16, and Vue 2
+Qlik-powered components built by the Qlik Demo Team (aka Qdt). For use with simple HTML (Vanilla JavaScript), Angular 10, React 16, and Vue 2
 
+## Style Guide
+
+- components have the signature ({ model, layout, options }) => ()
+- don't change qdtCompose or QdtComponent
+- picasso settings should be functions that receive theme, properties, and the minimum set of parameters
+- components and interactions in picasso settings should have a parameter and be added with push so they can be conditionally included
 
 ### Installation
 `npm install --save qdt-components`

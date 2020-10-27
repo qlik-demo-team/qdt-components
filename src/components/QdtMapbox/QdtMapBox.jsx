@@ -1,25 +1,50 @@
 import React, {
-  useEffect, useState, useRef, useCallback,
+  useEffect, useRef, useState, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
+import merge from 'utils/merge';
 import mapboxgl from 'mapbox-gl';
-import useHyperCube from '../../hooks/useHyperCube';
-import Theme from '../../styles';
+import Theme from '../../styles'; // @TODO REMOVE
 
-let mapData = [];
-let map = null;
-let GeoJSON = null;
-let propertyChildren = null;
-let propertyChildrenWithColors = null;
-
-const QdtMapBox = ({
-  width, height, minWidth, minHeight, accessToken, style, center, zoom, pitch, bearing, legend, circleRadius, getData, getAllDataInterval, qPage, tooltip, extraLayers, createLayers, ...hyperCubeProps
-}) => {
+const QdtMapBox = ({ layout, model, options: optionsProp }) => {
+  // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
+  const defaultOptions = {
+    accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-74.50, 40],
+    zoom: 4,
+    pitch: 0,
+    bearing: 0,
+    circleRadius: 5,
+    width: '100%',
+    height: '100%',
+    // minWidth: 'auto',
+    // minHeight: 'auto',
+    legend: true, // @TODO - Dock options left, top, bottom or none
+    tooltip: null,
+    createLayers: true,
+    extraLayers: null,
+    flyTo: null,
+    handleMapCallback: null,
+    interactive: true,
+  };
+  const options = merge(defaultOptions, optionsProp);
+  if (optionsProp.center) options.center = optionsProp.center; // Deep merges the array and we have center: (4) [-74.5, 40, -140, 50], which breaks mapbox
   const node = useRef(null);
+  const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { qData, qLayout, changePage } = useHyperCube({ qPage, ...hyperCubeProps });
-  const property = hyperCubeProps.cols[3];
-  const handleCallback = useCallback(() => getData(qData, qLayout, map), [getData, qData, qLayout]);
+  const qData = layout.qHyperCube?.qDataPages[0];
+  const qMatrix = qData ? qData.qMatrix : [];
+  const property = (options.createLayers) ? layout.qHyperCube?.qDimensionInfo[3]?.qFallbackTitle : null;
+  let mapData = [];
+  let GeoJSON = null;
+  let propertyChildren = null;
+  let propertyChildrenWithColors = null;
+
+  const handleSelection = useCallback((value, toggle = true) => {
+    model.selectHyperCubeValues('/qHyperCubeDef', 0, [value], toggle);
+  }, [model]);
+  const handleClearSelections = useCallback(() => model.clearSelections('/qHyperCubeDef'), [model]);
 
   function buildFeatureSimplified(obj) {
     const featureObj = {
@@ -36,15 +61,15 @@ const QdtMapBox = ({
     };
 
     // if no tooltip callback specified, do not add description property
-    if (tooltip !== null) {
-      featureObj.properties.description = tooltip(obj);
+    if (options.tooltip !== null) {
+      featureObj.properties.description = options.tooltip(obj);
     }
 
     return featureObj;
   }
 
   const createPropertyChilderFromQData = () => {
-    propertyChildren = [...new Set(qData.qMatrix.map((array) => array[3].qText))];
+    propertyChildren = [...new Set(qMatrix.map((array) => array[3].qText))];
     propertyChildrenWithColors = propertyChildren.reduce((r, e, i) => r.push(e, Theme.palette[i]) && r, []);
   };
 
@@ -58,7 +83,7 @@ const QdtMapBox = ({
       features: [],
     };
 
-    qData.qMatrix.map((array) => {
+    qMatrix.map((array) => {
       if (typeof array[1].qNum !== 'number' || typeof array[2].qNum !== 'number') return false;
       const obj = {
         id: Number(array[0].qNum),
@@ -85,7 +110,7 @@ const QdtMapBox = ({
       source: 'hyperCubeData',
       paint: {
         'circle-stroke-width': 0,
-        'circle-radius': circleRadius,
+        'circle-radius': options.circleRadius,
         'circle-color': match,
         'circle-opacity': 1,
       },
@@ -105,12 +130,12 @@ const QdtMapBox = ({
     });
     const layer = buildLayer();
     map.addLayer(layer);
-    if (extraLayers && extraLayers.length) {
-      extraLayers.map((_layer) => map.addLayer(_layer));
+    if (options.extraLayers && options.extraLayers.length) {
+      options.extraLayers.map((_layer) => map.addLayer(_layer));
     }
 
     // ==== Tooltip Start ===== //
-    if (tooltip !== null) {
+    if (options.tooltip !== null) {
       // Create a popup, but don't add it to the map yet.
       const popup = new mapboxgl.Popup({
         closeButton: false,
@@ -150,7 +175,7 @@ const QdtMapBox = ({
   // ==========================================================================
   // Updates the map to display the appropriate layer
   const updateLayers = () => {
-    const nextChunk = qData.qMatrix.map((array) => {
+    const nextChunk = qMatrix.map((array) => {
       const obj = {
         id: Number(array[0].qNum),
         lat: Number(array[1].qNum),
@@ -170,62 +195,50 @@ const QdtMapBox = ({
   };
 
   const mapInit = () => {
-    mapboxgl.accessToken = accessToken;
-    map = new mapboxgl.Map({
+    mapboxgl.accessToken = options.accessToken;
+    const _map = new mapboxgl.Map({
       container: node.current, // container id
-      style, // stylesheet location
-      center, // starting position [lng, lat]
-      zoom, // starting zoom
-      pitch, // Camera Angle
-      bearing, // Compass Direction
+      ...options,
     });
-    // After Map is loaded, update GeoJSON & save Map object before continuing
-    map.on('load', () => {
-      if (createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
-      setIsLoaded(true);
-      mapData = [...mapData, ...qData.qMatrix];
-    });
-  };
-
-  const getAllData = () => {
-    let currentPage = 1; // 0 has already been populated
-    const totalPages = Math.ceil(qLayout.qHyperCube.qSize.qcy / qPage.qHeight);
-    const populateDataID = setInterval(async () => {
-      if (currentPage === totalPages) {
-        clearInterval(populateDataID);
-      } else {
-        changePage({ qTop: currentPage * qPage.qHeight });
-        currentPage += 1;
-      }
-    }, getAllDataInterval * 1000);
+    setMap(_map);
   };
 
   useEffect(() => {
-    if (qData && !isLoaded) {
-      if (getAllDataInterval) getAllData();
-      if (createLayers) createPropertyChilderFromQData();
-      mapInit();
+    if (qData && options.createLayers) createPropertyChilderFromQData();
+    if (!map) mapInit();
+    if (map) {
+      // After Map is loaded, update GeoJSON & save Map object before continuing
+      map.on('load', () => {
+        if (options.createLayers) updateLayers(qData); // Draw the first set of data, in case we load all
+        // if (options.handleMapCallback) options.handleMapCallback({ map, mapboxgl, layout });
+        setIsLoaded(true);
+        mapData = [...mapData, ...qMatrix];
+      });
     }
-    if (qData && getData) handleCallback();
-    if (isLoaded && createLayers) updateLayers(qData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qData, qLayout]);
+  }, [map]);
+
+  useEffect(() => {
+    if (isLoaded && map && layout && options.handleMapCallback) {
+      options.handleMapCallback({
+        map, mapboxgl, layout, handleSelection, handleClearSelections,
+      });
+    }
+  }, [map, isLoaded, layout]); // eslint-disable-line
 
   return (
     <>
-      <div style={{ display: 'block', position: 'relative' }}>
-        <div
-          ref={node}
-          style={{
-            width, height: height - 50, minWidth, minHeight,
-          }}
-        />
-      </div>
+      <div
+        ref={node}
+        style={{
+          width: options.width, height: options.height,
+        }}
+      />
       <div style={{
         display: 'block', position: 'relative', height: 20, padding: 2, fontSize: 11,
       }}
       >
-        {legend && isLoaded && propertyChildrenWithColors.map((value, index) => ((index % 2 === 0) ? (
+        {options.legend && propertyChildrenWithColors && propertyChildrenWithColors.map((value, index) => ((index % 2 === 0) ? (
           <div style={{ display: 'inline-block' }}>
             {value}
             :
@@ -242,68 +255,15 @@ const QdtMapBox = ({
 };
 
 QdtMapBox.propTypes = {
-  accessToken: PropTypes.string,
-  style: PropTypes.string,
-  center: PropTypes.array,
-  zoom: PropTypes.number,
-  pitch: PropTypes.number,
-  bearing: PropTypes.number,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  minWidth: PropTypes.string,
-  minHeight: PropTypes.string,
-  legend: PropTypes.bool,
-  circleRadius: PropTypes.number,
-  getData: PropTypes.func,
-  getAllDataInterval: PropTypes.number,
-  // useHyperCube props
-  cols: PropTypes.array,
-  qPage: PropTypes.object,
-  qSortByAscii: PropTypes.oneOf([1, 0, -1]),
-  qSortByLoadOrder: PropTypes.oneOf([1, 0, -1]),
-  qInterColumnSortOrder: PropTypes.array,
-  qSuppressZero: PropTypes.bool,
-  qSortByExpression: PropTypes.oneOf([1, 0, -1]),
-  qSuppressMissing: PropTypes.bool,
-  qExpression: PropTypes.object,
-  extraLayers: PropTypes.array,
-  createLayers: PropTypes.bool,
-  tooltip: PropTypes.func,
+  layout: PropTypes.object,
+  model: PropTypes.object,
+  options: PropTypes.object,
 };
 
 QdtMapBox.defaultProps = {
-  accessToken: 'pk.eyJ1IjoiYXJ0dXJvbXVub3oiLCJhIjoiY2swODR2NmlhNDYwaDNicDBlcnB6YmR0OSJ9.AgG7MN8DX1aFuG1DfbFr_Q',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [-74.50, 40],
-  zoom: 4,
-  pitch: 0, // https://docs.mapbox.com/mapbox-gl-js/api/#cameraoptions
-  bearing: 0,
-  width: '100%',
-  height: '100%',
-  minWidth: 'auto',
-  minHeight: 'auto',
-  legend: true, // @TODO - Dock options left, top, bottom or none
-  circleRadius: 5,
-  getData: null,
-  getAllDataInterval: 0,
-  // useHyperCube props
-  cols: null,
-  qPage: {
-    qTop: 0,
-    qLeft: 0,
-    qWidth: 10,
-    qHeight: 100,
-  },
-  qSortByAscii: 1,
-  qSortByLoadOrder: 1,
-  qInterColumnSortOrder: [],
-  qSuppressZero: true,
-  qSortByExpression: 0,
-  qSuppressMissing: true,
-  qExpression: null,
-  extraLayers: null,
-  createLayers: true,
-  tooltip: null,
+  layout: null,
+  model: null,
+  options: {},
 };
 
 export default QdtMapBox;
