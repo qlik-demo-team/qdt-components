@@ -3,6 +3,7 @@
 This is a guide on how you can use qdt-components on a simple html page.
 
 - [Live Demo](https://webapps.qlik.com/qdt-components/plain-html/index.html)
+- [Live Demo with Source Code](https://observablehq.com/collection/@yianni-ververis/qdt-components)
 - Download the [latest build](../blob/master/dist/qdt-components.js)
 - Add the Html
 ```html
@@ -10,28 +11,60 @@ This is a guide on how you can use qdt-components on a simple html page.
   <script type="text/javascript" src="qdt-components.js"></script>
 </head>
 <body>
-  <qdt-component id="qdt1"></qdt-component>
+  <div id="qdt1" style="width: 100%; height: 50px;"></div>
+  <div id="qdt2" style="width: 100%; height: 400px;"></div>
 </body>
 ```
 - Add the Javascript
 ```javascript
 <script type="text/javascript">
-  var options = {
-    config: {
-      host: "yourdomain.com",
-      secure: true,
-      port: 443,
-      prefix: "",
-      appId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
-    },
-    connections: { 
-      vizApi: true, 
-      engineApi: true 
-    }
+  const config = {
+    host: "yourdomain.com",
+    secure: true,
+    port: 443,
+    prefix: "",
+    appId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    webIntegrationId, // SaaS webIntegrationId
+    token // SaaS auth JWT token
   }
-  var qdtComponents = new QdtComponents(options.config, options.connections);
-  var element = document.getElementById('qdt1');
-  qdtComponents.render('QdtViz', {id: 'a5e0f12c-38f5-4da9-8f3f-0e4566b28398', height:'300px'}, element);
+  const { qdtEnigma, qdtCompose, QdtSelections, QdtPicasso, useBarChartSettings } = window.QdtComponents;
+  qdtEnigma(config)
+    .then(app => {
+      qdtCompose({
+        element: document.getElementById('qdt1'),
+        component: QdtSelections,
+        app: app,
+        options: {},
+        properties: {
+          qSelectionObjectDef: {},
+        }
+      });
+
+      // Barchart
+      qdtCompose({
+        element: document.getElementById('qdt2'),
+        component: QdtPicasso,
+        app,
+        options: {
+          settings: useBarChartSettings({
+            orientation: 'horizontal',
+          }),
+          height: 400,
+        },
+        properties: {
+          qHyperCubeDef: {
+            qDimensions: [
+              { qDef: { qFieldDefs: ['Case Owner Group'] }, qNullSuppression: true },
+            ],
+            qMeasures: [
+              { qDef: { qDef: 'Avg([Case Duration Time])', autoSort: false }, qSortBy: { qSortByNumeric: -1 } },
+            ],
+            qInterColumnSortOrder: [1, 0],
+          },
+        }
+      });
+
+    })
 </script>
 ```
 

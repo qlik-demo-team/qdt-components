@@ -29,15 +29,34 @@ const responseInterceptors = [{
 const qdtEnigma = async (config) => {
   const myConfig = config;
   const {
-    timeoutMessage, core, suspendOnClose, // identity,
+    timeoutMessage, core, suspendOnClose, host, webIntegrationId, token, appId, // identity,
   } = myConfig;
   // Make it work for Qlik Core scaling https://github.com/qlik-oss/core-scaling
-  // qlikcore/engine:12.248.0
   if (core) {
     myConfig.subpath = (myConfig.prefix) ? `${myConfig.prefix}/app` : 'app';
     myConfig.route = `doc/${myConfig.appId}`;
   }
-  const url = SenseUtilities.buildUrl(myConfig);
+  let url = SenseUtilities.buildUrl(myConfig);
+  // SaaS JWT auth
+  if (webIntegrationId && token) {
+    await fetch(`https://${host}/login/jwt-session?qlik-web-integration-id=${webIntegrationId}/`, {
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        'Qlik-Web-Integration-ID': webIntegrationId,
+      },
+      rejectUnauthorized: false,
+    });
+    const response = await fetch(`https://${host}/api/v1/csrf-token`, {
+      credentials: 'include',
+      headers: { 'qlik-web-integration-id': webIntegrationId },
+    });
+    const csrfToken = response.headers.get('Qlik-CSRF-Token');
+    url = `wss://${host}/app/${appId}?qlik-web-integration-id=${webIntegrationId}&qlik-csrf-token=${csrfToken}`;
+  }
   const session = enigma.create({
     schema, url, responseInterceptors, suspendOnClose,
   });

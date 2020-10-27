@@ -608,11 +608,13 @@ declare module "components/QdtPicasso/components/treemap" {
     };
     export default _default;
 }
+
 declare module "components/QdtPicasso/QdtPicasso" {
     export default QdtPicasso;
     const QdtPicasso: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
     import React from "react";
 }
+
 declare module "components/QdtPicasso/settings/components/axis" {
     export default axis;
     function axis({ theme: themeProp, properties: propertiesProp, scale, formatter, }?: {

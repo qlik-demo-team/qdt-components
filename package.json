@@ -90,7 +90,6 @@
     "precss": "4.0.0",
     "sass-loader": "8.0.0",
     "style-loader": "1.0.0",
-    "typescript": "^3.9.5",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "2.2.0",
     "webpack": "4.41.2",
