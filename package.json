@@ -98,7 +98,7 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack",
-    "build:beta": "npm build && npm publish --tag beta",
+    "build:publish": "npm build && npm publish",
     "build:types": "tsc -p tsconfig.build.types.json",
     "lint": "eslint . --ignore-path .gitignore --cache"
   }
