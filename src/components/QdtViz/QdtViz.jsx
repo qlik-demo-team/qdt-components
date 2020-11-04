@@ -5,12 +5,15 @@
  * https://help.qlik.com/en-US/sense-developer/April2020/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
 */
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, {
+  useRef, useState, useEffect, useCallback,
+} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import merge from 'utils/merge';
+import Button from '@material-ui/core/Button';
 
-const QdtViz = ({ app, options: optionsProp }) => {
+const QdtViz = ({ app, options: optionsProp, properties: propertiesProp }) => {
   const defaultOptions = {
     multiple: false,
     noSelections: false,
@@ -20,7 +23,16 @@ const QdtViz = ({ app, options: optionsProp }) => {
     options: {},
     height: 400,
   };
+  const defaultProps = {
+    exportData: false,
+    exportDataOptions: { format: 'CSV_T', state: 'P' },
+    exportImg: false,
+    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
+    exportPdf: false,
+    exportPdfOptions: { documentSize: { width: 300, height: 150 } },
+  };
   const options = merge(defaultOptions, optionsProp);
+  const properties = merge(defaultProps, propertiesProp);
 
   const elementRef = useRef(null);
   const [qViz, setQViz] = useState(null);
@@ -53,6 +65,28 @@ const QdtViz = ({ app, options: optionsProp }) => {
     qViz.resize();
   };
 
+  const urlFix = (url) => {
+    const tempUrl = url.split('https://');
+    return `https://${tempUrl[2]}`;
+  };
+
+  // https://help.qlik.com/en-US/sense-developer/September2020/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/exportData-method.htm
+  const handleExportData = useCallback(async () => {
+    const url = await qViz.exportData(properties.exportDataOptions);
+    const _url = urlFix(url);
+    window.open(_url, '_blank');
+  }, [properties.exportDataOptions, qViz]);
+
+  const handleExportImg = useCallback(async () => {
+    const url = await qViz.exportImg(properties.exportImgOptions);
+    window.open(url, '_blank');
+  }, [properties.exportImgOptions, qViz]);
+
+  const handleExportPdf = useCallback(async () => {
+    const url = await qViz.exportPdf(properties.exportPdfOptions);
+    window.open(url, '_blank');
+  }, [properties.exportPdfOptions, qViz]);
+
   useEffect(() => {
     (async () => {
       if (!qViz) await create();
@@ -66,27 +100,52 @@ const QdtViz = ({ app, options: optionsProp }) => {
   }, [close, create, options.id, qViz, resize, show]);
 
   return (
-    <div ref={elementRef} style={{ height: options.height }} />
+    <>
+      <div ref={elementRef} style={{ height: options.height }} />
+      {properties.exportData
+        && (
+        <Button variant="outline" color="default" onClick={handleExportData}>
+          Export Data
+        </Button>
+        )}
+      {properties.exportImg
+        && (
+        <Button variant="outline" color="default" onClick={handleExportImg}>
+          Export image
+        </Button>
+        )}
+      {properties.exportPdf
+        && (
+        <Button variant="outline" color="default" onClick={handleExportPdf}>
+          Export Pdf
+        </Button>
+        )}
+    </>
   );
 };
 
 QdtViz.propTypes = {
   app: PropTypes.object,
   options: PropTypes.object,
+  properties: PropTypes.object,
 };
 
 QdtViz.defaultProps = {
   app: null,
   options: {},
+  properties: {},
 };
 
 
-export default ({ element, app, options }) => {
+export default ({
+  element, app, options, properties,
+}) => {
   ReactDOM.unmountComponentAtNode(element);
   ReactDOM.render(
     <QdtViz
       app={app}
       options={options}
+      properties={properties}
     />,
     element,
   );
