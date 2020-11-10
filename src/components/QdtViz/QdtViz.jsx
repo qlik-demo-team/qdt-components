@@ -47,23 +47,22 @@ const QdtViz = ({ app, options: optionsProp, properties: propertiesProp }) => {
     } else {
       qVizPromise = app.visualization.create(options.type, options.cols, options.options);
     }
-    // const qVizPromise = (options.id) ? app.visualization.get(options.id) : app.visualization.create(options.type, options.cols, options.options); // eslint-disable-line max-len
     const _qViz = await qVizPromise;
     if (options.id && options.id !== 'CurrentSelections') _qViz.setOptions(options);
     await setQViz(_qViz);
   };
 
-  const show = () => {
-    qViz.show(elementRef.current, { noSelections: options.noSelections, noInteraction: options.noInteraction });
-  };
+  const show = useCallback(() => {
+    if (qViz && qViz.show) qViz.show(elementRef.current, { noSelections: options.noSelections, noInteraction: options.noInteraction });
+  });
 
-  const close = () => {
+  const close = useCallback(() => {
     qViz.close();
-  };
+  });
 
-  const resize = () => {
+  const resize = useCallback(() => {
     qViz.resize();
-  };
+  });
 
   const urlFix = (url) => {
     const tempUrl = url.split('https://');
@@ -88,16 +87,22 @@ const QdtViz = ({ app, options: optionsProp, properties: propertiesProp }) => {
   }, [properties.exportPdfOptions, qViz]);
 
   useEffect(() => {
-    (async () => {
-      if (!qViz) await create();
-      if (qViz && options.id !== 'CurrentSelections') show();
+    if (qViz) {
+      show();
       window.addEventListener('resize', resize);
-    })();
-    return () => {
-      if (qViz) close();
-      window.removeEventListener('resize', resize);
-    };
-  }, [close, create, options.id, qViz, resize, show]);
+      return () => {
+        close();
+        window.removeEventListener('resize', resize);
+      };
+    }
+    create();
+  }, [qViz]); // eslint-disable-line
+
+  // Unmount and destroy/close object
+  useEffect(() => () => {
+    if (qViz) close();
+    window.removeEventListener('resize', resize);
+  }, []); // eslint-disable-line
 
   return (
     <>
@@ -141,6 +146,9 @@ export default ({
   element, app, options, properties,
 }) => {
   ReactDOM.unmountComponentAtNode(element);
+  const destroy = () => {
+    ReactDOM.unmountComponentAtNode(element);
+  };
   ReactDOM.render(
     <QdtViz
       app={app}
@@ -149,6 +157,7 @@ export default ({
     />,
     element,
   );
+  return { destroy };
 };
 
 // export default QdtSelect;
