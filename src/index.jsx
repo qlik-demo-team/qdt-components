@@ -2,7 +2,7 @@ export { default as qdtNova } from './qdtNova';
 
 export { default as qdtEnigma } from './qdtEnigma';
 
-export { default as qdtCapabilityApp } from './qdtCapabilityApp';
+export { default as qdtCapabilityApp, globals as qlikGlobals } from './qdtCapabilityApp';
 
 export { default as qdtCompose } from './qdtCompose';
 

@@ -2,7 +2,7 @@
 
 // let qlik;
 // let { qlik } = utility.qlobals;
-const globals = {
+export const globals = {
   qlik: null,
   resize: null,
 };
